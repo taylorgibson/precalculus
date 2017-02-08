@@ -19,4 +19,4 @@ This folder contains all textbook sections organized in such a way:
         |-- images
             |-- chapter01-section01-image01.png
             |-- chapter01-section02-image02.png
-        
+'''
