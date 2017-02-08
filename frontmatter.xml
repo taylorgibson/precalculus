@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<frontmatter>
+
+            <titlepage>
+                <author>
+                    <personname>Mathematics Department</personname>
+                    <institution>North Carolina School of Science and Mathematics</institution>
+                </author>
+                <date><today /></date>
+            </titlepage>
+
+            <abstract>
+                <p>This is our pre-calculus textbook. We'll update more on this later!</p>
+            </abstract>
+
+</frontmatter>
