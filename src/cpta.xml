@@ -48,7 +48,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
         <title>Contemporary Pre-Calculus Through Applications</title>
         <xi:include href="./frontmatter.xml" />
         
-        <xi:include href="./chapter1.xml" />
+        <xi:include href="./chapter01.xml" />
         
         <xi:include href="./backmatter.xml" />
         
