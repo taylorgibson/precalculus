@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<chapter xml:id="chapter04" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Logarithmic Functions</title>
+
+	<introduction>
+		<p>In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.</p>
+	</introduction>
+  
+  <xi:include href="./chapter04-section01.xml" />
+  <xi:include href="./exercises/chapter04-section01-exercises.xml" />
+	
+  <xi:include href="./references/chapter04-references.xml" />
+  
+</chapter>
