@@ -16,9 +16,7 @@
   
   <xi:include href="./chapter01-section01.xml" />
   <xi:include href="./exercises/chapter01-section01-exercises.xml" />
- 
- 
- 
- 	<xi:include href="./chapter01-references.xml" />
+	
+  <xi:include href="./references/chapter01-references.xml" />
   
 </chapter>
