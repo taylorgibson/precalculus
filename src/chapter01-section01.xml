@@ -12,55 +12,7 @@
 	<title>Some Thoughts About Models and Mathematics</title>
 
 		<p>When children think about models, they generally consider some kind of a toy, perhaps an airplane or a dinosaur.</p>
-<!--
-                <figure xml:id="figure-pgfplots-demo">
-                    <caption>Sample pgfplots plot</caption>
-                    <image xml:id="pgfplots-demo">
-                        <description>A pgfplots example, with a function, a parametric curve, and some points plotted.</description>
-                        <latex-image-code>
-                        <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
- <!--                       <![CDATA[\begin{tikzpicture}
-                        \matrix{
-                            \begin{axis}[width = 0.5\linewidth]
-                                \addplot[
-                                    domain = 0.1:10,
-                                    <->,
-                                    smooth,
-                                    thin,
-                                    color = blue,
-                                ]{4*ln(x)/ln(10)};
-                                \addplot[
-                                    only marks,
-                                ]coordinates{
-                                    (0,2)
-                                    (4,3)
-                                    (2,4)
-                                    (3,4)};
-                                \addplot[
-                                    variable = \t,
-                                    domain = 0:360,
-                                    samples = 200,
-                                    color = orange,
-                                ]({3*sin(2*t)}, {2*cos(5*t)});
-                            \end{axis}
-                            \amp
-                            \begin{axis}[axis lines = box, width = 0.5\linewidth]
-                                \addplot3[
-                                    surf,
-                                    faceted color = blue,
-                                    samples = 15,
-                                    domain = 0:1,
-                                    y domain = -1:1
-                                ]{x^2 - y^2};
-                            \end{axis}\\
-                        };
-                        \end{tikzpicture}]]>
-
-                        </latex-image-code>
-                    </image>
-                </figure> -->
-		
-		
+	
 		<p>An element <m>p/q \in {\mathbb Q}</m> is the quotient of two integers <m>p</m> and <m>q</m>; however, different pairs of integers can represent the same rational number.  For instance, <m>1/2 = 2/4 = 3/6</m>. We know that 
 			<me>\frac{a}{b} = \frac{c}{d}</me>
 		if and only if <m>ad = bc</m>. A more formal way of considering this problem is to examine fractions in terms of equivalence relations.  We can think of elements in <m>{\mathbb Q}</m> as ordered pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>.  A quotient <m>p/q</m> can be written as <m>(p, q)</m>.  For instance, <m>(3, 7)</m> would represent the fraction <m>3/7</m>.  However, there are problems if we consider all possible pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>.  There is no fraction <m>5/0</m> corresponding to the pair <m>(5,0)</m>.  Also, the pairs <m>(3,6)</m> and <m>(2,4)</m> both represent the fraction <m>1/2</m>.  The first problem is easily solved if we require the second coordinate to be nonzero.  The second problem is solved by considering two pairs <m>(a, b)</m> and <m>(c, d)</m> to be equivalent if <m>ad = bc</m>.</p>
