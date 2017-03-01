@@ -12,14 +12,14 @@
 	<title>Some Thoughts About Models and Mathematics</title>
 
 		<p>When children think about models, they generally consider some kind of a toy, perhaps an airplane or a dinosaur.</p>
-
+<!--
                 <figure xml:id="figure-pgfplots-demo">
                     <caption>Sample pgfplots plot</caption>
                     <image xml:id="pgfplots-demo">
                         <description>A pgfplots example, with a function, a parametric curve, and some points plotted.</description>
                         <latex-image-code>
                         <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
-                        <![CDATA[\begin{tikzpicture}
+ <!--                       <![CDATA[\begin{tikzpicture}
                         \matrix{
                             \begin{axis}[width = 0.5\linewidth]
                                 \addplot[
@@ -58,7 +58,7 @@
 
                         </latex-image-code>
                     </image>
-                </figure>
+                </figure> -->
 		
 		
 		<p>An element <m>p/q \in {\mathbb Q}</m> is the quotient of two integers <m>p</m> and <m>q</m>; however, different pairs of integers can represent the same rational number.  For instance, <m>1/2 = 2/4 = 3/6</m>. We know that 
