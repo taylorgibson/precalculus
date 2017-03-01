@@ -42,6 +42,11 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
  <mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
     <docinfo>
+
+      <latex-preamble>
+        <package>cancel</package>
+      </latex-preamble>
+          
       <latex-image-preamble>
           \usepackage{pgfplots}               % loads tikz package
           \usepackage{smartdiagram}           % for a circular diagram
