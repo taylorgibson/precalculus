@@ -16,53 +16,6 @@
                 </author>
                 <date><today /></date>
                         
-                <figure xml:id="figure-pgfplots-demo">
-                    <caption>Sample pgfplots plot</caption>
-                    <image xml:id="pgfplots-demo">
-                        <description>A pgfplots example, with a function, a parametric curve, and some points plotted.</description>
-                        <latex-image-code>
-                        <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
-                        <![CDATA[\begin{tikzpicture}
-                        \matrix{
-                            \begin{axis}[width = 0.5\linewidth]
-                                \addplot[
-                                    domain = 0.1:10,
-                                    <->,
-                                    smooth,
-                                    thin,
-                                    color = blue,
-                                ]{4*ln(x)/ln(10)};
-                                \addplot[
-                                    only marks,
-                                ]coordinates{
-                                    (0,2)
-                                    (4,3)
-                                    (2,4)
-                                    (3,4)};
-                                \addplot[
-                                    variable = \t,
-                                    domain = 0:360,
-                                    samples = 200,
-                                    color = orange,
-                                ]({3*sin(2*t)}, {2*cos(5*t)});
-                            \end{axis}
-                            \amp
-                            \begin{axis}[axis lines = box, width = 0.5\linewidth]
-                                \addplot3[
-                                    surf,
-                                    faceted color = blue,
-                                    samples = 15,
-                                    domain = 0:1,
-                                    y domain = -1:1
-                                ]{x^2 - y^2};
-                            \end{axis}\\
-                        };
-                        \end{tikzpicture}]]>
-
-                        </latex-image-code>
-                    </image>
-                </figure>
-
             </titlepage>
 
             <abstract>
