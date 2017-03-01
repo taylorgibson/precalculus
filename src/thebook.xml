@@ -41,6 +41,32 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 <!--     <read further instructions in> minimal.py                                                -->
 
  <mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+ 
+    <docinfo>
+        <!--
+        LaTeX packages that are also implemented as MathJax extensions
+        may be specified here and any macros they have in common may be
+        used within mathematics.  See below in the "Mathematics" section
+        an example of the use of the "\cancelto{}{}" macro from
+        the "cancel" package.
+        -->
+        <latex-preamble>
+            <package>cancel</package>
+        </latex-preamble>
+        <!--
+        TeX/LaTeX macros can be written in the usual way.
+        Whitespace and line breaks are irrelevant here.
+        These are "write once, use everywhere".
+        -->
+        <latex-image-preamble>
+        \usepackage{pgfplots}               % loads tikz package
+        \usepackage{smartdiagram}           % for a circular diagram
+        \pgfplotsset{axis x line = middle,
+                     axis y line = middle}
+        \usetikzlibrary{backgrounds}
+        \usetikzlibrary{arrows,matrix}
+        </latex-image-preamble>
+    </docinfo>
   
     <xi:include href="./bookinfo.xml" /> <!-- ISBN, website, other metadata -->
 
