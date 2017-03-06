@@ -95,17 +95,25 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
       
          <!-- chapter04.xml -->
         <chapter xml:id="chapter04" xmlns:xi="http://www.w3.org/2001/XInclude">
-          <title>Recursive Functions</title>
+		<title>Exponential Functions</title>
 
 	  <!-- chapter01-section01.xml -->
-	 <section xml:id="chapter01-section01">
-		<title>Some Thoughts About Models and Mathematics</title>
+		<section xml:id="chapter01-section01">
+			<title>Recursive Functions</title>
 
-			<p>In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship <m>y=f(x)</m> is used to show how the <m>y</m>-value is related to the given <m>x</m>-value. For example, the function <m>f(x)=x^2+6x</m> is an explicit function. This notation tells us that any particular numerical value for <m>x</m> is paired with the <m>y</m>-value equal to <m>x^2+6x</m>. So 1 is paired with 7, since <m>f(1)=(1)^2+6(1)=7</m> , and <m>-3</m> is paired with <m>-9</m>,since <m>f(-3)=(-3)^2+6(-3)=-9</m>.
-In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an <m>x</m>-value.
-</p>                  	
-		  
-	</section>      
+			<p>In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship <m>y=f(x)</m> is used to show how the <m>y</m>-value is related to the given <m>x</m>-value. For example, the function <m>f(x)=x^2+6x</m> is an explicit function. This notation tells us that any particular numerical value for <m>x</m> is paired with the <m>y</m>-value equal to <m>x^2+6x</m>. So 1 is paired with 7, since <m>f(1)=(1)^2+6(1)=7</m> , and <m>-3</m> is paired with <m>-9</m>,since <m>f(-3)=(-3)^2+6(-3)=-9</m>.</p>
+			<p>In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an <m>x</m>-value.</p>                  	
+			<exercise>
+				<title>Ibuprofen in the blood stream</title>
+				<p>Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes 67% of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system 24 hours after taking the 200mg tablet?</p>
+				<solution>
+					<p>One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write <md>
+						<mrow>D_0=0</mrow>
+						</md>
+					</p>
+				</solution>
+			</exercise>
+		</section>      
           <!-- /chapter04-section01.xml -->
 
         </chapter>        
@@ -113,9 +121,14 @@ In this section we will investigate functions that are defined recursively. The 
       
 	    
 	<chapter xml:id="chapter05" xmlns:xi="http://www.w3.org/2001/XInclude">
-	  <introduction>
-            <p>In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.</p>
-          </introduction>
+		<title>Logarithmic Functions</title>
+		<introduction>
+ 			<p>In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.</p>
+		</introduction>
+		
+		<section xml:id="chapter05-section01">
+
+		</section>
 	</chapter>
 	    
     </book>
