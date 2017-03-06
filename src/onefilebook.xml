@@ -1,1 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 
+<!--********************************************************************
+Copyright 2015 Robert A. Beezer
+This file is part of MathBook XML.
+MathBook XML is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 or version 3 of the
+License (at your option).
+MathBook XML is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
+*********************************************************************-->
+
+<!-- To process this file do                                                                      -->
+<!--                                                                                              -->
+<!-- (1) LaTeX/PDF:                                                                               -->
+<!--     xsltproc mathbook/xsl/mathbook-latex.xsl onefilebook.xml                                 -->
+<!--     pdflatex onefilebook.tex                                                                 -->
+<!--     xelatex onefilebook.tex                                                                  -->
+<!--                                                                                              -->
+<!-- (2) HTML:                                                                                    -->
+<!--     xsltproc mathbook/xsl/mathbook-html.xsl onefilebook.xml                                  -->
+<!--     <browswer>  onefilebook.html                                                             -->
+<!--                                                                                              -->
+<!-- (3) SageMathCloud worksheet (parameter causes a single file for output)                      -->
+<!--     REMOVE the "X" in the double dash (which is not legal in an XML comment)                 -->
+<!--     xsltproc -X-stringparam chunk.level 0 mathbook/xsl/mathbook-smc.xsl onefilebook.xml      -->
+<!--     <SageMathCloud> onefilebook.sagews                                                       -->
+<!--                                                                                              -->
+<!-- (4) Sage doctesting                                                                          -->
+<!--     REMOVE the "X" in the double dash (which is not legal in an XML comment)                 -->
+<!--     xsltproc -X-stringparam chunk.level 0 mathbook/xsl/mathbook-sage-doctest.xsl onefilebook.xml -->
+<!--     <read further instructions in> onefilebook.py                                            -->
+
+ <mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+   
+   <!-- bookinfo.xml -->
+   <!-- ISBN, website, other metadata -->
+   <docinfo>
+
+        <brandlogo url="http://cpta.ncssm.edu" source="images/cover_cpta_2018.jpg" />
+
+        <!-- Prefix to enhance Sage notebook contents -->
+        <initialism>CPTA</initialism>
+
+        <!-- tikz package and libraries for images -->
+        <latex-image-preamble>
+          \usepackage{tikz}
+          \usetikzlibrary{backgrounds}
+          \usetikzlibrary{arrows,matrix}
+          \usetikzlibrary{snakes}
+        </latex-image-preamble>
+
+        <!--
+        <search>
+            <google>
+                <cx>replace:replace</cx>
+            </google>
+        </search>
+
+        <analytics>
+            <statcounter>
+                <project>replace</project>
+                <security>replace</security>
+            </statcounter>
+        </analytics>
+        -->
+     
+    </docinfo>
+   <!-- / bookinfo.xml -->
+   
+  
+    <book xml:id="cpta">
+        <title>Contemporary Pre-Calculus Through Applications</title>
+         <!-- frontmatter.xml -->
+          <frontmatter>
+              <titlepage>
+
+                  <author>
+                      <personname>Mathematics Department</personname>
+                      <institution>North Carolina School of Science and Mathematics</institution>
+                  </author>
+
+                  <date>
+                      <today />
+                  </date>               
+
+            </titlepage>
+          </frontmatter>
+         <!-- /frontmatter.xml -->
+      
+         <!-- chapter01.xml -->
+        <chapter xml:id="chapter01" xmlns:xi="http://www.w3.org/2001/XInclude">
+          <title>Data Analysis</title>
+
+          <introduction>
+            <p>In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.</p>
+          </introduction>
+
+          <!-- chapter01-section01.xml -->
+          <section xml:id="chapter01-section01">
+	            <title>Some Thoughts About Models and Mathematics</title>
+
+                  <p>When children think about models, they generally consider some kind of a toy, perhaps an airplane or a dinosaur.</p>                  	
+
+                  <p>An element <m>p/q \in {\mathbb Q}</m> is the quotient of two integers <m>p</m> and <m>q</m>; however, different pairs of integers can represent the same rational number.  For instance, <m>1/2 = 2/4 = 3/6</m>. We know that 
+                    <me>\frac{a}{b} = \frac{c}{d}</me>
+                  if and only if <m>ad = bc</m>. A more formal way of considering this problem is to examine fractions in terms of equivalence relations.  We can think of elements in <m>{\mathbb Q}</m> as ordered pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>.  A quotient <m>p/q</m> can be written as <m>(p, q)</m>.  For instance, <m>(3, 7)</m> would represent the fraction <m>3/7</m>.  However, there are problems if we consider all possible pairs in <m>{\mathbb Z} \times {\mathbb Z}</m>.  There is no fraction <m>5/0</m> corresponding to the pair <m>(5,0)</m>.  Also, the pairs <m>(3,6)</m> and <m>(2,4)</m> both represent the fraction <m>1/2</m>.  The first problem is easily solved if we require the second coordinate to be nonzero.  The second problem is solved by considering two pairs <m>(a, b)</m> and <m>(c, d)</m> to be equivalent if <m>ad = bc</m>.</p>
+
+                  <p>If we use the approach of ordered pairs instead of fractions, then we can study integral domains in general.  Let <m>D</m> be any integral domain and let 
+                    <me>S = \{ (a, b) : a, b \in D \mbox{ and } b \neq 0 \}.</me>
+                  Define a relation on <m>S</m> by <m>(a, b) \sim (c, d)</m> if <m>ad=bc</m>.</p>
+
+	        </section>      
+          <!-- /chapter01-section.xml -->
+
+        </chapter>        
+        <!-- /chapter01.xml -->
+      
+    </book>
+
+</mathbook>
