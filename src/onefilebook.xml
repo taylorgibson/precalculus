@@ -93,27 +93,82 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
           </frontmatter>
          <!-- /frontmatter.xml -->
 
-         <!-- chapter04.xml -->
+         <chapter xml:id="chapter01" xmlns:xi="http://www.w3.org/2001/XInclude">
+       		<title>Data</title>
+       		<introduction>
+        			<p>Introduction to this chapter</p>
+       		</introduction>
+
+       		<section xml:id="chapter01-section01">
+
+       		</section>
+       	</chapter>
+
+        <chapter xml:id="chapter02" xmlns:xi="http://www.w3.org/2001/XInclude">
+      		<title>Transformations of Functions</title>
+      		<introduction>
+       			<p>Introduction to this chapter</p>
+      		</introduction>
+
+      		<section xml:id="chapter02-section01">
+
+      		</section>
+      	</chapter>
+
+        <chapter xml:id="chapter03" xmlns:xi="http://www.w3.org/2001/XInclude">
+      		<title>Combining Functions</title>
+      		<introduction>
+       			<p>Introduction to this chapter</p>
+      		</introduction>
+
+      		<section xml:id="chapter03-section01">
+
+      		</section>
+      	</chapter>
+
+        <!-- chapter04.xml -->
         <chapter xml:id="chapter04" xmlns:xi="http://www.w3.org/2001/XInclude">
-		<title>Exponential Functions</title>
+          <title>Exponential Functions</title>
 
-	  <!-- chapter01-section01.xml -->
-		<section xml:id="chapter01-section01">
-			<title>Recursive Functions</title>
+        <!-- chapter04-section01.xml -->
+          <section xml:id="chapter04-section01">
+			    <title>Recursive Functions</title>
 
-			<p>In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship <m>y=f(x)</m> is used to show how the <m>y</m>-value is related to the given <m>x</m>-value. For example, the function <m>f(x)=x^2+6x</m> is an explicit function. This notation tells us that any particular numerical value for <m>x</m> is paired with the <m>y</m>-value equal to <m>x^2+6x</m>. So 1 is paired with 7, since <m>f(1)=(1)^2+6(1)=7</m> , and <m>-3</m> is paired with <m>-9</m>,since <m>f(-3)=(-3)^2+6(-3)=-9</m>.</p>
-			<p>In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an <m>x</m>-value.</p>
-			<example>
-				<title>Ibuprofen in the blood stream</title>
-				<p>Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes <m>67\%</m> of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system <m>24</m> hours after taking the <m>200</m>mg tablet?</p>
-				<solution>
-					<p>One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write <md>
-						<mrow>D_0=0</mrow>
-						</md>
-					</p>
-				</solution>
-			</example>
-		</section>
+	         <p>In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship <m>y=f(x)</m> is used to show how the <m>y</m>-value is related to the given <m>x</m>-value. For example, the function <m>f(x)=x^2+6x</m> is an explicit function. This notation tells us that any particular numerical value for <m>x</m> is paired with the <m>y</m>-value equal to <m>x^2+6x</m>. So 1 is paired with 7, since <m>f(1)=(1)^2+6(1)=7</m> , and <m>-3</m> is paired with <m>-9</m>,since <m>f(-3)=(-3)^2+6(-3)=-9</m>.</p>
+
+           <p>In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an <m>x</m>-value.</p>
+
+    			 <example>
+    			      <title>Ibuprofen in the blood stream</title>
+    			      <p>Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes <m>67\%</m> of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system <m>24</m> hours after taking the <m>200</m>mg tablet?</p>
+    				    <solution>
+                  <p>One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write
+                  <md>
+    						    <mrow>D_0=0</mrow>
+    						  </md>
+                  where <m>D_0</m> is used to represent the amount of ibuprofen present at the start of the process</p>
+                  <p>We will use <m>D_1</m> to represent the amount of ibuprofen left after four hours.  The subscripts are used to count the steps, or iterations,  in the iterative process. In this problem the subscript  represents the number of four-hour time periods since Joan took the tablet.  In four hours, her kidneys have filtered out <m>67\%</m> of the drug from her bloodstream, so we write
+                  <md>
+                    <mrow>D_1=D_0-.67D_0=200-.67*200=66</mrow>
+                  </md></p>
+                  <p>The amount of drug in her body after a second four-hour time period is represented by <m>D_2</m>.
+                  <md>
+                    <mrow>D_2=D_1-0.67D_1=66-.067∙66=21.78</mrow>
+                  </md></p>
+                  <p>Similarly, we know that successive values of the amount of drug in her body can be generated by
+                  <md>
+                    <mrow>D_3=D_2-0.67D_2=7.187</mrow>
+                    <mrow>D_4=D_3-0.67D_3=2.372</mrow>
+                  </md>
+                  and, in general,
+                  <md>
+                    <mrow>D_n=D_(n-1)-0.67D_(n-1),n=1,2,3...</mrow>
+                  </md></p>
+                  <p>Using a spreadsheet or calculator, we can generate successive values of <m>D_n</m> as shown in Figure XX.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than <m>1</m> mg between the fourth and fifth time periods.  If she takes a single <m>200</m> mg dose, Joan will have only about <m>0.258</m> mg remaining in her body <m>24</m> hours later.</p>
+
+    				    </solution>
+    			 </example>
+		      </section>
           <!-- /chapter04-section01.xml -->
 
         </chapter>
@@ -123,7 +178,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 	<chapter xml:id="chapter05" xmlns:xi="http://www.w3.org/2001/XInclude">
 		<title>Logarithmic Functions</title>
 		<introduction>
- 			<p>In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.</p>
+ 			<p>Introduction to this chapter</p>
 		</introduction>
 
 		<section xml:id="chapter05-section01">
