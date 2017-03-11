@@ -1,6 +1,6 @@
 %**************************************%
 %* Generated from MathBook XML source *%
-%*    on 2017-03-07T11:58:31-05:00    *%
+%*    on 2017-03-10T16:17:06-05:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
@@ -101,15 +101,47 @@
 %% Numbering is in sync with theorems, etc
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Example}
+%% Miscellaneous environments, normal text
+%% Numbering for inline exercises and lists is in sync with theorems, etc
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{Exercise}
 %% Localize LaTeX supplied names (possibly none)
 \renewcommand*{\chaptername}{Chapter}
 %% Equation Numbering
 %% Controlled by  numbering.equations.level  processing parameter
 \numberwithin{equation}{section}
+%% Figures, Tables, Listings, Floats
+%% The [H]ere option of the float package fixes floats in-place,
+%% in deference to web usage, where floats are totally irrelevant
+%% We re/define the figure, table and listing environments, if used
+%%   1) New mbxfigure and/or mbxtable environments are defined with float package
+%%   2) Standard LaTeX environments redefined to use new environments
+%%   3) Standard LaTeX environments redefined to step theorem counter
+%%   4) Counter for new environments is set to the theorem counter before caption
+%% You can remove all this figure/table setup, to restore standard LaTeX behavior
+%% HOWEVER, numbering of figures/tables AND theorems/examples/remarks, etc
+%% WILL ALL de-synchronize with the numbering in the HTML version
+%% You can remove the [H] argument of the \newfloat command, to allow flotation and 
+%% preserve numbering, BUT the numbering may then appear "out-of-order"
+\usepackage{float}
+\usepackage[bf]{caption} % http://tex.stackexchange.com/questions/95631/defining-a-new-type-of-floating-environment 
+\usepackage{newfloat}
+% Figure environment setup so that it no longer floats
+\SetupFloatingEnvironment{figure}{fileext=lof,placement={H},within=section,name=Figure}
+% figures have the same number as theorems: http://tex.stackexchange.com/questions/16195/how-to-make-equations-figures-and-theorems-use-the-same-numbering-scheme 
+\makeatletter
+\let\c@figure\c@theorem
+\makeatother
 %% Raster graphics inclusion, wrapped figures in paragraphs
 %% \resizebox sometimes used for images in side-by-side layout
 \usepackage{graphicx}
 %%
+%% More flexible list management, esp. for references and exercises
+%% But also for specifying labels (i.e. custom order) on nested lists
+\usepackage{enumitem}
+%% Lists of exercises in their own section, maximum depth 4
+\newlist{exerciselist}{description}{4}
+\setlist[exerciselist]{leftmargin=0pt,itemsep=1.0ex,topsep=1.0ex,partopsep=0pt,parsep=0pt}
 %% hyperref driver does not need to be specified
 \usepackage{hyperref}
 %% Hyperlinking active in PDFs, all links solid and blue
@@ -119,10 +151,23 @@
 \providecommand\phantomsection{}
 %% Graphics Preamble Entries
 \usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{axis lines = middle,
+   x label style={at={(axis description cs:0.5,-0.1)}, anchor=north},
+   y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+   }
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{arrows,matrix}
 \usetikzlibrary{snakes}
 %% If tikz has been loaded, replace ampersand with \amp macro
+\ifdefined\tikzset
+    \tikzset{ampersand replacement = \amp}
+\fi
+%% NB: calc redefines \setlength
+\usepackage{calc}
+%% used repeatedly for vertical dimensions of sidebyside panels
+\newlength{\panelmax}
 %% extpfeil package for certain extensible arrows,
 %% as also provided by MathJax extension of the same name
 %% NB: this package loads mtools, which loads calc, which redefines
@@ -151,7 +196,7 @@
 \author{Mathematics Department\\
 North Carolina School of Science and Mathematics
 }
-\date{March 7, 2017}
+\date{March 10, 2017}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -176,7 +221,7 @@ North Carolina School of Science and Mathematics
 {\Huge Contemporary Pre-Calculus Through Applications}\\[3\baselineskip]
 {\Large Mathematics Department}\\[0.5\baselineskip]
 {\Large North Carolina School of Science and Mathematics}\\[3\baselineskip]
-{\Large March 7, 2017}\\}
+{\Large March 10, 2017}\\}
 \clearpage
 %% end:   title page
 %% begin: copyright-page
@@ -193,14 +238,50 @@ North Carolina School of Science and Mathematics
 %% end:   table of contents
 \mainmatter
 \typeout{************************************************}
-\typeout{Chapter 1 Exponential Functions}
+\typeout{Chapter 1 Data}
+\typeout{************************************************}
+\chapter[{Data}]{Data}\label{chapter01}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 1.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter01-section01}
+\typeout{************************************************}
+\typeout{Chapter 2 Transformations of Functions}
+\typeout{************************************************}
+\chapter[{Transformations of Functions}]{Transformations of Functions}\label{chapter02}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 2.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter02-section01}
+\typeout{************************************************}
+\typeout{Chapter 3 Combining Functions}
+\typeout{************************************************}
+\chapter[{Combining Functions}]{Combining Functions}\label{chapter03}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 3.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter03-section01}
+\typeout{************************************************}
+\typeout{Chapter 4 Exponential Functions}
 \typeout{************************************************}
 \chapter[{Exponential Functions}]{Exponential Functions}\label{chapter04}
 \typeout{************************************************}
-\typeout{Section 1.1 Recursive Functions}
+\typeout{Section 4.1 Recursive Functions}
 \typeout{************************************************}
-\section[{Recursive Functions}]{Recursive Functions}\label{chapter01-section01}
-In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship \(y=f(x)\) is used to show how the \(y\)-value is related to the given \(x\)-value. For example, the function \(f(x)=x^2+6x\) is an explicit function. This notation tells us that any particular numerical value for \(x\) is paired with the \(y\)-value equal to \(x^2+6x\). So 1 is paired with 7, since \(f(1)=(1)^2+6(1)=7\) , and \(-3\) is paired with \(-9\),since \(f(-3)=(-3)^2+6(-3)=-9\).%
+\section[{Recursive Functions}]{Recursive Functions}\label{chapter04-section01}
+In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship \(y=f(x)\) is used to show how the \(y\)-value is related to the given \(x\)-value. For example, the function \(f(x)=x^2+6x\) is an explicit function. This notation tells us that any particular numerical value for \(x\) is paired with the \(y\)-value equal to \(x^2+6x\). So 1 is paired with 7, since \(f(1)=(1)^2+6(1)=7\) , and \(-3\) is paired with \(-9\), since \(f(-3)=(-3)^2+6(-3)=-9\).%
 \par
 In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an \(x\)-value.%
 \begin{example}[Ibuprofen in the blood stream]\label{example-1}
@@ -210,18 +291,389 @@ Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief
 \begin{gather*}
 D_0=0
 \end{gather*}
+where \(D_0\) is used to represent the amount of ibuprofen present at the start of the process%
+\par
+We will use \(D_1\) to represent the amount of ibuprofen left after four hours.  The subscripts are used to count the steps, or iterations,  in the iterative process. In this problem the subscript  represents the number of four-hour time periods since Joan took the tablet.  In four hours, her kidneys have filtered out \(67\%\) of the drug from her bloodstream, so we write%
+\begin{gather*}
+D_1=D_0-.67D_0=200-.67\cdot 200=66
+\end{gather*}
 %
+\par
+The amount of drug in her body after a second four-hour time period is represented by \(D_2\).%
+\begin{gather*}
+D_2=D_1-0.67D_1=66-.067\cdot 66=21.78
+\end{gather*}
+%
+\par
+Similarly, we know that successive values of the amount of drug in her body can be generated by%
+\begin{gather*}
+D_3=D_2-0.67D_2=7.187\\
+D_4=D_3-0.67D_3=2.372
+\end{gather*}
+and, in general,%
+\begin{gather*}
+D_n=D_{n-1}-0.67D_{n-1},n=1,2,3...
+\end{gather*}
+%
+\par
+Using a spreadsheet or calculator, we can generate successive values of \(D_n\) as shown in \hyperref[figure-plot-ibuprofen-one-dose]{\ref{figure-plot-ibuprofen-one-dose}}.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than \(1\) mg between the fourth and fifth time periods.  If she takes a single \(200\) mg dose, Joan will have only about \(0.258\) mg remaining in her body \(24\) hours later.%
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\newsavebox{\panelboxAimage}
+\savebox{\panelboxAimage}{%
+\resizebox{0.25\linewidth}{!}{{
+\pgfplotstabletypeset[
+    	col sep=comma,
+      column type=l,
+      every head row/.style={after row=\hline},
+      every column/.style={column type/.add={|}{|}},
+      every first column/.style={column type/.add={}{|}},
+      columns/0/.style={string type, column name={$n$}},
+    	columns/1/.style={string type, column name={$D_n$}},
+    ]{data-single-dose-ibuprofen.csv}
+}
+}}
+\newlength{\phAimage}\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
+\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
+\newsavebox{\panelboxBimage}
+\savebox{\panelboxBimage}{%
+\resizebox{0.65\linewidth}{!}{{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = Number of 4 hour intervals,
+       ylabel = Amount of Ibuprofen (mg),
+       xmin = -1, xmax= 7,
+       ymin = -25, ymax=250,
+       ytick = {0,100,200},
+       xtick = {0, 1, ...,6},
+    ]
+
+      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
+
+    \end{axis}
+\end{tikzpicture}
+}
+}}
+\newlength{\phBimage}\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
+\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
+\leavevmode%
+% begin: side-by-side as figure/tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0.05\textwidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\begin{figure}
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.25\textwidth}\usebox{\panelboxAimage}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxBimage}\end{minipage}\tabularnewline
+&
+\parbox[t]{0.65\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-plot-ibuprofen-one-dose}}
+}\end{tabular}
+\end{figure}
+% end: side-by-side as tabular/figure
+}% end: group for a single side-by-side
+\par
+The graph in \hyperref[figure-plot-ibuprofen-one-dose]{\ref{figure-plot-ibuprofen-one-dose}} shows the ordered pairs \((n,D_n)\) generated by the recursive system%
+%
+\begin{gather*}
+D_0=200\\
+D_n=D_{n-1} - 0.67D_{n-1}, n=1,2,3,...
+\end{gather*}
+\par
+Each point on the graph shows the amount of ibuprofen in Joan’s body at the end of a four-hour time period. Notice that there is obvious curvature in this graph.  The amount of drug in Joan’s body does not decrease by the same number of milligrams during each time interval.%
+\end{example}
+\par
+You should complete Practice Problems 1 and 2 now.%
+\begin{example}[Repated dose of ibuprofen]\label{example-2}
+ibuprofen Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to reduce the inflammation and control pain.  Joan is instructed to take two 200-milligram ibuprofen tablets every 4 hours for three days.  Joan doesn’t like taking medicine, so she decides to take only one tablet every four hours for six days.  After the six days, Joan’s knee has not responded to the medication.  Naturally, she knew that the knee would take longer to respond to the reduced treatment, but she did not expect no response at all.  What could have happened?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad In this situation, Joan did not take just a single 200 mg tablet.  Every four hours she took another 200 mg tablet, and we can modify our recursive system to model this behavior. At the end of the nth four-hour period, Joan’s body has filtered \(67\%\) of the drug that was in her body after n-1st  four-hour period.  In addition, 200 mg from the new tablet have been added into her body.  The recursive system representing the amount of ibuprofen in Joan’s body if she takes one tablet every four hours is%
+%
+\begin{gather*}
+D_0=200\\
+D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...
+\end{gather*}
+\par
+The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in \hyperref[figure-plot-ibuprofen-multi-dose]{\ref{figure-plot-ibuprofen-multi-dose}}%
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\newsavebox{\panelboxCimage}
+\savebox{\panelboxCimage}{%
+\resizebox{0.25\linewidth}{!}{{
+\pgfplotstabletypeset[
+    	col sep=comma,
+      column type=l,
+      every head row/.style={after row=\hline},
+      every column/.style={column type/.add={|}{|}},
+      every first column/.style={column type/.add={}{|}},
+      columns/0/.style={string type, column name={$n$}},
+    	columns/1/.style={string type, column name={$D_n$}},
+    ]{data-multi-dose-ibuprofen.csv}
+}
+}}
+\newlength{\phCimage}\setlength{\phCimage}{\ht\panelboxCimage+\dp\panelboxCimage}
+\settototalheight{\phCimage}{\usebox{\panelboxCimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phCimage}}
+\newsavebox{\panelboxDimage}
+\savebox{\panelboxDimage}{%
+\resizebox{0.65\linewidth}{!}{{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = Number of 4 hour intervals,
+       ylabel = Amount of Ibuprofen (mg),
+       xmin = -1, xmax= 11,
+       ymin = -25, ymax=300,
+       ytick = {0,100,200,300},
+       xtick = {0, 1, ...,10},
+    ]
+
+      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
+
+    \end{axis}
+\end{tikzpicture}
+}
+}}
+\newlength{\phDimage}\setlength{\phDimage}{\ht\panelboxDimage+\dp\panelboxDimage}
+\settototalheight{\phDimage}{\usebox{\panelboxDimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phDimage}}
+\leavevmode%
+% begin: side-by-side as figure/tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0.05\textwidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\begin{figure}
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.25\textwidth}\usebox{\panelboxCimage}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxDimage}\end{minipage}\tabularnewline
+&
+\parbox[t]{0.65\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-plot-ibuprofen-multi-dose}}
+}\end{tabular}
+\end{figure}
+% end: side-by-side as tabular/figure
+}% end: group for a single side-by-side
+\par
+The points shown in \hyperref[figure-plot-ibuprofen-multi-dose]{\ref{figure-plot-ibuprofen-multi-dose}} represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out \(67\%\) of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.%
+\par
+Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means that there must be at least 450 milligrams of the drug in her body for Joan to receive the benefits of the drug.  No wonder she thought the drug was not working.  It wasn’t!%
 \end{example}
 \typeout{************************************************}
-\typeout{Chapter 2 Logarithmic Functions}
+\typeout{Exercises 4.1.1 Exercises}
+\typeout{************************************************}
+\subsection[{Exercises}]{Exercises}\label{exercises-1}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-1}{}Modify the recursive  system  used in Example 1 as appropriate to answer the following questions: \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-1}{}Suppose Joan takes tables that contain 250 milligrams of ibuprofen..  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours?%
+\item\hypertarget{li-2}{}Suppose Joan’s kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?%
+\end{enumerate}
+%
+\par\smallskip
+\item[2.]\hypertarget{exercise-2}{}If Joan takes her medication every 4 hours, determine the amount of drug in Joan’s body after 2 days (twelve  4-hour time periods) and the equilibrium level resulting from each of the following recursive systems.  Plot the ordered pairs you generate on a graph.  Note that in some cases the initial dosage and subsequent doses are not the same size.  In each exercise, the domain of \(D_n\) is \(n=1,2,3, ...\) \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-3}{}\(D_0=200, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
+\item\hypertarget{li-4}{}\(D_0=800, D_n=0.6D_{n-1} + 200\)%
+\item\hypertarget{li-5}{}\(D_0=600, D_n=0.4D_{n-1} + 200\)%
+\item\hypertarget{li-6}{}\(D_0=600, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
+\item\hypertarget{li-7}{}\(D_0=600, D_n=0.6D_{n-1} + 300\)%
+\item\hypertarget{li-8}{}\(D_0=600, D_n=0.4D_{n-1} + 300\)%
+\end{enumerate}
+%
+\par\smallskip
+\item[3.]\hypertarget{exercise-3}{}Each of the systems in exercise 2 can be written in the form%
+\begin{gather*}
+D_0=a\\
+D_n=(1-r) D_{n-1}+b, n=1,2,3...
+\end{gather*}
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-9}{}What does \(r\) represent in the context of Joan's medication?  Why is \(r\) between 0 and 1?%
+\item\hypertarget{li-10}{}By looking back at the results of exercise 2 and by trying other variations, determine the effect of changing \(a\), \(r\), and \(b\) on the amount of drug in Joan's body after 5 days%
+\item\hypertarget{li-11}{}Determine the equilibrium level in terms of \(a\), \(r\), and \(b\).  You can recognize that equilibrium has been reached if  \(D_n=D_{n-1}\).%
+\item\hypertarget{li-12}{}Use the result of part c to determine the equilibrium level of a drug if you take 200 mg every 4 hours and your kidneys filter out \(50\%\) of the drug in your body every 4 hours%
+\end{enumerate}
+%
+\par\smallskip
+\item[4.]\hypertarget{exercise-4}{}A company has \(\$10,000\) worth of equipment and for tax purposes they want to figure the depreciation of the equipment over a 10-year time period.  One method is to reduce the value each year by the same dollar amount.  A second method is to decrease the value of the equipment each year by the same percent of the current value each year. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-13}{}Using the first method, generate a table and graph for the value of the equipment if it is  decreased each year by \(\$2000\).%
+\item\hypertarget{li-14}{}Using the second method, generate a table and graph for the value of the equipment if it is decreased by \(20\%\) each year.%
+\end{enumerate}
+%
+\par\smallskip
+\item[5.]\hypertarget{exercise-5}{}One of the primary responsibilities of the manager of a swimming pool is to maintain the proper concentration of chlorine in the swimming pool.  The concentration should be between 1 and 2 parts per million (ppm).  If the concentration gets as high as 3 ppm swimmers experience burning eyes.  If the concentration gets below 1 ppm, the water will become cloudy, which is unappealing.  If it drops below 0.5 ppm, algae begin to grow.  During a period of one day, \(15\%\) of the chlorine present in the pool dissipates (mainly due to the sun). \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-15}{}If the chlorine content starts at 2.5 ppm and no additional chlorine is added, how long will it be before the water becomes cloudy?%
+\item\hypertarget{li-16}{}If the chlorine content starts at 2.5 ppm and the equivalent of 0.5 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?%
+\item\hypertarget{li-17}{}If the chlorine content starts at 2.5 ppm and the equivalent of 0.1 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?%
+\item\hypertarget{li-18}{}How much chlorine must be added daily for the chlorine level to stabilize at 1.8 ppm?%
+\end{enumerate}
+%
+\par\smallskip
+\item[6.]\hypertarget{exercise-6}{}The Fish and Wildlife Division monitors the trout population in a stream that is under their jurisdiction.  Their research indicates that natural predators, together with pollution and fishing, are causing the trout population to decrease at a rate of \(20\%\) per month.  They propose to introduce additional trout into the stream each month.  Assume the current population is 300.  Use tables and graphs to investigate the following: \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-19}{}What will happen to the trout population over the next ten months with no replenishment program?%
+\item\hypertarget{li-20}{}What is the long-term result of introducing 100 trout into the stream each month?%
+\item\hypertarget{li-21}{}Investigate the result of changing the number of trout introduced each month.  What is the impact on the long-term population of the number of trout added each month?%
+\item\hypertarget{li-22}{}Investigate the impact on the long-term behavior of the population of changing the initial population.  What is the effect of the initial population?%
+\item\hypertarget{li-23}{}What is the impact of the rate of decrease in the population during the replenishment program?%
+\item\hypertarget{li-24}{}There are three parameters in this problem: the initial number of trout, the rate of decrease, and the number of trout added each month. Which parameter seems to have the most influenceon the long-term behavior? Explain briefly.%
+\end{enumerate}
+%
+\par\smallskip
+\item[7.]\hypertarget{exercise-7}{}Drugs generally have a therapeutic range rather than a single therapeutic level.  In other words, a drug is effective if the level in the body is between two values.  At concentrations below this range, too little of the drug is present to have a measurable effect, and concentrations above this range may be toxic.  The level of drug in the body peaks just after the drug is taken, while the drug level is at a minimum just before the dosage is taken.  Suppose Joan takes an anti-inflammatory drug at the prescribed dosage of 440 mg every 12 hours and her kidneys filter \(60\%\) of the drug from her body every 12 hours.  Use tables and graphs to investigate the following: \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-25}{}Generate a sequence of values for the level of drug in Joan’s body just before each dose.%
+\item\hypertarget{li-26}{}In the long-run, the level of drug in Joan’s body will range  between what two values?%
+\item\hypertarget{li-27}{}Suppose the therapeutic range of the anti-inflammatory drug is between 300 mg and 800 mg.  What adjustment, if any, needs to be made in Joan’s dosage to stay within this range in the long run?%
+\end{enumerate}
+%
+\par\smallskip
+\item[8.]\hypertarget{exercise-8}{}Suppose Morgan  wants to buy a television that costs \(\$549\).  He has a part-time job, and he is able to save \(\$85.00\) each week.  Suppose he accumulates the money at home. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-28}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
+\item\hypertarget{li-29}{}Use the recursive system to generate values for the amount of money Morgan has saved in thirteen weeks.%
+\item\hypertarget{li-30}{}Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.%
+\item\hypertarget{li-31}{}The points graphed in part (c) should appear linear.  Explain why the situation implies that these ordered pairs are linear.%
+\item\hypertarget{li-32}{}Write an explicit function of the form \(A=f(t)\) that could be used to generate the same ordered pairs you graphed in part (c).%
+\item\hypertarget{li-33}{}State the domain and the range of the explicit function within the context of this problem.  Compare them to the domain and range of the recursively defined function.%
+\end{enumerate}
+%
+\par\smallskip
+\item[9.]\hypertarget{exercise-9}{}Now suppose that Morgan deposits his savings in a bank that will pay \(0.02\%\) interest each week. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-34}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
+\item\hypertarget{li-35}{}Use the recursive system to generate values for the amount of money Morgan has in the bank after 13 weeks of saving.%
+\item\hypertarget{li-36}{}Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.%
+\item\hypertarget{li-37}{}Are the ordered pairs graphed in part (c) linear?  Explain why or why not.%
+\item\hypertarget{li-38}{}State the domain and range of the recursively defined function.%
+\end{enumerate}
+%
+\par\smallskip
+\end{exerciselist}
+\typeout{************************************************}
+\typeout{Section 4.2 Using Recursion to Understand Loans and Investments}
+\typeout{************************************************}
+\section[{Using Recursion to Understand Loans and Investments}]{Using Recursion to Understand Loans and Investments}\label{chapter04-section02}
+Recursive systems are useful for finding solutions to various types of problems.%
+\par
+Suppose you are interested in purchasing a car and need a \(\$10,000\) loan. The lending agency is going to charge you interest each month and you are going to make a payment each month. You plan to pay \(\$230\) each month until the loan is paid off. Suppose the interest rate is \(0.45\%\) per month (approximately \(5.4\%\) per year). How long will it take you to repay the loan? What is the total amount you will have to repay?  You can answer these questions using recursion.%
+\par
+When making monthly payments to repay a loan, an interest payment is charged on all of the money that is owed at the end of each month.  In this example, at the end of the first month you will owe \((0.0045)(10,000)=\$45.00\) in interest. After making the first payment you will owe \(\$10,000+\$45-\$230=\$9815\). The amount you still owe on the loan at the end of a month is equal to the amount you owed previously plus the interest minus the amount of your payment. This is expressed in a recursive system as:%
+%
+\begin{gather*}
+L_0=10,000, L_{n-1}+(0.0045)\cdot L_{n-1}-230, where n=1,2,3,...
+\end{gather*}
+\par
+where \(L_n\) is the amount you owe on the loan after \(n\) months.  This amount is also known as the \emph{principal}, or the \emph{outstanding balance}. If we iterate this system, the values we generate represent the outstanding balance at the end of each month.%
+%
+\begin{gather*}
+L_1=L_0+(0.0045)\cdot L_0-230=10,000+(0.0045)\cdot 10,000-230=9,815\\
+L_2=L_1+(0.0045)\cdot L_1-230=9,815+(0.0045)\cdot 9,815-230=9,629.17\\
+L_3=L_2+(0.0045)\cdot L_2-230=9,629.17+(0.0045)\cdot 9,629.17-230=9,442.50
+\end{gather*}
+\par
+Note that values have been rounded to the nearest cent.  All the decimal places on the calculator were retained in the computations.%
+\par
+After three months, you will owe \(\$9,442.50\) on the loan. Notice that you have paid a total of \(\$230\cdot 3=\$690\), but only \(\$10,000-\$9442.50=\$557.50\) was applied towards decreasing the principal of the loan. The remaining \(\$132.50\) was payment of interest.%
+\par
+We can continue generating values of \(L_n\) using a more compact form of the iterative equation,%
+%
+\begin{gather*}
+L_n=(1.0045)\cdot L_{n-1}-230
+\end{gather*}
+\par
+which yields%
+%
+\begin{gather*}
+L_4=(1.0045)\cdot L_3-230=\$9,254.99\\
+L_5=(1.0045)\cdot L_4-230=\$9,066.64\\
+L_6=(1.0045)\cdot L_5-230=\$8,877.44
+\end{gather*}
+\par
+After six months, you owe \(\$8,877.44\) of the original \(\$10,000\) principal.  You have paid \(\$1,380\) in interest, and this payment has reduced the outstanding balance by \(\$1,122.56\).  Over \(\$250\) was interest on the loan.%
+\par
+If we continue the payments of \(\$230\) for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment%
+\par
+The graph and partial table in Figure XX show that it will take \(47\) payments to get the balance down to \(\$341.20\).  After one additional month the balance will be \(\$341.20\cdot 1.0045=\$342.74\) if we round in the usual manner.  Thus, the balloon payment would be \(\$342.74\).%
+\typeout{************************************************}
+\typeout{Chapter 5 Logarithmic Functions}
 \typeout{************************************************}
 \chapter[{Logarithmic Functions}]{Logarithmic Functions}\label{chapter05}
 \typeout{************************************************}
 \typeout{Introduction  }
 \typeout{************************************************}
-In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.%
+Introduction to this chapter%
 \typeout{************************************************}
-\typeout{Section 2.1 }
+\typeout{Section 5.1 }
 \typeout{************************************************}
 \section[{}]{}\label{chapter05-section01}
+\typeout{************************************************}
+\typeout{Chapter 6 Parametric Functions}
+\typeout{************************************************}
+\chapter[{Parametric Functions}]{Parametric Functions}\label{chapter06}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 6.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter06-section01}
+\typeout{************************************************}
+\typeout{Chapter 7 Intro to Trigonometric Functions}
+\typeout{************************************************}
+\chapter[{Intro to Trigonometric Functions}]{Intro to Trigonometric Functions}\label{chapter07}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 7.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter07-section01}
+\typeout{************************************************}
+\typeout{Chapter 8 More Trigonometric Functions}
+\typeout{************************************************}
+\chapter[{More Trigonometric Functions}]{More Trigonometric Functions}\label{chapter08}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 8.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter08-section01}
+\typeout{************************************************}
+\typeout{Chapter 9 Combinations of Functions}
+\typeout{************************************************}
+\chapter[{Combinations of Functions}]{Combinations of Functions}\label{chapter09}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 9.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter09-section01}
+\typeout{************************************************}
+\typeout{Chapter 10 Matrices}
+\typeout{************************************************}
+\chapter[{Matrices}]{Matrices}\label{chapter10}
+\typeout{************************************************}
+\typeout{Introduction  }
+\typeout{************************************************}
+Introduction to this chapter%
+\typeout{************************************************}
+\typeout{Section 10.1 }
+\typeout{************************************************}
+\section[{}]{}\label{chapter10-section01}
 \end{document}
