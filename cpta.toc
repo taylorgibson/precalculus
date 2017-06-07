@@ -7,17 +7,22 @@
 \contentsline {section}{\numberline {3.1}}{5}{section.3.1}
 \contentsline {chapter}{\numberline {4}Exponential Functions}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}Recursive Functions}{7}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Exercises}{10}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.1}Class Practice}{9}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Exercises}{10}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Using Recursion to Understand Loans and Investments}{13}{section.4.2}
-\contentsline {chapter}{\numberline {5}Logarithmic Functions}{15}{chapter.5}
-\contentsline {section}{\numberline {5.1}}{15}{section.5.1}
-\contentsline {chapter}{\numberline {6}Parametric Functions}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}}{17}{section.6.1}
-\contentsline {chapter}{\numberline {7}Intro to Trigonometric Functions}{19}{chapter.7}
-\contentsline {section}{\numberline {7.1}}{19}{section.7.1}
-\contentsline {chapter}{\numberline {8}More Trigonometric Functions}{21}{chapter.8}
-\contentsline {section}{\numberline {8.1}}{21}{section.8.1}
-\contentsline {chapter}{\numberline {9}Combinations of Functions}{23}{chapter.9}
-\contentsline {section}{\numberline {9.1}}{23}{section.9.1}
-\contentsline {chapter}{\numberline {10}Matrices}{25}{chapter.10}
-\contentsline {section}{\numberline {10.1}}{25}{section.10.1}
+\contentsline {subsection}{\numberline {4.2.1}Exercises}{17}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Geometric Growth and Decay}{18}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Class Practice}{22}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Exercises}{25}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Logarithmic Functions}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}}{29}{section.5.1}
+\contentsline {chapter}{\numberline {6}Parametric Functions}{31}{chapter.6}
+\contentsline {section}{\numberline {6.1}}{31}{section.6.1}
+\contentsline {chapter}{\numberline {7}Intro to Trigonometric Functions}{33}{chapter.7}
+\contentsline {section}{\numberline {7.1}}{33}{section.7.1}
+\contentsline {chapter}{\numberline {8}More Trigonometric Functions}{35}{chapter.8}
+\contentsline {section}{\numberline {8.1}}{35}{section.8.1}
+\contentsline {chapter}{\numberline {9}Combinations of Functions}{37}{chapter.9}
+\contentsline {section}{\numberline {9.1}}{37}{section.9.1}
+\contentsline {chapter}{\numberline {10}Matrices}{39}{chapter.10}
+\contentsline {section}{\numberline {10.1}}{39}{section.10.1}

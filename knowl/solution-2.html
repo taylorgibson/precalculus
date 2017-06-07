@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2017-03-16T12:34:48-04:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<span class="solution"><h5 class="heading">
+<span class="type">Solution</span><span class="codenumber">4.1.3.1</span>
+</h5>
+<p id="p-17">In this situation, Joan did not take just a single 200 mg tablet.  Every four hours she took another 200 mg tablet, and we can modify our recursive system to model this behavior. At the end of the nth four-hour period, Joan’s body has filtered \(67\%\) of the drug that was in her body after n-1st  four-hour period.  In addition, 200 mg from the new tablet have been added into her body.  The recursive system representing the amount of ibuprofen in Joan’s body if she takes one tablet every four hours is</p>
+\begin{gather*}
+D_0=200\\
+D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...
+\end{gather*}
+<p id="p-18">The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in <a knowl="./knowl/figure-plot-ibuprofen-multi-dose.html" knowl-id="xref-figure-plot-ibuprofen-multi-dose" alt="Figure  " title="Figure  "></a></p>
+<div class="sidebyside" style="" id="sidebyside-2">
+<div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel" style="width:25%;justify-content:flex-start;"><object type="image/svg+xml" style="width:100%; margin:auto; display:block;" data="images/table-ibuprofen-multi-dose.svg" alt=""><p style="margin:auto">&lt;&lt;SVG image is unavailable, or your browser cannot render it&gt;&gt;</p></object></div>
+<div class="sbspanel" style="width:65%;justify-content:flex-start;"><object type="image/svg+xml" style="width:100%; margin:auto; display:block;" data="images/plot-ibuprofen-multi-dose.svg" alt="Amount of drug in Joan's body (Single 200 mg dose)"><p style="margin:auto">&lt;&lt;SVG image is unavailable, or your browser cannot render it&gt;&gt;</p></object></div>
+</div>
+<figcaption><span class="heading">Figure</span><span class="codenumber">4.1.4</span>Amount of drug in Joan's body (Single 200 mg dose)</figcaption>
+</div>
+<p id="p-19">The points shown in <a knowl="./knowl/figure-plot-ibuprofen-multi-dose.html" knowl-id="xref-figure-plot-ibuprofen-multi-dose" alt="Figure  " title="Figure  "></a> represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out \(67\%\) of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.</p>
+<p id="p-20">Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means that there must be at least 450 milligrams of the drug in her body for Joan to receive the benefits of the drug.  No wonder she thought the drug was not working.  It wasn’t!</p></span><span class="incontext"><a href="chapter04-section01.html#solution-2">in-context</a></span>
+</body>
+</html>

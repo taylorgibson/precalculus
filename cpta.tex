@@ -1,6 +1,6 @@
 %**************************************%
 %* Generated from MathBook XML source *%
-%*    on 2017-03-10T16:17:06-05:00    *%
+%*    on 2017-04-18T12:25:54-04:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
@@ -97,6 +97,10 @@
 %% Style is like a theorem, and for statements without proofs
 %% Numbering: all theorem-like numbered consecutively
 %% i.e. Corollary 4.3 follows Theorem 4.2
+%% Definition-like environments, normal text
+%% Numbering is in sync with theorems, etc
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
 %% Example-like environments, normal text
 %% Numbering is in sync with theorems, etc
 \theoremstyle{definition}
@@ -110,6 +114,38 @@
 %% Equation Numbering
 %% Controlled by  numbering.equations.level  processing parameter
 \numberwithin{equation}{section}
+%% For improved tables
+\usepackage{array}
+%% Some extra height on each row is desirable, especially with horizontal rules
+%% Increment determined experimentally
+\setlength{\extrarowheight}{0.2ex}
+%% Define variable thickness horizontal rules, full and partial
+%% Thicknesses are 0.03, 0.05, 0.08 in the  booktabs  package
+\makeatletter
+\newcommand{\hrulethin}  {\noalign{\hrule height 0.04em}}
+\newcommand{\hrulemedium}{\noalign{\hrule height 0.07em}}
+\newcommand{\hrulethick} {\noalign{\hrule height 0.11em}}
+%% We preserve a copy of the \setlength package before other
+%% packages (extpfeil) get a chance to load packages that redefine it
+\let\oldsetlength\setlength
+\newlength{\Oldarrayrulewidth}
+\newcommand{\crulethin}[1]%
+{\noalign{\global\oldsetlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{0.04em}}\cline{#1}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{\Oldarrayrulewidth}}}%
+\newcommand{\crulemedium}[1]%
+{\noalign{\global\oldsetlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{0.07em}}\cline{#1}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{\Oldarrayrulewidth}}}
+\newcommand{\crulethick}[1]%
+{\noalign{\global\oldsetlength{\Oldarrayrulewidth}{\arrayrulewidth}}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{0.11em}}\cline{#1}%
+\noalign{\global\oldsetlength{\arrayrulewidth}{\Oldarrayrulewidth}}}
+%% Single letter column specifiers defined via array package
+\newcolumntype{A}{!{\vrule width 0.04em}}
+\newcolumntype{B}{!{\vrule width 0.07em}}
+\newcolumntype{C}{!{\vrule width 0.11em}}
+\makeatother
 %% Figures, Tables, Listings, Floats
 %% The [H]ere option of the float package fixes floats in-place,
 %% in deference to web usage, where floats are totally irrelevant
@@ -126,11 +162,25 @@
 \usepackage{float}
 \usepackage[bf]{caption} % http://tex.stackexchange.com/questions/95631/defining-a-new-type-of-floating-environment 
 \usepackage{newfloat}
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelformat=simple}
+\captionsetup[subtable]{labelformat=simple}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\makeatletter
+% we plan to use subtables within figure environments, so they need to reset accordingly
+\@addtoreset{subtable}{figure}
+\makeatother
 % Figure environment setup so that it no longer floats
 \SetupFloatingEnvironment{figure}{fileext=lof,placement={H},within=section,name=Figure}
 % figures have the same number as theorems: http://tex.stackexchange.com/questions/16195/how-to-make-equations-figures-and-theorems-use-the-same-numbering-scheme 
 \makeatletter
 \let\c@figure\c@theorem
+\makeatother
+% Table environment setup so that it no longer floats
+\SetupFloatingEnvironment{table}{fileext=lot,placement={H},within=section,name=Table}
+% tables have the same number as theorems: http://tex.stackexchange.com/questions/16195/how-to-make-equations-figures-and-theorems-use-the-same-numbering-scheme 
+\makeatletter
+\let\c@table\c@theorem
 \makeatother
 %% Raster graphics inclusion, wrapped figures in paragraphs
 %% \resizebox sometimes used for images in side-by-side layout
@@ -142,6 +192,10 @@
 %% Lists of exercises in their own section, maximum depth 4
 \newlist{exerciselist}{description}{4}
 \setlist[exerciselist]{leftmargin=0pt,itemsep=1.0ex,topsep=1.0ex,partopsep=0pt,parsep=0pt}
+%% Indented groups of exercises within an exercise section
+%% Add  debug=true  option to see boxes around contents
+\usepackage{tasks}
+\NewTasks[label-format=\bfseries,item-indent=3.3em,label-offset=0.4em,label-width=1.7em,label-align=right,after-item-skip=\smallskipamount,after-skip=\smallskipamount]{exercisegroup}[\exercise]
 %% hyperref driver does not need to be specified
 \usepackage{hyperref}
 %% Hyperlinking active in PDFs, all links solid and blue
@@ -154,8 +208,9 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \pgfplotsset{axis lines = middle,
-   x label style={at={(axis description cs:0.5,-0.1)}, anchor=north},
-   y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+   x label style={at={(axis description cs:0.5,0)}, anchor=north},
+   y label style={at={(axis description cs:0,.5)},rotate=90,anchor=south},
+   scaled y ticks=false,
    }
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{arrows,matrix}
@@ -196,7 +251,7 @@
 \author{Mathematics Department\\
 North Carolina School of Science and Mathematics
 }
-\date{March 10, 2017}
+\date{April 18, 2017}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -221,7 +276,7 @@ North Carolina School of Science and Mathematics
 {\Huge Contemporary Pre-Calculus Through Applications}\\[3\baselineskip]
 {\Large Mathematics Department}\\[0.5\baselineskip]
 {\Large North Carolina School of Science and Mathematics}\\[3\baselineskip]
-{\Large March 10, 2017}\\}
+{\Large April 18, 2017}\\}
 \clearpage
 %% end:   title page
 %% begin: copyright-page
@@ -284,7 +339,7 @@ Introduction to this chapter%
 In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship \(y=f(x)\) is used to show how the \(y\)-value is related to the given \(x\)-value. For example, the function \(f(x)=x^2+6x\) is an explicit function. This notation tells us that any particular numerical value for \(x\) is paired with the \(y\)-value equal to \(x^2+6x\). So 1 is paired with 7, since \(f(1)=(1)^2+6(1)=7\) , and \(-3\) is paired with \(-9\), since \(f(-3)=(-3)^2+6(-3)=-9\).%
 \par
 In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an \(x\)-value.%
-\begin{example}[Ibuprofen in the blood stream]\label{example-1}
+\begin{example}[Ibuprofen in the blood stream]\label{ibuprofen-example-one-dose}
 Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes \(67\%\) of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system \(24\) hours after taking the \(200\)mg tablet?%
 \par\medskip\noindent%
 \textbf{Solution.}\quad One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write%
@@ -316,7 +371,7 @@ D_n=D_{n-1}-0.67D_{n-1},n=1,2,3...
 \end{gather*}
 %
 \par
-Using a spreadsheet or calculator, we can generate successive values of \(D_n\) as shown in \hyperref[figure-plot-ibuprofen-one-dose]{\ref{figure-plot-ibuprofen-one-dose}}.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than \(1\) mg between the fourth and fifth time periods.  If she takes a single \(200\) mg dose, Joan will have only about \(0.258\) mg remaining in her body \(24\) hours later.%
+Using a spreadsheet or calculator, we can generate successive values of \(D_n\) as shown in \hyperref[figure-plot-ibuprofen-one-dose]{}.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than \(1\) mg between the fourth and fifth time periods.  If she takes a single \(200\) mg dose, Joan will have only about \(0.258\) mg remaining in her body \(24\) hours later.%
 % group protects changes to lengths, releases boxes (?)
 {% begin: group for a single side-by-side
 % set panel max height to practical minimum, created in preamble
@@ -347,10 +402,12 @@ Using a spreadsheet or calculator, we can generate successive values of \(D_n\) 
        width = 0.5\linewidth,
        xlabel = Number of 4 hour intervals,
        ylabel = Amount of Ibuprofen (mg),
+       label style={font=\tiny},
        xmin = -1, xmax= 7,
        ymin = -25, ymax=250,
        ytick = {0,100,200},
        xtick = {0, 1, ...,6},
+       tick label style={font=\tiny},
     ]
 
       \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
@@ -370,15 +427,13 @@ Using a spreadsheet or calculator, we can generate successive values of \(D_n\) 
 \begin{figure}
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.25\textwidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxBimage}\end{minipage}\tabularnewline
-&
-\parbox[t]{0.65\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-plot-ibuprofen-one-dose}}
-}\end{tabular}
+\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}
+\caption{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-ibuprofen-one-dose}}
 \end{figure}
 % end: side-by-side as tabular/figure
 }% end: group for a single side-by-side
 \par
-The graph in \hyperref[figure-plot-ibuprofen-one-dose]{\ref{figure-plot-ibuprofen-one-dose}} shows the ordered pairs \((n,D_n)\) generated by the recursive system%
+The graph in Figure \hyperref[figure-ibuprofen-one-dose]{\ref{figure-ibuprofen-one-dose}} shows the ordered pairs \((n,D_n)\) generated by the recursive system%
 %
 \begin{gather*}
 D_0=200\\
@@ -387,10 +442,30 @@ D_n=D_{n-1} - 0.67D_{n-1}, n=1,2,3,...
 \par
 Each point on the graph shows the amount of ibuprofen in Joan’s body at the end of a four-hour time period. Notice that there is obvious curvature in this graph.  The amount of drug in Joan’s body does not decrease by the same number of milligrams during each time interval.%
 \end{example}
-\par
-You should complete Practice Problems 1 and 2 now.%
+\typeout{************************************************}
+\typeout{Exercises 4.1.1 Class Practice}
+\typeout{************************************************}
+\subsection[{Class Practice}]{Class Practice}\label{exercises-1}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-1}{}Modify the recursive system used in Example \hyperref[ibuprofen-example-one-dose]{\ref{ibuprofen-example-one-dose}} as appropriate to answer the following questions: \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-1}{}Suppose Joan takes tablets that contain \(250\) milligrams of ibuprofen. How much ibuprofen would be in her body after \(4, 8, 12, 16, 20,\) and \(24\) hours?%
+\item\hypertarget{li-2}{}Suppose Joan's kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a \(200\) mg tablet every \(4\) hours, how much ibuprofen would she have in her system after \(4, 8, 12, 16, 20,\) and \(24\) hours?%
+\end{enumerate}
+%
+\par\smallskip
+\item[2.]\hypertarget{exercise-2}{}In each recursive system, the domain of \(D_n\) is \(n=1,2,3, ...\) and \(D_n\) represents the amount of ibuprofen in Joan's system after n four-hour time periods.  For each system, find how much drug remains after \(24\) hours, and identify the rate at which Joan's system filters out the drug. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-3}{}\(D_0=300, D_n=D_{n-1} - 0.8D_{n-1}\)%
+\item\hypertarget{li-4}{}\(D_0=150, D_n=D_{n-1} - 0.2D_{n-1}\)%
+\item\hypertarget{li-5}{}\(D_0=500, D_n=0.2D_{n-1}\)%
+\item\hypertarget{li-6}{}\(D_0=500, D_n=0.5D_{n-1}\)%
+\end{enumerate}
+%
+\par\smallskip
+\end{exerciselist}
 \begin{example}[Repated dose of ibuprofen]\label{example-2}
-ibuprofen Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to reduce the inflammation and control pain.  Joan is instructed to take two 200-milligram ibuprofen tablets every 4 hours for three days.  Joan doesn’t like taking medicine, so she decides to take only one tablet every four hours for six days.  After the six days, Joan’s knee has not responded to the medication.  Naturally, she knew that the knee would take longer to respond to the reduced treatment, but she did not expect no response at all.  What could have happened?%
+Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to reduce the inflammation and control pain.  Joan is instructed to take two 200-milligram ibuprofen tablets every 4 hours for three days.  Joan doesn’t like taking medicine, so she decides to take only one tablet every four hours for six days.  After the six days, Joan’s knee has not responded to the medication.  Naturally, she knew that the knee would take longer to respond to the reduced treatment, but she did not expect no response at all.  What could have happened?%
 \par\medskip\noindent%
 \textbf{Solution.}\quad In this situation, Joan did not take just a single 200 mg tablet.  Every four hours she took another 200 mg tablet, and we can modify our recursive system to model this behavior. At the end of the nth four-hour period, Joan’s body has filtered \(67\%\) of the drug that was in her body after n-1st  four-hour period.  In addition, 200 mg from the new tablet have been added into her body.  The recursive system representing the amount of ibuprofen in Joan’s body if she takes one tablet every four hours is%
 %
@@ -399,7 +474,7 @@ D_0=200\\
 D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...
 \end{gather*}
 \par
-The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in \hyperref[figure-plot-ibuprofen-multi-dose]{\ref{figure-plot-ibuprofen-multi-dose}}%
+The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in \hyperref[figure-plot-ibuprofen-multi-dose]{}%
 % group protects changes to lengths, releases boxes (?)
 {% begin: group for a single side-by-side
 % set panel max height to practical minimum, created in preamble
@@ -430,10 +505,12 @@ The subscript n represents the number of four-hour time periods that have elapse
        width = 0.5\linewidth,
        xlabel = Number of 4 hour intervals,
        ylabel = Amount of Ibuprofen (mg),
-       xmin = -1, xmax= 11,
-       ymin = -25, ymax=300,
+       label style={font=\tiny},
+       xmin = -1.5, xmax= 11,
+       ymin = -30, ymax=350,
        ytick = {0,100,200,300},
        xtick = {0, 1, ...,10},
+       tick label style={font=\tiny},
     ]
 
       \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
@@ -453,108 +530,106 @@ The subscript n represents the number of four-hour time periods that have elapse
 \begin{figure}
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.25\textwidth}\usebox{\panelboxCimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxDimage}\end{minipage}\tabularnewline
-&
-\parbox[t]{0.65\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-plot-ibuprofen-multi-dose}}
-}\end{tabular}
+\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxDimage}\end{minipage}\end{tabular}
+\caption{Amount of drug in Joan's body (Single 200 mg dose)\label{sidebyside-2}}
 \end{figure}
 % end: side-by-side as tabular/figure
 }% end: group for a single side-by-side
 \par
-The points shown in \hyperref[figure-plot-ibuprofen-multi-dose]{\ref{figure-plot-ibuprofen-multi-dose}} represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out \(67\%\) of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.%
+The points shown in \hyperref[figure-plot-ibuprofen-multi-dose]{} represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out \(67\%\) of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.%
 \par
 Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means that there must be at least 450 milligrams of the drug in her body for Joan to receive the benefits of the drug.  No wonder she thought the drug was not working.  It wasn’t!%
 \end{example}
 \typeout{************************************************}
-\typeout{Exercises 4.1.1 Exercises}
+\typeout{Exercises 4.1.2 Exercises}
 \typeout{************************************************}
-\subsection[{Exercises}]{Exercises}\label{exercises-1}
+\subsection[{Exercises}]{Exercises}\label{exercises-2}
 \begin{exerciselist}
-\item[1.]\hypertarget{exercise-1}{}Modify the recursive  system  used in Example 1 as appropriate to answer the following questions: \leavevmode%
+\item[1.]\hypertarget{exercise-3}{}Modify the recursive  system  used in Example 1 as appropriate to answer the following questions: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-1}{}Suppose Joan takes tables that contain 250 milligrams of ibuprofen..  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours?%
-\item\hypertarget{li-2}{}Suppose Joan’s kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?%
+\item\hypertarget{li-7}{}Suppose Joan takes tables that contain 250 milligrams of ibuprofen..  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours?%
+\item\hypertarget{li-8}{}Suppose Joan’s kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?%
 \end{enumerate}
 %
 \par\smallskip
-\item[2.]\hypertarget{exercise-2}{}If Joan takes her medication every 4 hours, determine the amount of drug in Joan’s body after 2 days (twelve  4-hour time periods) and the equilibrium level resulting from each of the following recursive systems.  Plot the ordered pairs you generate on a graph.  Note that in some cases the initial dosage and subsequent doses are not the same size.  In each exercise, the domain of \(D_n\) is \(n=1,2,3, ...\) \leavevmode%
+\item[2.]\hypertarget{exercise-4}{}If Joan takes her medication every 4 hours, determine the amount of drug in Joan’s body after 2 days (twelve  4-hour time periods) and the equilibrium level resulting from each of the following recursive systems.  Plot the ordered pairs you generate on a graph.  Note that in some cases the initial dosage and subsequent doses are not the same size.  In each exercise, the domain of \(D_n\) is \(n=1,2,3, ...\) \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-3}{}\(D_0=200, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
-\item\hypertarget{li-4}{}\(D_0=800, D_n=0.6D_{n-1} + 200\)%
-\item\hypertarget{li-5}{}\(D_0=600, D_n=0.4D_{n-1} + 200\)%
-\item\hypertarget{li-6}{}\(D_0=600, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
-\item\hypertarget{li-7}{}\(D_0=600, D_n=0.6D_{n-1} + 300\)%
-\item\hypertarget{li-8}{}\(D_0=600, D_n=0.4D_{n-1} + 300\)%
+\item\hypertarget{li-9}{}\(D_0=200, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
+\item\hypertarget{li-10}{}\(D_0=800, D_n=0.6D_{n-1} + 200\)%
+\item\hypertarget{li-11}{}\(D_0=600, D_n=0.4D_{n-1} + 200\)%
+\item\hypertarget{li-12}{}\(D_0=600, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
+\item\hypertarget{li-13}{}\(D_0=600, D_n=0.6D_{n-1} + 300\)%
+\item\hypertarget{li-14}{}\(D_0=600, D_n=0.4D_{n-1} + 300\)%
 \end{enumerate}
 %
 \par\smallskip
-\item[3.]\hypertarget{exercise-3}{}Each of the systems in exercise 2 can be written in the form%
+\item[3.]\hypertarget{exercise-5}{}Each of the systems in exercise 2 can be written in the form%
 \begin{gather*}
 D_0=a\\
 D_n=(1-r) D_{n-1}+b, n=1,2,3...
 \end{gather*}
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-9}{}What does \(r\) represent in the context of Joan's medication?  Why is \(r\) between 0 and 1?%
-\item\hypertarget{li-10}{}By looking back at the results of exercise 2 and by trying other variations, determine the effect of changing \(a\), \(r\), and \(b\) on the amount of drug in Joan's body after 5 days%
-\item\hypertarget{li-11}{}Determine the equilibrium level in terms of \(a\), \(r\), and \(b\).  You can recognize that equilibrium has been reached if  \(D_n=D_{n-1}\).%
-\item\hypertarget{li-12}{}Use the result of part c to determine the equilibrium level of a drug if you take 200 mg every 4 hours and your kidneys filter out \(50\%\) of the drug in your body every 4 hours%
+\item\hypertarget{li-15}{}What does \(r\) represent in the context of Joan's medication?  Why is \(r\) between 0 and 1?%
+\item\hypertarget{li-16}{}By looking back at the results of exercise 2 and by trying other variations, determine the effect of changing \(a\), \(r\), and \(b\) on the amount of drug in Joan's body after 5 days%
+\item\hypertarget{li-17}{}Determine the equilibrium level in terms of \(a\), \(r\), and \(b\).  You can recognize that equilibrium has been reached if  \(D_n=D_{n-1}\).%
+\item\hypertarget{li-18}{}Use the result of part c to determine the equilibrium level of a drug if you take 200 mg every 4 hours and your kidneys filter out \(50\%\) of the drug in your body every 4 hours%
 \end{enumerate}
 %
 \par\smallskip
-\item[4.]\hypertarget{exercise-4}{}A company has \(\$10,000\) worth of equipment and for tax purposes they want to figure the depreciation of the equipment over a 10-year time period.  One method is to reduce the value each year by the same dollar amount.  A second method is to decrease the value of the equipment each year by the same percent of the current value each year. \leavevmode%
+\item[4.]\hypertarget{exercise-6}{}A company has \(\$10,000\) worth of equipment and for tax purposes they want to figure the depreciation of the equipment over a 10-year time period.  One method is to reduce the value each year by the same dollar amount.  A second method is to decrease the value of the equipment each year by the same percent of the current value each year. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-13}{}Using the first method, generate a table and graph for the value of the equipment if it is  decreased each year by \(\$2000\).%
-\item\hypertarget{li-14}{}Using the second method, generate a table and graph for the value of the equipment if it is decreased by \(20\%\) each year.%
+\item\hypertarget{li-19}{}Using the first method, generate a table and graph for the value of the equipment if it is  decreased each year by \(\$2000\).%
+\item\hypertarget{li-20}{}Using the second method, generate a table and graph for the value of the equipment if it is decreased by \(20\%\) each year.%
 \end{enumerate}
 %
 \par\smallskip
-\item[5.]\hypertarget{exercise-5}{}One of the primary responsibilities of the manager of a swimming pool is to maintain the proper concentration of chlorine in the swimming pool.  The concentration should be between 1 and 2 parts per million (ppm).  If the concentration gets as high as 3 ppm swimmers experience burning eyes.  If the concentration gets below 1 ppm, the water will become cloudy, which is unappealing.  If it drops below 0.5 ppm, algae begin to grow.  During a period of one day, \(15\%\) of the chlorine present in the pool dissipates (mainly due to the sun). \leavevmode%
+\item[5.]\hypertarget{exercise-7}{}One of the primary responsibilities of the manager of a swimming pool is to maintain the proper concentration of chlorine in the swimming pool.  The concentration should be between 1 and 2 parts per million (ppm).  If the concentration gets as high as 3 ppm swimmers experience burning eyes.  If the concentration gets below 1 ppm, the water will become cloudy, which is unappealing.  If it drops below 0.5 ppm, algae begin to grow.  During a period of one day, \(15\%\) of the chlorine present in the pool dissipates (mainly due to the sun). \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-15}{}If the chlorine content starts at 2.5 ppm and no additional chlorine is added, how long will it be before the water becomes cloudy?%
-\item\hypertarget{li-16}{}If the chlorine content starts at 2.5 ppm and the equivalent of 0.5 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?%
-\item\hypertarget{li-17}{}If the chlorine content starts at 2.5 ppm and the equivalent of 0.1 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?%
-\item\hypertarget{li-18}{}How much chlorine must be added daily for the chlorine level to stabilize at 1.8 ppm?%
+\item\hypertarget{li-21}{}If the chlorine content starts at 2.5 ppm and no additional chlorine is added, how long will it be before the water becomes cloudy?%
+\item\hypertarget{li-22}{}If the chlorine content starts at 2.5 ppm and the equivalent of 0.5 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?%
+\item\hypertarget{li-23}{}If the chlorine content starts at 2.5 ppm and the equivalent of 0.1 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?%
+\item\hypertarget{li-24}{}How much chlorine must be added daily for the chlorine level to stabilize at 1.8 ppm?%
 \end{enumerate}
 %
 \par\smallskip
-\item[6.]\hypertarget{exercise-6}{}The Fish and Wildlife Division monitors the trout population in a stream that is under their jurisdiction.  Their research indicates that natural predators, together with pollution and fishing, are causing the trout population to decrease at a rate of \(20\%\) per month.  They propose to introduce additional trout into the stream each month.  Assume the current population is 300.  Use tables and graphs to investigate the following: \leavevmode%
+\item[6.]\hypertarget{exercise-8}{}The Fish and Wildlife Division monitors the trout population in a stream that is under their jurisdiction.  Their research indicates that natural predators, together with pollution and fishing, are causing the trout population to decrease at a rate of \(20\%\) per month.  They propose to introduce additional trout into the stream each month.  Assume the current population is 300.  Use tables and graphs to investigate the following: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-19}{}What will happen to the trout population over the next ten months with no replenishment program?%
-\item\hypertarget{li-20}{}What is the long-term result of introducing 100 trout into the stream each month?%
-\item\hypertarget{li-21}{}Investigate the result of changing the number of trout introduced each month.  What is the impact on the long-term population of the number of trout added each month?%
-\item\hypertarget{li-22}{}Investigate the impact on the long-term behavior of the population of changing the initial population.  What is the effect of the initial population?%
-\item\hypertarget{li-23}{}What is the impact of the rate of decrease in the population during the replenishment program?%
-\item\hypertarget{li-24}{}There are three parameters in this problem: the initial number of trout, the rate of decrease, and the number of trout added each month. Which parameter seems to have the most influenceon the long-term behavior? Explain briefly.%
+\item\hypertarget{li-25}{}What will happen to the trout population over the next ten months with no replenishment program?%
+\item\hypertarget{li-26}{}What is the long-term result of introducing 100 trout into the stream each month?%
+\item\hypertarget{li-27}{}Investigate the result of changing the number of trout introduced each month.  What is the impact on the long-term population of the number of trout added each month?%
+\item\hypertarget{li-28}{}Investigate the impact on the long-term behavior of the population of changing the initial population.  What is the effect of the initial population?%
+\item\hypertarget{li-29}{}What is the impact of the rate of decrease in the population during the replenishment program?%
+\item\hypertarget{li-30}{}There are three parameters in this problem: the initial number of trout, the rate of decrease, and the number of trout added each month. Which parameter seems to have the most influenceon the long-term behavior? Explain briefly.%
 \end{enumerate}
 %
 \par\smallskip
-\item[7.]\hypertarget{exercise-7}{}Drugs generally have a therapeutic range rather than a single therapeutic level.  In other words, a drug is effective if the level in the body is between two values.  At concentrations below this range, too little of the drug is present to have a measurable effect, and concentrations above this range may be toxic.  The level of drug in the body peaks just after the drug is taken, while the drug level is at a minimum just before the dosage is taken.  Suppose Joan takes an anti-inflammatory drug at the prescribed dosage of 440 mg every 12 hours and her kidneys filter \(60\%\) of the drug from her body every 12 hours.  Use tables and graphs to investigate the following: \leavevmode%
+\item[7.]\hypertarget{exercise-9}{}Drugs generally have a therapeutic range rather than a single therapeutic level.  In other words, a drug is effective if the level in the body is between two values.  At concentrations below this range, too little of the drug is present to have a measurable effect, and concentrations above this range may be toxic.  The level of drug in the body peaks just after the drug is taken, while the drug level is at a minimum just before the dosage is taken.  Suppose Joan takes an anti-inflammatory drug at the prescribed dosage of 440 mg every 12 hours and her kidneys filter \(60\%\) of the drug from her body every 12 hours.  Use tables and graphs to investigate the following: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-25}{}Generate a sequence of values for the level of drug in Joan’s body just before each dose.%
-\item\hypertarget{li-26}{}In the long-run, the level of drug in Joan’s body will range  between what two values?%
-\item\hypertarget{li-27}{}Suppose the therapeutic range of the anti-inflammatory drug is between 300 mg and 800 mg.  What adjustment, if any, needs to be made in Joan’s dosage to stay within this range in the long run?%
+\item\hypertarget{li-31}{}Generate a sequence of values for the level of drug in Joan’s body just before each dose.%
+\item\hypertarget{li-32}{}In the long-run, the level of drug in Joan’s body will range  between what two values?%
+\item\hypertarget{li-33}{}Suppose the therapeutic range of the anti-inflammatory drug is between 300 mg and 800 mg.  What adjustment, if any, needs to be made in Joan’s dosage to stay within this range in the long run?%
 \end{enumerate}
 %
 \par\smallskip
-\item[8.]\hypertarget{exercise-8}{}Suppose Morgan  wants to buy a television that costs \(\$549\).  He has a part-time job, and he is able to save \(\$85.00\) each week.  Suppose he accumulates the money at home. \leavevmode%
-\begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-28}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
-\item\hypertarget{li-29}{}Use the recursive system to generate values for the amount of money Morgan has saved in thirteen weeks.%
-\item\hypertarget{li-30}{}Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.%
-\item\hypertarget{li-31}{}The points graphed in part (c) should appear linear.  Explain why the situation implies that these ordered pairs are linear.%
-\item\hypertarget{li-32}{}Write an explicit function of the form \(A=f(t)\) that could be used to generate the same ordered pairs you graphed in part (c).%
-\item\hypertarget{li-33}{}State the domain and the range of the explicit function within the context of this problem.  Compare them to the domain and range of the recursively defined function.%
-\end{enumerate}
-%
-\par\smallskip
-\item[9.]\hypertarget{exercise-9}{}Now suppose that Morgan deposits his savings in a bank that will pay \(0.02\%\) interest each week. \leavevmode%
+\item[8.]\hypertarget{exercise-10}{}Suppose Morgan  wants to buy a television that costs \(\$549\).  He has a part-time job, and he is able to save \(\$85.00\) each week.  Suppose he accumulates the money at home. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-34}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
-\item\hypertarget{li-35}{}Use the recursive system to generate values for the amount of money Morgan has in the bank after 13 weeks of saving.%
+\item\hypertarget{li-35}{}Use the recursive system to generate values for the amount of money Morgan has saved in thirteen weeks.%
 \item\hypertarget{li-36}{}Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.%
-\item\hypertarget{li-37}{}Are the ordered pairs graphed in part (c) linear?  Explain why or why not.%
-\item\hypertarget{li-38}{}State the domain and range of the recursively defined function.%
+\item\hypertarget{li-37}{}The points graphed in part (c) should appear linear.  Explain why the situation implies that these ordered pairs are linear.%
+\item\hypertarget{li-38}{}Write an explicit function of the form \(A=f(t)\) that could be used to generate the same ordered pairs you graphed in part (c).%
+\item\hypertarget{li-39}{}State the domain and the range of the explicit function within the context of this problem.  Compare them to the domain and range of the recursively defined function.%
+\end{enumerate}
+%
+\par\smallskip
+\item[9.]\hypertarget{exercise-11}{}Now suppose that Morgan deposits his savings in a bank that will pay \(0.02\%\) interest each week. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-40}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
+\item\hypertarget{li-41}{}Use the recursive system to generate values for the amount of money Morgan has in the bank after 13 weeks of saving.%
+\item\hypertarget{li-42}{}Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.%
+\item\hypertarget{li-43}{}Are the ordered pairs graphed in part (c) linear?  Explain why or why not.%
+\item\hypertarget{li-44}{}State the domain and range of the recursively defined function.%
 \end{enumerate}
 %
 \par\smallskip
@@ -604,6 +679,728 @@ After six months, you owe \(\$8,877.44\) of the original \(\$10,000\) principal.
 If we continue the payments of \(\$230\) for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment%
 \par
 The graph and partial table in Figure XX show that it will take \(47\) payments to get the balance down to \(\$341.20\).  After one additional month the balance will be \(\$341.20\cdot 1.0045=\$342.74\) if we round in the usual manner.  Thus, the balloon payment would be \(\$342.74\).%
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\newsavebox{\panelboxEimage}
+\savebox{\panelboxEimage}{%
+\resizebox{0.3\linewidth}{!}{{
+\pgfplotstabletypeset[
+      col sep=comma,
+      column type=l,
+      every head row/.style={after row=\hline},
+      every column/.style={column type/.add={|}{|}},
+      every first column/.style={column type/.add={}{|}},
+      columns/0/.style={string type, column name={$n$}},
+      columns/1/.style={string type, column name=Loan Balance},
+    ]{data-loan-balance-table.csv}
+}
+}}
+\newlength{\phEimage}\setlength{\phEimage}{\ht\panelboxEimage+\dp\panelboxEimage}
+\settototalheight{\phEimage}{\usebox{\panelboxEimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phEimage}}
+\newsavebox{\panelboxFimage}
+\savebox{\panelboxFimage}{%
+\resizebox{0.7\linewidth}{!}{{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = Number of Payments,
+       y label style={at={(axis description cs:-.1,.5)}},
+       ylabel = Outstanding Balance (\$),
+       label style={font=\tiny},
+       xmin = -5, xmax= 50,
+       ymin = -2000, ymax=12000,
+       ytick = {0,2000, ...,10000},
+       xtick = {0, 4, ...,48},
+       tick label style={font=\tiny},
+    ]
+
+      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-loan-balance-graph.csv};
+
+    \end{axis}
+\end{tikzpicture}
+}
+}}
+\newlength{\phFimage}\setlength{\phFimage}{\ht\panelboxFimage+\dp\panelboxFimage}
+\settototalheight{\phFimage}{\usebox{\panelboxFimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phFimage}}
+\leavevmode%
+% begin: side-by-side as figure/tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0\textwidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\begin{figure}
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.3\textwidth}\usebox{\panelboxEimage}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.7\textwidth}\usebox{\panelboxFimage}\end{minipage}\end{tabular}
+\caption{Loan Ammoritization\label{sidebyside-3}}
+\end{figure}
+% end: side-by-side as tabular/figure
+}% end: group for a single side-by-side
+\par
+Since the first \(47\) payments were each \(\$230\), the total amount paid is \(47\cdot \$230 + \$342.74 = \$11,152.74\).  We see that it costs \(\$1,152.74\) to borrow \(\$10,000\) for \(48\) months.%
+\par
+The process of paying off a loan is known as \emph{amortizing the loan}, or \emph{loan amortization}. When we study loan amortization, we are interested in the amount borrowed, the interest rate, the payment, the length of time it will take to repay the loan and the total amount the borrower will have to repay.%
+\par
+We can generalize the recursive system used to determine the total amount repaid as follows.  If we borrow an amount \(A\) and let \(r\) represent the interest rate per time period and \(P\) the amount of the payment during each time period, we can describe the amount owed after \(n\) time periods with the system%
+%
+\begin{gather*}
+L_0=A, L_n=L_{n-1} + r \cdot L_{n-1} - P , n=1,2,3,...
+\end{gather*}
+\par
+or%
+%
+\begin{gather*}
+L_0=A,L_n=(1+r)L_{n-1} - P , n=1,2,3,...
+\end{gather*}
+\par
+You should complete practice problem 1 at the end of the section at this time%
+\par
+When borrowers take out a loan, they typically know the amount they want to borrow, the interest rate they will have to pay, and the length of time they have to pay off the loan.  We are interested in determining the payment that will allow the borrower to pay back the loan in the required time.  For most loans, the borrower makes payments every month. Thus, a car loan that needs to be repaid in \(5\) years requires \(60\) monthly payments and a mortgage loan that is repaid in \(15\) years requires \(180\) monthly payments. For simplicity's sake, our first few examples will assume that payments are made annually (that is, once per year) rather than monthly.%
+\begin{example}[Finding the Yearly Payment Needed to Pay Off a Loan]\label{example-3}
+Suppose you buy a car and take out a loan of \(\$22,000\) at \(6.5\%\) annual interest to be paid back over four years.  What is the yearly payment you must make to pay off the loan in four equal payments?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad Referring to equation XX we have%
+%
+\begin{gather*}
+L_0=22,000,L_n=(1+0.065)L_{n-1}-P
+\end{gather*}
+\par
+and our goal is to find the value of \(P\) so that \(L_4=0\)%
+\par
+If there were no interest charged, you would have to make a payment of \(\$5,500\) each year to repay the \(\$22,000\).  Since you must pay interest on the loan, \(\$5,500\) per year is obviously too small a payment and we conclude that \(\> \$5,500\).  We can confirm that \(\$5,500\) is too small a payment  with the recursive system:%
+%
+\begin{gather*}
+L_0=22,000,L_n=(1+0.065)L_{n-1} - 5,500
+\end{gather*}
+\leavevmode%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{lB}{\(n\)}&\(L_n\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(0\)}&\(\$22,000\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(1\)}&\(\$22,000(1+0.065)-\$5,500=\$17,930\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(2\)}&\(\$17,930(1+0.065)-\$5,500=\$13,595.45\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(3\)}&\(\$13,595.45(1+0.065)-\$5,500=\$8,979.15\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(4\)}&\(\$8,979.15(1+0.065)-\$5,500=\$4,062.80\)\tabularnewline\hrulemedium
+\end{tabular}
+\end{table}
+\par
+This confirms that if we make an annual payment of \(\$5,500\) for each of 4 years, the outstanding balance on a loan of \(\$22,000\) is \(\$4,062.80\) at the end of the \(4\) years. So \(\$5,500\) is too small an annual payment to pay off the loan.%
+\par
+With a \(6.5\%\) annual interest rate, we know that the interest for the first year is \(\$1,430\) ( \(6.5\%\) of \(\$22,000\) ), so a reasonable guess for the payment might be \(\$5500+\$1430=\$6930\). However, in the second year we will need to pay less than \(\$1430\) in interest because the outstanding balance has decreased.  Therefore, a payment of \(\$6930\) per year will result in an overpayment for the last three years.  The calculations below show that \(\$6930\) is indeed too large an annual payment; that is, \(P \lt 6,930\).%
+%
+\begin{gather*}
+L_0=22,000, L_n=(1+0.065)L_{n-1}-6,930
+\end{gather*}
+\leavevmode%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{lB}{\(n\)}&\(L_n\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(0\)}&\(\$22,000\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(1\)}&\(\$22,000(1+0.065)-\$6,930=\$16,500\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(2\)}&\(\$16,500(1+0.065)-\$6,930=\$10,642.50\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(3\)}&\(\$10,642.50(1+0.065)-\$6,930=\$4,404.26\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(4\)}&\(\$4,404.26(1+0.065)-\$6,930=-\$2,239.46\)\tabularnewline\hrulemedium
+\end{tabular}
+\end{table}
+\par
+We have established that \(\$5500\) is too small a payment and \(\$6930\) is too large a payment; that is, \(5,500 \lt P \lt 6,930\)  Our next logical guess for a payment might be mid-way between these two payments, or \(\$6215\).  We can do recursive calculations to see if this payment is too small, which would result in a positive outstanding balance after \(4\) years, or if this payment is too large, resulting in a negative outstanding balance after \(4\) years.%
+\par
+The outstanding principal is modeled by the recursive system%
+%
+\begin{gather*}
+L_0=22,000, L_n=(1+0.065)L_{n-1} - 6,215
+\end{gather*}
+\par
+The successive principals are shown in the table.%
+\leavevmode%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{lB}{\(n\)}&\(L_n\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(0\)}&\(\$22,000\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(1\)}&\(\$22,000(1+0.065)-\$6,215=\$17,215\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(2\)}&\(\$17,215(1+0.065)-\$6,215=\$12,118.98\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(3\)}&\(\$12,118.98(1+0.065)-\$6,215=\$6,691.71\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(4\)}&\(\$6,691.71(1+0.065)-\$6,215=\$911.67\)\tabularnewline\hrulemedium
+\end{tabular}
+\end{table}
+\par
+An annual payment of \(\$6,215\) is not sufficient to pay off the loan in four years, as a balance of \(\$911.67\) remains after the four payments.  We conclude that \(6,215 \lt P \lt 6,930\) and we need to pay more than \(\$6,215\).  If we again select the average of two payments, one that is too large and one that is too small, we will have arrived at a better guess.  We know \(\$6,930\) is too large and \(\$,6215\) is too small, so our next guess will be \(\frac{6930+6215}{2} = \$6,572.50\).  The successive balances would now be as shown.%
+\leavevmode%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{lB}{\(n\)}&\(L_n\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(0\)}&\(\$22,000\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(1\)}&\(\$22,000(1+0.065)-\$6,572.50=\$16,857.50\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(2\)}&\(\$16,857.50(1+0.065)-\$6,572.50=\$11,380.74\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(3\)}&\(\$11,380.74(1+0.065)-\$6,572.50=\$5,547.99\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(4\)}&\(\$5,547.99(1+0.065)-\$6,572.50=-\$663.90\)\tabularnewline\hrulemedium
+\end{tabular}
+\end{table}
+\par
+We see that a payment of \(\$6,572.50\) is too large since after \(4\) payments you have paid \(\$663.90\) more than necessary. We now know that the appropriate payment \(P\) is in the interval  \(6,215 \lt  P \lt 6,572.50\)%
+\par
+We can continue the process of averaging two payments, one that is too large and one that is too small. Eventually we find that three payments of \(\$6,393.75\) and a fourth balloon payment of \(\$6,393.75 + \$123.89\) will bring the outstanding balance to zero dollars.%
+\end{example}
+\par
+The process used to find an appropriate payment is called \emph{binary search}. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.%
+\typeout{************************************************}
+\typeout{Exercises 4.2.1 Exercises}
+\typeout{************************************************}
+\subsection[{Exercises}]{Exercises}\label{exercises-3}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-12}{}How long will it take to amortize a loan and how much will the loan cost under each of the following conditions?  In each case \(L_0, r\) and \(P\) represent the initial amount borrowed, the monthly interest rate, and the monthly payment, respectively. Determine the balloon payment for each scenario as well. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-45}{}\(L_0=\$5000, r=1\%\) and \(P=\$200\)%
+\item\hypertarget{li-46}{}\(L_0=\$5000, r=1.5\%\) and \(P=\$200\)%
+\item\hypertarget{li-47}{}\(L_0=\$5000, r=0.5\%\) and \(P=\$200 \)%
+\item\hypertarget{li-48}{}\(L_0=\$5000, r=1\%\) and \(P=\$250\)%
+\end{enumerate}
+%
+\par\smallskip
+\item[2.]\hypertarget{exercise-13}{}Maisha opens a retirement account on her \(35^{th}\) birthday with a deposit of \(\$2,400\).  Each year on her birthday, she plans to deposit an additional \(\$2,400\).  The account earns interest at a rate of \(10\%\) annually. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-49}{}How much will Maisha have saved by the time she retires at age \(65\)?%
+\item\hypertarget{li-50}{}Suppose Maisha wants to have \(\$1\) million in the account by age \(65\).  To the nearest hundred dollars, how much should she deposit each year?%
+\item\hypertarget{li-51}{}Suppose Maisha starts saving ten years earlier, at age \(25\).  To the nearest hundred dollars, how much should she deposit each year to have \(\$1\) million at retirement?%
+\end{enumerate}
+%
+\par\smallskip
+\item[3.]\hypertarget{exercise-14}{}You and your parents need to borrow money to pay for your college tuition.  You are looking for an education loan for \(\$50,000\).  The Village Bank offers a \(15\)-year loan at \(7\%\) annual interest.  The Hometown Bank offers a \(20\)-year loan at \(6\%\) annual interest.  Which loan is better?  Explain what criteria you used to decide.%
+\par\smallskip
+\item[4.]\hypertarget{exercise-15}{}Isaac wants to buy a car and is shopping for a four year (\(48\) month) loan. If he needs to borrow \(\$24,000\) and the loan charges \(4.6\%\) annual interest, what must be his annual payment to pay off the loan in the required \(4\) years?%
+\par\smallskip
+\item[5.]\hypertarget{exercise-16}{}Kyle and Taylor have taken out a loan for \(\$175,000\) to buy their first house. They have a \(15\)-year mortgage and an annual interest rate of \(3.9\%\). \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-52}{}The lending agency tells them that their monthly payment is \(\$1,290\), and so they pay \(\$1,290\) every month for \(179\) months. What must be their final payment (the \(180^{th}\)) so that the loan is paid off?  In total, how much did it cost them to borrow \(\$175,000\) for \(15\) years?%
+\item\hypertarget{li-53}{}Kyle and Taylor recognize that they may save money in the long run if they make payments larger than what the lending agency requires. They decide to pay \(\$2,000\) for the first \(5\) years (\(60\) months) and then pay the required \(\$1,290\) per month until the loan is paid off. How long will it take them to bring their outstanding balance to zero. In total, how much did it cost them to borrow \(\$175,000\) for \(15\) years?%
+\end{enumerate}
+%
+\par\smallskip
+\item[6.]\hypertarget{exercise-17}{}Terry has his heart set on owning a Tesla electric car. He will sell his current car to raise some of the money, but still needs to take out a \(\$55,000\) loan to be able to afford a Tesla. His credit union will charge him \(4.2\%\) interest per year, a special rate for an energy efficient car. He will make equal monthly payments in order to pay off the loan in \(72\) months.%
+\par
+Your task is to determine what his monthly payment needs to be. You will make several educated guesses about how much he needs to pay each month in order to finish paying off the loan and bring his outstanding balance down to zero with \(72\) payments. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-54}{}In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of \(\$950\) each month, he will have overpaid by about \(\$6,900\) after the \(72^{nd}\) payment. \leavevmode%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{lB}{Monthly Payment}&Outstanding Balance after \(72\) Monthly Payments\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(\$950\)}&\(-\$6905.08\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{}&\tabularnewline\hrulemedium
+\end{tabular}
+\end{table}
+%
+\item\hypertarget{li-55}{}Make a scatterplot that shows monthly payment on the horizontal axis and outstanding balance on the vertical.%
+\item\hypertarget{li-56}{}Describe how you can take advantage of the shape of the scatterplot to find the monthly payment that will yield a zero outstanding balance after \(72\) months.%
+\item\hypertarget{li-57}{}Confirm that a monthly payment of \(\$865.51\) will pay off the loan (the balance will round to zero).  What does this number have to do with the scatterplot you made in \((b)\)?%
+\end{enumerate}
+%
+\par\smallskip
+\end{exerciselist}
+\typeout{************************************************}
+\typeout{Section 4.3 Geometric Growth and Decay}
+\typeout{************************************************}
+\section[{Geometric Growth and Decay}]{Geometric Growth and Decay}\label{chapter04-section03}
+Some recursively defined functions have important applications in life.  One of the simplest, yet most important, represents \emph{geometric decay}. In geometric decay, the value of the function at time \(n\) is directly proportional to the value at time. This relationship suggests a recursive definition for geometric decay. The first example from Section \hyperref[chapter04-section01]{\ref{chapter04-section01}}, Example \hyperref[ibuprofen-example-one-dose]{\ref{ibuprofen-example-one-dose}}, involved the amount of ibuprofen in Joan's system at time \(n\) if she takes a single \(200\) mg tablet. Since her body filters out \(67\%\) of the ibuprofen present, the amount remaining after \(n\) time intervals is always \(33\%\) of the amount remaining after \(n-1\) time intervals.%
+\par
+In that case, we calculated the amount of drug in Joan's boady with the recursive system%
+%
+\begin{gather*}
+D_0=200, D_n=0.33 \cdot D_{n-1}, n=1,2,3,...
+\end{gather*}
+\begin{example}[Fading Blue Jeans]\label{example-fading-blue-jeans}
+Blue jeans fade when they are washed. Suppose a pair of jeans loses \(2\%\) of its color with each washing.  How much of the original color is left after \(50\) washes?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad In this problem, we use the system%
+%
+\begin{gather*}
+C_0=1, C_n=0.98 \cdot C_{n-1}, n=1,2,3,...
+\end{gather*}
+\par
+where \(C_n\) is the amount of color remaining in the jeans after \(n\) washings%
+\par
+We use \(1\) as the initial value to represent all or \(100\%\) of the color.  Since we want to measure the amount of color remaining, the coefficient in the recursive equation is \(0.98\).  With \(50\) iterations of the equation for \(C_n\), we find that the jeans have about \(36\%\) of their original color left after \(50\) washings.%
+\end{example}
+\begin{example}[Electrical Power Demand]\label{example-electrical-power-demand}
+The amount of electrical power used by a community is increasing by 5% per year.  This year, they used 500 thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad This is an example of \emph{geometric growth}, since the amount of power is increasing each year. We use the recursive system%
+%
+\begin{gather*}
+P_0=500, P_n=1.05 \cdot P_{n-1}, n=1,2,3,...
+\end{gather*}
+\par
+Since the amount of power used is increasing by \(5\%\) each year, next year the citizens of the community will use \(105\%\) of what they used this year.  By iterating the equation for \(P_n\), we find that after \(14\) years the community will use about \(990\) thousand kwh per year and after \(15\) years they will use about \(1039\) thousand kwh per year.  The amount of power required by the community will have doubled in a little less than \(15\) years.  Note that this conclusion assumes that the demand for electrical power continues to increase by \(5\%\) per year.%
+\end{example}
+\begin{example}[Radioactive Decay]\label{example-radioactive-decay}
+Potassium-42 is a radioactive element that is often used in biological experiments as a tracer element.  Potassium-42, like all radioactive elements, decays into a non-radioactive form at a rate proportional to the amount present.  Potassium-42 loses \(5.545\%\) of its mass every hour.  If \(1\) milligram of potassium-42 is initially present in an animal, at what time will only \(0.1\) milligram be present?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad Note that the effect of losing \(5.545\%\) is equivalent to retaining \(94.455\%\). We use the recursive system%
+%
+\begin{gather*}
+P_0=1, P_n=0.94455 \cdot P_{n-1}, n=1,2,3,...
+\end{gather*}
+\par
+We are interested in finding the amount of time until \(P_n\) is less than or equal to \(0.1\).  Iterating the equation for \(P_n\), we find that \(P_{40} = 0.1021\) and \(P_{41} = 0.0964\). So after \(40\) hours, \(0.1021\) mg of potassium-42 remain, and after \(41\) hours, \(0.0964\) mg remain. Sometime between \(40\) and \(41\) hours we expect to have only \(0.1\) mg of potassium-42 remaining.%
+\par
+The recursive system we used to generate amounts of potasium-42 does not allow us to determine the amount present between the \(40^{th}\) hour and the \(41^{st}\) hour.  The amount of potassium-42 changes incrementally between the \(40^{th}\) and the \(41^{st}\) hours, but the recursive equation we have used to represent this phenomenon cannot give us information about potassium levels between \(P_{40}\) and \(P_{41}\).%
+\end{example}
+\par
+Each of the three previous examples uses a recursive system that can be written as%
+%
+\begin{gather*}
+Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...
+\end{gather*}
+\par
+If \(k \gt 0\), this system represents geometric growth (with growth rate \(k\)); as \(n\) increases, the value of \(Y_n\)  increases.  If \(k \lt 0\), the system represents geometric decay (and \(k\) is the decay rate); as \(n\) increases, the value of \(Y_n\)  decreases.  In either case, the next value of \(Y_n\) depends entirely on the value of \(k\) and the old value of \(Y_n\).%
+\par
+Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example \hyperref[example-radioactive-decay]{\ref{example-radioactive-decay}} to describe electricity consumption%
+%
+\begin{gather*}
+P_0=500\\
+P_1=(1+0.05)P_0\\
+P_2=(1+0.05)P_1\\
+P_3=(1+0.05)P_2\\
+P_4=(1+0.05)P_3
+\end{gather*}
+\par
+We can rewrite each of these equations in terms of \(P_0\), which yields%
+%
+\begin{gather*}
+P_1=(1.05)P_0\\
+P_2=(1.05) P_1=(1.05) (1.05)P_0=(1.05)^2 P_0\\
+P_3=(1.05) P_2=(1.05) (1.05)^2 P_0=(1.05)^3 P_0\\
+P_4=(1.05) P_3=(1.05) (1.05)^3 P_0=(1.05)^4 P_0
+\end{gather*}
+\par
+If we continue this process, we see that the \(n^{th}\) term is given by%
+%
+\begin{gather*}
+P_n=(1.05)^n P_0
+\end{gather*}
+\par
+In general, we can convert the recursive system for geometric growth or decay, namely%
+%
+\begin{gather*}
+Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...
+\end{gather*}
+\par
+to an explicit function in terms of \(a, k, \)and \(n\), as follows:%
+%
+\begin{gather*}
+Y_0=a\\
+Y_1=(1+k)Y_0 = (1+k)a\\
+Y_2=(1+k)Y_1 = (1+k)(1+k)a = a(1+k)^2\\
+Y_3=(1+k)Y_2 = (1+k)a(1+k)^2 = a(1+k)^3
+\end{gather*}
+\par
+If we continue this process, we see that the \(n^{th}\) term is given by%
+%
+\begin{gather*}
+Y_n=a(a+k)^n
+\end{gather*}
+\par
+Note the distinction between the recursive equation%
+%
+\begin{gather*}
+Y_n=Y_{n-1}(1+k)
+\end{gather*}
+\par
+and the explicit equation%
+%
+\begin{gather*}
+Y_n=a(1+k)^n
+\end{gather*}
+\par
+The recursive equation shows that each value of \(Y_n\)  is obtained from the preceding value by multiplying by \((1+k)\). The explicit equation uses an exponent to represent this repeated multiplication.%
+\par
+If we wanted the value of \(Y_{100}\), the recursive equation would require that values of \(Y_1, Y_2, Y_3,\) and so forth up to \(Y_{99}\),  all be calculated. In contract, the explicit equaiotn \(Y_n=a(1+k)^n\) allows us to calculate \(Y_{100}\) without requiring any intermediate values.%
+\par
+The explicit equation can be rewritten using the more traditional functional notation:%
+\begin{definition}[{Explicit Function for Geometric Growth}]\label{explicit-geometric-growth-equation}
+%
+\begin{gather*}
+Y(n)=a(1+k)^n
+\end{gather*}
+\end{definition}
+\par
+In equation \hyperref[explicit-geometric-growth-equation]{\ref{explicit-geometric-growth-equation}} the independent variable \(n\) is in the exponent, so this function is an exponential function. The exponential function \(Y(n)=a(1+k)^n\) is the closed form representation of the recursive system  \(Y_0=a,Y_n=(1+k)Y_{n-1}\)%
+\begin{example}[]\label{example-one-time-bank-desposit}
+Suppose you plan to make a one-time deposit into a bank account that will earn \(0.45\%\) monthly interest.  How large must this deposit be so that you will have a college fund of \(\$75,000\) available after \(18\) years or \(216\) months?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad We can solve this problem using the recursive model \(S_0 = a\), \(S_n = (1.0045) S_{n-1}\) but we will have to guess and check to find the appropriate value of \(S_0\) that gives of \(S_{216} = 75,000\).  Using the closed form \(S(n)=a(1.0045)^n\) , we need to find the value of \(a\) such that \(75,000 = a (1.0045)^{216}\).  Solving for \(a\) gives the equation \(a = \frac{75,000}{(1.0045)^{216}}\) , or \(a = \$28,436.36\).  We see that the closed form is useful when we do not need all the intermediate values that the recursive form generates.%
+\end{example}
+\begin{example}[Continuous Versus Discrete]\label{example-continuous-discrete}
+In Example \hyperref[example-radioactive-decay]{\ref{example-radioactive-decay}} we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system%
+%
+\begin{gather*}
+P_0=1, P_n=0.94455P_{n-1}, n=1,2,3,...
+\end{gather*}
+\par
+to determine the amount of Potassium-42 remaining after \(n\) 1-hour time intervals.%
+\par
+We could also use the explicit function%
+%
+\begin{gather*}
+P(t)=1 \cdot (0.944355)^t
+\end{gather*}
+\par
+to represent the amount of Potassium-42 remaining \(t\) hours after the decay process begins. Use each of these representations to determine how much Potassium remains after \(12\) hours.%
+\par\medskip\noindent%
+\textbf{Solution.}\quad This is what our work looks like if we use the recursive system:%
+%
+\begin{gather*}
+P_0=1\\
+P_1=0.94455 \cdot P_0 = 0.94455\\
+P_2=0.94455 \cdot P_1 = 0.94455 \cdot 0.94455 = 0.892175\\
+P_3=0.94455 \cdot P_2 = 0.94455 \cdot 0.892175 = 0.847036\\
+P_4=0.94455 \cdot P_3 = 0.94455 \cdot 0.847036 = 0.7959757\\
+...\\
+P_{12}=0.94455 \cdot P_{11} = 0.94455 \cdot 0.53392 = 0.5043121
+\end{gather*}
+\par
+If we use the explicit function:%
+%
+\begin{gather*}
+P(12)=1(0.94455)^{12} = 0.5043121
+\end{gather*}
+\par
+Both representations tell us that in \(12\) hours the amount of Potassium-42 will have decreased from \(1\) milligram to about \(0.5\) milligram.%
+\par
+We need to be aware of the advantages and disadvantages of each representation that we used in Example \hyperref[example-one-time-bank-desposit]{\ref{example-one-time-bank-desposit}}. The recursive system is inherently discrete.  Values of \(P_n\) can be calculated only for positive interger values of \(n\), where n counts the number of \(1\)-hour time intervals that have elapsed since we measured \(1\) milligram of potassium-42. The recursive representation is not able to tell us anything about the amount of potassium present between \(P_2\) and \(P_3\), in fact, \(P_{2.7}\) is not even defined.%
+\par
+The explicit function \(P(t)=1 \cdot (0.944355)^t\) uses \(t\) as a variable whose domain is all positive real numbers and \(P(2.7)\) is well-defined and meaningful. The explicit function can tell us the amount of Potassium-42 present at any time on the continuum between zero and infinity.%
+\par
+Graphs of both the recursive and the explicit representations are shown below%
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\newsavebox{\panelboxGimage}
+\savebox{\panelboxGimage}{%
+\resizebox{0.5\linewidth}{!}{{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = 1-hour time periods,
+       y label style={at={(axis description cs:0,.5)}},
+       ylabel = Mg of Potassium,
+       label style={font=\tiny},
+       xmin = -2, xmax = 17,
+       ymin = -0.2, ymax = 1.2,
+       ytick = {0,0.1, ...,1.2},
+       xtick = {0, 1, ...,17},
+       tick label style={font=\tiny},
+    ]
+
+      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-potassium-42.csv};
+
+    \end{axis}
+\end{tikzpicture}
+}
+}}
+\newlength{\phGimage}\setlength{\phGimage}{\ht\panelboxGimage+\dp\panelboxGimage}
+\settototalheight{\phGimage}{\usebox{\panelboxGimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phGimage}}
+\newsavebox{\panelboxHimage}
+\savebox{\panelboxHimage}{%
+\resizebox{0.5\linewidth}{!}{{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = Elapsed Time (hrs),
+       y label style={at={(axis description cs:0,.5)}},
+       ylabel = Mg of Potassium,
+       label style={font=\tiny},
+       xmin = -2, xmax = 17,
+       ymin = -0.2, ymax = 1.2,
+       ytick = {0,0.1, ...,1.2},
+       xtick = {0, 1, ...,17},
+       tick label style={font=\tiny},
+    ]
+
+      \addplot [thick, blue, <->, mark=none, domain=-1:17]{0.944355^x};
+
+    \end{axis}
+\end{tikzpicture}
+}
+}}
+\newlength{\phHimage}\setlength{\phHimage}{\ht\panelboxHimage+\dp\panelboxHimage}
+\settototalheight{\phHimage}{\usebox{\panelboxHimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phHimage}}
+\leavevmode%
+% begin: side-by-side as figure/tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0\textwidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\begin{figure}
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxGimage}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxHimage}\end{minipage}\end{tabular}
+\caption{Mg of Potassium Over Time: Discrete and Continuous Models\label{sidebyside-4}}
+\end{figure}
+% end: side-by-side as tabular/figure
+}% end: group for a single side-by-side
+\par
+Note that in the graph on the left, the horizontal scale shows the number of \(1\)-hour time intervals that have elapsed since \(P_0\). On the right, the horizontal scale shows elapsed time. This is consistent with the fact that the recursive system has domain \(n=1,2,3,...\) and the explicit function has domain all positive real numbers.%
+\end{example}
+\par
+Example \hyperref[example-continuous-discrete]{\ref{example-continuous-discrete}} shows that we must pay attention to issues of domain when we are choosing between using recursive and explicit representations of a particular phenomenon. Some phenomena by their very nature have a discrete (and thus discontinuous) domain, and these are often best represented recursively. Other phenomena are by nature continuous and may be better represented by an explicit function. Of course, with appropriate care about interpretations, we can choose to use a continuous function to represent a discrete phenomenon.  We can also use a discrete representation for a continuous phenomenon. If we choose to do this, we need to pay particular attention to the way that we interpret our calculations.%
+\typeout{************************************************}
+\typeout{Exercises 4.3.1 Class Practice}
+\typeout{************************************************}
+\subsection[{Class Practice}]{Class Practice}\label{exercises-4}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-18}{}When a basketball is released and drops to a hard surface, it's path looks something like what is shown in the photo.%
+\leavevmode%
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{src/images/bouncing_ball_strobe_edit.jpg}
+\end{figure}
+\par
+Each time that it bounces, it rebounds to \(75\%\) of the height from which it was released (assuming that the ball is correctly inflated.) If a ball is dropped from \(3\) meters, we can write the recursive system%
+%
+\begin{gather*}
+H_0=3, H_n = 0.75 H_{n-1}
+\end{gather*}
+\leavevmode%
+\begin{figure}
+\centering
+{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = Number of Bounces,
+       y label style={at={(axis description cs:0,.5)}},
+       ylabel = Rebound Height (meters),
+       label style={font=\tiny},
+       xmin = -2, xmax = 8,
+       ymin = -0.2, ymax = 3.25,
+       ytick = {0, .25, ...,3},
+       xtick = {0, 1, ...,7},
+       tick label style={font=\tiny},
+    ]
+
+      \addplot[only marks, color=blue] coordinates {
+      (0,	3)
+      (1,	2.25)
+      (2,	1.6875)
+      (3,	1.265625)
+      (4,	0.94921875)
+      (5,	0.711914063)
+      (6,	0.533935547)
+      (7, 0.40045166)
+      };
+
+    \end{axis}
+\end{tikzpicture}
+}
+\end{figure}
+\par
+The graph  shows the rebound height on the vertical axis and bounce number on the horizontal. Sketch a graph of the associated explicit function  \(h(t)=3(0.75)^t\) where \(h(t)\) is the height at time \(t\). Explain how the graph you sketch is related to the discrete graph that is shown.%
+\par\smallskip
+\item[2.]\hypertarget{exercise-19}{}In Example \hyperref[example-fading-blue-jeans]{\ref{example-fading-blue-jeans}} we used the recursive system \(C_0=1, C_n = 0.98C_{n-1}\) to represent the amount of color left in blue jeans after \(n\) washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function \(C(t)=1(0.98)^t\) where \(t\) represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.%
+\leavevmode%
+\begin{figure}
+\centering
+{
+    \begin{tikzpicture}
+    \begin{axis}[
+       axis line style = {<->},
+       width = 0.5\linewidth,
+       xlabel = Number of Washes,
+       y label style={at={(axis description cs:0,.5)}},
+       ylabel = Percent Color Remaining,
+       label style={font=\tiny},
+       xmin = -2, xmax = 15,
+       ymin = -0.2, ymax = 1.2,
+       ytick = {0, .2, ...,1},
+       xtick = {0, 1, ...,14},
+       tick label style={font=\tiny},
+    ]
+
+      \addplot[only marks, color=blue] coordinates {
+      (0,	1)
+      (1,	0.98)
+      (2,	0.9604)
+      (3,	0.941192)
+      (4,	0.92236816)
+      (5,	0.903920797)
+      (6,	0.885842381)
+      (7,	0.868125533)
+      (8,	0.850763023)
+      (9,	0.833747762)
+      (10,	0.817072807)
+      (11,	0.800731351)
+      (13,	0.769022389)
+      (12,	0.784716724)
+      (14,	0.753641941)
+      };
+
+    \end{axis}
+\end{tikzpicture}
+}
+\end{figure}
+\par\smallskip
+\end{exerciselist}
+\begin{example}[]\label{example-recursive-salary}
+Rebecca starts working for a company at a salary of \(\$40,000\) per year. Based on the company's history, she can expect raises of \(3.5\%\) each year on the anniversary of her employment. When will she first make \(\$50,000\)?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad We can use the recursive system \(A_0=40,000, A_n=1.035A_{n-1}, n=1,2,3,...\) to determine when her salary will equal or exceed \(\$50,000\).  Rebecca’s first pay raise will result in a salary of \(\$41,400\).  Her sixth raise will bring her salary up to \(\$49,170.21\) and her seventh raise will put her pay over \(\$50,000\) at \(\$50,891.17\).%
+\par
+We could also use a closed form function to solve for the time at which her salary will reach \(\$50,000\).  This function is \(S(t)=40,000(1.035)^t\). By evaluating this function, we find that \(S(6)=49,170.21\) and \(S(7)=50,891.17\). Both the recursive model and the closed form model inform us that Rebecca will make more than \(\$50,000\) with her \(7^{th}\) raise.%
+\par
+If we wanted to know what Rebecca would make if she stayed with this company for \(30\) years, it would be easier to use the closed form and substitute \(t=30\).  In many cases either the recursive system or the closed form could be used to arrive at the same answer. In cases where we need to predict far into the future, it is more efficient to use the closed form. In cases where we want to see all of the intermediate values, as would be the case for the balance due on a loan after each payment, it would be to our advantage to use the recursive system. In Rebecca's case, if we choose to use an explicit representation we must limit the domain to integer values since her pay raises occur only one time per year.%
+\end{example}
+\begin{example}[Doubling Time]\label{example-doubling-time}
+Suppose the population of a certain type of bacteria is known to grow geometrically and increases by about \(26\%\) every hour. How much time will it take for a population of \(150\) million cells to grow to \(300\) million? How long will it take the population to double again to \(600\) million? When will the population reach \(1200\) million (another doubling)?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad Since the population is growing by \(26\%\) per hour, we can use the recursive system%
+%
+\begin{gather*}
+P_0 = 150, P_n = (1.26)P_{n-1}
+\end{gather*}
+\par
+We also have the option of using the explicit function \(P(t)=150 \cdot (1.26)^t\).  For integer values of \(t\), these two representations give roughly identical values for the number of bacteria cells.%
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\newsavebox{\panelboxFtabular}
+\savebox{\panelboxFtabular}{%
+\raisebox{\depth}{\parbox{0.5\textwidth}{\centering\begin{tabular}{ll}
+\multicolumn{1}{lB}{Time (Hours)}&Cells (Millions)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(0\)}&\(150\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(1\)}&\(189\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(2\)}&\(238.14\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(3\)}&\(300.06\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(4\)}&\(378.07\)\tabularnewline\hrulemedium
+\end{tabular}
+}}}
+\newlength{\phFtabular}\setlength{\phFtabular}{\ht\panelboxFtabular+\dp\panelboxFtabular}
+\settototalheight{\phFtabular}{\usebox{\panelboxFtabular}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phFtabular}}
+\newsavebox{\panelboxGtabular}
+\savebox{\panelboxGtabular}{%
+\raisebox{\depth}{\parbox{0.5\textwidth}{\centering\begin{tabular}{ll}
+\multicolumn{1}{lB}{Time (Hours)}&Cells (Millions)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(5\)}&\(476.37\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(6\)}&\(600.22\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(7\)}&\(756.28\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(8\)}&\(952.92\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(9\)}&\(1200.67\)\tabularnewline\hrulemedium
+\end{tabular}
+}}}
+\newlength{\phGtabular}\setlength{\phGtabular}{\ht\panelboxGtabular+\dp\panelboxGtabular}
+\settototalheight{\phGtabular}{\usebox{\panelboxGtabular}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phGtabular}}
+\leavevmode%
+% begin: side-by-side as figure/tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0\textwidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\begin{figure}
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxFtabular}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxGtabular}\end{minipage}\end{tabular}
+\end{figure}
+% end: side-by-side as tabular/figure
+}% end: group for a single side-by-side
+\par
+The population took about \(3\) hours to double from \(150\) to \(300\) million.  In another \(3\) hours, it had doubled again, and in another \(3\) hours there was yet another population doubling. This population is said to have a \emph{doubling time} of \(3\) hours. Note that the first doubling corresponds to an increase of \(150\) cells, the next doubling is an increase of \(300\) cells, and the third doubling is an increase of \(600\) cells. For each of these doublings, the elapsed time is the same (\(3\) hours) but the increase, measured in cells per hour, is not the same.%
+\end{example}
+\par
+Example \hyperref[example-doubling-time]{\ref{example-doubling-time}} shows that a population that experiences geometric growth has a doubling time. It is also true that populations that experience geometric decay have a \emph{half-life}. A half-life is the amount of time it takes for a population size to be halved. Populations that experience other types of growth, such as linear, quadratic or logistic, do not have a doubling time.%
+\par
+The exponential function you studied in Chapter 2, \(f(t)=2^t\), has a doubling time of \(1\) time unit. This is because%
+%
+\begin{gather*}
+f(1)=2^1=2\\
+f(2)=2^2=4\\
+f(3)=2^3=8\\
+f(4)=2^4=16
+\end{gather*}
+\par
+A doubling of function-values takes place with each increase of \(1\) unit in \(t\)%
+\par
+The function \(g(t)=2^{\frac{1}{3} t}\) is a horizontal stretch of the function \(f(t)=2^t\), and this transformation makes \(g(t)\) have a doubling time of \(3\) time units:%
+%
+\begin{gather*}
+g(3)=2^{\frac{1}{3} \cdot 3}=2^1=2\\
+g(6)=2^{\frac{1}{3} \cdot 6}=2^2=4\\
+g(9)=2^{\frac{1}{3} \cdot 9}=2^3=8
+\end{gather*}
+\par
+Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Example \hyperref[example-doubling-time]{\ref{example-doubling-time}} we could have used the function \(y = 150 \cdot 2^{\frac{1}{3} t}\) to model the number of bacteria cells present at time \(t\). You can confirm that the two functions \(y = 150 \cdot 2^{\frac{1}{3} t}\) and \(P(t)=150 \cdot (1.26)^t\) produce roughly the same ordered pairs.%
+\typeout{************************************************}
+\typeout{Exercises 4.3.2 Exercises}
+\typeout{************************************************}
+\subsection[{Exercises}]{Exercises}\label{exercises-5}
+\hypertarget{exercisegroup-1}{}\par\noindent In exercises \(1\) through \(4\), identify whether the growth (or decay) that is described is discrete or continuous.  Write either a recursive system or an expliciit function to represent the phenomenon. Use the most appropriate form to answer each question.%
+\begin{exercisegroup}(1)
+\exercise[1.]\hypertarget{exercise-20}{}Research City is growing by \(14\%\) each year.  If the population of the city is approximately one million people and the rate of growth continues at \(14\%\) annually, what will Research City's population be \(15\) years from now?%
+\exercise[2.]\hypertarget{exercise-21}{}The population of Coastal City grows by \(3\%\) each year due only to births and deaths among current residents.  The population is currently one million.  Each year \(15,000\) more people move into the city than move out, resulting in a net gain of \(0.015\) milion people. How long will it take Coastal City's population to reach \(1.8\) million people?%
+\exercise[3.]\hypertarget{exercise-22}{}Each year hunting and natural predators combine to cause the population of rabbits in the meadow to decrease by \(5\%\).  If the year begins with \(230\) rabbits and the population continues to decrease by \(5\%\) each year, how many rabbits will there be in this meaudow in \(50\) years?%
+\exercise[4.]\hypertarget{exercise-23}{}Each year the population of rabbits in the meadow decreases by \(5\%\).  Farmer Dan decides to help the rabbit population by releasing \(5\) new rabbits into the meadow each year.  If the year begins with \(230\) rabbits, describe what will happen to the population over the next ten years.%
+\end{exercisegroup}
+\par\smallskip\noindent
+\begin{exerciselist}
+\item[5.]\hypertarget{exercise-24}{}An annual inflation rate of \(k\%\) means that items will cost \(k\%\) more next year than they cost this year.  Based on a yearly inflation rate of \(3\%\), estimate the cost of the following items in \(10\), \(20\), \(30\), and \(40\) years.%
+\leavevmode%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{lB}{Item}&Cost Today\tabularnewline\hrulethick
+\multicolumn{1}{lB}{Jeans}&\(\$45.00\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{Hamburger}&\(\$3.90\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{Car}&\(\$29,000\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{Textbook}&\(\$75.00\)\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{Movie Ticket}&\(\$9.00\)\tabularnewline\hrulemedium
+\end{tabular}
+\end{table}
+\par\smallskip
+\item[6.]\hypertarget{exercise-25}{}How much money would you need to invest now in an account that receives \(0.5\%\) monthly interest so that in \(20\) years you will have \(\$50,000\)?%
+\par\smallskip
+\item[7.]\hypertarget{exercise-26}{}The number of cells in a certain bacteria colony triples every hour.  Write an explicit function that models this growth.  By what factor does the population grow in half an hour?%
+\par\smallskip
+\item[8.]\hypertarget{exercise-27}{}Thorieum-\(234\) is a radioactive material whose half-life is \(25\) days. Write an explicit function for the amount of thorium-\(234\) left after \(t\) days.  What percent of an original amount is left after \(300\) days?%
+\par\smallskip
+\item[9.]\hypertarget{exercise-28}{}The population of The Peoples Republic of China in \(2015\) was a little over \(1.39\) billion and growing at a rate of about \(0.5\%\) annually. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-58}{}Write a recursive system to model the population%
+\item\hypertarget{li-59}{}Find an explicit function to model the population%
+\item\hypertarget{li-60}{}To the nearest year, how long will it take the population to double? Assume that the growth rate remains \(0.5\%\) per year.%
+\item\hypertarget{li-61}{}Use the doubling time you found in part (c) to write an transformation of the function \(y=2^x\) to represent China's population. (Use \(x\) to represent the number of years elapsed since \(2015\).).%
+\item\hypertarget{li-62}{}Write a few sentences to compare and contrast the models you found in parts a, b, and d.%
+\end{enumerate}
+%
+\par\smallskip
+\item[10.]\hypertarget{exercise-29}{}When you are \(40\) years old your rich Uncle Harry leaves you \(\$10,000\) in his will when he dies.  His death makes you realize it is time to start saving for your own retirement. Your goal is to deposit enough in a retirement account when you are between the ages of \(40\) and \(65\) that you can "pay yourself" a comfortable amount each year when you are over \(65\). \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-63}{}On your \(40^{th}\) birthday you invest the \(\$10,000\) in an account that pays \(3.5\%\) annual interest.  You also decide to make a yearly deposit in the account of \(\$1,000\). What will your balance be when you turn \(65\)?  Give the amount in your account when you turn \(65\) and write the equations you use to arrive at your answer.%
+\item\hypertarget{li-64}{}Will you have enough money in your account when you are \(65\) to pay yourself \(\$5,000\) per year from age \(65\) to age \(80\).  While you are withdrawing money, the balance in the account continues to earn \(3.5\%\) annual interest.  Give a yes or no answer and write the equations you use to support your answer.%
+\end{enumerate}
+%
+\par\smallskip
+\item[11.]\hypertarget{exercise-30}{}Thomas has two plans for saving to buy a car.  In Plan A, he will make an initial deposit of \(\$50\) and then he will deposit \(\$33\) each week in an account that earns \(0.1\%\) interest per week.  In Plan B, he will make an initial deposit of \(\$50\) and then each week he will put \(\$30\) in an account that earns \(0.45\%\) each week. Write recursive equations to show the amounts Thomas would have under each of the plans. Write down the account balances under each plan during weeks \(1 - 3\) and during weeks \(50 - 52\)%
+\par\smallskip
+\item[12.]\hypertarget{exercise-31}{}In this section you have seen that the recursive system \(P_0=a, P_n=(1+k) \cdot P_{n-1}, n = 1, 2, 3, ...\) can be written as a closed form exponential function \(P(n)=a \cdot (1+k)^n\). What recursive system can be written as a closed form linear function of the form \(y(n)=a+kn\)?%
+\par\smallskip
+\end{exerciselist}
 \typeout{************************************************}
 \typeout{Chapter 5 Logarithmic Functions}
 \typeout{************************************************}

@@ -53,8 +53,9 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
           \usepackage{pgfplots}
           \usepackage{pgfplotstable}
           \pgfplotsset{axis lines = middle,
-             x label style={at={(axis description cs:0.5,-0.1)}, anchor=north},
-             y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+             x label style={at={(axis description cs:0.5,0)}, anchor=north},
+             y label style={at={(axis description cs:0,.5)},rotate=90,anchor=south},
+             scaled y ticks=false,
              }
           \usetikzlibrary{backgrounds}
           \usetikzlibrary{arrows,matrix}
@@ -138,180 +139,228 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
         <!-- chapter04-section01.xml -->
           <section xml:id="chapter04-section01">
-			    <title>Recursive Functions</title>
+  			    <title>Recursive Functions</title>
 
-	         <p>In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship <m>y=f(x)</m> is used to show how the <m>y</m>-value is related to the given <m>x</m>-value. For example, the function <m>f(x)=x^2+6x</m> is an explicit function. This notation tells us that any particular numerical value for <m>x</m> is paired with the <m>y</m>-value equal to <m>x^2+6x</m>. So 1 is paired with 7, since <m>f(1)=(1)^2+6(1)=7</m> , and <m>-3</m> is paired with <m>-9</m>, since <m>f(-3)=(-3)^2+6(-3)=-9</m>.</p>
+  	         <p>In a previous chapter we learned that a function is a special sets of ordered pairs.  In most of the examples in the preceeding chapters, functions were described by an algebraic expression that could be evaluated for a particular input value resulting in a unique output value. Such algebraic expressions are called closed form or explicit expressions.  For these functions, the relationship <m>y=f(x)</m> is used to show how the <m>y</m>-value is related to the given <m>x</m>-value. For example, the function <m>f(x)=x^2+6x</m> is an explicit function. This notation tells us that any particular numerical value for <m>x</m> is paired with the <m>y</m>-value equal to <m>x^2+6x</m>. So 1 is paired with 7, since <m>f(1)=(1)^2+6(1)=7</m> , and <m>-3</m> is paired with <m>-9</m>, since <m>f(-3)=(-3)^2+6(-3)=-9</m>.</p>
 
-           <p>In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an <m>x</m>-value.</p>
+             <p>In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an <m>x</m>-value.</p>
 
-    			 <example>
-    			      <title>Ibuprofen in the blood stream</title>
-    			      <p>Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes <m>67\%</m> of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system <m>24</m> hours after taking the <m>200</m>mg tablet?</p>
-    				    <solution>
-                  <p>One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write
-                  <md>
-    						    <mrow>D_0=0</mrow>
-    						  </md>
-                  where <m>D_0</m> is used to represent the amount of ibuprofen present at the start of the process</p>
-                  <p>We will use <m>D_1</m> to represent the amount of ibuprofen left after four hours.  The subscripts are used to count the steps, or iterations,  in the iterative process. In this problem the subscript  represents the number of four-hour time periods since Joan took the tablet.  In four hours, her kidneys have filtered out <m>67\%</m> of the drug from her bloodstream, so we write
-                  <md>
-                    <mrow>D_1=D_0-.67D_0=200-.67\cdot 200=66</mrow>
-                  </md></p>
-                  <p>The amount of drug in her body after a second four-hour time period is represented by <m>D_2</m>.
-                  <md>
-                    <mrow>D_2=D_1-0.67D_1=66-.067\cdot 66=21.78</mrow>
-                  </md></p>
-                  <p>Similarly, we know that successive values of the amount of drug in her body can be generated by
-                  <md>
-                    <mrow>D_3=D_2-0.67D_2=7.187</mrow>
-                    <mrow>D_4=D_3-0.67D_3=2.372</mrow>
-                  </md>
-                  and, in general,
-                  <md>
-                    <mrow>D_n=D_{n-1}-0.67D_{n-1},n=1,2,3...</mrow>
-                  </md></p>
-                  <p>Using a spreadsheet or calculator, we can generate successive values of <m>D_n</m> as shown in <xref ref="figure-plot-ibuprofen-one-dose" />.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than <m>1</m> mg between the fourth and fifth time periods.  If she takes a single <m>200</m> mg dose, Joan will have only about <m>0.258</m> mg remaining in her body <m>24</m> hours later.</p>
-                  <sidebyside widths ="25% 65%">
-                  <figure xml:id="figure-table-ibuprofen-one-dose">
-                    <image xml:id="table-ibuprofen-one-dose">
-                      <latex-image-code>
-                        <![CDATA[
-                        \pgfplotstabletypeset[
-                            	col sep=comma,
-                              column type=l,
-                              every head row/.style={after row=\hline},
-                              every column/.style={column type/.add={|}{|}},
-                              every first column/.style={column type/.add={}{|}},
-                              columns/0/.style={string type, column name={$n$}},
-                            	columns/1/.style={string type, column name={$D_n$}},
-                            ]{data-single-dose-ibuprofen.csv}
-                        ]]>
-                      </latex-image-code>
-                    </image>
-                  </figure>
-
-                  <figure xml:id="figure-plot-ibuprofen-one-dose">
-                      <caption>Amount of drug in Joan's body (Single 200 mg dose)</caption>
-                      <image xml:id="plot-ibuprofen-one-dose">
-                          <description>Amount of drug in Joan's body (Single 200 mg dose)</description>
-                          <latex-image-code>
-                          <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+      			 <example xml:id="ibuprofen-example-one-dose">
+      			      <title>Ibuprofen in the blood stream</title>
+      			      <p>Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes <m>67\%</m> of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system <m>24</m> hours after taking the <m>200</m>mg tablet?</p>
+      				    <solution>
+                    <p>One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write
+                    <md>
+      						    <mrow>D_0=0</mrow>
+      						  </md>
+                    where <m>D_0</m> is used to represent the amount of ibuprofen present at the start of the process</p>
+                    <p>We will use <m>D_1</m> to represent the amount of ibuprofen left after four hours.  The subscripts are used to count the steps, or iterations,  in the iterative process. In this problem the subscript  represents the number of four-hour time periods since Joan took the tablet.  In four hours, her kidneys have filtered out <m>67\%</m> of the drug from her bloodstream, so we write
+                    <md>
+                      <mrow>D_1=D_0-.67D_0=200-.67\cdot 200=66</mrow>
+                    </md></p>
+                    <p>The amount of drug in her body after a second four-hour time period is represented by <m>D_2</m>.
+                    <md>
+                      <mrow>D_2=D_1-0.67D_1=66-.067\cdot 66=21.78</mrow>
+                    </md></p>
+                    <p>Similarly, we know that successive values of the amount of drug in her body can be generated by
+                    <md>
+                      <mrow>D_3=D_2-0.67D_2=7.187</mrow>
+                      <mrow>D_4=D_3-0.67D_3=2.372</mrow>
+                    </md>
+                    and, in general,
+                    <md>
+                      <mrow>D_n=D_{n-1}-0.67D_{n-1},n=1,2,3...</mrow>
+                    </md></p>
+                    <p>Using a spreadsheet or calculator, we can generate successive values of <m>D_n</m> as shown in <xref ref="figure-plot-ibuprofen-one-dose" />.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than <m>1</m> mg between the fourth and fifth time periods.  If she takes a single <m>200</m> mg dose, Joan will have only about <m>0.258</m> mg remaining in her body <m>24</m> hours later.</p>
+                    <sidebyside widths ="25% 65%" xml:id="figure-ibuprofen-one-dose">
+                    <caption>Amount of drug in Joan's body (Single 200 mg dose)</caption>
+                    <figure xml:id="figure-table-ibuprofen-one-dose">
+                      <image xml:id="table-ibuprofen-one-dose">
+                        <latex-image-code>
                           <![CDATA[
-                              \begin{tikzpicture}
-                              \begin{axis}[
-                                 axis line style = {<->},
-                                 width = 0.5\linewidth,
-                                 xlabel = Number of 4 hour intervals,
-                                 ylabel = Amount of Ibuprofen (mg),
-                                 xmin = -1, xmax= 7,
-                                 ymin = -25, ymax=250,
-                                 ytick = {0,100,200},
-                                 xtick = {0, 1, ...,6},
-                              ]
-
-                                \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
-
-                              \end{axis}
-                          \end{tikzpicture}]]>
-                          </latex-image-code>
+                          \pgfplotstabletypeset[
+                              	col sep=comma,
+                                column type=l,
+                                every head row/.style={after row=\hline},
+                                every column/.style={column type/.add={|}{|}},
+                                every first column/.style={column type/.add={}{|}},
+                                columns/0/.style={string type, column name={$n$}},
+                              	columns/1/.style={string type, column name={$D_n$}},
+                              ]{data-single-dose-ibuprofen.csv}
+                          ]]>
+                        </latex-image-code>
                       </image>
-                  </figure>
-                 </sidebyside>
-                 <p>The graph in <xref ref="figure-plot-ibuprofen-one-dose" /> shows the ordered pairs <m>(n,D_n)</m> generated by the recursive system</p>
-                 <md>
-                   <mrow>D_0=200</mrow>
-                   <mrow>D_n=D_{n-1} - 0.67D_{n-1}, n=1,2,3,...</mrow>
-                 </md>
-                 <p>Each point on the graph shows the amount of ibuprofen in Joan’s body at the end of a four-hour time period. Notice that there is obvious curvature in this graph.  The amount of drug in Joan’s body does not decrease by the same number of milligrams during each time interval.</p>
-    				    </solution>
-    			 </example>
-           <p>You should complete Practice Problems 1 and 2 now.</p>
-<!-- This is class exercises, but the formatting is a bit weird right now. -->
-<!--
-        <exercises>
-           <exercise>
-             <statement>
-               <p>In each recursive system, the domain of <m>D_n</m> is <m>n=1,2,3, ...</m> and <m>D_n</m> represents the amount of ibuprofen in Joan's system after n four-hour time periods.  For each system, find how much drug remains after 24 hours, and identify the rate at which Joan’s system filters out the drug.
-                 <ol>
-                   <li><m>D_0=300, D_n=D_{n-1} - 0.8D_{n-1}</m></li>
-                   <li><m>D_0=150, D_n=D_{n-1} - 0.2D_{n-1}</m></li>
-                   <li><m>D_0=500, D_n=0.2D_{n-1}</m></li>
-                   <li><m>D_0=500, D_n=0.5D_{n-1}</m></li>
-                 </ol>
-                 </p>
-             </statement>
-          </exercise>
-        </exercises>
--->
-           <example>
-    			      <title>Repated dose of ibuprofen</title>
-    			      <p>ibuprofen Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to reduce the inflammation and control pain.  Joan is instructed to take two 200-milligram ibuprofen tablets every 4 hours for three days.  Joan doesn’t like taking medicine, so she decides to take only one tablet every four hours for six days.  After the six days, Joan’s knee has not responded to the medication.  Naturally, she knew that the knee would take longer to respond to the reduced treatment, but she did not expect no response at all.  What could have happened?</p>
-                <solution>
-                  <p>In this situation, Joan did not take just a single 200 mg tablet.  Every four hours she took another 200 mg tablet, and we can modify our recursive system to model this behavior. At the end of the nth four-hour period, Joan’s body has filtered <m>67\%</m> of the drug that was in her body after n-1st  four-hour period.  In addition, 200 mg from the new tablet have been added into her body.  The recursive system representing the amount of ibuprofen in Joan’s body if she takes one tablet every four hours is</p>
-                  <md>
-                    <mrow>D_0=200</mrow>
-                    <mrow>D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...</mrow>
-                  </md>
-                  <p>The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of <m>D_n</m> that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  <m>67\%</m> of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in <xref ref="figure-plot-ibuprofen-multi-dose" /></p>
-                  <sidebyside widths ="25% 65%">
-                  <figure xml:id="figure-table-ibuprofen-multi-dose">
-                    <image xml:id="table-ibuprofen-multi-dose">
-                      <latex-image-code>
-                        <![CDATA[
-                        \pgfplotstabletypeset[
-                            	col sep=comma,
-                              column type=l,
-                              every head row/.style={after row=\hline},
-                              every column/.style={column type/.add={|}{|}},
-                              every first column/.style={column type/.add={}{|}},
-                              columns/0/.style={string type, column name={$n$}},
-                            	columns/1/.style={string type, column name={$D_n$}},
-                            ]{data-multi-dose-ibuprofen.csv}
-                        ]]>
-                      </latex-image-code>
-                    </image>
-                  </figure>
+                    </figure>
 
-                  <figure xml:id="figure-plot-ibuprofen-multi-dose">
-                      <caption>Amount of drug in Joan's body (Single 200 mg dose)</caption>
-                      <image xml:id="plot-ibuprofen-multi-dose">
-                          <description>Amount of drug in Joan's body (Single 200 mg dose)</description>
-                          <latex-image-code>
-                          <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                    <figure xml:id="figure-plot-ibuprofen-one-dose">
+                        <image xml:id="plot-ibuprofen-one-dose">
+                            <description>Amount of drug in Joan's body (Single 200 mg dose)</description>
+                            <latex-image-code>
+                            <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                            <![CDATA[
+                                \begin{tikzpicture}
+                                \begin{axis}[
+                                   axis line style = {<->},
+                                   width = 0.5\linewidth,
+                                   xlabel = Number of 4 hour intervals,
+                                   ylabel = Amount of Ibuprofen (mg),
+                                   label style={font=\tiny},
+                                   xmin = -1, xmax= 7,
+                                   ymin = -25, ymax=250,
+                                   ytick = {0,100,200},
+                                   xtick = {0, 1, ...,6},
+                                   tick label style={font=\tiny},
+                                ]
+
+                                  \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
+
+                                \end{axis}
+                            \end{tikzpicture}]]>
+                            </latex-image-code>
+                        </image>
+                    </figure>
+                   </sidebyside>
+                   <p>The graph in Figure <xref ref="figure-ibuprofen-one-dose" /> shows the ordered pairs <m>(n,D_n)</m> generated by the recursive system</p>
+                   <md>
+                     <mrow>D_0=200</mrow>
+                     <mrow>D_n=D_{n-1} - 0.67D_{n-1}, n=1,2,3,...</mrow>
+                   </md>
+                   <p>Each point on the graph shows the amount of ibuprofen in Joan’s body at the end of a four-hour time period. Notice that there is obvious curvature in this graph.  The amount of drug in Joan’s body does not decrease by the same number of milligrams during each time interval.</p>
+      				    </solution>
+      			 </example>
+            <!-- <p>You should complete Practice Problems 1 and 2 now.</p> -->
+
+            <exercises>
+              <title>Class Practice</title>
+            <exercise>
+              <statement>
+                <p>Modify the recursive system used in Example <xref ref="ibuprofen-example-one-dose" /> as appropriate to answer the following questions:
+                  <ol>
+                    <li>Suppose Joan takes tablets that contain <m>250</m> milligrams of ibuprofen. How much ibuprofen would be in her body after <m>4, 8, 12, 16, 20,</m> and <m>24</m> hours?</li>
+                    <li>Suppose Joan's kidneys filter only <m>50\%</m> of the drug in a four hour time period.  If Joan takes a <m>200</m> mg tablet every <m>4</m> hours, how much ibuprofen would she have in her system after <m>4, 8, 12, 16, 20,</m> and <m>24</m> hours?</li>
+                  </ol>
+                  </p>
+              </statement>
+           </exercise>
+
+             <exercise>
+               <statement>
+                 <p>In each recursive system, the domain of <m>D_n</m> is <m>n=1,2,3, ...</m> and <m>D_n</m> represents the amount of ibuprofen in Joan's system after n four-hour time periods.  For each system, find how much drug remains after <m>24</m> hours, and identify the rate at which Joan's system filters out the drug.
+                   <ol>
+                     <li><m>D_0=300, D_n=D_{n-1} - 0.8D_{n-1}</m></li>
+                     <li><m>D_0=150, D_n=D_{n-1} - 0.2D_{n-1}</m></li>
+                     <li><m>D_0=500, D_n=0.2D_{n-1}</m></li>
+                     <li><m>D_0=500, D_n=0.5D_{n-1}</m></li>
+                   </ol>
+                   </p>
+               </statement>
+            </exercise>
+          </exercises>
+
+             <example>
+      			      <title>Repated dose of ibuprofen</title>
+      			      <p>Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to reduce the inflammation and control pain.  Joan is instructed to take two 200-milligram ibuprofen tablets every 4 hours for three days.  Joan doesn’t like taking medicine, so she decides to take only one tablet every four hours for six days.  After the six days, Joan’s knee has not responded to the medication.  Naturally, she knew that the knee would take longer to respond to the reduced treatment, but she did not expect no response at all.  What could have happened?</p>
+                  <solution>
+                    <p>In this situation, Joan did not take just a single 200 mg tablet.  Every four hours she took another 200 mg tablet, and we can modify our recursive system to model this behavior. At the end of the nth four-hour period, Joan’s body has filtered <m>67\%</m> of the drug that was in her body after n-1st  four-hour period.  In addition, 200 mg from the new tablet have been added into her body.  The recursive system representing the amount of ibuprofen in Joan’s body if she takes one tablet every four hours is</p>
+                    <md>
+                      <mrow>D_0=200</mrow>
+                      <mrow>D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...</mrow>
+                    </md>
+                    <p>The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of <m>D_n</m> that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  <m>67\%</m> of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in <xref ref="figure-plot-ibuprofen-multi-dose" /></p>
+                    <sidebyside widths ="25% 65%">
+                    <caption>Amount of drug in Joan's body (Single 200 mg dose)</caption>
+                    <figure xml:id="figure-table-ibuprofen-multi-dose">
+                      <image xml:id="table-ibuprofen-multi-dose">
+                        <latex-image-code>
                           <![CDATA[
-                              \begin{tikzpicture}
-                              \begin{axis}[
-                                 axis line style = {<->},
-                                 width = 0.5\linewidth,
-                                 xlabel = Number of 4 hour intervals,
-                                 ylabel = Amount of Ibuprofen (mg),
-                                 xmin = -1, xmax= 11,
-                                 ymin = -25, ymax=300,
-                                 ytick = {0,100,200,300},
-                                 xtick = {0, 1, ...,10},
-                              ]
-
-                                \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
-
-                              \end{axis}
-                          \end{tikzpicture}]]>
-                          </latex-image-code>
+                          \pgfplotstabletypeset[
+                              	col sep=comma,
+                                column type=l,
+                                every head row/.style={after row=\hline},
+                                every column/.style={column type/.add={|}{|}},
+                                every first column/.style={column type/.add={}{|}},
+                                columns/0/.style={string type, column name={$n$}},
+                              	columns/1/.style={string type, column name={$D_n$}},
+                              ]{data-multi-dose-ibuprofen.csv}
+                          ]]>
+                        </latex-image-code>
                       </image>
-                  </figure>
-                 </sidebyside>
-                 <p>The points shown in <xref ref="figure-plot-ibuprofen-multi-dose" /> represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out <m>67\%</m> of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.</p>
+                    </figure>
 
-                 <p>Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means that there must be at least 450 milligrams of the drug in her body for Joan to receive the benefits of the drug.  No wonder she thought the drug was not working.  It wasn’t!</p>
-               </solution>
-             </example>
+                    <figure xml:id="figure-plot-ibuprofen-multi-dose">
+                        <image xml:id="plot-ibuprofen-multi-dose">
+                            <description>Amount of drug in Joan's body (Single 200 mg dose)</description>
+                            <latex-image-code>
+                            <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                            <![CDATA[
+                                \begin{tikzpicture}
+                                \begin{axis}[
+                                   axis line style = {<->},
+                                   width = 0.5\linewidth,
+                                   xlabel = Number of 4 hour intervals,
+                                   ylabel = Amount of Ibuprofen (mg),
+                                   label style={font=\tiny},
+                                   xmin = -1.5, xmax= 11,
+                                   ymin = -30, ymax=350,
+                                   ytick = {0,100,200,300},
+                                   xtick = {0, 1, ...,10},
+                                   tick label style={font=\tiny},
+                                ]
 
-             <exercises>
+                                  \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
+
+                                \end{axis}
+                            \end{tikzpicture}]]>
+                            </latex-image-code>
+                        </image>
+                    </figure>
+                   </sidebyside>
+                   <p>The points shown in <xref ref="figure-plot-ibuprofen-multi-dose" /> represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out <m>67\%</m> of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.</p>
+
+                   <p>Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means that there must be at least 450 milligrams of the drug in her body for Joan to receive the benefits of the drug.  No wonder she thought the drug was not working.  It wasn’t!</p>
+                 </solution>
+               </example>
+
+               <exercises>
+                 <exercise>
+                   <statement>
+                     <p>Modify the recursive  system  used in Example 1 as appropriate to answer the following questions:
+                       <ol>
+                         <li>Suppose Joan takes tables that contain 250 milligrams of ibuprofen..  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours? </li>
+                         <li>Suppose Joan’s kidneys filter only <m>50\%</m> of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?</li>
+                       </ol>
+                       </p>
+                   </statement>
+                </exercise>
+
+                <exercise>
+                  <statement>
+                    <p>If Joan takes her medication every 4 hours, determine the amount of drug in Joan’s body after 2 days (twelve  4-hour time periods) and the equilibrium level resulting from each of the following recursive systems.  Plot the ordered pairs you generate on a graph.  Note that in some cases the initial dosage and subsequent doses are not the same size.  In each exercise, the domain of <m>D_n</m> is <m>n=1,2,3, ...</m>
+                      <ol>
+                        <li><m>D_0=200, D_n=D_{n-1} - 0.4D_{n-1} + 200</m></li>
+                        <li><m>D_0=800, D_n=0.6D_{n-1} + 200</m></li>
+                        <li><m>D_0=600, D_n=0.4D_{n-1} + 200</m></li>
+                        <li><m>D_0=600, D_n=D_{n-1} - 0.4D_{n-1} + 200</m></li>
+                        <li><m>D_0=600, D_n=0.6D_{n-1} + 300</m></li>
+                        <li><m>D_0=600, D_n=0.4D_{n-1} + 300</m></li>
+                      </ol>
+                      </p>
+                  </statement>
+               </exercise>
+
                <exercise>
                  <statement>
-                   <p>Modify the recursive  system  used in Example 1 as appropriate to answer the following questions:
+                   <p>Each of the systems in exercise 2 can be written in the form
+                      <md>
+                        <mrow>D_0=a</mrow>
+                        <mrow>D_n=(1-r) D_{n-1}+b, n=1,2,3...</mrow>
+                      </md>
+
                      <ol>
-                       <li>Suppose Joan takes tables that contain 250 milligrams of ibuprofen..  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours? </li>
-                       <li>Suppose Joan’s kidneys filter only <m>50\%</m> of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?</li>
+                       <li>What does <m>r</m> represent in the context of Joan's medication?  Why is <m>r</m> between 0 and 1?</li>
+                       <li>By looking back at the results of exercise 2 and by trying other variations, determine the effect of changing <m>a</m>, <m>r</m>, and <m>b</m> on the amount of drug in Joan's body after 5 days</li>
+                       <li>Determine the equilibrium level in terms of <m>a</m>, <m>r</m>, and <m>b</m>.  You can recognize that equilibrium has been reached if  <m>D_n=D_{n-1}</m>.</li>
+                       <li>Use the result of part c to determine the equilibrium level of a drug if you take 200 mg every 4 hours and your kidneys filter out <m>50\%</m> of the drug in your body every 4 hours</li>
                      </ol>
                      </p>
                  </statement>
@@ -319,14 +368,10 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
               <exercise>
                 <statement>
-                  <p>If Joan takes her medication every 4 hours, determine the amount of drug in Joan’s body after 2 days (twelve  4-hour time periods) and the equilibrium level resulting from each of the following recursive systems.  Plot the ordered pairs you generate on a graph.  Note that in some cases the initial dosage and subsequent doses are not the same size.  In each exercise, the domain of <m>D_n</m> is <m>n=1,2,3, ...</m>
+                  <p>A company has <m>\$10,000</m> worth of equipment and for tax purposes they want to figure the depreciation of the equipment over a 10-year time period.  One method is to reduce the value each year by the same dollar amount.  A second method is to decrease the value of the equipment each year by the same percent of the current value each year.
                     <ol>
-                      <li><m>D_0=200, D_n=D_{n-1} - 0.4D_{n-1} + 200</m></li>
-                      <li><m>D_0=800, D_n=0.6D_{n-1} + 200</m></li>
-                      <li><m>D_0=600, D_n=0.4D_{n-1} + 200</m></li>
-                      <li><m>D_0=600, D_n=D_{n-1} - 0.4D_{n-1} + 200</m></li>
-                      <li><m>D_0=600, D_n=0.6D_{n-1} + 300</m></li>
-                      <li><m>D_0=600, D_n=0.4D_{n-1} + 300</m></li>
+                      <li>Using the first method, generate a table and graph for the value of the equipment if it is  decreased each year by <m>\$2000</m>.</li>
+                      <li>Using the second method, generate a table and graph for the value of the equipment if it is decreased by <m>20\%</m> each year.</li>
                     </ol>
                     </p>
                 </statement>
@@ -334,17 +379,12 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
              <exercise>
                <statement>
-                 <p>Each of the systems in exercise 2 can be written in the form
-                    <md>
-                      <mrow>D_0=a</mrow>
-                      <mrow>D_n=(1-r) D_{n-1}+b, n=1,2,3...</mrow>
-                    </md>
-
+                 <p>One of the primary responsibilities of the manager of a swimming pool is to maintain the proper concentration of chlorine in the swimming pool.  The concentration should be between 1 and 2 parts per million (ppm).  If the concentration gets as high as 3 ppm swimmers experience burning eyes.  If the concentration gets below 1 ppm, the water will become cloudy, which is unappealing.  If it drops below 0.5 ppm, algae begin to grow.  During a period of one day, <m>15\%</m> of the chlorine present in the pool dissipates (mainly due to the sun).
                    <ol>
-                     <li>What does <m>r</m> represent in the context of Joan's medication?  Why is <m>r</m> between 0 and 1?</li>
-                     <li>By looking back at the results of exercise 2 and by trying other variations, determine the effect of changing <m>a</m>, <m>r</m>, and <m>b</m> on the amount of drug in Joan's body after 5 days</li>
-                     <li>Determine the equilibrium level in terms of <m>a</m>, <m>r</m>, and <m>b</m>.  You can recognize that equilibrium has been reached if  <m>D_n=D_{n-1}</m>.</li>
-                     <li>Use the result of part c to determine the equilibrium level of a drug if you take 200 mg every 4 hours and your kidneys filter out <m>50\%</m> of the drug in your body every 4 hours</li>
+                     <li>If the chlorine content starts at 2.5 ppm and no additional chlorine is added, how long will it be before the water becomes cloudy?</li>
+                     <li>If the chlorine content starts at 2.5 ppm and the equivalent of 0.5 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?</li>
+                     <li>If the chlorine content starts at 2.5 ppm and the equivalent of 0.1 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?</li>
+                     <li>How much chlorine must be added daily for the chlorine level to stabilize at 1.8 ppm?</li>
                    </ol>
                    </p>
                </statement>
@@ -352,10 +392,14 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
             <exercise>
               <statement>
-                <p>A company has <m>\$10,000</m> worth of equipment and for tax purposes they want to figure the depreciation of the equipment over a 10-year time period.  One method is to reduce the value each year by the same dollar amount.  A second method is to decrease the value of the equipment each year by the same percent of the current value each year.
+                <p>The Fish and Wildlife Division monitors the trout population in a stream that is under their jurisdiction.  Their research indicates that natural predators, together with pollution and fishing, are causing the trout population to decrease at a rate of <m>20\%</m> per month.  They propose to introduce additional trout into the stream each month.  Assume the current population is 300.  Use tables and graphs to investigate the following:
                   <ol>
-                    <li>Using the first method, generate a table and graph for the value of the equipment if it is  decreased each year by <m>\$2000</m>.</li>
-                    <li>Using the second method, generate a table and graph for the value of the equipment if it is decreased by <m>20\%</m> each year.</li>
+                    <li>What will happen to the trout population over the next ten months with no replenishment program?</li>
+                    <li>What is the long-term result of introducing 100 trout into the stream each month?</li>
+                    <li>Investigate the result of changing the number of trout introduced each month.  What is the impact on the long-term population of the number of trout added each month?</li>
+                    <li>Investigate the impact on the long-term behavior of the population of changing the initial population.  What is the effect of the initial population?</li>
+                    <li>What is the impact of the rate of decrease in the population during the replenishment program?</li>
+                    <li>There are three parameters in this problem: the initial number of trout, the rate of decrease, and the number of trout added each month. Which parameter seems to have the most influenceon the long-term behavior? Explain briefly.</li>
                   </ol>
                   </p>
               </statement>
@@ -363,12 +407,11 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
            <exercise>
              <statement>
-               <p>One of the primary responsibilities of the manager of a swimming pool is to maintain the proper concentration of chlorine in the swimming pool.  The concentration should be between 1 and 2 parts per million (ppm).  If the concentration gets as high as 3 ppm swimmers experience burning eyes.  If the concentration gets below 1 ppm, the water will become cloudy, which is unappealing.  If it drops below 0.5 ppm, algae begin to grow.  During a period of one day, <m>15\%</m> of the chlorine present in the pool dissipates (mainly due to the sun).
+               <p>Drugs generally have a therapeutic range rather than a single therapeutic level.  In other words, a drug is effective if the level in the body is between two values.  At concentrations below this range, too little of the drug is present to have a measurable effect, and concentrations above this range may be toxic.  The level of drug in the body peaks just after the drug is taken, while the drug level is at a minimum just before the dosage is taken.  Suppose Joan takes an anti-inflammatory drug at the prescribed dosage of 440 mg every 12 hours and her kidneys filter <m>60\%</m> of the drug from her body every 12 hours.  Use tables and graphs to investigate the following:
                  <ol>
-                   <li>If the chlorine content starts at 2.5 ppm and no additional chlorine is added, how long will it be before the water becomes cloudy?</li>
-                   <li>If the chlorine content starts at 2.5 ppm and the equivalent of 0.5 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?</li>
-                   <li>If the chlorine content starts at 2.5 ppm and the equivalent of 0.1 ppm of chlorine is added daily, what will happen to the level of chlorine in the pool in the long run?</li>
-                   <li>How much chlorine must be added daily for the chlorine level to stabilize at 1.8 ppm?</li>
+                   <li>Generate a sequence of values for the level of drug in Joan’s body just before each dose.</li>
+                   <li>In the long-run, the level of drug in Joan’s body will range  between what two values?</li>
+                   <li>Suppose the therapeutic range of the anti-inflammatory drug is between 300 mg and 800 mg.  What adjustment, if any, needs to be made in Joan’s dosage to stay within this range in the long run?</li>
                  </ol>
                  </p>
              </statement>
@@ -376,14 +419,14 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
           <exercise>
             <statement>
-              <p>The Fish and Wildlife Division monitors the trout population in a stream that is under their jurisdiction.  Their research indicates that natural predators, together with pollution and fishing, are causing the trout population to decrease at a rate of <m>20\%</m> per month.  They propose to introduce additional trout into the stream each month.  Assume the current population is 300.  Use tables and graphs to investigate the following:
+              <p>Suppose Morgan  wants to buy a television that costs <m>\$549</m>.  He has a part-time job, and he is able to save <m>\$85.00</m> each week.  Suppose he accumulates the money at home.
                 <ol>
-                  <li>What will happen to the trout population over the next ten months with no replenishment program?</li>
-                  <li>What is the long-term result of introducing 100 trout into the stream each month?</li>
-                  <li>Investigate the result of changing the number of trout introduced each month.  What is the impact on the long-term population of the number of trout added each month?</li>
-                  <li>Investigate the impact on the long-term behavior of the population of changing the initial population.  What is the effect of the initial population?</li>
-                  <li>What is the impact of the rate of decrease in the population during the replenishment program?</li>
-                  <li>There are three parameters in this problem: the initial number of trout, the rate of decrease, and the number of trout added each month. Which parameter seems to have the most influenceon the long-term behavior? Explain briefly.</li>
+                  <li>Write a recursive system that can be used to determine how much Morgan has saved over time.</li>
+                  <li>Use the recursive system to generate values for the amount of money Morgan has saved in thirteen weeks.</li>
+                  <li>Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.</li>
+                  <li>The points graphed in part (c) should appear linear.  Explain why the situation implies that these ordered pairs are linear.</li>
+                  <li>Write an explicit function of the form <m>A=f(t)</m> that could be used to generate the same ordered pairs you graphed in part (c).</li>
+                  <li>State the domain and the range of the explicit function within the context of this problem.  Compare them to the domain and range of the recursively defined function.</li>
                 </ol>
                 </p>
             </statement>
@@ -391,81 +434,913 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
          <exercise>
            <statement>
-             <p>Drugs generally have a therapeutic range rather than a single therapeutic level.  In other words, a drug is effective if the level in the body is between two values.  At concentrations below this range, too little of the drug is present to have a measurable effect, and concentrations above this range may be toxic.  The level of drug in the body peaks just after the drug is taken, while the drug level is at a minimum just before the dosage is taken.  Suppose Joan takes an anti-inflammatory drug at the prescribed dosage of 440 mg every 12 hours and her kidneys filter <m>60\%</m> of the drug from her body every 12 hours.  Use tables and graphs to investigate the following:
+             <p>Now suppose that Morgan deposits his savings in a bank that will pay <m>0.02\%</m> interest each week.
                <ol>
-                 <li>Generate a sequence of values for the level of drug in Joan’s body just before each dose.</li>
-                 <li>In the long-run, the level of drug in Joan’s body will range  between what two values?</li>
-                 <li>Suppose the therapeutic range of the anti-inflammatory drug is between 300 mg and 800 mg.  What adjustment, if any, needs to be made in Joan’s dosage to stay within this range in the long run?</li>
+                 <li>Write a recursive system that can be used to determine how much Morgan has saved over time.</li>
+                 <li>Use the recursive system to generate values for the amount of money Morgan has in the bank after 13 weeks of saving.</li>
+                 <li>Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.</li>
+                 <li>Are the ordered pairs graphed in part (c) linear?  Explain why or why not.</li>
+                 <li>State the domain and range of the recursively defined function.</li>
                </ol>
                </p>
            </statement>
         </exercise>
 
-        <exercise>
-          <statement>
-            <p>Suppose Morgan  wants to buy a television that costs <m>\$549</m>.  He has a part-time job, and he is able to save <m>\$85.00</m> each week.  Suppose he accumulates the money at home.
-              <ol>
-                <li>Write a recursive system that can be used to determine how much Morgan has saved over time.</li>
-                <li>Use the recursive system to generate values for the amount of money Morgan has saved in thirteen weeks.</li>
-                <li>Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.</li>
-                <li>The points graphed in part (c) should appear linear.  Explain why the situation implies that these ordered pairs are linear.</li>
-                <li>Write an explicit function of the form <m>A=f(t)</m> that could be used to generate the same ordered pairs you graphed in part (c).</li>
-                <li>State the domain and the range of the explicit function within the context of this problem.  Compare them to the domain and range of the recursively defined function.</li>
-              </ol>
-              </p>
-          </statement>
-       </exercise>
-
-       <exercise>
-         <statement>
-           <p>Now suppose that Morgan deposits his savings in a bank that will pay <m>0.02\%</m> interest each week.
-             <ol>
-               <li>Write a recursive system that can be used to determine how much Morgan has saved over time.</li>
-               <li>Use the recursive system to generate values for the amount of money Morgan has in the bank after 13 weeks of saving.</li>
-               <li>Make a graph to show the amount Morgan has saved versus the number of weeks he has been saving.</li>
-               <li>Are the ordered pairs graphed in part (c) linear?  Explain why or why not.</li>
-               <li>State the domain and range of the recursively defined function.</li>
-             </ol>
-             </p>
-         </statement>
-      </exercise>
-
-     </exercises>
+       </exercises>
 		 </section>
           <!-- /chapter04-section01.xml -->
 
      <section xml:id="chapter04-section02">
-     <title>Using Recursion to Understand Loans and Investments</title>
+       <title>Using Recursion to Understand Loans and Investments</title>
 
-      <p>Recursive systems are useful for finding solutions to various types of problems.</p>
-      <p>Suppose you are interested in purchasing a car and need a <m>\$10,000</m> loan. The lending agency is going to charge you interest each month and you are going to make a payment each month. You plan to pay <m>\$230</m> each month until the loan is paid off. Suppose the interest rate is <m>0.45\%</m> per month (approximately <m>5.4\%</m> per year). How long will it take you to repay the loan? What is the total amount you will have to repay?  You can answer these questions using recursion.</p>
-      <p>When making monthly payments to repay a loan, an interest payment is charged on all of the money that is owed at the end of each month.  In this example, at the end of the first month you will owe <m>(0.0045)(10,000)=\$45.00</m> in interest. After making the first payment you will owe <m>\$10,000+\$45-\$230=\$9815</m>. The amount you still owe on the loan at the end of a month is equal to the amount you owed previously plus the interest minus the amount of your payment. This is expressed in a recursive system as: </p>
-      <md>
-        <mrow>L_0=10,000, L_{n-1}+(0.0045)\cdot L_{n-1}-230, where n=1,2,3,...</mrow>
-      </md>
-      <p>where <m>L_n</m> is the amount you owe on the loan after <m>n</m> months.  This amount is also known as the <em>principal</em>, or the <em>outstanding balance</em>. If we iterate this system, the values we generate represent the outstanding balance at the end of each month.</p>
-      <md>
-        <mrow>L_1=L_0+(0.0045)\cdot L_0-230=10,000+(0.0045)\cdot 10,000-230=9,815</mrow>
-        <mrow>L_2=L_1+(0.0045)\cdot L_1-230=9,815+(0.0045)\cdot 9,815-230=9,629.17</mrow>
-        <mrow>L_3=L_2+(0.0045)\cdot L_2-230=9,629.17+(0.0045)\cdot 9,629.17-230=9,442.50</mrow>
-      </md>
-      <p>Note that values have been rounded to the nearest cent.  All the decimal places on the calculator were retained in the computations.</p>
-      <p>After three months, you will owe <m>\$9,442.50</m> on the loan. Notice that you have paid a total of <m>\$230\cdot 3=\$690</m>, but only <m>\$10,000-\$9442.50=\$557.50</m> was applied towards decreasing the principal of the loan. The remaining <m>\$132.50</m> was payment of interest.</p>
-      <p>We can continue generating values of <m>L_n</m> using a more compact form of the iterative equation,</p>
-      <md>
-        <mrow>L_n=(1.0045)\cdot L_{n-1}-230</mrow>
-      </md>
-      <p>which yields</p>
-      <md>
-        <mrow>L_4=(1.0045)\cdot L_3-230=\$9,254.99</mrow>
-        <mrow>L_5=(1.0045)\cdot L_4-230=\$9,066.64</mrow>
-        <mrow>L_6=(1.0045)\cdot L_5-230=\$8,877.44</mrow>
-      </md>
-      <p>After six months, you owe <m>\$8,877.44</m> of the original <m>\$10,000</m> principal.  You have paid <m>\$1,380</m> in interest, and this payment has reduced the outstanding balance by <m>\$1,122.56</m>.  Over <m>\$250</m> was interest on the loan.</p>
-      <p>If we continue the payments of <m>\$230</m> for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment</p>
-      <p>The graph and partial table in Figure XX show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
+        <p>Recursive systems are useful for finding solutions to various types of problems.</p>
+        <p>Suppose you are interested in purchasing a car and need a <m>\$10,000</m> loan. The lending agency is going to charge you interest each month and you are going to make a payment each month. You plan to pay <m>\$230</m> each month until the loan is paid off. Suppose the interest rate is <m>0.45\%</m> per month (approximately <m>5.4\%</m> per year). How long will it take you to repay the loan? What is the total amount you will have to repay?  You can answer these questions using recursion.</p>
+        <p>When making monthly payments to repay a loan, an interest payment is charged on all of the money that is owed at the end of each month.  In this example, at the end of the first month you will owe <m>(0.0045)(10,000)=\$45.00</m> in interest. After making the first payment you will owe <m>\$10,000+\$45-\$230=\$9815</m>. The amount you still owe on the loan at the end of a month is equal to the amount you owed previously plus the interest minus the amount of your payment. This is expressed in a recursive system as: </p>
+        <md>
+          <mrow>L_0=10,000, L_{n-1}+(0.0045)\cdot L_{n-1}-230, where n=1,2,3,...</mrow>
+        </md>
+        <p>where <m>L_n</m> is the amount you owe on the loan after <m>n</m> months.  This amount is also known as the <em>principal</em>, or the <em>outstanding balance</em>. If we iterate this system, the values we generate represent the outstanding balance at the end of each month.</p>
+        <md>
+          <mrow>L_1=L_0+(0.0045)\cdot L_0-230=10,000+(0.0045)\cdot 10,000-230=9,815</mrow>
+          <mrow>L_2=L_1+(0.0045)\cdot L_1-230=9,815+(0.0045)\cdot 9,815-230=9,629.17</mrow>
+          <mrow>L_3=L_2+(0.0045)\cdot L_2-230=9,629.17+(0.0045)\cdot 9,629.17-230=9,442.50</mrow>
+        </md>
+        <p>Note that values have been rounded to the nearest cent.  All the decimal places on the calculator were retained in the computations.</p>
+        <p>After three months, you will owe <m>\$9,442.50</m> on the loan. Notice that you have paid a total of <m>\$230\cdot 3=\$690</m>, but only <m>\$10,000-\$9442.50=\$557.50</m> was applied towards decreasing the principal of the loan. The remaining <m>\$132.50</m> was payment of interest.</p>
+        <p>We can continue generating values of <m>L_n</m> using a more compact form of the iterative equation,</p>
+        <md>
+          <mrow>L_n=(1.0045)\cdot L_{n-1}-230</mrow>
+        </md>
+        <p>which yields</p>
+        <md>
+          <mrow>L_4=(1.0045)\cdot L_3-230=\$9,254.99</mrow>
+          <mrow>L_5=(1.0045)\cdot L_4-230=\$9,066.64</mrow>
+          <mrow>L_6=(1.0045)\cdot L_5-230=\$8,877.44</mrow>
+        </md>
+        <p>After six months, you owe <m>\$8,877.44</m> of the original <m>\$10,000</m> principal.  You have paid <m>\$1,380</m> in interest, and this payment has reduced the outstanding balance by <m>\$1,122.56</m>.  Over <m>\$250</m> was interest on the loan.</p>
+        <p>If we continue the payments of <m>\$230</m> for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment</p>
+        <p>The graph and partial table in Figure XX show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
+
+        <sidebyside widths ="30% 70%">
+        <caption>Loan Ammoritization</caption>
+        <figure xml:id="figure-table-loan-balance">
+          <image xml:id="table-loan-balance">
+            <latex-image-code>
+              <![CDATA[
+              \pgfplotstabletypeset[
+                    col sep=comma,
+                    column type=l,
+                    every head row/.style={after row=\hline},
+                    every column/.style={column type/.add={|}{|}},
+                    every first column/.style={column type/.add={}{|}},
+                    columns/0/.style={string type, column name={$n$}},
+                    columns/1/.style={string type, column name=Loan Balance},
+                  ]{data-loan-balance-table.csv}
+              ]]>
+            </latex-image-code>
+          </image>
+        </figure>
+
+        <figure xml:id="figure-plot-loan-balance">
+            <image xml:id="plot-loan-balance">
+                <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                    \begin{tikzpicture}
+                    \begin{axis}[
+                       axis line style = {<->},
+                       width = 0.5\linewidth,
+                       xlabel = Number of Payments,
+                       y label style={at={(axis description cs:-.1,.5)}},
+                       ylabel = Outstanding Balance (\$),
+                       label style={font=\tiny},
+                       xmin = -5, xmax= 50,
+                       ymin = -2000, ymax=12000,
+                       ytick = {0,2000, ...,10000},
+                       xtick = {0, 4, ...,48},
+                       tick label style={font=\tiny},
+                    ]
+
+                      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-loan-balance-graph.csv};
+
+                    \end{axis}
+                \end{tikzpicture}]]>
+                </latex-image-code>
+            </image>
+        </figure>
+       </sidebyside>
+
+       <p>Since the first <m>47</m> payments were each <m>\$230</m>, the total amount paid is <m>47\cdot \$230 + \$342.74 = \$11,152.74</m>.  We see that it costs <m>\$1,152.74</m> to borrow <m>\$10,000</m> for <m>48</m> months.</p>
+       <p>The process of paying off a loan is known as <em>amortizing the loan</em>, or <em>loan amortization</em>. When we study loan amortization, we are interested in the amount borrowed, the interest rate, the payment, the length of time it will take to repay the loan and the total amount the borrower will have to repay.</p>
+       <p>We can generalize the recursive system used to determine the total amount repaid as follows.  If we borrow an amount <m>A</m> and let <m>r</m> represent the interest rate per time period and <m>P</m> the amount of the payment during each time period, we can describe the amount owed after <m>n</m> time periods with the system</p>
+       <md>
+         <mrow>L_0=A, L_n=L_{n-1} + r \cdot L_{n-1} - P , n=1,2,3,...</mrow>
+       </md>
+       <p>or</p>
+       <md>
+         <mrow>L_0=A,L_n=(1+r)L_{n-1} - P , n=1,2,3,...</mrow>
+       </md>
+       <p>You should complete practice problem 1 at the end of the section at this time</p>
+       <p>When borrowers take out a loan, they typically know the amount they want to borrow, the interest rate they will have to pay, and the length of time they have to pay off the loan.  We are interested in determining the payment that will allow the borrower to pay back the loan in the required time.  For most loans, the borrower makes payments every month. Thus, a car loan that needs to be repaid in <m>5</m> years requires <m>60</m> monthly payments and a mortgage loan that is repaid in <m>15</m> years requires <m>180</m> monthly payments. For simplicity's sake, our first few examples will assume that payments are made annually (that is, once per year) rather than monthly.</p>
+
+       <example>
+         <title>Finding the Yearly Payment Needed to Pay Off a Loan</title>
+         <p>Suppose you buy a car and take out a loan of <m>\$22,000</m> at <m>6.5\%</m> annual interest to be paid back over four years.  What is the yearly payment you must make to pay off the loan in four equal payments?</p>
+         <solution>
+           <p>Referring to equation XX we have</p>
+           <md>
+             <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1}-P</mrow>
+           </md>
+           <p>and our goal is to find the value of <m>P</m> so that <m>L_4=0</m></p>
+           <p>If there were no interest charged, you would have to make a payment of <m>\$5,500</m> each year to repay the <m>\$22,000</m>.  Since you must pay interest on the loan, <m>\$5,500</m> per year is obviously too small a payment and we conclude that <m> \> \$5,500</m>.  We can confirm that <m>\$5,500</m> is too small a payment  with the recursive system:</p>
+           <md>
+             <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1} - 5,500</mrow>
+           </md>
+
+           <table>
+           <tabular bottom="medium">
+             <row bottom="major">
+               <cell right="medium"><m>n</m></cell>
+               <cell><m>L_n</m></cell>
+             </row>
+             <row>
+               <cell right="medium"><m>0</m></cell>
+               <cell><m>\$22,000</m></cell>
+             </row>
+             <row>
+               <cell right="medium"><m>1</m></cell>
+               <cell><m>\$22,000(1+0.065)-\$5,500=\$17,930</m></cell>
+             </row>
+             <row>
+               <cell right="medium"><m>2</m></cell>
+               <cell><m>\$17,930(1+0.065)-\$5,500=\$13,595.45</m></cell>
+             </row>
+             <row>
+               <cell right="medium"><m>3</m></cell>
+               <cell><m>\$13,595.45(1+0.065)-\$5,500=\$8,979.15</m></cell>
+             </row>
+             <row>
+               <cell right="medium"><m>4</m></cell>
+               <cell><m>\$8,979.15(1+0.065)-\$5,500=\$4,062.80</m></cell>
+             </row>
+           </tabular>
+         </table>
+
+         <p>This confirms that if we make an annual payment of <m>\$5,500</m> for each of 4 years, the outstanding balance on a loan of <m>\$22,000</m> is <m>\$4,062.80</m> at the end of the <m>4</m> years. So <m>\$5,500</m> is too small an annual payment to pay off the loan.</p>
+
+         <p>With a <m>6.5\%</m> annual interest rate, we know that the interest for the first year is <m>\$1,430</m> ( <m>6.5\%</m> of <m>\$22,000</m> ), so a reasonable guess for the payment might be <m>\$5500+\$1430=\$6930</m>. However, in the second year we will need to pay less than <m>\$1430</m> in interest because the outstanding balance has decreased.  Therefore, a payment of <m>\$6930</m> per year will result in an overpayment for the last three years.  The calculations below show that <m>\$6930</m> is indeed too large an annual payment; that is, <m>P \lt 6,930</m>.</p>
+
+         <md>
+           <mrow>L_0=22,000, L_n=(1+0.065)L_{n-1}-6,930</mrow>
+         </md>
+
+                  <table>
+                  <tabular bottom="medium">
+                    <row bottom="major">
+                      <cell right="medium"><m>n</m></cell>
+                      <cell><m>L_n</m></cell>
+                    </row>
+                    <row>
+                      <cell right="medium"><m>0</m></cell>
+                      <cell><m>\$22,000</m></cell>
+                    </row>
+                    <row>
+                      <cell right="medium"><m>1</m></cell>
+                      <cell><m>\$22,000(1+0.065)-\$6,930=\$16,500</m></cell>
+                    </row>
+                    <row>
+                      <cell right="medium"><m>2</m></cell>
+                      <cell><m>\$16,500(1+0.065)-\$6,930=\$10,642.50</m></cell>
+                    </row>
+                    <row>
+                      <cell right="medium"><m>3</m></cell>
+                      <cell><m>\$10,642.50(1+0.065)-\$6,930=\$4,404.26</m></cell>
+                    </row>
+                    <row>
+                      <cell right="medium"><m>4</m></cell>
+                      <cell><m>\$4,404.26(1+0.065)-\$6,930=-\$2,239.46</m></cell>
+                    </row>
+                  </tabular>
+                </table>
+
+              <p>We have established that <m>\$5500</m> is too small a payment and <m>\$6930</m> is too large a payment; that is, <m>5,500 \lt P \lt 6,930</m>  Our next logical guess for a payment might be mid-way between these two payments, or <m>\$6215</m>.  We can do recursive calculations to see if this payment is too small, which would result in a positive outstanding balance after <m>4</m> years, or if this payment is too large, resulting in a negative outstanding balance after <m>4</m> years.</p>
+              <p>The outstanding principal is modeled by the recursive system</p>
+              <md>
+                <mrow>L_0=22,000, L_n=(1+0.065)L_{n-1} - 6,215</mrow>
+              </md>
+              <p>The successive principals are shown in the table.</p>
+
+              <table>
+              <tabular bottom="medium">
+                <row bottom="major">
+                  <cell right="medium"><m>n</m></cell>
+                  <cell><m>L_n</m></cell>
+                </row>
+                <row>
+                  <cell right="medium"><m>0</m></cell>
+                  <cell><m>\$22,000</m></cell>
+                </row>
+                <row>
+                  <cell right="medium"><m>1</m></cell>
+                  <cell><m>\$22,000(1+0.065)-\$6,215=\$17,215</m></cell>
+                </row>
+                <row>
+                  <cell right="medium"><m>2</m></cell>
+                  <cell><m>\$17,215(1+0.065)-\$6,215=\$12,118.98</m></cell>
+                </row>
+                <row>
+                  <cell right="medium"><m>3</m></cell>
+                  <cell><m>\$12,118.98(1+0.065)-\$6,215=\$6,691.71</m></cell>
+                </row>
+                <row>
+                  <cell right="medium"><m>4</m></cell>
+                  <cell><m>\$6,691.71(1+0.065)-\$6,215=\$911.67</m></cell>
+                </row>
+              </tabular>
+            </table>
+
+            <p>An annual payment of <m>\$6,215</m> is not sufficient to pay off the loan in four years, as a balance of <m>\$911.67</m> remains after the four payments.  We conclude that <m>6,215 \lt P \lt 6,930</m> and we need to pay more than <m>\$6,215</m>.  If we again select the average of two payments, one that is too large and one that is too small, we will have arrived at a better guess.  We know <m>\$6,930</m> is too large and <m>\$,6215</m> is too small, so our next guess will be <m>\frac{6930+6215}{2} = \$6,572.50</m>.  The successive balances would now be as shown.</p>
+
+            <table>
+            <tabular bottom="medium">
+              <row bottom="major">
+                <cell right="medium"><m>n</m></cell>
+                <cell><m>L_n</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>0</m></cell>
+                <cell><m>\$22,000</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>1</m></cell>
+                <cell><m>\$22,000(1+0.065)-\$6,572.50=\$16,857.50</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>2</m></cell>
+                <cell><m>\$16,857.50(1+0.065)-\$6,572.50=\$11,380.74</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>3</m></cell>
+                <cell><m>\$11,380.74(1+0.065)-\$6,572.50=\$5,547.99</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>4</m></cell>
+                <cell><m>\$5,547.99(1+0.065)-\$6,572.50=-\$663.90</m></cell>
+              </row>
+            </tabular>
+          </table>
+          <p>We see that a payment of <m>\$6,572.50</m> is too large since after <m>4</m> payments you have paid <m>\$663.90</m> more than necessary. We now know that the appropriate payment <m>P</m> is in the interval  <m>6,215 \lt  P \lt 6,572.50</m> </p>
+
+          <p>We can continue the process of averaging two payments, one that is too large and one that is too small. Eventually we find that three payments of <m>\$6,393.75</m> and a fourth balloon payment of <m>\$6,393.75 + \$123.89</m> will bring the outstanding balance to zero dollars.</p>
+
+         </solution>
+       </example>
+       <p>The process used to find an appropriate payment is called <em>binary search</em>. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.</p>
+
+
+       <exercises>
+         <exercise>
+           <statement>
+             <p>How long will it take to amortize a loan and how much will the loan cost under each of the following conditions?  In each case <m>L_0, r</m> and <m>P</m> represent the initial amount borrowed, the monthly interest rate, and the monthly payment, respectively. Determine the balloon payment for each scenario as well.
+               <ol>
+                 <li><m>L_0=\$5000, r=1\%</m> and <m>P=\$200</m></li>
+                 <li><m>L_0=\$5000, r=1.5\%</m> and <m>P=\$200</m></li>
+                 <li><m>L_0=\$5000, r=0.5\%</m> and <m>P=\$200 </m></li>
+                 <li><m>L_0=\$5000, r=1\%</m> and <m>P=\$250</m></li>
+               </ol>
+             </p>
+           </statement>
+         </exercise>
+
+         <exercise>
+           <statement>
+             <p>Maisha opens a retirement account on her <m>35^{th}</m> birthday with a deposit of <m>\$2,400</m>.  Each year on her birthday, she plans to deposit an additional <m>\$2,400</m>.  The account earns interest at a rate of <m>10\%</m> annually.
+               <ol>
+                 <li>How much will Maisha have saved by the time she retires at age <m>65</m>?</li>
+                 <li>Suppose Maisha wants to have <m>\$1</m> million in the account by age <m>65</m>.  To the nearest hundred dollars, how much should she deposit each year?</li>
+                 <li>Suppose Maisha starts saving ten years earlier, at age <m>25</m>.  To the nearest hundred dollars, how much should she deposit each year to have <m>\$1</m> million at retirement?</li>
+               </ol>
+             </p>
+           </statement>
+         </exercise>
+
+         <exercise>
+           <statement>
+             <p>You and your parents need to borrow money to pay for your college tuition.  You are looking for an education loan for <m>\$50,000</m>.  The Village Bank offers a <m>15</m>-year loan at <m>7\%</m> annual interest.  The Hometown Bank offers a <m>20</m>-year loan at <m>6\%</m> annual interest.  Which loan is better?  Explain what criteria you used to decide.</p>
+           </statement>
+         </exercise>
+
+         <exercise>
+           <statement>
+             <p>Isaac wants to buy a car and is shopping for a four year (<m>48</m> month) loan. If he needs to borrow <m>\$24,000</m> and the loan charges <m>4.6\%</m> annual interest, what must be his annual payment to pay off the loan in the required <m>4</m> years?</p>
+           </statement>
+         </exercise>
+
+         <exercise>
+           <statement>
+             <p>Kyle and Taylor have taken out a loan for <m>\$175,000</m> to buy their first house. They have a <m>15</m>-year mortgage and an annual interest rate of <m>3.9\%</m>.
+               <ol>
+                 <li>The lending agency tells them that their monthly payment is <m>\$1,290</m>, and so they pay <m>\$1,290</m> every month for <m>179</m> months. What must be their final payment (the <m>180^{th}</m>) so that the loan is paid off?  In total, how much did it cost them to borrow <m>\$175,000</m> for <m>15</m> years?</li>
+                 <li>Kyle and Taylor recognize that they may save money in the long run if they make payments larger than what the lending agency requires. They decide to pay <m>\$2,000</m> for the first <m>5</m> years (<m>60</m> months) and then pay the required <m>\$1,290</m> per month until the loan is paid off. How long will it take them to bring their outstanding balance to zero. In total, how much did it cost them to borrow <m>\$175,000</m> for <m>15</m> years?</li>
+               </ol>
+             </p>
+           </statement>
+         </exercise>
+
+         <exercise>
+           <statement>
+             <p>Terry has his heart set on owning a Tesla electric car. He will sell his current car to raise some of the money, but still needs to take out a <m>\$55,000</m> loan to be able to afford a Tesla. His credit union will charge him <m>4.2\%</m> interest per year, a special rate for an energy efficient car. He will make equal monthly payments in order to pay off the loan in <m>72</m> months.</p>
+
+             <p>Your task is to determine what his monthly payment needs to be. You will make several educated guesses about how much he needs to pay each month in order to finish paying off the loan and bring his outstanding balance down to zero with <m>72</m> payments.
+             <ol>
+               <li>In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of <m>\$950</m> each month, he will have overpaid by about <m>\$6,900</m> after the <m>72^{nd}</m> payment.
+
+                 <table>
+                 <tabular bottom="medium">
+                   <row bottom="major">
+                     <cell right="medium">Monthly Payment</cell>
+                     <cell>Outstanding Balance after <m>72</m> Monthly Payments</cell>
+                   </row>
+                   <row>
+                     <cell right="medium"><m>\$950</m></cell>
+                     <cell><m>-\$6905.08</m></cell>
+                   </row>
+                   <row>
+                     <cell right="medium"></cell>
+                     <cell></cell>
+                   </row>
+                   <row>
+                     <cell right="medium"></cell>
+                     <cell></cell>
+                   </row>
+                   <row>
+                     <cell right="medium"></cell>
+                     <cell></cell>
+                   </row>
+                   <row>
+                     <cell right="medium"></cell>
+                     <cell></cell>
+                   </row>
+                 </tabular>
+                 </table>
+               </li>
+               <li>Make a scatterplot that shows monthly payment on the horizontal axis and outstanding balance on the vertical.</li>
+               <li>Describe how you can take advantage of the shape of the scatterplot to find the monthly payment that will yield a zero outstanding balance after <m>72</m> months. </li>
+               <li>Confirm that a monthly payment of <m>\$865.51</m> will pay off the loan (the balance will round to zero).  What does this number have to do with the scatterplot you made in <m>(b)</m>?</li>
+             </ol>
+           </p>
+           </statement>
+         </exercise>
+
+       </exercises>
    </section>
 
+   <section xml:id="chapter04-section03">
+     <title>Geometric Growth and Decay</title>
+      <p>Some recursively defined functions have important applications in life.  One of the simplest, yet most important, represents <em>geometric decay</em>. In geometric decay, the value of the function at time <m>n</m> is directly proportional to the value at time. This relationship suggests a recursive definition for geometric decay. The first example from Section <xref ref="chapter04-section01" />, Example <xref ref="ibuprofen-example-one-dose" />, involved the amount of ibuprofen in Joan's system at time <m>n</m> if she takes a single <m>200</m> mg tablet. Since her body filters out <m>67\%</m> of the ibuprofen present, the amount remaining after <m>n</m> time intervals is always <m>33\%</m> of the amount remaining after <m>n-1</m> time intervals.</p>
+      <p>In that case, we calculated the amount of drug in Joan's boady with the recursive system</p>
+      <md>
+        <mrow>D_0=200, D_n=0.33 \cdot D_{n-1}, n=1,2,3,...</mrow>
+      </md>
+      <example xml:id="example-fading-blue-jeans">
+        <title>Fading Blue Jeans</title>
+        <p>Blue jeans fade when they are washed. Suppose a pair of jeans loses <m>2\%</m> of its color with each washing.  How much of the original color is left after <m>50</m> washes?</p>
+        <solution>
+          <p>In this problem, we use the system</p>
+          <md>
+            <mrow>C_0=1, C_n=0.98 \cdot C_{n-1}, n=1,2,3,...</mrow>
+          </md>
+          <p>where <m>C_n</m> is the amount of color remaining in the jeans after <m>n</m> washings</p>
+          <p>We use <m>1</m> as the initial value to represent all or <m>100\%</m> of the color.  Since we want to measure the amount of color remaining, the coefficient in the recursive equation is <m>0.98</m>.  With <m>50</m> iterations of the equation for <m>C_n</m>, we find that the jeans have about <m>36\%</m> of their original color left after <m>50</m> washings.</p>
+        </solution>
+      </example>
+
+      <example xml:id="example-electrical-power-demand">
+        <title>Electrical Power Demand</title>
+        <p>The amount of electrical power used by a community is increasing by 5% per year.  This year, they used 500 thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?</p>
+        <solution>
+          <p>This is an example of <em>geometric growth</em>, since the amount of power is increasing each year. We use the recursive system</p>
+          <md>
+            <mrow>P_0=500, P_n=1.05 \cdot P_{n-1}, n=1,2,3,...</mrow>
+          </md>
+          <p>Since the amount of power used is increasing by <m>5\%</m> each year, next year the citizens of the community will use <m>105\%</m> of what they used this year.  By iterating the equation for <m>P_n</m>, we find that after <m>14</m> years the community will use about <m>990</m> thousand kwh per year and after <m>15</m> years they will use about <m>1039</m> thousand kwh per year.  The amount of power required by the community will have doubled in a little less than <m>15</m> years.  Note that this conclusion assumes that the demand for electrical power continues to increase by <m>5\%</m> per year.</p>
+        </solution>
+      </example>
+
+      <example xml:id="example-radioactive-decay">
+        <title>Radioactive Decay</title>
+        <p>Potassium-42 is a radioactive element that is often used in biological experiments as a tracer element.  Potassium-42, like all radioactive elements, decays into a non-radioactive form at a rate proportional to the amount present.  Potassium-42 loses <m>5.545\%</m> of its mass every hour.  If <m>1</m> milligram of potassium-42 is initially present in an animal, at what time will only <m>0.1</m> milligram be present?</p>
+        <solution>
+          <p>Note that the effect of losing <m>5.545\%</m> is equivalent to retaining <m>94.455\%</m>. We use the recursive system</p>
+          <md>
+            <mrow>P_0=1, P_n=0.94455 \cdot P_{n-1}, n=1,2,3,...</mrow>
+          </md>
+          <p>We are interested in finding the amount of time until <m>P_n</m> is less than or equal to <m>0.1</m>.  Iterating the equation for <m>P_n</m>, we find that <m>P_{40} = 0.1021</m> and <m>P_{41} = 0.0964</m>. So after <m>40</m> hours, <m>0.1021</m> mg of potassium-42 remain, and after <m>41</m> hours, <m>0.0964</m> mg remain. Sometime between <m>40</m> and <m>41</m> hours we expect to have only <m>0.1</m> mg of potassium-42 remaining.</p>
+
+          <p>The recursive system we used to generate amounts of potasium-42 does not allow us to determine the amount present between the <m>40^{th}</m> hour and the <m>41^{st}</m> hour.  The amount of potassium-42 changes incrementally between the <m>40^{th}</m> and the <m>41^{st}</m> hours, but the recursive equation we have used to represent this phenomenon cannot give us information about potassium levels between <m>P_{40}</m> and <m>P_{41}</m>.</p>
+        </solution>
+      </example>
+
+      <p>Each of the three previous examples uses a recursive system that can be written as </p>
+      <md>
+        <mrow>Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...</mrow>
+      </md>
+      <p> If <m>k \gt 0</m>, this system represents geometric growth (with growth rate <m>k</m>); as <m>n</m> increases, the value of <m>Y_n</m>  increases.  If <m>k \lt 0</m>, the system represents geometric decay (and <m>k</m> is the decay rate); as <m>n</m> increases, the value of <m>Y_n</m>  decreases.  In either case, the next value of <m>Y_n</m> depends entirely on the value of <m>k</m> and the old value of <m>Y_n</m>.</p>
+      <p>Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example <xref ref="example-radioactive-decay" /> to describe electricity consumption</p>
+      <md>
+        <mrow>P_0=500</mrow>
+        <mrow>P_1=(1+0.05)P_0</mrow>
+        <mrow>P_2=(1+0.05)P_1</mrow>
+        <mrow>P_3=(1+0.05)P_2</mrow>
+        <mrow>P_4=(1+0.05)P_3</mrow>
+      </md>
+      <p>We can rewrite each of these equations in terms of <m>P_0</m>, which yields</p>
+      <md>
+        <mrow>P_1=(1.05)P_0</mrow>
+        <mrow>P_2=(1.05) P_1=(1.05) (1.05)P_0=(1.05)^2 P_0</mrow>
+        <mrow>P_3=(1.05) P_2=(1.05) (1.05)^2 P_0=(1.05)^3 P_0</mrow>
+        <mrow>P_4=(1.05) P_3=(1.05) (1.05)^3 P_0=(1.05)^4 P_0</mrow>
+      </md>
+      <p>If we continue this process, we see that the <m>n^{th}</m> term is given by</p>
+      <md>
+        <mrow>P_n=(1.05)^n P_0</mrow>
+      </md>
+      <p>In general, we can convert the recursive system for geometric growth or decay, namely</p>
+      <md>
+        <mrow>Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...</mrow>
+      </md>
+      <p>to an explicit function in terms of <m>a, k, </m>and <m>n</m>, as follows:</p>
+      <md>
+        <mrow>Y_0=a</mrow>
+        <mrow>Y_1=(1+k)Y_0 = (1+k)a</mrow>
+        <mrow>Y_2=(1+k)Y_1 = (1+k)(1+k)a = a(1+k)^2</mrow>
+        <mrow>Y_3=(1+k)Y_2 = (1+k)a(1+k)^2 = a(1+k)^3</mrow>
+      </md>
+      <p>If we continue this process, we see that the <m>n^{th}</m> term is given by</p>
+      <md>
+        <mrow>Y_n=a(a+k)^n</mrow>
+      </md>
+      <p>Note the distinction between the recursive equation</p>
+      <md>
+        <mrow>Y_n=Y_{n-1}(1+k)</mrow>
+      </md>
+      <p>and the explicit equation</p>
+      <md>
+        <mrow>Y_n=a(1+k)^n</mrow>
+      </md>
+      <p>The recursive equation shows that each value of <m>Y_n</m>  is obtained from the preceding value by multiplying by <m>(1+k)</m>. The explicit equation uses an exponent to represent this repeated multiplication.</p>
+      <p>If we wanted the value of <m>Y_{100}</m>, the recursive equation would require that values of <m>Y_1, Y_2, Y_3,</m> and so forth up to <m>Y_{99}</m>,  all be calculated. In contract, the explicit equaiotn <m>Y_n=a(1+k)^n</m> allows us to calculate <m>Y_{100}</m> without requiring any intermediate values.</p>
+      <p>The explicit equation can be rewritten using the more traditional functional notation:</p>
+      <definition xml:id="explicit-geometric-growth-equation">
+        <title>Explicit Function for Geometric Growth</title>
+        <statement>
+          <md>
+            <mrow>Y(n)=a(1+k)^n</mrow>
+          </md>
+        </statement>
+      </definition>
+      <p>In equation <xref ref="explicit-geometric-growth-equation" /> the independent variable <m>n</m> is in the exponent, so this function is an exponential function. The exponential function <m>Y(n)=a(1+k)^n</m> is the closed form representation of the recursive system  <m>Y_0=a,Y_n=(1+k)Y_{n-1}</m></p>
+
+      <example xml:id="example-one-time-bank-desposit">
+        <statement>
+          <p>Suppose you plan to make a one-time deposit into a bank account that will earn <m>0.45\%</m> monthly interest.  How large must this deposit be so that you will have a college fund of <m>\$75,000</m> available after <m>18</m> years or <m>216</m> months?</p>
+        </statement>
+        <solution>
+          <p>We can solve this problem using the recursive model <m>S_0 = a</m>, <m>S_n = (1.0045) S_{n-1}</m> but we will have to guess and check to find the appropriate value of <m>S_0</m> that gives of <m>S_{216} = 75,000</m>.  Using the closed form <m>S(n)=a(1.0045)^n</m> , we need to find the value of <m>a</m> such that <m>75,000 = a (1.0045)^{216}</m>.  Solving for <m>a</m> gives the equation <m>a = \frac{75,000}{(1.0045)^{216}}</m> , or <m>a = \$28,436.36</m>.  We see that the closed form is useful when we do not need all the intermediate values that the recursive form generates.</p>
+        </solution>
+      </example>
+
+      <example xml:id="example-continuous-discrete">
+        <title>Continuous Versus Discrete</title>
+        <statement>
+          <p>In Example <xref ref="example-radioactive-decay" /> we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system</p>
+          <md>
+            <mrow>P_0=1, P_n=0.94455P_{n-1}, n=1,2,3,...</mrow>
+          </md>
+          <p>to determine the amount of Potassium-42 remaining after <m>n</m> 1-hour time intervals.</p>
+          <p>We could also use the explicit function</p>
+          <md>
+            <mrow>P(t)=1 \cdot (0.944355)^t</mrow>
+          </md>
+          <p>to represent the amount of Potassium-42 remaining <m>t</m> hours after the decay process begins. Use each of these representations to determine how much Potassium remains after <m>12</m> hours.</p>
+        </statement>
+        <solution>
+          <p>This is what our work looks like if we use the recursive system:</p>
+          <md>
+            <mrow>P_0=1</mrow>
+            <mrow>P_1=0.94455 \cdot P_0 = 0.94455</mrow>
+            <mrow>P_2=0.94455 \cdot P_1 = 0.94455 \cdot 0.94455 = 0.892175</mrow>
+            <mrow>P_3=0.94455 \cdot P_2 = 0.94455 \cdot 0.892175 = 0.847036</mrow>
+            <mrow>P_4=0.94455 \cdot P_3 = 0.94455 \cdot 0.847036 = 0.7959757</mrow>
+            <mrow>...</mrow>
+            <mrow>P_{12}=0.94455 \cdot P_{11} = 0.94455 \cdot 0.53392 = 0.5043121</mrow>
+          </md>
+          <p>If we use the explicit function:</p>
+          <md>
+            <mrow>P(12)=1(0.94455)^{12} = 0.5043121</mrow>
+          </md>
+          <p>Both representations tell us that in <m>12</m> hours the amount of Potassium-42 will have decreased from <m>1</m> milligram to about <m>0.5</m> milligram.</p>
+          <p>We need to be aware of the advantages and disadvantages of each representation that we used in Example <xref ref="example-one-time-bank-desposit" />. The recursive system is inherently discrete.  Values of <m>P_n</m> can be calculated only for positive interger values of <m>n</m>, where n counts the number of <m>1</m>-hour time intervals that have elapsed since we measured <m>1</m> milligram of potassium-42. The recursive representation is not able to tell us anything about the amount of potassium present between <m>P_2</m> and <m>P_3</m>, in fact, <m>P_{2.7}</m> is not even defined.</p>
+          <p>The explicit function <m>P(t)=1 \cdot (0.944355)^t</m> uses <m>t</m> as a variable whose domain is all positive real numbers and <m>P(2.7)</m> is well-defined and meaningful. The explicit function can tell us the amount of Potassium-42 present at any time on the continuum between zero and infinity.</p>
+          <p>Graphs of both the recursive and the explicit representations are shown below</p>
+
+          <sidebyside widths ="50% 50%">
+          <caption>Mg of Potassium Over Time: Discrete and Continuous Models</caption>
+          <figure xml:id="figure-discrete-p42">
+            <image xml:id="plot-discrete-p42">
+              <latex-image-code>
+                <![CDATA[
+                    \begin{tikzpicture}
+                    \begin{axis}[
+                       axis line style = {<->},
+                       width = 0.5\linewidth,
+                       xlabel = 1-hour time periods,
+                       y label style={at={(axis description cs:0,.5)}},
+                       ylabel = Mg of Potassium,
+                       label style={font=\tiny},
+                       xmin = -2, xmax = 17,
+                       ymin = -0.2, ymax = 1.2,
+                       ytick = {0,0.1, ...,1.2},
+                       xtick = {0, 1, ...,17},
+                       tick label style={font=\tiny},
+                    ]
+
+                      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-potassium-42.csv};
+
+                    \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
+
+          <figure xml:id="figure-continuous-p42">
+              <image xml:id="plot-continuous-p42">
+                  <latex-image-code>
+                  <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                  <![CDATA[
+                      \begin{tikzpicture}
+                      \begin{axis}[
+                         axis line style = {<->},
+                         width = 0.5\linewidth,
+                         xlabel = Elapsed Time (hrs),
+                         y label style={at={(axis description cs:0,.5)}},
+                         ylabel = Mg of Potassium,
+                         label style={font=\tiny},
+                         xmin = -2, xmax = 17,
+                         ymin = -0.2, ymax = 1.2,
+                         ytick = {0,0.1, ...,1.2},
+                         xtick = {0, 1, ...,17},
+                         tick label style={font=\tiny},
+                      ]
+
+                        \addplot [thick, blue, <->, mark=none, domain=-1:17]{0.944355^x};
+
+                      \end{axis}
+                  \end{tikzpicture}]]>
+                  </latex-image-code>
+              </image>
+          </figure>
+         </sidebyside>
+         <p>Note that in the graph on the left, the horizontal scale shows the number of <m>1</m>-hour time intervals that have elapsed since <m>P_0</m>. On the right, the horizontal scale shows elapsed time. This is consistent with the fact that the recursive system has domain <m>n=1,2,3,...</m> and the explicit function has domain all positive real numbers.</p>
+        </solution>
+      </example>
+
+      <p>Example <xref ref="example-continuous-discrete" /> shows that we must pay attention to issues of domain when we are choosing between using recursive and explicit representations of a particular phenomenon. Some phenomena by their very nature have a discrete (and thus discontinuous) domain, and these are often best represented recursively. Other phenomena are by nature continuous and may be better represented by an explicit function. Of course, with appropriate care about interpretations, we can choose to use a continuous function to represent a discrete phenomenon.  We can also use a discrete representation for a continuous phenomenon. If we choose to do this, we need to pay particular attention to the way that we interpret our calculations.</p>
+
+
+        <exercises>
+          <title>Class Practice</title>
+        <exercise>
+          <statement>
+            <p>When a basketball is released and drops to a hard surface, it's path looks something like what is shown in the photo.</p>
+            <figure>
+              <image source="src/images/bouncing_ball_strobe_edit.jpg" width = "50%" />
+            </figure>
+            <p>Each time that it bounces, it rebounds to <m>75\%</m> of the height from which it was released (assuming that the ball is correctly inflated.) If a ball is dropped from <m>3</m> meters, we can write the recursive system</p>
+            <md>
+              <mrow>H_0=3, H_n = 0.75 H_{n-1}</mrow>
+            </md>
+            <figure>
+              <image xml:id="plot-basketball-bounce">
+                <latex-image-code>
+                  <![CDATA[
+                      \begin{tikzpicture}
+                      \begin{axis}[
+                         axis line style = {<->},
+                         width = 0.5\linewidth,
+                         xlabel = Number of Bounces,
+                         y label style={at={(axis description cs:0,.5)}},
+                         ylabel = Rebound Height (meters),
+                         label style={font=\tiny},
+                         xmin = -2, xmax = 8,
+                         ymin = -0.2, ymax = 3.25,
+                         ytick = {0, .25, ...,3},
+                         xtick = {0, 1, ...,7},
+                         tick label style={font=\tiny},
+                      ]
+
+                        \addplot[only marks, color=blue] coordinates {
+                        (0,	3)
+                        (1,	2.25)
+                        (2,	1.6875)
+                        (3,	1.265625)
+                        (4,	0.94921875)
+                        (5,	0.711914063)
+                        (6,	0.533935547)
+                        (7, 0.40045166)
+                        };
+
+                      \end{axis}
+                  \end{tikzpicture}]]>
+                </latex-image-code>
+              </image>
+
+            </figure>
+            <p>The graph  shows the rebound height on the vertical axis and bounce number on the horizontal. Sketch a graph of the associated explicit function  <m>h(t)=3(0.75)^t</m> where <m>h(t)</m> is the height at time <m>t</m>. Explain how the graph you sketch is related to the discrete graph that is shown.</p>
+          </statement>
+       </exercise>
+
+         <exercise>
+           <statement>
+               <p>In Example <xref ref="example-fading-blue-jeans" /> we used the recursive system <m>C_0=1, C_n = 0.98C_{n-1}</m> to represent the amount of color left in blue jeans after <m>n</m> washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function <m>C(t)=1(0.98)^t</m> where <m>t</m> represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.</p>
+
+               <figure>
+                 <image xml:id="plot-jeans-class-practice">
+                   <latex-image-code>
+                     <![CDATA[
+                         \begin{tikzpicture}
+                         \begin{axis}[
+                            axis line style = {<->},
+                            width = 0.5\linewidth,
+                            xlabel = Number of Washes,
+                            y label style={at={(axis description cs:0,.5)}},
+                            ylabel = Percent Color Remaining,
+                            label style={font=\tiny},
+                            xmin = -2, xmax = 15,
+                            ymin = -0.2, ymax = 1.2,
+                            ytick = {0, .2, ...,1},
+                            xtick = {0, 1, ...,14},
+                            tick label style={font=\tiny},
+                         ]
+
+                           \addplot[only marks, color=blue] coordinates {
+                           (0,	1)
+                           (1,	0.98)
+                           (2,	0.9604)
+                           (3,	0.941192)
+                           (4,	0.92236816)
+                           (5,	0.903920797)
+                           (6,	0.885842381)
+                           (7,	0.868125533)
+                           (8,	0.850763023)
+                           (9,	0.833747762)
+                           (10,	0.817072807)
+                           (11,	0.800731351)
+                           (13,	0.769022389)
+                           (12,	0.784716724)
+                           (14,	0.753641941)
+                           };
+
+                         \end{axis}
+                     \end{tikzpicture}]]>
+                   </latex-image-code>
+                 </image>
+               </figure>
+           </statement>
+        </exercise>
+      </exercises>
+
+      <example xml:id="example-recursive-salary">
+        <statement>
+          <p>Rebecca starts working for a company at a salary of <m>\$40,000</m> per year. Based on the company's history, she can expect raises of <m>3.5\%</m> each year on the anniversary of her employment. When will she first make <m>\$50,000</m>?</p>
+        </statement>
+        <solution>
+          <p>We can use the recursive system <m>A_0=40,000, A_n=1.035A_{n-1}, n=1,2,3,...</m> to determine when her salary will equal or exceed <m>\$50,000</m>.  Rebecca’s first pay raise will result in a salary of <m>\$41,400</m>.  Her sixth raise will bring her salary up to <m>\$49,170.21</m> and her seventh raise will put her pay over <m>\$50,000</m> at <m>\$50,891.17</m>.</p>
+
+          <p>We could also use a closed form function to solve for the time at which her salary will reach <m>\$50,000</m>.  This function is <m>S(t)=40,000(1.035)^t</m>. By evaluating this function, we find that <m>S(6)=49,170.21</m> and <m>S(7)=50,891.17</m>. Both the recursive model and the closed form model inform us that Rebecca will make more than <m>\$50,000</m> with her <m>7^{th}</m> raise.</p>
+
+          <p>If we wanted to know what Rebecca would make if she stayed with this company for <m>30</m> years, it would be easier to use the closed form and substitute <m>t=30</m>.  In many cases either the recursive system or the closed form could be used to arrive at the same answer. In cases where we need to predict far into the future, it is more efficient to use the closed form. In cases where we want to see all of the intermediate values, as would be the case for the balance due on a loan after each payment, it would be to our advantage to use the recursive system. In Rebecca's case, if we choose to use an explicit representation we must limit the domain to integer values since her pay raises occur only one time per year.</p>
+        </solution>
+      </example>
+
+      <example xml:id="example-doubling-time">
+        <title>Doubling Time</title>
+        <statement>
+          <p>Suppose the population of a certain type of bacteria is known to grow geometrically and increases by about <m>26\%</m> every hour. How much time will it take for a population of <m>150</m> million cells to grow to <m>300</m> million? How long will it take the population to double again to <m>600</m> million? When will the population reach <m>1200</m> million (another doubling)?</p>
+        </statement>
+        <solution>
+          <p>Since the population is growing by <m>26\%</m> per hour, we can use the recursive system</p>
+          <md>
+            <mrow>P_0 = 150, P_n = (1.26)P_{n-1}</mrow>
+          </md>
+          <p>We also have the option of using the explicit function <m>P(t)=150 \cdot (1.26)^t</m>.  For integer values of <m>t</m>, these two representations give roughly identical values for the number of bacteria cells.</p>
+          <sidebyside widths ="50% 50%">
+            <table>
+            <tabular bottom="medium">
+              <row bottom="major">
+                <cell right="medium">Time (Hours)</cell>
+                <cell>Cells (Millions)</cell>
+              </row>
+              <row>
+                <cell right="medium"><m>0</m></cell>
+                <cell><m>150</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>1</m></cell>
+                <cell><m>189</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>2</m></cell>
+                <cell><m>238.14</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>3</m></cell>
+                <cell><m>300.06</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>4</m></cell>
+                <cell><m>378.07</m></cell>
+              </row>
+
+            </tabular>
+            </table>
+
+            <table>
+            <tabular bottom="medium">
+              <row bottom="major">
+                <cell right="medium">Time (Hours)</cell>
+                <cell>Cells (Millions)</cell>
+              </row>
+              <row>
+                <cell right="medium"><m>5</m></cell>
+                <cell><m>476.37</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>6</m></cell>
+                <cell><m>600.22</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>7</m></cell>
+                <cell><m>756.28</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>8</m></cell>
+                <cell><m>952.92</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>9</m></cell>
+                <cell><m>1200.67</m></cell>
+              </row>
+
+            </tabular>
+            </table>
+
+          </sidebyside>
+
+          <p>The population took about <m>3</m> hours to double from <m>150</m> to <m>300</m> million.  In another <m>3</m> hours, it had doubled again, and in another <m>3</m> hours there was yet another population doubling. This population is said to have a <em>doubling time</em> of <m>3</m> hours. Note that the first doubling corresponds to an increase of <m>150</m> cells, the next doubling is an increase of <m>300</m> cells, and the third doubling is an increase of <m>600</m> cells. For each of these doublings, the elapsed time is the same (<m>3</m> hours) but the increase, measured in cells per hour, is not the same.</p>
+
+        </solution>
+      </example>
+      <p>Example <xref ref="example-doubling-time" /> shows that a population that experiences geometric growth has a doubling time. It is also true that populations that experience geometric decay have a <em>half-life</em>. A half-life is the amount of time it takes for a population size to be halved. Populations that experience other types of growth, such as linear, quadratic or logistic, do not have a doubling time.</p>
+
+      <p>The exponential function you studied in Chapter 2, <m>f(t)=2^t</m>, has a doubling time of <m>1</m> time unit. This is because</p>
+      <md>
+        <mrow>f(1)=2^1=2</mrow>
+        <mrow>f(2)=2^2=4</mrow>
+        <mrow>f(3)=2^3=8</mrow>
+        <mrow>f(4)=2^4=16</mrow>
+      </md>
+      <p>A doubling of function-values takes place with each increase of <m>1</m> unit in <m>t</m></p>
+      <p>The function <m>g(t)=2^{\frac{1}{3} t}</m> is a horizontal stretch of the function <m>f(t)=2^t</m>, and this transformation makes <m>g(t)</m> have a doubling time of <m>3</m> time units:</p>
+      <md>
+        <mrow>g(3)=2^{\frac{1}{3} \cdot 3}=2^1=2</mrow>
+        <mrow>g(6)=2^{\frac{1}{3} \cdot 6}=2^2=4</mrow>
+        <mrow>g(9)=2^{\frac{1}{3} \cdot 9}=2^3=8</mrow>
+      </md>
+      <p>Since <m>g(t)=2^{\frac{1}{3} t}</m> has a doubling time of <m>3</m> time units, in Example <xref ref="example-doubling-time" /> we could have used the function <m>y = 150 \cdot 2^{\frac{1}{3} t}</m> to model the number of bacteria cells present at time <m>t</m>. You can confirm that the two functions <m>y = 150 \cdot 2^{\frac{1}{3} t}</m> and <m>P(t)=150 \cdot (1.26)^t</m> produce roughly the same ordered pairs.</p>
+
+      <exercises>
+        <exercisegroup>
+          <introduction><p>In exercises <m>1</m> through <m>4</m>, identify whether the growth (or decay) that is described is discrete or continuous.  Write either a recursive system or an expliciit function to represent the phenomenon. Use the most appropriate form to answer each question.</p></introduction>
+          <exercise>
+            <statement>
+              <p>Research City is growing by <m>14\%</m> each year.  If the population of the city is approximately one million people and the rate of growth continues at <m>14\%</m> annually, what will Research City's population be <m>15</m> years from now?</p>
+            </statement>
+          </exercise>
+
+          <exercise>
+            <statement>
+              <p>The population of Coastal City grows by <m>3\%</m> each year due only to births and deaths among current residents.  The population is currently one million.  Each year <m>15,000</m> more people move into the city than move out, resulting in a net gain of <m>0.015</m> milion people. How long will it take Coastal City's population to reach <m>1.8</m> million people?</p>
+            </statement>
+          </exercise>
+
+          <exercise>
+            <statement>
+              <p>Each year hunting and natural predators combine to cause the population of rabbits in the meadow to decrease by <m>5\%</m>.  If the year begins with <m>230</m> rabbits and the population continues to decrease by <m>5\%</m> each year, how many rabbits will there be in this meaudow in <m>50</m> years?</p>
+            </statement>
+          </exercise>
+
+          <exercise>
+            <statement>
+              <p>Each year the population of rabbits in the meadow decreases by <m>5\%</m>.  Farmer Dan decides to help the rabbit population by releasing <m>5</m> new rabbits into the meadow each year.  If the year begins with <m>230</m> rabbits, describe what will happen to the population over the next ten years.</p>
+            </statement>
+          </exercise>
+        </exercisegroup>
+
+        <exercise>
+          <statement>
+            <p>An annual inflation rate of <m>k\%</m> means that items will cost <m>k\%</m> more next year than they cost this year.  Based on a yearly inflation rate of <m>3\%</m>, estimate the cost of the following items in <m>10</m>, <m>20</m>, <m>30</m>, and <m>40</m> years.</p>
+
+            <table>
+            <tabular bottom="medium">
+              <row bottom="major">
+                <cell right="medium">Item</cell>
+                <cell>Cost Today</cell>
+              </row>
+              <row>
+                <cell right="medium">Jeans</cell>
+                <cell><m>\$45.00</m></cell>
+              </row>
+              <row>
+                <cell right="medium">Hamburger</cell>
+                <cell><m>\$3.90</m></cell>
+              </row>
+              <row>
+                <cell right="medium">Car</cell>
+                <cell><m>\$29,000</m></cell>
+              </row>
+              <row>
+                <cell right="medium">Textbook</cell>
+                <cell><m>\$75.00</m></cell>
+              </row>
+              <row>
+                <cell right="medium">Movie Ticket</cell>
+                <cell><m>\$9.00</m></cell>
+              </row>
+
+            </tabular>
+            </table>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>How much money would you need to invest now in an account that receives <m>0.5\%</m> monthly interest so that in <m>20</m> years you will have <m>\$50,000</m>?</p>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>The number of cells in a certain bacteria colony triples every hour.  Write an explicit function that models this growth.  By what factor does the population grow in half an hour?</p>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>Thorieum-<m>234</m> is a radioactive material whose half-life is <m>25</m> days. Write an explicit function for the amount of thorium-<m>234</m> left after <m>t</m> days.  What percent of an original amount is left after <m>300</m> days?</p>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>The population of The Peoples Republic of China in <m>2015</m> was a little over <m>1.39</m> billion and growing at a rate of about <m>0.5\%</m> annually.
+            <ol>
+              <li>Write a recursive system to model the population</li>
+              <li>Find an explicit function to model the population</li>
+              <li>To the nearest year, how long will it take the population to double? Assume that the growth rate remains <m>0.5\%</m> per year.</li>
+              <li>Use the doubling time you found in part (c) to write an transformation of the function <m>y=2^x</m> to represent China's population. (Use <m>x</m> to represent the number of years elapsed since <m>2015</m>.).</li>
+              <li>Write a few sentences to compare and contrast the models you found in parts a, b, and d. </li>
+            </ol>
+            </p>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>When you are <m>40</m> years old your rich Uncle Harry leaves you <m>\$10,000</m> in his will when he dies.  His death makes you realize it is time to start saving for your own retirement. Your goal is to deposit enough in a retirement account when you are between the ages of <m>40</m> and <m>65</m> that you can "pay yourself" a comfortable amount each year when you are over <m>65</m>.
+              <ol>
+                <li>On your <m>40^{th}</m> birthday you invest the <m>\$10,000</m> in an account that pays <m>3.5\%</m> annual interest.  You also decide to make a yearly deposit in the account of <m>\$1,000</m>. What will your balance be when you turn <m>65</m>?  Give the amount in your account when you turn <m>65</m> and write the equations you use to arrive at your answer.</li>
+                <li>Will you have enough money in your account when you are <m>65</m> to pay yourself <m>\$5,000</m> per year from age <m>65</m> to age <m>80</m>.  While you are withdrawing money, the balance in the account continues to earn <m>3.5\%</m> annual interest.  Give a yes or no answer and write the equations you use to support your answer.</li>
+              </ol>
+            </p>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>Thomas has two plans for saving to buy a car.  In Plan A, he will make an initial deposit of <m>\$50</m> and then he will deposit <m>\$33</m> each week in an account that earns <m>0.1\%</m> interest per week.  In Plan B, he will make an initial deposit of <m>\$50</m> and then each week he will put <m>\$30</m> in an account that earns <m>0.45\%</m> each week. Write recursive equations to show the amounts Thomas would have under each of the plans. Write down the account balances under each plan during weeks <m>1 - 3</m> and during weeks <m>50 - 52</m></p>
+          </statement>
+        </exercise>
+
+        <exercise>
+          <statement>
+            <p>In this section you have seen that the recursive system <m>P_0=a, P_n=(1+k) \cdot P_{n-1}, n = 1, 2, 3, ...</m> can be written as a closed form exponential function <m>P(n)=a \cdot (1+k)^n</m>. What recursive system can be written as a closed form linear function of the form <m>y(n)=a+kn</m>? </p>
+          </statement>
+        </exercise>
+
+      </exercises>
+
+   </section>
 
   </chapter>
         <!-- /chapter04.xml -->
