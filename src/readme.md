@@ -24,3 +24,10 @@ This folder contains all textbook sections organized in such a way:
             |-- chapter02-references.xml
                  ...
 ```
+
+To make the tex file, run:
+
+xsltproc --xinclude --stringparam latex.geometry "paperheight=11in, paperwidth=8.5in, top=0.75in, bottom=0.75in, left=1.5in, right=1.5in" ../mathbook/xsl/mathbook-latex.xsl ./src/onefilebook.xml
+
+from the folder:
+github/precalculus/

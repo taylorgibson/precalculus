@@ -8,15 +8,11 @@
 <!-- See the file COPYING for copying conditions.       -->
 
 <chapter xml:id="chapter04" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<title>Logarithmic Functions</title>
+  <title>Exponential Functions</title>
 
-	<introduction>
-		<p>In Jonathan Swift's Gulliver's Travels, the Lilliputians make new clothes for Gulliver.</p>
-	</introduction>
-  
   <xi:include href="./chapter04-section01.xml" />
-  <xi:include href="./exercises/chapter04-section01-exercises.xml" />
-	
-  <xi:include href="./references/chapter04-references.xml" />
+  <xi:include href="./chapter04-section02.xml" />
+  <xi:include href="./chapter04-section03.xml" />
+  <xi:include href="./chapter04-section04.xml" />
   
 </chapter>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter04-section04" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Summing Geometric Growth</title>
+  <p>In <m>2012</m> the world wide rate of crude oil consumption was about <m>89,837</m> thousand barrels per day and was increasing at an annual rate of about <m>1.42\%</m> <fn>SOURCE: www.eia.gov</fn>.  As a consequence, the world consumed about <m>32.8</m> billion barrels of crude oil in <m>2012</m> and about <m>33.3</m> billion barrels in <m>2013</m>.  We can use the explicit function <m>A(n)=32.8(1.0142)^n</m>, where <m>n</m> represents the number of years since <m>2012</m>, to find that the amount of oil consumed in <m>2042</m> will be a little over <m>50</m> billion barrels, since <m>A(30)=32.8(1.0142)^30 = 50.07</m>.  That is certainly a large amount, but knowing the amount in any one year does not really tell the whole story.  A more important question:  What is the total amount of crude oil that will be consumed between <m>2012</m> and <m>2042</m>?  This total represents the quantity of oil that will be depleted from world oil reserves over this <m>31</m>-year time period.</p>
+  <p>To determine the total amount of oil consumed from <m>2012</m> to <m>2042</m>, we want to find the sum:
+  <md>
+    <mrow>T=A(0)+A(1)+A(2)+...+A(30)</mrow>
+  </md>
+  </p>
+  <p>We can rewrite the equation for <m>T</m> as:
+  <md>
+    <mrow>T=32.8+32.8(1.0142)+32.8(1.0142)^2+...+32.8(1.0142)^{30}</mrow>
+  </md>
+  </p>
+
+  <p>Notice that each term in the sum is <m>1.0142</m> times the previous term. This sum is an example of a geometric series, which is a sum in which each successive addend is found by multiplying the previous term by some fixed value. Or, put another way, a geometric series is the sum of a geometric sequence.</p>
+
+  <p>A more general way to represent a geometric series is:
+    <mdn>
+      <mrow xml:id="chapter04-section04-geoseries-step1">S = a + ar + ar^2 + ar^3 + ... + ar^n</mrow>
+    </mdn>
+  </p>
+
+  <p>This series has first term a and each subsequent term is obtained from the preceding term by multiplying by <m>r</m>. The ratio of two consecutive terms in a geometric series is always <m>r</m>, so r is known as the common ratio.</p>
+  <p>We can find a formula for the sum of a geometric series without actually adding all of the terms, instead we use algebra in a clever way.  First, we multiply both sides of equation (1) by <m>r</m>, which yields:
+  <mdn>
+    <mrow xml:id="chapter04-section04-geoseries-step2">Sr = ar + ar^2 + ar^3 + ar^4 + ... + ar^{n+1}</mrow>
+  </mdn>
+  </p>
+  <p>Most of the terms on the right sides of equations <xref ref="chapter04-section04-geoseries-step1" /> and <xref ref="chapter04-section04-geoseries-step2" /> are the same.  If we now subtract equation <xref ref="chapter04-section04-geoseries-step2" /> from equation <xref ref="chapter04-section04-geoseries-step1" />, meaning we subtract the left side of <xref ref="chapter04-section04-geoseries-step2" /> from the left side of <xref ref="chapter04-section04-geoseries-step1" /> and the same with the right sides, we obtain the new equation:
+  <md>
+    <mrow>S-Sr = a - ar^{n+1}</mrow>
+  </md>
+  </p>
+  <p>Solving this equation to isolate <m>S</m>, we have:
+  <mdn>
+    <mrow xml:id="chapter04-section04-geoseries-step3">S = \frac{a-ar^{n+1}}{1-r}</mrow>
+  </mdn>
+  </p>
+  <p>Equation <xref ref="chapter04-section04-geoseries-step3" /> represents the sum of the terms <m>a</m> through <m>ar^n</m> of a geometric series with first term <m>a</m> and common ratio <m>r</m>, assuming <m>r \neq 1</m>.</p>
+  <p>Note that if <m>r=1</m> the series
+  <md>
+    <mrow>S = a + ar + ar^2 + ar^3 + ... + ar^n</mrow>
+  </md>
+  is equivalent to
+  <md>
+    <mrow>S = a + a + a + a + ... + a</mrow>
+  </md>
+  and the sum of this series is simply <m>S=(n+1)a</m>
+  </p>
+  <p>Returning to the question regarding world crude oil consumption from <m>2012</m> through <m>2042</m>, we need to find the sum of terms <m>0</m> through <m>30</m> of a geometric series with initial term <m>32.8</m> and common ratio <m>1.0142</m> .  This sum is given by
+  <md>
+    <mrow>T = \frac{32.8-32.8(1.0142)^{31}}{1-(1.0142)} \approx 1,266 \text{ billion barrels of oil} </mrow>
+  </md>
+  </p>
+  <p>In the world’s top <m>17</m> oil producing countries, estimates of the total proven oil reserves that are recoverable with <m>2012</m> technology are in the range of <m>1200</m> to <m>1300</m> billion barrels.  Therefore, if oil consumption continues to increase at the rate observed in <m>2012</m>, proven oil reserves will be almost exhausted by <m>2042</m>.</p>
+  <p>You will encounter a wide variety of situations in mathematics classes and in other disciplines that require finding the sum of a geometric series. This happens frequently enough that you should be sure to include in the collection of mathematical tools you have available to you either the formula for the sum of a geometric series, or the method used here to arrive at that sum.</p>
+  <p>Below are two additional examples from the financial world where this concept is used.</p>
+
+  <example xml:id="value-on-an-annuity">
+    <title>Value of an Annuity</title>
+    <p>Suppose your parents want to set aside money for college tuition for a younger sibling.  They begin saving when she is twelve by opening an account with an initial deposit of <m>\$100</m>.  At the beginning of each month for six years thereafter, they deposit an additional <m>\$100</m>.  An account into which regular payments are made (or from which regular withdrawals are made) is called <em>an annuity</em>.  The account into which they place the money earns <m>0.5\%</m> monthly interest, which is added to the account at the end of each month.  How much money will be in the account at the end of six years?</p>
+    <solution>
+      <p>The initial deposit earns interest for <m>72</m> months, which means that in <m>72</m> months the first <m>\$100</m> deposited has grown to a value of <m>\$100(1.005)^{72}</m>.  The money deposited at the beginning of the second month earns interest for <m>71</m> months and grows to <m>\$100(1.005)^{71}</m>.  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of <m>\$100</m>; this means that the final <m>\$100</m> deposit earns no interest.  The timeline in Figure XX shows each deposit together with the amount of interest earned by each deposit.</p>
+      <p>FIGURE XX</p>
+      <p>The balance of the annuity after six years is the sum of the values of all 73 deposits, which is
+        <md>
+          <mrow>B = 100 + 100(1.005) + 100(1.005)^2 + 100(1.005)^3 + ... + 100(1.005)^{72}</mrow>
+        </md>
+        This is a geometric series with initial term <m>100</m> and common ratio <m>1.005</m>, so we can use equation <xref ref="chapter04-section04-geoseries-step3" /> to write the sum of this series as
+        <mdn>
+          <mrow>B= \frac{100-100(1.005)^{73}}{1-1.005}</mrow>
+        </mdn>
+        which equals <m>\$8,784.09</m>, the balance of the annuity after six years.  Note that only <m>\$7,300</m> was deposited, so over <m>6</m> years the deposits have earned over <m>\$1,400</m> in interest.
+      </p>
+    </solution>
+  </example>
+</section>

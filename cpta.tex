@@ -1,6 +1,6 @@
 %**************************************%
 %* Generated from MathBook XML source *%
-%*    on 2017-04-18T12:25:54-04:00    *%
+%*    on 2017-08-01T16:19:17-04:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
@@ -22,6 +22,7 @@
 \usepackage{geometry}
 \geometry{letterpaper,total={340pt,9.0in}}
 %% Custom Page Layout Adjustments (use latex.geometry)
+\geometry{paperheight=11in, paperwidth=8.5in, top=0.75in, bottom=0.75in, left=1.5in, right=1.5in}
 %% This LaTeX file may be compiled with pdflatex, xelatex, or lualatex
 %% The following provides engine-specific capabilities
 %% Generally, xelatex and lualatex will do better languages other than US English
@@ -182,6 +183,9 @@
 \makeatletter
 \let\c@table\c@theorem
 \makeatother
+%% Footnote Numbering
+%% We reset the footnote counter, as given by numbering.footnotes.level
+\makeatletter\@addtoreset{footnote}{section}\makeatother
 %% Raster graphics inclusion, wrapped figures in paragraphs
 %% \resizebox sometimes used for images in side-by-side layout
 \usepackage{graphicx}
@@ -251,7 +255,7 @@
 \author{Mathematics Department\\
 North Carolina School of Science and Mathematics
 }
-\date{April 18, 2017}
+\date{August 1, 2017}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -276,7 +280,7 @@ North Carolina School of Science and Mathematics
 {\Huge Contemporary Pre-Calculus Through Applications}\\[3\baselineskip]
 {\Large Mathematics Department}\\[0.5\baselineskip]
 {\Large North Carolina School of Science and Mathematics}\\[3\baselineskip]
-{\Large April 18, 2017}\\}
+{\Large August 1, 2017}\\}
 \clearpage
 %% end:   title page
 %% begin: copyright-page
@@ -380,14 +384,14 @@ Using a spreadsheet or calculator, we can generate successive values of \(D_n\) 
 \savebox{\panelboxAimage}{%
 \resizebox{0.25\linewidth}{!}{{
 \pgfplotstabletypeset[
-    	col sep=comma,
-      column type=l,
-      every head row/.style={after row=\hline},
-      every column/.style={column type/.add={|}{|}},
-      every first column/.style={column type/.add={}{|}},
-      columns/0/.style={string type, column name={$n$}},
-    	columns/1/.style={string type, column name={$D_n$}},
-    ]{data-single-dose-ibuprofen.csv}
+col sep=comma,
+column type=l,
+every head row/.style={after row=\hline},
+every column/.style={column type/.add={|}{|}},
+every first column/.style={column type/.add={}{|}},
+columns/0/.style={string type, column name={$n$}},
+columns/1/.style={string type, column name={$D_n$}},
+]{data-single-dose-ibuprofen.csv}
 }
 }}
 \newlength{\phAimage}\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
@@ -396,23 +400,21 @@ Using a spreadsheet or calculator, we can generate successive values of \(D_n\) 
 \newsavebox{\panelboxBimage}
 \savebox{\panelboxBimage}{%
 \resizebox{0.65\linewidth}{!}{{
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = Number of 4 hour intervals,
-       ylabel = Amount of Ibuprofen (mg),
-       label style={font=\tiny},
-       xmin = -1, xmax= 7,
-       ymin = -25, ymax=250,
-       ytick = {0,100,200},
-       xtick = {0, 1, ...,6},
-       tick label style={font=\tiny},
-    ]
-
-      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
-
-    \end{axis}
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = Number of 4 hour intervals,
+ylabel = Amount of Ibuprofen (mg),
+label style={font=\tiny},
+xmin = -1, xmax= 7,
+ymin = -25, ymax=250,
+ytick = {0,100,200},
+xtick = {0, 1, ...,6},
+tick label style={font=\tiny},
+]
+\addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
+\end{axis}
 \end{tikzpicture}
 }
 }}
@@ -483,14 +485,14 @@ The subscript n represents the number of four-hour time periods that have elapse
 \savebox{\panelboxCimage}{%
 \resizebox{0.25\linewidth}{!}{{
 \pgfplotstabletypeset[
-    	col sep=comma,
-      column type=l,
-      every head row/.style={after row=\hline},
-      every column/.style={column type/.add={|}{|}},
-      every first column/.style={column type/.add={}{|}},
-      columns/0/.style={string type, column name={$n$}},
-    	columns/1/.style={string type, column name={$D_n$}},
-    ]{data-multi-dose-ibuprofen.csv}
+col sep=comma,
+column type=l,
+every head row/.style={after row=\hline},
+every column/.style={column type/.add={|}{|}},
+every first column/.style={column type/.add={}{|}},
+columns/0/.style={string type, column name={$n$}},
+columns/1/.style={string type, column name={$D_n$}},
+]{data-multi-dose-ibuprofen.csv}
 }
 }}
 \newlength{\phCimage}\setlength{\phCimage}{\ht\panelboxCimage+\dp\panelboxCimage}
@@ -499,23 +501,21 @@ The subscript n represents the number of four-hour time periods that have elapse
 \newsavebox{\panelboxDimage}
 \savebox{\panelboxDimage}{%
 \resizebox{0.65\linewidth}{!}{{
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = Number of 4 hour intervals,
-       ylabel = Amount of Ibuprofen (mg),
-       label style={font=\tiny},
-       xmin = -1.5, xmax= 11,
-       ymin = -30, ymax=350,
-       ytick = {0,100,200,300},
-       xtick = {0, 1, ...,10},
-       tick label style={font=\tiny},
-    ]
-
-      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
-
-    \end{axis}
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = Number of 4 hour intervals,
+ylabel = Amount of Ibuprofen (mg),
+label style={font=\tiny},
+xmin = -1.5, xmax= 11,
+ymin = -30, ymax=350,
+ytick = {0,100,200,300},
+xtick = {0, 1, ...,10},
+tick label style={font=\tiny},
+]
+\addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
+\end{axis}
 \end{tikzpicture}
 }
 }}
@@ -687,14 +687,14 @@ The graph and partial table in Figure XX show that it will take \(47\) payments 
 \savebox{\panelboxEimage}{%
 \resizebox{0.3\linewidth}{!}{{
 \pgfplotstabletypeset[
-      col sep=comma,
-      column type=l,
-      every head row/.style={after row=\hline},
-      every column/.style={column type/.add={|}{|}},
-      every first column/.style={column type/.add={}{|}},
-      columns/0/.style={string type, column name={$n$}},
-      columns/1/.style={string type, column name=Loan Balance},
-    ]{data-loan-balance-table.csv}
+col sep=comma,
+column type=l,
+every head row/.style={after row=\hline},
+every column/.style={column type/.add={|}{|}},
+every first column/.style={column type/.add={}{|}},
+columns/0/.style={string type, column name={$n$}},
+columns/1/.style={string type, column name=Loan Balance},
+]{data-loan-balance-table.csv}
 }
 }}
 \newlength{\phEimage}\setlength{\phEimage}{\ht\panelboxEimage+\dp\panelboxEimage}
@@ -703,24 +703,24 @@ The graph and partial table in Figure XX show that it will take \(47\) payments 
 \newsavebox{\panelboxFimage}
 \savebox{\panelboxFimage}{%
 \resizebox{0.7\linewidth}{!}{{
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = Number of Payments,
-       y label style={at={(axis description cs:-.1,.5)}},
-       ylabel = Outstanding Balance (\$),
-       label style={font=\tiny},
-       xmin = -5, xmax= 50,
-       ymin = -2000, ymax=12000,
-       ytick = {0,2000, ...,10000},
-       xtick = {0, 4, ...,48},
-       tick label style={font=\tiny},
-    ]
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = Number of Payments,
+y label style={at={(axis description cs:-.1,.5)}},
+ylabel = Outstanding Balance (\$),
+label style={font=\tiny},
+xmin = -5, xmax= 50,
+ymin = -2000, ymax=12000,
+ytick = {0,2000, ...,10000},
+xtick = {0, 4, ...,48},
+tick label style={font=\tiny},
+]
 
-      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-loan-balance-graph.csv};
+\addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-loan-balance-graph.csv};
 
-    \end{axis}
+\end{axis}
 \end{tikzpicture}
 }
 }}
@@ -1090,24 +1090,24 @@ Graphs of both the recursive and the explicit representations are shown below%
 \newsavebox{\panelboxGimage}
 \savebox{\panelboxGimage}{%
 \resizebox{0.5\linewidth}{!}{{
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = 1-hour time periods,
-       y label style={at={(axis description cs:0,.5)}},
-       ylabel = Mg of Potassium,
-       label style={font=\tiny},
-       xmin = -2, xmax = 17,
-       ymin = -0.2, ymax = 1.2,
-       ytick = {0,0.1, ...,1.2},
-       xtick = {0, 1, ...,17},
-       tick label style={font=\tiny},
-    ]
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = 1-hour time periods,
+y label style={at={(axis description cs:0,.5)}},
+ylabel = Mg of Potassium,
+label style={font=\tiny},
+xmin = -2, xmax = 17,
+ymin = -0.2, ymax = 1.2,
+ytick = {0,0.1, ...,1.2},
+xtick = {0, 1, ...,17},
+tick label style={font=\tiny},
+]
 
-      \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-potassium-42.csv};
+\addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-potassium-42.csv};
 
-    \end{axis}
+\end{axis}
 \end{tikzpicture}
 }
 }}
@@ -1117,24 +1117,24 @@ Graphs of both the recursive and the explicit representations are shown below%
 \newsavebox{\panelboxHimage}
 \savebox{\panelboxHimage}{%
 \resizebox{0.5\linewidth}{!}{{
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = Elapsed Time (hrs),
-       y label style={at={(axis description cs:0,.5)}},
-       ylabel = Mg of Potassium,
-       label style={font=\tiny},
-       xmin = -2, xmax = 17,
-       ymin = -0.2, ymax = 1.2,
-       ytick = {0,0.1, ...,1.2},
-       xtick = {0, 1, ...,17},
-       tick label style={font=\tiny},
-    ]
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = Elapsed Time (hrs),
+y label style={at={(axis description cs:0,.5)}},
+ylabel = Mg of Potassium,
+label style={font=\tiny},
+xmin = -2, xmax = 17,
+ymin = -0.2, ymax = 1.2,
+ytick = {0,0.1, ...,1.2},
+xtick = {0, 1, ...,17},
+tick label style={font=\tiny},
+]
 
-      \addplot [thick, blue, <->, mark=none, domain=-1:17]{0.944355^x};
+\addplot [thick, blue, <->, mark=none, domain=-1:17]{0.944355^x};
 
-    \end{axis}
+\end{axis}
 \end{tikzpicture}
 }
 }}
@@ -1180,33 +1180,33 @@ H_0=3, H_n = 0.75 H_{n-1}
 \begin{figure}
 \centering
 {
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = Number of Bounces,
-       y label style={at={(axis description cs:0,.5)}},
-       ylabel = Rebound Height (meters),
-       label style={font=\tiny},
-       xmin = -2, xmax = 8,
-       ymin = -0.2, ymax = 3.25,
-       ytick = {0, .25, ...,3},
-       xtick = {0, 1, ...,7},
-       tick label style={font=\tiny},
-    ]
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = Number of Bounces,
+y label style={at={(axis description cs:0,.5)}},
+ylabel = Rebound Height (meters),
+label style={font=\tiny},
+xmin = -2, xmax = 8,
+ymin = -0.2, ymax = 3.25,
+ytick = {0, .25, ...,3},
+xtick = {0, 1, ...,7},
+tick label style={font=\tiny},
+]
 
-      \addplot[only marks, color=blue] coordinates {
-      (0,	3)
-      (1,	2.25)
-      (2,	1.6875)
-      (3,	1.265625)
-      (4,	0.94921875)
-      (5,	0.711914063)
-      (6,	0.533935547)
-      (7, 0.40045166)
-      };
+\addplot[only marks, color=blue] coordinates {
+(0,  3)
+(1,  2.25)
+(2,  1.6875)
+(3,  1.265625)
+(4,  0.94921875)
+(5,  0.711914063)
+(6,  0.533935547)
+(7, 0.40045166)
+};
 
-    \end{axis}
+\end{axis}
 \end{tikzpicture}
 }
 \end{figure}
@@ -1218,40 +1218,40 @@ The graph  shows the rebound height on the vertical axis and bounce number on th
 \begin{figure}
 \centering
 {
-    \begin{tikzpicture}
-    \begin{axis}[
-       axis line style = {<->},
-       width = 0.5\linewidth,
-       xlabel = Number of Washes,
-       y label style={at={(axis description cs:0,.5)}},
-       ylabel = Percent Color Remaining,
-       label style={font=\tiny},
-       xmin = -2, xmax = 15,
-       ymin = -0.2, ymax = 1.2,
-       ytick = {0, .2, ...,1},
-       xtick = {0, 1, ...,14},
-       tick label style={font=\tiny},
-    ]
+\begin{tikzpicture}
+\begin{axis}[
+axis line style = {<->},
+width = 0.5\linewidth,
+xlabel = Number of Washes,
+y label style={at={(axis description cs:0,.5)}},
+ylabel = Percent Color Remaining,
+label style={font=\tiny},
+xmin = -2, xmax = 15,
+ymin = -0.2, ymax = 1.2,
+ytick = {0, .2, ...,1},
+xtick = {0, 1, ...,14},
+tick label style={font=\tiny},
+]
 
-      \addplot[only marks, color=blue] coordinates {
-      (0,	1)
-      (1,	0.98)
-      (2,	0.9604)
-      (3,	0.941192)
-      (4,	0.92236816)
-      (5,	0.903920797)
-      (6,	0.885842381)
-      (7,	0.868125533)
-      (8,	0.850763023)
-      (9,	0.833747762)
-      (10,	0.817072807)
-      (11,	0.800731351)
-      (13,	0.769022389)
-      (12,	0.784716724)
-      (14,	0.753641941)
-      };
+\addplot[only marks, color=blue] coordinates {
+(0,  1)
+(1,  0.98)
+(2,  0.9604)
+(3,  0.941192)
+(4,  0.92236816)
+(5,  0.903920797)
+(6,  0.885842381)
+(7,  0.868125533)
+(8,  0.850763023)
+(9,  0.833747762)
+(10,  0.817072807)
+(11,  0.800731351)
+(13,  0.769022389)
+(12,  0.784716724)
+(14,  0.753641941)
+};
 
-    \end{axis}
+\end{axis}
 \end{tikzpicture}
 }
 \end{figure}
@@ -1401,6 +1401,92 @@ Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Exa
 \item[12.]\hypertarget{exercise-31}{}In this section you have seen that the recursive system \(P_0=a, P_n=(1+k) \cdot P_{n-1}, n = 1, 2, 3, ...\) can be written as a closed form exponential function \(P(n)=a \cdot (1+k)^n\). What recursive system can be written as a closed form linear function of the form \(y(n)=a+kn\)?%
 \par\smallskip
 \end{exerciselist}
+\typeout{************************************************}
+\typeout{Section 4.4 Summing Geometric Growth}
+\typeout{************************************************}
+\section[{Summing Geometric Growth}]{Summing Geometric Growth}\label{chapter04-section04}
+In \(2012\) the world wide rate of crude oil consumption was about \(89,837\) thousand barrels per day and was increasing at an annual rate of about \(1.42\%\) \footnote{SOURCE: www.eia.gov\label{fn-1}}.  As a consequence, the world consumed about \(32.8\) billion barrels of crude oil in \(2012\) and about \(33.3\) billion barrels in \(2013\).  We can use the explicit function \(A(n)=32.8(1.0142)^n\), where \(n\) represents the number of years since \(2012\), to find that the amount of oil consumed in \(2042\) will be a little over \(50\) billion barrels, since \(A(30)=32.8(1.0142)^30 = 50.07\).  That is certainly a large amount, but knowing the amount in any one year does not really tell the whole story.  A more important question:  What is the total amount of crude oil that will be consumed between \(2012\) and \(2042\)?  This total represents the quantity of oil that will be depleted from world oil reserves over this \(31\)-year time period.%
+\par
+To determine the total amount of oil consumed from \(2012\) to \(2042\), we want to find the sum:%
+\begin{gather*}
+T=A(0)+A(1)+A(2)+...+A(30)
+\end{gather*}
+%
+\par
+We can rewrite the equation for \(T\) as:%
+\begin{gather*}
+T=32.8+32.8(1.0142)+32.8(1.0142)^2+...+32.8(1.0142)^{30}
+\end{gather*}
+%
+\par
+Notice that each term in the sum is \(1.0142\) times the previous term. This sum is an example of a geometric series, which is a sum in which each successive addend is found by multiplying the previous term by some fixed value. Or, put another way, a geometric series is the sum of a geometric sequence.%
+\par
+A more general way to represent a geometric series is:%
+\begin{gather}
+S = a + ar + ar^2 + ar^3 + ... + ar^n\label{chapter04-section04-geoseries-step1}
+\end{gather}
+%
+\par
+This series has first term a and each subsequent term is obtained from the preceding term by multiplying by \(r\). The ratio of two consecutive terms in a geometric series is always \(r\), so r is known as the common ratio.%
+\par
+We can find a formula for the sum of a geometric series without actually adding all of the terms, instead we use algebra in a clever way.  First, we multiply both sides of equation (1) by \(r\), which yields:%
+\begin{gather}
+Sr = ar + ar^2 + ar^3 + ar^4 + ... + ar^{n+1}\label{chapter04-section04-geoseries-step2}
+\end{gather}
+%
+\par
+Most of the terms on the right sides of equations \hyperref[chapter04-section04-geoseries-step1]{(\ref{chapter04-section04-geoseries-step1})} and \hyperref[chapter04-section04-geoseries-step2]{(\ref{chapter04-section04-geoseries-step2})} are the same.  If we now subtract equation \hyperref[chapter04-section04-geoseries-step2]{(\ref{chapter04-section04-geoseries-step2})} from equation \hyperref[chapter04-section04-geoseries-step1]{(\ref{chapter04-section04-geoseries-step1})}, meaning we subtract the left side of \hyperref[chapter04-section04-geoseries-step2]{(\ref{chapter04-section04-geoseries-step2})} from the left side of \hyperref[chapter04-section04-geoseries-step1]{(\ref{chapter04-section04-geoseries-step1})} and the same with the right sides, we obtain the new equation:%
+\begin{gather*}
+S-Sr = a - ar^{n+1}
+\end{gather*}
+%
+\par
+Solving this equation to isolate \(S\), we have:%
+\begin{gather}
+S = \frac{a-ar^{n+1}}{1-r}\label{chapter04-section04-geoseries-step3}
+\end{gather}
+%
+\par
+Equation \hyperref[chapter04-section04-geoseries-step3]{(\ref{chapter04-section04-geoseries-step3})} represents the sum of the terms \(a\) through \(ar^n\) of a geometric series with first term \(a\) and common ratio \(r\), assuming \(r \neq 1\).%
+\par
+Note that if \(r=1\) the series%
+\begin{gather*}
+S = a + ar + ar^2 + ar^3 + ... + ar^n
+\end{gather*}
+is equivalent to%
+\begin{gather*}
+S = a + a + a + a + ... + a
+\end{gather*}
+and the sum of this series is simply \(S=(n+1)a\)%
+\par
+Returning to the question regarding world crude oil consumption from \(2012\) through \(2042\), we need to find the sum of terms \(0\) through \(30\) of a geometric series with initial term \(32.8\) and common ratio \(1.0142\) .  This sum is given by%
+\begin{gather*}
+T = \frac{32.8-32.8(1.0142)^{31}}{1-(1.0142)} \approx 1,266 \text{ billion barrels of oil} 
+\end{gather*}
+%
+\par
+In the world’s top \(17\) oil producing countries, estimates of the total proven oil reserves that are recoverable with \(2012\) technology are in the range of \(1200\) to \(1300\) billion barrels.  Therefore, if oil consumption continues to increase at the rate observed in \(2012\), proven oil reserves will be almost exhausted by \(2042\).%
+\par
+You will encounter a wide variety of situations in mathematics classes and in other disciplines that require finding the sum of a geometric series. This happens frequently enough that you should be sure to include in the collection of mathematical tools you have available to you either the formula for the sum of a geometric series, or the method used here to arrive at that sum.%
+\par
+Below are two additional examples from the financial world where this concept is used.%
+\begin{example}[Value of an Annuity]\label{value-on-an-annuity}
+Suppose your parents want to set aside money for college tuition for a younger sibling.  They begin saving when she is twelve by opening an account with an initial deposit of \(\$100\).  At the beginning of each month for six years thereafter, they deposit an additional \(\$100\).  An account into which regular payments are made (or from which regular withdrawals are made) is called \emph{an annuity}.  The account into which they place the money earns \(0.5\%\) monthly interest, which is added to the account at the end of each month.  How much money will be in the account at the end of six years?%
+\par\medskip\noindent%
+\textbf{Solution.}\quad The initial deposit earns interest for \(72\) months, which means that in \(72\) months the first \(\$100\) deposited has grown to a value of \(\$100(1.005)^{72}\).  The money deposited at the beginning of the second month earns interest for \(71\) months and grows to \(\$100(1.005)^{71}\).  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of \(\$100\); this means that the final \(\$100\) deposit earns no interest.  The timeline in Figure XX shows each deposit together with the amount of interest earned by each deposit.%
+\par
+FIGURE XX%
+\par
+The balance of the annuity after six years is the sum of the values of all 73 deposits, which is%
+\begin{gather*}
+B = 100 + 100(1.005) + 100(1.005)^2 + 100(1.005)^3 + ... + 100(1.005)^{72}
+\end{gather*}
+This is a geometric series with initial term \(100\) and common ratio \(1.005\), so we can use equation \hyperref[chapter04-section04-geoseries-step3]{(\ref{chapter04-section04-geoseries-step3})} to write the sum of this series as%
+\begin{gather}
+B= \frac{100-100(1.005)^{73}}{1-1.005}\label{mrow-80}
+\end{gather}
+which equals \(\$8,784.09\), the balance of the annuity after six years.  Note that only \(\$7,300\) was deposited, so over \(6\) years the deposits have earned over \(\$1,400\) in interest.%
+\end{example}
 \typeout{************************************************}
 \typeout{Chapter 5 Logarithmic Functions}
 \typeout{************************************************}
