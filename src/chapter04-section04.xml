@@ -66,20 +66,244 @@
 
   <example xml:id="value-on-an-annuity">
     <title>Value of an Annuity</title>
-    <p>Suppose your parents want to set aside money for college tuition for a younger sibling.  They begin saving when she is twelve by opening an account with an initial deposit of <m>\$100</m>.  At the beginning of each month for six years thereafter, they deposit an additional <m>\$100</m>.  An account into which regular payments are made (or from which regular withdrawals are made) is called <em>an annuity</em>.  The account into which they place the money earns <m>0.5\%</m> monthly interest, which is added to the account at the end of each month.  How much money will be in the account at the end of six years?</p>
+    <statement>
+      <p>Suppose your parents want to set aside money for college tuition for a younger sibling.  They begin saving when she is twelve by opening an account with an initial deposit of <m>\$100</m>.  At the beginning of each month for six years thereafter, they deposit an additional <m>\$100</m>.  An account into which regular payments are made (or from which regular withdrawals are made) is called <em>an annuity</em>.  The account into which they place the money earns <m>0.5\%</m> monthly interest, which is added to the account at the end of each month.  How much money will be in the account at the end of six years?</p>
+    </statement>
     <solution>
-      <p>The initial deposit earns interest for <m>72</m> months, which means that in <m>72</m> months the first <m>\$100</m> deposited has grown to a value of <m>\$100(1.005)^{72}</m>.  The money deposited at the beginning of the second month earns interest for <m>71</m> months and grows to <m>\$100(1.005)^{71}</m>.  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of <m>\$100</m>; this means that the final <m>\$100</m> deposit earns no interest.  The timeline in Figure XX shows each deposit together with the amount of interest earned by each deposit.</p>
-      <p>FIGURE XX</p>
-      <p>The balance of the annuity after six years is the sum of the values of all 73 deposits, which is
-        <md>
-          <mrow>B = 100 + 100(1.005) + 100(1.005)^2 + 100(1.005)^3 + ... + 100(1.005)^{72}</mrow>
-        </md>
-        This is a geometric series with initial term <m>100</m> and common ratio <m>1.005</m>, so we can use equation <xref ref="chapter04-section04-geoseries-step3" /> to write the sum of this series as
-        <mdn>
-          <mrow>B= \frac{100-100(1.005)^{73}}{1-1.005}</mrow>
-        </mdn>
-        which equals <m>\$8,784.09</m>, the balance of the annuity after six years.  Note that only <m>\$7,300</m> was deposited, so over <m>6</m> years the deposits have earned over <m>\$1,400</m> in interest.
-      </p>
+      <statement>
+        <p>The initial deposit earns interest for <m>72</m> months, which means that in <m>72</m> months the first <m>\$100</m> deposited has grown to a value of <m>\$100(1.005)^{72}</m>.  The money deposited at the beginning of the second month earns interest for <m>71</m> months and grows to <m>\$100(1.005)^{71}</m>.  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of <m>\$100</m>; this means that the final <m>\$100</m> deposit earns no interest.  The timeline in Figure <xref ref="deposit-timeline" /> shows each deposit together with the amount of interest earned by each deposit.</p>
+        <figure xml:id="deposit-timeline">
+          <caption>Timeline for interest and deposit in an annuity (REDO GRAPHIC)</caption>
+          <image source="src/images/chapter04-section04-depositchart.png" width = "80%" />
+        </figure>
+        <p>The balance of the annuity after six years is the sum of the values of all 73 deposits, which is
+          <md>
+            <mrow>B = 100 + 100(1.005) + 100(1.005)^2 + 100(1.005)^3 + ... + 100(1.005)^{72}</mrow>
+          </md>
+          This is a geometric series with initial term <m>100</m> and common ratio <m>1.005</m>, so we can use equation <xref ref="chapter04-section04-geoseries-step3" /> to write the sum of this series as
+          <mdn>
+            <mrow>B= \frac{100-100(1.005)^{73}}{1-1.005}</mrow>
+          </mdn>
+          which equals <m>\$8,784.09</m>, the balance of the annuity after six years.  Note that only <m>\$7,300</m> was deposited, so over <m>6</m> years the deposits have earned over <m>\$1,400</m> in interest.
+        </p>
+      </statement>
     </solution>
   </example>
+  <example>
+    <title>Paying Off a Loan</title>
+    <statement>
+      <p>Suppose you borrow <m>\$20,000</m> to buy a car, and you agree to pay back the loan over <m>48</m> months at <m>0.4 \%</m> interest per month.  You want to determine the monthly payment <m>P</m> that you must make in order to pay off the loan. You know how to find the payment using a "guess and check" method.  Now, since you are able to find the sum of a geometric series, you can write and solve an equation to find the payment.</p>
+    </statement>
+    <solution>
+      <statement>
+        <p>Your outstanding balance can be represented with the recursive system</p>
+        <md>
+          <mrow>L_0=20,000, L_n=1.004L_{n-1}-P, n=1,2,3,...</mrow>
+        </md>
+        <p>Where <m>L_n</m> is the amount still owed on the loan after <m>n</m> months and <m>P</m> is the monthly payment in dollars.  We know that after one month,</p>
+        <md>
+          <mrow>L_1=1.004(20,000)-P</mrow>
+        </md>
+        <p>After two months, the amount still owed is given by</p>
+        <md>
+          <mrow>L_2 = 1.004L_1-P</mrow>
+        </md>
+        <p>which, by substitution is equivalent to</p>
+        <md>
+          <mrow>L_2=1.004(1.004 \cdot 20,000 - P) - P</mrow>
+          <mrow>\text{or}</mrow>
+          <mrow>L_2=1.004^2(20,000)-1.004P-P</mrow>
+        </md>
+        <p>Similarly, since <m>L_3=1.004L_2-P</m>, we have:</p>
+        <md>
+          <mrow>L_3=1.004(1.004^2 (20,000) - 1.004P - P) - P</mrow>
+          <mrow>L_3=1.004^3(20,000) - 1.004^2P - 1.004P - P</mrow>
+        </md>
+        <p>We can continue to iterate to find the outstanding balance after any number of months. For instance,</p>
+        <md>
+          <mrow>L_5=1.004^5 (20,000)-1.004^4 P-1.004^3 P-1.004^2 P-1.004P-P</mrow>
+        </md>
+        <p>In general, we see that after <m>n</m> months the oustanding balance is given by:</p>
+        <mdn>
+          <mrow xml:id="general-annuity-formula-long">L_n=1.004^n (20,000) - P( 1.004^{n-1} + 1.004^{n-2} + ... + 1.004^2 + 1.004 + 1 )</mrow>
+        </mdn>
+        <p>Embedded in the right side of equation <xref ref="general-annuity-formula-long" /> is the geometric series</p>
+        <md>
+          <mrow>1 + 1.004 + 1.004^2 + 1.004^3 + ... + 1.004^{n-2} + 1.004^{n-1}</mrow>
+        </md>
+        <p>which has first term <m>1</m> and common ratio <m>1.004</m>. Using equation <xref ref="chapter04-section04-geoseries-step3" />, we know that</p>
+        <md>
+          <mrow>1 + 1.004 + 1.004^2 + 1.004^3 + ... + 1.004^{n-2} + 1.004^{n-1} = \frac{1-1.004^n}{1-1.004}</mrow>
+        </md>
+        <p>Substituting into equation <xref ref="general-annuity-formula-long" /> we obtain the following representation for  <m>L_n</m>:</p>
+        <mdn>
+          <mrow xml:id="general-annuity-formula-condensed">L_n = 1.004^n (20,000) - P(\frac{1-1.004^n}{1-1.004})</mrow>
+        </mdn>
+        <p>We want <m>48</m> payments to reduce the outstanding balance to zero, that is, our goal is  <m>L_{48}=0</m>. This means that we can solve the following equation to find the value of <m>P</m>.</p>
+        <md>
+          <mrow>0 = 1.004^{48}(20,000)-P(\frac{1-1.004^n}{1-1.004})</mrow>
+        </md>
+        <p>Solving for <m>P</m>, we find</p>
+        <md>
+          <mrow>P = 1.004^{48}(20,000)(\frac{1-1.004^n}{1-1.004})</mrow>
+          <mrow>\text{or, equivalently}</mrow>
+          <mrow>P=\frac{1.004^{48}(20,000)(0.004)}{1.004^{48}-1}</mrow>
+        </md>
+        <p>which means that <m>P \approx 458.78</m>. The loan will be paid off in <m>48</m> months with a monthly payment of <m>\$458.78</m>. You should verify using the recursive system</p>
+        <md>
+          <mrow>L_0 = 20,000, L_n = 1.004L_{n-1}, n = 1, 2, 3, ...</mrow>
+        </md>
+        <p>that the balance after <m>48</m> payments, <m>L_{48}</m> is zero. Note that due to rounding, your answer may not be exactly zero. The final baloon payment may be a few cents more or less than <m>\$458.78</m></p>
+        <p>It is worthwhile to take a moment to study equation <xref ref="general-annuity-formula-condensed" />, which effectively gives an explicit function for <m>L(n)</m>.</p>
+        <md>
+          <mrow>L(n) = 1.004^n (20,000) - P(\frac{1-1.004^n}{1-1.004})</mrow>
+        </md>
+        <p>Recall that the monthly interest rate was <m>0.4\%</m>, the amount borrowed was <m>\$20,000</m>,  <m>L(n)</m> is the amount still owed after <m>n</m> payments, and <m>P</m> is the monthly payment. You should conclude that if the monthly interest rate is <M>k\%</M> and the amount borrowed is <m>\$A</m>, then <m>L(n)</m>, the amount still owed after <m>n</m> payments, will be given by</p>
+        <mdn>
+          <mrow>L(n) = (1+k)^n A - P(\frac{1-(1+k)^n}{1-(1+k)})</mrow>
+        </mdn>
+        <p>If you want the outstanding balance to be zero after <m>n^*</m> months, you can solve to find the value of <m>P</m> for which <m>L(n^*)=0</m>.</p>
+      </statement>
+    </solution>
+  </example>
+  <exercises>
+    <exercise>
+      <statement>
+        <p>Consider the geometric series <m>100+100(1.05)+100(1.05)^2+100(1.05)^3+...</m></p>
+        <ol>
+          <li>Find the sum of the first <m>100</m> terms of the series</li>
+          <li>Find the sum of the first <m>100</m> terms of the series</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Consider the geometric series <m>200+200(0.8)+200(0.8)^2+200(0.8)^3+...</m></p>
+        <ol>
+          <li>Find the sum of the first <m>50</m> terms of the series</li>
+          <li>Find the sum of the first <m>500</m> terms of the series</li>
+          <li>Find the sum of the first <m>1000</m> terms of the series</li>
+          <li>Make a prediction about the sum of the first million terms. Compare your prediction with the actual sum.</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Consider the geometric series <m>3+1.5+0.75+0.375+...</m></p>
+        <ol>
+          <li>Find the sum of the first <m>10</m> terms of the series</li>
+          <li>Find the sum of the first <m>50</m> terms of the series</li>
+          <li>How many terms of the series must be added to bring the sum to at least <m>5.99999</m>?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Consider the geometric series with first term <m>\frac{9}{10}</m> and common ratio <m>\frac{1}{10}</m></p>
+        <ol>
+          <li>Find the sum of the first <m>10</m> terms of the series</li>
+          <li>Find the sum of the first <m>100</m> terms of the series</li>
+          <li>Explain if it is meaningful to talk about adding infinitely many of the terms in this series</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Let <m>T(n)</m> represent the sum of the first <m>n</m> terms of the series <m>1 - \frac{1}{2} + \frac{1}{4} - \frac{1}{8} + ...</m></p>
+        <ol>
+          <li>Find the sum of <m>T(10)</m> without actually adding terms.</li>
+          <li>Find an explicit expression for <m>T(n)</m> in terms of <m>n</m>.</li>
+          <li>Describe how the values of <m>T(n)</m> behave as <m>n</m> increases without bound.</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Let <m>T(n)</m> represent the sum of the first <m>n</m> terms of the series <m>0.3 + 0.03 + 0.003 + 0.0003 + ...</m></p>
+        <ol>
+          <li>Find an explicit expression for <m>T(n)</m> in terms of <m>n</m>.</li>
+          <li>Describe how the values of <m>T(n)</m> behave as <m>n</m> increases without bound.</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Let <m>S(n)</m> represent the sum of the first <m>n</m> terms of the series with common ratio <m>r</m>. For what values of <m>r</m> is it meaningful to talk about adding infinitely many terms of the series?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Find the sum of each geometric series.</p>
+        <ol>
+          <li><m>3 + 6 + 12 + ... + 192</m></li>
+          <li><m>1 + 0.2 + (0.2)^2 + (0.2)^3 + ... + (0.2)^14</m></li>
+          <li><m>4 + 4^2 + 4^3 + ... + 4^45</m></li>
+          <li><m>3 + \frac{3}{5} + \frac{3}{25} + \frac{3}{125} + ... + \frac{3}{5^{20}}</m></li>
+          <li><m>3 - \frac{3}{5} + \frac{3}{25} - \frac{3}{125} + ... + \frac{3}{5^{20}}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>In the oil consumption problem at the beginning of this section, the consumption of oil is increasing at a rate of <m>1.42\%</m> per year. By how many billions of barrels will the total consumption of oil from <m>2012</m> to <m>2042</m> be reduced if the rate of increase is reduced to <m>1\%</m>?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>The number of new cars sold at a car dealer each year grows at a rate of <m>1.5\%</m> a year. This year, the dealer sold <m>200</m> cars. Assume that the <m>1.5\%</m> annual growth rate continues.</p>
+        <ol>
+          <li>How many cars will the dealer sell <m>15</m> years from now</li>
+          <li>What is the total number of cars that will have been sold between this year and <m>15</m> years in the future?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>The landfill in Jefferson County can hold <m>22.6</m> million cubic yards of compacted garbage. In <m>2015</m> the city of Jefferson and the surrounding communities contributed <m>550,000</m> cubic yards of garbage to the landfill. The following year the total amount was about <m>560,000</m> cubic yards, which represents a <m>1.8\%</m> increase. This rate of Increase is actually smaller than the population growth rate of the county, so residents are reducing their per capita contributions to the land fill. <fn>Adapted from Mathematics Modeling our Worlds COMAP course 2</fn></p>
+        <ol>
+          <li>Find the total amount of garbage, in cubic yards, that the country residents will contribute to the landfill over the next <m>10</m> years, from <m>2015</m> thru <m>2024</m></li>
+          <li>In what year will the landfill reach its capacity, if the annual growth rate of garbage volume remains at <m>1.8\%</m>?</li>
+          <li>Suppose that new recycling program can decrease the number of cubic yards of garbage that the country produces. In <m>2015</m> residents contributed <m>550,000</m> cubic yards of garbage to the landfill and annual rate of increase is brought down to <m>1\%</m>.  How many years will the landfill last under these conditions?</li>
+          <li>How long would the landfill last if the annual rate of increase of garbage contribution was brought down to zero?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>You have an annuity to which you initially depot <m>\$1,000</m> and you add <m>\$150</m> each month. The account earns interest at <m>0.35\%</m> monthly interest rate; interest earned is added to the account balance at the end of each month.</p>
+        <ol>
+          <li>Write a recursive model for the situation.</li>
+          <li>How much money will you have after <m>3</m> years?</li>
+          <li>How much money will you have after <m>n</m> months? Your answer should be written in the form of an explicit expression.</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Compare these two investment strategies to save for retirement by determining the account balance at age <m>65</m></p>
+        <p><em>Strategy I:</em> For the <m>8</m> years from age <m>44</m> to age <m>52</m>, invest <m>\$300</m> per month and earn interest at a rate of <m>0.75\%</m> per month. Do not save any more money after age <m>52</m>, and make no withdrawals from the account.</p>
+        <p><em>Strategy II:</em> For the <m>16</m> years from age <m>49</m> to age <m>65</m>, invest <m>\$300</m> per month and earn at a rate of <m>0.75\%</m> per month. Make no withdrawals from the account.</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Start by writing an explicit function that expresses <m>Y_n</m> in terms of <m>n</m> if the values of <m>Y_n</m> are generated by the recursive system <m>Y_0=A, Y_n=aY_{n-1}+b, n = 1, 2, 3, ...</m> Use the method for summing a geometric series. Then:</p>
+        <ol>
+          <li>Use your explicit function to determine the balance in an annuity after <m>25</m> years if an initial deposit of <m>\$50,000</m> and regular annual deposits of <m>\$1,000</m> have all earned interest at a <m>3.5\%</m> annual rate.</li>
+          <li>Use your explicit function to determine the outstanding balance after <m>60</m> months on a loan of <m>\$55,000</m> if payments of <m>\$600</m> are made each month and the interest rate is <m>2.4\%</m> per month.</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Earl and Larry are twins.  They both went to work at the age of <m>24</m> at the same job.  On their birthday each year (starting with their <m>25^{\text{th}}</m>birthday), they received identical bonuses of <m>\$2,000</m>.  However, they decided to deal with their finances differently.<fn>Adapted from: Smith, Keith, Tim and Tom's Financial Adventure, HIMap Pull-Out Section, COMAP Consortium, Fall, 1991</fn></p>
+        <p></p>
+        <p><em>Earl's Strategy</em>: Earl decided to invest his money early in life, and each year, he took his bonus and put it in a savings account that earned <m>6.6\%</m> annual interest.  At the age of <m>34</m>, Earl decided to live life a little and began spending his bonuses (beginning with the one he received at age <m>35</m>).  He did not, however, use any of the money he already had in his savings account.  He let it continue growing until He turned <m>60</m> years old, without depositing any new money into his savings account.</p>
+        <p></p>
+        <p><em>Larry's Strategy:</em> Larry decided to have some fun when he was young and spent his bonuses up until he turned <m>34</m>.  After he turned <m>34</m> and received his bonus, he realized that he should start thinking about the future and put some money away for retirement.  He began to invest his bonuses (starting with the one he received at age <m>35</m>) in a savings account that earned <m>6.6\%</m> annual interest.  He did this until the age of <m>60</m>, including the bonus he received on his <m>60^{\text{th}}</m> birthday.</p>
+        <p></p>
+        <p>Your task is to compare Earl's and Larry's investment strategies.  Your analysis should include the amount each twin has in his bank account on their <m>60^{\text{th}}</m> birthday as well as how much bonus money each twin was able to spend between the ages of <m>25</m> and <m>60</m>.  Which investment strategy would you recommend?  Your comparison should include both <em>recursive equations and explicit functions</em> that represent the amount of money Earl and Larry have in their respective accounts at any time.</p>
+      </statement>
+    </exercise>
+  </exercises>
 </section>

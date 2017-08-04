@@ -14,16 +14,20 @@
 \contentsline {section}{\numberline {4.3}Geometric Growth and Decay}{17}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Class Practice}{20}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Exercises}{23}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Summing Geometric Growth}{24}{section.4.4}
-\contentsline {chapter}{\numberline {5}Logarithmic Functions}{27}{chapter.5}
-\contentsline {section}{\numberline {5.1}}{27}{section.5.1}
-\contentsline {chapter}{\numberline {6}Parametric Functions}{29}{chapter.6}
-\contentsline {section}{\numberline {6.1}}{29}{section.6.1}
-\contentsline {chapter}{\numberline {7}Intro to Trigonometric Functions}{31}{chapter.7}
-\contentsline {section}{\numberline {7.1}}{31}{section.7.1}
-\contentsline {chapter}{\numberline {8}More Trigonometric Functions}{33}{chapter.8}
-\contentsline {section}{\numberline {8.1}}{33}{section.8.1}
-\contentsline {chapter}{\numberline {9}Combinations of Functions}{35}{chapter.9}
-\contentsline {section}{\numberline {9.1}}{35}{section.9.1}
-\contentsline {chapter}{\numberline {10}Matrices}{37}{chapter.10}
-\contentsline {section}{\numberline {10.1}}{37}{section.10.1}
+\contentsline {section}{\numberline {4.4}Summing Geometric Growth}{25}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Exercises}{28}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.5}Compound Interest (or the Magic of Compounding)}{30}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Class Practice}{32}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Exercises}{34}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Logarithmic Functions}{37}{chapter.5}
+\contentsline {section}{\numberline {5.1}}{37}{section.5.1}
+\contentsline {chapter}{\numberline {6}Parametric Functions}{39}{chapter.6}
+\contentsline {section}{\numberline {6.1}}{39}{section.6.1}
+\contentsline {chapter}{\numberline {7}Intro to Trigonometric Functions}{41}{chapter.7}
+\contentsline {section}{\numberline {7.1}}{41}{section.7.1}
+\contentsline {chapter}{\numberline {8}More Trigonometric Functions}{43}{chapter.8}
+\contentsline {section}{\numberline {8.1}}{43}{section.8.1}
+\contentsline {chapter}{\numberline {9}Combinations of Functions}{45}{chapter.9}
+\contentsline {section}{\numberline {9.1}}{45}{section.9.1}
+\contentsline {chapter}{\numberline {10}Matrices}{47}{chapter.10}
+\contentsline {section}{\numberline {10.1}}{47}{section.10.1}

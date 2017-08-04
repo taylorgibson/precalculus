@@ -1,6 +1,6 @@
 %**************************************%
-%* Generated from MathBook XML source *%
-%*    on 2017-08-01T16:19:17-04:00    *%
+%*    Generated from PreTeXt source   *%
+%*    on 2017-08-04T15:44:59-04:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
@@ -39,9 +39,8 @@
 %% 
 %% Extensive support for other languages
 \usepackage{polyglossia}
+%% Main document language is US English
 \setdefaultlanguage{english}
-%% Magyar (Hungarian)
-\setotherlanguage{magyar}
 %% Spanish
 \setotherlanguage{spanish}
 %% Vietnamese
@@ -163,14 +162,6 @@
 \usepackage{float}
 \usepackage[bf]{caption} % http://tex.stackexchange.com/questions/95631/defining-a-new-type-of-floating-environment 
 \usepackage{newfloat}
-\usepackage{subcaption}
-\captionsetup[subfigure]{labelformat=simple}
-\captionsetup[subtable]{labelformat=simple}
-\renewcommand\thesubfigure{(\alph{subfigure})}
-\makeatletter
-% we plan to use subtables within figure environments, so they need to reset accordingly
-\@addtoreset{subtable}{figure}
-\makeatother
 % Figure environment setup so that it no longer floats
 \SetupFloatingEnvironment{figure}{fileext=lof,placement={H},within=section,name=Figure}
 % figures have the same number as theorems: http://tex.stackexchange.com/questions/16195/how-to-make-equations-figures-and-theorems-use-the-same-numbering-scheme 
@@ -200,7 +191,7 @@
 %% Add  debug=true  option to see boxes around contents
 \usepackage{tasks}
 \NewTasks[label-format=\bfseries,item-indent=3.3em,label-offset=0.4em,label-width=1.7em,label-align=right,after-item-skip=\smallskipamount,after-skip=\smallskipamount]{exercisegroup}[\exercise]
-%% hyperref driver does not need to be specified
+%% hyperref driver does not need to be specified, it will be detected
 \usepackage{hyperref}
 %% Hyperlinking active in PDFs, all links solid and blue
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
@@ -255,7 +246,7 @@
 \author{Mathematics Department\\
 North Carolina School of Science and Mathematics
 }
-\date{August 1, 2017}
+\date{August 4, 2017}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -280,7 +271,7 @@ North Carolina School of Science and Mathematics
 {\Huge Contemporary Pre-Calculus Through Applications}\\[3\baselineskip]
 {\Large Mathematics Department}\\[0.5\baselineskip]
 {\Large North Carolina School of Science and Mathematics}\\[3\baselineskip]
-{\Large August 1, 2017}\\}
+{\Large August 4, 2017}\\}
 \clearpage
 %% end:   title page
 %% begin: copyright-page
@@ -300,9 +291,6 @@ North Carolina School of Science and Mathematics
 \typeout{Chapter 1 Data}
 \typeout{************************************************}
 \chapter[{Data}]{Data}\label{chapter01}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 1.1 }
@@ -312,9 +300,6 @@ Introduction to this chapter%
 \typeout{Chapter 2 Transformations of Functions}
 \typeout{************************************************}
 \chapter[{Transformations of Functions}]{Transformations of Functions}\label{chapter02}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 2.1 }
@@ -324,9 +309,6 @@ Introduction to this chapter%
 \typeout{Chapter 3 Combining Functions}
 \typeout{************************************************}
 \chapter[{Combining Functions}]{Combining Functions}\label{chapter03}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 3.1 }
@@ -375,7 +357,7 @@ D_n=D_{n-1}-0.67D_{n-1},n=1,2,3...
 \end{gather*}
 %
 \par
-Using a spreadsheet or calculator, we can generate successive values of \(D_n\) as shown in \hyperref[figure-plot-ibuprofen-one-dose]{}.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than \(1\) mg between the fourth and fifth time periods.  If she takes a single \(200\) mg dose, Joan will have only about \(0.258\) mg remaining in her body \(24\) hours later.%
+Using a spreadsheet or calculator, we can generate successive values of \(D_n\) as shown in \hyperref[figure-plot-ibuprofen-one-dose]{Figure~3}.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than \(1\) mg between the fourth and fifth time periods.  If she takes a single \(200\) mg dose, Joan will have only about \(0.258\) mg remaining in her body \(24\) hours later.%
 % group protects changes to lengths, releases boxes (?)
 {% begin: group for a single side-by-side
 % set panel max height to practical minimum, created in preamble
@@ -422,26 +404,29 @@ tick label style={font=\tiny},
 \settototalheight{\phBimage}{\usebox{\panelboxBimage}}
 \setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
 \leavevmode%
-% begin: side-by-side as figure/tabular
+% begin: side-by-side as tabular
 % \tabcolsep change local to group
-\setlength{\tabcolsep}{0.05\textwidth}
+\setlength{\tabcolsep}{0.025\textwidth}
 % @{} suppress \tabcolsep at extremes, so margins behave as intended
-\begin{figure}
+\par\medskip\noindent
+\hspace*{0.025\textwidth}%
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.25\textwidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}
-\caption{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-ibuprofen-one-dose}}
-\end{figure}
-% end: side-by-side as tabular/figure
+\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxBimage}\end{minipage}\tabularnewline
+\parbox[t]{0.25\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-table-ibuprofen-one-dose}}
+}&
+\parbox[t]{0.65\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-plot-ibuprofen-one-dose}}
+}\end{tabular}\\
+% end: side-by-side as tabular
 }% end: group for a single side-by-side
 \par
-The graph in Figure \hyperref[figure-ibuprofen-one-dose]{\ref{figure-ibuprofen-one-dose}} shows the ordered pairs \((n,D_n)\) generated by the recursive system%
+The graph in Figure \hyperref[figure-ibuprofen-one-dose]{[sidebyside]
+~} shows the ordered pairs \((n,D_n)\) generated by the recursive system%
 %
 \begin{gather*}
 D_0=200\\
 D_n=D_{n-1} - 0.67D_{n-1}, n=1,2,3,...
 \end{gather*}
-\par
 Each point on the graph shows the amount of ibuprofen in Joan’s body at the end of a four-hour time period. Notice that there is obvious curvature in this graph.  The amount of drug in Joan’s body does not decrease by the same number of milligrams during each time interval.%
 \end{example}
 \typeout{************************************************}
@@ -449,7 +434,7 @@ Each point on the graph shows the amount of ibuprofen in Joan’s body at the en
 \typeout{************************************************}
 \subsection[{Class Practice}]{Class Practice}\label{exercises-1}
 \begin{exerciselist}
-\item[1.]\hypertarget{exercise-1}{}Modify the recursive system used in Example \hyperref[ibuprofen-example-one-dose]{\ref{ibuprofen-example-one-dose}} as appropriate to answer the following questions: \leavevmode%
+\item[1.]\hypertarget{exercise-1}{}Modify the recursive system used in Example \hyperref[ibuprofen-example-one-dose]{Example~1} as appropriate to answer the following questions: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-1}{}Suppose Joan takes tablets that contain \(250\) milligrams of ibuprofen. How much ibuprofen would be in her body after \(4, 8, 12, 16, 20,\) and \(24\) hours?%
 \item\hypertarget{li-2}{}Suppose Joan's kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a \(200\) mg tablet every \(4\) hours, how much ibuprofen would she have in her system after \(4, 8, 12, 16, 20,\) and \(24\) hours?%
@@ -475,8 +460,7 @@ Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to
 D_0=200\\
 D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...
 \end{gather*}
-\par
-The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in \hyperref[figure-plot-ibuprofen-multi-dose]{}%
+The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in \hyperref[figure-plot-ibuprofen-multi-dose]{Figure~6}%
 % group protects changes to lengths, releases boxes (?)
 {% begin: group for a single side-by-side
 % set panel max height to practical minimum, created in preamble
@@ -523,20 +507,23 @@ tick label style={font=\tiny},
 \settototalheight{\phDimage}{\usebox{\panelboxDimage}}
 \setlength{\panelmax}{\maxof{\panelmax}{\phDimage}}
 \leavevmode%
-% begin: side-by-side as figure/tabular
+% begin: side-by-side as tabular
 % \tabcolsep change local to group
-\setlength{\tabcolsep}{0.05\textwidth}
+\setlength{\tabcolsep}{0.025\textwidth}
 % @{} suppress \tabcolsep at extremes, so margins behave as intended
-\begin{figure}
+\par\medskip\noindent
+\hspace*{0.025\textwidth}%
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.25\textwidth}\usebox{\panelboxCimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxDimage}\end{minipage}\end{tabular}
-\caption{Amount of drug in Joan's body (Single 200 mg dose)\label{sidebyside-2}}
-\end{figure}
-% end: side-by-side as tabular/figure
+\begin{minipage}[c][\panelmax][t]{0.65\textwidth}\usebox{\panelboxDimage}\end{minipage}\tabularnewline
+\parbox[t]{0.25\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-table-ibuprofen-multi-dose}}
+}&
+\parbox[t]{0.65\textwidth}{\captionof{figure}{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-plot-ibuprofen-multi-dose}}
+}\end{tabular}\\
+% end: side-by-side as tabular
 }% end: group for a single side-by-side
 \par
-The points shown in \hyperref[figure-plot-ibuprofen-multi-dose]{} represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out \(67\%\) of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.%
+The points shown in \hyperref[figure-plot-ibuprofen-multi-dose]{Figure~6} represent the amount of the drug in Joan’s body immediately after she takes a tablet.  Between consecutrive doses, we know that the level of the drug declines.  We assume that the level “jumps up” at the moment she takes another tablet, and the recursive system enables us to compute these values.   If we  record the drug levels only after she takes a tablet, then we see that these values reach an equilibrium of approximately 298.51 mg.  To see why this equilibrium has been reached, consider how much of the 298.51 mg of the drug will be filtered in four hours.  Joan’s kidneys will filter out \(67\%\) of the 298.51 mg in her body, or approximately 200 mg, which will be replaced when she takes the next tablet. Equilibrium occurs because the amount of drug taken into the body is the same as the amount filtered prior to taking the next tablet.%
 \par
 Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means that there must be at least 450 milligrams of the drug in her body for Joan to receive the benefits of the drug.  No wonder she thought the drug was not working.  It wasn’t!%
 \end{example}
@@ -647,7 +634,6 @@ When making monthly payments to repay a loan, an interest payment is charged on 
 \begin{gather*}
 L_0=10,000, L_{n-1}+(0.0045)\cdot L_{n-1}-230, where n=1,2,3,...
 \end{gather*}
-\par
 where \(L_n\) is the amount you owe on the loan after \(n\) months.  This amount is also known as the \emph{principal}, or the \emph{outstanding balance}. If we iterate this system, the values we generate represent the outstanding balance at the end of each month.%
 %
 \begin{gather*}
@@ -655,7 +641,6 @@ L_1=L_0+(0.0045)\cdot L_0-230=10,000+(0.0045)\cdot 10,000-230=9,815\\
 L_2=L_1+(0.0045)\cdot L_1-230=9,815+(0.0045)\cdot 9,815-230=9,629.17\\
 L_3=L_2+(0.0045)\cdot L_2-230=9,629.17+(0.0045)\cdot 9,629.17-230=9,442.50
 \end{gather*}
-\par
 Note that values have been rounded to the nearest cent.  All the decimal places on the calculator were retained in the computations.%
 \par
 After three months, you will owe \(\$9,442.50\) on the loan. Notice that you have paid a total of \(\$230\cdot 3=\$690\), but only \(\$10,000-\$9442.50=\$557.50\) was applied towards decreasing the principal of the loan. The remaining \(\$132.50\) was payment of interest.%
@@ -665,7 +650,6 @@ We can continue generating values of \(L_n\) using a more compact form of the it
 \begin{gather*}
 L_n=(1.0045)\cdot L_{n-1}-230
 \end{gather*}
-\par
 which yields%
 %
 \begin{gather*}
@@ -673,7 +657,6 @@ L_4=(1.0045)\cdot L_3-230=\$9,254.99\\
 L_5=(1.0045)\cdot L_4-230=\$9,066.64\\
 L_6=(1.0045)\cdot L_5-230=\$8,877.44
 \end{gather*}
-\par
 After six months, you owe \(\$8,877.44\) of the original \(\$10,000\) principal.  You have paid \(\$1,380\) in interest, and this payment has reduced the outstanding balance by \(\$1,122.56\).  Over \(\$250\) was interest on the loan.%
 \par
 If we continue the payments of \(\$230\) for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment%
@@ -728,17 +711,19 @@ tick label style={font=\tiny},
 \settototalheight{\phFimage}{\usebox{\panelboxFimage}}
 \setlength{\panelmax}{\maxof{\panelmax}{\phFimage}}
 \leavevmode%
-% begin: side-by-side as figure/tabular
+% begin: side-by-side as tabular
 % \tabcolsep change local to group
 \setlength{\tabcolsep}{0\textwidth}
 % @{} suppress \tabcolsep at extremes, so margins behave as intended
-\begin{figure}
+\par\medskip\noindent
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.3\textwidth}\usebox{\panelboxEimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.7\textwidth}\usebox{\panelboxFimage}\end{minipage}\end{tabular}
-\caption{Loan Ammoritization\label{sidebyside-3}}
-\end{figure}
-% end: side-by-side as tabular/figure
+\begin{minipage}[c][\panelmax][t]{0.7\textwidth}\usebox{\panelboxFimage}\end{minipage}\tabularnewline
+\parbox[t]{0.3\textwidth}{\captionof{figure}{Loan Ammoritization\label{figure-table-loan-balance}}
+}&
+\parbox[t]{0.7\textwidth}{\captionof{figure}{Loan Ammoritization\label{figure-plot-loan-balance}}
+}\end{tabular}\\
+% end: side-by-side as tabular
 }% end: group for a single side-by-side
 \par
 Since the first \(47\) payments were each \(\$230\), the total amount paid is \(47\cdot \$230 + \$342.74 = \$11,152.74\).  We see that it costs \(\$1,152.74\) to borrow \(\$10,000\) for \(48\) months.%
@@ -750,13 +735,11 @@ We can generalize the recursive system used to determine the total amount repaid
 \begin{gather*}
 L_0=A, L_n=L_{n-1} + r \cdot L_{n-1} - P , n=1,2,3,...
 \end{gather*}
-\par
 or%
 %
 \begin{gather*}
 L_0=A,L_n=(1+r)L_{n-1} - P , n=1,2,3,...
 \end{gather*}
-\par
 You should complete practice problem 1 at the end of the section at this time%
 \par
 When borrowers take out a loan, they typically know the amount they want to borrow, the interest rate they will have to pay, and the length of time they have to pay off the loan.  We are interested in determining the payment that will allow the borrower to pay back the loan in the required time.  For most loans, the borrower makes payments every month. Thus, a car loan that needs to be repaid in \(5\) years requires \(60\) monthly payments and a mortgage loan that is repaid in \(15\) years requires \(180\) monthly payments. For simplicity's sake, our first few examples will assume that payments are made annually (that is, once per year) rather than monthly.%
@@ -768,7 +751,6 @@ Suppose you buy a car and take out a loan of \(\$22,000\) at \(6.5\%\) annual in
 \begin{gather*}
 L_0=22,000,L_n=(1+0.065)L_{n-1}-P
 \end{gather*}
-\par
 and our goal is to find the value of \(P\) so that \(L_4=0\)%
 \par
 If there were no interest charged, you would have to make a payment of \(\$5,500\) each year to repay the \(\$22,000\).  Since you must pay interest on the loan, \(\$5,500\) per year is obviously too small a payment and we conclude that \(\> \$5,500\).  We can confirm that \(\$5,500\) is too small a payment  with the recursive system:%
@@ -776,7 +758,6 @@ If there were no interest charged, you would have to make a payment of \(\$5,500
 \begin{gather*}
 L_0=22,000,L_n=(1+0.065)L_{n-1} - 5,500
 \end{gather*}
-\leavevmode%
 \begin{table}
 \centering
 \begin{tabular}{ll}
@@ -787,8 +768,8 @@ L_0=22,000,L_n=(1+0.065)L_{n-1} - 5,500
 \multicolumn{1}{lB}{\(3\)}&\(\$13,595.45(1+0.065)-\$5,500=\$8,979.15\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(4\)}&\(\$8,979.15(1+0.065)-\$5,500=\$4,062.80\)\tabularnewline\hrulemedium
 \end{tabular}
+\caption{\label{table-1}}
 \end{table}
-\par
 This confirms that if we make an annual payment of \(\$5,500\) for each of 4 years, the outstanding balance on a loan of \(\$22,000\) is \(\$4,062.80\) at the end of the \(4\) years. So \(\$5,500\) is too small an annual payment to pay off the loan.%
 \par
 With a \(6.5\%\) annual interest rate, we know that the interest for the first year is \(\$1,430\) ( \(6.5\%\) of \(\$22,000\) ), so a reasonable guess for the payment might be \(\$5500+\$1430=\$6930\). However, in the second year we will need to pay less than \(\$1430\) in interest because the outstanding balance has decreased.  Therefore, a payment of \(\$6930\) per year will result in an overpayment for the last three years.  The calculations below show that \(\$6930\) is indeed too large an annual payment; that is, \(P \lt 6,930\).%
@@ -796,7 +777,6 @@ With a \(6.5\%\) annual interest rate, we know that the interest for the first y
 \begin{gather*}
 L_0=22,000, L_n=(1+0.065)L_{n-1}-6,930
 \end{gather*}
-\leavevmode%
 \begin{table}
 \centering
 \begin{tabular}{ll}
@@ -807,8 +787,8 @@ L_0=22,000, L_n=(1+0.065)L_{n-1}-6,930
 \multicolumn{1}{lB}{\(3\)}&\(\$10,642.50(1+0.065)-\$6,930=\$4,404.26\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(4\)}&\(\$4,404.26(1+0.065)-\$6,930=-\$2,239.46\)\tabularnewline\hrulemedium
 \end{tabular}
+\caption{\label{table-2}}
 \end{table}
-\par
 We have established that \(\$5500\) is too small a payment and \(\$6930\) is too large a payment; that is, \(5,500 \lt P \lt 6,930\)  Our next logical guess for a payment might be mid-way between these two payments, or \(\$6215\).  We can do recursive calculations to see if this payment is too small, which would result in a positive outstanding balance after \(4\) years, or if this payment is too large, resulting in a negative outstanding balance after \(4\) years.%
 \par
 The outstanding principal is modeled by the recursive system%
@@ -816,9 +796,7 @@ The outstanding principal is modeled by the recursive system%
 \begin{gather*}
 L_0=22,000, L_n=(1+0.065)L_{n-1} - 6,215
 \end{gather*}
-\par
 The successive principals are shown in the table.%
-\leavevmode%
 \begin{table}
 \centering
 \begin{tabular}{ll}
@@ -829,10 +807,9 @@ The successive principals are shown in the table.%
 \multicolumn{1}{lB}{\(3\)}&\(\$12,118.98(1+0.065)-\$6,215=\$6,691.71\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(4\)}&\(\$6,691.71(1+0.065)-\$6,215=\$911.67\)\tabularnewline\hrulemedium
 \end{tabular}
+\caption{\label{table-3}}
 \end{table}
-\par
 An annual payment of \(\$6,215\) is not sufficient to pay off the loan in four years, as a balance of \(\$911.67\) remains after the four payments.  We conclude that \(6,215 \lt P \lt 6,930\) and we need to pay more than \(\$6,215\).  If we again select the average of two payments, one that is too large and one that is too small, we will have arrived at a better guess.  We know \(\$6,930\) is too large and \(\$,6215\) is too small, so our next guess will be \(\frac{6930+6215}{2} = \$6,572.50\).  The successive balances would now be as shown.%
-\leavevmode%
 \begin{table}
 \centering
 \begin{tabular}{ll}
@@ -843,13 +820,12 @@ An annual payment of \(\$6,215\) is not sufficient to pay off the loan in four y
 \multicolumn{1}{lB}{\(3\)}&\(\$11,380.74(1+0.065)-\$6,572.50=\$5,547.99\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(4\)}&\(\$5,547.99(1+0.065)-\$6,572.50=-\$663.90\)\tabularnewline\hrulemedium
 \end{tabular}
+\caption{\label{table-4}}
 \end{table}
-\par
 We see that a payment of \(\$6,572.50\) is too large since after \(4\) payments you have paid \(\$663.90\) more than necessary. We now know that the appropriate payment \(P\) is in the interval  \(6,215 \lt  P \lt 6,572.50\)%
 \par
 We can continue the process of averaging two payments, one that is too large and one that is too small. Eventually we find that three payments of \(\$6,393.75\) and a fourth balloon payment of \(\$6,393.75 + \$123.89\) will bring the outstanding balance to zero dollars.%
 \end{example}
-\par
 The process used to find an appropriate payment is called \emph{binary search}. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.%
 \typeout{************************************************}
 \typeout{Exercises 4.2.1 Exercises}
@@ -888,8 +864,7 @@ The process used to find an appropriate payment is called \emph{binary search}. 
 \par
 Your task is to determine what his monthly payment needs to be. You will make several educated guesses about how much he needs to pay each month in order to finish paying off the loan and bring his outstanding balance down to zero with \(72\) payments. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
-\item\hypertarget{li-54}{}In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of \(\$950\) each month, he will have overpaid by about \(\$6,900\) after the \(72^{nd}\) payment. \leavevmode%
-\begin{table}
+\item\hypertarget{li-54}{}In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of \(\$950\) each month, he will have overpaid by about \(\$6,900\) after the \(72^{nd}\) payment. \begin{table}
 \centering
 \begin{tabular}{ll}
 \multicolumn{1}{lB}{Monthly Payment}&Outstanding Balance after \(72\) Monthly Payments\tabularnewline\hrulethick
@@ -899,6 +874,7 @@ Your task is to determine what his monthly payment needs to be. You will make se
 \multicolumn{1}{lB}{}&\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{}&\tabularnewline\hrulemedium
 \end{tabular}
+\caption{\label{table-5}}
 \end{table}
 %
 \item\hypertarget{li-55}{}Make a scatterplot that shows monthly payment on the horizontal axis and outstanding balance on the vertical.%
@@ -912,7 +888,7 @@ Your task is to determine what his monthly payment needs to be. You will make se
 \typeout{Section 4.3 Geometric Growth and Decay}
 \typeout{************************************************}
 \section[{Geometric Growth and Decay}]{Geometric Growth and Decay}\label{chapter04-section03}
-Some recursively defined functions have important applications in life.  One of the simplest, yet most important, represents \emph{geometric decay}. In geometric decay, the value of the function at time \(n\) is directly proportional to the value at time. This relationship suggests a recursive definition for geometric decay. The first example from Section \hyperref[chapter04-section01]{\ref{chapter04-section01}}, Example \hyperref[ibuprofen-example-one-dose]{\ref{ibuprofen-example-one-dose}}, involved the amount of ibuprofen in Joan's system at time \(n\) if she takes a single \(200\) mg tablet. Since her body filters out \(67\%\) of the ibuprofen present, the amount remaining after \(n\) time intervals is always \(33\%\) of the amount remaining after \(n-1\) time intervals.%
+Some recursively defined functions have important applications in life.  One of the simplest, yet most important, represents \emph{geometric decay}. In geometric decay, the value of the function at time \(n\) is directly proportional to the value at time. This relationship suggests a recursive definition for geometric decay. The first example from Section \hyperref[chapter04-section01]{1}, Example \hyperref[ibuprofen-example-one-dose]{1}, involved the amount of ibuprofen in Joan's system at time \(n\) if she takes a single \(200\) mg tablet. Since her body filters out \(67\%\) of the ibuprofen present, the amount remaining after \(n\) time intervals is always \(33\%\) of the amount remaining after \(n-1\) time intervals.%
 \par
 In that case, we calculated the amount of drug in Joan's boady with the recursive system%
 %
@@ -927,7 +903,6 @@ Blue jeans fade when they are washed. Suppose a pair of jeans loses \(2\%\) of i
 \begin{gather*}
 C_0=1, C_n=0.98 \cdot C_{n-1}, n=1,2,3,...
 \end{gather*}
-\par
 where \(C_n\) is the amount of color remaining in the jeans after \(n\) washings%
 \par
 We use \(1\) as the initial value to represent all or \(100\%\) of the color.  Since we want to measure the amount of color remaining, the coefficient in the recursive equation is \(0.98\).  With \(50\) iterations of the equation for \(C_n\), we find that the jeans have about \(36\%\) of their original color left after \(50\) washings.%
@@ -940,7 +915,6 @@ The amount of electrical power used by a community is increasing by 5% per year.
 \begin{gather*}
 P_0=500, P_n=1.05 \cdot P_{n-1}, n=1,2,3,...
 \end{gather*}
-\par
 Since the amount of power used is increasing by \(5\%\) each year, next year the citizens of the community will use \(105\%\) of what they used this year.  By iterating the equation for \(P_n\), we find that after \(14\) years the community will use about \(990\) thousand kwh per year and after \(15\) years they will use about \(1039\) thousand kwh per year.  The amount of power required by the community will have doubled in a little less than \(15\) years.  Note that this conclusion assumes that the demand for electrical power continues to increase by \(5\%\) per year.%
 \end{example}
 \begin{example}[Radioactive Decay]\label{example-radioactive-decay}
@@ -951,21 +925,18 @@ Potassium-42 is a radioactive element that is often used in biological experimen
 \begin{gather*}
 P_0=1, P_n=0.94455 \cdot P_{n-1}, n=1,2,3,...
 \end{gather*}
-\par
 We are interested in finding the amount of time until \(P_n\) is less than or equal to \(0.1\).  Iterating the equation for \(P_n\), we find that \(P_{40} = 0.1021\) and \(P_{41} = 0.0964\). So after \(40\) hours, \(0.1021\) mg of potassium-42 remain, and after \(41\) hours, \(0.0964\) mg remain. Sometime between \(40\) and \(41\) hours we expect to have only \(0.1\) mg of potassium-42 remaining.%
 \par
 The recursive system we used to generate amounts of potasium-42 does not allow us to determine the amount present between the \(40^{th}\) hour and the \(41^{st}\) hour.  The amount of potassium-42 changes incrementally between the \(40^{th}\) and the \(41^{st}\) hours, but the recursive equation we have used to represent this phenomenon cannot give us information about potassium levels between \(P_{40}\) and \(P_{41}\).%
 \end{example}
-\par
 Each of the three previous examples uses a recursive system that can be written as%
 %
 \begin{gather*}
 Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...
 \end{gather*}
-\par
 If \(k \gt 0\), this system represents geometric growth (with growth rate \(k\)); as \(n\) increases, the value of \(Y_n\)  increases.  If \(k \lt 0\), the system represents geometric decay (and \(k\) is the decay rate); as \(n\) increases, the value of \(Y_n\)  decreases.  In either case, the next value of \(Y_n\) depends entirely on the value of \(k\) and the old value of \(Y_n\).%
 \par
-Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example \hyperref[example-radioactive-decay]{\ref{example-radioactive-decay}} to describe electricity consumption%
+Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example \hyperref[example-radioactive-decay]{3} to describe electricity consumption%
 %
 \begin{gather*}
 P_0=500\\
@@ -974,7 +945,6 @@ P_2=(1+0.05)P_1\\
 P_3=(1+0.05)P_2\\
 P_4=(1+0.05)P_3
 \end{gather*}
-\par
 We can rewrite each of these equations in terms of \(P_0\), which yields%
 %
 \begin{gather*}
@@ -983,19 +953,16 @@ P_2=(1.05) P_1=(1.05) (1.05)P_0=(1.05)^2 P_0\\
 P_3=(1.05) P_2=(1.05) (1.05)^2 P_0=(1.05)^3 P_0\\
 P_4=(1.05) P_3=(1.05) (1.05)^3 P_0=(1.05)^4 P_0
 \end{gather*}
-\par
 If we continue this process, we see that the \(n^{th}\) term is given by%
 %
 \begin{gather*}
 P_n=(1.05)^n P_0
 \end{gather*}
-\par
 In general, we can convert the recursive system for geometric growth or decay, namely%
 %
 \begin{gather*}
 Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...
 \end{gather*}
-\par
 to an explicit function in terms of \(a, k, \)and \(n\), as follows:%
 %
 \begin{gather*}
@@ -1004,25 +971,21 @@ Y_1=(1+k)Y_0 = (1+k)a\\
 Y_2=(1+k)Y_1 = (1+k)(1+k)a = a(1+k)^2\\
 Y_3=(1+k)Y_2 = (1+k)a(1+k)^2 = a(1+k)^3
 \end{gather*}
-\par
 If we continue this process, we see that the \(n^{th}\) term is given by%
 %
 \begin{gather*}
 Y_n=a(a+k)^n
 \end{gather*}
-\par
 Note the distinction between the recursive equation%
 %
 \begin{gather*}
 Y_n=Y_{n-1}(1+k)
 \end{gather*}
-\par
 and the explicit equation%
 %
 \begin{gather*}
 Y_n=a(1+k)^n
 \end{gather*}
-\par
 The recursive equation shows that each value of \(Y_n\)  is obtained from the preceding value by multiplying by \((1+k)\). The explicit equation uses an exponent to represent this repeated multiplication.%
 \par
 If we wanted the value of \(Y_{100}\), the recursive equation would require that values of \(Y_1, Y_2, Y_3,\) and so forth up to \(Y_{99}\),  all be calculated. In contract, the explicit equaiotn \(Y_n=a(1+k)^n\) allows us to calculate \(Y_{100}\) without requiring any intermediate values.%
@@ -1034,20 +997,18 @@ The explicit equation can be rewritten using the more traditional functional not
 Y(n)=a(1+k)^n
 \end{gather*}
 \end{definition}
-\par
-In equation \hyperref[explicit-geometric-growth-equation]{\ref{explicit-geometric-growth-equation}} the independent variable \(n\) is in the exponent, so this function is an exponential function. The exponential function \(Y(n)=a(1+k)^n\) is the closed form representation of the recursive system  \(Y_0=a,Y_n=(1+k)Y_{n-1}\)%
+In equation \hyperref[explicit-geometric-growth-equation]{4} the independent variable \(n\) is in the exponent, so this function is an exponential function. The exponential function \(Y(n)=a(1+k)^n\) is the closed form representation of the recursive system  \(Y_0=a,Y_n=(1+k)Y_{n-1}\)%
 \begin{example}[]\label{example-one-time-bank-desposit}
 Suppose you plan to make a one-time deposit into a bank account that will earn \(0.45\%\) monthly interest.  How large must this deposit be so that you will have a college fund of \(\$75,000\) available after \(18\) years or \(216\) months?%
 \par\medskip\noindent%
 \textbf{Solution.}\quad We can solve this problem using the recursive model \(S_0 = a\), \(S_n = (1.0045) S_{n-1}\) but we will have to guess and check to find the appropriate value of \(S_0\) that gives of \(S_{216} = 75,000\).  Using the closed form \(S(n)=a(1.0045)^n\) , we need to find the value of \(a\) such that \(75,000 = a (1.0045)^{216}\).  Solving for \(a\) gives the equation \(a = \frac{75,000}{(1.0045)^{216}}\) , or \(a = \$28,436.36\).  We see that the closed form is useful when we do not need all the intermediate values that the recursive form generates.%
 \end{example}
 \begin{example}[Continuous Versus Discrete]\label{example-continuous-discrete}
-In Example \hyperref[example-radioactive-decay]{\ref{example-radioactive-decay}} we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system%
+In Example \hyperref[example-radioactive-decay]{3} we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system%
 %
 \begin{gather*}
 P_0=1, P_n=0.94455P_{n-1}, n=1,2,3,...
 \end{gather*}
-\par
 to determine the amount of Potassium-42 remaining after \(n\) 1-hour time intervals.%
 \par
 We could also use the explicit function%
@@ -1055,7 +1016,6 @@ We could also use the explicit function%
 \begin{gather*}
 P(t)=1 \cdot (0.944355)^t
 \end{gather*}
-\par
 to represent the amount of Potassium-42 remaining \(t\) hours after the decay process begins. Use each of these representations to determine how much Potassium remains after \(12\) hours.%
 \par\medskip\noindent%
 \textbf{Solution.}\quad This is what our work looks like if we use the recursive system:%
@@ -1069,16 +1029,14 @@ P_4=0.94455 \cdot P_3 = 0.94455 \cdot 0.847036 = 0.7959757\\
 ...\\
 P_{12}=0.94455 \cdot P_{11} = 0.94455 \cdot 0.53392 = 0.5043121
 \end{gather*}
-\par
 If we use the explicit function:%
 %
 \begin{gather*}
 P(12)=1(0.94455)^{12} = 0.5043121
 \end{gather*}
-\par
 Both representations tell us that in \(12\) hours the amount of Potassium-42 will have decreased from \(1\) milligram to about \(0.5\) milligram.%
 \par
-We need to be aware of the advantages and disadvantages of each representation that we used in Example \hyperref[example-one-time-bank-desposit]{\ref{example-one-time-bank-desposit}}. The recursive system is inherently discrete.  Values of \(P_n\) can be calculated only for positive interger values of \(n\), where n counts the number of \(1\)-hour time intervals that have elapsed since we measured \(1\) milligram of potassium-42. The recursive representation is not able to tell us anything about the amount of potassium present between \(P_2\) and \(P_3\), in fact, \(P_{2.7}\) is not even defined.%
+We need to be aware of the advantages and disadvantages of each representation that we used in Example \hyperref[example-one-time-bank-desposit]{5}. The recursive system is inherently discrete.  Values of \(P_n\) can be calculated only for positive interger values of \(n\), where n counts the number of \(1\)-hour time intervals that have elapsed since we measured \(1\) milligram of potassium-42. The recursive representation is not able to tell us anything about the amount of potassium present between \(P_2\) and \(P_3\), in fact, \(P_{2.7}\) is not even defined.%
 \par
 The explicit function \(P(t)=1 \cdot (0.944355)^t\) uses \(t\) as a variable whose domain is all positive real numbers and \(P(2.7)\) is well-defined and meaningful. The explicit function can tell us the amount of Potassium-42 present at any time on the continuum between zero and infinity.%
 \par
@@ -1142,41 +1100,40 @@ tick label style={font=\tiny},
 \settototalheight{\phHimage}{\usebox{\panelboxHimage}}
 \setlength{\panelmax}{\maxof{\panelmax}{\phHimage}}
 \leavevmode%
-% begin: side-by-side as figure/tabular
+% begin: side-by-side as tabular
 % \tabcolsep change local to group
 \setlength{\tabcolsep}{0\textwidth}
 % @{} suppress \tabcolsep at extremes, so margins behave as intended
-\begin{figure}
+\par\medskip\noindent
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxGimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxHimage}\end{minipage}\end{tabular}
-\caption{Mg of Potassium Over Time: Discrete and Continuous Models\label{sidebyside-4}}
-\end{figure}
-% end: side-by-side as tabular/figure
+\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxHimage}\end{minipage}\tabularnewline
+\parbox[t]{0.5\textwidth}{\captionof{figure}{Mg of Potassium Over Time: Discrete and Continuous Models\label{figure-discrete-p42}}
+}&
+\parbox[t]{0.5\textwidth}{\captionof{figure}{Mg of Potassium Over Time: Discrete and Continuous Models\label{figure-continuous-p42}}
+}\end{tabular}\\
+% end: side-by-side as tabular
 }% end: group for a single side-by-side
 \par
 Note that in the graph on the left, the horizontal scale shows the number of \(1\)-hour time intervals that have elapsed since \(P_0\). On the right, the horizontal scale shows elapsed time. This is consistent with the fact that the recursive system has domain \(n=1,2,3,...\) and the explicit function has domain all positive real numbers.%
 \end{example}
-\par
-Example \hyperref[example-continuous-discrete]{\ref{example-continuous-discrete}} shows that we must pay attention to issues of domain when we are choosing between using recursive and explicit representations of a particular phenomenon. Some phenomena by their very nature have a discrete (and thus discontinuous) domain, and these are often best represented recursively. Other phenomena are by nature continuous and may be better represented by an explicit function. Of course, with appropriate care about interpretations, we can choose to use a continuous function to represent a discrete phenomenon.  We can also use a discrete representation for a continuous phenomenon. If we choose to do this, we need to pay particular attention to the way that we interpret our calculations.%
+Example \hyperref[example-continuous-discrete]{Example~6} shows that we must pay attention to issues of domain when we are choosing between using recursive and explicit representations of a particular phenomenon. Some phenomena by their very nature have a discrete (and thus discontinuous) domain, and these are often best represented recursively. Other phenomena are by nature continuous and may be better represented by an explicit function. Of course, with appropriate care about interpretations, we can choose to use a continuous function to represent a discrete phenomenon.  We can also use a discrete representation for a continuous phenomenon. If we choose to do this, we need to pay particular attention to the way that we interpret our calculations.%
 \typeout{************************************************}
 \typeout{Exercises 4.3.1 Class Practice}
 \typeout{************************************************}
 \subsection[{Class Practice}]{Class Practice}\label{exercises-4}
 \begin{exerciselist}
 \item[1.]\hypertarget{exercise-18}{}When a basketball is released and drops to a hard surface, it's path looks something like what is shown in the photo.%
-\leavevmode%
 \begin{figure}
 \centering
 \includegraphics[width=0.5\linewidth]{src/images/bouncing_ball_strobe_edit.jpg}
+\caption{\label{figure-9}}
 \end{figure}
-\par
 Each time that it bounces, it rebounds to \(75\%\) of the height from which it was released (assuming that the ball is correctly inflated.) If a ball is dropped from \(3\) meters, we can write the recursive system%
 %
 \begin{gather*}
 H_0=3, H_n = 0.75 H_{n-1}
 \end{gather*}
-\leavevmode%
 \begin{figure}
 \centering
 {
@@ -1209,12 +1166,11 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
+\caption{\label{figure-10}}
 \end{figure}
-\par
 The graph  shows the rebound height on the vertical axis and bounce number on the horizontal. Sketch a graph of the associated explicit function  \(h(t)=3(0.75)^t\) where \(h(t)\) is the height at time \(t\). Explain how the graph you sketch is related to the discrete graph that is shown.%
 \par\smallskip
-\item[2.]\hypertarget{exercise-19}{}In Example \hyperref[example-fading-blue-jeans]{\ref{example-fading-blue-jeans}} we used the recursive system \(C_0=1, C_n = 0.98C_{n-1}\) to represent the amount of color left in blue jeans after \(n\) washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function \(C(t)=1(0.98)^t\) where \(t\) represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.%
-\leavevmode%
+\item[2.]\hypertarget{exercise-19}{}In Example \hyperref[example-fading-blue-jeans]{Example~1} we used the recursive system \(C_0=1, C_n = 0.98C_{n-1}\) to represent the amount of color left in blue jeans after \(n\) washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function \(C(t)=1(0.98)^t\) where \(t\) represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.%
 \begin{figure}
 \centering
 {
@@ -1254,6 +1210,7 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
+\caption{\label{figure-11}}
 \end{figure}
 \par\smallskip
 \end{exerciselist}
@@ -1274,7 +1231,6 @@ Suppose the population of a certain type of bacteria is known to grow geometrica
 \begin{gather*}
 P_0 = 150, P_n = (1.26)P_{n-1}
 \end{gather*}
-\par
 We also have the option of using the explicit function \(P(t)=150 \cdot (1.26)^t\).  For integer values of \(t\), these two representations give roughly identical values for the number of bacteria cells.%
 % group protects changes to lengths, releases boxes (?)
 {% begin: group for a single side-by-side
@@ -1309,22 +1265,24 @@ We also have the option of using the explicit function \(P(t)=150 \cdot (1.26)^t
 \settototalheight{\phGtabular}{\usebox{\panelboxGtabular}}
 \setlength{\panelmax}{\maxof{\panelmax}{\phGtabular}}
 \leavevmode%
-% begin: side-by-side as figure/tabular
+% begin: side-by-side as tabular
 % \tabcolsep change local to group
 \setlength{\tabcolsep}{0\textwidth}
 % @{} suppress \tabcolsep at extremes, so margins behave as intended
-\begin{figure}
+\par\medskip\noindent
 \begin{tabular}{@{}*{2}{c}@{}}
 \begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxFtabular}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxGtabular}\end{minipage}\end{tabular}
-\end{figure}
-% end: side-by-side as tabular/figure
+\begin{minipage}[c][\panelmax][t]{0.5\textwidth}\usebox{\panelboxGtabular}\end{minipage}\tabularnewline
+\parbox[t]{0.5\textwidth}{\captionof{table}{\label{table-6}}
+}&
+\parbox[t]{0.5\textwidth}{\captionof{table}{\label{table-7}}
+}\end{tabular}\\
+% end: side-by-side as tabular
 }% end: group for a single side-by-side
 \par
 The population took about \(3\) hours to double from \(150\) to \(300\) million.  In another \(3\) hours, it had doubled again, and in another \(3\) hours there was yet another population doubling. This population is said to have a \emph{doubling time} of \(3\) hours. Note that the first doubling corresponds to an increase of \(150\) cells, the next doubling is an increase of \(300\) cells, and the third doubling is an increase of \(600\) cells. For each of these doublings, the elapsed time is the same (\(3\) hours) but the increase, measured in cells per hour, is not the same.%
 \end{example}
-\par
-Example \hyperref[example-doubling-time]{\ref{example-doubling-time}} shows that a population that experiences geometric growth has a doubling time. It is also true that populations that experience geometric decay have a \emph{half-life}. A half-life is the amount of time it takes for a population size to be halved. Populations that experience other types of growth, such as linear, quadratic or logistic, do not have a doubling time.%
+Example \hyperref[example-doubling-time]{13} shows that a population that experiences geometric growth has a doubling time. It is also true that populations that experience geometric decay have a \emph{half-life}. A half-life is the amount of time it takes for a population size to be halved. Populations that experience other types of growth, such as linear, quadratic or logistic, do not have a doubling time.%
 \par
 The exponential function you studied in Chapter 2, \(f(t)=2^t\), has a doubling time of \(1\) time unit. This is because%
 %
@@ -1334,7 +1292,6 @@ f(2)=2^2=4\\
 f(3)=2^3=8\\
 f(4)=2^4=16
 \end{gather*}
-\par
 A doubling of function-values takes place with each increase of \(1\) unit in \(t\)%
 \par
 The function \(g(t)=2^{\frac{1}{3} t}\) is a horizontal stretch of the function \(f(t)=2^t\), and this transformation makes \(g(t)\) have a doubling time of \(3\) time units:%
@@ -1344,8 +1301,7 @@ g(3)=2^{\frac{1}{3} \cdot 3}=2^1=2\\
 g(6)=2^{\frac{1}{3} \cdot 6}=2^2=4\\
 g(9)=2^{\frac{1}{3} \cdot 9}=2^3=8
 \end{gather*}
-\par
-Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Example \hyperref[example-doubling-time]{\ref{example-doubling-time}} we could have used the function \(y = 150 \cdot 2^{\frac{1}{3} t}\) to model the number of bacteria cells present at time \(t\). You can confirm that the two functions \(y = 150 \cdot 2^{\frac{1}{3} t}\) and \(P(t)=150 \cdot (1.26)^t\) produce roughly the same ordered pairs.%
+Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Example \hyperref[example-doubling-time]{13} we could have used the function \(y = 150 \cdot 2^{\frac{1}{3} t}\) to model the number of bacteria cells present at time \(t\). You can confirm that the two functions \(y = 150 \cdot 2^{\frac{1}{3} t}\) and \(P(t)=150 \cdot (1.26)^t\) produce roughly the same ordered pairs.%
 \typeout{************************************************}
 \typeout{Exercises 4.3.2 Exercises}
 \typeout{************************************************}
@@ -1360,7 +1316,6 @@ Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Exa
 \par\smallskip\noindent
 \begin{exerciselist}
 \item[5.]\hypertarget{exercise-24}{}An annual inflation rate of \(k\%\) means that items will cost \(k\%\) more next year than they cost this year.  Based on a yearly inflation rate of \(3\%\), estimate the cost of the following items in \(10\), \(20\), \(30\), and \(40\) years.%
-\leavevmode%
 \begin{table}
 \centering
 \begin{tabular}{ll}
@@ -1371,6 +1326,7 @@ Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Exa
 \multicolumn{1}{lB}{Textbook}&\(\$75.00\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{Movie Ticket}&\(\$9.00\)\tabularnewline\hrulemedium
 \end{tabular}
+\caption{\label{table-8}}
 \end{table}
 \par\smallskip
 \item[6.]\hypertarget{exercise-25}{}How much money would you need to invest now in an account that receives \(0.5\%\) monthly interest so that in \(20\) years you will have \(\$50,000\)?%
@@ -1473,10 +1429,12 @@ Below are two additional examples from the financial world where this concept is
 \begin{example}[Value of an Annuity]\label{value-on-an-annuity}
 Suppose your parents want to set aside money for college tuition for a younger sibling.  They begin saving when she is twelve by opening an account with an initial deposit of \(\$100\).  At the beginning of each month for six years thereafter, they deposit an additional \(\$100\).  An account into which regular payments are made (or from which regular withdrawals are made) is called \emph{an annuity}.  The account into which they place the money earns \(0.5\%\) monthly interest, which is added to the account at the end of each month.  How much money will be in the account at the end of six years?%
 \par\medskip\noindent%
-\textbf{Solution.}\quad The initial deposit earns interest for \(72\) months, which means that in \(72\) months the first \(\$100\) deposited has grown to a value of \(\$100(1.005)^{72}\).  The money deposited at the beginning of the second month earns interest for \(71\) months and grows to \(\$100(1.005)^{71}\).  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of \(\$100\); this means that the final \(\$100\) deposit earns no interest.  The timeline in Figure XX shows each deposit together with the amount of interest earned by each deposit.%
-\par
-FIGURE XX%
-\par
+\textbf{Solution.}\quad The initial deposit earns interest for \(72\) months, which means that in \(72\) months the first \(\$100\) deposited has grown to a value of \(\$100(1.005)^{72}\).  The money deposited at the beginning of the second month earns interest for \(71\) months and grows to \(\$100(1.005)^{71}\).  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of \(\$100\); this means that the final \(\$100\) deposit earns no interest.  The timeline in Figure \hyperref[deposit-timeline]{Figure~2} shows each deposit together with the amount of interest earned by each deposit.%
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{src/images/chapter04-section04-depositchart.png}
+\caption{Timeline for interest and deposit in an annuity (REDO GRAPHIC)\label{deposit-timeline}}
+\end{figure}
 The balance of the annuity after six years is the sum of the values of all 73 deposits, which is%
 \begin{gather*}
 B = 100 + 100(1.005) + 100(1.005)^2 + 100(1.005)^3 + ... + 100(1.005)^{72}
@@ -1487,13 +1445,418 @@ B= \frac{100-100(1.005)^{73}}{1-1.005}\label{mrow-80}
 \end{gather}
 which equals \(\$8,784.09\), the balance of the annuity after six years.  Note that only \(\$7,300\) was deposited, so over \(6\) years the deposits have earned over \(\$1,400\) in interest.%
 \end{example}
+\begin{example}[Paying Off a Loan]\label{example-12}
+Suppose you borrow \(\$20,000\) to buy a car, and you agree to pay back the loan over \(48\) months at \(0.4 \%\) interest per month.  You want to determine the monthly payment \(P\) that you must make in order to pay off the loan. You know how to find the payment using a "guess and check" method.  Now, since you are able to find the sum of a geometric series, you can write and solve an equation to find the payment.%
+\par\medskip\noindent%
+\textbf{Solution.}\quad Your outstanding balance can be represented with the recursive system%
+%
+\begin{gather*}
+L_0=20,000, L_n=1.004L_{n-1}-P, n=1,2,3,...
+\end{gather*}
+Where \(L_n\) is the amount still owed on the loan after \(n\) months and \(P\) is the monthly payment in dollars.  We know that after one month,%
+%
+\begin{gather*}
+L_1=1.004(20,000)-P
+\end{gather*}
+After two months, the amount still owed is given by%
+%
+\begin{gather*}
+L_2 = 1.004L_1-P
+\end{gather*}
+which, by substitution is equivalent to%
+%
+\begin{gather*}
+L_2=1.004(1.004 \cdot 20,000 - P) - P\\
+\text{or}\\
+L_2=1.004^2(20,000)-1.004P-P
+\end{gather*}
+Similarly, since \(L_3=1.004L_2-P\), we have:%
+%
+\begin{gather*}
+L_3=1.004(1.004^2 (20,000) - 1.004P - P) - P\\
+L_3=1.004^3(20,000) - 1.004^2P - 1.004P - P
+\end{gather*}
+We can continue to iterate to find the outstanding balance after any number of months. For instance,%
+%
+\begin{gather*}
+L_5=1.004^5 (20,000)-1.004^4 P-1.004^3 P-1.004^2 P-1.004P-P
+\end{gather*}
+In general, we see that after \(n\) months the oustanding balance is given by:%
+%
+\begin{gather}
+L_n=1.004^n (20,000) - P( 1.004^{n-1} + 1.004^{n-2} + ... + 1.004^2 + 1.004 + 1 )\label{general-annuity-formula-long}
+\end{gather}
+Embedded in the right side of equation \hyperref[general-annuity-formula-long]{(\ref{general-annuity-formula-long})} is the geometric series%
+%
+\begin{gather*}
+1 + 1.004 + 1.004^2 + 1.004^3 + ... + 1.004^{n-2} + 1.004^{n-1}
+\end{gather*}
+which has first term \(1\) and common ratio \(1.004\). Using equation \hyperref[chapter04-section04-geoseries-step3]{(\ref{chapter04-section04-geoseries-step3})}, we know that%
+%
+\begin{gather*}
+1 + 1.004 + 1.004^2 + 1.004^3 + ... + 1.004^{n-2} + 1.004^{n-1} = \frac{1-1.004^n}{1-1.004}
+\end{gather*}
+Substituting into equation \hyperref[general-annuity-formula-long]{(\ref{general-annuity-formula-long})} we obtain the following representation for  \(L_n\):%
+%
+\begin{gather}
+L_n = 1.004^n (20,000) - P(\frac{1-1.004^n}{1-1.004})\label{general-annuity-formula-condensed}
+\end{gather}
+We want \(48\) payments to reduce the outstanding balance to zero, that is, our goal is  \(L_{48}=0\). This means that we can solve the following equation to find the value of \(P\).%
+%
+\begin{gather*}
+0 = 1.004^{48}(20,000)-P(\frac{1-1.004^n}{1-1.004})
+\end{gather*}
+Solving for \(P\), we find%
+%
+\begin{gather*}
+P = 1.004^{48}(20,000)(\frac{1-1.004^n}{1-1.004})\\
+\text{or, equivalently}\\
+P=\frac{1.004^{48}(20,000)(0.004)}{1.004^{48}-1}
+\end{gather*}
+which means that \(P \approx 458.78\). The loan will be paid off in \(48\) months with a monthly payment of \(\$458.78\). You should verify using the recursive system%
+%
+\begin{gather*}
+L_0 = 20,000, L_n = 1.004L_{n-1}, n = 1, 2, 3, ...
+\end{gather*}
+that the balance after \(48\) payments, \(L_{48}\) is zero. Note that due to rounding, your answer may not be exactly zero. The final baloon payment may be a few cents more or less than \(\$458.78\)%
+\par
+It is worthwhile to take a moment to study equation \hyperref[general-annuity-formula-condensed]{(\ref{general-annuity-formula-condensed})}, which effectively gives an explicit function for \(L(n)\).%
+%
+\begin{gather*}
+L(n) = 1.004^n (20,000) - P(\frac{1-1.004^n}{1-1.004})
+\end{gather*}
+Recall that the monthly interest rate was \(0.4\%\), the amount borrowed was \(\$20,000\),  \(L(n)\) is the amount still owed after \(n\) payments, and \(P\) is the monthly payment. You should conclude that if the monthly interest rate is k\% and the amount borrowed is \(\$A\), then \(L(n)\), the amount still owed after \(n\) payments, will be given by%
+%
+\begin{gather}
+L(n) = (1+k)^n A - P(\frac{1-(1+k)^n}{1-(1+k)})\label{mrow-100}
+\end{gather}
+If you want the outstanding balance to be zero after \(n^*\) months, you can solve to find the value of \(P\) for which \(L(n^*)=0\).%
+\end{example}
+\typeout{************************************************}
+\typeout{Exercises 4.4.1 Exercises}
+\typeout{************************************************}
+\subsection[{Exercises}]{Exercises}\label{exercises-6}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-32}{}Consider the geometric series \(100+100(1.05)+100(1.05)^2+100(1.05)^3+...\)%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-65}{}Find the sum of the first \(100\) terms of the series%
+\item\hypertarget{li-66}{}Find the sum of the first \(100\) terms of the series%
+\end{enumerate}
+\par\smallskip
+\item[2.]\hypertarget{exercise-33}{}Consider the geometric series \(200+200(0.8)+200(0.8)^2+200(0.8)^3+...\)%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-67}{}Find the sum of the first \(50\) terms of the series%
+\item\hypertarget{li-68}{}Find the sum of the first \(500\) terms of the series%
+\item\hypertarget{li-69}{}Find the sum of the first \(1000\) terms of the series%
+\item\hypertarget{li-70}{}Make a prediction about the sum of the first million terms. Compare your prediction with the actual sum.%
+\end{enumerate}
+\par\smallskip
+\item[3.]\hypertarget{exercise-34}{}Consider the geometric series \(3+1.5+0.75+0.375+...\)%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-71}{}Find the sum of the first \(10\) terms of the series%
+\item\hypertarget{li-72}{}Find the sum of the first \(50\) terms of the series%
+\item\hypertarget{li-73}{}How many terms of the series must be added to bring the sum to at least \(5.99999\)?%
+\end{enumerate}
+\par\smallskip
+\item[4.]\hypertarget{exercise-35}{}Consider the geometric series with first term \(\frac{9}{10}\) and common ratio \(\frac{1}{10}\)%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-74}{}Find the sum of the first \(10\) terms of the series%
+\item\hypertarget{li-75}{}Find the sum of the first \(100\) terms of the series%
+\item\hypertarget{li-76}{}Explain if it is meaningful to talk about adding infinitely many of the terms in this series%
+\end{enumerate}
+\par\smallskip
+\item[5.]\hypertarget{exercise-36}{}Let \(T(n)\) represent the sum of the first \(n\) terms of the series \(1 - \frac{1}{2} + \frac{1}{4} - \frac{1}{8} + ...\)%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-77}{}Find the sum of \(T(10)\) without actually adding terms.%
+\item\hypertarget{li-78}{}Find an explicit expression for \(T(n)\) in terms of \(n\).%
+\item\hypertarget{li-79}{}Describe how the values of \(T(n)\) behave as \(n\) increases without bound.%
+\end{enumerate}
+\par\smallskip
+\item[6.]\hypertarget{exercise-37}{}Let \(T(n)\) represent the sum of the first \(n\) terms of the series \(0.3 + 0.03 + 0.003 + 0.0003 + ...\)%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-80}{}Find an explicit expression for \(T(n)\) in terms of \(n\).%
+\item\hypertarget{li-81}{}Describe how the values of \(T(n)\) behave as \(n\) increases without bound.%
+\end{enumerate}
+\par\smallskip
+\item[7.]\hypertarget{exercise-38}{}Let \(S(n)\) represent the sum of the first \(n\) terms of the series with common ratio \(r\). For what values of \(r\) is it meaningful to talk about adding infinitely many terms of the series?%
+\par\smallskip
+\item[8.]\hypertarget{exercise-39}{}Find the sum of each geometric series.%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-82}{}\(3 + 6 + 12 + ... + 192\)%
+\item\hypertarget{li-83}{}\(1 + 0.2 + (0.2)^2 + (0.2)^3 + ... + (0.2)^14\)%
+\item\hypertarget{li-84}{}\(4 + 4^2 + 4^3 + ... + 4^45\)%
+\item\hypertarget{li-85}{}\(3 + \frac{3}{5} + \frac{3}{25} + \frac{3}{125} + ... + \frac{3}{5^{20}}\)%
+\item\hypertarget{li-86}{}\(3 - \frac{3}{5} + \frac{3}{25} - \frac{3}{125} + ... + \frac{3}{5^{20}}\)%
+\end{enumerate}
+\par\smallskip
+\item[9.]\hypertarget{exercise-40}{}In the oil consumption problem at the beginning of this section, the consumption of oil is increasing at a rate of \(1.42\%\) per year. By how many billions of barrels will the total consumption of oil from \(2012\) to \(2042\) be reduced if the rate of increase is reduced to \(1\%\)?%
+\par\smallskip
+\item[10.]\hypertarget{exercise-41}{}The number of new cars sold at a car dealer each year grows at a rate of \(1.5\%\) a year. This year, the dealer sold \(200\) cars. Assume that the \(1.5\%\) annual growth rate continues.%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-87}{}How many cars will the dealer sell \(15\) years from now%
+\item\hypertarget{li-88}{}What is the total number of cars that will have been sold between this year and \(15\) years in the future?%
+\end{enumerate}
+\par\smallskip
+\item[11.]\hypertarget{exercise-42}{}The landfill in Jefferson County can hold \(22.6\) million cubic yards of compacted garbage. In \(2015\) the city of Jefferson and the surrounding communities contributed \(550,000\) cubic yards of garbage to the landfill. The following year the total amount was about \(560,000\) cubic yards, which represents a \(1.8\%\) increase. This rate of Increase is actually smaller than the population growth rate of the county, so residents are reducing their per capita contributions to the land fill. \footnote{Adapted from Mathematics Modeling our Worlds COMAP course 2\label{fn-2}}%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-89}{}Find the total amount of garbage, in cubic yards, that the country residents will contribute to the landfill over the next \(10\) years, from \(2015\) thru \(2024\)%
+\item\hypertarget{li-90}{}In what year will the landfill reach its capacity, if the annual growth rate of garbage volume remains at \(1.8\%\)?%
+\item\hypertarget{li-91}{}Suppose that new recycling program can decrease the number of cubic yards of garbage that the country produces. In \(2015\) residents contributed \(550,000\) cubic yards of garbage to the landfill and annual rate of increase is brought down to \(1\%\).  How many years will the landfill last under these conditions?%
+\item\hypertarget{li-92}{}How long would the landfill last if the annual rate of increase of garbage contribution was brought down to zero?%
+\end{enumerate}
+\par\smallskip
+\item[12.]\hypertarget{exercise-43}{}You have an annuity to which you initially depot \(\$1,000\) and you add \(\$150\) each month. The account earns interest at \(0.35\%\) monthly interest rate; interest earned is added to the account balance at the end of each month.%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-93}{}Write a recursive model for the situation.%
+\item\hypertarget{li-94}{}How much money will you have after \(3\) years?%
+\item\hypertarget{li-95}{}How much money will you have after \(n\) months? Your answer should be written in the form of an explicit expression.%
+\end{enumerate}
+\par\smallskip
+\item[13.]\hypertarget{exercise-44}{}Compare these two investment strategies to save for retirement by determining the account balance at age \(65\)%
+\par
+\emph{Strategy I:} For the \(8\) years from age \(44\) to age \(52\), invest \(\$300\) per month and earn interest at a rate of \(0.75\%\) per month. Do not save any more money after age \(52\), and make no withdrawals from the account.%
+\par
+\emph{Strategy II:} For the \(16\) years from age \(49\) to age \(65\), invest \(\$300\) per month and earn at a rate of \(0.75\%\) per month. Make no withdrawals from the account.%
+\par\smallskip
+\item[14.]\hypertarget{exercise-45}{}Start by writing an explicit function that expresses \(Y_n\) in terms of \(n\) if the values of \(Y_n\) are generated by the recursive system \(Y_0=A, Y_n=aY_{n-1}+b, n = 1, 2, 3, ...\) Use the method for summing a geometric series. Then:%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-96}{}Use your explicit function to determine the balance in an annuity after \(25\) years if an initial deposit of \(\$50,000\) and regular annual deposits of \(\$1,000\) have all earned interest at a \(3.5\%\) annual rate.%
+\item\hypertarget{li-97}{}Use your explicit function to determine the outstanding balance after \(60\) months on a loan of \(\$55,000\) if payments of \(\$600\) are made each month and the interest rate is \(2.4\%\) per month.%
+\end{enumerate}
+\par\smallskip
+\item[15.]\hypertarget{exercise-46}{}Earl and Larry are twins.  They both went to work at the age of \(24\) at the same job.  On their birthday each year (starting with their \(25^{\text{th}}\)birthday), they received identical bonuses of \(\$2,000\).  However, they decided to deal with their finances differently.\footnote{Adapted from: Smith, Keith, Tim and Tom's Financial Adventure, HIMap Pull-Out Section, COMAP Consortium, Fall, 1991\label{fn-3}}%
+\par
+%
+\par
+\emph{Earl's Strategy}: Earl decided to invest his money early in life, and each year, he took his bonus and put it in a savings account that earned \(6.6\%\) annual interest.  At the age of \(34\), Earl decided to live life a little and began spending his bonuses (beginning with the one he received at age \(35\)).  He did not, however, use any of the money he already had in his savings account.  He let it continue growing until He turned \(60\) years old, without depositing any new money into his savings account.%
+\par
+%
+\par
+\emph{Larry's Strategy:} Larry decided to have some fun when he was young and spent his bonuses up until he turned \(34\).  After he turned \(34\) and received his bonus, he realized that he should start thinking about the future and put some money away for retirement.  He began to invest his bonuses (starting with the one he received at age \(35\)) in a savings account that earned \(6.6\%\) annual interest.  He did this until the age of \(60\), including the bonus he received on his \(60^{\text{th}}\) birthday.%
+\par
+%
+\par
+Your task is to compare Earl's and Larry's investment strategies.  Your analysis should include the amount each twin has in his bank account on their \(60^{\text{th}}\) birthday as well as how much bonus money each twin was able to spend between the ages of \(25\) and \(60\).  Which investment strategy would you recommend?  Your comparison should include both \emph{recursive equations and explicit functions} that represent the amount of money Earl and Larry have in their respective accounts at any time.%
+\par\smallskip
+\end{exerciselist}
+\typeout{************************************************}
+\typeout{Section 4.5 Compound Interest (or the Magic of Compounding)}
+\typeout{************************************************}
+\section[{Compound Interest (or the Magic of Compounding)}]{Compound Interest (or the Magic of Compounding)}\label{chapter04-section05}
+In the previous section, we encountered a situation in which money was deposited into an interest-bearing account, and the interest was added to the account at regular intervals.  For example, suppose Maria deposits \(\$1,000\) in an account that earns interest at a rate of \(5\%\) annually.  After one year, the balance of the account will increase to \(\$1,050\).  After two years the balance will be \(\$1,102.50\) and so on according to the recursive equation%
+%
+\begin{gather*}
+A_n = A_{n-1} + 0.05 A_{n-1}
+\end{gather*}
+where \(A_n\) is the account balance after \(n\) years. \(A_n\) is known as the \emph{future value} of the initial deposit of \(\$1,000\) after \(n\) years.  The interest in Maria's account is \emph{compounded annually}, which means that the interest that has been earned during a year is credited to the account at the end of that year.%
+\par
+Rather than adding earned interest into an account at the end of each year, financial institutions often use quarterly, monthly, or daily compounding.  For example, a bank that compounds monthly would add one month's interest into the account at the end of every month. As a consequence, during the second month, the initial deposit and the first month's interest will both earn interest.  During the third month, the initial deposit and two months of interest payments will earn interest.%
+\par
+What effect does the frequency of compounding have on the future value of Maria's \(\$1,000\) deposit?  We will rely on the formula \(I=prt\), where \(I\) is the amount of interest earned in one compounding time period, \(p\) the principal, \(r\) the annual interest rate, and \(t\) the time (in years) between successive compoundings. We see that at the end of the first month, the amount of interest earned is \(I=1000 \cdot 0.05 \cdot 1/12 \approx 4.17\)  The account balance after one month is%
+%
+\begin{gather*}
+\$1,000 + \$1,000(0.05) \frac{1}{12} = \$1,000 ( 1 + \frac{0.05}{12}) = \$1,004.17
+\end{gather*}
+At the end of the second month, the account has a balance of%
+%
+\begin{gather*}
+\$1,004.17(1 + \frac{0.05}{12}) = \$1,008.35
+\end{gather*}
+At the end of the third month, the account has a balance of%
+%
+\begin{gather*}
+\$1,008.35 (1 + \frac{0.05}{12}) = \$1,012.55
+\end{gather*}
+At the end of the first year, which contains twelve compounding periods, the balance will be%
+%
+\begin{gather*}
+\$1,000 (1 + \frac{0.05}{12})^{12} = \$1,051.16
+\end{gather*}
+Notice that this amount is higher than the balance of \(\$1,050.00\) that we expect at the end of one year using annual compounding. This increased balance is the result of Maria earning interest on interest payments that have been deposited into the account during the year.%
+\begin{example}[Investment Accounts]\label{chapter04-section05-investment-accounts}
+Financial institutions often offer a variety of investment accounts from which their customers can choose.%
+\leavevmode%
+\begin{enumerate}
+\item\hypertarget{li-98}{}What will be Felix’s account balance after \(1\) year if he deposits \(\$100\) in an account that pays \(5\%\) annual interest that is compounded quarterly? What annual interest rate, compounded only one time per year, would result in the same account balance?%
+\item\hypertarget{li-99}{}What will be Felix’s account balance after \(1\) year if he deposits \(\$100\) in an account that pays \(4.9\%\) annual interest that is compounded daily? What annual interest rate, compounded only one time per year, would result in the same account balance?%
+\item\hypertarget{li-100}{}Would Felix be better off investing money in an account that earns \(5.1\%\) annual interest that is compounded annually, or an account that earns \(5\%\) that is compounded every hour?%
+\end{enumerate}
+\par\medskip\noindent%
+\textbf{Solution.}\quad \leavevmode%
+\begin{enumerate}
+\item\hypertarget{li-101}{}If \(5\%\) annual interest is compounded quarterly (four times per year) then the account balance is multiplied by \((1+\frac{0.05}{4})\) each quarter. The account balance after \(n\) quarters is given by \(A(n)=100(1+\frac{0.05}{4})^n\). After \(1\) year, the balance will be \(A(4)=100(1+\frac{0.05}{4})^4 \approx \$105.09\). Felix would have ended up with the same account balance if he earned an interest rate of \(5.09\%\) that was compounded once per year.%
+\item\hypertarget{li-102}{}When \(4.9\%\) annual interest is compounded daily (\(365\) times per year) the balance after \(n\) days is given by  \(A(n)=100(1+\frac{0.049}{365})^n\). After \(1\) year, the balance will be \(A(365) = 100(1+\frac{0.049}{365})^{365} \approx \$105.02\). An annual interest rate of \(5.02\%\) compounded once per year would have yielded the same balance as \(4.9\%\) compounded daily.%
+\item\hypertarget{li-103}{}Felix can compare these accounts even if he does not know how much money he has to invest or how much time he will leave his money in the account.  Use \(A\) to represent his initial deposit.  If \(5.1\%\) interest is compounded once per year, his balance is multiplied by \((1.051)\) every year, and after \(n\) years his balance will be \(A(1.051)^n\) dollars. Now consider \(5\%\) annual interest being compounded every hour.  Since each compounding period is \(\frac{1}{8760}\) year, his balance is multiplied by \((1+\frac{0.05}{8760})\) every hour. Since there are \(8760\) hours in a year, the account balance is multiplied by \((1+\frac{0.05}{8760})^{8760}\) every year. Note that \((1 + \frac{0.05}{8760} )^{8760} \approx 1.0513\), so after \(n\) years Felix’s account balance will be \(A(1.0513)^n\) dollars. Felix is better off investing in the account that pays \(5\%\) interest compounded hourly because \(A(1.0513)^n > A(1.051)^n\) for all positive values of \(A\) and of \(n\).%
+\end{enumerate}
+\end{example}
+The different interest rates and compounding frequencies in Example \hyperref[chapter04-section05-investment-accounts]{Example~1} highlight the need for a way to compare these accounts. In part (a) we saw that \(5\%\) compounded quarterly has the same “effect” on an account balance as \(5.09\%\) compounded once per year. So we call \(5.09\%\) the \emph{effective annual yield}, or \emph{effective annual interest rate} of \(5\%\) compounded quarterly.  It is the interest rate that if compounded only once per year would yield the same balance as another rate with more frequent compounding. In part (b) we saw that \(4.8\%\) annual interest compounded daily has an effective annual yield of \(5.02\%\). In (c), we saw that \(5\%\) annual interest compounded once per hour has an effective annual yield of \(5.13\%\).%
+\typeout{************************************************}
+\typeout{Exercises 4.5.1 Class Practice}
+\typeout{************************************************}
+\subsection[{Class Practice}]{Class Practice}\label{exercises-7}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-47}{}\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-104}{}Write a recursive system to represent the future value of an initial deposit \(A_0\) that earns \(r\%\) annual interest that is compounded quarterly.  Let \(A_n\) represent the value after \(n\) years%
+\item\hypertarget{li-105}{}Write an explicit function to represent the future value of an initial deposit \(A_0\) that earns \(r\%\) annual interest that is compounded quarterly.  Let \(A(n)\) represent the value after \(n\) years%
+\end{enumerate}
+\par\smallskip
+\item[2.]\hypertarget{exercise-48}{}Write representations as described in \(\#1\), but use monthly compounding%
+\par\smallskip
+\item[3.]\hypertarget{exercise-49}{}Write representations as described in \(\#1\), but use \(k\) compounding periods per year%
+\par\smallskip
+\end{exerciselist}
+The table in Figure \hyperref[impact-of-compounding-table]{Table~2} shows the future value of \(\$1,000\) earning \(5\%\) annual interest for various compounding frequencies. (All table entries are rounded to the nearest dollar.) You should be able to confirm the entries in the table.  For instance,%
+%
+\begin{gather*}
+\$1,647 \approx \$1,000 ( ( 1 + \frac{0.05}{12}) ^{12} )^{10} = \$1,000 ( ( 1 + \frac{0.05}{12})^{120})
+\end{gather*}
+\begin{table}
+\centering
+\begin{tabular}{llllllll}
+\multicolumn{1}{cB}{}&\multicolumn{1}{cB}{Yearly}&\multicolumn{1}{cB}{Quarterly}&\multicolumn{1}{cB}{Monthly}&\multicolumn{1}{cB}{Weekly}&\multicolumn{1}{cB}{Daily}&\multicolumn{1}{cB}{Hourly}&\multicolumn{1}{c}{By the Minute}\tabularnewline[0pt]
+\multicolumn{1}{cB}{Years (N)}&\multicolumn{1}{cB}{\(k=1\)}&\multicolumn{1}{cB}{\(k=4\)}&\multicolumn{1}{cB}{\(k=12\)}&\multicolumn{1}{cB}{\(k=52\)}&\multicolumn{1}{cB}{\(k=365\)}&\multicolumn{1}{cB}{\(k=8,760\)}&\multicolumn{1}{c}{\(k=525,600\)}\tabularnewline\hrulethick
+\multicolumn{1}{lB}{1}&\multicolumn{1}{lB}{\(\$1,050\)}&\multicolumn{1}{lB}{\(\$1,051\)}&\multicolumn{1}{lB}{\(\$1,051\)}&\multicolumn{1}{lB}{\(\$1,051\)}&\multicolumn{1}{lB}{\(\$1,051\)}&\multicolumn{1}{lB}{\(\$1,051\)}&\(\$1,051\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{10}&\multicolumn{1}{lB}{\(\$1,629\)}&\multicolumn{1}{lB}{\(\$1,634\)}&\multicolumn{1}{lB}{\(\$1,647\)}&\multicolumn{1}{lB}{\(\$1,648\)}&\multicolumn{1}{lB}{\(\$1,649\)}&\multicolumn{1}{lB}{\(\$1,649\)}&\(\$1,649\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{25}&\multicolumn{1}{lB}{\(\$3,386\)}&\multicolumn{1}{lB}{\(\$3,463\)}&\multicolumn{1}{lB}{\(\$3,481\)}&\multicolumn{1}{lB}{\(\$3,488\)}&\multicolumn{1}{lB}{\(\$3,490\)}&\multicolumn{1}{lB}{\(\$3,490\)}&\(\$3,490\)\tabularnewline\hrulethick
+\multicolumn{1}{lB}{50}&\multicolumn{1}{lB}{\(\$11,467\)}&\multicolumn{1}{lB}{\(\$11,495\)}&\multicolumn{1}{lB}{\(\$12,119\)}&\multicolumn{1}{lB}{\(\$12,168\)}&\multicolumn{1}{lB}{\(\$12,180\)}&\multicolumn{1}{lB}{\(\$12,182\)}&\(\$12,183\)\tabularnewline\hrulethick
+\end{tabular}
+\caption{Impact of the Frequency of Compounding\label{impact-of-compounding-table}}
+\end{table}
+Reading down any column of Figure \hyperref[impact-of-compounding-table]{Table~2}, we notice that the future value increases as the number of years increases.  This is to be expected. But reading across any row reveals that the future value seems to level off as the frequency of compounding increases.  For any number of years, there appears to be an upper limit to the future value of the account. We see that increasing the frequency of compounding is associated with an increase in the future value, but we don’t expect the future values associated with compounding “by the second” to be appreciably larger than the values displayed in the right-most column of the table for “by the minute” compounding.%
+\par
+Each entry in Figure \hyperref[impact-of-compounding-table]{Table~2} can be calculated with the explicit function%
+%
+\begin{gather*}
+A(N)=1,000((1 + \frac{0.05}{k})^k)^N \text{or} A(N) = 1000(1 + \frac{0.05}{k})^{kN}
+\end{gather*}
+where \(A(N)\) is the future value of \(N\) years.%
+\par
+The value of \(N\) is fixed in each row of Figure \hyperref[impact-of-compounding-table]{Table~2}, in the first row \(N=1\), in the second \(N=10\), and so on.  This means that increases in the future values in a particular row result solely from the value of the expression \((1+\frac{0.05}{k})^k\).  Since the future values associated with each value of \(N\) appear to have a limit, we suspect that the quantity \((1+\frac{0.05}{k})^k\) has some limiting value as \(k\) becomes very large.  Figure \hyperref[impact-of-k]{Table~3} provides values of this quantity for \(k\)-values associated with increasing frequency of compounding.  Correct to six decimal places, the limiting value appears to be \(1.051271\)%
+\begin{table}
+\centering
+\begin{tabular}{llllllll}
+\multicolumn{1}{cB}{}&\multicolumn{1}{cB}{Yearly}&\multicolumn{1}{cB}{Quarterly}&\multicolumn{1}{cB}{Monthly}&\multicolumn{1}{cB}{Weekly}&\multicolumn{1}{cB}{Daily}&\multicolumn{1}{cB}{Hourly}&\multicolumn{1}{c}{By the Minute}\tabularnewline[0pt]
+\multicolumn{1}{cB}{}&\multicolumn{1}{cB}{\(k=1\)}&\multicolumn{1}{cB}{\(k=4\)}&\multicolumn{1}{cB}{\(k=12\)}&\multicolumn{1}{cB}{\(k=52\)}&\multicolumn{1}{cB}{\(k=365\)}&\multicolumn{1}{cB}{\(k=8,760\)}&\multicolumn{1}{c}{\(k=525,600\)}\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\((1+\frac{0.05}{k})^k\)}&\multicolumn{1}{lB}{\(1.050000\)}&\multicolumn{1}{lB}{\(1.050945\)}&\multicolumn{1}{lB}{\(1.051162\)}&\multicolumn{1}{lB}{\(1.061246\)}&\multicolumn{1}{lB}{\(1.051267\)}&\multicolumn{1}{lB}{\(1.051271\)}&\(1.051271\)\tabularnewline\hrulethick
+\end{tabular}
+\caption{Values of \((1+\frac{0.05}{k})^k\) rounded to six decimal places\label{impact-of-k}}
+\end{table}
+We can gain some understanding of this limiting value if we cosider the case where the interest is \(100\%\).%
+\begin{table}
+\centering
+\begin{tabular}{lllllll}
+\multicolumn{1}{cB}{}&\multicolumn{1}{cB}{\(k=10\)}&\multicolumn{1}{cB}{\(k=100\)}&\multicolumn{1}{cB}{\(k=1,000\)}&\multicolumn{1}{cB}{\(k=10,000\)}&\multicolumn{1}{cB}{\(k=100,000\)}&\multicolumn{1}{c}{\(k=1,000,000\)}\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\((1+\frac{1.00}{k})^k\)}&\multicolumn{1}{lB}{\(2.593742\)}&\multicolumn{1}{lB}{\(2.704814\)}&\multicolumn{1}{lB}{\(2.716924\)}&\multicolumn{1}{lB}{\(2.718146\)}&\multicolumn{1}{lB}{\(2.719268\)}&\(2.718280\)\tabularnewline\hrulethick
+\end{tabular}
+\caption{Values of \((1+\frac{1.00}{k})^k\) rounded to six decimal places\label{discovery-of-e}}
+\end{table}
+Mathematicians began exploring the behavior of \((1+\frac{1}{k})^k\) early in the eighteenth century.  In essence they found that the value of \((1+\frac{1}{k})^k\) approaches a limiting value as \(k\) gets larger and larger.  Mathematicians define this limiting value, which is \(2.71828...\), as the number \(e\) in honor of the Swiss mathematician Leonhard Euler.  In mathematical notation, we can write%
+%
+\begin{gather*}
+\lim_{k \to \infty} (1 + \frac{1}{k})^k = e 
+\end{gather*}
+which is read, “the limit of \((1 + \frac{1}{k})^k\) as \(k\) approaches infinity is the number \(e\).”%
+\par
+Based on the numerical values in Figure \hyperref[impact-of-k]{Table~3}, we see that \((1 + \frac{0.05}{k})^k\) approaches a limiting value of about \(1.051271\) as \(k\) approaches infinity. You can use a calculator to confirm that this value is equal to \(e^0.05\). We write%
+%
+\begin{gather*}
+\lim_{k \to \infty} (1 + \frac{0.05}{k})^k = e^{0.05}
+\end{gather*}
+We can also use a calculator to compare the values of \(e^{0.02}\) and \((1 + \frac{0.02}{k})^k\) for large values of \(k\), as well as several more values of \(r\).  What we find supports the statement:%
+%
+\begin{gather*}
+\lim_{k \to \infty} (1 + \frac{r}{k})^k = e^r
+\end{gather*}
+Based on the relationship between limiting values and \(e\), we can use the exponential function with base \(e\) to arrive at useful and accurate approximations for future values when interest is compounded frequently.  For example, if \(3.2\%\) annual interest is compounded \(5,000\) times per year, the future value in \(N\) years of an initial deposit of \(\$1,000\) is \(\$1,000(1+\frac{0.032}{5000})^{5000N}\) which can be approximated by \(\$1,000e^{0.032N}\).  When this approximation is used, the future values are the result of \emph{continuous compounding.}  It is useful to think of continuous compounding as compounding that occurs at every instant. It may be physically impossible to add interest into an account in a way that is truly continuous, but continuous compounding refers to the limiting case of compounding that is more and more frequent.%
+\par
+The equation%
+%
+\begin{gather*}
+\text{Future Value} = A_0 (e^r)^N = A_0 e^{rN}
+\end{gather*}
+gives the balance after \(N\) years in an account with continuous compounding, initial deposit , and annual interest rate \(r\).  Note that since the compounding is continuous, the future value changes with any change in time, no matter how small, so it is reasonable to substitute any positive real number for \(N\).%
+\par
+The continuous function \(F(N)=A_0 e^{rN}\) describing the future value of an account with continuous compounding is an example of an important class of functions known as exponential functions.  All exponential functions are transformations of the exponential function \(y=e^x\).  This function is closely related to the tool-kit function \(y=2^x\) and can be used to describe many "real-world" situations, from the cooling of coffee sitting on a table to the increase of carbon-dioxide in the atmosphere.  Over the next several sections of this chapter, you will become more aquatinted with this important function and the situations in which it is a useful model.%
+\typeout{************************************************}
+\typeout{Exercises 4.5.2 Exercises}
+\typeout{************************************************}
+\subsection[{Exercises}]{Exercises}\label{exercises-8}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-50}{}Compute the balance that results when \(\$2,000\) is deposited for one year in an account paying \(4\%\) annual interest compounded quarterly.  How does this balance compare to an approximation using continuous compounding of \(4\%\) annual interest? Make the comparable comparison if the annual interest rate is \(12\%\).%
+\par\smallskip
+\item[2.]\hypertarget{exercise-51}{}If Jack invests \(\$250\) at an annual interest rate of \(7.5\%\), what is the future value after two years if the interest is compounded quarterly? monthly? weekly? daily? continuously?%
+\par\smallskip
+\item[3.]\hypertarget{exercise-52}{}\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-106}{}Which has the greater future value after \(5\) years, \(\$1,000\) invested at \(8\%\) with yearly compounding or \(\$1,000\) invested at \(7.75\%\) with quarterly compounding?  Use graphs of appropriate functions to determine if the number of years affects which deposit has a greater future value.%
+\item\hypertarget{li-107}{}Which has the greater future value after \(5\) years, \\($1,000\) invested at \(8\%\) compounded yearly or \(\$800\) invested at \(9\%\) compounded yearly?  Does the number of years affect which deposit has the greater future value?%
+\end{enumerate}
+\par\smallskip
+\item[4.]\hypertarget{exercise-53}{}It has been said that the island of Manhattan was purchased for \(\$24\) in \(1626\).  Suppose the \(\$24\) had been invested at \(6\%\) annual interest compounded quarterly.  What would it be worth today?%
+\par\smallskip
+\item[5.]\hypertarget{exercise-54}{}If we denote the effective annual rate by \(R\), then \(R\) satisfies the equation%
+%
+\begin{gather*}
+A(1 + R) = A (1 + \frac{r}{k})^k
+\end{gather*}
+where \(A\) is the inital deposit, \(k\) is the number of compounding periods per year, and \(r\) is the annual interest rate. Solve the equation for \(R=(1 + \frac{r}{k})^k - 1\).%
+\par\smallskip
+\item[6.]\hypertarget{exercise-55}{}Use the concept of effective annual yield to compare a \(7.25\%\) certificate of deposit with quarterly compounding to a \(7\%\) certificate with monthly compounding.  Which option will provide a better return on your investment?%
+\par\smallskip
+\item[7.]\hypertarget{exercise-56}{}In this exercise you will look at the relationship between interest rate and doubling time.%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-108}{}Complete the table. Assume that the interest is compounded monthly. The doubling time should be accurate to the nearest hundreth of a year%
+\begin{table}
+\centering
+\begin{tabular}{ll}
+\multicolumn{1}{cB}{Annual Interest (\(\%\))}&\multicolumn{1}{c}{Doubling Time (Years)}\tabularnewline\hrulethick
+\multicolumn{1}{lB}{\(1.5\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(3.2\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(4.0\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(5.3\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(7.2\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(8.0\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(9.4\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(12.0\)}&\tabularnewline\hrulemedium
+\multicolumn{1}{lB}{\(20.5\)}&\tabularnewline\hrulemedium
+\end{tabular}
+\caption{\label{table-12}}
+\end{table}
+\item\hypertarget{li-109}{}Make a scatterplot of the set of ordered pairs \((\text{rate}, \text{time to double})\). For example, if you found that a \(5.8\%\) interest rate compounded monthly takes \(12.9\) years to double, you would have the ordered pair \((5.8, 12.9)\).%
+\item\hypertarget{li-110}{}Based on the shape of your scatterplot, identify a toolkit function that would be a good model for your scatterplot.  \emph{Hint:} An exponential function would NOT be a good model%
+\item\hypertarget{li-111}{}Find a model for the ordered pairs \((\text{rate}, \text{time to double})\). To do this, you should decide by what factor this toolkit function must be vertically stretched so that it will fit your scatterplot.%
+\item\hypertarget{li-112}{}According to your model, what is the doubling time for a \(2\%\) interest rate that is compounded monthly?  What is the doubling time for \(10\%\)?  For \(14\%\)? What interest rate will cause an investment to double in \(70\) years?%
+\end{enumerate}
+\par\smallskip
+\item[8.]\hypertarget{exercise-57}{}Suppose that when you were born your parents estimated they would need \(\$50,000\) for college expenses.  The best interest rate they could find was offered on a certificate of deposit paying \(6\%\) annual interest compounded monthly.%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-113}{}What is the effective annual interest rate for this account?%
+\item\hypertarget{li-114}{}How much money should your parents have invested to have a balance of \(\$50,000\) on your eighteenth birthday?%
+\end{enumerate}
+\par\smallskip
+\item[9.]\hypertarget{athletic-contract}{}The amount of money that would have to be invested today to yield some specified amount in the future is called the \emph{present value} of that future amount.  (In exercise 8 you found the present value of \(\$50,000\) to be paid in eighteen years.)  Suppose a professional athlete signs a one-year contract for \(\$2,000,000\) and agrees to be paid over a period of five years.  At the beginning of each of the next five years he or she will be paid \(\$400,000\).  What is the present value of this contract assuming a \(6\%\) interest rate compounded annually?  Another way to ask this question is: how much money should the team management deposit in an account earning \(6\%\) annual interest when the contract is signed to guarantee that they can pay this five-year deal?  Since the athlete is paid at the beginning of each year, assume that the present value of the first payment of \(\$400,000\) is \(\$400,000\).%
+\par\smallskip
+\item[10.]\hypertarget{exercise-59}{}Suppose the interest rate is \(5\%\) in the athletic contract discussed in \hyperlink{athletic-contract}{Exercise~9}.  What is the present value of this contract?  Does this make sense when compared with your answer to Exercise \hyperlink{athletic-contract}{Exercise~9}?  What would you expect to be true for an interest rate of \(3\%\)?%
+\par\smallskip
+\end{exerciselist}
 \typeout{************************************************}
 \typeout{Chapter 5 Logarithmic Functions}
 \typeout{************************************************}
 \chapter[{Logarithmic Functions}]{Logarithmic Functions}\label{chapter05}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 5.1 }
@@ -1503,9 +1866,6 @@ Introduction to this chapter%
 \typeout{Chapter 6 Parametric Functions}
 \typeout{************************************************}
 \chapter[{Parametric Functions}]{Parametric Functions}\label{chapter06}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 6.1 }
@@ -1515,9 +1875,6 @@ Introduction to this chapter%
 \typeout{Chapter 7 Intro to Trigonometric Functions}
 \typeout{************************************************}
 \chapter[{Intro to Trigonometric Functions}]{Intro to Trigonometric Functions}\label{chapter07}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 7.1 }
@@ -1527,9 +1884,6 @@ Introduction to this chapter%
 \typeout{Chapter 8 More Trigonometric Functions}
 \typeout{************************************************}
 \chapter[{More Trigonometric Functions}]{More Trigonometric Functions}\label{chapter08}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 8.1 }
@@ -1539,9 +1893,6 @@ Introduction to this chapter%
 \typeout{Chapter 9 Combinations of Functions}
 \typeout{************************************************}
 \chapter[{Combinations of Functions}]{Combinations of Functions}\label{chapter09}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 9.1 }
@@ -1551,9 +1902,6 @@ Introduction to this chapter%
 \typeout{Chapter 10 Matrices}
 \typeout{************************************************}
 \chapter[{Matrices}]{Matrices}\label{chapter10}
-\typeout{************************************************}
-\typeout{Introduction  }
-\typeout{************************************************}
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 10.1 }

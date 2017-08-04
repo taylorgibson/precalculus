@@ -16,8 +16,8 @@ This folder contains all textbook sections organized in such a way:
             |-- chapter02-section02-exercises.xml
                  ...
         |-- images/
-            |-- chapter01-section01-image01.png
-            |-- chapter01-section02-image02.png
+            |-- chapter01-section01-description01.png
+            |-- chapter01-section02-description022.png
                  ...
         |-- references/
             |-- chapter01-references.xml

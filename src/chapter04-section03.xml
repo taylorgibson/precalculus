@@ -8,47 +8,59 @@
 <!-- See the file COPYING for copying conditions.       -->
 <section xml:id="chapter04-section03" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Geometric Growth and Decay</title>
-  <p>Some recursively defined functions have important applications in life.  One of the simplest, yet most important, represents <em>geometric decay</em>. In geometric decay, the value of the function at time <m>n</m> is directly proportional to the value at time. This relationship suggests a recursive definition for geometric decay. The first example from Section <xref ref="chapter04-section01" />, Example <xref ref="ibuprofen-example-one-dose" />, involved the amount of ibuprofen in Joan's system at time <m>n</m> if she takes a single <m>200</m> mg tablet. Since her body filters out <m>67\%</m> of the ibuprofen present, the amount remaining after <m>n</m> time intervals is always <m>33\%</m> of the amount remaining after <m>n-1</m> time intervals.</p>
+  <p>Some recursively defined functions have important applications in life.  One of the simplest, yet most important, represents <em>geometric decay</em>. In geometric decay, the value of the function at time <m>n</m> is directly proportional to the value at time. This relationship suggests a recursive definition for geometric decay. The first example from Section <xref ref="chapter04-section01" text="local"/>, Example <xref ref="ibuprofen-example-one-dose" text="local"/>, involved the amount of ibuprofen in Joan's system at time <m>n</m> if she takes a single <m>200</m> mg tablet. Since her body filters out <m>67\%</m> of the ibuprofen present, the amount remaining after <m>n</m> time intervals is always <m>33\%</m> of the amount remaining after <m>n-1</m> time intervals.</p>
   <p>In that case, we calculated the amount of drug in Joan's boady with the recursive system</p>
   <md>
     <mrow>D_0=200, D_n=0.33 \cdot D_{n-1}, n=1,2,3,...</mrow>
   </md>
   <example xml:id="example-fading-blue-jeans">
     <title>Fading Blue Jeans</title>
-    <p>Blue jeans fade when they are washed. Suppose a pair of jeans loses <m>2\%</m> of its color with each washing.  How much of the original color is left after <m>50</m> washes?</p>
+    <statement>
+      <p>Blue jeans fade when they are washed. Suppose a pair of jeans loses <m>2\%</m> of its color with each washing.  How much of the original color is left after <m>50</m> washes?</p>
+    </statement>
     <solution>
-      <p>In this problem, we use the system</p>
-      <md>
-        <mrow>C_0=1, C_n=0.98 \cdot C_{n-1}, n=1,2,3,...</mrow>
-      </md>
-      <p>where <m>C_n</m> is the amount of color remaining in the jeans after <m>n</m> washings</p>
-      <p>We use <m>1</m> as the initial value to represent all or <m>100\%</m> of the color.  Since we want to measure the amount of color remaining, the coefficient in the recursive equation is <m>0.98</m>.  With <m>50</m> iterations of the equation for <m>C_n</m>, we find that the jeans have about <m>36\%</m> of their original color left after <m>50</m> washings.</p>
+      <statement>
+        <p>In this problem, we use the system</p>
+        <md>
+          <mrow>C_0=1, C_n=0.98 \cdot C_{n-1}, n=1,2,3,...</mrow>
+        </md>
+        <p>where <m>C_n</m> is the amount of color remaining in the jeans after <m>n</m> washings</p>
+        <p>We use <m>1</m> as the initial value to represent all or <m>100\%</m> of the color.  Since we want to measure the amount of color remaining, the coefficient in the recursive equation is <m>0.98</m>.  With <m>50</m> iterations of the equation for <m>C_n</m>, we find that the jeans have about <m>36\%</m> of their original color left after <m>50</m> washings.</p>
+      </statement>
     </solution>
   </example>
 
   <example xml:id="example-electrical-power-demand">
     <title>Electrical Power Demand</title>
-    <p>The amount of electrical power used by a community is increasing by 5% per year.  This year, they used 500 thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?</p>
+    <statement>
+      <p>The amount of electrical power used by a community is increasing by 5% per year.  This year, they used 500 thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?</p>
+    </statement>
     <solution>
-      <p>This is an example of <em>geometric growth</em>, since the amount of power is increasing each year. We use the recursive system</p>
-      <md>
-        <mrow>P_0=500, P_n=1.05 \cdot P_{n-1}, n=1,2,3,...</mrow>
-      </md>
-      <p>Since the amount of power used is increasing by <m>5\%</m> each year, next year the citizens of the community will use <m>105\%</m> of what they used this year.  By iterating the equation for <m>P_n</m>, we find that after <m>14</m> years the community will use about <m>990</m> thousand kwh per year and after <m>15</m> years they will use about <m>1039</m> thousand kwh per year.  The amount of power required by the community will have doubled in a little less than <m>15</m> years.  Note that this conclusion assumes that the demand for electrical power continues to increase by <m>5\%</m> per year.</p>
+      <statement>
+        <p>This is an example of <em>geometric growth</em>, since the amount of power is increasing each year. We use the recursive system</p>
+        <md>
+          <mrow>P_0=500, P_n=1.05 \cdot P_{n-1}, n=1,2,3,...</mrow>
+        </md>
+        <p>Since the amount of power used is increasing by <m>5\%</m> each year, next year the citizens of the community will use <m>105\%</m> of what they used this year.  By iterating the equation for <m>P_n</m>, we find that after <m>14</m> years the community will use about <m>990</m> thousand kwh per year and after <m>15</m> years they will use about <m>1039</m> thousand kwh per year.  The amount of power required by the community will have doubled in a little less than <m>15</m> years.  Note that this conclusion assumes that the demand for electrical power continues to increase by <m>5\%</m> per year.</p>
+      </statement>
     </solution>
   </example>
 
   <example xml:id="example-radioactive-decay">
     <title>Radioactive Decay</title>
-    <p>Potassium-42 is a radioactive element that is often used in biological experiments as a tracer element.  Potassium-42, like all radioactive elements, decays into a non-radioactive form at a rate proportional to the amount present.  Potassium-42 loses <m>5.545\%</m> of its mass every hour.  If <m>1</m> milligram of potassium-42 is initially present in an animal, at what time will only <m>0.1</m> milligram be present?</p>
+    <statement>
+      <p>Potassium-42 is a radioactive element that is often used in biological experiments as a tracer element.  Potassium-42, like all radioactive elements, decays into a non-radioactive form at a rate proportional to the amount present.  Potassium-42 loses <m>5.545\%</m> of its mass every hour.  If <m>1</m> milligram of potassium-42 is initially present in an animal, at what time will only <m>0.1</m> milligram be present?</p>
+    </statement>
     <solution>
-      <p>Note that the effect of losing <m>5.545\%</m> is equivalent to retaining <m>94.455\%</m>. We use the recursive system</p>
-      <md>
-        <mrow>P_0=1, P_n=0.94455 \cdot P_{n-1}, n=1,2,3,...</mrow>
-      </md>
-      <p>We are interested in finding the amount of time until <m>P_n</m> is less than or equal to <m>0.1</m>.  Iterating the equation for <m>P_n</m>, we find that <m>P_{40} = 0.1021</m> and <m>P_{41} = 0.0964</m>. So after <m>40</m> hours, <m>0.1021</m> mg of potassium-42 remain, and after <m>41</m> hours, <m>0.0964</m> mg remain. Sometime between <m>40</m> and <m>41</m> hours we expect to have only <m>0.1</m> mg of potassium-42 remaining.</p>
+      <statement>
+        <p>Note that the effect of losing <m>5.545\%</m> is equivalent to retaining <m>94.455\%</m>. We use the recursive system</p>
+        <md>
+          <mrow>P_0=1, P_n=0.94455 \cdot P_{n-1}, n=1,2,3,...</mrow>
+        </md>
+        <p>We are interested in finding the amount of time until <m>P_n</m> is less than or equal to <m>0.1</m>.  Iterating the equation for <m>P_n</m>, we find that <m>P_{40} = 0.1021</m> and <m>P_{41} = 0.0964</m>. So after <m>40</m> hours, <m>0.1021</m> mg of potassium-42 remain, and after <m>41</m> hours, <m>0.0964</m> mg remain. Sometime between <m>40</m> and <m>41</m> hours we expect to have only <m>0.1</m> mg of potassium-42 remaining.</p>
 
-      <p>The recursive system we used to generate amounts of potasium-42 does not allow us to determine the amount present between the <m>40^{th}</m> hour and the <m>41^{st}</m> hour.  The amount of potassium-42 changes incrementally between the <m>40^{th}</m> and the <m>41^{st}</m> hours, but the recursive equation we have used to represent this phenomenon cannot give us information about potassium levels between <m>P_{40}</m> and <m>P_{41}</m>.</p>
+        <p>The recursive system we used to generate amounts of potasium-42 does not allow us to determine the amount present between the <m>40^{th}</m> hour and the <m>41^{st}</m> hour.  The amount of potassium-42 changes incrementally between the <m>40^{th}</m> and the <m>41^{st}</m> hours, but the recursive equation we have used to represent this phenomenon cannot give us information about potassium levels between <m>P_{40}</m> and <m>P_{41}</m>.</p>
+      </statement>
     </solution>
   </example>
 
@@ -57,7 +69,7 @@
     <mrow>Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...</mrow>
   </md>
   <p> If <m>k \gt 0</m>, this system represents geometric growth (with growth rate <m>k</m>); as <m>n</m> increases, the value of <m>Y_n</m>  increases.  If <m>k \lt 0</m>, the system represents geometric decay (and <m>k</m> is the decay rate); as <m>n</m> increases, the value of <m>Y_n</m>  decreases.  In either case, the next value of <m>Y_n</m> depends entirely on the value of <m>k</m> and the old value of <m>Y_n</m>.</p>
-  <p>Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example <xref ref="example-radioactive-decay" /> to describe electricity consumption</p>
+  <p>Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example <xref ref="example-radioactive-decay" text="local" /> to describe electricity consumption</p>
   <md>
     <mrow>P_0=500</mrow>
     <mrow>P_1=(1+0.05)P_0</mrow>
@@ -110,21 +122,23 @@
       </md>
     </statement>
   </definition>
-  <p>In equation <xref ref="explicit-geometric-growth-equation" /> the independent variable <m>n</m> is in the exponent, so this function is an exponential function. The exponential function <m>Y(n)=a(1+k)^n</m> is the closed form representation of the recursive system  <m>Y_0=a,Y_n=(1+k)Y_{n-1}</m></p>
+  <p>In equation <xref ref="explicit-geometric-growth-equation" text="local" /> the independent variable <m>n</m> is in the exponent, so this function is an exponential function. The exponential function <m>Y(n)=a(1+k)^n</m> is the closed form representation of the recursive system  <m>Y_0=a,Y_n=(1+k)Y_{n-1}</m></p>
 
   <example xml:id="example-one-time-bank-desposit">
     <statement>
       <p>Suppose you plan to make a one-time deposit into a bank account that will earn <m>0.45\%</m> monthly interest.  How large must this deposit be so that you will have a college fund of <m>\$75,000</m> available after <m>18</m> years or <m>216</m> months?</p>
     </statement>
     <solution>
-      <p>We can solve this problem using the recursive model <m>S_0 = a</m>, <m>S_n = (1.0045) S_{n-1}</m> but we will have to guess and check to find the appropriate value of <m>S_0</m> that gives of <m>S_{216} = 75,000</m>.  Using the closed form <m>S(n)=a(1.0045)^n</m> , we need to find the value of <m>a</m> such that <m>75,000 = a (1.0045)^{216}</m>.  Solving for <m>a</m> gives the equation <m>a = \frac{75,000}{(1.0045)^{216}}</m> , or <m>a = \$28,436.36</m>.  We see that the closed form is useful when we do not need all the intermediate values that the recursive form generates.</p>
+      <statement>
+        <p>We can solve this problem using the recursive model <m>S_0 = a</m>, <m>S_n = (1.0045) S_{n-1}</m> but we will have to guess and check to find the appropriate value of <m>S_0</m> that gives of <m>S_{216} = 75,000</m>.  Using the closed form <m>S(n)=a(1.0045)^n</m> , we need to find the value of <m>a</m> such that <m>75,000 = a (1.0045)^{216}</m>.  Solving for <m>a</m> gives the equation <m>a = \frac{75,000}{(1.0045)^{216}}</m> , or <m>a = \$28,436.36</m>.  We see that the closed form is useful when we do not need all the intermediate values that the recursive form generates.</p>
+      </statement>
     </solution>
   </example>
 
   <example xml:id="example-continuous-discrete">
     <title>Continuous Versus Discrete</title>
     <statement>
-      <p>In Example <xref ref="example-radioactive-decay" /> we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system</p>
+      <p>In Example <xref ref="example-radioactive-decay" text="local" /> we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system</p>
       <md>
         <mrow>P_0=1, P_n=0.94455P_{n-1}, n=1,2,3,...</mrow>
       </md>
@@ -136,87 +150,90 @@
       <p>to represent the amount of Potassium-42 remaining <m>t</m> hours after the decay process begins. Use each of these representations to determine how much Potassium remains after <m>12</m> hours.</p>
     </statement>
     <solution>
-      <p>This is what our work looks like if we use the recursive system:</p>
-      <md>
-        <mrow>P_0=1</mrow>
-        <mrow>P_1=0.94455 \cdot P_0 = 0.94455</mrow>
-        <mrow>P_2=0.94455 \cdot P_1 = 0.94455 \cdot 0.94455 = 0.892175</mrow>
-        <mrow>P_3=0.94455 \cdot P_2 = 0.94455 \cdot 0.892175 = 0.847036</mrow>
-        <mrow>P_4=0.94455 \cdot P_3 = 0.94455 \cdot 0.847036 = 0.7959757</mrow>
-        <mrow>...</mrow>
-        <mrow>P_{12}=0.94455 \cdot P_{11} = 0.94455 \cdot 0.53392 = 0.5043121</mrow>
-      </md>
-      <p>If we use the explicit function:</p>
-      <md>
-        <mrow>P(12)=1(0.94455)^{12} = 0.5043121</mrow>
-      </md>
-      <p>Both representations tell us that in <m>12</m> hours the amount of Potassium-42 will have decreased from <m>1</m> milligram to about <m>0.5</m> milligram.</p>
-      <p>We need to be aware of the advantages and disadvantages of each representation that we used in Example <xref ref="example-one-time-bank-desposit" />. The recursive system is inherently discrete.  Values of <m>P_n</m> can be calculated only for positive interger values of <m>n</m>, where n counts the number of <m>1</m>-hour time intervals that have elapsed since we measured <m>1</m> milligram of potassium-42. The recursive representation is not able to tell us anything about the amount of potassium present between <m>P_2</m> and <m>P_3</m>, in fact, <m>P_{2.7}</m> is not even defined.</p>
-      <p>The explicit function <m>P(t)=1 \cdot (0.944355)^t</m> uses <m>t</m> as a variable whose domain is all positive real numbers and <m>P(2.7)</m> is well-defined and meaningful. The explicit function can tell us the amount of Potassium-42 present at any time on the continuum between zero and infinity.</p>
-      <p>Graphs of both the recursive and the explicit representations are shown below</p>
+      <statement>
+        <p>This is what our work looks like if we use the recursive system:</p>
+        <md>
+          <mrow>P_0=1</mrow>
+          <mrow>P_1=0.94455 \cdot P_0 = 0.94455</mrow>
+          <mrow>P_2=0.94455 \cdot P_1 = 0.94455 \cdot 0.94455 = 0.892175</mrow>
+          <mrow>P_3=0.94455 \cdot P_2 = 0.94455 \cdot 0.892175 = 0.847036</mrow>
+          <mrow>P_4=0.94455 \cdot P_3 = 0.94455 \cdot 0.847036 = 0.7959757</mrow>
+          <mrow>...</mrow>
+          <mrow>P_{12}=0.94455 \cdot P_{11} = 0.94455 \cdot 0.53392 = 0.5043121</mrow>
+        </md>
+        <p>If we use the explicit function:</p>
+        <md>
+          <mrow>P(12)=1(0.94455)^{12} = 0.5043121</mrow>
+        </md>
+        <p>Both representations tell us that in <m>12</m> hours the amount of Potassium-42 will have decreased from <m>1</m> milligram to about <m>0.5</m> milligram.</p>
+        <p>We need to be aware of the advantages and disadvantages of each representation that we used in Example <xref ref="example-one-time-bank-desposit" text="local" />. The recursive system is inherently discrete.  Values of <m>P_n</m> can be calculated only for positive interger values of <m>n</m>, where n counts the number of <m>1</m>-hour time intervals that have elapsed since we measured <m>1</m> milligram of potassium-42. The recursive representation is not able to tell us anything about the amount of potassium present between <m>P_2</m> and <m>P_3</m>, in fact, <m>P_{2.7}</m> is not even defined.</p>
+        <p>The explicit function <m>P(t)=1 \cdot (0.944355)^t</m> uses <m>t</m> as a variable whose domain is all positive real numbers and <m>P(2.7)</m> is well-defined and meaningful. The explicit function can tell us the amount of Potassium-42 present at any time on the continuum between zero and infinity.</p>
+        <p>Graphs of both the recursive and the explicit representations are shown below</p>
 
-      <sidebyside widths ="50% 50%">
-        <caption>Mg of Potassium Over Time: Discrete and Continuous Models</caption>
-        <figure xml:id="figure-discrete-p42">
-          <image xml:id="plot-discrete-p42">
-            <latex-image-code>
-              <![CDATA[
-              \begin{tikzpicture}
-              \begin{axis}[
-              axis line style = {<->},
-              width = 0.5\linewidth,
-              xlabel = 1-hour time periods,
-              y label style={at={(axis description cs:0,.5)}},
-              ylabel = Mg of Potassium,
-              label style={font=\tiny},
-              xmin = -2, xmax = 17,
-              ymin = -0.2, ymax = 1.2,
-              ytick = {0,0.1, ...,1.2},
-              xtick = {0, 1, ...,17},
-              tick label style={font=\tiny},
-              ]
+        <sidebyside widths ="50% 50%">
+          <figure xml:id="figure-discrete-p42">
+            <caption>Mg of Potassium Over Time: Discrete and Continuous Models</caption>
+            <image xml:id="plot-discrete-p42">
+              <latex-image-code>
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = 1-hour time periods,
+                y label style={at={(axis description cs:0,.5)}},
+                ylabel = Mg of Potassium,
+                label style={font=\tiny},
+                xmin = -2, xmax = 17,
+                ymin = -0.2, ymax = 1.2,
+                ytick = {0,0.1, ...,1.2},
+                xtick = {0, 1, ...,17},
+                tick label style={font=\tiny},
+                ]
 
-              \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-potassium-42.csv};
+                \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-potassium-42.csv};
 
-              \end{axis}
-              \end{tikzpicture}]]>
-            </latex-image-code>
-          </image>
-        </figure>
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
 
-        <figure xml:id="figure-continuous-p42">
-          <image xml:id="plot-continuous-p42">
-            <latex-image-code>
-              <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
-              <![CDATA[
-              \begin{tikzpicture}
-              \begin{axis}[
-              axis line style = {<->},
-              width = 0.5\linewidth,
-              xlabel = Elapsed Time (hrs),
-              y label style={at={(axis description cs:0,.5)}},
-              ylabel = Mg of Potassium,
-              label style={font=\tiny},
-              xmin = -2, xmax = 17,
-              ymin = -0.2, ymax = 1.2,
-              ytick = {0,0.1, ...,1.2},
-              xtick = {0, 1, ...,17},
-              tick label style={font=\tiny},
-              ]
+          <figure xml:id="figure-continuous-p42">
+            <caption>Mg of Potassium Over Time: Discrete and Continuous Models</caption>
+            <image xml:id="plot-continuous-p42">
+              <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = Elapsed Time (hrs),
+                y label style={at={(axis description cs:0,.5)}},
+                ylabel = Mg of Potassium,
+                label style={font=\tiny},
+                xmin = -2, xmax = 17,
+                ymin = -0.2, ymax = 1.2,
+                ytick = {0,0.1, ...,1.2},
+                xtick = {0, 1, ...,17},
+                tick label style={font=\tiny},
+                ]
 
-              \addplot [thick, blue, <->, mark=none, domain=-1:17]{0.944355^x};
+                \addplot [thick, blue, <->, mark=none, domain=-1:17]{0.944355^x};
 
-              \end{axis}
-              \end{tikzpicture}]]>
-            </latex-image-code>
-          </image>
-        </figure>
-      </sidebyside>
-      <p>Note that in the graph on the left, the horizontal scale shows the number of <m>1</m>-hour time intervals that have elapsed since <m>P_0</m>. On the right, the horizontal scale shows elapsed time. This is consistent with the fact that the recursive system has domain <m>n=1,2,3,...</m> and the explicit function has domain all positive real numbers.</p>
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
+        </sidebyside>
+        <p>Note that in the graph on the left, the horizontal scale shows the number of <m>1</m>-hour time intervals that have elapsed since <m>P_0</m>. On the right, the horizontal scale shows elapsed time. This is consistent with the fact that the recursive system has domain <m>n=1,2,3,...</m> and the explicit function has domain all positive real numbers.</p>
+      </statement>
     </solution>
   </example>
 
-  <p>Example <xref ref="example-continuous-discrete" /> shows that we must pay attention to issues of domain when we are choosing between using recursive and explicit representations of a particular phenomenon. Some phenomena by their very nature have a discrete (and thus discontinuous) domain, and these are often best represented recursively. Other phenomena are by nature continuous and may be better represented by an explicit function. Of course, with appropriate care about interpretations, we can choose to use a continuous function to represent a discrete phenomenon.  We can also use a discrete representation for a continuous phenomenon. If we choose to do this, we need to pay particular attention to the way that we interpret our calculations.</p>
+  <p>Example <xref ref="example-continuous-discrete" text="type-local" /> shows that we must pay attention to issues of domain when we are choosing between using recursive and explicit representations of a particular phenomenon. Some phenomena by their very nature have a discrete (and thus discontinuous) domain, and these are often best represented recursively. Other phenomena are by nature continuous and may be better represented by an explicit function. Of course, with appropriate care about interpretations, we can choose to use a continuous function to represent a discrete phenomenon.  We can also use a discrete representation for a continuous phenomenon. If we choose to do this, we need to pay particular attention to the way that we interpret our calculations.</p>
 
 
   <exercises>
@@ -225,6 +242,7 @@
       <statement>
         <p>When a basketball is released and drops to a hard surface, it's path looks something like what is shown in the photo.</p>
         <figure>
+          <caption></caption>
           <image source="src/images/bouncing_ball_strobe_edit.jpg" width = "50%" />
         </figure>
         <p>Each time that it bounces, it rebounds to <m>75\%</m> of the height from which it was released (assuming that the ball is correctly inflated.) If a ball is dropped from <m>3</m> meters, we can write the recursive system</p>
@@ -232,6 +250,7 @@
           <mrow>H_0=3, H_n = 0.75 H_{n-1}</mrow>
         </md>
         <figure>
+          <caption></caption>
           <image xml:id="plot-basketball-bounce">
             <latex-image-code>
               <![CDATA[
@@ -265,7 +284,6 @@
               \end{tikzpicture}]]>
             </latex-image-code>
           </image>
-
         </figure>
         <p>The graph  shows the rebound height on the vertical axis and bounce number on the horizontal. Sketch a graph of the associated explicit function  <m>h(t)=3(0.75)^t</m> where <m>h(t)</m> is the height at time <m>t</m>. Explain how the graph you sketch is related to the discrete graph that is shown.</p>
       </statement>
@@ -273,9 +291,10 @@
 
     <exercise>
       <statement>
-        <p>In Example <xref ref="example-fading-blue-jeans" /> we used the recursive system <m>C_0=1, C_n = 0.98C_{n-1}</m> to represent the amount of color left in blue jeans after <m>n</m> washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function <m>C(t)=1(0.98)^t</m> where <m>t</m> represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.</p>
+        <p>In Example <xref ref="example-fading-blue-jeans" text="type-local"/> we used the recursive system <m>C_0=1, C_n = 0.98C_{n-1}</m> to represent the amount of color left in blue jeans after <m>n</m> washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function <m>C(t)=1(0.98)^t</m> where <m>t</m> represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.</p>
 
         <figure>
+          <caption></caption>
           <image xml:id="plot-jeans-class-practice">
             <latex-image-code>
               <![CDATA[
@@ -326,11 +345,13 @@
       <p>Rebecca starts working for a company at a salary of <m>\$40,000</m> per year. Based on the company's history, she can expect raises of <m>3.5\%</m> each year on the anniversary of her employment. When will she first make <m>\$50,000</m>?</p>
     </statement>
     <solution>
-      <p>We can use the recursive system <m>A_0=40,000, A_n=1.035A_{n-1}, n=1,2,3,...</m> to determine when her salary will equal or exceed <m>\$50,000</m>.  Rebecca’s first pay raise will result in a salary of <m>\$41,400</m>.  Her sixth raise will bring her salary up to <m>\$49,170.21</m> and her seventh raise will put her pay over <m>\$50,000</m> at <m>\$50,891.17</m>.</p>
+      <statement>
+        <p>We can use the recursive system <m>A_0=40,000, A_n=1.035A_{n-1}, n=1,2,3,...</m> to determine when her salary will equal or exceed <m>\$50,000</m>.  Rebecca’s first pay raise will result in a salary of <m>\$41,400</m>.  Her sixth raise will bring her salary up to <m>\$49,170.21</m> and her seventh raise will put her pay over <m>\$50,000</m> at <m>\$50,891.17</m>.</p>
 
-      <p>We could also use a closed form function to solve for the time at which her salary will reach <m>\$50,000</m>.  This function is <m>S(t)=40,000(1.035)^t</m>. By evaluating this function, we find that <m>S(6)=49,170.21</m> and <m>S(7)=50,891.17</m>. Both the recursive model and the closed form model inform us that Rebecca will make more than <m>\$50,000</m> with her <m>7^{th}</m> raise.</p>
+        <p>We could also use a closed form function to solve for the time at which her salary will reach <m>\$50,000</m>.  This function is <m>S(t)=40,000(1.035)^t</m>. By evaluating this function, we find that <m>S(6)=49,170.21</m> and <m>S(7)=50,891.17</m>. Both the recursive model and the closed form model inform us that Rebecca will make more than <m>\$50,000</m> with her <m>7^{th}</m> raise.</p>
 
-      <p>If we wanted to know what Rebecca would make if she stayed with this company for <m>30</m> years, it would be easier to use the closed form and substitute <m>t=30</m>.  In many cases either the recursive system or the closed form could be used to arrive at the same answer. In cases where we need to predict far into the future, it is more efficient to use the closed form. In cases where we want to see all of the intermediate values, as would be the case for the balance due on a loan after each payment, it would be to our advantage to use the recursive system. In Rebecca's case, if we choose to use an explicit representation we must limit the domain to integer values since her pay raises occur only one time per year.</p>
+        <p>If we wanted to know what Rebecca would make if she stayed with this company for <m>30</m> years, it would be easier to use the closed form and substitute <m>t=30</m>.  In many cases either the recursive system or the closed form could be used to arrive at the same answer. In cases where we need to predict far into the future, it is more efficient to use the closed form. In cases where we want to see all of the intermediate values, as would be the case for the balance due on a loan after each payment, it would be to our advantage to use the recursive system. In Rebecca's case, if we choose to use an explicit representation we must limit the domain to integer values since her pay raises occur only one time per year.</p>
+      </statement>
     </solution>
   </example>
 
@@ -340,79 +361,81 @@
       <p>Suppose the population of a certain type of bacteria is known to grow geometrically and increases by about <m>26\%</m> every hour. How much time will it take for a population of <m>150</m> million cells to grow to <m>300</m> million? How long will it take the population to double again to <m>600</m> million? When will the population reach <m>1200</m> million (another doubling)?</p>
     </statement>
     <solution>
-      <p>Since the population is growing by <m>26\%</m> per hour, we can use the recursive system</p>
-      <md>
-        <mrow>P_0 = 150, P_n = (1.26)P_{n-1}</mrow>
-      </md>
-      <p>We also have the option of using the explicit function <m>P(t)=150 \cdot (1.26)^t</m>.  For integer values of <m>t</m>, these two representations give roughly identical values for the number of bacteria cells.</p>
-      <sidebyside widths ="50% 50%">
-        <table>
-          <tabular bottom="medium">
-            <row bottom="major">
-              <cell right="medium">Time (Hours)</cell>
-              <cell>Cells (Millions)</cell>
-            </row>
-            <row>
-              <cell right="medium"><m>0</m></cell>
-              <cell><m>150</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>1</m></cell>
-              <cell><m>189</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>2</m></cell>
-              <cell><m>238.14</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>3</m></cell>
-              <cell><m>300.06</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>4</m></cell>
-              <cell><m>378.07</m></cell>
-            </row>
+      <statement>
+        <p>Since the population is growing by <m>26\%</m> per hour, we can use the recursive system</p>
+        <md>
+          <mrow>P_0 = 150, P_n = (1.26)P_{n-1}</mrow>
+        </md>
+        <p>We also have the option of using the explicit function <m>P(t)=150 \cdot (1.26)^t</m>.  For integer values of <m>t</m>, these two representations give roughly identical values for the number of bacteria cells.</p>
+        <sidebyside widths ="50% 50%">
+          <table>
+            <caption></caption>
+            <tabular bottom="medium">
+              <row bottom="major">
+                <cell right="medium">Time (Hours)</cell>
+                <cell>Cells (Millions)</cell>
+              </row>
+              <row>
+                <cell right="medium"><m>0</m></cell>
+                <cell><m>150</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>1</m></cell>
+                <cell><m>189</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>2</m></cell>
+                <cell><m>238.14</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>3</m></cell>
+                <cell><m>300.06</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>4</m></cell>
+                <cell><m>378.07</m></cell>
+              </row>
 
-          </tabular>
-        </table>
+            </tabular>
+          </table>
 
-        <table>
-          <tabular bottom="medium">
-            <row bottom="major">
-              <cell right="medium">Time (Hours)</cell>
-              <cell>Cells (Millions)</cell>
-            </row>
-            <row>
-              <cell right="medium"><m>5</m></cell>
-              <cell><m>476.37</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>6</m></cell>
-              <cell><m>600.22</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>7</m></cell>
-              <cell><m>756.28</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>8</m></cell>
-              <cell><m>952.92</m></cell>
-            </row>
-            <row>
-              <cell right="medium"><m>9</m></cell>
-              <cell><m>1200.67</m></cell>
-            </row>
+          <table>
+            <caption></caption>
+            <tabular bottom="medium">
+              <row bottom="major">
+                <cell right="medium">Time (Hours)</cell>
+                <cell>Cells (Millions)</cell>
+              </row>
+              <row>
+                <cell right="medium"><m>5</m></cell>
+                <cell><m>476.37</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>6</m></cell>
+                <cell><m>600.22</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>7</m></cell>
+                <cell><m>756.28</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>8</m></cell>
+                <cell><m>952.92</m></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>9</m></cell>
+                <cell><m>1200.67</m></cell>
+              </row>
+            </tabular>
+          </table>
 
-          </tabular>
-        </table>
+        </sidebyside>
 
-      </sidebyside>
-
-      <p>The population took about <m>3</m> hours to double from <m>150</m> to <m>300</m> million.  In another <m>3</m> hours, it had doubled again, and in another <m>3</m> hours there was yet another population doubling. This population is said to have a <em>doubling time</em> of <m>3</m> hours. Note that the first doubling corresponds to an increase of <m>150</m> cells, the next doubling is an increase of <m>300</m> cells, and the third doubling is an increase of <m>600</m> cells. For each of these doublings, the elapsed time is the same (<m>3</m> hours) but the increase, measured in cells per hour, is not the same.</p>
-
+        <p>The population took about <m>3</m> hours to double from <m>150</m> to <m>300</m> million.  In another <m>3</m> hours, it had doubled again, and in another <m>3</m> hours there was yet another population doubling. This population is said to have a <em>doubling time</em> of <m>3</m> hours. Note that the first doubling corresponds to an increase of <m>150</m> cells, the next doubling is an increase of <m>300</m> cells, and the third doubling is an increase of <m>600</m> cells. For each of these doublings, the elapsed time is the same (<m>3</m> hours) but the increase, measured in cells per hour, is not the same.</p>
+      </statement>
     </solution>
   </example>
-  <p>Example <xref ref="example-doubling-time" /> shows that a population that experiences geometric growth has a doubling time. It is also true that populations that experience geometric decay have a <em>half-life</em>. A half-life is the amount of time it takes for a population size to be halved. Populations that experience other types of growth, such as linear, quadratic or logistic, do not have a doubling time.</p>
+  <p>Example <xref ref="example-doubling-time" text="local"/> shows that a population that experiences geometric growth has a doubling time. It is also true that populations that experience geometric decay have a <em>half-life</em>. A half-life is the amount of time it takes for a population size to be halved. Populations that experience other types of growth, such as linear, quadratic or logistic, do not have a doubling time.</p>
 
   <p>The exponential function you studied in Chapter 2, <m>f(t)=2^t</m>, has a doubling time of <m>1</m> time unit. This is because</p>
   <md>
@@ -428,7 +451,7 @@
     <mrow>g(6)=2^{\frac{1}{3} \cdot 6}=2^2=4</mrow>
     <mrow>g(9)=2^{\frac{1}{3} \cdot 9}=2^3=8</mrow>
   </md>
-  <p>Since <m>g(t)=2^{\frac{1}{3} t}</m> has a doubling time of <m>3</m> time units, in Example <xref ref="example-doubling-time" /> we could have used the function <m>y = 150 \cdot 2^{\frac{1}{3} t}</m> to model the number of bacteria cells present at time <m>t</m>. You can confirm that the two functions <m>y = 150 \cdot 2^{\frac{1}{3} t}</m> and <m>P(t)=150 \cdot (1.26)^t</m> produce roughly the same ordered pairs.</p>
+  <p>Since <m>g(t)=2^{\frac{1}{3} t}</m> has a doubling time of <m>3</m> time units, in Example <xref ref="example-doubling-time" text="local"/> we could have used the function <m>y = 150 \cdot 2^{\frac{1}{3} t}</m> to model the number of bacteria cells present at time <m>t</m>. You can confirm that the two functions <m>y = 150 \cdot 2^{\frac{1}{3} t}</m> and <m>P(t)=150 \cdot (1.26)^t</m> produce roughly the same ordered pairs.</p>
 
   <exercises>
     <exercisegroup>
@@ -463,6 +486,7 @@
         <p>An annual inflation rate of <m>k\%</m> means that items will cost <m>k\%</m> more next year than they cost this year.  Based on a yearly inflation rate of <m>3\%</m>, estimate the cost of the following items in <m>10</m>, <m>20</m>, <m>30</m>, and <m>40</m> years.</p>
 
         <table>
+          <caption></caption>
           <tabular bottom="medium">
             <row bottom="major">
               <cell right="medium">Item</cell>

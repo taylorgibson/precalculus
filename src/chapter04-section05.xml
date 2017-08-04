@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter04-section05" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Compound Interest (or the Magic of Compounding)</title>
+  <p>In the previous section, we encountered a situation in which money was deposited into an interest-bearing account, and the interest was added to the account at regular intervals.  For example, suppose Maria deposits <m>\$1,000</m> in an account that earns interest at a rate of <m>5\%</m> annually.  After one year, the balance of the account will increase to <m>\$1,050</m>.  After two years the balance will be <m>\$1,102.50</m> and so on according to the recursive equation</p>
+  <md>
+    <mrow>A_n = A_{n-1} + 0.05 A_{n-1}</mrow>
+  </md>
+  <p>where <m>A_n</m> is the account balance after <m>n</m> years. <m>A_n</m> is known as the <em>future value</em> of the initial deposit of <m>\$1,000</m> after <m>n</m> years.  The interest in Maria's account is <em>compounded annually</em>, which means that the interest that has been earned during a year is credited to the account at the end of that year.</p>
+  <p>Rather than adding earned interest into an account at the end of each year, financial institutions often use quarterly, monthly, or daily compounding.  For example, a bank that compounds monthly would add one month's interest into the account at the end of every month. As a consequence, during the second month, the initial deposit and the first month's interest will both earn interest.  During the third month, the initial deposit and two months of interest payments will earn interest.</p>
+  <p>What effect does the frequency of compounding have on the future value of Maria's <m>\$1,000</m> deposit?  We will rely on the formula <m>I=prt</m>, where <m>I</m> is the amount of interest earned in one compounding time period, <m>p</m> the principal, <m>r</m> the annual interest rate, and <m>t</m> the time (in years) between successive compoundings. We see that at the end of the first month, the amount of interest earned is <m>I=1000 \cdot 0.05 \cdot 1/12 \approx 4.17</m>  The account balance after one month is</p>
+  <md>
+    <mrow>\$1,000 + \$1,000(0.05) \frac{1}{12} = \$1,000 ( 1 + \frac{0.05}{12}) = \$1,004.17</mrow>
+  </md>
+  <p>At the end of the second month, the account has a balance of</p>
+  <md>
+    <mrow>\$1,004.17(1 + \frac{0.05}{12}) = \$1,008.35</mrow>
+  </md>
+  <p>At the end of the third month, the account has a balance of</p>
+  <md>
+    <mrow>\$1,008.35 (1 + \frac{0.05}{12}) = \$1,012.55</mrow>
+  </md>
+  <p>At the end of the first year, which contains twelve compounding periods, the balance will be</p>
+  <md>
+    <mrow>\$1,000 (1 + \frac{0.05}{12})^{12} = \$1,051.16</mrow>
+  </md>
+  <p>Notice that this amount is higher than the balance of <m>\$1,050.00</m> that we expect at the end of one year using annual compounding. This increased balance is the result of Maria earning interest on interest payments that have been deposited into the account during the year.</p>
+  <example xml:id="chapter04-section05-investment-accounts">
+    <title>Investment Accounts</title>
+    <statement>
+      <p>Financial institutions often offer a variety of investment accounts from which their customers can choose.</p>
+      <ol>
+        <li>What will be Felix’s account balance after <m>1</m> year if he deposits <m>\$100</m> in an account that pays <m>5\%</m> annual interest that is compounded quarterly? What annual interest rate, compounded only one time per year, would result in the same account balance?</li>
+        <li>What will be Felix’s account balance after <m>1</m> year if he deposits <m>\$100</m> in an account that pays <m>4.9\%</m> annual interest that is compounded daily? What annual interest rate, compounded only one time per year, would result in the same account balance?</li>
+        <li>Would Felix be better off investing money in an account that earns <m>5.1\%</m> annual interest that is compounded annually, or an account that earns <m>5\%</m> that is compounded every hour?</li>
+      </ol>
+    </statement>
+    <solution>
+      <statement>
+        <ol>
+          <li>If <m>5\%</m> annual interest is compounded quarterly (four times per year) then the account balance is multiplied by <m>(1+\frac{0.05}{4})</m> each quarter. The account balance after <m>n</m> quarters is given by <m>A(n)=100(1+\frac{0.05}{4})^n</m>. After <m>1</m> year, the balance will be <m>A(4)=100(1+\frac{0.05}{4})^4 \approx \$105.09</m>. Felix would have ended up with the same account balance if he earned an interest rate of <m>5.09\%</m> that was compounded once per year.</li>
+          <li>When <m>4.9\%</m> annual interest is compounded daily (<m>365</m> times per year) the balance after <m>n</m> days is given by  <m>A(n)=100(1+\frac{0.049}{365})^n</m>. After <m>1</m> year, the balance will be <m>A(365) = 100(1+\frac{0.049}{365})^{365} \approx \$105.02</m>. An annual interest rate of <m>5.02\%</m> compounded once per year would have yielded the same balance as <m>4.9\%</m> compounded daily.</li>
+          <li>Felix can compare these accounts even if he does not know how much money he has to invest or how much time he will leave his money in the account.  Use <m>A</m> to represent his initial deposit.  If <m>5.1\%</m> interest is compounded once per year, his balance is multiplied by <m>(1.051)</m> every year, and after <m>n</m> years his balance will be <m>A(1.051)^n</m> dollars. Now consider <m>5\%</m> annual interest being compounded every hour.  Since each compounding period is <m>\frac{1}{8760}</m> year, his balance is multiplied by <m>(1+\frac{0.05}{8760})</m> every hour. Since there are <m>8760</m> hours in a year, the account balance is multiplied by <m>(1+\frac{0.05}{8760})^{8760}</m> every year. Note that <m>(1 + \frac{0.05}{8760} )^{8760} \approx 1.0513</m>, so after <m>n</m> years Felix’s account balance will be <m>A(1.0513)^n</m> dollars. Felix is better off investing in the account that pays <m>5\%</m> interest compounded hourly because <m>A(1.0513)^n > A(1.051)^n</m> for all positive values of <m>A</m> and of <m>n</m>.</li>
+        </ol>
+      </statement>
+    </solution>
+  </example>
+  <p>The different interest rates and compounding frequencies in Example <xref ref="chapter04-section05-investment-accounts" /> highlight the need for a way to compare these accounts. In part (a) we saw that <m>5\%</m> compounded quarterly has the same “effect” on an account balance as <m>5.09\%</m> compounded once per year. So we call <m>5.09\%</m> the <em>effective annual yield</em>, or <em>effective annual interest rate</em> of <m>5\%</m> compounded quarterly.  It is the interest rate that if compounded only once per year would yield the same balance as another rate with more frequent compounding. In part (b) we saw that <m>4.8\%</m> annual interest compounded daily has an effective annual yield of <m>5.02\%</m>. In (c), we saw that <m>5\%</m> annual interest compounded once per hour has an effective annual yield of <m>5.13\%</m>.</p>
+
+  <exercises>
+    <title>Class Practice</title>
+    <exercise>
+      <statement>
+        <ol>
+          <li>Write a recursive system to represent the future value of an initial deposit <m>A_0</m> that earns <m>r\%</m> annual interest that is compounded quarterly.  Let <m>A_n</m> represent the value after <m>n</m> years</li>
+          <li>Write an explicit function to represent the future value of an initial deposit <m>A_0</m> that earns <m>r\%</m> annual interest that is compounded quarterly.  Let <m>A(n)</m> represent the value after <m>n</m> years</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Write representations as described in <m>\#1</m>, but use monthly compounding</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Write representations as described in <m>\#1</m>, but use <m>k</m> compounding periods per year</p>
+      </statement>
+    </exercise>
+  </exercises>
+
+  <p>The table in Figure <xref ref="impact-of-compounding-table" /> shows the future value of <m>\$1,000</m> earning <m>5\%</m> annual interest for various compounding frequencies. (All table entries are rounded to the nearest dollar.) You should be able to confirm the entries in the table.  For instance,</p>
+  <md>
+    <mrow>\$1,647 \approx \$1,000 ( ( 1 + \frac{0.05}{12}) ^{12} )^{10} = \$1,000 ( ( 1 + \frac{0.05}{12})^{120})</mrow>
+  </md>
+  <table xml:id="impact-of-compounding-table">
+    <caption>Impact of the Frequency of Compounding</caption>
+    <tabular bottom="medium">
+      <row bottom="none" halign="center">
+        <cell right="medium"></cell>
+        <cell right="medium">Yearly</cell>
+        <cell right="medium">Quarterly</cell>
+        <cell right="medium">Monthly</cell>
+        <cell right="medium">Weekly</cell>
+        <cell right="medium">Daily</cell>
+        <cell right="medium">Hourly</cell>
+        <cell>By the Minute</cell>
+      </row>
+      <row bottom="major" halign="center">
+        <cell right="medium">Years (N)</cell>
+        <cell right="medium"><m>k=1</m></cell>
+        <cell right="medium"><m>k=4</m></cell>
+        <cell right="medium"><m>k=12</m></cell>
+        <cell right="medium"><m>k=52</m></cell>
+        <cell right="medium"><m>k=365</m></cell>
+        <cell right="medium"><m>k=8,760</m></cell>
+        <cell><m>k=525,600</m></cell>
+      </row>
+      <row bottom="major">
+        <cell right="medium">1</cell>
+        <cell right="medium"><m>\$1,050</m></cell>
+        <cell right="medium"><m>\$1,051</m></cell>
+        <cell right="medium"><m>\$1,051</m></cell>
+        <cell right="medium"><m>\$1,051</m></cell>
+        <cell right="medium"><m>\$1,051</m></cell>
+        <cell right="medium"><m>\$1,051</m></cell>
+        <cell><m>\$1,051</m></cell>
+      </row>
+      <row bottom="major">
+        <cell right="medium">10</cell>
+        <cell right="medium"><m>\$1,629</m></cell>
+        <cell right="medium"><m>\$1,634</m></cell>
+        <cell right="medium"><m>\$1,647</m></cell>
+        <cell right="medium"><m>\$1,648</m></cell>
+        <cell right="medium"><m>\$1,649</m></cell>
+        <cell right="medium"><m>\$1,649</m></cell>
+        <cell><m>\$1,649</m></cell>
+      </row>
+      <row bottom="major">
+        <cell right="medium">25</cell>
+        <cell right="medium"><m>\$3,386</m></cell>
+        <cell right="medium"><m>\$3,463</m></cell>
+        <cell right="medium"><m>\$3,481</m></cell>
+        <cell right="medium"><m>\$3,488</m></cell>
+        <cell right="medium"><m>\$3,490</m></cell>
+        <cell right="medium"><m>\$3,490</m></cell>
+        <cell><m>\$3,490</m></cell>
+      </row>
+      <row bottom="major">
+        <cell right="medium">50</cell>
+        <cell right="medium"><m>\$11,467</m></cell>
+        <cell right="medium"><m>\$11,495</m></cell>
+        <cell right="medium"><m>\$12,119</m></cell>
+        <cell right="medium"><m>\$12,168</m></cell>
+        <cell right="medium"><m>\$12,180</m></cell>
+        <cell right="medium"><m>\$12,182</m></cell>
+        <cell><m>\$12,183</m></cell>
+      </row>
+    </tabular>
+  </table>
+  <p>Reading down any column of Figure <xref ref="impact-of-compounding-table" />, we notice that the future value increases as the number of years increases.  This is to be expected. But reading across any row reveals that the future value seems to level off as the frequency of compounding increases.  For any number of years, there appears to be an upper limit to the future value of the account. We see that increasing the frequency of compounding is associated with an increase in the future value, but we don’t expect the future values associated with compounding “by the second” to be appreciably larger than the values displayed in the right-most column of the table for “by the minute” compounding.</p>
+  <p>Each entry in Figure <xref ref="impact-of-compounding-table" /> can be calculated with the explicit function</p>
+  <md>
+    <mrow>A(N)=1,000((1 + \frac{0.05}{k})^k)^N \text{or} A(N) = 1000(1 + \frac{0.05}{k})^{kN}</mrow>
+  </md>
+  <p>where <m>A(N)</m> is the future value of <m>N</m> years.</p>
+  <p>The value of <m>N</m> is fixed in each row of Figure <xref ref="impact-of-compounding-table" />, in the first row <m>N=1</m>, in the second <m>N=10</m>, and so on.  This means that increases in the future values in a particular row result solely from the value of the expression <m>(1+\frac{0.05}{k})^k</m>.  Since the future values associated with each value of <m>N</m> appear to have a limit, we suspect that the quantity <m>(1+\frac{0.05}{k})^k</m> has some limiting value as <m>k</m> becomes very large.  Figure <xref ref="impact-of-k" /> provides values of this quantity for <m>k</m>-values associated with increasing frequency of compounding.  Correct to six decimal places, the limiting value appears to be <m>1.051271</m></p>
+  <table xml:id="impact-of-k">
+    <caption>Values of <m>(1+\frac{0.05}{k})^k</m> rounded to six decimal places</caption>
+    <tabular bottom="medium">
+      <row bottom="none" halign="center">
+        <cell right="medium"></cell>
+        <cell right="medium">Yearly</cell>
+        <cell right="medium">Quarterly</cell>
+        <cell right="medium">Monthly</cell>
+        <cell right="medium">Weekly</cell>
+        <cell right="medium">Daily</cell>
+        <cell right="medium">Hourly</cell>
+        <cell>By the Minute</cell>
+      </row>
+      <row bottom="major" halign="center">
+        <cell right="medium"></cell>
+        <cell right="medium"><m>k=1</m></cell>
+        <cell right="medium"><m>k=4</m></cell>
+        <cell right="medium"><m>k=12</m></cell>
+        <cell right="medium"><m>k=52</m></cell>
+        <cell right="medium"><m>k=365</m></cell>
+        <cell right="medium"><m>k=8,760</m></cell>
+        <cell><m>k=525,600</m></cell>
+      </row>
+      <row bottom="major">
+        <cell right="medium"><m>(1+\frac{0.05}{k})^k</m></cell>
+        <cell right="medium"><m>1.050000</m></cell>
+        <cell right="medium"><m>1.050945</m></cell>
+        <cell right="medium"><m>1.051162</m></cell>
+        <cell right="medium"><m>1.061246</m></cell>
+        <cell right="medium"><m>1.051267</m></cell>
+        <cell right="medium"><m>1.051271</m></cell>
+        <cell><m>1.051271</m></cell>
+      </row>
+    </tabular>
+  </table>
+  <p>We can gain some understanding of this limiting value if we cosider the case where the interest is <m>100\%</m>.</p>
+  <table xml:id="discovery-of-e">
+    <caption>Values of <m>(1+\frac{1.00}{k})^k</m> rounded to six decimal places</caption>
+    <tabular bottom="medium">
+      <row bottom="major" halign="center">
+        <cell right="medium"></cell>
+        <cell right="medium"><m>k=10</m></cell>
+        <cell right="medium"><m>k=100</m></cell>
+        <cell right="medium"><m>k=1,000</m></cell>
+        <cell right="medium"><m>k=10,000</m></cell>
+        <cell right="medium"><m>k=100,000</m></cell>
+        <cell><m>k=1,000,000</m></cell>
+      </row>
+      <row bottom="major">
+        <cell right="medium"><m>(1+\frac{1.00}{k})^k</m></cell>
+        <cell right="medium"><m>2.593742</m></cell>
+        <cell right="medium"><m>2.704814</m></cell>
+        <cell right="medium"><m>2.716924</m></cell>
+        <cell right="medium"><m>2.718146</m></cell>
+        <cell right="medium"><m>2.719268</m></cell>
+        <cell><m>2.718280</m></cell>
+      </row>
+    </tabular>
+  </table>
+  <p>Mathematicians began exploring the behavior of <m>(1+\frac{1}{k})^k</m> early in the eighteenth century.  In essence they found that the value of <m>(1+\frac{1}{k})^k</m> approaches a limiting value as <m>k</m> gets larger and larger.  Mathematicians define this limiting value, which is <m>2.71828...</m>, as the number <m>e</m> in honor of the Swiss mathematician Leonhard Euler.  In mathematical notation, we can write</p>
+  <md>
+    <mrow>\lim_{k \to \infty} (1 + \frac{1}{k})^k = e </mrow>
+  </md>
+  <p>which is read, “the limit of <m>(1 + \frac{1}{k})^k</m> as <m>k</m> approaches infinity is the number <m>e</m>.”</p>
+  <p>Based on the numerical values in Figure <xref ref="impact-of-k" />, we see that <m>(1 + \frac{0.05}{k})^k</m> approaches a limiting value of about <m>1.051271</m> as <m>k</m> approaches infinity. You can use a calculator to confirm that this value is equal to <m>e^0.05</m>. We write</p>
+  <md>
+    <mrow>\lim_{k \to \infty} (1 + \frac{0.05}{k})^k = e^{0.05}</mrow>
+  </md>
+  <p>We can also use a calculator to compare the values of <m>e^{0.02}</m> and <m>(1 + \frac{0.02}{k})^k</m> for large values of <m>k</m>, as well as several more values of <m>r</m>.  What we find supports the statement:</p>
+  <md>
+    <mrow>\lim_{k \to \infty} (1 + \frac{r}{k})^k = e^r</mrow>
+  </md>
+  <p>Based on the relationship between limiting values and <m>e</m>, we can use the exponential function with base <m>e</m> to arrive at useful and accurate approximations for future values when interest is compounded frequently.  For example, if <m>3.2\%</m> annual interest is compounded <m>5,000</m> times per year, the future value in <m>N</m> years of an initial deposit of <m>\$1,000</m> is <m>\$1,000(1+\frac{0.032}{5000})^{5000N}</m> which can be approximated by <m>\$1,000e^{0.032N}</m>.  When this approximation is used, the future values are the result of <em>continuous compounding.</em>  It is useful to think of continuous compounding as compounding that occurs at every instant. It may be physically impossible to add interest into an account in a way that is truly continuous, but continuous compounding refers to the limiting case of compounding that is more and more frequent.</p>
+  <p>The equation</p>
+  <md>
+    <mrow>\text{Future Value} = A_0 (e^r)^N = A_0 e^{rN}</mrow>
+  </md>
+  <p>gives the balance after <m>N</m> years in an account with continuous compounding, initial deposit , and annual interest rate <m>r</m>.  Note that since the compounding is continuous, the future value changes with any change in time, no matter how small, so it is reasonable to substitute any positive real number for <m>N</m>.</p>
+  <p>The continuous function <m>F(N)=A_0 e^{rN}</m> describing the future value of an account with continuous compounding is an example of an important class of functions known as exponential functions.  All exponential functions are transformations of the exponential function <m>y=e^x</m>.  This function is closely related to the tool-kit function <m>y=2^x</m> and can be used to describe many "real-world" situations, from the cooling of coffee sitting on a table to the increase of carbon-dioxide in the atmosphere.  Over the next several sections of this chapter, you will become more aquatinted with this important function and the situations in which it is a useful model.</p>
+  <exercises>
+    <exercise>
+      <statement>
+        <p>Compute the balance that results when <m>\$2,000</m> is deposited for one year in an account paying <m>4\%</m> annual interest compounded quarterly.  How does this balance compare to an approximation using continuous compounding of <m>4\%</m> annual interest? Make the comparable comparison if the annual interest rate is <m>12\%</m>.</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>If Jack invests <m>\$250</m> at an annual interest rate of <m>7.5\%</m>, what is the future value after two years if the interest is compounded quarterly? monthly? weekly? daily? continuously?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <ol>
+          <li>Which has the greater future value after <m>5</m> years, <m>\$1,000</m> invested at <m>8\%</m> with yearly compounding or <m>\$1,000</m> invested at <m>7.75\%</m> with quarterly compounding?  Use graphs of appropriate functions to determine if the number of years affects which deposit has a greater future value.</li>
+          <li>Which has the greater future value after <m>5</m> years, \<m>$1,000</m> invested at <m>8\%</m> compounded yearly or <m>\$800</m> invested at <m>9\%</m> compounded yearly?  Does the number of years affect which deposit has the greater future value?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>It has been said that the island of Manhattan was purchased for <m>\$24</m> in <m>1626</m>.  Suppose the <m>\$24</m> had been invested at <m>6\%</m> annual interest compounded quarterly.  What would it be worth today?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>If we denote the effective annual rate by <m>R</m>, then <m>R</m> satisfies the equation</p>
+        <md>
+          <mrow>A(1 + R) = A (1 + \frac{r}{k})^k</mrow>
+        </md>
+        <p>where <m>A</m> is the inital deposit, <m>k</m> is the number of compounding periods per year, and <m>r</m> is the annual interest rate. Solve the equation for <m>R=(1 + \frac{r}{k})^k - 1</m>.</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Use the concept of effective annual yield to compare a <m>7.25\%</m> certificate of deposit with quarterly compounding to a <m>7\%</m> certificate with monthly compounding.  Which option will provide a better return on your investment?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>In this exercise you will look at the relationship between interest rate and doubling time.</p>
+        <ol>
+          <li>Complete the table. Assume that the interest is compounded monthly. The doubling time should be accurate to the nearest hundreth of a year</li>
+          <table>
+            <caption></caption>
+            <tabular bottom="medium">
+              <row bottom="major" halign="center">
+                <cell right="medium">Annual Interest (<m>\%</m>)</cell>
+                <cell>Doubling Time (Years)</cell>
+              </row>
+              <row>
+                <cell right="medium"><m>1.5</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>3.2</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>4.0</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>5.3</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>7.2</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>8.0</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>9.4</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>12.0</m></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell right="medium"><m>20.5</m></cell>
+                <cell></cell>
+              </row>
+            </tabular>
+          </table>
+          <li>Make a scatterplot of the set of ordered pairs <m>(\text{rate}, \text{time to double})</m>. For example, if you found that a <m>5.8\%</m> interest rate compounded monthly takes <m>12.9</m> years to double, you would have the ordered pair <m>(5.8, 12.9)</m>.</li>
+          <li>Based on the shape of your scatterplot, identify a toolkit function that would be a good model for your scatterplot.  <em>Hint:</em> An exponential function would NOT be a good model</li>
+          <li>Find a model for the ordered pairs <m>(\text{rate}, \text{time to double})</m>. To do this, you should decide by what factor this toolkit function must be vertically stretched so that it will fit your scatterplot.</li>
+          <li>According to your model, what is the doubling time for a <m>2\%</m> interest rate that is compounded monthly?  What is the doubling time for <m>10\%</m>?  For <m>14\%</m>? What interest rate will cause an investment to double in <m>70</m> years?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Suppose that when you were born your parents estimated they would need <m>\$50,000</m> for college expenses.  The best interest rate they could find was offered on a certificate of deposit paying <m>6\%</m> annual interest compounded monthly.</p>
+        <ol>
+          <li>What is the effective annual interest rate for this account?</li>
+          <li>How much money should your parents have invested to have a balance of <m>\$50,000</m> on your eighteenth birthday?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="athletic-contract">
+      <statement>
+        <p>The amount of money that would have to be invested today to yield some specified amount in the future is called the <em>present value</em> of that future amount.  (In exercise 8 you found the present value of <m>\$50,000</m> to be paid in eighteen years.)  Suppose a professional athlete signs a one-year contract for <m>\$2,000,000</m> and agrees to be paid over a period of five years.  At the beginning of each of the next five years he or she will be paid <m>\$400,000</m>.  What is the present value of this contract assuming a <m>6\%</m> interest rate compounded annually?  Another way to ask this question is: how much money should the team management deposit in an account earning <m>6\%</m> annual interest when the contract is signed to guarantee that they can pay this five-year deal?  Since the athlete is paid at the beginning of each year, assume that the present value of the first payment of <m>\$400,000</m> is <m>\$400,000</m>.</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Suppose the interest rate is <m>5\%</m> in the athletic contract discussed in <xref ref="athletic-contract" text="type-local" />.  What is the present value of this contract?  Does this make sense when compared with your answer to Exercise <xref ref="athletic-contract" />?  What would you expect to be true for an interest rate of <m>3\%</m>?</p>
+      </statement>
+    </exercise>
+  </exercises>
+</section>

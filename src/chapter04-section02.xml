@@ -38,8 +38,8 @@
   <p>The graph and partial table in Figure XX show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
 
   <sidebyside widths ="30% 70%">
-    <caption>Loan Ammoritization</caption>
     <figure xml:id="figure-table-loan-balance">
+      <caption>Loan Ammoritization</caption>
       <image xml:id="table-loan-balance">
         <latex-image-code>
           <![CDATA[
@@ -58,6 +58,7 @@
     </figure>
 
     <figure xml:id="figure-plot-loan-balance">
+      <caption>Loan Ammoritization</caption>
       <image xml:id="plot-loan-balance">
         <latex-image-code>
           <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
@@ -101,154 +102,161 @@
 
   <example>
     <title>Finding the Yearly Payment Needed to Pay Off a Loan</title>
-    <p>Suppose you buy a car and take out a loan of <m>\$22,000</m> at <m>6.5\%</m> annual interest to be paid back over four years.  What is the yearly payment you must make to pay off the loan in four equal payments?</p>
+    <statement>
+      <p>Suppose you buy a car and take out a loan of <m>\$22,000</m> at <m>6.5\%</m> annual interest to be paid back over four years.  What is the yearly payment you must make to pay off the loan in four equal payments?</p>
+    </statement>
     <solution>
-      <p>Referring to equation XX we have</p>
-      <md>
-        <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1}-P</mrow>
-      </md>
-      <p>and our goal is to find the value of <m>P</m> so that <m>L_4=0</m></p>
-      <p>If there were no interest charged, you would have to make a payment of <m>\$5,500</m> each year to repay the <m>\$22,000</m>.  Since you must pay interest on the loan, <m>\$5,500</m> per year is obviously too small a payment and we conclude that <m> \> \$5,500</m>.  We can confirm that <m>\$5,500</m> is too small a payment  with the recursive system:</p>
-      <md>
-        <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1} - 5,500</mrow>
-      </md>
+      <statement>
+        <p>Referring to equation XX we have</p>
+        <md>
+          <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1}-P</mrow>
+        </md>
+        <p>and our goal is to find the value of <m>P</m> so that <m>L_4=0</m></p>
+        <p>If there were no interest charged, you would have to make a payment of <m>\$5,500</m> each year to repay the <m>\$22,000</m>.  Since you must pay interest on the loan, <m>\$5,500</m> per year is obviously too small a payment and we conclude that <m> \> \$5,500</m>.  We can confirm that <m>\$5,500</m> is too small a payment  with the recursive system:</p>
+        <md>
+          <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1} - 5,500</mrow>
+        </md>
 
-      <table>
-        <tabular bottom="medium">
-          <row bottom="major">
-            <cell right="medium"><m>n</m></cell>
-            <cell><m>L_n</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>0</m></cell>
-            <cell><m>\$22,000</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>1</m></cell>
-            <cell><m>\$22,000(1+0.065)-\$5,500=\$17,930</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>2</m></cell>
-            <cell><m>\$17,930(1+0.065)-\$5,500=\$13,595.45</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>3</m></cell>
-            <cell><m>\$13,595.45(1+0.065)-\$5,500=\$8,979.15</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>4</m></cell>
-            <cell><m>\$8,979.15(1+0.065)-\$5,500=\$4,062.80</m></cell>
-          </row>
-        </tabular>
-      </table>
+        <table>
+          <caption></caption>
+          <tabular bottom="medium">
+            <row bottom="major">
+              <cell right="medium"><m>n</m></cell>
+              <cell><m>L_n</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>0</m></cell>
+              <cell><m>\$22,000</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>1</m></cell>
+              <cell><m>\$22,000(1+0.065)-\$5,500=\$17,930</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>2</m></cell>
+              <cell><m>\$17,930(1+0.065)-\$5,500=\$13,595.45</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>3</m></cell>
+              <cell><m>\$13,595.45(1+0.065)-\$5,500=\$8,979.15</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>4</m></cell>
+              <cell><m>\$8,979.15(1+0.065)-\$5,500=\$4,062.80</m></cell>
+            </row>
+          </tabular>
+        </table>
 
-      <p>This confirms that if we make an annual payment of <m>\$5,500</m> for each of 4 years, the outstanding balance on a loan of <m>\$22,000</m> is <m>\$4,062.80</m> at the end of the <m>4</m> years. So <m>\$5,500</m> is too small an annual payment to pay off the loan.</p>
+        <p>This confirms that if we make an annual payment of <m>\$5,500</m> for each of 4 years, the outstanding balance on a loan of <m>\$22,000</m> is <m>\$4,062.80</m> at the end of the <m>4</m> years. So <m>\$5,500</m> is too small an annual payment to pay off the loan.</p>
 
-      <p>With a <m>6.5\%</m> annual interest rate, we know that the interest for the first year is <m>\$1,430</m> ( <m>6.5\%</m> of <m>\$22,000</m> ), so a reasonable guess for the payment might be <m>\$5500+\$1430=\$6930</m>. However, in the second year we will need to pay less than <m>\$1430</m> in interest because the outstanding balance has decreased.  Therefore, a payment of <m>\$6930</m> per year will result in an overpayment for the last three years.  The calculations below show that <m>\$6930</m> is indeed too large an annual payment; that is, <m>P \lt 6,930</m>.</p>
+        <p>With a <m>6.5\%</m> annual interest rate, we know that the interest for the first year is <m>\$1,430</m> ( <m>6.5\%</m> of <m>\$22,000</m> ), so a reasonable guess for the payment might be <m>\$5500+\$1430=\$6930</m>. However, in the second year we will need to pay less than <m>\$1430</m> in interest because the outstanding balance has decreased.  Therefore, a payment of <m>\$6930</m> per year will result in an overpayment for the last three years.  The calculations below show that <m>\$6930</m> is indeed too large an annual payment; that is, <m>P \lt 6,930</m>.</p>
 
-      <md>
-        <mrow>L_0=22,000, L_n=(1+0.065)L_{n-1}-6,930</mrow>
-      </md>
+        <md>
+          <mrow>L_0=22,000, L_n=(1+0.065)L_{n-1}-6,930</mrow>
+        </md>
 
-      <table>
-        <tabular bottom="medium">
-          <row bottom="major">
-            <cell right="medium"><m>n</m></cell>
-            <cell><m>L_n</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>0</m></cell>
-            <cell><m>\$22,000</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>1</m></cell>
-            <cell><m>\$22,000(1+0.065)-\$6,930=\$16,500</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>2</m></cell>
-            <cell><m>\$16,500(1+0.065)-\$6,930=\$10,642.50</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>3</m></cell>
-            <cell><m>\$10,642.50(1+0.065)-\$6,930=\$4,404.26</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>4</m></cell>
-            <cell><m>\$4,404.26(1+0.065)-\$6,930=-\$2,239.46</m></cell>
-          </row>
-        </tabular>
-      </table>
+        <table>
+          <caption></caption>
+          <tabular bottom="medium">
+            <row bottom="major">
+              <cell right="medium"><m>n</m></cell>
+              <cell><m>L_n</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>0</m></cell>
+              <cell><m>\$22,000</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>1</m></cell>
+              <cell><m>\$22,000(1+0.065)-\$6,930=\$16,500</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>2</m></cell>
+              <cell><m>\$16,500(1+0.065)-\$6,930=\$10,642.50</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>3</m></cell>
+              <cell><m>\$10,642.50(1+0.065)-\$6,930=\$4,404.26</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>4</m></cell>
+              <cell><m>\$4,404.26(1+0.065)-\$6,930=-\$2,239.46</m></cell>
+            </row>
+          </tabular>
+        </table>
 
-      <p>We have established that <m>\$5500</m> is too small a payment and <m>\$6930</m> is too large a payment; that is, <m>5,500 \lt P \lt 6,930</m>  Our next logical guess for a payment might be mid-way between these two payments, or <m>\$6215</m>.  We can do recursive calculations to see if this payment is too small, which would result in a positive outstanding balance after <m>4</m> years, or if this payment is too large, resulting in a negative outstanding balance after <m>4</m> years.</p>
-      <p>The outstanding principal is modeled by the recursive system</p>
-      <md>
-        <mrow>L_0=22,000, L_n=(1+0.065)L_{n-1} - 6,215</mrow>
-      </md>
-      <p>The successive principals are shown in the table.</p>
+        <p>We have established that <m>\$5500</m> is too small a payment and <m>\$6930</m> is too large a payment; that is, <m>5,500 \lt P \lt 6,930</m>  Our next logical guess for a payment might be mid-way between these two payments, or <m>\$6215</m>.  We can do recursive calculations to see if this payment is too small, which would result in a positive outstanding balance after <m>4</m> years, or if this payment is too large, resulting in a negative outstanding balance after <m>4</m> years.</p>
+        <p>The outstanding principal is modeled by the recursive system</p>
+        <md>
+          <mrow>L_0=22,000, L_n=(1+0.065)L_{n-1} - 6,215</mrow>
+        </md>
+        <p>The successive principals are shown in the table.</p>
 
-      <table>
-        <tabular bottom="medium">
-          <row bottom="major">
-            <cell right="medium"><m>n</m></cell>
-            <cell><m>L_n</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>0</m></cell>
-            <cell><m>\$22,000</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>1</m></cell>
-            <cell><m>\$22,000(1+0.065)-\$6,215=\$17,215</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>2</m></cell>
-            <cell><m>\$17,215(1+0.065)-\$6,215=\$12,118.98</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>3</m></cell>
-            <cell><m>\$12,118.98(1+0.065)-\$6,215=\$6,691.71</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>4</m></cell>
-            <cell><m>\$6,691.71(1+0.065)-\$6,215=\$911.67</m></cell>
-          </row>
-        </tabular>
-      </table>
+        <table>
+          <caption></caption>
+          <tabular bottom="medium">
+            <row bottom="major">
+              <cell right="medium"><m>n</m></cell>
+              <cell><m>L_n</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>0</m></cell>
+              <cell><m>\$22,000</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>1</m></cell>
+              <cell><m>\$22,000(1+0.065)-\$6,215=\$17,215</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>2</m></cell>
+              <cell><m>\$17,215(1+0.065)-\$6,215=\$12,118.98</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>3</m></cell>
+              <cell><m>\$12,118.98(1+0.065)-\$6,215=\$6,691.71</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>4</m></cell>
+              <cell><m>\$6,691.71(1+0.065)-\$6,215=\$911.67</m></cell>
+            </row>
+          </tabular>
+        </table>
 
-      <p>An annual payment of <m>\$6,215</m> is not sufficient to pay off the loan in four years, as a balance of <m>\$911.67</m> remains after the four payments.  We conclude that <m>6,215 \lt P \lt 6,930</m> and we need to pay more than <m>\$6,215</m>.  If we again select the average of two payments, one that is too large and one that is too small, we will have arrived at a better guess.  We know <m>\$6,930</m> is too large and <m>\$,6215</m> is too small, so our next guess will be <m>\frac{6930+6215}{2} = \$6,572.50</m>.  The successive balances would now be as shown.</p>
+        <p>An annual payment of <m>\$6,215</m> is not sufficient to pay off the loan in four years, as a balance of <m>\$911.67</m> remains after the four payments.  We conclude that <m>6,215 \lt P \lt 6,930</m> and we need to pay more than <m>\$6,215</m>.  If we again select the average of two payments, one that is too large and one that is too small, we will have arrived at a better guess.  We know <m>\$6,930</m> is too large and <m>\$,6215</m> is too small, so our next guess will be <m>\frac{6930+6215}{2} = \$6,572.50</m>.  The successive balances would now be as shown.</p>
 
-      <table>
-        <tabular bottom="medium">
-          <row bottom="major">
-            <cell right="medium"><m>n</m></cell>
-            <cell><m>L_n</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>0</m></cell>
-            <cell><m>\$22,000</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>1</m></cell>
-            <cell><m>\$22,000(1+0.065)-\$6,572.50=\$16,857.50</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>2</m></cell>
-            <cell><m>\$16,857.50(1+0.065)-\$6,572.50=\$11,380.74</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>3</m></cell>
-            <cell><m>\$11,380.74(1+0.065)-\$6,572.50=\$5,547.99</m></cell>
-          </row>
-          <row>
-            <cell right="medium"><m>4</m></cell>
-            <cell><m>\$5,547.99(1+0.065)-\$6,572.50=-\$663.90</m></cell>
-          </row>
-        </tabular>
-      </table>
-      <p>We see that a payment of <m>\$6,572.50</m> is too large since after <m>4</m> payments you have paid <m>\$663.90</m> more than necessary. We now know that the appropriate payment <m>P</m> is in the interval  <m>6,215 \lt  P \lt 6,572.50</m> </p>
+        <table>
+          <caption></caption>
+          <tabular bottom="medium">
+            <row bottom="major">
+              <cell right="medium"><m>n</m></cell>
+              <cell><m>L_n</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>0</m></cell>
+              <cell><m>\$22,000</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>1</m></cell>
+              <cell><m>\$22,000(1+0.065)-\$6,572.50=\$16,857.50</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>2</m></cell>
+              <cell><m>\$16,857.50(1+0.065)-\$6,572.50=\$11,380.74</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>3</m></cell>
+              <cell><m>\$11,380.74(1+0.065)-\$6,572.50=\$5,547.99</m></cell>
+            </row>
+            <row>
+              <cell right="medium"><m>4</m></cell>
+              <cell><m>\$5,547.99(1+0.065)-\$6,572.50=-\$663.90</m></cell>
+            </row>
+          </tabular>
+        </table>
+        <p>We see that a payment of <m>\$6,572.50</m> is too large since after <m>4</m> payments you have paid <m>\$663.90</m> more than necessary. We now know that the appropriate payment <m>P</m> is in the interval  <m>6,215 \lt  P \lt 6,572.50</m> </p>
 
-      <p>We can continue the process of averaging two payments, one that is too large and one that is too small. Eventually we find that three payments of <m>\$6,393.75</m> and a fourth balloon payment of <m>\$6,393.75 + \$123.89</m> will bring the outstanding balance to zero dollars.</p>
-
+        <p>We can continue the process of averaging two payments, one that is too large and one that is too small. Eventually we find that three payments of <m>\$6,393.75</m> and a fourth balloon payment of <m>\$6,393.75 + \$123.89</m> will bring the outstanding balance to zero dollars.</p>
+      </statement>
     </solution>
   </example>
   <p>The process used to find an appropriate payment is called <em>binary search</em>. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.</p>
@@ -312,6 +320,7 @@
           <li>In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of <m>\$950</m> each month, he will have overpaid by about <m>\$6,900</m> after the <m>72^{nd}</m> payment.
 
           <table>
+            <caption></caption>
             <tabular bottom="medium">
               <row bottom="major">
                 <cell right="medium">Monthly Payment</cell>
