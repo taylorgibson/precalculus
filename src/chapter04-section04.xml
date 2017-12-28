@@ -71,7 +71,7 @@
     </statement>
     <solution>
       <statement>
-        <p>The initial deposit earns interest for <m>72</m> months, which means that in <m>72</m> months the first <m>\$100</m> deposited has grown to a value of <m>\$100(1.005)^{72}</m>.  The money deposited at the beginning of the second month earns interest for <m>71</m> months and grows to <m>\$100(1.005)^{71}</m>.  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of <m>\$100</m>; this means that the final <m>\$100</m> deposit earns no interest.  The timeline in Figure <xref ref="deposit-timeline" /> shows each deposit together with the amount of interest earned by each deposit.</p>
+        <p>The initial deposit earns interest for <m>72</m> months, which means that in <m>72</m> months the first <m>\$100</m> deposited has grown to a value of <m>\$100(1.005)^{72}</m>.  The money deposited at the beginning of the second month earns interest for <m>71</m> months and grows to <m>\$100(1.005)^{71}</m>.  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of <m>\$100</m>; this means that the final <m>\$100</m> deposit earns no interest.  The timeline in <xref ref="deposit-timeline" text="type-local" /> shows each deposit together with the amount of interest earned by each deposit.</p>
         <figure xml:id="deposit-timeline">
           <caption>Timeline for interest and deposit in an annuity (REDO GRAPHIC)</caption>
           <image source="src/images/chapter04-section04-depositchart.png" width = "80%" />
@@ -110,14 +110,14 @@
         </md>
         <p>which, by substitution is equivalent to</p>
         <md>
-          <mrow>L_2=1.004(1.004 \cdot 20,000 - P) - P</mrow>
+          <mrow>L_2&amp;=1.004(1.004 \cdot 20,000 - P) - P</mrow>
           <mrow>\text{or}</mrow>
-          <mrow>L_2=1.004^2(20,000)-1.004P-P</mrow>
+          <mrow>L_2&amp;=1.004^2(20,000)-1.004P-P</mrow>
         </md>
         <p>Similarly, since <m>L_3=1.004L_2-P</m>, we have:</p>
         <md>
-          <mrow>L_3=1.004(1.004^2 (20,000) - 1.004P - P) - P</mrow>
-          <mrow>L_3=1.004^3(20,000) - 1.004^2P - 1.004P - P</mrow>
+          <mrow>L_3&amp;=1.004(1.004^2 (20,000) - 1.004P - P) - P</mrow>
+          <mrow>L_3&amp;=1.004^3(20,000) - 1.004^2P - 1.004P - P</mrow>
         </md>
         <p>We can continue to iterate to find the outstanding balance after any number of months. For instance,</p>
         <md>
@@ -125,7 +125,7 @@
         </md>
         <p>In general, we see that after <m>n</m> months the oustanding balance is given by:</p>
         <mdn>
-          <mrow xml:id="general-annuity-formula-long">L_n=1.004^n (20,000) - P( 1.004^{n-1} + 1.004^{n-2} + ... + 1.004^2 + 1.004 + 1 )</mrow>
+          <mrow xml:id="general-annuity-formula-long">L_n=1.004^n (20,000) - P \big( 1.004^{n-1} + 1.004^{n-2} + ... + 1.004^2 + 1.004 + 1 \big)</mrow>
         </mdn>
         <p>Embedded in the right side of equation <xref ref="general-annuity-formula-long" /> is the geometric series</p>
         <md>
@@ -137,17 +137,17 @@
         </md>
         <p>Substituting into equation <xref ref="general-annuity-formula-long" /> we obtain the following representation for  <m>L_n</m>:</p>
         <mdn>
-          <mrow xml:id="general-annuity-formula-condensed">L_n = 1.004^n (20,000) - P(\frac{1-1.004^n}{1-1.004})</mrow>
+          <mrow xml:id="general-annuity-formula-condensed">L_n = 1.004^n (20,000) - P\bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
         </mdn>
         <p>We want <m>48</m> payments to reduce the outstanding balance to zero, that is, our goal is  <m>L_{48}=0</m>. This means that we can solve the following equation to find the value of <m>P</m>.</p>
         <md>
-          <mrow>0 = 1.004^{48}(20,000)-P(\frac{1-1.004^n}{1-1.004})</mrow>
+          <mrow>0 = 1.004^{48}(20,000)-P\bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
         </md>
         <p>Solving for <m>P</m>, we find</p>
         <md>
-          <mrow>P = 1.004^{48}(20,000)(\frac{1-1.004^n}{1-1.004})</mrow>
+          <mrow>P &amp;= 1.004^{48}(20,000)\bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
           <mrow>\text{or, equivalently}</mrow>
-          <mrow>P=\frac{1.004^{48}(20,000)(0.004)}{1.004^{48}-1}</mrow>
+          <mrow>P&amp;=\frac{1.004^{48}(20,000)(0.004)}{1.004^{48}-1}</mrow>
         </md>
         <p>which means that <m>P \approx 458.78</m>. The loan will be paid off in <m>48</m> months with a monthly payment of <m>\$458.78</m>. You should verify using the recursive system</p>
         <md>
@@ -156,11 +156,11 @@
         <p>that the balance after <m>48</m> payments, <m>L_{48}</m> is zero. Note that due to rounding, your answer may not be exactly zero. The final baloon payment may be a few cents more or less than <m>\$458.78</m></p>
         <p>It is worthwhile to take a moment to study equation <xref ref="general-annuity-formula-condensed" />, which effectively gives an explicit function for <m>L(n)</m>.</p>
         <md>
-          <mrow>L(n) = 1.004^n (20,000) - P(\frac{1-1.004^n}{1-1.004})</mrow>
+          <mrow>L(n) = 1.004^n (20,000) - P \bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
         </md>
         <p>Recall that the monthly interest rate was <m>0.4\%</m>, the amount borrowed was <m>\$20,000</m>,  <m>L(n)</m> is the amount still owed after <m>n</m> payments, and <m>P</m> is the monthly payment. You should conclude that if the monthly interest rate is <M>k\%</M> and the amount borrowed is <m>\$A</m>, then <m>L(n)</m>, the amount still owed after <m>n</m> payments, will be given by</p>
         <mdn>
-          <mrow>L(n) = (1+k)^n A - P(\frac{1-(1+k)^n}{1-(1+k)})</mrow>
+          <mrow>L(n) = (1+k)^n A - P \bigg(\frac{1-(1+k)^n}{1-(1+k)}\bigg)</mrow>
         </mdn>
         <p>If you want the outstanding balance to be zero after <m>n^*</m> months, you can solve to find the value of <m>P</m> for which <m>L(n^*)=0</m>.</p>
       </statement>
@@ -172,7 +172,7 @@
         <p>Consider the geometric series <m>100+100(1.05)+100(1.05)^2+100(1.05)^3+...</m></p>
         <ol>
           <li>Find the sum of the first <m>100</m> terms of the series</li>
-          <li>Find the sum of the first <m>100</m> terms of the series</li>
+          <li>Find the sum of the first <m>500</m> terms of the series</li>
         </ol>
       </statement>
     </exercise>

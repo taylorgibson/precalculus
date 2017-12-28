@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter04-section06" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Exponential Functions</title>
+  <p>In Chapter 2 we graphed the toolkit function <m>f(x)=2^x</m> and in the previous section we introduced the function  <m>f(x)=e^x</m>.  Both of these functions are examples of exponential functions of the form  <m>f(x)=b^x</m>, where  <m>b \gt 0</m> and <m>b \neq 1</m>.  The positive real number <m>b</m> is called the <em>base</em> of the exponential function.</p>
+  <p>We observe that the graph of <m>f(x)=2^x</m>  contains the points <m>(0,1)</m> and <m>(1,2)</m> and that the graph of <m>f(x)=e^x</m> contains the points <m>(0,1)</m> and <m>(1,e)</m>.  We know that for any positive base <m>b</m>, <m>b^0=1</m>, so graph of <m>f(x)=b^x</m> always contains the point <m>(0,1)</m>. Likewise, since <m>b^1=b</m> and <m>b^(-1)=\frac{1}{b}</m>, we know that these graphs will also contain the points <m>(1,b)</m> and <m>(-1,\frac{1}{b})</m>. In addition, all of the graphs will have the <m>x</m>-axis as an asymptote.  When the base is greater than <m>1</m> this asymptote is the negative part of the <m>x</m>-axis. Figure 6.1 shows a graph of <m>f(x)=e^x</m>, along with the toolkit function <m>g(x)=2^x</m> on the axes on the left. The graph on the right illustrates <m>y=3^x</m>, <m>y=4^x</m>, and <m>y=10^x</m>.</p>
+  <figure xml:id="exponential-plots">
+    <caption>Graph of the functions <m>f(x)=e^x</m> and <m>g(x)=2^x</m>,  and of <m>y=3^x</m>, <m>y=4^x</m>, and <m>y=10^x</m>.</caption>
+    <sidebyside widths ="50% 50%">
+      <image xml:id="ex-and-2x">
+        <latex-image-code>
+          <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+          <![CDATA[
+          \begin{tikzpicture}
+          \begin{axis}[
+          axis line style = {<->},
+          width = 0.5\linewidth,
+          xlabel = x,
+          y label style={at={(axis description cs:0,.5)}},
+          ylabel = y,
+          label style={font=\tiny},
+          xmin = -2, xmax = 2,
+          ymin = -1, ymax = 6,
+          ytick = {-1,0, ...,6},
+          xtick = {-2, -1.5, ...,2},
+          tick label style={font=\tiny},
+          ]
+
+          \addplot [thick, blue, <->, mark=none, domain=-2:2]{2^x};
+          \addplot [thick, red, <->, mark=none, domain=-2:1.7918]{e^x};
+
+          \end{axis}
+          \end{tikzpicture}]]>
+        </latex-image-code>
+      </image>
+
+      <image xml:id="three-exponentials">
+        <latex-image-code>
+          <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+          <![CDATA[
+          \begin{tikzpicture}
+          \begin{axis}[
+          axis line style = {<->},
+          width = 0.5\linewidth,
+          xlabel = x,
+          y label style={at={(axis description cs:0,.5)}},
+          ylabel = y,
+          label style={font=\tiny},
+          xmin = -2, xmax = 3,
+          ymin = -1, ymax = 12,
+          ytick = {-1,0, ...,12},
+          xtick = {-2, -1.5, ...,3},
+          tick label style={font=\tiny},
+          ]
+
+          \addplot [thick, blue, <->, mark=none, domain=-2:2.2619]{3^x};
+          \addplot [thick, red, <->, mark=none, domain=-2:1.7925]{4^x};
+          \addplot [thick, black, <->, mark=none, domain=-2:1.0792]{10^x};
+
+          \end{axis}
+          \end{tikzpicture}]]>
+        </latex-image-code>
+      </image>
+    </sidebyside>
+  </figure>
+  <p>You should recall the laws of exponents
+    <md>
+      <mrow>b^{m+n}=b^m \cdot b^n</mrow>
+      <mrow>\text{and}</mrow>
+      <mrow>b^{mn}=(b^m)^n=(b^n)^m</mrow>
+    </md>
+    These laws can be used to explain why exponential functions whose equations appear quite different may in fact be the same function and have the same graph.  The following examples show two such cases.
+  </p>
+
+  <example>
+    <statement>
+      <p>Graph the function <m>f(x)=3^{-x}</m> and the function <m>g(x)=(\frac{1}{3})^x</m>.  Explain why the graphs have the appearance they do.</p>
+    </statement>
+    <solution>
+      <statement>
+        <p>
+          <figure xml:id="figure-hreflection-of-3x">
+            <caption><m>h(x) = 3^x</m> and <m>h(-x) = 3^{-x}</m></caption>
+            <image xml:id="hreflection-of-3x">
+              <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = x,
+                y label style={at={(axis description cs:0,.5)}},
+                ylabel = y,
+                label style={font=\tiny},
+                xmin = -4, xmax = 4,
+                ymin = -1, ymax = 10,
+                ytick = {-1,0, ...,10},
+                xtick = {-4, -3.5, ...,4},
+                tick label style={font=\tiny},
+                ]
+
+                \addplot [thick, blue, <->, mark=none, domain=-2.0959:4]{(1/3)^x};
+                \addplot [thick, red, <->, mark=none, domain=-4:2.0959]{3^x};
+
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
+          Recall from Chapter 2 that the graph of <m>h(-x)</m> is the reflection about the <m>y</m>-axis of the graph of <m>h(x)</m>. Thus the graph of the function <m>f(x)=3^{-x}</m> is the reflection of the graph of <m>y=3^x</m> about the <m>y</m>-axis.  The graph of <m>f(x)=3^{-x}</m> is shown in <xref ref="figure-hreflection-of-3x" text="type-local" />; it is decreasing, contains the points <m>(0,1)</m> and <m>(-1,3)</m> and approaches the asumptote <m>y=0</m> as <m>x</m> approaches infinity.
+
+          <figure xml:id="figure-graphofonethirdtothex">
+            <caption>Graph of <m>g(x)=(\frac{1}{3})^x</m></caption>
+            <image xml:id="graphofonethirdtothex">
+              <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = x,
+                ylabel = g(x),
+                label style={font=\tiny},
+                xmin = -3, xmax = 3,
+                ymin = -1, ymax = 12,
+                ytick = {-2,0, ...,12},
+                xtick = {-3, -2, ...,3},
+                tick label style={font=\tiny},
+                ]
+
+                \addplot [thick, blue, <->, mark=none, domain=-2.2:3]{(1/3)^x};
+
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
+          <xref ref="figure-graphofonethirdtothex" text="type-local" /> shows the graph of <m>g(x)=(\frac{1}{3})^x</m>. This is an exponential function with base <m>\frac{1}{3}</m>.  The graph contains the points <m>(0,1)</m>  and <m>(1,1/3)</m> .  Because the base is less than <m>1</m>, the graph is decreasing. To understand why <m>f(x)=g(x)</m> for all <m>x</m>, note that the rules of exponents tell us that  <m>(\frac{1}{3})^x = ( 3^{-1} )^x = 3^{-1 \cdot x} = 3^{-x}</m>. Exponential functions like <m>g(x)=(\frac{1}{3})^x</m>, with a base between zero and one, and functions like <m>f(x)=3^{-x}</m>, with a base greater than one and a negative coefficient in the exponent, are both used to model <em>exponential decay</em>.
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <example>
+    <statement>
+      <p>Use ideas you know about transformations to help you graph the functions  <m>g(x) = 4 \cdot 2^x</m> and <m>k(x)=2^{x+2}</m>. Why do these graphs look the way they do?
+      </p>
+    </statement>
+    <solution>
+      <statement>
+        <p>The graph of <m>g(x) = 4 \cdot 2^x</m> is a vertical stretch by a factor of <m>4</m> of the function <m>y=2^x</m>. The graph is shown on the left in Figure XX. The point <m>(0,1)</m> stretches up to <m>(0,4)</m> and the point <m>(1,2)</m> streatches up to <m>(1,8)</m>. The graph of <m>k(x)=2^{x+2}</m> is a horizontal shift <m>2</m> units to the left of the function <m>y=2^x</m>. The point <m>(0,1)</m> moves left to <m>(-2,1)</m>  and the point <m>(1,2)</m>  moves left to <m>(-1,2)</m>. You should notice that the graphs of <m>g(x)</m> and <m>k(x)</m> look identical; this is because <m>4 \cdot 2^x = 2^2 \cdot 2^x = 2^{x+2}</m>.
+
+        <figure xml:id="exponential-plots-2">
+          <caption><m>g(x)=4 \cdot 2^x</m> and <m>k(x)=2^{x+2}</m></caption>
+          <sidebyside widths ="50% 50%">
+            <image xml:id="fourex-and-2x">
+              <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = x,
+                y label style={at={(axis description cs:0,.5)}},
+                ylabel = y,
+                label style={font=\tiny},
+                xmin = -4, xmax = 4,
+                ymin = -1, ymax = 12,
+                ytick = {-2,0, ...,12},
+                xtick = {-3, -2, ...,3},
+                tick label style={font=\tiny},
+                ]
+
+                \addplot [thick, blue, <->, mark=none, domain=-4:3]{2^x};
+                \addplot [thick, red, <->, mark=none, domain=-4:1.4]{4 * 2^x};
+
+                \addplot[only marks, color=red] coordinates {
+                (0,  4)
+                (1,  8)
+                }
+                ;
+
+                \node[label={180:{(0,4)}},circle,fill,inner sep=2pt] at (axis cs:0,4) {};
+                \node[label={180:{(1,8)}},circle,fill,inner sep=2pt] at (axis cs:1,8) {};
+
+                \addplot[only marks, color=blue] coordinates {
+                (0,  1)
+                (1,  2)
+                };
+
+                \node[label={180:{(0,1)}},circle,fill,inner sep=2pt] at (axis cs:0,1) {};
+                \node[label={180:{(1,2)}},circle,fill,inner sep=2pt] at (axis cs:1,2) {};
+
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+
+            <image xml:id="twoexplustwo">
+              <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = x,
+                y label style={at={(axis description cs:0,.5)}},
+                ylabel = y,
+                label style={font=\tiny},
+                xmin = -4, xmax = 4,
+                ymin = -1, ymax = 12,
+                ytick = {-2,0, ...,12},
+                xtick = {-3, -2, ...,3},
+                tick label style={font=\tiny},
+                ]
+
+                \addplot [thick, blue, <->, mark=none, domain=-4:3]{2^x};
+                \addplot [thick, red, <->, mark=none, domain=-4:1.4]{2^(x+2)};
+
+                \addplot[only marks, color=red] coordinates {
+                (-1,  2)
+                (-2,  1)
+                }
+                ;
+
+                \node[label={180:{(-1,2)}},circle,fill,inner sep=2pt] at (axis cs:-1,2) {};
+                \node[label={180:{(-2,1)}},circle,fill,inner sep=2pt] at (axis cs:-2,1) {};
+
+                \addplot[only marks, color=blue] coordinates {
+                (0,  1)
+                (1,  2)
+                };
+
+                \node[label={180:{(0,1)}},circle,fill,inner sep=2pt] at (axis cs:0,1) {};
+                \node[label={180:{(1,2)}},circle,fill,inner sep=2pt] at (axis cs:1,2) {};
+
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </sidebyside>
+        </figure>
+        Although the function definitions look different, <m>g(x)=4 \cdot 2^x</m> and <m>k(x)=2^{x+2}</m> are actually two different ways of writing the same function.</p>
+        <p>Other transformations of exponential functions, such as horizontal compressions and vertical shifts, result in curves that are important in modeling various types of growth and decay.
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <example>
+    <title>Growth of a Tumor</title>
+    <statement>
+      <p>In a laboratory experiment, the growth of a tumor in a mouse was monitored over time.  Using data analysis techniques, the function <m>s = 0.32e^{0.11d}</m> was found to be a good model for the growth.  In this equation, <m>d</m> represents the number of days since monitoring began, and <m>s</m> represents the size of the tumor in cubic centimeters. Graph the function over an appropriate domain.  What is the initial size of the tumor? Determine the size after ten days and after twenty days.
+      </p>
+    </statement>
+    <solution>
+      <statement>
+        <p>The graph of  <m>s=e^d</m> must be compressed vertically by a factor of <m>0.32</m> and stretched horizontally by a factor of <m>\frac{1}{0.11} \approx 9</m> to obtain the graph shown in <xref ref="figure-tumor-graph" text="type-local" />  The graph contains the point <m>(0,0.32)</m> since <m>(0,1)</m> has been stretched horizontally by a factor of <m>9</m> and stretched vertically by a factor of <m>0.32</m>.  We can estimate that another point has approximate coordinates <m>(9,0.32e) \approx (9,0.87)</m> since <m>(1,e)</m> has been stretched horizontally by a factor of <m>9</m> and stretched vertically by a factor of <m>0.32</m> Based on the context, the appropriate domain is non-negative values of <m>d</m>. Although we would expect there to be physical limitations on the size of the tumor, we do not know what this upper limit is, so we have not attempted to show this in the graph.
+
+        <figure xml:id="figure-tumor-graph">
+          <caption>Graph of <m>s = 0.32e^{0.11d}</m></caption>
+          <image xml:id="tumor-graph">
+            <latex-image-code>
+              <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+              <![CDATA[
+              \begin{tikzpicture}
+              \begin{axis}[
+              axis line style = {<->},
+              width = 0.5\linewidth,
+              xlabel = days,
+              y label style={at={(axis description cs:0,.5)}},
+              ylabel = cc,
+              label style={font=\tiny},
+              xmin = -2, xmax = 26,
+              ymin = -1, ymax = 4,
+              ytick = {0,1, ...,4},
+              xtick = {0, 2, ...,26},
+              tick label style={font=\tiny},
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=0:22]{0.32*e^(0.11*x)};
+
+              \addplot[
+                  black,
+                  thick,
+                  only marks,
+                  mark=*,
+                  mark options={fill=white},
+                  visualization depends on=\thisrow{alignment} \as \alignment,
+                  nodes near coords, % Place nodes near each coordinate
+                  point meta=explicit symbolic, % The meta data used in the nodes is not explicitly provided and not numeric
+                  every node near coord/.style={anchor=\alignment} % Align each coordinate at the anchor 40 degrees clockwise from the right edge
+                  ] table [% Provide data as a table
+                   meta index=2 % the meta data is found in the third column
+                   ] {
+                   x       y       label       alignment
+                   0    0.32      {(0, 0.32)}        -40
+                   9    0.87      {(9, 0.32e)}       -40
+                   10   0.96      {(10,0.96)}        160
+                   20   2.89      {(20,2.89)}        -40
+                   };
+
+              \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </figure>
+
+
+        The initial size of the tumor is <m>0.32</m> cc since this is the <m>s</m>-value associated with <m>d=0</m>.  Substituting <m>d=10</m> and <m>d=20</m> into the equation <m>s=0.32e^{0.11d}</m> reveals that the size of the tumor is <m>0.96</m> cc after ten days and <m>2.89</m> cc after twenty days.
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <example>
+    <title>Cooling Coffee</title>
+    <statement>
+      <p>When a cup of hot coffee is placed in a cool room, the coffee begins to cool and will continue to do so until it reaches room temperature.  If the initial temperature of the coffee is <m>85^o C</m>  and the room temperature is <m>24^o C</m>, find an exponential function that models the temperature at any time <m>t</m>.
+      </p>
+    </statement>
+    <solution>
+      <statement>
+        <p>The cooling process can be reasonably well-modeled using exponential decay.  We can use the function <m>y=e^{-x}</m> to model exponential decay, but we must transform the curve so that it has a horizontal asymptote at <m>24</m>, not <m>0</m>, and has a <m>y</m>-intercept of <m>85</m>, not <m>1</m>.  The graph of <m>y=e^{-x} + 24</m> will be be shifted up <m>24</m> units and will have an asymptote at <m>y=24</m> instead of <m>y=0</m>.. The graph of <m>y=e^{-x}+24</m> contains the point <m>(0,25)</m>; the <m>y</m>-intercept is <m>1</m> unit above the horizontal asymptote. The function that models the coffee's temperature must have a <m>y</m>-intercept that is <m>85-24=61</m> units above the asymptote. This means that we must vertically stretch the graph by a factor of <m>61</m> before shifting the entire graph up <m>24</m>.  This can be done by multiplying the <m>e^{-x}</m> by <m>61</m>. The graph of the function <m>y = 61e^{-x} + 24</m> is shown in <xref ref="figure-cooling-coffee" text="type-local" /> </p>
+
+        <figure xml:id="figure-cooling-coffee">
+          <caption>Graph of <m>y= 61e^{-x}+24</m></caption>
+          <image xml:id="cooling-coffee">
+            <latex-image-code>
+              <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+              <![CDATA[
+              \begin{tikzpicture}
+              \begin{axis}[
+              axis line style = {<->},
+              width = 0.5\linewidth,
+              xlabel = time,
+              y label style={at={(axis description cs:0,.5)}},
+              ylabel = temperature,
+              label style={font=\tiny},
+              xmin = -1, xmax = 8,
+              ymin = -10, ymax = 90,
+              ytick = {0,10, ...,90},
+              xtick = {0, 1, ...,7},
+              tick label style={font=\tiny},
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=0:7]{61*e^(-x)+24};
+
+              \addplot [thick, gray, dashed, mark=none, domain=0:7]{24};
+
+              \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </figure>
+
+        <p>Objects cool at different rates, depending on their composition and shape. In graphing the function in Figure XX we did not take into account how quickly the coffee cooled to room temperature. We can see from the graph that it seemed to cool very quickly, nearly reaching room temperature in <m>4</m> minutes, which is unrealistically fast.  In real life, coffee takes much longer to cool.  To model this slower cooling process, we need to apply a horizontal stretch to the functional model.  This would result in a model of the form <m>y=61e^{-kx}+24</m>, where <m>0 \lt k \lt 1</m>.  To find the particular value of <m>k</m> in a given situation requires us to know more than just the initial and room temperatures.
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <example>
+    <statement>
+      <p>When you start to learn a new skill, such as typing, your proficiency begins rather low and grows toward some maximum level.  At first your proficiency grows quickly, but as you near the maximum level, your gains grow more slowly.  Exponential curves that display this behavior are called <em>learning curves</em>. Such functions can be modeled with transformed exponential functions. Consider the function <m>f(x) = 45 - 35e^{-0.3x}</m>, when <m>x</m> represents the number of weeks of practice and <m>f(x)</m> represents typing speed in words per minute.  Sketch a graph of this function and use the graph to describe the specific characteristics of this learning curve.
+      </p>
+    </statement>
+    <solution>
+      <statement>
+        <p>The domain of this function based on the situation described above is <m>x \geq 0</m>.  To sketch this function, we begin with the graph of <m>g(x)= 35e^{-0.3x}</m>, which we know is a decreasing function with a <m>y</m>-intercept of <m>35</m>.
+        </p>
+
+        <figure xml:id="figure-exp-comp-pt1">
+          <caption>The graph of <m>g(x)= 35e^{-0.3x}</m></caption>
+          <image xml:id="exp-comp-pt1">
+            <latex-image-code>
+              <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+              <![CDATA[
+              \begin{tikzpicture}
+              \begin{axis}[
+              axis line style = {<->},
+              width = 0.5\linewidth,
+              xlabel = weeks,
+              y label style={at={(axis description cs:0,.5)}},
+              ylabel = typing speed,
+              label style={font=\tiny},
+              xmin = -2, xmax = 16,
+              ymin = -3, ymax = 50,
+              ytick = {0,5, ...,45},
+              xtick = {0, 2, ...,14},
+              tick label style={font=\tiny},
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=-1:15]{35*e^(-0.3*x)};
+
+              \addplot[
+                  black,
+                  thick,
+                  only marks,
+                  mark=*,
+                  mark options={fill=white},
+                  visualization depends on=\thisrow{alignment} \as \alignment,
+                  nodes near coords, % Place nodes near each coordinate
+                  point meta=explicit symbolic, % The meta data used in the nodes is not explicitly provided and not numeric
+                  every node near coord/.style={anchor=\alignment} % Align each coordinate at the anchor 40 degrees clockwise from the right edge
+                  ] table [% Provide data as a table
+                   meta index=2 % the meta data is found in the third column
+                   ] {
+                   x       y       label       alignment
+                   0      35        {(0, 35)}        200
+                   3.33   12.88     {(1/0.3, 35/e)}  200
+                   };
+
+              \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </figure>
+
+        <p>
+        Next, we flip function <m>g</m> about the <m>x</m>-axis to get the graph of <m>-g(x)=-35e^{-0.3x}</m>.</p>
+
+        <figure xml:id="figure-exp-comp-pt2">
+          <caption>The graph of <m> y = -g(x) = -35e^{-0.3x}</m></caption>
+          <image xml:id="exp-comp-pt2">
+            <latex-image-code>
+              <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+              <![CDATA[
+              \begin{tikzpicture}
+              \begin{axis}[
+              axis line style = {<->},
+              width = 0.5\linewidth,
+              xlabel = weeks,
+              y label style={at={(axis description cs:0,.5)}},
+              ylabel = typing speed,
+              label style={font=\tiny},
+              xmin = -2, xmax = 16,
+              ymin = -50, ymax = 3,
+              ytick = {-45,-40, ...,0},
+              xtick = {0, 2, ...,14},
+              tick label style={font=\tiny},
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=-1:15]{-35*e^(-0.3*x)};
+
+              \addplot[
+                  black,
+                  thick,
+                  only marks,
+                  mark=*,
+                  mark options={fill=white},
+                  visualization depends on=\thisrow{alignment} \as \alignment,
+                  nodes near coords, % Place nodes near each coordinate
+                  point meta=explicit symbolic, % The meta data used in the nodes is not explicitly provided and not numeric
+                  every node near coord/.style={anchor=\alignment} % Align each coordinate at the anchor 40 degrees clockwise from the right edge
+                  ] table [% Provide data as a table
+                   meta index=2 % the meta data is found in the third column
+                   ] {
+                   x       y       label       alignment
+                   0      -35        {(0, -35)}        160
+                   3.33   -12.88     {(1/0.3, -35/e)}  160
+                   };
+
+              \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </figure>
+
+        <p>
+        Finally, we have a vertical translation of <m>y=-g(x)</m> up <m>45</m> units.  The resulting graph is the desired function <m>f(x) = 45 - 35e^{-0.3x}</m>.</p>
+
+        <figure xml:id="figure-exp-comp-pt3">
+          <caption>Graph of <m>f(x) = 45 - 35e^{-0.3x}</m></caption>
+          <image xml:id="exp-comp-pt3">
+            <latex-image-code>
+              <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+              <![CDATA[
+              \begin{tikzpicture}
+              \begin{axis}[
+              axis line style = {<->},
+              width = 0.5\linewidth,
+              xlabel = weeks,
+              y label style={at={(axis description cs:0,.5)}},
+              ylabel = typing speed,
+              label style={font=\tiny},
+              xmin = -2, xmax = 16,
+              ymin = -3, ymax = 50,
+              ytick = {0,5, ...,45},
+              xtick = {0, 2, ...,14},
+              tick label style={font=\tiny},
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=-1:15]{45-35*e^(-0.3*x)};
+
+              \addplot [thick, gray, dashed, mark=none, domain=-1:15]{45};
+
+              \addplot[
+                  black,
+                  thick,
+                  only marks,
+                  mark=*,
+                  mark options={fill=white},
+                  visualization depends on=\thisrow{alignment} \as \alignment,
+                  nodes near coords, % Place nodes near each coordinate
+                  point meta=explicit symbolic, % The meta data used in the nodes is not explicitly provided and not numeric
+                  every node near coord/.style={anchor=\alignment} % Align each coordinate at the anchor 40 degrees clockwise from the right edge
+                  ] table [% Provide data as a table
+                   meta index=2 % the meta data is found in the third column
+                   ] {
+                   x       y       label       alignment
+                   0      10        {(0, 10)}        160
+                   3.33   32.22     {(1/0.3, 45-35/e)}  170
+                   };
+
+              \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </figure>
+
+        <p>When <m>x=0</m>, the value of the function is <m>10</m>, so you start typing at <m>10</m> words per minute.  In the first five weeks of practice you improve all the way up to <m>37</m> words per minute, but in the next five weeks you improve only <m>6</m> more words per minute.  At this point you type a little over <m>43</m> words per minute but gain very little with additional practice.  The horizontal asymptote at <m>45</m> indicates that there is an upper limit of <m>45</m> words per minute on your typing speed.
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <example>
+    <statement>
+      <p>Use composition to sketch the graph of <m>f(x)=e^{\frac{1}{x-1}}</m>.
+      </p>
+    </statement>
+    <solution>
+      <statement>
+        <p>Function <m>f</m> is a composition of
+          <md>
+            <mrow>g(x)=\frac{1}{x-1} \text{ and } h(x)=e^x</mrow>
+          </md>
+        Since <m>f(x)=h(g(x))</m> and the outer function <m>h(x)</m> has no domain restrictions, the domain of the composite function <m>f(x)</m>  is the same as the domain of the inner function <m>g(x)</m>. Therefore, <m>x</m> cannot equal <m>1</m>.  Also, since <m>h(x) \lt 0</m> for all values of <m>x</m>, we know that <m>h(g(x)) \gt 0</m> for all <m>x</m> in the domain of <m>g</m>. The graphs of <m>g(x)=\frac{1}{x-1}</m> and <m>h(x)=e^x</m> are shown in <xref ref="figure-exponential-composition" text="type-local" />
+        </p>
+
+        <p>
+          <figure xml:id="figure-exponential-composition">
+            <caption>Graph of the functions <m>f(x)=e^x</m> and <m>g(x)=2^x</m>,  and of <m>y=3^x</m>, <m>y=4^x</m>, and <m>y=10^x</m>.</caption>
+            <sidebyside widths ="50% 50%">
+              <image xml:id="exponential-composition-pt1">
+                <latex-image-code>
+                  <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                  <![CDATA[
+                  \begin{tikzpicture}
+                  \begin{axis}[
+                  axis line style = {<->},
+                  width = 0.5\linewidth,
+                  xlabel = x,
+                  y label style={at={(axis description cs:0,.5)}},
+                  ylabel = y,
+                  label style={font=\tiny},
+                  xmin = -2, xmax = 4,
+                  ymin = -3, ymax = 3,
+                  ytick = {-3,-2, ...,3},
+                  xtick = {-2,-1, ...,4},
+                  tick label style={font=\tiny},
+                  ]
+
+                  \addplot [thick, blue, <->, samples=400, mark=none, domain=-2:.65]{1/(x-1)};
+                  \addplot [thick, blue, <->, samples=400, mark=none, domain=1.35:4]{1/(x-1)};
+                  \addplot [thick, gray, dashed, mark=none] coordinates {(1,-2) (1,5)};
+
+                  \end{axis}
+                  \end{tikzpicture}]]>
+                </latex-image-code>
+              </image>
+
+              <image xml:id="exponential-composition-pt2">
+                <latex-image-code>
+                  <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                  <![CDATA[
+                  \begin{tikzpicture}
+                  \begin{axis}[
+                  axis line style = {<->},
+                  width = 0.5\linewidth,
+                  xlabel = x,
+                  y label style={at={(axis description cs:0,.5)}},
+                  ylabel = y,
+                  label style={font=\tiny},
+                  xmin = -3, xmax = 3,
+                  ymin = -2, ymax = 4,
+                  ytick = {-2,0, ...,4},
+                  xtick = {-3, -2, ...,3},
+                  tick label style={font=\tiny},
+                  ]
+
+                  \addplot [thick, blue, <->, mark=none, domain=-3:1.37]{e^x};
+
+                  \end{axis}
+                  \end{tikzpicture}]]>
+                </latex-image-code>
+              </image>
+            </sidebyside>
+          </figure>
+        </p>
+
+        <p>Since <m>g(x)</m> never equals zero, the input to <m>h(x)</m> is never zero, so the <m>y</m>-value of <m>h(g(x))</m> is never one.  It is also important to note that <m>g(x)</m>  has <m>y=0</m> as a horizontal asymptote. As <m>x</m>-values increase or decrease without bound, <m>g(x)=\frac{1}{x-1}</m> approaches zero; so <m>f(x)=e^{\frac{1}{x-1}}</m> approaches <m>e^0</m>, or <m>1</m>.  This produces a horizontal asymptote in the composition at <m>y=1</m>.
+        </p>
+        <p>Now consider the behavior of <m>f(x)</m> close to <m>x=1</m>.  As <m>x</m> approaches <m>1</m> from the left, <m>\frac{1}{x-1}</m> decreases without bound, and the value of <m>f(x)=e^{\frac{1}{x-1}}</m> approaches <m>0</m> from above. The open circle on the graph of the composition is used to signify this. As <m>x</m> approaches <m>1</m> from the right, <m>\frac{1}{x-1}</m> increases without bound, and the value of <m>f(x)=e^{\frac{1}{x-1}}</m> also increases without bound.  The graph of the composition <m>f(x)=e^{\frac{1}{x-1}}</m> is shown in <xref ref="figure-exp-recip" text="type-local" /></p>
+
+        <p>
+          <figure xml:id="figure-exp-recip">
+            <caption>Graph of <m>f(x) = 45 - 35e^{-0.3x}</m></caption>
+            <image xml:id="exp-recip">
+              <latex-image-code>
+                <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
+                <![CDATA[
+                \begin{tikzpicture}
+                \begin{axis}[
+                axis line style = {<->},
+                width = 0.5\linewidth,
+                xlabel = x,
+                y label style={at={(axis description cs:0,.5)}},
+                ylabel = h(g(x)),
+                label style={font=\tiny},
+                xmin = -3, xmax = 5,
+                ymin = -2, ymax = 5,
+                ytick = {-1,0, ...,4},
+                xtick = {-3, -2, ...,4},
+                tick label style={font=\tiny},
+                ]
+
+                \addplot [thick, blue, <-, mark=none, domain=-3:.999]{e^(1/(x-1))};
+                \addplot [thick, blue, <->, mark=none, domain=1.63:5]{e^(1/(x-1))};
+                \addplot [thick, gray, dashed, mark=none] coordinates {(1,-2) (1,5)};
+                \addplot [thick, gray, dashed, mark=none, domain=-3:5]{1};
+
+                \addplot[
+                    black,
+                    thick,
+                    only marks,
+                    mark=*,
+                    mark options={fill=white},
+                    visualization depends on=\thisrow{alignment} \as \alignment,
+                    nodes near coords, % Place nodes near each coordinate
+                    point meta=explicit symbolic, % The meta data used in the nodes is not explicitly provided and not numeric
+                    every node near coord/.style={anchor=\alignment} % Align each coordinate at the anchor 40 degrees clockwise from the right edge
+                    ] table [% Provide data as a table
+                     meta index=2 % the meta data is found in the third column
+                     ] {
+                     x       y       label       alignment
+                     1      0        {(1, 0)}        160
+                     };
+
+                \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <exercises>
+    <exercise>
+      <statement>
+        <p>Using the limit notation introduced in the previous section, we can write <me>\lim_{x \to \infty} b^x = 0</me>  provided <m>b \gt 1</m>. This is read "the limit of <m>b</m> raised to the <m>x</m> power, as <m>x</m> approached negative infinity, is <m>0</m>". This means that any base <m>b</m> that is greater than <m>1</m>, when rasied to a power that is more and more negative, produces a value closer and closer to zero. What characteristic of the graph of <m>y=b^x</m> is explained by this limit statement?</p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Use technology to graph the function  <m>y=b^x</m> for <m>b = 2, 5, 7</m> and <m>10</m> on the same axes. You may be able to accomplish this using a slider in some dynamic algebra/geometry applications. You should see that the graph of each of the functions contains the point <m>(0,1)</m>, has the negative <m>x</m>-axis as an asymptote and is increasing in quadrant I. The following questions will help you decide if the graphs of <m>y=2^x, y=5^x, y=7^x,and y=10^x</m>, are so similar in shape that they are all actually transformations of each other.</p>
+        <ol>
+          <li>There is no vertical stretch or compression that can transform the graph of <m>y=2^x</m> into the graph of <m>y=5^x</m>.  Explain why.</li>
+          <li>There is no vertical shift can that can transform the graph of graph of <m>y=2^x</m> into the graph of <m>y=7^x</m>. Explain why. </li>
+          <li>There is no horizontal shift can that can transform the graph of graph of <m>y=5^x</m> unto the graph of <m>y=10^x</m>. Explain why. </li>
+          <li>Explain why there <em>could</em> be a horizontal stretch or compression that can transform the graph of <m>y=2^x</m> into the graph of <m>y=5^x</m>.</li>
+          <li>The graph of <m>y=5^x</m> can be horizontally stretched by a factor of <m>k</m> so that the stretched graph is identical to the graph of <m>y=2^x</m>. Use the graphs you made to estimate the size of the number <m>k</m>, i.e. the size of the stretch factor.</li>
+        </ol>
+      </statement>
+    </exercise>
+  </exercises>
+
+  <exercises>
+    <exercise>
+      <statement>
+        <p>As we illustrated in Examples 1 and 2, we can often apply laws of exponents to simplify graphing exponential functions. Describe two different ways to graph the following equations as transformations of an exponential function.  Which way seems easier to you?  Rewrite each equation to make your choice of transformation obvious, and sketch a graph.  Identify the horizontal asymptote and the points that correspond to <m>(0,1)</m> and <m>(1,b)</m>.</p>
+        <ol>
+          <li><m>y=e^{2x}</m></li>
+          <li><m>y = 4 \cdot 2^{x-1}</m></li>
+          <li><m>y = (-4) \cdot 2^x</m></li>
+          <li><m>y = 4^{-x-2}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>	Consider the four expresssions <m>3^{3x-2}, 3^{3(x-2/3)}, 27^{x-2/3}</m>, and <m>\frac{1}{9} \cdot 27^x</m></p>
+        <ol>
+          <li>Explain why these four expressions are all equal.</li>
+          <li>Graph <m>y=3^{3x-2}</m> using one of the expressions that is equal to <m>y=3^{3x-2}</m>. Label the coordinates of the points that correspond to <m>(0, 1)</m> and <m>(1, b)</m>.</li>
+          <li>Which expression did  you choose to graph?  Why?</li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Graph each function that is a transformation of <m>y=b^x</m>. Label asymptote(s) and points that correspond <m>(0, 1)</m> and <m>(1, b)</m>.</p>
+        <ol>
+          <li><m>y=5^{x-7}</m></li>
+          <li><m>y=e^{1.61x}</m></li>
+          <li><m>y=5+3^{2x}</m></li>
+          <li><m>y=1+2e^{-x}</m></li>
+          <li><m>y=-8+0.5^x</m></li>
+          <li><m>y=3-6^{-x}</m></li>
+          <li><m>y=8^{2x-2}</m></li>
+          <li><m>y=7(3^x)</m></li>
+          <li><m>y=-3(2^{2x})+1</m></li>
+          <li><m>y=|-5+3^{x+2}|</m></li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>A typical worker at a supermarket bakery can decorate <m>f(t)</m> cakes per hour after <m>t</m> days on the job, where:</p>
+          <md>
+            <mrow>f(t)=10 \cdot ( 1-e^{-\frac{1}{4}} )</mrow>
+          </md>
+        <ol>
+          <li>Sketch a graph of <m>f(t)</m>. Restrict your domain to meaningful values of <m>t</m>.</li>
+          <li>How many cakes can a newly-employed worker decorate in an hour?</li>
+          <li>After eight days, how many cakes can a worker decorate in an hour?</li>
+          <li>Based on this graph, after a worker has decorated cakes for a very long time, how many cakes can he or she decorate in an hour?</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>Rheumatoid arthritis patients are treated with large doses of aspirin.  Research has shown that the concentration of aspirin in the bloodstream increases for a short period of time after the drug is administered and then decreases exponentially.  For a typical patient, this relationship is given by <m>a=14.91e^{-0.18t}</m>, where <m>t</m> represents the number of hours since peak concentration and <m>a</m> represents the concentration of aspirin measured in milligrams per cubic centimeter of blood.
+        </p>
+        <ol>
+          <li>Graph the function over an appropriate domain. Label the coordinates of the points that correspond to <m>t=0</m> and <m>t=1</m>.</li>
+          <li>Determine the peak concentration of aspirin.</li>
+          <li>Determine the amount of aspirin remaining four hours after peak concentration.</li>
+          <li>Use a computer- or calculator-generated graph to determine the time at which the concentration is <m>5</m> mg per cc of blood</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #6 -->
+    <exercise>
+      <statement>
+        <p>In a classroom experiment students made fudge the old-fashioned way.  They cooked sugar, milk, and chocolate until it reached <m>234^\circ</m> Fahrenheit.  Then they removed the mixture from the heat, added butter and vanilla, and let the mixture cool to <m>110^\circ</m>.  As they monitored the temperature, they kept records and used data analysis techniques to determine a mathematical model for the temperature of the fudge as a function of time.  Their model is <m>F = 154e^{-0.00063t} + 77</m>, where <m>F</m> is the temperature of the fudge in degrees Fahrenheit and <m>t</m> represents the number of seconds elapsed since stirring in the butter.
+        </p>
+        <ol>
+          <li>Graph this function over an appropriate domain.  Interpret the <m>y</m>-intercept and the horizontal asymptote.</li>
+          <li>Determine the temperature of the mixture after thirty minutes.</li>
+          <li>Use your graph to determine how long it takes for the temperature to reach <m>110^\circ</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #7 -->
+    <exercise>
+      <statement>
+        <p>McKenzie invests <m>\$1,000</m> in a local bank at an annual rate of <m>5.14\%</m> compounded quarterly.
+        </p>
+        <ol>
+          <li>Use a graph to determine when their investment will be worth <m>\$1,500</m></li>
+          <li>Suppose instead that the <m>5.14\%</m> is compounded continuously. When will they have <m>\$1,500</m>?</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #8 -->
+    <exercise>
+      <statement>
+        <p>Newton's law of cooling states that the change in temperature of an object as it cools is proportional to the difference between the current temperature and the ambient temperature.  Suppose the initial temperature of a cup of hot coffee was <m>92^\circ</m>C and the ambient temperature was <m>3^\circ</m>C.  The temperature of this coffee could be modeled with the following iterative system:
+        </p>
+        <md>
+          <mrow>T_0 = 92,  T_n = T_{n-1} - k \left( T_{n-1} - 3 \right)</mrow>
+        </md>
+        <p>In this situation, <m>n</m> represents the number of minutes that have elapsed</p>
+        <ol>
+          <li>Using the initial temperature of <m>92^\circ</m>C and a value of <m>k = 0.02</m>, use your calculator to generate values of the temperature over time and to produce a graph of these values.  Explain the shape of the graph in terms of the iterative equation.</li>
+          <li>There are several steps involved in constructing a closed form equation to model this situation.  Start with the decreasing exponential function <m>f(x) = e^{-x}</m>.  Sketch a graph of this function.  What is the range of this function?  Where are its <m>y</m>-intercept and asymptote?</li>
+          <li>Transform <m>f</m> so that it has a horizontal asymptote of <m>y=3</m> and a <m>y</m>-intercept of <m>92</m></li>
+          <li>Now transform <m>f</m> so that it decreases less quickly. This transformed function should produce a graph similar to the one you generated in part (a).</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #9 -->
+    <exercise>
+      <statement>
+        <p>Suppose, because of limitations in food and living space, a population of field mice experiences constrained growth. This means that the population cannot increase beyond a certain maximum number <m>M</m>.  The change in population is directly proportional to the product of the current population and the difference between the maximum population <m>M</m> and the current population.  This can be expressed by the following recursive equation:
+        </p>
+        <md>
+          <mrow>P_n = P_{n-1} + kP_{n-1} \left( M - P_{n-1} \right)</mrow>
+        </md>
+        <p>where <m>P_n</m> represents the population after <m>n</m> months, and <m>k</m> the constant of proportionality.  Populations that grow in this manner are said to exhibit <em>logistic growth</em>
+        </p>
+        <ol>
+          <li>Assume that the initial population is <m>100</m>, the maximum population is <m>1,000</m>, and <m>k = 0.0006</m>.  Use your calculator to generate values of the population over time and to produce a graph of these values.  Explain, in terms of the recursive equation, why the graph is shaped the way it is.</li>
+          <li>We can use the graph from part (a) to help determine an explicit function to model this logistic growth.  Begin with the function <m>f(x) = 1 + e^{-x}</m>.  Sketch a graph of this function.  What is the range of this function?  What is the <m>y</m>-intercept?  </li>
+          <li>Now graph <m>g(x) = \frac{1}{1+e^{-x}}</m>.  What is the range of this function?  What is the <m>y</m>-intercept?  </li>
+          <li>Apply transformations to <m>f</m> so that it has a <m>y</m>-intercept of <m>100</m> and grows less quickly.  The horizontal asymptote should be <m>y = 1000</m> .  This transformed function should produce a graph similar to the one you generated in part (a). This means that you have written an explicit function that models the logistic growth described at the beginning of the problem</li>
+        </ol>
+      </statement>
+    </exercise>
+    <!-- Exercise #10 -->
+    <exercise>
+      <statement>
+        <p>Use the ideas of composition to sketch a graph of each function without using to technology
+        </p>
+        <ol>
+          <li><m>f(x)=\frac{1}{e^x}</m></li>
+          <li><m>f(x)=3^{|x|}</m></li>
+          <li><m>f(x)=2^{\frac{1}{x}}</m></li>
+          <li><m>f(x)=2^{\left(x^2\right)}</m></li>
+          <li><m>f(x)=e^{x^2-2x}</m></li>
+          <li><m>f(x)=3^{\sin(x)}</m></li>
+          <li><m>f(x)=e^{-x^2}</m></li>
+          <li><m>f(x)=\frac{1}{1+2e^{-x}}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #11 -->
+    <exercise>
+      <statement>
+        <p>	The cane toad, a native of South America, was introduced to Australia in <m>1935</m> as a way to control the destructive sugar cane beetle.  It has no natural predators in Australia and it reproduces very rapidly.  In June <m>1935</m>, <m>102</m> cane toads were brought to Australia.  Twenty-one months later, the population of cane toads had grown to about <m>65,000</m>.</p>
+        <p>Let <m>t</m> reprsent the number of years since June 1935, <m>m</m> reprsent the number of months since June 1935, and <m>C</m> represent the number of cane toads present.
+        </p>
+        <ol>
+          <li>Write an explicit function, <m>C_1(m)</m> , that expresses the toad population in terms of <m>m</m>. To do this, you will need to find the monthly percentage rate at which the toad population grew.</li>
+          <li>Modify the function you wrote in (a) to obtain a function,  <m>C_2(t)</m>, that expresses the toad population in terms of <m>t</m>. Note that the population when <m>m = 12</m> is the same as the population when <m>t = 1</m>.  Use properties of exponentials to write your function in the form <m>C_2(t)=a \cdot b^t</m>, for some constants <m>a, b</m>.  Interpret the information given by the base, <m>b</m></li>
+          <li>Use either  <m>C_1(m)</m>  or <m>C_2(t)</m> to determine how long it takes the cane toad population to double.  Using this information, write a function <m>C_3(t)</m> that uses <m>2</m> as a base to express population as a function of <m>t</m>.</li>
+          <li>Use each of your three models to predict how many cane toads there would have been <m>5</m> years after the landing of those initial <m>102</m> toads, if the growth had continued un-checked.  Of course, you should get approximately the same answer from all the models.  If they are not exactly the same, explain why this is the case.</li>
+          <li>Pretend you are an Australian reporter who got interested in the cane toad situation just a year after they landed, and, being a mathematician too, you investigated the situation by developing the models above.  Write a short "newspaper" article in which you use some of that information to tell your readers about this situation.  Use your <m>5</m>-year prediction as the clincher, by relating that number to some geographical or other fact about Australia, to make it "real".  For example, you could compare that number of cane toads there will be to the population of Australia that year, or find some other measure of "cane toad density".  Be creative!  Cite the reference from which you get your Australian information.</li>
+        </ol>
+      </statement>
+    </exercise>
+
+  </exercises>
+</section>

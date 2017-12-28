@@ -35,11 +35,10 @@
   </md>
   <p>After six months, you owe <m>\$8,877.44</m> of the original <m>\$10,000</m> principal.  You have paid <m>\$1,380</m> in interest, and this payment has reduced the outstanding balance by <m>\$1,122.56</m>.  Over <m>\$250</m> was interest on the loan.</p>
   <p>If we continue the payments of <m>\$230</m> for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment</p>
-  <p>The graph and partial table in Figure XX show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
-
-  <sidebyside widths ="30% 70%">
-    <figure xml:id="figure-table-loan-balance">
-      <caption>Loan Ammoritization</caption>
+  <p>The graph and partial table in <xref ref="loan-balance" text="type-local"> show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
+  <figure xml:id="loan-balance">
+    <caption>Loan Ammoritization</caption>
+    <sidebyside widths ="30% 70%">
       <image xml:id="table-loan-balance">
         <latex-image-code>
           <![CDATA[
@@ -55,10 +54,7 @@
           ]]>
         </latex-image-code>
       </image>
-    </figure>
 
-    <figure xml:id="figure-plot-loan-balance">
-      <caption>Loan Ammoritization</caption>
       <image xml:id="plot-loan-balance">
         <latex-image-code>
           <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
@@ -84,8 +80,8 @@
           \end{tikzpicture}]]>
         </latex-image-code>
       </image>
-    </figure>
-  </sidebyside>
+    </sidebyside>
+  </figure>
 
   <p>Since the first <m>47</m> payments were each <m>\$230</m>, the total amount paid is <m>47\cdot \$230 + \$342.74 = \$11,152.74</m>.  We see that it costs <m>\$1,152.74</m> to borrow <m>\$10,000</m> for <m>48</m> months.</p>
   <p>The process of paying off a loan is known as <em>amortizing the loan</em>, or <em>loan amortization</em>. When we study loan amortization, we are interested in the amount borrowed, the interest rate, the payment, the length of time it will take to repay the loan and the total amount the borrower will have to repay.</p>
@@ -94,9 +90,9 @@
     <mrow>L_0=A, L_n=L_{n-1} + r \cdot L_{n-1} - P , n=1,2,3,...</mrow>
   </md>
   <p>or</p>
-  <md>
-    <mrow>L_0=A,L_n=(1+r)L_{n-1} - P , n=1,2,3,...</mrow>
-  </md>
+  <mdn>
+    <mrow xml:id="recursive-loan-equation">L_0=A,L_n=(1+r)L_{n-1} - P , n=1,2,3,...</mrow>
+  </mdn>
   <p>You should complete practice problem 1 at the end of the section at this time</p>
   <p>When borrowers take out a loan, they typically know the amount they want to borrow, the interest rate they will have to pay, and the length of time they have to pay off the loan.  We are interested in determining the payment that will allow the borrower to pay back the loan in the required time.  For most loans, the borrower makes payments every month. Thus, a car loan that needs to be repaid in <m>5</m> years requires <m>60</m> monthly payments and a mortgage loan that is repaid in <m>15</m> years requires <m>180</m> monthly payments. For simplicity's sake, our first few examples will assume that payments are made annually (that is, once per year) rather than monthly.</p>
 
@@ -107,7 +103,7 @@
     </statement>
     <solution>
       <statement>
-        <p>Referring to equation XX we have</p>
+        <p>Referring to <xref ref="recursive-loan-equation" text="type-local">equation</xref> we have</p>
         <md>
           <mrow>L_0=22,000,L_n=(1+0.065)L_{n-1}-P</mrow>
         </md>
@@ -349,9 +345,9 @@
             </tabular>
           </table>
           </li>
-          <li>Make a scatterplot that shows monthly payment on the horizontal axis and outstanding balance on the vertical.</li>
+          <li xml:id="chapter04-section02-tesla-scatterplot">Make a scatterplot that shows monthly payment on the horizontal axis and outstanding balance on the vertical.</li>
           <li>Describe how you can take advantage of the shape of the scatterplot to find the monthly payment that will yield a zero outstanding balance after <m>72</m> months. </li>
-          <li>Confirm that a monthly payment of <m>\$865.51</m> will pay off the loan (the balance will round to zero).  What does this number have to do with the scatterplot you made in <m>(b)</m>?</li>
+          <li>Confirm that a monthly payment of <m>\$865.51</m> will pay off the loan (the balance will round to zero).  What does this number have to do with the scatterplot you made in (<xref ref="chapter04-section02-tesla-scatterplot" text="local" />)?</li>
         </ol>
         </p>
       </statement>
