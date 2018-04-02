@@ -33,7 +33,7 @@
   <example xml:id="example-electrical-power-demand">
     <title>Electrical Power Demand</title>
     <statement>
-      <p>The amount of electrical power used by a community is increasing by 5% per year.  This year, they used 500 thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?</p>
+      <p>The amount of electrical power used by a community is increasing by <m>5\%</m> per year.  This year, they used <m>500</m> thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?</p>
     </statement>
     <solution>
       <statement>
@@ -69,7 +69,7 @@
     <mrow>Y_0=a,Y_n=(1+k) \cdot Y_{n-1}, n=1,2,3, ...</mrow>
   </md>
   <p> If <m>k \gt 0</m>, this system represents geometric growth (with growth rate <m>k</m>); as <m>n</m> increases, the value of <m>Y_n</m>  increases.  If <m>k \lt 0</m>, the system represents geometric decay (and <m>k</m> is the decay rate); as <m>n</m> increases, the value of <m>Y_n</m>  decreases.  In either case, the next value of <m>Y_n</m> depends entirely on the value of <m>k</m> and the old value of <m>Y_n</m>.</p>
-  <p>Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in Example <xref ref="example-radioactive-decay" text="local" /> to describe electricity consumption</p>
+  <p>Geometric growth that can be described with a recursive system can also be described by an explicit function.  To demonstrate, we will iterate the system used in <xref ref="example-radioactive-decay" text="type-local" /> to describe electricity consumption</p>
   <md>
     <mrow>P_0&amp;=500</mrow>
     <mrow>P_1&amp;=(1+0.05)P_0</mrow>
@@ -112,7 +112,7 @@
     <mrow>Y_n=a(1+k)^n</mrow>
   </md>
   <p>The recursive equation shows that each value of <m>Y_n</m>  is obtained from the preceding value by multiplying by <m>(1+k)</m>. The explicit equation uses an exponent to represent this repeated multiplication.</p>
-  <p>If we wanted the value of <m>Y_{100}</m>, the recursive equation would require that values of <m>Y_1, Y_2, Y_3,</m> and so forth up to <m>Y_{99}</m>,  all be calculated. In contrast, the explicit equaiotn <m>Y_n=a(1+k)^n</m> allows us to calculate <m>Y_{100}</m> without requiring any intermediate values.</p>
+  <p>If we wanted the value of <m>Y_{100}</m>, the recursive equation would require that values of <m>Y_1, Y_2, Y_3,</m> and so forth up to <m>Y_{99}</m>,  all be calculated. In contrast, the explicit equation <m>Y_n=a(1+k)^n</m> allows us to calculate <m>Y_{100}</m> without requiring any intermediate values.</p>
   <p>The explicit equation can be rewritten using the more traditional functional notation:</p>
   <definition xml:id="explicit-geometric-growth-equation">
     <title>Explicit Function for Geometric Growth</title>
@@ -479,32 +479,35 @@
     <exercise>
       <statement>
         <p>An annual inflation rate of <m>k\%</m> means that items will cost <m>k\%</m> more next year than they cost this year.  Based on a yearly inflation rate of <m>3\%</m>, estimate the cost of the following items in <m>10</m>, <m>20</m>, <m>30</m>, and <m>40</m> years.</p>
-        <tabular bottom="medium">
-          <row bottom="major">
-            <cell right="medium">Item</cell>
-            <cell>Cost Today</cell>
-          </row>
-          <row>
-            <cell right="medium">Jeans</cell>
-            <cell><m>\$45.00</m></cell>
-          </row>
-          <row>
-            <cell right="medium">Hamburger</cell>
-            <cell><m>\$3.90</m></cell>
-          </row>
-          <row>
-            <cell right="medium">Car</cell>
-            <cell><m>\$29,000</m></cell>
-          </row>
-          <row>
-            <cell right="medium">Textbook</cell>
-            <cell><m>\$75.00</m></cell>
-          </row>
-          <row>
-            <cell right="medium">Movie Ticket</cell>
-            <cell><m>\$9.00</m></cell>
-          </row>
-        </tabular>
+        <table>
+          <caption>Cost of Items</caption>
+          <tabular bottom="medium">
+            <row bottom="major">
+              <cell right="medium">Item</cell>
+              <cell>Cost Today</cell>
+            </row>
+            <row>
+              <cell right="medium">Jeans</cell>
+              <cell><m>\$45.00</m></cell>
+            </row>
+            <row>
+              <cell right="medium">Hamburger</cell>
+              <cell><m>\$3.90</m></cell>
+            </row>
+            <row>
+              <cell right="medium">Car</cell>
+              <cell><m>\$29,000</m></cell>
+            </row>
+            <row>
+              <cell right="medium">Textbook</cell>
+              <cell><m>\$75.00</m></cell>
+            </row>
+            <row>
+              <cell right="medium">Movie Ticket</cell>
+              <cell><m>\$9.00</m></cell>
+            </row>
+          </tabular>
+        </table>
       </statement>
     </exercise>
 

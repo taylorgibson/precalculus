@@ -137,15 +137,15 @@
         </md>
         <p>Substituting into equation <xref ref="general-annuity-formula-long" /> we obtain the following representation for  <m>L_n</m>:</p>
         <mdn>
-          <mrow xml:id="general-annuity-formula-condensed">L_n = 1.004^n (20,000) - P\bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
+          <mrow xml:id="general-annuity-formula-condensed">L_n = 1.004^n (20,000) - P\bigg(\frac{1-1.004}{1-1.004^n}\bigg)</mrow>
         </mdn>
         <p>We want <m>48</m> payments to reduce the outstanding balance to zero, that is, our goal is  <m>L_{48}=0</m>. This means that we can solve the following equation to find the value of <m>P</m>.</p>
         <md>
-          <mrow>0 = 1.004^{48}(20,000)-P\bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
+          <mrow>0 = 1.004^{48}(20,000)-P\bigg(\frac{1-1.004^{48}}{1-1.004}\bigg)</mrow>
         </md>
         <p>Solving for <m>P</m>, we find</p>
         <md>
-          <mrow>P &amp;= 1.004^{48}(20,000)\bigg(\frac{1-1.004^n}{1-1.004}\bigg)</mrow>
+          <mrow>P &amp;= 1.004^{48}(20,000)\bigg(\frac{1-1.004^{48}}{1-1.004}\bigg)</mrow>
           <mrow>\text{or, equivalently}</mrow>
           <mrow>P&amp;=\frac{1.004^{48}(20,000)(0.004)}{1.004^{48}-1}</mrow>
         </md>
@@ -171,6 +171,7 @@
       <statement>
         <p>Consider the geometric series <m>100+100(1.05)+100(1.05)^2+100(1.05)^3+...</m></p>
         <ol>
+          <li>Find the sum of the first <m>10</m> terms of the series</li>
           <li>Find the sum of the first <m>100</m> terms of the series</li>
           <li>Find the sum of the first <m>500</m> terms of the series</li>
         </ol>
@@ -280,7 +281,7 @@
     </exercise>
     <exercise>
       <statement>
-        <p>Compare these two investment strategies to save for retirement by determining the account balance at age <m>65</m></p>
+        <p>Compare these two investment strategies to save for retirement by determining the account balance at age <m>65</m>:</p>
         <p><em>Strategy I:</em> For the <m>8</m> years from age <m>44</m> to age <m>52</m>, invest <m>\$300</m> per month and earn interest at a rate of <m>0.75\%</m> per month. Do not save any more money after age <m>52</m>, and make no withdrawals from the account.</p>
         <p><em>Strategy II:</em> For the <m>16</m> years from age <m>49</m> to age <m>65</m>, invest <m>\$300</m> per month and earn at a rate of <m>0.75\%</m> per month. Make no withdrawals from the account.</p>
       </statement>

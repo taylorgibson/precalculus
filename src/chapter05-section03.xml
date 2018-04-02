@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2018  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter05-section03" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Graphig Logarithmic Functions</title>
+    <subsection>
+      <title>Defining the Logarithm Function</title>
+      <p>Since we can find the base <m>10</m> logarithm of any positive real number, we can use logarithms to define a function.  We define a logarithmic function as follows:
+      <md>
+        <mrow>f(x) = \log(x)</mrow>
+      </md>
+      this function pairs every positive <m>x</m>-value with the base <m>10</m> logarithm of that <m>x</m>.
+      </p>
+      <figure>
+        <caption>Table of values and graph of <m>f(x) = \log(x)</m></caption>
+
+        <sidebyside widths="50% 50%" margins="auto" valign="top">
+          <tabular top="major" halign="center">
+            <row bottom="medium">
+              <cell halign="left"><m>x</m></cell>
+              <cell><m>\log(x)</m></cell>
+              <cell><m>f(x)</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>0.001</m></cell>
+              <cell><m>\log(0.001)</m></cell>
+              <cell><m>-3</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left"><m>0.01</m></cell>
+              <cell><m>\log(0.01)</m></cell>
+              <cell><m>-2</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left"><m>0.1</m></cell>
+              <cell><m>\log(0.1)</m></cell>
+              <cell><m>-1</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left"><m>1</m></cell>
+              <cell><m>\log(1)</m></cell>
+              <cell><m>0</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left"><m>10</m></cell>
+              <cell><m>\log(10)</m></cell>
+              <cell><m>1</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left"><m>100</m></cell>
+              <cell><m>\log(100)</m></cell>
+              <cell><m>2</m></cell>
+            </row>
+
+            <row bottom="major">
+              <cell halign="left"><m>1000</m></cell>
+              <cell><m>\log(1000)</m></cell>
+              <cell><m>3</m></cell>
+            </row>
+          </tabular>
+
+          <image>
+            <latex-image-code>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = x,
+                  ylabel = f(x),
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0,
+                  ]
+
+                  \addplot [thick, blue, <->, mark=none, domain=0.1:15,samples=100] {log10(x)};
+
+                  \addplot[only marks, color=magenta] coordinates {
+                  (0.001,  -3)
+                  (0.01,  -2)
+                  (0.1,  -1)
+                  (1,  0)
+                  (10,  1)
+                  };
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </sidebyside>
+      </figure>
+
+    <p>The ordered pairs highlighted on the graph are all of the form <m>\left( a, \log(a) \right)</m>. Consider the pairs with the input and output interchanged: <m>(-3,0.001), (-2,0.01), (-1,0.1), (0,1), (1,10), (2,100), (3,1000)</m>. These new pairs are associated with the base <m>10</m> exponential function <m>g(x) = 10^x</m>.
+    </p>
+
+    </subsection>
+
+
+    <subsection>
+      <title>Compositions of Exponential and Logarithmic Functions</title>
+      <p>
+      </p>
+    </subsection>
+
+    <subsection>
+      <title>Graphing Logarithm Functions</title>
+      <p>
+      </p>
+    </subsection>
+
+    <exercises>
+      <!-- Exercise 1 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 2 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 3 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 4 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 5 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 6 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 7 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 8 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 9 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 10 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+    </exercises>
+</section>

@@ -8,34 +8,48 @@
 <!-- See the file COPYING for copying conditions.       -->
 <section xml:id="chapter04-section02" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Using Recursion to Understand Loans and Investments</title>
-
   <p>Recursive systems are useful for finding solutions to various types of problems.</p>
+
   <p>Suppose you are interested in purchasing a car and need a <m>\$10,000</m> loan. The lending agency is going to charge you interest each month and you are going to make a payment each month. You plan to pay <m>\$230</m> each month until the loan is paid off. Suppose the interest rate is <m>0.45\%</m> per month (approximately <m>5.4\%</m> per year). How long will it take you to repay the loan? What is the total amount you will have to repay?  You can answer these questions using recursion.</p>
-  <p>When making monthly payments to repay a loan, an interest payment is charged on all of the money that is owed at the end of each month.  In this example, at the end of the first month you will owe <m>(0.0045)(10,000)=\$45.00</m> in interest. After making the first payment you will owe <m>\$10,000+\$45-\$230=\$9815</m>. The amount you still owe on the loan at the end of a month is equal to the amount you owed previously plus the interest minus the amount of your payment. This is expressed in a recursive system as: </p>
+
+  <p>When making monthly payments to repay a loan, an interest payment is charged on all of the money that is owed at the end of each month.  In this example, at the end of the first month you will owe <m>(0.0045)(10,000)=\$45.00</m> in interest. After making the first payment you will owe <m>\$10,000+\$45-\$230=\$9815</m>. The amount you still owe on the loan at the end of a month is equal to the amount you owed previously plus the interest minus the amount of your payment. This is expressed in a recursive system as:</p>
+
   <md>
-    <mrow>L_0=10,000, L_{n-1}+(0.0045)\cdot L_{n-1}-230, where n=1,2,3,...</mrow>
+    <mrow>L_0=10,000, L_n = L_{n-1}+(0.0045)\cdot L_{n-1}-230, \text{where } n=1,2,3,...</mrow>
   </md>
+
   <p>where <m>L_n</m> is the amount you owe on the loan after <m>n</m> months.  This amount is also known as the <em>principal</em>, or the <em>outstanding balance</em>. If we iterate this system, the values we generate represent the outstanding balance at the end of each month.</p>
+
   <md>
     <mrow>L_1=L_0+(0.0045)\cdot L_0-230=10,000+(0.0045)\cdot 10,000-230=9,815</mrow>
     <mrow>L_2=L_1+(0.0045)\cdot L_1-230=9,815+(0.0045)\cdot 9,815-230=9,629.17</mrow>
     <mrow>L_3=L_2+(0.0045)\cdot L_2-230=9,629.17+(0.0045)\cdot 9,629.17-230=9,442.50</mrow>
   </md>
+
   <p>Note that values have been rounded to the nearest cent.  All the decimal places on the calculator were retained in the computations.</p>
+
   <p>After three months, you will owe <m>\$9,442.50</m> on the loan. Notice that you have paid a total of <m>\$230\cdot 3=\$690</m>, but only <m>\$10,000-\$9442.50=\$557.50</m> was applied towards decreasing the principal of the loan. The remaining <m>\$132.50</m> was payment of interest.</p>
+
   <p>We can continue generating values of <m>L_n</m> using a more compact form of the iterative equation,</p>
+
   <md>
     <mrow>L_n=(1.0045)\cdot L_{n-1}-230</mrow>
   </md>
+
   <p>which yields</p>
+
   <md>
     <mrow>L_4=(1.0045)\cdot L_3-230=\$9,254.99</mrow>
     <mrow>L_5=(1.0045)\cdot L_4-230=\$9,066.64</mrow>
     <mrow>L_6=(1.0045)\cdot L_5-230=\$8,877.44</mrow>
   </md>
+
   <p>After six months, you owe <m>\$8,877.44</m> of the original <m>\$10,000</m> principal.  You have paid <m>\$1,380</m> in interest, and this payment has reduced the outstanding balance by <m>\$1,122.56</m>.  Over <m>\$250</m> was interest on the loan.</p>
+
   <p>If we continue the payments of <m>\$230</m> for four years (48 months), the final payment will probably not bring the outstanding balance to exactly zero dollars.  Although it is possible to calculate a loan payment that will exactly pay off the loan in 48 equal payments, it is common practice for the lender to make all of the payments, except for the last one, a whole dollar amount, or even round these payments to the nearest five or ten-dollar amounts. Doing this will almost certainly make the final payment different from the rest.  This final payment is known as the balloon payment</p>
-  <p>The graph and partial table in <xref ref="loan-balance" text="type-local"> show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
+
+  <p>The graph and partial table in <xref ref="loan-balance" text="type-local" /> show that it will take <m>47</m> payments to get the balance down to <m>\$341.20</m>.  After one additional month the balance will be <m>\$341.20\cdot 1.0045=\$342.74</m> if we round in the usual manner.  Thus, the balloon payment would be <m>\$342.74</m>.</p>
+
   <figure xml:id="loan-balance">
     <caption>Loan Ammoritization</caption>
     <sidebyside widths ="30% 70%">
@@ -84,15 +98,21 @@
   </figure>
 
   <p>Since the first <m>47</m> payments were each <m>\$230</m>, the total amount paid is <m>47\cdot \$230 + \$342.74 = \$11,152.74</m>.  We see that it costs <m>\$1,152.74</m> to borrow <m>\$10,000</m> for <m>48</m> months.</p>
+
   <p>The process of paying off a loan is known as <em>amortizing the loan</em>, or <em>loan amortization</em>. When we study loan amortization, we are interested in the amount borrowed, the interest rate, the payment, the length of time it will take to repay the loan and the total amount the borrower will have to repay.</p>
+
   <p>We can generalize the recursive system used to determine the total amount repaid as follows.  If we borrow an amount <m>A</m> and let <m>r</m> represent the interest rate per time period and <m>P</m> the amount of the payment during each time period, we can describe the amount owed after <m>n</m> time periods with the system</p>
+
   <md>
     <mrow>L_0=A, L_n=L_{n-1} + r \cdot L_{n-1} - P , n=1,2,3,...</mrow>
   </md>
+
   <p>or</p>
+
   <mdn>
     <mrow xml:id="recursive-loan-equation">L_0=A,L_n=(1+r)L_{n-1} - P , n=1,2,3,...</mrow>
   </mdn>
+
   <p>You should complete practice problem 1 at the end of the section at this time</p>
   <p>When borrowers take out a loan, they typically know the amount they want to borrow, the interest rate they will have to pay, and the length of time they have to pay off the loan.  We are interested in determining the payment that will allow the borrower to pay back the loan in the required time.  For most loans, the borrower makes payments every month. Thus, a car loan that needs to be repaid in <m>5</m> years requires <m>60</m> monthly payments and a mortgage loan that is repaid in <m>15</m> years requires <m>180</m> monthly payments. For simplicity's sake, our first few examples will assume that payments are made annually (that is, once per year) rather than monthly.</p>
 
@@ -249,38 +269,38 @@
             </row>
           </tabular>
         </table>
+
         <p>We see that a payment of <m>\$6,572.50</m> is too large since after <m>4</m> payments you have paid <m>\$663.90</m> more than necessary. We now know that the appropriate payment <m>P</m> is in the interval  <m>6,215 \lt  P \lt 6,572.50</m> </p>
 
         <p>We can continue the process of averaging two payments, one that is too large and one that is too small. Eventually we find that three payments of <m>\$6,393.75</m> and a fourth balloon payment of <m>\$6,393.75 + \$123.89</m> will bring the outstanding balance to zero dollars.</p>
       </statement>
     </solution>
   </example>
-  <p>The process used to find an appropriate payment is called <em>binary search</em>. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.</p>
 
+  <p>The process used to find an appropriate payment is called <em>binary search</em>. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.</p>
 
   <exercises>
     <exercise>
       <statement>
-        <p>How long will it take to amortize a loan and how much will the loan cost under each of the following conditions?  In each case <m>L_0, r</m> and <m>P</m> represent the initial amount borrowed, the monthly interest rate, and the monthly payment, respectively. Determine the balloon payment for each scenario as well.
+        <p>How long will it take to amortize a loan and how much will the loan cost under each of the following conditions?  In each case <m>L_0, r</m> and <m>P</m> represent the initial amount borrowed, the monthly interest rate, and the monthly payment, respectively. Determine the balloon payment for each scenario as well.</p>
         <ol>
           <li><m>L_0=\$5000, r=1\%</m> and <m>P=\$200</m></li>
           <li><m>L_0=\$5000, r=1.5\%</m> and <m>P=\$200</m></li>
           <li><m>L_0=\$5000, r=0.5\%</m> and <m>P=\$200 </m></li>
           <li><m>L_0=\$5000, r=1\%</m> and <m>P=\$250</m></li>
         </ol>
-        </p>
+
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p>Maisha opens a retirement account on her <m>35^{th}</m> birthday with a deposit of <m>\$2,400</m>.  Each year on her birthday, she plans to deposit an additional <m>\$2,400</m>.  The account earns interest at a rate of <m>10\%</m> annually.
+        <p>Maisha opens a retirement account on her <m>35^{th}</m> birthday with a deposit of <m>\$2,400</m>.  Each year on her birthday, she plans to deposit an additional <m>\$2,400</m>.  The account earns interest at a rate of <m>10\%</m> annually.</p>
         <ol>
           <li>How much will Maisha have saved by the time she retires at age <m>65</m>?</li>
           <li>Suppose Maisha wants to have <m>\$1</m> million in the account by age <m>65</m>.  To the nearest hundred dollars, how much should she deposit each year?</li>
           <li>Suppose Maisha starts saving ten years earlier, at age <m>25</m>.  To the nearest hundred dollars, how much should she deposit each year to have <m>\$1</m> million at retirement?</li>
         </ol>
-        </p>
       </statement>
     </exercise>
 
@@ -298,12 +318,11 @@
 
     <exercise>
       <statement>
-        <p>Kyle and Taylor have taken out a loan for <m>\$175,000</m> to buy their first house. They have a <m>15</m>-year mortgage and an annual interest rate of <m>3.9\%</m>.
+        <p>Kyle and Taylor have taken out a loan for <m>\$175,000</m> to buy their first house. They have a <m>15</m>-year mortgage and an annual interest rate of <m>3.9\%</m>.</p>
         <ol>
           <li>The lending agency tells them that their monthly payment is <m>\$1,290</m>, and so they pay <m>\$1,290</m> every month for <m>179</m> months. What must be their final payment (the <m>180^{th}</m>) so that the loan is paid off?  In total, how much did it cost them to borrow <m>\$175,000</m> for <m>15</m> years?</li>
           <li>Kyle and Taylor recognize that they may save money in the long run if they make payments larger than what the lending agency requires. They decide to pay <m>\$2,000</m> for the first <m>5</m> years (<m>60</m> months) and then pay the required <m>\$1,290</m> per month until the loan is paid off. How long will it take them to bring their outstanding balance to zero. In total, how much did it cost them to borrow <m>\$175,000</m> for <m>15</m> years?</li>
           </ol>
-        </p>
       </statement>
     </exercise>
 
@@ -311,9 +330,9 @@
       <statement>
         <p>Terry has his heart set on owning a Tesla electric car. He will sell his current car to raise some of the money, but still needs to take out a <m>\$55,000</m> loan to be able to afford a Tesla. His credit union will charge him <m>4.2\%</m> interest per year, a special rate for an energy efficient car. He will make equal monthly payments in order to pay off the loan in <m>72</m> months.</p>
 
-        <p>Your task is to determine what his monthly payment needs to be. You will make several educated guesses about how much he needs to pay each month in order to finish paying off the loan and bring his outstanding balance down to zero with <m>72</m> payments.
+        <p>Your task is to determine what his monthly payment needs to be. You will make several educated guesses about how much he needs to pay each month in order to finish paying off the loan and bring his outstanding balance down to zero with <m>72</m> payments.</p>
         <ol>
-          <li>In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of <m>\$950</m> each month, he will have overpaid by about <m>\$6,900</m> after the <m>72^{nd}</m> payment.
+          <li>In a table like the one shown, record the size of the monthly payment and the balance Terry still owes at the end of 72 months. The first row of the table has been completed. It indicates that if Terry makes a payment of <m>\$950</m> each month, he will have overpaid by about <m>\$6,900</m> after the <m>72^{nd}</m> payment.</li>
 
           <table>
             <caption></caption>
@@ -344,12 +363,11 @@
               </row>
             </tabular>
           </table>
-          </li>
+
           <li xml:id="chapter04-section02-tesla-scatterplot">Make a scatterplot that shows monthly payment on the horizontal axis and outstanding balance on the vertical.</li>
           <li>Describe how you can take advantage of the shape of the scatterplot to find the monthly payment that will yield a zero outstanding balance after <m>72</m> months. </li>
           <li>Confirm that a monthly payment of <m>\$865.51</m> will pay off the loan (the balance will round to zero).  What does this number have to do with the scatterplot you made in (<xref ref="chapter04-section02-tesla-scatterplot" text="local" />)?</li>
         </ol>
-        </p>
       </statement>
     </exercise>
   </exercises>

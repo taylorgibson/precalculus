@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter05-section01" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Introduction to Logarithms</title>
+  <p>In <m>2002</m>, about <m>2.8</m> million ninth graders were enrolled in a math class.  By the time these students reached their first year of college, only <m>250,000</m> of them were enrolled in a math class.  In <m>2010</m>, this group of students earned their bachelor's degrees and only <m>10,000</m> of them were enrolled in a math class.  In <m>2012</m>, earning M.S. degrees, <m>3,000</m> students were enrolled in a math class. In <m>2016</m>, working on Ph.D. degrees, only <m>500</m> of them were enrolled in a math class. The data are given below in <xref ref="c05s01-enrollmenttable" text="type-local" /></p>
+  <table xml:id="c05s01-enrollmenttable">
+    <caption>Enrollment in mathematics classes over time</caption>
+    <tabular>
+      <row bottom="medium" halign="center">
+        <cell right="medium">Year</cell>
+        <cell>Math Class Enrollment</cell>
+      </row>
+
+      <row>
+        <cell right="medium"><m>2002</m></cell>
+        <cell><m>2,800,000</m></cell>
+      </row>
+
+      <row>
+        <cell right="medium"><m>2006</m></cell>
+        <cell><m>250,000</m></cell>
+      </row>
+
+      <row>
+        <cell right="medium"><m>2010</m></cell>
+        <cell><m>10,000</m></cell>
+      </row>
+
+      <row>
+        <cell right="medium"><m>2012</m></cell>
+        <cell><m>3,000</m></cell>
+      </row>
+
+      <row>
+        <cell right="medium"><m>2016</m></cell>
+        <cell><m>500</m></cell>
+      </row>
+
+    </tabular>
+  </table>
+
+  <p>A scatterplot of the data is shown in <xref ref="plot-math-enrollment-raw" text="type-local" />.  Notice that the vertical scale required to show all of the data makes it difficult to distinguish the smaller <m>y</m>-values from each other.</p>
+
+  <figure xml:id="plot-math-enrollment-raw">
+    <caption>Scatterplot of mathematics class enrollment</caption>
+    <image>
+      <latex-image-code>
+        <![CDATA[
+        \begin{tikzpicture}
+        \begin{axis}[
+        xlabel = Year,
+        ylabel = Enrollment (millions),
+        ylabel near ticks,
+        xlabel near ticks,
+        xticklabel style={/pgf/number format/1000 sep=},
+        ymin = 0, ymax = 3000000,
+        ytick = {0, 500000, 1000000, 1500000, 2000000, 2500000, 3000000},
+        scaled y ticks=base 10:-6,
+        ytick scale label code/.code={},
+        ]
+
+        \addplot[only marks, color=magenta] coordinates {
+        (2002,  2800000)
+        (2006,  250000)
+        (2010,  10000)
+        (2012,  3000)
+        (2016,  500)
+        };
+
+        \end{axis}
+        \end{tikzpicture}]]>
+      </latex-image-code>
+    </image>
+  </figure>
+
+  <p>The mathematics class enrollment for this group of students appears to be decreasing exponentially. <xref ref="plot-math-enrollment-log1" text="type-local" /> shows a graph in which the vertical scale has been altered so that it has equal spacing between <m>10^1, 10^2, 10^3</m>, etc. rather than having equal spacing between <m>1, 2, 3,</m> etc.  The consequence of this alteration is that the graph appears linear. Notice it is much easier to distinguish between the smaller <m>y</m>-values using this new scale. </p>
+
+  <figure xml:id="plot-math-enrollment-log1">
+    <caption>Enrollment with vertical scale using powers of 10</caption>
+    <image>
+      <latex-image-code>
+        <![CDATA[
+        \begin{tikzpicture}
+          \begin{semilogyaxis}[
+            xlabel = Year,
+            ylabel = Enrollment,
+            ylabel near ticks,
+            xlabel near ticks,
+            xticklabel style={/pgf/number format/1000 sep=},
+            ymin = 1
+            ]
+
+          \addplot[only marks, color=magenta] coordinates {
+            (2002,  2800000)
+            (2006,  250000)
+            (2010,  10000)
+            (2012,  3000)
+            (2016,  500)
+          };
+
+          \end{semilogyaxis}
+        \end{tikzpicture}]]>
+      </latex-image-code>
+    </image>
+  </figure>
+  <p>The alteration of the scale on the vertical axis was a standard technique for graphing exponential data sets before the age of calculator and computer technology. Data were plotted on special graph paper which had the vertical scale re-written as powers of <m>10</m>. Modern technology allows us to adjust the data instead of the coordinate system so that the <m>y</m>-value of the data represents the exponent on the base used in the scale on the <m>y</m>-axis. This eliminates the need for special graph paper. The process of adjusting the data is called <em>re-expression</em></p>
+
+  <p>To re-express the data, we first need to define <em>logarithms</em>. Logarithms allow us to rewrite any exponential equation so that the exponent is isolated.</p>
+
+  <p> If we write  <m>c = \log_{10}(a)</m>, then we mean that <m>c</m> is the exponent that must be put on <m>10</m> to yield <m>a</m>. Thus, <m>\log_{10}(a)</m> is, by definition, the number <m>c</m> so that <m>10^c = a.</m></p>
+
+  <p>In general, <m>b ^ c = a</m> is equvialent to <m>\log_b(a) = c</m>. That is, the logarithm with base <m>b</m> of <m>a</m> is defined to be the exponent needed such that <m>b ^ c = a</m>.</p>
+
+  <p>So <m>\log_{10}(1000) = 3</m>, (since <m>10^3 = 1000</m>), <m>\log_{10}(10) = 1</m> (since <m>10^1 = 10</m>)  and <m>\log_{10}(0.1) = -1</m> (since <m>10^{-1} = 0.1</m>).</p>
+
+  <p>For the mathematics enrollment data, instead of plotting points <m>(\text{year}, \text{enrollment})</m>, we will plot points <m>(\text{year}, \log ( \text{enrollment} ) )</m>. In particular, instead of <m>(2,010, 10,000)</m>, we will plot the point <m>(2,010, 4)</m>. We use the <m>y</m>-coordinate of <m>4</m> since <m>\log_{10}(10,000) = 4</m> . Values for other <m>y</m>-coordinates can be found using a calculator to evaluate logarithms; the values of these coordinates cannot be determined using familiar algebraic techniques and require the use of technology. For example, <m>\log_{10}(250,000) = 5.39794</m> because <m>10^{5.39794} = 250,000</m>. Re-expressing the entire set of data results in the following table and graph.</p>
+  <figure>
+    <caption>Enrollment in mathematics classes over time, log-scale</caption>
+    <sidebyside widths = "50% 50%">
+        <tabular xml:id="c05s01-enrollmenttable-log">
+          <row bottom="medium" halign="center">
+            <cell right="medium">Year</cell>
+            <cell><m>\log(\text{Enrollment})</m></cell>
+          </row>
+
+          <row>
+            <cell right="medium"><m>2002</m></cell>
+            <cell><m>6.4472</m></cell>
+          </row>
+
+          <row>
+            <cell right="medium"><m>2006</m></cell>
+            <cell><m>5.3979</m></cell>
+          </row>
+
+          <row>
+            <cell right="medium"><m>2010</m></cell>
+            <cell><m>4.0000</m></cell>
+          </row>
+
+          <row>
+            <cell right="medium"><m>2012</m></cell>
+            <cell><m>3.4771</m></cell>
+          </row>
+
+          <row>
+            <cell right="medium"><m>2016</m></cell>
+            <cell><m>2.6990</m></cell>
+          </row>
+
+        </tabular>
+
+      <image>
+        <latex-image-code>
+          <![CDATA[
+          \begin{tikzpicture}
+            \begin{axis}[
+              xlabel = Year,
+              ylabel = log(Enrollment),
+              ylabel near ticks,
+              xlabel near ticks,
+              xticklabel style={/pgf/number format/1000 sep=},
+              ymin = 0,
+              ]
+
+            \addplot[only marks, color=magenta] coordinates {
+              (2002,  6.4472)
+              (2006,  5.3979)
+              (2010,  4.0000)
+              (2012,  3.4771)
+              (2016,  2.6990)
+            };
+
+            \end{axis}
+          \end{tikzpicture}]]>
+        </latex-image-code>
+      </image>
+    </sidebyside>
+  </figure>
+  <p>This new spacing creates what is called a logarithmic scale. Note that every increase of <m>1</m> year on the horizontal axis corresponds to a decrease in enrollment by a factor of <m>10</m> on the vertical axis. Every increase of <m>2</m> years corresponds to a decrease in enrollment by a factor of <m>100</m> and every increase of <m>k</m> years is associated with a decrease in enrollment by a factor of <m>10^k</m>.</p>
+
+  <p>The logarithm used in the math enrollment example is called a base <m>10</m> logarithm; the logarithmic equation <m>\log_{10} x = y</m> and the exponential equaion <m>10^y = x</m> express the same information about <m>10</m> and <m>x</m> and <m>y</m>. In both equations the number <m>10</m> is called the base. We can write logarithm and exponential equations with bases other than <m>10</m>: we write <m>\log_2 8 = 3 </m>(read "the log base <m>2</m> of <m>8</m> is <m>3</m>) because <m>2^3 = 8</m> and we write <m>\log_9 3= \frac{1}{2}</m> (read "the log base <m>9</m> of <m>3</m> is one-half") because <m>9^{1/2} = 3</m>. Recall that a logarithm is an exponent; <m>\log_b a</m> represents the exponent on <m>b</m> that produces <m>a</m>. </p>
+
+  <p>Logarithms with base <m>10</m> are referred to as common logarithms; the conventional notation omits the base, e.g. we write <m>\log(100) = 2</m> instead of <m>\log_{10} (100) = 2</m>. Logarithms with base <m>e</m> are referred to as natural logarithms, and written with the special notation <m>\ln</m>  (read "el en"). (e.g. <m>\log_e (2) = \ln(2) = 0.6931</m>).  Most of our work with logarithms will be in one of these two bases.</p>
+
+  <!-- Example #1 -->
+  <example>
+    <statement>
+      <p>Convert each logarithmic equation into an equivalent exponential equation, and each exponential equation into an equivalent logarithmic equation.</p>
+      <ol>
+        <li><m>10^{-3} = 0.001</m></li>
+        <li><m>x ^ y = z</m></li>
+        <li><m>\log_2 \frac{1}{16} = -4</m></li>
+        <li><m>\log_a b = c</m></li>
+      </ol>
+    </statement>
+    <solution>
+      <p>We use the definition of logarithm to rewrite each of these equations</p>
+      <ol>
+        <li><m>10^{-3} = 0.001</m> is equivalent to <m>\log_{10} (0.001) = -3</m></li>
+        <li><m>x ^ y = z</m> is equivalent to <m>\log_x z = y</m></li>
+        <li><m>\log_2 \frac{1}{16} = -4</m> is equivalent to <m>2 ^ {-4} = \frac{1}{16}</m></li>
+        <li><m>\log_a b = c</m> is equivalent to <m>a ^ c = b</m></li>
+      </ol>
+    </solution>
+  </example>
+
+  <p>Notice that when the equation is expressed in exponential form, the value of the logarithm is the exponent.</p>
+
+  <p>Since the values of logarithms are themselves exponents, it is not surprising that there are laws of logarithms which are closely related to the laws of exponents.  The laws of exponents and the corresponding laws of logarithms are stated here and discussed below:
+
+    <md>
+      <mrow>\text{} \amp \amp \text{Laws} \amp \text{ of Exponents} \amp \text{Laws} \amp \text{ of Logarithms}</mrow>
+      <mrow>\text{Product} \amp \amp b^r \cdot b^s \amp = b^{r+s}, b>0 \amp \log_b\left(r \cdot s\right) \amp = \log_b(r) + \log_b(s), r, s, b > 0, b \neq 1</mrow>
+      <mrow>\text{Quotient} \amp \amp \frac{b^r}{b^s} \amp = b^{r-s}, b>0 \amp \log_b\left( \frac{r}{s} \right) \amp = \log_b(r) - \log_b(s), r, s, b > 0, b \neq 1</mrow>
+      <mrow>\text{Power} \amp \amp \left( b^r \right) ^ s \amp = b^{r \cdot s}, b>0 \amp \log_b\left(r ^ s\right) \amp = s \cdot \log_b(r), r, s, b > 0, b \neq 1</mrow>
+      <mrow>\text{Equality} \amp \amp b^r \amp = b^s, \text{if and only if } r = s \amp \log_b\left( r \right) \amp = \log_b\left( s \right), \text{if and only if } r = s</mrow>
+    </md>
+  </p>
+
+  <p>There are two other important formulas relating exponents and logarithms.
+    <md>
+      <mrow>b ^ {\log_b r} = r \text{ and } \log_b b^r = r</mrow>
+    </md>
+    Practice problems 1 and 2 at the end of the section will ask you to use the definition of a logarithm to explain why these formulas are true.
+  </p>
+
+  <!-- Example #2 -->
+  <example>
+    <statement>
+      <p>Show that <m>\log_b \left( r \cdot s \right) = \log_b \left( r \right) + \log_b \left( s \right) </m> is true for all positive values of <m>r, s, \text{and } b</m> (provided that <m>b \neq 1</m>)</p>
+    </statement>
+    <solution>
+      <statement>
+        <p>We will show that <m>b^{\log_b\left( r \cdot s \right)}</m> is equal to <m>b^{ \log_b\left( r \right) + \log_b\left( s \right)}</m>; that is <m>b</m> raised to the left hand side is equal to <m>b</m> raised to the right hand side. This will allow us to conclude that the exponents on <m>b</m> are equal.</p>
+        <p>First consider the expression <m>b^{log_b \left( r \cdot s \right)}</m>. One of our logarithm properties tell us that:
+        <md>
+          <mrow>b^{\log_b \left( r \cdot s \right)} = r \cdot s</mrow>
+        </md>
+        What about <m>b^{log_b \left( r \right) + \log_b \left( s \right)}</m>? We know how to re-write an expression that involves a sum in the exponent:
+        <md>
+          <mrow>b^{log_b \left( r \right) + \log_b \left( s \right)} = b^{ \log_b\left( r \right)} \cdot  b^{\log_b\left( s \right)}</mrow>
+        </md>
+        We know that:
+        <md>
+          <mrow>b^{\log_b r} = r \text{  and  } b^{\log_b s} = s</mrow>
+          <mrow>\text{so}</mrow>
+          <mrow>b^{log_b \left( r \right) + \log_b \left( s \right)} = b^{ \log_b\left( r \right)} \cdot  b^{\log_b\left( s \right)} = r \cdot s</mrow>
+        </md>
+        We have shown that <m>b^{\log_b \left( r \cdot s \right)} = r \cdot s</m> and <m>b^{log_b \left( r \right) + \log_b \left( s \right)} = b^{ \log_b\left( r \right)} \cdot  b^{\log_b\left( s \right)} = r \cdot s</m>. Two expressions that are both equal to <m>r \cdot s</m> are equal to each other, so <m>b^{\log_b \left( r \cdot s \right)} = b^{log_b \left( r \right) + \log_b \left( s \right)}</m>. From this, we can conclude that the exponents on <m>b</m> are equal. Therefore,
+        <md>
+          <mrow>\log_b \left( r \cdot s \right) = \log_b \left( r \right) + \log_b \left( s \right)</mrow>
+        </md>
+      </p>
+      </statement>
+    </solution>
+  </example>
+
+  <!-- Example #3 -->
+  <example>
+    <statement>
+      <p>Re-write the exponential equation <m>A = e^{kt}</m> into an equivalent logarithmic equation. Then, solve for <m>t</m>. Assume that <m>A</m> and <m>k</m> are both constants.</p>
+    </statement>
+    <solution>
+      <statement>
+        <p>Recall that by definition, <m>b ^ c = a</m> is equvialent to <m>\log_b(a) = c</m>. So in this exponential equation, <m>A = e^{kt}</m> is equivalent to
+        <md>
+          <mrow>\ln \left( A \right) = kt</mrow>.
+        </md>
+        To solve for <m>t</m>, divide both sides of the equation by the constant <m>k</m>,
+        <md>
+          <mrow>t = \frac{1}{k} \cdot \ln \left( A \right)</mrow>
+        </md>
+        </p>
+      </statement>
+    </solution>
+  </example>
+
+  <!-- Example #4 -->
+  <example>
+    <statement>
+      <p>Rewrite the expression <m>\log_4(x) + \log_4 \left( \frac{8}{x^2} \right)</m> as a single logarithm</p>
+    </statement>
+    <solution>
+      <statement>
+        <p><m>\log_4 x + \log_4 \left( \frac{8}{x^2} \right) = \log_4 \left( x \cdot \frac{8}{x^2} \right) = \log_4 \left( \frac{8}{x} \right)</m></p>
+      </statement>
+    </solution>
+  </example>
+
+  <p>It is worth noting here that these properties of logarithms make difficult products, quotients, and powers much easier to compute.  Products are turned into sums, quotients into differences, and powers into products.  Scientists, starting with the <m>17^{th}</m> century astronomers, used logarithms to do many of the difficult and lengthy calculations needed for many of the important discoveries they made.  Imagine the time it would take to divide a number like <m>8,497.231</m> by <m>0.00097388</m> without a calculator.  With tables of logarithms, this division problem could be turned into a subtraction problem.  Some of the most widely published books for nearly three centuries were tables of logarithms, and one of the first applications of the modern computer was to generate more accurate and precise tables of logarithms.  The "handheld calculator" for generations of students was the slide rule, which was based on logarithms.  Of course, with the spread of computers and calculators, very few people still use logarithms for computational purposes. However, logarithms are still extremely useful for solving equations that involve exponents.</p>
+
+  <exercises>
+    <title>Practice Problems</title>
+
+    <!-- Practice Problem #1 -->
+    <exercise>
+      <statement>
+        <p>Use the definition of logarithm to explain why <m>b^{\log_b r} = r</m> is true.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #2 -->
+    <exercise>
+      <statement>
+        <p>Use the definition of logarithm to explain why <m>\log_b b^r = r</m> is true.</p>
+      </statement>
+    </exercise>
+
+  </exercises>
+
+  <exercises>
+
+    <!-- Exercise #1 -->
+    <exercise>
+      <statement>
+        <p>Convert each equation to exponential form</p>
+        <ol>
+          <li><m>\log_4 64 = 3</m></li>
+          <li><m>\log_5 1 = 0</m></li>
+          <li><m>\log 10,000 = 4</m></li>
+          <li><m>\log_{1/2} 8 = -3</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #2 -->
+    <exercise>
+      <statement>
+        <p>Convert each equation to logarithmic form.</p>
+        <ol>
+          <li><m>e^1 = e</m></li>
+          <li><m>99^0 = 1</m></li>
+          <li><m>\sqrt{16} = 4</m></li>
+          <li><m>\sqrt[3]{64} = 4</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #3 -->
+    <exercise>
+      <statement>
+        <p>Evaluate the following without a calculator.</p>
+        <ol>
+          <li><m>\log_3 81</m></li>
+          <li><m>\ln \frac{1}{e^3}</m></li>
+          <li><m>\log_2 \sqrt[5]{2^3}</m></li>
+          <li><m>\log \left( 0.01 \right)</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #4 -->
+    <exercise>
+      <statement>
+        <p>Determine the two integrers between which each logarithm falls. For example, we can conclude that <m>2 \lt \log_2 7 \lt 3</m></p>
+        <ol>
+          <li><m>\log 12</m></li>
+          <li><m>\log 1.2</m></li>
+          <li><m>\log_4 5</m></li>
+          <li><m>\log_7 21</m></li>
+          <li><m>\log_{0.5} \frac{1}{7}</m></li>
+          <li><m>\log_5 1000</m></li>
+          <li><m>\ln 27</m></li>
+          <li><m>\ln \frac{1}{3}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #5 -->
+    <exercise>
+      <statement>
+        <p>Prove the following laws of logarithms</p>
+        <ol>
+          <li><m>\log_b \left( \frac{r}{s} \right) = \log_b(r) - \log_b(s), r, s, b > 0, b \neq 1</m></li>
+          <li><m>\log_b \left( \frac{1}{a} \right) = -\log_b(a),  a \gt 0, b \neq 1</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #6 -->
+    <exercise>
+      <statement>
+        <p>Evaluate each of the following. .State any restrictions on values of the variables</p>
+        <ol>
+          <li><m>\log_2 2^5</m></li>
+          <li><m>7 ^ {\log_7 \left( a+3 \right)}</m></li>
+          <li><m>\log_{64} 8</m></li>
+          <li><m>\left( -3 \right)^{\log_{-3}5}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #7 -->
+    <exercise>
+      <statement>
+        <p>Solve the following equations for <m>x</m>. Use the definition of logarithm to rewrite each equation in a different form.  Give exact values (rather than decimal approximations) whenever possible</p>
+        <ol>
+          <li><m>\log_x 27 = -3</m></li>
+          <li><m>\log_{64} x = \frac{2}{3}</m></li>
+          <li><m>x = 5^{2 \cdot \log_5 6}</m></li>
+          <li><m>\log_6 x^2 = -2</m></li>
+          <li><m>\log_2 \left(x^2 + 5x + 10 \right) = 4</m></li>
+          <li><m>\log_x 9 = 2</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise #8 -->
+    <exercise>
+      <statement>
+        <p>Use the propoerites of logarithms and exponents to help you solve each of the following equations.</p>
+        <ol>
+          <li><m>\log_2 8 + \log_2 32 = \log_2 x</m></li>
+          <li><m>\log_2 8 - \log_2 32 = \log_2 x</m></li>
+          <li><m>\log_{10} 7 + \log_{10} 32 = \log_2 x</m></li>
+          <li><m>\log_6 \frac{1}{216} + \log_6 36 = \log_6 x</m></li>
+          <li><m>\log_8 \frac{1}{2} + \log_8 x = \log_8 32</m></li>
+          <li><m>\log_9 3 - \log_9 x = \log_9 \frac{1}{27}</m></li>
+          <li><m>\log_2 32 = 5 \cdot \log_2 x</m></li>
+          <li><m>\log_3 81^{1/4} = x \cdot \log_3 81</m></li>
+          <li><m>\log_4 x = 3 \cdot log_4 2</m></li>
+          <li><m>\log_5 \frac{1}{125} = -1 \cdot \log_5 x</m></li>
+          <li><m>\log_6 36 - \log_6 x = \log_6 6</m></li>
+          <li><m>\log_5 25 + \log_5 \frac{1}{125} = \log_5 x</m></li>
+          <li><m>\log_2 \frac{1}{8} + \log_2 x = \log_2 4</m></li>
+          <li><m>\log_2 8 ^ {1/3} = x \cdot \log_2 8</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+  </exercises>
+
+</section>

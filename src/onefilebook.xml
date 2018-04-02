@@ -56,7 +56,16 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
              x label style={at={(axis description cs:0.5,0)}, anchor=north},
              y label style={at={(axis description cs:0,.5)}, rotate=90, anchor=south},
              scaled y ticks=false,
-             }
+             /pgfplots/xlabel near ticks/.style={
+                /pgfplots/every axis x label/.style={
+                  at={(ticklabel cs:0.5)},anchor=near ticklabel
+                  }
+                },
+             /pgfplots/ylabel near ticks/.style={
+                /pgfplots/every axis y label/.style={
+                  at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel}
+                  }
+                }
           \usetikzlibrary{backgrounds}
           \usetikzlibrary{arrows,matrix}
           \usetikzlibrary{snakes}
@@ -100,106 +109,25 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
           </frontmatter>
          <!-- /frontmatter.xml -->
 
-         <chapter xml:id="chapter01" xmlns:xi="http://www.w3.org/2001/XInclude">
-       		<title>Data</title>
-       		<introduction>
-        			<p>Introduction to this chapter</p>
-       		</introduction>
+  <xi:include href="./chapter01.xml" />
 
-       		<section xml:id="chapter01-section01">
+  <xi:include href="./chapter02.xml" />
 
-       		</section>
-       	</chapter>
-
-        <chapter xml:id="chapter02" xmlns:xi="http://www.w3.org/2001/XInclude">
-      		<title>Transformations of Functions</title>
-      		<introduction>
-       			<p>Introduction to this chapter</p>
-      		</introduction>
-
-      		<section xml:id="chapter02-section01">
-
-      		</section>
-      	</chapter>
-
-        <chapter xml:id="chapter03" xmlns:xi="http://www.w3.org/2001/XInclude">
-      		<title>Combining Functions</title>
-      		<introduction>
-       			<p>Introduction to this chapter</p>
-      		</introduction>
-
-      		<section xml:id="chapter03-section01">
-
-      		</section>
-      	</chapter>
+  <xi:include href="./chapter03.xml" />
 
   <xi:include href="./chapter04.xml" />
 
-	<chapter xml:id="chapter05" xmlns:xi="http://www.w3.org/2001/XInclude">
-		<title>Logarithmic Functions</title>
-		<introduction>
- 			<p>Introduction to this chapter</p>
-		</introduction>
+  <xi:include href="./chapter05.xml" />
 
-		<section xml:id="chapter05-section01">
+  <xi:include href="./chapter06.xml" />
 
-		</section>
-	</chapter>
+  <xi:include href="./chapter07.xml" />
 
-  <chapter xml:id="chapter06" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Parametric Functions</title>
-    <introduction>
-      <p>Introduction to this chapter</p>
-    </introduction>
+  <xi:include href="./chapter08.xml" />
 
-    <section xml:id="chapter06-section01">
+  <xi:include href="./chapter09.xml" />
 
-    </section>
-  </chapter>
-
-  <chapter xml:id="chapter07" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Intro to Trigonometric Functions</title>
-    <introduction>
-      <p>Introduction to this chapter</p>
-    </introduction>
-
-    <section xml:id="chapter07-section01">
-
-    </section>
-  </chapter>
-
-  <chapter xml:id="chapter08" xmlns:xi="http://www.w3.org/2001/XInclude">
-		<title>More Trigonometric Functions</title>
-		<introduction>
- 			<p>Introduction to this chapter</p>
-		</introduction>
-
-		<section xml:id="chapter08-section01">
-
-		</section>
-	</chapter>
-
-  <chapter xml:id="chapter09" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Combinations of Functions</title>
-    <introduction>
-      <p>Introduction to this chapter</p>
-    </introduction>
-
-    <section xml:id="chapter09-section01">
-
-    </section>
-  </chapter>
-
-  <chapter xml:id="chapter10" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Matrices</title>
-    <introduction>
-      <p>Introduction to this chapter</p>
-    </introduction>
-
-    <section xml:id="chapter10-section01">
-
-    </section>
-  </chapter>
+  <xi:include href="./chapter10.xml" />
 
  </book>
 

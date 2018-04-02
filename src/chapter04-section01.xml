@@ -194,7 +194,7 @@
       <statement>
         <p>Modify the recursive  system  used in <xref ref="ibuprofen-example-one-dose" text="type-local"/> as appropriate to answer the following questions:
           <ol>
-            <li>Suppose Joan takes tables that contain 250 milligrams of ibuprofen.  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours? </li>
+            <li>Suppose Joan takes tablets that contain 250 milligrams of ibuprofen.  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours? </li>
             <li>Suppose Joan’s kidneys filter only <m>50\%</m> of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?</li>
           </ol>
         </p>
