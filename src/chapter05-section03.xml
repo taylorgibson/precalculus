@@ -74,14 +74,15 @@
               <![CDATA[
               \begin{tikzpicture}
                 \begin{axis}[
-                  xlabel = x,
-                  ylabel = f(x),
+                  xlabel = $x$,
+                  ylabel = $f(x)$,
                   ylabel near ticks,
                   xlabel near ticks,
                   xmin = 0,
+                  ymax = 1.3
                   ]
 
-                  \addplot [thick, blue, <->, mark=none, domain=0.1:15,samples=100] {log10(x)};
+                  \addplot [thick, blue, <->, mark=none, domain=0.001:15,samples=200] {log10(x)};
 
                   \addplot[only marks, color=magenta] coordinates {
                   (0.001,  -3)
@@ -100,6 +101,107 @@
 
     <p>The ordered pairs highlighted on the graph are all of the form <m>\left( a, \log(a) \right)</m>. Consider the pairs with the input and output interchanged: <m>(-3,0.001), (-2,0.01), (-1,0.1), (0,1), (1,10), (2,100), (3,1000)</m>. These new pairs are associated with the base <m>10</m> exponential function <m>g(x) = 10^x</m>.
     </p>
+
+    <figure>
+      <caption>Graph of <m>g(x) = 10^x</m></caption>
+
+      <image>
+        <latex-image-code>
+          <![CDATA[
+          \begin{tikzpicture}
+            \begin{axis}[
+              xlabel = $x$,
+              ylabel = $g(x)$,
+              ylabel near ticks,
+              xlabel near ticks,
+              xmin = -3,
+              xmax = 2,
+              ymin = -1,
+              ymax = 12,
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=-3:1.05,samples=100] {10^x};
+
+            \end{axis}
+          \end{tikzpicture}]]>
+        </latex-image-code>
+      </image>
+    </figure>
+
+    <p>Suppose a pair <m>\left(a, b \right)</m> is on the graph of <m>f(x)=\log \left( x \right)</m>: it must be true that <m>b = \log \left( a \right)</m>. But if <m>b = \log \left( a \right)</m>, then it is true that <m>a = 10^b</m>. When <m>a = 10^b</m>, then <m>g(b) = 10^b = a</m>, which implies that the pair <m>\left(a, b \right)</m> is on the graph of <m>g(x) = 10^x</m>.</p>
+
+    <p>These observations let us conclude that <m>f(x) = \log \left( x \right)</m> and <m>g(x) = 10^x</m> are inverse functions. For every point <m>\left( a, b \right)</m> on the grpah of <m>f(x) = \log \left( x\right)</m>, the pair <m>\left( b, a \right)</m> is on the graph of <m>g(x) = 10^x</m>. As you should expect, the composition of the functions <m>f(x)</m> and <m>g(x)</m> yields the identity function.
+      <md>
+        <mrow>f \left( g(x) \right) = \log \left( 10^x \right) = x</mrow>
+        <mrow>\text{and}</mrow>
+        <mrow>g \left( f(x) \right) = 10^{\log(x)} = x</mrow>
+      </md>
+    </p>
+
+    <p>In <xref ref="exponential-log-inverses" text="type-local" />we show the graphs of the exponential function <m>f(x) = e^x</m> and its inverse, <m>g(x) = \log_{e} \left( x \right) = \ln \left( x \right)</m>, which is obtained by reflecting the graph of <m>y = e^x</m> across the line <m>y = x</m>.
+    </p>
+
+    <figure xml:id="exponential-log-inverses">
+      <caption>Exponential and Logarithmic Functions as Inverses</caption>
+      <image>
+        <latex-image-code>
+          <![CDATA[
+          \begin{tikzpicture}
+            \begin{axis}[
+              ]
+
+              \addplot [thick, blue, <->, mark=none, domain=-3:1.05,samples=100] {e^x};
+              \addplot [thick, red, <->, mark=none, domain=0.049787:3,samples=100] {ln(x)};
+              \addplot [dashed, black, <->, mark=none, domain=-3:3,samples=100] {x};
+
+            \end{axis}
+          \end{tikzpicture}]]>
+        </latex-image-code>
+      </image>
+    </figure>
+
+    <p>The domain of our new logarithmic function is the same as the range of the exponential function, and the range of the logarithmic function is the domain of the exponential function. Thus, the logarithmic function has the positive real numbers as its domain and all real numbers as its range.</p>
+
+    <example>
+      <title></title>
+      <statement>
+        <p>Find the inverse of <m>f(x) = 10^x + 3</m>. Specify the domain and range of <m>f(x)</m> and <m>f^{-1}(x)</m>.</p>
+      </statement>
+      <solution>
+        <statement>
+          <p>The function <m>f(x)</m> is one-to-one with domain all real numbers and range <m>y > 3</m>. To find <m>f^{-1}(x)</m>, we first must folve for <m>x</m> in the equation <m>y = 10^x + 3</m> as follows:
+
+          <md>
+            <mrow>y \amp= 10^x + 3</mrow>
+            <mrow>y - 3 \amp= 10^x</mrow>
+            <mrow>\log_{10} \left( y - 3 \right) \amp= x</mrow>
+          </md>
+
+          Note that we had to subtract <m>3</m> from the right-hand size of the equation before using the definition of logarithm to isolate <m>x</m>. Now we can write <m>f^{-1}(x) = \log_{10} \left( x - 3 \right) = \log \left( x - 3 \right) </m>. The domain of <m>f^{-1}(x)</m> is the range of <m>f(x)</m>, or <m>x > 3</m>; the range of <m>f^{-1}(x)</m> is the domain of <m>f(x)</m>, or all real numbers. A graph of both functions is shown in <xref ref="exponential-log-inverses-example" text="type-local" />The graph of <m>y = \log \left( x - 3 \right)</m> is the reflection of the graph of <m>y = 10^x + 3</m> across the line <m>y = x</m>.
+          </p>
+
+          <figure xml:id="exponential-log-inverses-example">
+            <caption>Exponential and Logarithmic Functions as Inverses</caption>
+            <image>
+              <latex-image-code>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    ]
+
+                    \addplot [thick, blue, <->, mark=none, domain=-5:0.845098,samples=100] {10^x + 3};
+                    \addplot [thick, red, <->, mark=none, domain=3.00001:10,samples=300] {log10(x-3)};
+                    \addplot [dashed, black, <->, mark=none, domain=-5:10,samples=100] {x};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image-code>
+            </image>
+          </figure>
+
+        </statement>
+      </solution>
+    </example>
 
     </subsection>
 

@@ -1,6 +1,6 @@
 %**************************************%
 %*    Generated from PreTeXt source   *%
-%*    on 2018-04-02T16:45:36-04:00    *%
+%*    on 2018-06-20T16:22:40-04:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
@@ -251,7 +251,7 @@
 \author{Mathematics Department\\
 North Carolina School of Science and Mathematics
 }
-\date{April 2, 2018}
+\date{June 20, 2018}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -276,7 +276,7 @@ North Carolina School of Science and Mathematics
 {\Huge Contemporary Pre-Calculus Through Applications}\\[3\baselineskip]
 {\Large Mathematics Department}\\[0.5\baselineskip]
 {\Large North Carolina School of Science and Mathematics}\\[3\baselineskip]
-{\Large April 2, 2018}\\}
+{\Large June 20, 2018}\\}
 \clearpage
 %% end:   title page
 %% begin: copyright-page
@@ -3564,14 +3564,15 @@ this function pairs every positive \(x\)-value with the base \(10\) logarithm of
 \resizebox{0.5\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
-    xlabel = x,
-    ylabel = f(x),
+    xlabel = $x$,
+    ylabel = $f(x)$,
     ylabel near ticks,
     xlabel near ticks,
     xmin = 0,
+    ymax = 1.3
     ]
 
-    \addplot [thick, blue, <->, mark=none, domain=0.1:15,samples=100] {log10(x)};
+    \addplot [thick, blue, <->, mark=none, domain=0.001:15,samples=200] {log10(x)};
 
     \addplot[only marks, color=magenta] coordinates {
     (0.001,  -3)
@@ -3604,51 +3605,135 @@ this function pairs every positive \(x\)-value with the base \(10\) logarithm of
 \end{figure}
 \hypertarget{p-324}{}%
 The ordered pairs highlighted on the graph are all of the form \(\left( a, \log(a) \right)\). Consider the pairs with the input and output interchanged: \((-3,0.001), (-2,0.01), (-1,0.1), (0,1), (1,10), (2,100), (3,1000)\). These new pairs are associated with the base \(10\) exponential function \(g(x) = 10^x\).%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel = $x$,
+    ylabel = $g(x)$,
+    ylabel near ticks,
+    xlabel near ticks,
+    xmin = -3,
+    xmax = 2,
+    ymin = -1,
+    ymax = 12,
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-3:1.05,samples=100] {10^x};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Graph of \(g(x) = 10^x\)\label{figure-22}}
+\end{figure}
+\hypertarget{p-325}{}%
+Suppose a pair \(\left(a, b \right)\) is on the graph of \(f(x)=\log \left( x \right)\): it must be true that \(b = \log \left( a \right)\). But if \(b = \log \left( a \right)\), then it is true that \(a = 10^b\). When \(a = 10^b\), then \(g(b) = 10^b = a\), which implies that the pair \(\left(a, b \right)\) is on the graph of \(g(x) = 10^x\).%
+\par
+\hypertarget{p-326}{}%
+These observations let us conclude that \(f(x) = \log \left( x \right)\) and \(g(x) = 10^x\) are inverse functions. For every point \(\left( a, b \right)\) on the grpah of \(f(x) = \log \left( x\right)\), the pair \(\left( b, a \right)\) is on the graph of \(g(x) = 10^x\). As you should expect, the composition of the functions \(f(x)\) and \(g(x)\) yields the identity function.%
+\begin{gather*}
+f \left( g(x) \right) = \log \left( 10^x \right) = x\\
+\text{and}\\
+g \left( f(x) \right) = 10^{\log(x)} = x
+\end{gather*}
+%
+\par
+\hypertarget{p-327}{}%
+In \hyperref[exponential-log-inverses]{Figure~3}we show the graphs of the exponential function \(f(x) = e^x\) and its inverse, \(g(x) = \log_{e} \left( x \right) = \ln \left( x \right)\), which is obtained by reflecting the graph of \(y = e^x\) across the line \(y = x\).%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-3:1.05,samples=100] {e^x};
+    \addplot [thick, red, <->, mark=none, domain=0.049787:3,samples=100] {ln(x)};
+    \addplot [dashed, black, <->, mark=none, domain=-3:3,samples=100] {x};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Exponential and Logarithmic Functions as Inverses\label{exponential-log-inverses}}
+\end{figure}
+\hypertarget{p-328}{}%
+The domain of our new logarithmic function is the same as the range of the exponential function, and the range of the logarithmic function is the domain of the exponential function. Thus, the logarithmic function has the positive real numbers as its domain and all real numbers as its range.%
+\begin{example}[]\label{example-25}
+\hypertarget{p-329}{}%
+Find the inverse of \(f(x) = 10^x + 3\). Specify the domain and range of \(f(x)\) and \(f^{-1}(x)\).%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-25}{}\quad%
+\hypertarget{p-330}{}%
+The function \(f(x)\) is one-to-one with domain all real numbers and range \(y > 3\). To find \(f^{-1}(x)\), we first must folve for \(x\) in the equation \(y = 10^x + 3\) as follows:%
+\begin{align*}
+y \amp= 10^x + 3\\
+y - 3 \amp= 10^x\\
+\log_{10} \left( y - 3 \right) \amp= x
+\end{align*}
+Note that we had to subtract \(3\) from the right-hand size of the equation before using the definition of logarithm to isolate \(x\). Now we can write \(f^{-1}(x) = \log_{10} \left( x - 3 \right) = \log \left( x - 3 \right) \). The domain of \(f^{-1}(x)\) is the range of \(f(x)\), or \(x > 3\); the range of \(f^{-1}(x)\) is the domain of \(f(x)\), or all real numbers. A graph of both functions is shown in \hyperref[exponential-log-inverses-example]{Figure~5}The graph of \(y = \log \left( x - 3 \right)\) is the reflection of the graph of \(y = 10^x + 3\) across the line \(y = x\).%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-5:0.845098,samples=100] {10^x + 3};
+    \addplot [thick, red, <->, mark=none, domain=3.00001:10,samples=300] {log10(x-3)};
+    \addplot [dashed, black, <->, mark=none, domain=-5:10,samples=100] {x};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Exponential and Logarithmic Functions as Inverses\label{exponential-log-inverses-example}}
+\end{figure}
+\end{example}
 \typeout{************************************************}
 \typeout{Subsection 5.3.2 Compositions of Exponential and Logarithmic Functions}
 \typeout{************************************************}
 \subsection[{Compositions of Exponential and Logarithmic Functions}]{Compositions of Exponential and Logarithmic Functions}\label{subsection-3}
-\hypertarget{p-325}{}%
+\hypertarget{p-331}{}%
 %
 \typeout{************************************************}
 \typeout{Subsection 5.3.3 Graphing Logarithm Functions}
 \typeout{************************************************}
 \subsection[{Graphing Logarithm Functions}]{Graphing Logarithm Functions}\label{subsection-4}
-\hypertarget{p-326}{}%
+\hypertarget{p-332}{}%
 %
 \typeout{************************************************}
 \typeout{Exercises 5.3.4 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-14}
 \begin{exerciselist}
-\item[1.]\hypertarget{exercise-91}{}\hypertarget{p-327}{}%
+\item[1.]\hypertarget{exercise-91}{}\hypertarget{p-333}{}%
 %
 \par\smallskip
-\item[2.]\hypertarget{exercise-92}{}\hypertarget{p-328}{}%
+\item[2.]\hypertarget{exercise-92}{}\hypertarget{p-334}{}%
 %
 \par\smallskip
-\item[3.]\hypertarget{exercise-93}{}\hypertarget{p-329}{}%
+\item[3.]\hypertarget{exercise-93}{}\hypertarget{p-335}{}%
 %
 \par\smallskip
-\item[4.]\hypertarget{exercise-94}{}\hypertarget{p-330}{}%
+\item[4.]\hypertarget{exercise-94}{}\hypertarget{p-336}{}%
 %
 \par\smallskip
-\item[5.]\hypertarget{exercise-95}{}\hypertarget{p-331}{}%
+\item[5.]\hypertarget{exercise-95}{}\hypertarget{p-337}{}%
 %
 \par\smallskip
-\item[6.]\hypertarget{exercise-96}{}\hypertarget{p-332}{}%
+\item[6.]\hypertarget{exercise-96}{}\hypertarget{p-338}{}%
 %
 \par\smallskip
-\item[7.]\hypertarget{exercise-97}{}\hypertarget{p-333}{}%
+\item[7.]\hypertarget{exercise-97}{}\hypertarget{p-339}{}%
 %
 \par\smallskip
-\item[8.]\hypertarget{exercise-98}{}\hypertarget{p-334}{}%
+\item[8.]\hypertarget{exercise-98}{}\hypertarget{p-340}{}%
 %
 \par\smallskip
-\item[9.]\hypertarget{exercise-99}{}\hypertarget{p-335}{}%
+\item[9.]\hypertarget{exercise-99}{}\hypertarget{p-341}{}%
 %
 \par\smallskip
-\item[10.]\hypertarget{exercise-100}{}\hypertarget{p-336}{}%
+\item[10.]\hypertarget{exercise-100}{}\hypertarget{p-342}{}%
 %
 \par\smallskip
 \end{exerciselist}
@@ -3656,7 +3741,7 @@ The ordered pairs highlighted on the graph are all of the form \(\left( a, \log(
 \typeout{Chapter 6 Parametric Functions}
 \typeout{************************************************}
 \chapter[{Parametric Functions}]{Parametric Functions}\label{chapter06}
-\hypertarget{p-337}{}%
+\hypertarget{p-343}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 6.1 }
@@ -3666,7 +3751,7 @@ Introduction to this chapter%
 \typeout{Chapter 7 Intro to Trigonometric Functions}
 \typeout{************************************************}
 \chapter[{Intro to Trigonometric Functions}]{Intro to Trigonometric Functions}\label{chapter07}
-\hypertarget{p-338}{}%
+\hypertarget{p-344}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 7.1 }
@@ -3676,7 +3761,7 @@ Introduction to this chapter%
 \typeout{Chapter 8 More Trigonometric Functions}
 \typeout{************************************************}
 \chapter[{More Trigonometric Functions}]{More Trigonometric Functions}\label{chapter08}
-\hypertarget{p-339}{}%
+\hypertarget{p-345}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 8.1 }
@@ -3686,7 +3771,7 @@ Introduction to this chapter%
 \typeout{Chapter 9 Combinations of Functions}
 \typeout{************************************************}
 \chapter[{Combinations of Functions}]{Combinations of Functions}\label{chapter09}
-\hypertarget{p-340}{}%
+\hypertarget{p-346}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 9.1 }
@@ -3696,7 +3781,7 @@ Introduction to this chapter%
 \typeout{Chapter 10 Matrices}
 \typeout{************************************************}
 \chapter[{Matrices}]{Matrices}\label{chapter10}
-\hypertarget{p-341}{}%
+\hypertarget{p-347}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 10.1 }
