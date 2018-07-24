@@ -14,7 +14,7 @@
     <caption>Graph of the functions <m>f(x)=e^x</m> and <m>g(x)=2^x</m>,  and of <m>y=3^x</m>, <m>y=4^x</m>, and <m>y=10^x</m>.</caption>
     <sidebyside widths ="50% 50%">
       <image xml:id="ex-and-2x">
-        <latex-image-code>
+        <latex-image>
           <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
           <![CDATA[
           \begin{tikzpicture}
@@ -37,11 +37,11 @@
 
           \end{axis}
           \end{tikzpicture}]]>
-        </latex-image-code>
+        </latex-image>
       </image>
 
       <image xml:id="three-exponentials">
-        <latex-image-code>
+        <latex-image>
           <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
           <![CDATA[
           \begin{tikzpicture}
@@ -65,7 +65,7 @@
 
           \end{axis}
           \end{tikzpicture}]]>
-        </latex-image-code>
+        </latex-image>
       </image>
     </sidebyside>
   </figure>
@@ -88,7 +88,7 @@
           <figure xml:id="figure-hreflection-of-3x">
             <caption><m>h(x) = 3^x</m> and <m>h(-x) = 3^{-x}</m></caption>
             <image xml:id="hreflection-of-3x">
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -111,7 +111,7 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </figure>
           Recall from Chapter 2 that the graph of <m>h(-x)</m> is the reflection about the <m>y</m>-axis of the graph of <m>h(x)</m>. Thus the graph of the function <m>f(x)=3^{-x}</m> is the reflection of the graph of <m>y=3^x</m> about the <m>y</m>-axis.  The graph of <m>f(x)=3^{-x}</m> is shown in <xref ref="figure-hreflection-of-3x" text="type-local" />; it is decreasing, contains the points <m>(0,1)</m> and <m>(-1,3)</m> and approaches the asumptote <m>y=0</m> as <m>x</m> approaches infinity.
@@ -119,7 +119,7 @@
           <figure xml:id="figure-graphofonethirdtothex">
             <caption>Graph of <m>g(x)=(\frac{1}{3})^x</m></caption>
             <image xml:id="graphofonethirdtothex">
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -140,7 +140,7 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </figure>
           <xref ref="figure-graphofonethirdtothex" text="type-local" /> shows the graph of <m>g(x)=(\frac{1}{3})^x</m>. This is an exponential function with base <m>\frac{1}{3}</m>.  The graph contains the points <m>(0,1)</m>  and <m>(1,1/3)</m> .  Because the base is less than <m>1</m>, the graph is decreasing. To understand why <m>f(x)=g(x)</m> for all <m>x</m>, note that the rules of exponents tell us that  <m>(\frac{1}{3})^x = ( 3^{-1} )^x = 3^{-1 \cdot x} = 3^{-x}</m>. Exponential functions like <m>g(x)=(\frac{1}{3})^x</m>, with a base between zero and one, and functions like <m>f(x)=3^{-x}</m>, with a base greater than one and a negative coefficient in the exponent, are both used to model <em>exponential decay</em>.
@@ -162,7 +162,7 @@
           <caption><m>g(x)=4 \cdot 2^x</m> and <m>k(x)=2^{x+2}</m></caption>
           <sidebyside widths ="50% 50%">
             <image xml:id="fourex-and-2x">
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -202,11 +202,11 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
 
             <image xml:id="twoexplustwo">
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -246,7 +246,7 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </sidebyside>
         </figure>
@@ -270,7 +270,7 @@
         <figure xml:id="figure-tumor-graph">
           <caption>Graph of <m>s = 0.32e^{0.11d}</m></caption>
           <image xml:id="tumor-graph">
-            <latex-image-code>
+            <latex-image>
               <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
               <![CDATA[
               \begin{tikzpicture}
@@ -312,7 +312,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </figure>
 
@@ -336,7 +336,7 @@
         <figure xml:id="figure-cooling-coffee">
           <caption>Graph of <m>y= 61e^{-x}+24</m></caption>
           <image xml:id="cooling-coffee">
-            <latex-image-code>
+            <latex-image>
               <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
               <![CDATA[
               \begin{tikzpicture}
@@ -360,7 +360,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </figure>
 
@@ -383,7 +383,7 @@
         <figure xml:id="figure-exp-comp-pt1">
           <caption>The graph of <m>g(x)= 35e^{-0.3x}</m></caption>
           <image xml:id="exp-comp-pt1">
-            <latex-image-code>
+            <latex-image>
               <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
               <![CDATA[
               \begin{tikzpicture}
@@ -423,7 +423,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </figure>
 
@@ -433,7 +433,7 @@
         <figure xml:id="figure-exp-comp-pt2">
           <caption>The graph of <m> y = -g(x) = -35e^{-0.3x}</m></caption>
           <image xml:id="exp-comp-pt2">
-            <latex-image-code>
+            <latex-image>
               <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
               <![CDATA[
               \begin{tikzpicture}
@@ -473,7 +473,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </figure>
 
@@ -483,7 +483,7 @@
         <figure xml:id="figure-exp-comp-pt3">
           <caption>Graph of <m>f(x) = 45 - 35e^{-0.3x}</m></caption>
           <image xml:id="exp-comp-pt3">
-            <latex-image-code>
+            <latex-image>
               <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
               <![CDATA[
               \begin{tikzpicture}
@@ -525,7 +525,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </figure>
 
@@ -554,7 +554,7 @@
             <caption>Graph of the functions <m>f(x)=e^x</m> and <m>g(x)=2^x</m>,  and of <m>y=3^x</m>, <m>y=4^x</m>, and <m>y=10^x</m>.</caption>
             <sidebyside widths ="50% 50%">
               <image xml:id="exponential-composition-pt1">
-                <latex-image-code>
+                <latex-image>
                   <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                   <![CDATA[
                   \begin{tikzpicture}
@@ -578,11 +578,11 @@
 
                   \end{axis}
                   \end{tikzpicture}]]>
-                </latex-image-code>
+                </latex-image>
               </image>
 
               <image xml:id="exponential-composition-pt2">
-                <latex-image-code>
+                <latex-image>
                   <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                   <![CDATA[
                   \begin{tikzpicture}
@@ -604,7 +604,7 @@
 
                   \end{axis}
                   \end{tikzpicture}]]>
-                </latex-image-code>
+                </latex-image>
               </image>
             </sidebyside>
           </figure>
@@ -618,7 +618,7 @@
           <figure xml:id="figure-exp-recip">
             <caption>Graph of <m>f(x) = 45 - 35e^{-0.3x}</m></caption>
             <image xml:id="exp-recip">
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -660,7 +660,7 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </figure>
         </p>

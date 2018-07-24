@@ -54,7 +54,7 @@
     <caption>Loan Ammoritization</caption>
     <sidebyside widths ="30% 70%">
       <image xml:id="table-loan-balance">
-        <latex-image-code>
+        <latex-image>
           <![CDATA[
           \pgfplotstabletypeset[
           col sep=comma,
@@ -66,11 +66,11 @@
           columns/1/.style={string type, column name=Loan Balance},
           ]{data-loan-balance-table.csv}
           ]]>
-        </latex-image-code>
+        </latex-image>
       </image>
 
       <image xml:id="plot-loan-balance">
-        <latex-image-code>
+        <latex-image>
           <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
           <![CDATA[
           \begin{tikzpicture}
@@ -92,7 +92,7 @@
 
           \end{axis}
           \end{tikzpicture}]]>
-        </latex-image-code>
+        </latex-image>
       </image>
     </sidebyside>
   </figure>

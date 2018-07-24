@@ -174,7 +174,7 @@
           <caption>Mg of Potassium Over Time: Discrete and Continuous Models</caption>
           <sidebyside widths ="50% 50%">
             <image xml:id="plot-discrete-p42">
-              <latex-image-code>
+              <latex-image>
                 <![CDATA[
                 \begin{tikzpicture}
                 \begin{axis}[
@@ -195,11 +195,11 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
 
             <image xml:id="plot-continuous-p42">
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -221,7 +221,7 @@
 
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </sidebyside>
         </figure>
@@ -238,23 +238,23 @@
     <exercise>
       <statement>
         <sidebyside widths="50% 40%" margins="auto">
-          <paragraphs>
+          <stack>
             <p>When a basketball is released and drops to a hard surface, it's path looks something like what is shown in the photo. Each time that it bounces, it rebounds to <m>75\%</m> of the height from which it was released (assuming that the ball is correctly inflated.) If a ball is dropped from <m>3</m> meters, we can write the recursive system:
               <md>
                 <mrow>H_0=3, H_n = 0.75 H_{n-1}</mrow>
               </md>
             </p>
-          </paragraphs>
+          </stack>
           <image source="src/images/bouncing_ball_strobe_edit.jpg" />
         </sidebyside>
 
         <sidebyside widths="50% 40%" margins="auto">
-          <paragraphs>
+          <stack>
             <p>The graph shows the rebound height on the vertical axis and bounce number on the horizontal. Sketch a graph of the associated explicit function <m>h(t)=3(0.75)^t</m> where <m>h(t)</m> is the height at time <m>t</m>. Explain how the graph you sketch is related to the discrete graph that is shown.</p>
-          </paragraphs>
+          </stack>
 
           <image xml:id="plot-basketball-bounce">
-            <latex-image-code>
+            <latex-image>
               <![CDATA[
               \begin{tikzpicture}
               \begin{axis}[
@@ -284,7 +284,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </sidebyside>
 
@@ -298,7 +298,7 @@
         <figure>
           <caption></caption>
           <image xml:id="plot-jeans-class-practice">
-            <latex-image-code>
+            <latex-image>
               <![CDATA[
               \begin{tikzpicture}
               \begin{axis}[
@@ -335,7 +335,7 @@
 
               \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </figure>
       </statement>

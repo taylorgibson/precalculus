@@ -50,7 +50,7 @@
   <figure xml:id="plot-math-enrollment-raw">
     <caption>Scatterplot of mathematics class enrollment</caption>
     <image>
-      <latex-image-code>
+      <latex-image>
         <![CDATA[
         \begin{tikzpicture}
         \begin{axis}[
@@ -75,7 +75,7 @@
 
         \end{axis}
         \end{tikzpicture}]]>
-      </latex-image-code>
+      </latex-image>
     </image>
   </figure>
 
@@ -84,7 +84,7 @@
   <figure xml:id="plot-math-enrollment-log1">
     <caption>Enrollment with vertical scale using powers of 10</caption>
     <image>
-      <latex-image-code>
+      <latex-image>
         <![CDATA[
         \begin{tikzpicture}
           \begin{semilogyaxis}[
@@ -106,7 +106,7 @@
 
           \end{semilogyaxis}
         \end{tikzpicture}]]>
-      </latex-image-code>
+      </latex-image>
     </image>
   </figure>
   <p>The alteration of the scale on the vertical axis was a standard technique for graphing exponential data sets before the age of calculator and computer technology. Data were plotted on special graph paper which had the vertical scale re-written as powers of <m>10</m>. Modern technology allows us to adjust the data instead of the coordinate system so that the <m>y</m>-value of the data represents the exponent on the base used in the scale on the <m>y</m>-axis. This eliminates the need for special graph paper. The process of adjusting the data is called <em>re-expression</em></p>
@@ -157,7 +157,7 @@
         </tabular>
 
       <image>
-        <latex-image-code>
+        <latex-image>
           <![CDATA[
           \begin{tikzpicture}
             \begin{axis}[
@@ -179,7 +179,7 @@
 
             \end{axis}
           \end{tikzpicture}]]>
-        </latex-image-code>
+        </latex-image>
       </image>
     </sidebyside>
   </figure>

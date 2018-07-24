@@ -44,7 +44,7 @@
               <caption>Amount of drug in Joan's body (Single 200 mg dose)</caption>
               <sidebyside widths ="20% 65%">
                 <image xml:id="table-ibuprofen-one-dose">
-                  <latex-image-code>
+                  <latex-image>
                     <![CDATA[
                     \pgfplotstabletypeset[
                     col sep=comma,
@@ -56,12 +56,12 @@
                     columns/1/.style={string type, column name={$D_n$}},
                     ]{data-single-dose-ibuprofen.csv}
                     ]]>
-                  </latex-image-code>
+                  </latex-image>
                 </image>
                 <!-- -->
                 <image xml:id="plot-ibuprofen-one-dose">
                   <description>Amount of drug in Joan's body (Single 200 mg dose)</description>
-                  <latex-image-code>
+                  <latex-image>
                     <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                     <![CDATA[
                     \begin{tikzpicture}
@@ -80,7 +80,7 @@
                     \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-single-dose-ibuprofen.csv};
                     \end{axis}
                     \end{tikzpicture}]]>
-                  </latex-image-code>
+                  </latex-image>
                 </image>
               </sidebyside>
             </figure>
@@ -140,7 +140,7 @@
           <sidebyside widths ="20% 65%">
             <image>
               <description>Table showing amount of drug in Joan's body</description>
-              <latex-image-code>
+              <latex-image>
                 <![CDATA[
                 \pgfplotstabletypeset[
                 col sep=comma,
@@ -152,13 +152,13 @@
                 columns/1/.style={string type, column name={$D_n$}},
                 ]{data-multi-dose-ibuprofen.csv}
                 ]]>
-              </latex-image-code>
+              </latex-image>
             </image>
 
             <!-- -->
             <image>
               <description>Plot of data showing amount of drug in Joan's body</description>
-              <latex-image-code>
+              <latex-image>
                 <!-- CDATA prevents certain LaTeX code from being interpreted as xml -->
                 <![CDATA[
                 \begin{tikzpicture}
@@ -177,7 +177,7 @@
                 \addplot table [only marks, x index = {0}, y index = {1}, col sep=comma]{data-multi-dose-ibuprofen.csv};
                 \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </sidebyside>
         </figure>

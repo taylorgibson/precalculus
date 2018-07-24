@@ -70,7 +70,7 @@
           </tabular>
 
           <image>
-            <latex-image-code>
+            <latex-image>
               <![CDATA[
               \begin{tikzpicture}
                 \begin{axis}[
@@ -94,7 +94,7 @@
 
                 \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </sidebyside>
       </figure>
@@ -106,7 +106,7 @@
       <caption>Graph of <m>g(x) = 10^x</m></caption>
 
       <image>
-        <latex-image-code>
+        <latex-image>
           <![CDATA[
           \begin{tikzpicture}
             \begin{axis}[
@@ -124,7 +124,7 @@
 
             \end{axis}
           \end{tikzpicture}]]>
-        </latex-image-code>
+        </latex-image>
       </image>
     </figure>
 
@@ -144,7 +144,7 @@
     <figure xml:id="exponential-log-inverses">
       <caption>Exponential and Logarithmic Functions as Inverses</caption>
       <image>
-        <latex-image-code>
+        <latex-image>
           <![CDATA[
           \begin{tikzpicture}
             \begin{axis}[
@@ -156,7 +156,7 @@
 
             \end{axis}
           \end{tikzpicture}]]>
-        </latex-image-code>
+        </latex-image>
       </image>
     </figure>
 
@@ -183,7 +183,7 @@
           <figure xml:id="exponential-log-inverses-example">
             <caption>Exponential and Logarithmic Functions as Inverses</caption>
             <image>
-              <latex-image-code>
+              <latex-image>
                 <![CDATA[
                 \begin{tikzpicture}
                   \begin{axis}[
@@ -195,7 +195,7 @@
 
                   \end{axis}
                 \end{tikzpicture}]]>
-              </latex-image-code>
+              </latex-image>
             </image>
           </figure>
 
@@ -254,7 +254,7 @@
         <caption>Exponential and Logarithmic Functions with Base 3 and 10</caption>
         <sidebyside widths = "50% 50%">
           <image>
-            <latex-image-code>
+            <latex-image>
               <![CDATA[
               \begin{tikzpicture}
                 \begin{axis}[
@@ -277,10 +277,10 @@
 
                 \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
           <image>
-            <latex-image-code>
+            <latex-image>
               <![CDATA[
               \begin{tikzpicture}
                 \begin{axis}[
@@ -303,7 +303,7 @@
 
                 \end{axis}
               \end{tikzpicture}]]>
-            </latex-image-code>
+            </latex-image>
           </image>
         </sidebyside>
       </figure>
@@ -316,7 +316,7 @@
       <figure xml:id="graph-of-exp-log-base-3">
         <caption>Graphs of <m>g(x) = \left( \frac{1}{3} \right) ^ x</m> and <m>g^{-1} (x) = \log_{\frac{1}{3}} (x)</m></caption>
         <image>
-          <latex-image-code>
+          <latex-image>
             <![CDATA[
             \begin{tikzpicture}
               \begin{axis}[
@@ -339,7 +339,7 @@
 
               \end{axis}
             \end{tikzpicture}]]>
-          </latex-image-code>
+          </latex-image>
         </image>
       </figure>
       <p>
@@ -373,7 +373,7 @@
             <figure xml:id="natural-log-plus-one">
               <caption>Graph of <m>f(x) = \ln (x) +1 = \ln \left( e \cdot x \right)</m></caption>
               <image>
-                <latex-image-code>
+                <latex-image>
                   <![CDATA[
                   \begin{tikzpicture}
                     \begin{axis}[
@@ -395,7 +395,7 @@
 
                     \end{axis}
                   \end{tikzpicture}]]>
-                </latex-image-code>
+                </latex-image>
               </image>
             </figure>
           </statement>
@@ -417,7 +417,7 @@
               <caption>Graphs of <m>f(x) = \log_2 \left( x^2 \right)</m> and <m>g(x) = 2 \log_2 \left( x \right)</m></caption>
               <sidebyside>
                 <image>
-                  <latex-image-code>
+                  <latex-image>
                     <![CDATA[
                     \begin{tikzpicture}
                       \begin{axis}[
@@ -440,11 +440,11 @@
 
                       \end{axis}
                     \end{tikzpicture}]]>
-                  </latex-image-code>
+                  </latex-image>
                 </image>
 
                 <image>
-                  <latex-image-code>
+                  <latex-image>
                     <![CDATA[
                     \begin{tikzpicture}
                       \begin{axis}[
@@ -466,7 +466,7 @@
 
                       \end{axis}
                     \end{tikzpicture}]]>
-                  </latex-image-code>
+                  </latex-image>
                 </image>
               </sidebyside>
             </figure>
@@ -488,7 +488,7 @@
             <figure xml:id="log-composition-just-quad">
               <caption>Graph of <m>h(x) = x^2 -3x - 4</m></caption>
               <image>
-                <latex-image-code>
+                <latex-image>
                   <![CDATA[
                   \begin{tikzpicture}
                     \begin{axis}[
@@ -510,7 +510,7 @@
 
                     \end{axis}
                   \end{tikzpicture}]]>
-                </latex-image-code>
+                </latex-image>
               </image>
             </figure>
             <p>
@@ -519,7 +519,7 @@
             <figure xml:id="log-composition">
               <caption>Graph of <m>f(x) = \ln \left( x^2 -3x - 4 \right)</m> and <m>h(x) = x^2 -3x - 4</m></caption>
               <image>
-                <latex-image-code>
+                <latex-image>
                   <![CDATA[
                   \begin{tikzpicture}
                     \begin{axis}[
@@ -545,7 +545,7 @@
 
                     \end{axis}
                   \end{tikzpicture}]]>
-                </latex-image-code>
+                </latex-image>
               </image>
             </figure>
           </statement>

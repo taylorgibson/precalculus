@@ -1,12 +1,36 @@
 %**************************************%
 %*    Generated from PreTeXt source   *%
-%*    on 2018-07-24T15:11:20-04:00    *%
+%*    on 2018-07-24T15:26:34-04:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
 %**************************************%
 \documentclass[10pt,]{book}
 %% Custom Preamble Entries, early (use latex.preamble.early)
+%% Default LaTeX packages
+%%   1.  always employed (or nearly so) for some purpose, or
+%%   2.  a stylewriter may assume their presence
+\usepackage{geometry}
+%% Some aspects of the preamble are conditional,
+%% the LaTeX engine is one such determinant
+\usepackage{ifthen}
+\usepackage{ifxetex,ifluatex}
+%% Raster graphics inclusion
+\usepackage{graphicx}
+%% Colored boxes, and much more, though mostly styling
+%% skins library provides "enhanced" skin, employing tikzpicture
+%% boxes may be configured as "breakable" or "unbreakable"
+%% "raster" controls grids of boxes, aka side-by-side
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{raster}
+%% xparse allows the construction of more robust commands,
+%% this is a necessity for isolating styling and behavior
+%% The tcolorbox library of the same name loads the base library
+\tcbuselibrary{xparse}
+%% Hyperref should be here, but likes to be loaded late
+%%
 %% Inline math delimiters, \(, \), need to be robust
 %% 2016-01-31:  latexrelease.sty  supersedes  fixltx2e.sty
 %% If  latexrelease.sty  exists, bugfix is in kernel
@@ -18,8 +42,6 @@
 %% See Bringhurst 2.1.1 on measure for recommendations
 %% 75 characters per line (count spaces, punctuation) is target
 %% which is the upper limit of Bringhurst's recommendations
-%% Load geometry package to allow page margin adjustments
-\usepackage{geometry}
 \geometry{letterpaper,total={340pt,9.0in}}
 %% Custom Page Layout Adjustments (use latex.geometry)
 \geometry{paperheight=11in, paperwidth=8.5in, top=0.75in, bottom=0.75in, left=1.5in, right=1.5in}
@@ -27,8 +49,6 @@
 %% The following provides engine-specific capabilities
 %% Generally, xelatex and lualatex will do better languages other than US English
 %% You can pick from the conditional if you will only ever use one engine
-\usepackage{ifthen}
-\usepackage{ifxetex,ifluatex}
 \ifthenelse{\boolean{xetex} \or \boolean{luatex}}{%
 %% begin: xelatex and lualatex-specific configuration
 %% fontspec package will make Latin Modern (lmodern) the default font
@@ -69,8 +89,7 @@
 \setcounter{MaxMatrixCols}{30}
 %%
 %% Color support, xcolor package
-%% Always loaded.  Used for:
-%% mdframed boxes, add/delete text, author tools
+%% Always loaded, for: add/delete text, author tools
 \PassOptionsToPackage{usenames,dvipsnames,svgnames,table}{xcolor}
 \usepackage{xcolor}
 %%
@@ -84,36 +103,109 @@
 %% removing this command may make some cross-references ambiguous
 %% The precursor variable $numbering-maxlevel is checked for consistency in the common XSL file
 \setcounter{secnumdepth}{3}
-%% mdframed environments use a tikz frame method
-\usepackage{tikz}%% Environments with amsthm package
-%% Theorem-like environments in "plain" style, with or without proof
+%% begin: General AMS environment setup
+%% Environments built with amsthm package
 \usepackage{amsthm}
-\theoremstyle{plain}
 %% Numbering for Theorems, Conjectures, Examples, Figures, etc
 %% Controlled by  numbering.theorems.level  processing parameter
-%% Always need a theorem environment to set base numbering scheme
-%% even if document has no theorems (but has other environments)
-\newtheorem{theorem}{Theorem}[section]
-%% Only variants actually used in document appear here
-%% Style is like a theorem, and for statements without proofs
 %% Numbering: all theorem-like numbered consecutively
 %% i.e. Corollary 4.3 follows Theorem 4.2
-%% Definition-like environments, normal text
-%% Numbering is in sync with theorems, etc
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-%% Example-like environments, normal text
-%% Numbering is in sync with theorems, etc
-\theoremstyle{definition}
-\newtheorem{example}[theorem]{Example}
-%% Package for breakable highlight boxes
-\usepackage[framemethod=tikz]{mdframed}
+%% Always need some theorem environment to set base numbering scheme
+%% even if document has no theorems (but has other environments)
+%% Create a never-used style first, always
+%% simply to provide a global counter to use, namely "cthm"
+\newtheorem{cthm}{BadTheoremStringName}[section]
+%% end: General AMS environment setup
+%% begin: environments with italicized bodies, theorems and similar
+%% Style is like a theorem, and for statements without proofs
+%% Theorem-like environments in modified "plain" style
+%% We manage the head, do not adjust vertical spacing
+%% Thus "space after theorem head" is necessary
+%% This provides an automatic period after the number
+\newtheoremstyle{ptxplainnotitle}
+  {}% space above
+  {}% space below
+  {\itshape}% body font
+  {}% indent amount
+  {\bfseries}% theorem head font
+  {.}% punctuation after theorem head
+  {0.5em}% space after theorem head
+  {}% theorem head specification
+%% We now manage punctuation on-sight, elsewhere,
+%% assuming non-trivial content inside a "title"
+\newtheoremstyle{ptxplaintitle}
+  {}% space above
+  {}% space below
+  {\itshape}% body font
+  {}% indent amount
+  {\bfseries}% theorem head font
+  {}% punctuation after theorem head
+  {0.5em}% space after theorem head
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}% theorem head specification
+%% Only variants actually used in document appear here
+%% Template eventually creates an environment of the given name
+%% No arguments => Theorem 2.6. via "notitle" style variant
+%% One optional argument => Theorem 2.6 Fantastic! via "title" style variant
+%% AMS proof environment is basically fine as-is and special treatment
+%% would certainly interfere with the functioning of \qed, etc.
+%% So we simply localize the default heading
+%% Redefinition of the "proof" environment is to cause a long alternate
+%% title to line-break appropriately.  Code is cut verbatim, by suggestion,
+%% from "Using the amsthm Package" Version 2.20.3, September 2017
+%% end: environments with italicized bodies, theorems and similar
+%% begin: environments with normal bodies, examples, etc.
+%% Other environments go in modified "definition" style
+%% Similar to above
+\newtheoremstyle{ptxdefinitionnotitle}
+  {}% space above
+  {}% space below
+  {}% body font
+  {}% indent amount
+  {\bfseries}% theorem head font
+  {.}% punctuation after theorem head
+  {0.5em}% space after theorem head
+  {\thmname{#1}\thmnumber{ #2}}% theorem head specification
+\newtheoremstyle{ptxdefinitiontitle}
+  {}% space above
+  {}% space below
+  {}% body font
+  {}% indent amount
+  {\bfseries}% theorem head font
+  {}% punctuation after theorem head
+  {0.5em}% space after theorem head
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ #3}}% theorem head specification
+\theoremstyle{ptxdefinitionnotitle}
+\newtheorem{definitionnotitle}[cthm]{Definition}
+\theoremstyle{ptxdefinitiontitle}
+\newtheorem{definitiontitle}[cthm]{Definition}
+\NewDocumentEnvironment{definition}{o}
+  {\IfValueTF{#1}{\begin{definitiontitle}[#1]}{\begin{definitionnotitle}}}
+  {\IfValueTF{#1}{\end{definitiontitle}}{\end{definitionnotitle}}}
+\theoremstyle{ptxdefinitionnotitle}
+\newtheorem{examplenotitle}[cthm]{Example}
+\theoremstyle{ptxdefinitiontitle}
+\newtheorem{exampletitle}[cthm]{Example}
+\NewDocumentEnvironment{example}{o}
+  {\IfValueTF{#1}{\begin{exampletitle}[#1]}{\begin{examplenotitle}}}
+  {\IfValueTF{#1}{\end{exampletitle}}{\end{examplenotitle}}}
+%% An inline exercise is like other environments
+\theoremstyle{ptxdefinitionnotitle}
+\newtheorem{inlineexercisenotitle}[cthm]{Checkpoint}
+\theoremstyle{ptxdefinitiontitle}
+\newtheorem{inlineexercisetitle}[cthm]{Checkpoint}
+\NewDocumentEnvironment{inlineexercise}{o}
+  {\IfValueTF{#1}{\begin{inlineexercisetitle}[#1]}{\begin{inlineexercisenotitle}}}
+  {\IfValueTF{#1}{\end{inlineexercisetitle}}{\end{inlineexercisenotitle}}}
+%% end: environments with normal bodies, examples, etc.
+%% Divisional exercises are rendered as faux list items
+%% with hard-coded numbers as arguments, not as LaTeX environments
+\NewDocumentEnvironment{divisionexercise}{mo}
+  {\textbf{#1}.\IfValueT{#2}{\ \textbf{#2}}\quad}
+  {\par\smallskip\noindent}
 %% named list environment and style
-\newenvironment{namedlistcontent}{\mdfsetup{leftmargin=3ex,rightmargin=3ex,linecolor=black,}%
-\begin{mdframed}}{\end{mdframed}}
-%% Numbering for inline exercises is in sync with theorems, normal text
-\theoremstyle{definition}
-\newtheorem{exercise}[theorem]{Exercise}
+\newtcolorbox{namedlistcontent}
+  {breakable, skin=enhanced, sharp corners, colback=white, colframe=black,
+   boxrule=0.15ex, left skip=3ex, right skip=3ex}
 %% Localize LaTeX supplied names (possibly none)
 \renewcommand*{\chaptername}{Chapter}
 %% Equation Numbering
@@ -167,14 +259,14 @@
 \captionsetup[figure]{labelfont=bf}
 %% http://tex.stackexchange.com/questions/16195
 \makeatletter
-\let\c@figure\c@theorem
+\let\c@figure\c@cthm
 \makeatother
 %% Adjust stock table environment so that it no longer floats
 \SetupFloatingEnvironment{table}{fileext=lot,placement={H},within=section,name=Table}
 \captionsetup[table]{labelfont=bf}
 %% http://tex.stackexchange.com/questions/16195
 \makeatletter
-\let\c@table\c@theorem
+\let\c@table\c@cthm
 \makeatother
 %% Create "named list" environment to hold lists with captions
 %% We do not use a floating environment, so list can page-break
@@ -184,25 +276,47 @@
 \captionsetup[namedlistcap]{labelfont=bf,aboveskip=1.0ex,belowskip=\baselineskip}
 %% http://tex.stackexchange.com/questions/16195
 \makeatletter
-\let\c@namedlistcap\c@theorem
+\let\c@namedlistcap\c@cthm
 \makeatother
 %% Footnote Numbering
 %% We reset the footnote counter, as given by numbering.footnotes.level
 \makeatletter\@addtoreset{footnote}{section}\makeatother
-%% Raster graphics inclusion, wrapped figures in paragraphs
-%% \resizebox sometimes used for images in side-by-side layout
-\usepackage{graphicx}
-%%
-%% More flexible list management, esp. for references and exercises
+%% More flexible list management, esp. for references
 %% But also for specifying labels (i.e. custom order) on nested lists
 \usepackage{enumitem}
-%% Lists of exercises in their own section, maximum depth 4
-\newlist{exerciselist}{description}{4}
-\setlist[exerciselist]{leftmargin=0pt,itemsep=1.0ex,topsep=1.0ex,partopsep=0pt,parsep=0pt}
-%% Indented groups of exercises within an exercise section
-%% Add  debug=true  option to see boxes around contents
-\usepackage{tasks}
-\NewTasks[label-format=\bfseries,item-indent=3.3em,label-offset=0.4em,label-width=1.7em,label-align=right,after-item-skip=\smallskipamount,after-skip=\smallskipamount]{exercisegroup}[\exercise]
+%% Indented groups of "exercise" within an "exercises" division
+%% tcolorbox styles for exercisegroup layout
+%% We use a LaTeX length to pass a width from the enclosing
+%% exercisegroup (parameterized by the number of columns)
+%% down into the environment for the actual exercises.
+%% "exercise group exercise width"
+\newlength{\egexwidth}
+%% An "exercise group exercise" has a bold number inline at
+%% the start of the exercise.  This serial number is a parameter
+%% of the tcolorbox "egexercise" environment, so is passed to "title".
+%% Debug: to make spacing obvious, set "colback=green" in "exgroupexstyle"
+\tcbset{ exgroupexstyle/.style={size=minimal,width=\egexwidth,colback=white,frame empty,valign=top,coltitle=black,fonttitle=\bfseries,attach title to upper,after title={.\space}} }
+\DeclareTColorBox{egexercise}{m}{title=#1, exgroupexstyle}
+%% An "xparse" environment will represent the entire exercise group,
+%% with the number of columns as a parameter.
+%% TODO: make the 1-column version the default without an argument, bail on raster
+%% The "egexwidth" length gets set on entry, widths are computed in XSL stylesheet
+%% The overall indentation and gaps are also hard-coded in the XSL
+%% The "solution" version only changes to no-indentation
+\tcbset{ exgroupstyle/.style={raster equal height=rows,raster force size=false, raster left skip=0.05\linewidth, raster column skip=
+0.03\linewidth} }
+\tcbset{ exgroupsolutionstyle/.style={raster equal height=rows,raster force size=false, raster right skip=0.05\linewidth, raster column skip=
+0.03\linewidth} }
+\NewDocumentEnvironment{exercisegroup}{m}
+  {\setlength{\egexwidth}{\ifx1#1{0.95}\fi\ifx2#1{0.46}\fi\ifx3#1{0.296666666666667}\fi\ifx4#1{0.215}\fi\ifx5#1{0.166}\fi\ifx6#1{0.166}\fi\linewidth}
+   \begin{tcbraster}
+    [exgroupstyle,raster columns=#1]}
+  {\end{tcbraster}}
+\NewDocumentEnvironment{exercisegroupsolution}{m}
+  {\setlength{\egexwidth}{\ifx1#1{0.95}\fi\ifx2#1{0.46}\fi\ifx3#1{0.296666666666667}\fi\ifx4#1{0.215}\fi\ifx5#1{0.166}\fi\ifx6#1{0.166}\fi\linewidth}
+   \begin{tcbraster}
+    [exgroupsolutionstyle,raster columns=#1]}
+  {\end{tcbraster}}
 %% hyperref driver does not need to be specified, it will be detected
 \usepackage{hyperref}
 %% Hyperlinking active in PDFs, all links solid and blue
@@ -235,10 +349,25 @@
 \ifdefined\tikzset
     \tikzset{ampersand replacement = \amp}
 \fi
-%% NB: calc redefines \setlength
-\usepackage{calc}
-%% used repeatedly for vertical dimensions of sidebyside panels
-\newlength{\panelmax}
+%% tcolorbox styles for sidebyside layout
+\tcbset{ sbsstyle/.style={raster equal height=rows,raster force size=false} }
+\tcbset{ sbsheadingstyle/.style={size=minimal,halign=center,fontupper=\bfseries,colback=white,frame empty} }
+\tcbset{ sbspanelstyle/.style={size=minimal,colback=white,frame empty} }
+\tcbset{ sbscaptionstyle/.style={size=minimal,halign=center,colback=white,frame empty} }
+%% Enviroments for side-by-side and components
+%% Necessary to use \NewTColorBox for boxes of the panels
+%% "newfloat" environment to squash page-breaks within a single sidebyside
+\DeclareFloatingEnvironment[placement={H}]{sbscontainer}
+%% "xparse" environment for entire sidebyside
+\NewDocumentEnvironment{sidebyside}{mmmm}
+  {\begin{sbscontainer}\begin{tcbraster}
+    [sbsstyle,raster columns=#1,
+    raster left skip=#2\linewidth,raster right skip=#3\linewidth,raster column skip=#4\linewidth]}
+  {\end{tcbraster}\end{sbscontainer}}
+%% "tcolorbox" environments for three components of a panel
+\NewTColorBox{sbsheading}{m}{sbsheadingstyle,width=#1\linewidth}
+\NewTColorBox{sbspanel}{mO{top}}{sbspanelstyle,width=#1\linewidth,valign=#2}
+\NewTColorBox{sbscaption}{m}{sbscaptionstyle,width=#1\linewidth}
 %% extpfeil package for certain extensible arrows,
 %% as also provided by MathJax extension of the same name
 %% NB: this package loads mtools, which loads calc, which redefines
@@ -262,12 +391,6 @@
 \newcommand{\gt}{>}
 \newcommand{\amp}{&}
 %% End: Author-provided macros
-%% Title page information for book
-\title{Contemporary Pre-Calculus Through Applications}
-\author{Mathematics Department\\
-North Carolina School of Science and Mathematics
-}
-\date{July 24, 2018}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -351,11 +474,11 @@ In a previous chapter we learned that a function is a special sets of ordered pa
 \par
 \hypertarget{p-5}{}%
 In this section we will investigate functions that are defined recursively. The domain values for these functions are positive whole numbers, and each range value is defined in terms of the preceding range value, rather than in terms of an \(x\)-value.%
-\begin{example}[Ibuprofen in the blood stream]\label{ibuprofen-example-one-dose}
+\begin{example}[{Ibuprofen in the blood stream.}]\label{ibuprofen-example-one-dose}
 \hypertarget{p-6}{}%
 Joan has a headache and decides to take a 200mg ibuprofen tablet for pain relief.  The drug is absorbed into her system and stays in her system until the drug is metabolized and filtered out by the liver and kidneys.  Ibuprofen is rapidly metabolized.  Every four hours, Joan's body removes \(67\%\) of the ibuprofen that was in her body at the beginning of that four-hour time period.  How much of the ibuprofen will remain in her system \(24\) hours after taking the \(200\)mg tablet?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-1}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-1}{}\quad%
 \hypertarget{p-7}{}%
 One way to generate values for the amount of ibuprofen in Joan's system is to use an iterative process.  In any iterative process the current value of a variable is used to determine the next value.  In this example, we generate a new amount of ibuprofen by subtracting the amount of ibuprofen filtered out of Joan's system from the amount that was previously there.  Since Joan begins with 200mg of ibuprofen, we write%
 \begin{gather*}
@@ -393,13 +516,9 @@ D_n=D_{n-1}-0.67D_{n-1},n=1,2,3...
 Using a spreadsheet or calculator, we can generate successive values of \(D_n\) as shown in \hyperref[figure-ibuprofen-one-dose]{Figure~2}.  Note that values in the table are rounded to three decimal places but that exact values were used in all computations. The amount of drug in Joan's body drops to less than \(1\) mg between the fourth and fifth time periods.  If she takes a single \(200\) mg dose, Joan will have only about \(0.258\) mg remaining in her body \(24\) hours later.%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.2\linewidth}{!}{{
+\begin{sidebyside}{2}{0.0375}{0.0375}{0.075}
+\begin{sbspanel}{0.2}
+\resizebox{\linewidth}{!}{{
 \pgfplotstabletypeset[
 col sep=comma,
 column type=l,
@@ -410,14 +529,10 @@ columns/0/.style={string type, column name={$n$}},
 columns/1/.style={string type, column name={$D_n$}},
 ]{data-single-dose-ibuprofen.csv}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.65\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.65}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -435,23 +550,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0.0375\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\hspace*{0.0375\linewidth}%
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.2\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.65\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Amount of drug in Joan's body (Single 200 mg dose)\label{figure-ibuprofen-one-dose}}
 \end{figure}
 \hypertarget{p-12}{}%
@@ -468,16 +569,17 @@ Each point on the graph shows the amount of ibuprofen in Joan’s body at the en
 \typeout{Exercises 4.1.1 Class Practice}
 \typeout{************************************************}
 \subsection[{Class Practice}]{Class Practice}\label{exercises-1}
-\begin{exerciselist}
-\item[1.]\hypertarget{chapter04-section01-initial-ibuprofen-exercise}{}\hypertarget{p-14}{}%
+\begin{divisionexercise}{1}\hypertarget{chapter04-section01-initial-ibuprofen-exercise}{}
+\hypertarget{p-14}{}%
 Modify the recursive system used in \hyperref[ibuprofen-example-one-dose]{Example~1} as appropriate to answer the following questions: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-1}{}Suppose Joan takes tablets that contain \(250\) milligrams of ibuprofen. How much ibuprofen would be in her body after \(4, 8, 12, 16, 20,\) and \(24\) hours?%
 \item\hypertarget{li-2}{}Suppose Joan's kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a \(200\) mg tablet every \(4\) hours, how much ibuprofen would she have in her system after \(4, 8, 12, 16, 20,\) and \(24\) hours?%
 \end{enumerate}
 %
-\par\smallskip
-\item[2.]\hypertarget{exercise-2}{}\hypertarget{p-15}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-2}{}
+\hypertarget{p-15}{}%
 In each recursive system, the domain of \(D_n\) is \(n=1,2,3, ...\) and \(D_n\) represents the amount of ibuprofen in Joan's system after n four-hour time periods.  For each system, find how much drug remains after \(24\) hours, and identify the rate at which Joan's system filters out the drug. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-3}{}\(D_0=300, D_n=D_{n-1} - 0.8D_{n-1}\)%
@@ -486,13 +588,12 @@ In each recursive system, the domain of \(D_n\) is \(n=1,2,3, ...\) and \(D_n\) 
 \item\hypertarget{li-6}{}\(D_0=500, D_n=0.5D_{n-1}\)%
 \end{enumerate}
 %
-\par\smallskip
-\end{exerciselist}
-\begin{example}[Repated dose of ibuprofen]\label{example-2}
+\end{divisionexercise}%
+\begin{example}[{Repated dose of ibuprofen.}]\label{example-2}
 \hypertarget{p-16}{}%
 Joan strained her knee playing tennis and her doctor has prescribed ibuprofen to reduce the inflammation and control pain.  Joan is instructed to take two 200-milligram ibuprofen tablets every 4 hours for three days.  Joan doesn’t like taking medicine, so she decides to take only one tablet every four hours for six days.  After the six days, Joan’s knee has not responded to the medication.  Naturally, she knew that the knee would take longer to respond to the reduced treatment, but she did not expect no response at all.  What could have happened?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-2}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-2}{}\quad%
 \hypertarget{p-17}{}%
 In this situation, Joan did not take just a single 200 mg tablet.  Every four hours she took another 200 mg tablet, and we can modify our recursive system to model this behavior. At the end of the nth four-hour period, Joan’s body has filtered \(67\%\) of the drug that was in her body after n-1st  four-hour period.  In addition, 200 mg from the new tablet have been added into her body.  The recursive system representing the amount of ibuprofen in Joan’s body if she takes one tablet every four hours is%
 %
@@ -504,13 +605,9 @@ D_n=D_{n-1} - 0.67D_{n-1} + 200, n=1,2,3,...
 The subscript n represents the number of four-hour time periods that have elapsed since Joan took the first dose.  By iterating the recursive system we can generate values of \(D_n\) that represent the amounts of drug in Joan’s body at the end of each four-hour period, assuming  \(67\%\) of the drug is filtered in a four-hour period.  These values, rounded to two decimal places, are shown together with a graph in \hyperref[figure-ibuprofen-multi-dose]{Figure~4}%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.2\linewidth}{!}{{
+\begin{sidebyside}{2}{0.0375}{0.0375}{0.075}
+\begin{sbspanel}{0.2}
+\resizebox{\linewidth}{!}{{
 \pgfplotstabletypeset[
 col sep=comma,
 column type=l,
@@ -521,14 +618,10 @@ columns/0/.style={string type, column name={$n$}},
 columns/1/.style={string type, column name={$D_n$}},
 ]{data-multi-dose-ibuprofen.csv}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.65\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.65}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -546,23 +639,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0.0375\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\hspace*{0.0375\linewidth}%
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.2\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.65\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Amount of drug in Joan's body (Reoccuring 200 mg doses)\label{figure-ibuprofen-multi-dose}}
 \end{figure}
 \hypertarget{p-19}{}%
@@ -575,16 +654,17 @@ Suppose the drug Joan is taking has a therapeutic level of 450 mg.  This means t
 \typeout{Exercises 4.1.2 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-2}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-3}{}\hypertarget{p-21}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-3}{}
+\hypertarget{p-21}{}%
 Modify the recursive  system  used in \hyperref[ibuprofen-example-one-dose]{Example~1} as appropriate to answer the following questions: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-7}{}Suppose Joan takes tablets that contain 250 milligrams of ibuprofen.  How much ibuprofen would be in her body after 4, 8, 12, 16, 20, and 24 hours?%
 \item\hypertarget{li-8}{}Suppose Joan’s kidneys filter only \(50\%\) of the drug in a four hour time period.  If Joan takes a 200 mg tablet every 4 hours, how much ibuprofen would she  have in her system after  4, 8, 12, 16, 20 and 24 hours?%
 \end{enumerate}
 %
-\par\smallskip
-\item[2.]\hypertarget{exercise-4}{}\hypertarget{p-22}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-4}{}
+\hypertarget{p-22}{}%
 If Joan takes her medication every 4 hours, determine the amount of drug in Joan’s body after 2 days (twelve  4-hour time periods) and the equilibrium level resulting from each of the following recursive systems.  Plot the ordered pairs you generate on a graph.  Note that in some cases the initial dosage and subsequent doses are not the same size.  In each exercise, the domain of \(D_n\) is \(n=1,2,3, ...\) \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-9}{}\(D_0=200, D_n=D_{n-1} - 0.4D_{n-1} + 200\)%
@@ -595,8 +675,9 @@ If Joan takes her medication every 4 hours, determine the amount of drug in Joan
 \item\hypertarget{li-14}{}\(D_0=600, D_n=0.4D_{n-1} + 300\)%
 \end{enumerate}
 %
-\par\smallskip
-\item[3.]\hypertarget{exercise-5}{}\hypertarget{p-23}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-5}{}
+\hypertarget{p-23}{}%
 Each of the systems in exercise 2 can be written in the form%
 \begin{gather*}
 D_0=a\\
@@ -610,16 +691,18 @@ D_n=(1-r) D_{n-1}+b, n=1,2,3...
 \item\hypertarget{li-18}{}Use the result of part c to determine the equilibrium level of a drug if you take 200 mg every 4 hours and your kidneys filter out \(50\%\) of the drug in your body every 4 hours.%
 \end{enumerate}
 %
-\par\smallskip
-\item[4.]\hypertarget{exercise-6}{}\hypertarget{p-24}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-6}{}
+\hypertarget{p-24}{}%
 A company has \(\$10,000\) worth of equipment and for tax purposes they want to figure the depreciation of the equipment over a 10-year time period.  One method is to reduce the value each year by the same dollar amount.  A second method is to decrease the value of the equipment each year by the same percent of the current value each year. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-19}{}Using the first method, generate a table and graph for the value of the equipment if it is  decreased each year by \(\$2000\).%
 \item\hypertarget{li-20}{}Using the second method, generate a table and graph for the value of the equipment if it is decreased by \(20\%\) each year.%
 \end{enumerate}
 %
-\par\smallskip
-\item[5.]\hypertarget{exercise-7}{}\hypertarget{p-25}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-7}{}
+\hypertarget{p-25}{}%
 One of the primary responsibilities of the manager of a swimming pool is to maintain the proper concentration of chlorine in the swimming pool.  The concentration should be between 1 and 2 parts per million (ppm).  If the concentration gets as high as 3 ppm swimmers experience burning eyes.  If the concentration gets below 1 ppm, the water will become cloudy, which is unappealing.  If it drops below 0.5 ppm, algae begin to grow.  During a period of one day, \(15\%\) of the chlorine present in the pool dissipates (mainly due to the sun). \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-21}{}If the chlorine content starts at 2.5 ppm and no additional chlorine is added, how long will it be before the water becomes cloudy?%
@@ -628,8 +711,9 @@ One of the primary responsibilities of the manager of a swimming pool is to main
 \item\hypertarget{li-24}{}How much chlorine must be added daily for the chlorine level to stabilize at 1.8 ppm?%
 \end{enumerate}
 %
-\par\smallskip
-\item[6.]\hypertarget{exercise-8}{}\hypertarget{p-26}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-8}{}
+\hypertarget{p-26}{}%
 The Fish and Wildlife Division monitors the trout population in a stream that is under their jurisdiction.  Their research indicates that natural predators, together with pollution and fishing, are causing the trout population to decrease at a rate of \(20\%\) per month.  They propose to introduce additional trout into the stream each month.  Assume the current population is 300.  Use tables and graphs to investigate the following: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-25}{}What will happen to the trout population over the next ten months with no replenishment program?%
@@ -640,8 +724,9 @@ The Fish and Wildlife Division monitors the trout population in a stream that is
 \item\hypertarget{li-30}{}There are three parameters in this problem: the initial number of trout, the rate of decrease, and the number of trout added each month. Which parameter seems to have the most influenceon the long-term behavior? Explain briefly.%
 \end{enumerate}
 %
-\par\smallskip
-\item[7.]\hypertarget{exercise-9}{}\hypertarget{p-27}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-9}{}
+\hypertarget{p-27}{}%
 Drugs generally have a therapeutic range rather than a single therapeutic level.  In other words, a drug is effective if the level in the body is between two values.  At concentrations below this range, too little of the drug is present to have a measurable effect, and concentrations above this range may be toxic.  The level of drug in the body peaks just after the drug is taken, while the drug level is at a minimum just before the dosage is taken.  Suppose Joan takes an anti-inflammatory drug at the prescribed dosage of 440 mg every 12 hours and her kidneys filter \(60\%\) of the drug from her body every 12 hours.  Use tables and graphs to investigate the following: \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-31}{}Generate a sequence of values for the level of drug in Joan’s body just before each dose.%
@@ -649,8 +734,9 @@ Drugs generally have a therapeutic range rather than a single therapeutic level.
 \item\hypertarget{li-33}{}Suppose the therapeutic range of the anti-inflammatory drug is between 300 mg and 800 mg.  What adjustment, if any, needs to be made in Joan’s dosage to stay within this range in the long run?%
 \end{enumerate}
 %
-\par\smallskip
-\item[8.]\hypertarget{exercise-10}{}\hypertarget{p-28}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-10}{}
+\hypertarget{p-28}{}%
 Suppose Morgan  wants to buy a television that costs \(\$549\).  He has a part-time job, and he is able to save \(\$85.00\) each week.  Suppose he accumulates the money at home. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-34}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
@@ -661,8 +747,9 @@ Suppose Morgan  wants to buy a television that costs \(\$549\).  He has a part-t
 \item\hypertarget{li-39}{}State the domain and the range of the explicit function within the context of this problem.  Compare them to the domain and range of the recursively defined function.%
 \end{enumerate}
 %
-\par\smallskip
-\item[9.]\hypertarget{exercise-11}{}\hypertarget{p-29}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{exercise-11}{}
+\hypertarget{p-29}{}%
 Now suppose that Morgan deposits his savings in a bank that will pay \(0.02\%\) interest each week. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-40}{}Write a recursive system that can be used to determine how much Morgan has saved over time.%
@@ -672,8 +759,7 @@ Now suppose that Morgan deposits his savings in a bank that will pay \(0.02\%\) 
 \item\hypertarget{li-44}{}State the domain and range of the recursively defined function.%
 \end{enumerate}
 %
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 4.2 Using Recursion to Understand Loans and Investments}
 \typeout{************************************************}
@@ -728,13 +814,9 @@ If we continue the payments of \(\$230\) for four years (48 months), the final p
 The graph and partial table in \hyperref[loan-balance]{Figure~1} show that it will take \(47\) payments to get the balance down to \(\$341.20\).  After one additional month the balance will be \(\$341.20\cdot 1.0045=\$342.74\) if we round in the usual manner.  Thus, the balloon payment would be \(\$342.74\).%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.3\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.3}
+\resizebox{\linewidth}{!}{{
 \pgfplotstabletypeset[
 col sep=comma,
 column type=l,
@@ -745,14 +827,10 @@ columns/0/.style={string type, column name={$n$}},
 columns/1/.style={string type, column name=Loan Balance},
 ]{data-loan-balance-table.csv}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.7\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.7}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -773,22 +851,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.3\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.7\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Loan Ammoritization\label{loan-balance}}
 \end{figure}
 \hypertarget{p-41}{}%
@@ -814,11 +879,11 @@ You should complete practice problem 1 at the end of the section at this time%
 \par
 \hypertarget{p-46}{}%
 When borrowers take out a loan, they typically know the amount they want to borrow, the interest rate they will have to pay, and the length of time they have to pay off the loan.  We are interested in determining the payment that will allow the borrower to pay back the loan in the required time.  For most loans, the borrower makes payments every month. Thus, a car loan that needs to be repaid in \(5\) years requires \(60\) monthly payments and a mortgage loan that is repaid in \(15\) years requires \(180\) monthly payments. For simplicity's sake, our first few examples will assume that payments are made annually (that is, once per year) rather than monthly.%
-\begin{example}[Finding the Yearly Payment Needed to Pay Off a Loan]\label{example-3}
+\begin{example}[{Finding the Yearly Payment Needed to Pay Off a Loan.}]\label{example-3}
 \hypertarget{p-47}{}%
 Suppose you buy a car and take out a loan of \(\$22,000\) at \(6.5\%\) annual interest to be paid back over four years.  What is the yearly payment you must make to pay off the loan in four equal payments?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-3}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-3}{}\quad%
 \hypertarget{p-48}{}%
 Referring to \hyperref[recursive-loan-equation]{equation~(\ref{recursive-loan-equation})} we have%
 %
@@ -913,11 +978,12 @@ We can continue the process of averaging two payments, one that is too large and
 \hypertarget{p-59}{}%
 The process used to find an appropriate payment is called \emph{binary search}. We began the process by finding an interval that contained the appropriate payment. This interval is bounded by a payment that is too low and a payment that is too high. We found the midpoint of the interval and determined if that payment was too large or too small.  If the "midpoint payment" is too high, that is, if we have a negative balance after four payments, then consider a new interval that is the lower half of the previous interval; otherwise, take the new interval to be the upper half of the previous interval We continue bisecting, which results in a smaller and smaller interval that we know contains the appropriate payment.  We stop bisecting the interval as soon as we have found a payment that results in a balance of zero, or as close to zero as we need.%
 \typeout{************************************************}
-\typeout{Exercises 4.2.1 Exercises}
+\typeout{Exercises 4.2 Exercises}
 \typeout{************************************************}
-\subsection[{Exercises}]{Exercises}\label{exercises-3}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-12}{}\hypertarget{p-60}{}%
+\subsection*{Exercises}\hypertarget{exercises-3}{}
+\addcontentsline{toc}{subsection}{Exercises}
+\begin{divisionexercise}{1}\hypertarget{exercise-12}{}
+\hypertarget{p-60}{}%
 How long will it take to amortize a loan and how much will the loan cost under each of the following conditions?  In each case \(L_0, r\) and \(P\) represent the initial amount borrowed, the monthly interest rate, and the monthly payment, respectively. Determine the balloon payment for each scenario as well.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -926,8 +992,9 @@ How long will it take to amortize a loan and how much will the loan cost under e
 \item\hypertarget{li-47}{}\(L_0=\$5000, r=0.5\%\) and \(P=\$200 \)%
 \item\hypertarget{li-48}{}\(L_0=\$5000, r=1\%\) and \(P=\$250\)%
 \end{enumerate}
-\par\smallskip
-\item[2.]\hypertarget{exercise-13}{}\hypertarget{p-61}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-13}{}
+\hypertarget{p-61}{}%
 Maisha opens a retirement account on her \(35^{th}\) birthday with a deposit of \(\$2,400\).  Each year on her birthday, she plans to deposit an additional \(\$2,400\).  The account earns interest at a rate of \(10\%\) annually.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -935,22 +1002,26 @@ Maisha opens a retirement account on her \(35^{th}\) birthday with a deposit of 
 \item\hypertarget{li-50}{}Suppose Maisha wants to have \(\$1\) million in the account by age \(65\).  To the nearest hundred dollars, how much should she deposit each year?%
 \item\hypertarget{li-51}{}Suppose Maisha starts saving ten years earlier, at age \(25\).  To the nearest hundred dollars, how much should she deposit each year to have \(\$1\) million at retirement?%
 \end{enumerate}
-\par\smallskip
-\item[3.]\hypertarget{exercise-14}{}\hypertarget{p-62}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-14}{}
+\hypertarget{p-62}{}%
 You and your parents need to borrow money to pay for your college tuition.  You are looking for an education loan for \(\$50,000\).  The Village Bank offers a \(15\)-year loan at \(7\%\) annual interest.  The Hometown Bank offers a \(20\)-year loan at \(6\%\) annual interest.  Which loan is better?  Explain what criteria you used to decide.%
-\par\smallskip
-\item[4.]\hypertarget{exercise-15}{}\hypertarget{p-63}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-15}{}
+\hypertarget{p-63}{}%
 Isaac wants to buy a car and is shopping for a four year (\(48\) month) loan. If he needs to borrow \(\$24,000\) and the loan charges \(4.6\%\) annual interest, what must be his annual payment to pay off the loan in the required \(4\) years?%
-\par\smallskip
-\item[5.]\hypertarget{exercise-16}{}\hypertarget{p-64}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-16}{}
+\hypertarget{p-64}{}%
 Kyle and Taylor have taken out a loan for \(\$175,000\) to buy their first house. They have a \(15\)-year mortgage and an annual interest rate of \(3.9\%\).%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-52}{}The lending agency tells them that their monthly payment is \(\$1,290\), and so they pay \(\$1,290\) every month for \(179\) months. What must be their final payment (the \(180^{th}\)) so that the loan is paid off?  In total, how much did it cost them to borrow \(\$175,000\) for \(15\) years?%
 \item\hypertarget{li-53}{}Kyle and Taylor recognize that they may save money in the long run if they make payments larger than what the lending agency requires. They decide to pay \(\$2,000\) for the first \(5\) years (\(60\) months) and then pay the required \(\$1,290\) per month until the loan is paid off. How long will it take them to bring their outstanding balance to zero. In total, how much did it cost them to borrow \(\$175,000\) for \(15\) years?%
 \end{enumerate}
-\par\smallskip
-\item[6.]\hypertarget{exercise-17}{}\hypertarget{p-65}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-17}{}
+\hypertarget{p-65}{}%
 Terry has his heart set on owning a Tesla electric car. He will sell his current car to raise some of the money, but still needs to take out a \(\$55,000\) loan to be able to afford a Tesla. His credit union will charge him \(4.2\%\) interest per year, a special rate for an energy efficient car. He will make equal monthly payments in order to pay off the loan in \(72\) months.%
 \par
 \hypertarget{p-66}{}%
@@ -974,8 +1045,7 @@ Your task is to determine what his monthly payment needs to be. You will make se
 \item\hypertarget{li-56}{}Describe how you can take advantage of the shape of the scatterplot to find the monthly payment that will yield a zero outstanding balance after \(72\) months.%
 \item\hypertarget{li-57}{}Confirm that a monthly payment of \(\$865.51\) will pay off the loan (the balance will round to zero).  What does this number have to do with the scatterplot you made in (\hyperlink{chapter04-section02-tesla-scatterplot}{b})?%
 \end{enumerate}
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 4.3 Geometric Growth and Decay}
 \typeout{************************************************}
@@ -989,11 +1059,11 @@ In that case, we calculated the amount of drug in Joan's boady with the recursiv
 \begin{gather*}
 D_0=200, D_n=0.33 \cdot D_{n-1}, n=1,2,3,...
 \end{gather*}
-\begin{example}[Fading Blue Jeans]\label{example-fading-blue-jeans}
+\begin{example}[{Fading Blue Jeans.}]\label{example-fading-blue-jeans}
 \hypertarget{p-69}{}%
 Blue jeans fade when they are washed. Suppose a pair of jeans loses \(2\%\) of its color with each washing.  How much of the original color is left after \(50\) washes?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-4}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-4}{}\quad%
 \hypertarget{p-70}{}%
 In this problem, we use the system%
 %
@@ -1006,11 +1076,11 @@ where \(C_n\) is the amount of color remaining in the jeans after \(n\) washings
 \hypertarget{p-72}{}%
 We use \(1\) as the initial value to represent all or \(100\%\) of the color.  Since we want to measure the amount of color remaining, the coefficient in the recursive equation is \(0.98\).  With \(50\) iterations of the equation for \(C_n\), we find that the jeans have about \(36\%\) of their original color left after \(50\) washings.%
 \end{example}
-\begin{example}[Electrical Power Demand]\label{example-electrical-power-demand}
+\begin{example}[{Electrical Power Demand.}]\label{example-electrical-power-demand}
 \hypertarget{p-73}{}%
 The amount of electrical power used by a community is increasing by \(5\%\) per year.  This year, they used \(500\) thousand kilowatt-hours of electrical power.  How many years will it take until the electrical power consumption for this community has doubled?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-5}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-5}{}\quad%
 \hypertarget{p-74}{}%
 This is an example of \emph{geometric growth}, since the amount of power is increasing each year. We use the recursive system%
 %
@@ -1020,11 +1090,11 @@ P_0=500, P_n=1.05 \cdot P_{n-1}, n=1,2,3,...
 \hypertarget{p-75}{}%
 Since the amount of power used is increasing by \(5\%\) each year, next year the citizens of the community will use \(105\%\) of what they used this year.  By iterating the equation for \(P_n\), we find that after \(14\) years the community will use about \(990\) thousand kwh per year and after \(15\) years they will use about \(1039\) thousand kwh per year.  The amount of power required by the community will have doubled in a little less than \(15\) years.  Note that this conclusion assumes that the demand for electrical power continues to increase by \(5\%\) per year.%
 \end{example}
-\begin{example}[Radioactive Decay]\label{example-radioactive-decay}
+\begin{example}[{Radioactive Decay.}]\label{example-radioactive-decay}
 \hypertarget{p-76}{}%
 Potassium-42 is a radioactive element that is often used in biological experiments as a tracer element.  Potassium-42, like all radioactive elements, decays into a non-radioactive form at a rate proportional to the amount present.  Potassium-42 loses \(5.545\%\) of its mass every hour.  If \(1\) milligram of potassium-42 is initially present in an animal, at what time will only \(0.1\) milligram be present?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-6}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-6}{}\quad%
 \hypertarget{p-77}{}%
 Note that the effect of losing \(5.545\%\) is equivalent to retaining \(94.455\%\). We use the recursive system%
 %
@@ -1112,7 +1182,7 @@ If we wanted the value of \(Y_{100}\), the recursive equation would require that
 \par
 \hypertarget{p-92}{}%
 The explicit equation can be rewritten using the more traditional functional notation:%
-\begin{definition}[{Explicit Function for Geometric Growth}]\label{explicit-geometric-growth-equation}
+\begin{definition}[{Explicit Function for Geometric Growth.}]\label{explicit-geometric-growth-equation}
 %
 \begin{gather*}
 Y(n)=a(1+k)^n
@@ -1120,15 +1190,15 @@ Y(n)=a(1+k)^n
 \end{definition}
 \hypertarget{p-93}{}%
 In equation \hyperref[explicit-geometric-growth-equation]{4} the independent variable \(n\) is in the exponent, so this function is an exponential function. The exponential function \(Y(n)=a(1+k)^n\) is the closed form representation of the recursive system  \(Y_0=a,Y_n=(1+k)Y_{n-1}\)%
-\begin{example}[]\label{example-one-time-bank-desposit}
+\begin{example}\label{example-one-time-bank-desposit}
 \hypertarget{p-94}{}%
 Suppose you plan to make a one-time deposit into a bank account that will earn \(0.45\%\) monthly interest.  How large must this deposit be so that you will have a college fund of \(\$75,000\) available after \(18\) years or \(216\) months?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-7}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-7}{}\quad%
 \hypertarget{p-95}{}%
 We can solve this problem using the recursive model \(S_0 = a\), \(S_n = (1.0045) S_{n-1}\) but we will have to guess and check to find the appropriate value of \(S_0\) that gives of \(S_{216} = 75,000\).  Using the closed form \(S(n)=a(1.0045)^n\) , we need to find the value of \(a\) such that \(75,000 = a (1.0045)^{216}\).  Solving for \(a\) gives the equation \(a = \frac{75,000}{(1.0045)^{216}}\) , or \(a = \$28,436.36\).  We see that the closed form is useful when we do not need all the intermediate values that the recursive form generates.%
 \end{example}
-\begin{example}[Continuous Versus Discrete]\label{example-continuous-discrete}
+\begin{example}[{Continuous Versus Discrete.}]\label{example-continuous-discrete}
 \hypertarget{p-96}{}%
 In Example \hyperref[example-radioactive-decay]{3} we considered the amount of Potassium-42 that remains present during the decay process.  We used the recursive system%
 %
@@ -1147,7 +1217,7 @@ P(t)=1 \cdot (0.944355)^t
 \hypertarget{p-99}{}%
 to represent the amount of Potassium-42 remaining \(t\) hours after the decay process begins. Use each of these representations to determine how much Potassium remains after \(12\) hours.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-8}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-8}{}\quad%
 \hypertarget{p-100}{}%
 This is what our work looks like if we use the recursive system:%
 %
@@ -1179,13 +1249,9 @@ The explicit function \(P(t)=1 \cdot (0.944355)^t\) uses \(t\) as a variable who
 Graphs of both the recursive and the explicit representations are shown below%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -1206,14 +1272,10 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.5\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -1234,22 +1296,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Mg of Potassium Over Time: Discrete and Continuous Models\label{figure-discrete-p42}}
 \end{figure}
 \hypertarget{p-106}{}%
@@ -1261,60 +1310,27 @@ Note that in the graph on the left, the horizontal scale shows the number of \(1
 \typeout{Exercises 4.3.1 Class Practice}
 \typeout{************************************************}
 \subsection[{Class Practice}]{Class Practice}\label{exercises-4}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-18}{}% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAparagraphs\else\newsavebox{\panelboxAparagraphs}\fi%
-\savebox{\panelboxAparagraphs}{%
-\raisebox{\depth}{\parbox{0.5\linewidth}{\hypertarget{p-108}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-18}{}
+\begin{sidebyside}{2}{0.025}{0.025}{0.05}
+\begin{sbspanel}{0.5}
+\hypertarget{p-108}{}%
 When a basketball is released and drops to a hard surface, it's path looks something like what is shown in the photo. Each time that it bounces, it rebounds to \(75\%\) of the height from which it was released (assuming that the ball is correctly inflated.) If a ball is dropped from \(3\) meters, we can write the recursive system:%
 \begin{gather*}
 H_0=3, H_n = 0.75 H_{n-1}
 \end{gather*}
 %
-}}}
-\ifdefined\phAparagraphs\else\newlength{\phAparagraphs}\fi%
-\setlength{\phAparagraphs}{\ht\panelboxAparagraphs+\dp\panelboxAparagraphs}
-\settototalheight{\phAparagraphs}{\usebox{\panelboxAparagraphs}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAparagraphs}}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\includegraphics[width=0.4\linewidth]{src/images/bouncing_ball_strobe_edit.jpg}
-\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0.025\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\hspace*{0.025\linewidth}%
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAparagraphs}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.4\linewidth}\usebox{\panelboxAimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAparagraphs\else\newsavebox{\panelboxAparagraphs}\fi%
-\savebox{\panelboxAparagraphs}{%
-\raisebox{\depth}{\parbox{0.5\linewidth}{\hypertarget{p-109}{}%
+\end{sbspanel}
+\begin{sbspanel}{0.4}
+\includegraphics[width=1\linewidth]{src/images/bouncing_ball_strobe_edit.jpg}
+\end{sbspanel}
+\end{sidebyside}
+\begin{sidebyside}{2}{0.025}{0.025}{0.05}
+\begin{sbspanel}{0.5}
+\hypertarget{p-109}{}%
 The graph shows the rebound height on the vertical axis and bounce number on the horizontal. Sketch a graph of the associated explicit function \(h(t)=3(0.75)^t\) where \(h(t)\) is the height at time \(t\). Explain how the graph you sketch is related to the discrete graph that is shown.%
-}}}
-\ifdefined\phAparagraphs\else\newlength{\phAparagraphs}\fi%
-\setlength{\phAparagraphs}{\ht\panelboxAparagraphs+\dp\panelboxAparagraphs}
-\settototalheight{\phAparagraphs}{\usebox{\panelboxAparagraphs}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAparagraphs}}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.4\linewidth}{!}{{
+\end{sbspanel}
+\begin{sbspanel}{0.4}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -1344,25 +1360,12 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0.025\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\hspace*{0.025\linewidth}%
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAparagraphs}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.4\linewidth}\usebox{\panelboxAimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
-\par\smallskip
-\item[2.]\hypertarget{exercise-19}{}\hypertarget{p-110}{}%
+}
+\end{sbspanel}
+\end{sidebyside}
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-19}{}
+\hypertarget{p-110}{}%
 In \hyperref[example-fading-blue-jeans]{Example~1} we used the recursive system \(C_0=1, C_n = 0.98C_{n-1}\) to represent the amount of color left in blue jeans after \(n\) washings. The graph shows remaining color on the vertical axis and number of washings on the horizontal axis. Sketch a graph of the associated explicit function \(C(t)=1(0.98)^t\) where \(t\) represents elapsed time.  Write a few sentences to explain how and why your graph differs from the discrete graph shown.%
 \begin{figure}
 \centering
@@ -1405,13 +1408,12 @@ tick label style={font=\tiny},
 }
 \caption{\label{figure-5}}
 \end{figure}
-\par\smallskip
-\end{exerciselist}
-\begin{example}[]\label{example-recursive-salary}
+\end{divisionexercise}%
+\begin{example}\label{example-recursive-salary}
 \hypertarget{p-111}{}%
 Rebecca starts working for a company at a salary of \(\$40,000\) per year. Based on the company's history, she can expect raises of \(3.5\%\) each year on the anniversary of her employment. When will she first make \(\$50,000\)?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-9}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-9}{}\quad%
 \hypertarget{p-112}{}%
 We can use the recursive system \(A_0=40,000, A_n=1.035A_{n-1}, n=1,2,3,...\) to determine when her salary will equal or exceed \(\$50,000\).  Rebecca’s first pay raise will result in a salary of \(\$41,400\).  Her sixth raise will bring her salary up to \(\$49,170.21\) and her seventh raise will put her pay over \(\$50,000\) at \(\$50,891.17\).%
 \par
@@ -1421,11 +1423,11 @@ We could also use a closed form function to solve for the time at which her sala
 \hypertarget{p-114}{}%
 If we wanted to know what Rebecca would make if she stayed with this company for \(30\) years, it would be easier to use the closed form and substitute \(t=30\).  In many cases either the recursive system or the closed form could be used to arrive at the same answer. In cases where we need to predict far into the future, it is more efficient to use the closed form. In cases where we want to see all of the intermediate values, as would be the case for the balance due on a loan after each payment, it would be to our advantage to use the recursive system. In Rebecca's case, if we choose to use an explicit representation we must limit the domain to integer values since her pay raises occur only one time per year.%
 \end{example}
-\begin{example}[Doubling Time]\label{example-doubling-time}
+\begin{example}[{Doubling Time.}]\label{example-doubling-time}
 \hypertarget{p-115}{}%
 Suppose the population of a certain type of bacteria is known to grow geometrically and increases by about \(26\%\) every hour. How much time will it take for a population of \(150\) million cells to grow to \(300\) million? How long will it take the population to double again to \(600\) million? When will the population reach \(1200\) million (another doubling)?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-10}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-10}{}\quad%
 \hypertarget{p-116}{}%
 Since the population is growing by \(26\%\) per hour, we can use the recursive system%
 %
@@ -1434,13 +1436,10 @@ P_0 = 150, P_n = (1.26)P_{n-1}
 \end{gather*}
 \hypertarget{p-117}{}%
 We also have the option of using the explicit function \(P(t)=150 \cdot (1.26)^t\).  For integer values of \(t\), these two representations give roughly identical values for the number of bacteria cells.%
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAtabular\else\newsavebox{\panelboxAtabular}\fi%
-\savebox{\panelboxAtabular}{%
-\raisebox{\depth}{\parbox{0.5\linewidth}{\centering\begin{tabular}{ll}
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+{\centering%
+\begin{tabular}{ll}
 \multicolumn{1}{lB}{Time (Hours)}&Cells (Millions)\tabularnewline\hrulethick
 \multicolumn{1}{lB}{\(0\)}&\(150\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(1\)}&\(189\)\tabularnewline\hrulemedium
@@ -1448,14 +1447,11 @@ We also have the option of using the explicit function \(P(t)=150 \cdot (1.26)^t
 \multicolumn{1}{lB}{\(3\)}&\(300.06\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(4\)}&\(378.07\)\tabularnewline\hrulemedium
 \end{tabular}
-}}}
-\ifdefined\phAtabular\else\newlength{\phAtabular}\fi%
-\setlength{\phAtabular}{\ht\panelboxAtabular+\dp\panelboxAtabular}
-\settototalheight{\phAtabular}{\usebox{\panelboxAtabular}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAtabular}}
-\ifdefined\panelboxBtabular\else\newsavebox{\panelboxBtabular}\fi%
-\savebox{\panelboxBtabular}{%
-\raisebox{\depth}{\parbox{0.5\linewidth}{\centering\begin{tabular}{ll}
+\par}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+{\centering%
+\begin{tabular}{ll}
 \multicolumn{1}{lB}{Time (Hours)}&Cells (Millions)\tabularnewline\hrulethick
 \multicolumn{1}{lB}{\(5\)}&\(476.37\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(6\)}&\(600.22\)\tabularnewline\hrulemedium
@@ -1463,22 +1459,9 @@ We also have the option of using the explicit function \(P(t)=150 \cdot (1.26)^t
 \multicolumn{1}{lB}{\(8\)}&\(952.92\)\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(9\)}&\(1200.67\)\tabularnewline\hrulemedium
 \end{tabular}
-}}}
-\ifdefined\phBtabular\else\newlength{\phBtabular}\fi%
-\setlength{\phBtabular}{\ht\panelboxBtabular+\dp\panelboxBtabular}
-\settototalheight{\phBtabular}{\usebox{\panelboxBtabular}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBtabular}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAtabular}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBtabular}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+\par}
+\end{sbspanel}
+\end{sidebyside}
 \par
 \hypertarget{p-118}{}%
 The population took about \(3\) hours to double from \(150\) to \(300\) million.  In another \(3\) hours, it had doubled again, and in another \(3\) hours there was yet another population doubling. This population is said to have a \emph{doubling time} of \(3\) hours. Note that the first doubling corresponds to an increase of \(150\) cells, the next doubling is an increase of \(300\) cells, and the third doubling is an increase of \(600\) cells. For each of these doublings, the elapsed time is the same (\(3\) hours) but the increase, measured in cells per hour, is not the same.%
@@ -1512,21 +1495,31 @@ Since \(g(t)=2^{\frac{1}{3} t}\) has a doubling time of \(3\) time units, in Exa
 \typeout{Exercises 4.3.2 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-5}
-\hypertarget{exercisegroup-1}{}\par\noindent \hypertarget{p-124}{}%
+\hypertarget{exercisegroup-1}{}
+\par\noindent \hypertarget{p-124}{}%
 In exercises \(1\) through \(4\), identify whether the growth (or decay) that is described is discrete or continuous.  Write either a recursive system or an expliciit function to represent the phenomenon. Use the most appropriate form to answer each question.%
-\begin{exercisegroup}(1)
-\exercise[1.]\hypertarget{exercise-20}{}\hypertarget{p-125}{}%
+\begin{exercisegroup}{1}
+\begin{egexercise}{1}\hypertarget{exercise-20}{}
+\hypertarget{p-125}{}%
 Research City is growing by \(14\%\) each year.  If the population of the city is approximately one million people and the rate of growth continues at \(14\%\) annually, what will Research City's population be \(15\) years from now?%
-\exercise[2.]\hypertarget{exercise-21}{}\hypertarget{p-126}{}%
+\end{egexercise}%
+\begin{egexercise}{2}\hypertarget{exercise-21}{}
+\hypertarget{p-126}{}%
 The population of Coastal City grows by \(3\%\) each year due only to births and deaths among current residents.  The population is currently one million.  Each year \(15,000\) more people move into the city than move out, resulting in a net gain of \(0.015\) milion people. How long will it take Coastal City's population to reach \(1.8\) million people?%
-\exercise[3.]\hypertarget{exercise-22}{}\hypertarget{p-127}{}%
+\end{egexercise}%
+\begin{egexercise}{3}\hypertarget{exercise-22}{}
+\hypertarget{p-127}{}%
 Each year hunting and natural predators combine to cause the population of rabbits in the meadow to decrease by \(5\%\).  If the year begins with \(230\) rabbits and the population continues to decrease by \(5\%\) each year, how many rabbits will there be in this meaudow in \(50\) years?%
-\exercise[4.]\hypertarget{exercise-23}{}\hypertarget{p-128}{}%
+\end{egexercise}%
+\begin{egexercise}{4}\hypertarget{exercise-23}{}
+\hypertarget{p-128}{}%
 Each year the population of rabbits in the meadow decreases by \(5\%\).  Farmer Dan decides to help the rabbit population by releasing \(5\) new rabbits into the meadow each year.  If the year begins with \(230\) rabbits, describe what will happen to the population over the next ten years.%
+\end{egexercise}%
 \end{exercisegroup}
-\par\smallskip\noindent
-\begin{exerciselist}
-\item[5.]\hypertarget{exercise-24}{}\hypertarget{p-129}{}%
+\par\noindent%
+\par\medskip\noindent
+\begin{divisionexercise}{5}\hypertarget{exercise-24}{}
+\hypertarget{p-129}{}%
 An annual inflation rate of \(k\%\) means that items will cost \(k\%\) more next year than they cost this year.  Based on a yearly inflation rate of \(3\%\), estimate the cost of the following items in \(10\), \(20\), \(30\), and \(40\) years.%
 \begin{table}
 \centering
@@ -1540,17 +1533,21 @@ An annual inflation rate of \(k\%\) means that items will cost \(k\%\) more next
 \end{tabular}
 \caption{Cost of Items\label{table-6}}
 \end{table}
-\par\smallskip
-\item[6.]\hypertarget{exercise-25}{}\hypertarget{p-130}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-25}{}
+\hypertarget{p-130}{}%
 How much money would you need to invest now in an account that receives \(0.5\%\) monthly interest so that in \(20\) years you will have \(\$50,000\)?%
-\par\smallskip
-\item[7.]\hypertarget{exercise-26}{}\hypertarget{p-131}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-26}{}
+\hypertarget{p-131}{}%
 The number of cells in a certain bacteria colony triples every hour.  Write an explicit function that models this growth.  By what factor does the population grow in half an hour?%
-\par\smallskip
-\item[8.]\hypertarget{exercise-27}{}\hypertarget{p-132}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-27}{}
+\hypertarget{p-132}{}%
 Thorieum-\(234\) is a radioactive material whose half-life is \(25\) days. Write an explicit function for the amount of thorium-\(234\) left after \(t\) days.  What percent of an original amount is left after \(300\) days?%
-\par\smallskip
-\item[9.]\hypertarget{exercise-28}{}\hypertarget{p-133}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{exercise-28}{}
+\hypertarget{p-133}{}%
 The population of The Peoples Republic of China in \(2015\) was a little over \(1.39\) billion and growing at a rate of about \(0.5\%\) annually. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-58}{}Write a recursive system to model the population%
@@ -1560,22 +1557,24 @@ The population of The Peoples Republic of China in \(2015\) was a little over \(
 \item\hypertarget{li-62}{}Write a few sentences to compare and contrast the models you found in parts a, b, and d.%
 \end{enumerate}
 %
-\par\smallskip
-\item[10.]\hypertarget{exercise-29}{}\hypertarget{p-134}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{10}\hypertarget{exercise-29}{}
+\hypertarget{p-134}{}%
 When you are \(40\) years old your rich Uncle Harry leaves you \(\$10,000\) in his will when he dies.  His death makes you realize it is time to start saving for your own retirement. Your goal is to deposit enough in a retirement account when you are between the ages of \(40\) and \(65\) that you can "pay yourself" a comfortable amount each year when you are over \(65\). \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-63}{}On your \(40^{th}\) birthday you invest the \(\$10,000\) in an account that pays \(3.5\%\) annual interest.  You also decide to make a yearly deposit in the account of \(\$1,000\). What will your balance be when you turn \(65\)?  Give the amount in your account when you turn \(65\) and write the equations you use to arrive at your answer.%
 \item\hypertarget{li-64}{}Will you have enough money in your account when you are \(65\) to pay yourself \(\$5,000\) per year from age \(65\) to age \(80\).  While you are withdrawing money, the balance in the account continues to earn \(3.5\%\) annual interest.  Give a yes or no answer and write the equations you use to support your answer.%
 \end{enumerate}
 %
-\par\smallskip
-\item[11.]\hypertarget{exercise-30}{}\hypertarget{p-135}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{11}\hypertarget{exercise-30}{}
+\hypertarget{p-135}{}%
 Thomas has two plans for saving to buy a car.  In Plan A, he will make an initial deposit of \(\$50\) and then he will deposit \(\$33\) each week in an account that earns \(0.1\%\) interest per week.  In Plan B, he will make an initial deposit of \(\$50\) and then each week he will put \(\$30\) in an account that earns \(0.45\%\) each week. Write recursive equations to show the amounts Thomas would have under each of the plans. Write down the account balances under each plan during weeks \(1 - 3\) and during weeks \(50 - 52\)%
-\par\smallskip
-\item[12.]\hypertarget{exercise-31}{}\hypertarget{p-136}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{12}\hypertarget{exercise-31}{}
+\hypertarget{p-136}{}%
 In this section you have seen that the recursive system \(P_0=a, P_n=(1+k) \cdot P_{n-1}, n = 1, 2, 3, ...\) can be written as a closed form exponential function \(P(n)=a \cdot (1+k)^n\). What recursive system can be written as a closed form linear function of the form \(y(n)=a+kn\)?%
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 4.4 Summing Geometric Growth}
 \typeout{************************************************}
@@ -1660,11 +1659,11 @@ You will encounter a wide variety of situations in mathematics classes and in ot
 \par
 \hypertarget{p-151}{}%
 Below are two additional examples from the financial world where this concept is used.%
-\begin{example}[Value of an Annuity]\label{value-on-an-annuity}
+\begin{example}[{Value of an Annuity.}]\label{value-on-an-annuity}
 \hypertarget{p-152}{}%
 Suppose your parents want to set aside money for college tuition for a younger sibling.  They begin saving when she is twelve by opening an account with an initial deposit of \(\$100\).  At the beginning of each month for six years thereafter, they deposit an additional \(\$100\).  An account into which regular payments are made (or from which regular withdrawals are made) is called \emph{an annuity}.  The account into which they place the money earns \(0.5\%\) monthly interest, which is added to the account at the end of each month.  How much money will be in the account at the end of six years?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-11}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-11}{}\quad%
 \hypertarget{p-153}{}%
 The initial deposit earns interest for \(72\) months, which means that in \(72\) months the first \(\$100\) deposited has grown to a value of \(\$100(1.005)^{72}\).  The money deposited at the beginning of the second month earns interest for \(71\) months and grows to \(\$100(1.005)^{71}\).  Each successive deposit earns interest for one month less than the previous deposit.  We will assume that your parents close the account on the day that they make the final payment of \(\$100\); this means that the final \(\$100\) deposit earns no interest.  The timeline in \hyperref[deposit-timeline]{Figure~2} shows each deposit together with the amount of interest earned by each deposit.%
 \begin{figure}
@@ -1683,11 +1682,11 @@ B= \frac{100-100(1.005)^{73}}{1-1.005}\label{mrow-80}
 \end{gather}
 which equals \(\$8,784.09\), the balance of the annuity after six years.  Note that only \(\$7,300\) was deposited, so over \(6\) years the deposits have earned over \(\$1,400\) in interest.%
 \end{example}
-\begin{example}[Paying Off a Loan]\label{example-12}
+\begin{example}[{Paying Off a Loan.}]\label{example-12}
 \hypertarget{p-155}{}%
 Suppose you borrow \(\$20,000\) to buy a car, and you agree to pay back the loan over \(48\) months at \(0.4 \%\) interest per month.  You want to determine the monthly payment \(P\) that you must make in order to pay off the loan. You know how to find the payment using a "guess and check" method.  Now, since you are able to find the sum of a geometric series, you can write and solve an equation to find the payment.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-12}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-12}{}\quad%
 \hypertarget{p-156}{}%
 Your outstanding balance can be represented with the recursive system%
 %
@@ -1790,11 +1789,12 @@ L(n) = (1+k)^n A - P \bigg(\frac{1-(1+k)^n}{1-(1+k)}\bigg)\label{mrow-100}
 If you want the outstanding balance to be zero after \(n^*\) months, you can solve to find the value of \(P\) for which \(L(n^*)=0\).%
 \end{example}
 \typeout{************************************************}
-\typeout{Exercises 4.4.1 Exercises}
+\typeout{Exercises 4.4 Exercises}
 \typeout{************************************************}
-\subsection[{Exercises}]{Exercises}\label{exercises-6}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-32}{}\hypertarget{p-173}{}%
+\subsection*{Exercises}\hypertarget{exercises-6}{}
+\addcontentsline{toc}{subsection}{Exercises}
+\begin{divisionexercise}{1}\hypertarget{exercise-32}{}
+\hypertarget{p-173}{}%
 Consider the geometric series \(100+100(1.05)+100(1.05)^2+100(1.05)^3+...\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1802,8 +1802,9 @@ Consider the geometric series \(100+100(1.05)+100(1.05)^2+100(1.05)^3+...\)%
 \item\hypertarget{li-66}{}Find the sum of the first \(100\) terms of the series%
 \item\hypertarget{li-67}{}Find the sum of the first \(500\) terms of the series%
 \end{enumerate}
-\par\smallskip
-\item[2.]\hypertarget{exercise-33}{}\hypertarget{p-174}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-33}{}
+\hypertarget{p-174}{}%
 Consider the geometric series \(200+200(0.8)+200(0.8)^2+200(0.8)^3+...\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1812,8 +1813,9 @@ Consider the geometric series \(200+200(0.8)+200(0.8)^2+200(0.8)^3+...\)%
 \item\hypertarget{li-70}{}Find the sum of the first \(1000\) terms of the series%
 \item\hypertarget{li-71}{}Make a prediction about the sum of the first million terms. Compare your prediction with the actual sum.%
 \end{enumerate}
-\par\smallskip
-\item[3.]\hypertarget{exercise-34}{}\hypertarget{p-175}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-34}{}
+\hypertarget{p-175}{}%
 Consider the geometric series \(3+1.5+0.75+0.375+...\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1821,8 +1823,9 @@ Consider the geometric series \(3+1.5+0.75+0.375+...\)%
 \item\hypertarget{li-73}{}Find the sum of the first \(50\) terms of the series%
 \item\hypertarget{li-74}{}How many terms of the series must be added to bring the sum to at least \(5.99999\)?%
 \end{enumerate}
-\par\smallskip
-\item[4.]\hypertarget{exercise-35}{}\hypertarget{p-176}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-35}{}
+\hypertarget{p-176}{}%
 Consider the geometric series with first term \(\frac{9}{10}\) and common ratio \(\frac{1}{10}\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1830,8 +1833,9 @@ Consider the geometric series with first term \(\frac{9}{10}\) and common ratio 
 \item\hypertarget{li-76}{}Find the sum of the first \(100\) terms of the series%
 \item\hypertarget{li-77}{}Explain if it is meaningful to talk about adding infinitely many of the terms in this series%
 \end{enumerate}
-\par\smallskip
-\item[5.]\hypertarget{exercise-36}{}\hypertarget{p-177}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-36}{}
+\hypertarget{p-177}{}%
 Let \(T(n)\) represent the sum of the first \(n\) terms of the series \(1 - \frac{1}{2} + \frac{1}{4} - \frac{1}{8} + ...\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1839,19 +1843,22 @@ Let \(T(n)\) represent the sum of the first \(n\) terms of the series \(1 - \fra
 \item\hypertarget{li-79}{}Find an explicit expression for \(T(n)\) in terms of \(n\).%
 \item\hypertarget{li-80}{}Describe how the values of \(T(n)\) behave as \(n\) increases without bound.%
 \end{enumerate}
-\par\smallskip
-\item[6.]\hypertarget{exercise-37}{}\hypertarget{p-178}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-37}{}
+\hypertarget{p-178}{}%
 Let \(T(n)\) represent the sum of the first \(n\) terms of the series \(0.3 + 0.03 + 0.003 + 0.0003 + ...\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-81}{}Find an explicit expression for \(T(n)\) in terms of \(n\).%
 \item\hypertarget{li-82}{}Describe how the values of \(T(n)\) behave as \(n\) increases without bound.%
 \end{enumerate}
-\par\smallskip
-\item[7.]\hypertarget{exercise-38}{}\hypertarget{p-179}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-38}{}
+\hypertarget{p-179}{}%
 Let \(S(n)\) represent the sum of the first \(n\) terms of the series with common ratio \(r\). For what values of \(r\) is it meaningful to talk about adding infinitely many terms of the series?%
-\par\smallskip
-\item[8.]\hypertarget{exercise-39}{}\hypertarget{p-180}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-39}{}
+\hypertarget{p-180}{}%
 Find the sum of each geometric series.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1861,19 +1868,22 @@ Find the sum of each geometric series.%
 \item\hypertarget{li-86}{}\(3 + \frac{3}{5} + \frac{3}{25} + \frac{3}{125} + ... + \frac{3}{5^{20}}\)%
 \item\hypertarget{li-87}{}\(3 - \frac{3}{5} + \frac{3}{25} - \frac{3}{125} + ... + \frac{3}{5^{20}}\)%
 \end{enumerate}
-\par\smallskip
-\item[9.]\hypertarget{exercise-40}{}\hypertarget{p-181}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{exercise-40}{}
+\hypertarget{p-181}{}%
 In the oil consumption problem at the beginning of this section, the consumption of oil is increasing at a rate of \(1.42\%\) per year. By how many billions of barrels will the total consumption of oil from \(2012\) to \(2042\) be reduced if the rate of increase is reduced to \(1\%\)?%
-\par\smallskip
-\item[10.]\hypertarget{exercise-41}{}\hypertarget{p-182}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{10}\hypertarget{exercise-41}{}
+\hypertarget{p-182}{}%
 The number of new cars sold at a car dealer each year grows at a rate of \(1.5\%\) a year. This year, the dealer sold \(200\) cars. Assume that the \(1.5\%\) annual growth rate continues.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-88}{}How many cars will the dealer sell \(15\) years from now%
 \item\hypertarget{li-89}{}What is the total number of cars that will have been sold between this year and \(15\) years in the future?%
 \end{enumerate}
-\par\smallskip
-\item[11.]\hypertarget{exercise-42}{}\hypertarget{p-183}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{11}\hypertarget{exercise-42}{}
+\hypertarget{p-183}{}%
 The landfill in Jefferson County can hold \(22.6\) million cubic yards of compacted garbage. In \(2015\) the city of Jefferson and the surrounding communities contributed \(550,000\) cubic yards of garbage to the landfill. The following year the total amount was about \(560,000\) cubic yards, which represents a \(1.8\%\) increase. This rate of Increase is actually smaller than the population growth rate of the county, so residents are reducing their per capita contributions to the land fill. \footnote{Adapted from Mathematics Modeling our Worlds COMAP course 2\label{fn-2}}%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1882,8 +1892,9 @@ The landfill in Jefferson County can hold \(22.6\) million cubic yards of compac
 \item\hypertarget{li-92}{}Suppose that new recycling program can decrease the number of cubic yards of garbage that the country produces. In \(2015\) residents contributed \(550,000\) cubic yards of garbage to the landfill and annual rate of increase is brought down to \(1\%\).  How many years will the landfill last under these conditions?%
 \item\hypertarget{li-93}{}How long would the landfill last if the annual rate of increase of garbage contribution was brought down to zero?%
 \end{enumerate}
-\par\smallskip
-\item[12.]\hypertarget{exercise-43}{}\hypertarget{p-184}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{12}\hypertarget{exercise-43}{}
+\hypertarget{p-184}{}%
 You have an annuity to which you initially depot \(\$1,000\) and you add \(\$150\) each month. The account earns interest at \(0.35\%\) monthly interest rate; interest earned is added to the account balance at the end of each month.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -1891,8 +1902,9 @@ You have an annuity to which you initially depot \(\$1,000\) and you add \(\$150
 \item\hypertarget{li-95}{}How much money will you have after \(3\) years?%
 \item\hypertarget{li-96}{}How much money will you have after \(n\) months? Your answer should be written in the form of an explicit expression.%
 \end{enumerate}
-\par\smallskip
-\item[13.]\hypertarget{exercise-44}{}\hypertarget{p-185}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{13}\hypertarget{exercise-44}{}
+\hypertarget{p-185}{}%
 Compare these two investment strategies to save for retirement by determining the account balance at age \(65\):%
 \par
 \hypertarget{p-186}{}%
@@ -1900,16 +1912,18 @@ Compare these two investment strategies to save for retirement by determining th
 \par
 \hypertarget{p-187}{}%
 \emph{Strategy II:} For the \(16\) years from age \(49\) to age \(65\), invest \(\$300\) per month and earn at a rate of \(0.75\%\) per month. Make no withdrawals from the account.%
-\par\smallskip
-\item[14.]\hypertarget{exercise-45}{}\hypertarget{p-188}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{14}\hypertarget{exercise-45}{}
+\hypertarget{p-188}{}%
 Start by writing an explicit function that expresses \(Y_n\) in terms of \(n\) if the values of \(Y_n\) are generated by the recursive system \(Y_0=A, Y_n=aY_{n-1}+b, n = 1, 2, 3, ...\) Use the method for summing a geometric series. Then:%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-97}{}Use your explicit function to determine the balance in an annuity after \(25\) years if an initial deposit of \(\$50,000\) and regular annual deposits of \(\$1,000\) have all earned interest at a \(3.5\%\) annual rate.%
 \item\hypertarget{li-98}{}Use your explicit function to determine the outstanding balance after \(60\) months on a loan of \(\$55,000\) if payments of \(\$600\) are made each month and the interest rate is \(2.4\%\) per month.%
 \end{enumerate}
-\par\smallskip
-\item[15.]\hypertarget{exercise-46}{}\hypertarget{p-189}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{15}\hypertarget{exercise-46}{}
+\hypertarget{p-189}{}%
 Earl and Larry are twins.  They both went to work at the age of \(24\) at the same job.  On their birthday each year (starting with their \(25^{\text{th}}\)birthday), they received identical bonuses of \(\$2,000\).  However, they decided to deal with their finances differently.\footnote{Adapted from: Smith, Keith, Tim and Tom's Financial Adventure, HIMap Pull-Out Section, COMAP Consortium, Fall, 1991\label{fn-3}}%
 \par
 \hypertarget{p-190}{}%
@@ -1929,8 +1943,7 @@ Earl and Larry are twins.  They both went to work at the age of \(24\) at the sa
 \par
 \hypertarget{p-195}{}%
 Your task is to compare Earl's and Larry's investment strategies.  Your analysis should include the amount each twin has in his bank account on their \(60^{\text{th}}\) birthday as well as how much bonus money each twin was able to spend between the ages of \(25\) and \(60\).  Which investment strategy would you recommend?  Your comparison should include both \emph{recursive equations and explicit functions} that represent the amount of money Earl and Larry have in their respective accounts at any time.%
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 4.5 Compound Interest (or the Magic of Compounding)}
 \typeout{************************************************}
@@ -1973,7 +1986,7 @@ At the end of the first year, which contains twelve compounding periods, the bal
 \end{gather*}
 \hypertarget{p-203}{}%
 Notice that this amount is higher than the balance of \(\$1,050.00\) that we expect at the end of one year using annual compounding. This increased balance is the result of Maria earning interest on interest payments that have been deposited into the account during the year.%
-\begin{example}[Investment Accounts]\label{chapter04-section05-investment-accounts}
+\begin{example}[{Investment Accounts.}]\label{chapter04-section05-investment-accounts}
 \hypertarget{p-204}{}%
 Financial institutions often offer a variety of investment accounts from which their customers can choose.%
 \leavevmode%
@@ -1983,7 +1996,7 @@ Financial institutions often offer a variety of investment accounts from which t
 \item\hypertarget{li-101}{}Would Felix be better off investing money in an account that earns \(5.1\%\) annual interest that is compounded annually, or an account that earns \(5\%\) that is compounded every hour?%
 \end{enumerate}
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-13}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-13}{}\quad%
 \leavevmode%
 \begin{enumerate}
 \item\hypertarget{li-102}{}If \(5\%\) annual interest is compounded quarterly (four times per year) then the account balance is multiplied by \((1+\frac{0.05}{4})\) each quarter. The account balance after \(n\) quarters is given by \(A(n)=100(1+\frac{0.05}{4})^n\). After \(1\) year, the balance will be \(A(4)=100(1+\frac{0.05}{4})^4 \approx \$105.09\). Felix would have ended up with the same account balance if he earned an interest rate of \(5.09\%\) that was compounded once per year.%
@@ -1997,20 +2010,21 @@ The different interest rates and compounding frequencies in \hyperref[chapter04-
 \typeout{Exercises 4.5.1 Class Practice}
 \typeout{************************************************}
 \subsection[{Class Practice}]{Class Practice}\label{exercises-7}
-\begin{exerciselist}
-\item[1.]\hypertarget{chapter04-section05-classpractice-recursive-vs-explicit}{}\leavevmode%
+\begin{divisionexercise}{1}\hypertarget{chapter04-section05-classpractice-recursive-vs-explicit}{}
+\leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-105}{}Write a recursive system to represent the future value of an initial deposit \(A_0\) that earns \(r\%\) annual interest that is compounded quarterly. Let \(A_n\) represent the value after \(n\) years%
 \item\hypertarget{li-106}{}Write an explicit function to represent the future value of an initial deposit \(A_0\) that earns \(r\%\) annual interest that is compounded quarterly. Let \(A(n)\) represent the value after \(n\) years%
 \end{enumerate}
-\par\smallskip
-\item[2.]\hypertarget{exercise-48}{}\hypertarget{p-206}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-48}{}
+\hypertarget{p-206}{}%
 Write representations as described in \hyperlink{chapter04-section05-classpractice-recursive-vs-explicit}{Exercise~1}, but use monthly compounding%
-\par\smallskip
-\item[3.]\hypertarget{exercise-49}{}\hypertarget{p-207}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-49}{}
+\hypertarget{p-207}{}%
 Write representations as described in \hyperlink{chapter04-section05-classpractice-recursive-vs-explicit}{Exercise~1}, but use \(k\) compounding periods per year%
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \hypertarget{p-208}{}%
 \hyperref[impact-of-compounding-table]{Table~2} shows the future value of \(\$1,000\) earning \(5\%\) annual interest for various compounding frequencies. (All table entries are rounded to the nearest dollar.) You should be able to confirm the entries in the table.  For instance,%
 %
@@ -2042,7 +2056,7 @@ A(N)=1,000((1 + \frac{0.05}{k})^k)^N \text{or} A(N) = 1000(1 + \frac{0.05}{k})^{
 where \(A(N)\) is the future value of \(N\) years.%
 \par
 \hypertarget{p-212}{}%
-The value of \(N\) is fixed in each row of \hyperref[impact-of-compounding-table]{Table~2}, in the first row \(N=1\), in the second \(N=10\), and so on.  This means that increases in the future values in a particular row result solely from the value of the expression \((1+\frac{0.05}{k})^k\).  Since the future values associated with each value of \(N\) appear to have a limit, we suspect that the quantity \((1+\frac{0.05}{k})^k\) has some limiting value as \(k\) becomes very large.  \hyperref[impact-of-k]{Table~3} provides values of this quantity for \(k\)-values associated with increasing frequency of compounding.  Correct to six decimal places, the limiting value appears to be \(1.051271\)%
+The value of \(N\) is fixed in each row of \hyperref[impact-of-compounding-table]{Table~2}, in the first row \(N=1\), in the second \(N=10\), and so on.  This means that increases in the future values in a particular row result solely from the value of the expression \((1+\frac{0.05}{k})^k\).  Since the future values associated with each value of \(N\) appear to have a limit, we suspect that the quantity \((1+\frac{0.05}{k})^k\) has some limiting value as \(k\) becomes very large.  \hyperref[impact-of-k]{Table~\ref{impact-of-k}} provides values of this quantity for \(k\)-values associated with increasing frequency of compounding.  Correct to six decimal places, the limiting value appears to be \(1.051271\)%
 \begin{table}
 \centering
 \begin{tabular}{llllllll}
@@ -2101,23 +2115,27 @@ The continuous function \(F(N)=A_0 e^{rN}\) describing the future value of an ac
 \typeout{Exercises 4.5.2 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-8}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-50}{}\hypertarget{p-222}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-50}{}
+\hypertarget{p-222}{}%
 Compute the balance that results when \(\$2,000\) is deposited for one year in an account paying \(4\%\) annual interest compounded quarterly.  How does this balance compare to an approximation using continuous compounding of \(4\%\) annual interest? Make the comparable comparison if the annual interest rate is \(12\%\).%
-\par\smallskip
-\item[2.]\hypertarget{exercise-51}{}\hypertarget{p-223}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-51}{}
+\hypertarget{p-223}{}%
 If Jack invests \(\$250\) at an annual interest rate of \(7.5\%\), what is the future value after two years if the interest is compounded quarterly? monthly? weekly? daily? continuously?%
-\par\smallskip
-\item[3.]\hypertarget{exercise-52}{}\leavevmode%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-52}{}
+\leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-107}{}Which has the greater future value after \(5\) years, \(\$1,000\) invested at \(8\%\) with yearly compounding or \(\$1,000\) invested at \(7.75\%\) with quarterly compounding?  Use graphs of appropriate functions to determine if the number of years affects which deposit has a greater future value.%
 \item\hypertarget{li-108}{}Which has the greater future value after \(5\) years, \\($1,000\) invested at \(8\%\) compounded yearly or \(\$800\) invested at \(9\%\) compounded yearly?  Does the number of years affect which deposit has the greater future value?%
 \end{enumerate}
-\par\smallskip
-\item[4.]\hypertarget{exercise-53}{}\hypertarget{p-224}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-53}{}
+\hypertarget{p-224}{}%
 It has been said that the island of Manhattan was purchased for \(\$24\) in \(1626\).  Suppose the \(\$24\) had been invested at \(6\%\) annual interest compounded quarterly.  What would it be worth today?%
-\par\smallskip
-\item[5.]\hypertarget{exercise-54}{}\hypertarget{p-225}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-54}{}
+\hypertarget{p-225}{}%
 If we denote the effective annual rate by \(R\), then \(R\) satisfies the equation%
 %
 \begin{gather*}
@@ -2125,22 +2143,21 @@ A(1 + R) = A \bigg(1 + \frac{r}{k}\bigg)^k
 \end{gather*}
 \hypertarget{p-226}{}%
 where \(A\) is the inital deposit, \(k\) is the number of compounding periods per year, and \(r\) is the annual interest rate. Solve the equation for \(R=(1 + \frac{r}{k})^k - 1\).%
-\par\smallskip
-\item[6.]\hypertarget{exercise-55}{}\hypertarget{p-227}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-55}{}
+\hypertarget{p-227}{}%
 Use the concept of effective annual yield to compare a \(7.25\%\) certificate of deposit with quarterly compounding to a \(7\%\) certificate with monthly compounding.  Which option will provide a better return on your investment?%
-\par\smallskip
-\item[7.]\hypertarget{exercise-56}{}\hypertarget{p-228}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-56}{}
+\hypertarget{p-228}{}%
 In this exercise you will look at the relationship between interest rate and doubling time.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-109}{}Complete the table. Assume that the interest is compounded monthly. The doubling time should be accurate to the nearest hundreth of a year.%
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAtabular\else\newsavebox{\panelboxAtabular}\fi%
-\savebox{\panelboxAtabular}{%
-\raisebox{\depth}{\parbox{1\linewidth}{\centering\begin{tabular}{ll}
+\begin{sidebyside}{1}{0}{0}{0}
+\begin{sbspanel}{1}
+{\centering%
+\begin{tabular}{ll}
 \multicolumn{1}{cB}{Annual Interest (\(\%\))}&\multicolumn{1}{c}{Doubling Time (Years)}\tabularnewline\hrulethick
 \multicolumn{1}{lB}{\(1.5\)}&\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(3.2\)}&\tabularnewline\hrulemedium
@@ -2152,42 +2169,32 @@ In this exercise you will look at the relationship between interest rate and dou
 \multicolumn{1}{lB}{\(12.0\)}&\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(20.5\)}&\tabularnewline\hrulemedium
 \end{tabular}
-}}}
-\ifdefined\phAtabular\else\newlength{\phAtabular}\fi%
-\setlength{\phAtabular}{\ht\panelboxAtabular+\dp\panelboxAtabular}
-\settototalheight{\phAtabular}{\usebox{\panelboxAtabular}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAtabular}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{1}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{1\linewidth}\usebox{\panelboxAtabular}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+\par}
+\end{sbspanel}
+\end{sidebyside}
 \item\hypertarget{li-110}{}Make a scatterplot of the set of ordered pairs \((\text{rate}, \text{time to double})\). For example, if you found that a \(5.8\%\) interest rate compounded monthly takes \(12.9\) years to double, you would have the ordered pair \((5.8, 12.9)\).%
 \item\hypertarget{li-111}{}Based on the shape of your scatterplot, identify a toolkit function that would be a good model for your scatterplot.  \emph{Hint:} An exponential function would NOT be a good model%
 \item\hypertarget{li-112}{}Find a model for the ordered pairs \((\text{rate}, \text{time to double})\). To do this, you should decide by what factor this toolkit function must be vertically stretched so that it will fit your scatterplot.%
 \item\hypertarget{li-113}{}According to your model, what is the doubling time for a \(2\%\) interest rate that is compounded monthly?  What is the doubling time for \(10\%\)?  For \(14\%\)? What interest rate will cause an investment to double in \(70\) years?%
 \end{enumerate}
-\par\smallskip
-\item[8.]\hypertarget{exercise-57}{}\hypertarget{p-229}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-57}{}
+\hypertarget{p-229}{}%
 Suppose that when you were born your parents estimated they would need \(\$50,000\) for college expenses.  The best interest rate they could find was offered on a certificate of deposit paying \(6\%\) annual interest compounded monthly.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-114}{}What is the effective annual interest rate for this account?%
 \item\hypertarget{li-115}{}How much money should your parents have invested to have a balance of \(\$50,000\) on your eighteenth birthday?%
 \end{enumerate}
-\par\smallskip
-\item[9.]\hypertarget{athletic-contract}{}\hypertarget{p-230}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{athletic-contract}{}
+\hypertarget{p-230}{}%
 The amount of money that would have to be invested today to yield some specified amount in the future is called the \emph{present value} of that future amount.  (In exercise 8 you found the present value of \(\$50,000\) to be paid in eighteen years.)  Suppose a professional athlete signs a one-year contract for \(\$2,000,000\) and agrees to be paid over a period of five years.  At the beginning of each of the next five years he or she will be paid \(\$400,000\).  What is the present value of this contract assuming a \(6\%\) interest rate compounded annually?  Another way to ask this question is: how much money should the team management deposit in an account earning \(6\%\) annual interest when the contract is signed to guarantee that they can pay this five-year deal?  Since the athlete is paid at the beginning of each year, assume that the present value of the first payment of \(\$400,000\) is \(\$400,000\).%
-\par\smallskip
-\item[10.]\hypertarget{exercise-59}{}\hypertarget{p-231}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{10}\hypertarget{exercise-59}{}
+\hypertarget{p-231}{}%
 Suppose the interest rate is \(5\%\) in the athletic contract discussed in \hyperlink{athletic-contract}{Exercise~9}.  What is the present value of this contract?  Does this make sense when compared with your answer to \hyperlink{athletic-contract}{Exercise~9}?  What would you expect to be true for an interest rate of \(3\%\)?%
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 4.6 Exponential Functions}
 \typeout{************************************************}
@@ -2199,13 +2206,9 @@ In Chapter 2 we graphed the toolkit function \(f(x)=2^x\) and in the previous se
 We observe that the graph of \(f(x)=2^x\)  contains the points \((0,1)\) and \((1,2)\) and that the graph of \(f(x)=e^x\) contains the points \((0,1)\) and \((1,e)\).  We know that for any positive base \(b\), \(b^0=1\), so graph of \(f(x)=b^x\) always contains the point \((0,1)\). Likewise, since \(b^1=b\) and \(b^(-1)=\frac{1}{b}\), we know that these graphs will also contain the points \((1,b)\) and \((-1,\frac{1}{b})\). In addition, all of the graphs will have the \(x\)-axis as an asymptote.  When the base is greater than \(1\) this asymptote is the negative part of the \(x\)-axis. Figure 6.1 shows a graph of \(f(x)=e^x\), along with the toolkit function \(g(x)=2^x\) on the axes on the left. The graph on the right illustrates \(y=3^x\), \(y=4^x\), and \(y=10^x\).%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -2227,14 +2230,10 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.5\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -2257,22 +2256,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Graph of the functions \(f(x)=e^x\) and \(g(x)=2^x\),  and of \(y=3^x\), \(y=4^x\), and \(y=10^x\).\label{exponential-plots}}
 \end{figure}
 \hypertarget{p-234}{}%
@@ -2283,11 +2269,11 @@ b^{m+n}=b^m \cdot b^n\\
 b^{mn}=(b^m)^n=(b^n)^m
 \end{gather*}
 These laws can be used to explain why exponential functions whose equations appear quite different may in fact be the same function and have the same graph.  The following examples show two such cases.%
-\begin{example}[]\label{example-14}
+\begin{example}\label{example-14}
 \hypertarget{p-235}{}%
 Graph the function \(f(x)=3^{-x}\) and the function \(g(x)=(\frac{1}{3})^x\).  Explain why the graphs have the appearance they do.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-14}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-14}{}\quad%
 \hypertarget{p-236}{}%
 \leavevmode%
 \begin{figure}
@@ -2342,21 +2328,17 @@ tick label style={font=\tiny},
 \end{figure}
  \hyperref[figure-graphofonethirdtothex]{Figure~4} shows the graph of \(g(x)=(\frac{1}{3})^x\). This is an exponential function with base \(\frac{1}{3}\).  The graph contains the points \((0,1)\)  and \((1,1/3)\) .  Because the base is less than \(1\), the graph is decreasing. To understand why \(f(x)=g(x)\) for all \(x\), note that the rules of exponents tell us that  \((\frac{1}{3})^x = ( 3^{-1} )^x = 3^{-1 \cdot x} = 3^{-x}\). Exponential functions like \(g(x)=(\frac{1}{3})^x\), with a base between zero and one, and functions like \(f(x)=3^{-x}\), with a base greater than one and a negative coefficient in the exponent, are both used to model \emph{exponential decay}.%
 \end{example}
-\begin{example}[]\label{example-15}
+\begin{example}\label{example-15}
 \hypertarget{p-237}{}%
 Use ideas you know about transformations to help you graph the functions  \(g(x) = 4 \cdot 2^x\) and \(k(x)=2^{x+2}\). Why do these graphs look the way they do?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-15}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-15}{}\quad%
 \hypertarget{p-238}{}%
 The graph of \(g(x) = 4 \cdot 2^x\) is a vertical stretch by a factor of \(4\) of the function \(y=2^x\). The graph is shown on the left in Figure XX. The point \((0,1)\) stretches up to \((0,4)\) and the point \((1,2)\) streatches up to \((1,8)\). The graph of \(k(x)=2^{x+2}\) is a horizontal shift \(2\) units to the left of the function \(y=2^x\). The point \((0,1)\) moves left to \((-2,1)\)  and the point \((1,2)\)  moves left to \((-1,2)\). You should notice that the graphs of \(g(x)\) and \(k(x)\) look identical; this is because \(4 \cdot 2^x = 2^2 \cdot 2^x = 2^{x+2}\). \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -2395,14 +2377,10 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.5\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -2441,22 +2419,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{\(g(x)=4 \cdot 2^x\) and \(k(x)=2^{x+2}\)\label{exponential-plots-2}}
 \end{figure}
  Although the function definitions look different, \(g(x)=4 \cdot 2^x\) and \(k(x)=2^{x+2}\) are actually two different ways of writing the same function.%
@@ -2464,11 +2429,11 @@ tick label style={font=\tiny},
 \hypertarget{p-239}{}%
 Other transformations of exponential functions, such as horizontal compressions and vertical shifts, result in curves that are important in modeling various types of growth and decay.%
 \end{example}
-\begin{example}[Growth of a Tumor]\label{example-16}
+\begin{example}[{Growth of a Tumor.}]\label{example-16}
 \hypertarget{p-240}{}%
 In a laboratory experiment, the growth of a tumor in a mouse was monitored over time.  Using data analysis techniques, the function \(s = 0.32e^{0.11d}\) was found to be a good model for the growth.  In this equation, \(d\) represents the number of days since monitoring began, and \(s\) represents the size of the tumor in cubic centimeters. Graph the function over an appropriate domain.  What is the initial size of the tumor? Determine the size after ten days and after twenty days.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-16}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-16}{}\quad%
 \hypertarget{p-241}{}%
 The graph of  \(s=e^d\) must be compressed vertically by a factor of \(0.32\) and stretched horizontally by a factor of \(\frac{1}{0.11} \approx 9\) to obtain the graph shown in \hyperref[figure-tumor-graph]{Figure~8}  The graph contains the point \((0,0.32)\) since \((0,1)\) has been stretched horizontally by a factor of \(9\) and stretched vertically by a factor of \(0.32\).  We can estimate that another point has approximate coordinates \((9,0.32e) \approx (9,0.87)\) since \((1,e)\) has been stretched horizontally by a factor of \(9\) and stretched vertically by a factor of \(0.32\) Based on the context, the appropriate domain is non-negative values of \(d\). Although we would expect there to be physical limitations on the size of the tumor, we do not know what this upper limit is, so we have not attempted to show this in the graph. \begin{figure}
 \centering
@@ -2517,11 +2482,11 @@ tick label style={font=\tiny},
 \end{figure}
  The initial size of the tumor is \(0.32\) cc since this is the \(s\)-value associated with \(d=0\).  Substituting \(d=10\) and \(d=20\) into the equation \(s=0.32e^{0.11d}\) reveals that the size of the tumor is \(0.96\) cc after ten days and \(2.89\) cc after twenty days.%
 \end{example}
-\begin{example}[Cooling Coffee]\label{example-17}
+\begin{example}[{Cooling Coffee.}]\label{example-17}
 \hypertarget{p-242}{}%
 When a cup of hot coffee is placed in a cool room, the coffee begins to cool and will continue to do so until it reaches room temperature.  If the initial temperature of the coffee is \(85^o C\)  and the room temperature is \(24^o C\), find an exponential function that models the temperature at any time \(t\).%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-17}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-17}{}\quad%
 \hypertarget{p-243}{}%
 The cooling process can be reasonably well-modeled using exponential decay.  We can use the function \(y=e^{-x}\) to model exponential decay, but we must transform the curve so that it has a horizontal asymptote at \(24\), not \(0\), and has a \(y\)-intercept of \(85\), not \(1\).  The graph of \(y=e^{-x} + 24\) will be be shifted up \(24\) units and will have an asymptote at \(y=24\) instead of \(y=0\).. The graph of \(y=e^{-x}+24\) contains the point \((0,25)\); the \(y\)-intercept is \(1\) unit above the horizontal asymptote. The function that models the coffee's temperature must have a \(y\)-intercept that is \(85-24=61\) units above the asymptote. This means that we must vertically stretch the graph by a factor of \(61\) before shifting the entire graph up \(24\).  This can be done by multiplying the \(e^{-x}\) by \(61\). The graph of the function \(y = 61e^{-x} + 24\) is shown in \hyperref[figure-cooling-coffee]{Figure~10}%
 \begin{figure}
@@ -2554,11 +2519,11 @@ tick label style={font=\tiny},
 \hypertarget{p-244}{}%
 Objects cool at different rates, depending on their composition and shape. In graphing the function in Figure XX we did not take into account how quickly the coffee cooled to room temperature. We can see from the graph that it seemed to cool very quickly, nearly reaching room temperature in \(4\) minutes, which is unrealistically fast.  In real life, coffee takes much longer to cool.  To model this slower cooling process, we need to apply a horizontal stretch to the functional model.  This would result in a model of the form \(y=61e^{-kx}+24\), where \(0 \lt k \lt 1\).  To find the particular value of \(k\) in a given situation requires us to know more than just the initial and room temperatures.%
 \end{example}
-\begin{example}[]\label{example-18}
+\begin{example}\label{example-18}
 \hypertarget{p-245}{}%
 When you start to learn a new skill, such as typing, your proficiency begins rather low and grows toward some maximum level.  At first your proficiency grows quickly, but as you near the maximum level, your gains grow more slowly.  Exponential curves that display this behavior are called \emph{learning curves}. Such functions can be modeled with transformed exponential functions. Consider the function \(f(x) = 45 - 35e^{-0.3x}\), when \(x\) represents the number of weeks of practice and \(f(x)\) represents typing speed in words per minute.  Sketch a graph of this function and use the graph to describe the specific characteristics of this learning curve.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-18}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-18}{}\quad%
 \hypertarget{p-246}{}%
 The domain of this function based on the situation described above is \(x \geq 0\).  To sketch this function, we begin with the graph of \(g(x)= 35e^{-0.3x}\), which we know is a decreasing function with a \(y\)-intercept of \(35\).%
 \begin{figure}
@@ -2699,11 +2664,11 @@ tick label style={font=\tiny},
 \hypertarget{p-249}{}%
 When \(x=0\), the value of the function is \(10\), so you start typing at \(10\) words per minute.  In the first five weeks of practice you improve all the way up to \(37\) words per minute, but in the next five weeks you improve only \(6\) more words per minute.  At this point you type a little over \(43\) words per minute but gain very little with additional practice.  The horizontal asymptote at \(45\) indicates that there is an upper limit of \(45\) words per minute on your typing speed.%
 \end{example}
-\begin{example}[]\label{example-19}
+\begin{example}\label{example-19}
 \hypertarget{p-250}{}%
 Use composition to sketch the graph of \(f(x)=e^{\frac{1}{x-1}}\).%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-19}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-19}{}\quad%
 \hypertarget{p-251}{}%
 Function \(f\) is a composition of%
 \begin{gather*}
@@ -2715,13 +2680,9 @@ Since \(f(x)=h(g(x))\) and the outer function \(h(x)\) has no domain restriction
 \leavevmode%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -2744,14 +2705,10 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.5\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
 \begin{axis}[
 axis line style = {<->},
@@ -2772,22 +2729,9 @@ tick label style={font=\tiny},
 \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Graph of the functions \(f(x)=e^x\) and \(g(x)=2^x\),  and of \(y=3^x\), \(y=4^x\), and \(y=10^x\).\label{figure-exponential-composition}}
 \end{figure}
 %
@@ -2851,15 +2795,16 @@ tick label style={font=\tiny},
 \typeout{Exercises 4.6.1 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-9}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-60}{}\hypertarget{p-256}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-60}{}
+\hypertarget{p-256}{}%
 Using the limit notation introduced in the previous section, we can write%
 \begin{equation*}
 \lim_{x \to \infty} b^x = 0
 \end{equation*}
 provided \(b \gt 1\). This is read "the limit of \(b\) raised to the \(x\) power, as \(x\) approached negative infinity, is \(0\)". This means that any base \(b\) that is greater than \(1\), when rasied to a power that is more and more negative, produces a value closer and closer to zero. What characteristic of the graph of \(y=b^x\) is explained by this limit statement?%
-\par\smallskip
-\item[2.]\hypertarget{exercise-61}{}\hypertarget{p-257}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-61}{}
+\hypertarget{p-257}{}%
 Use technology to graph the function  \(y=b^x\) for \(b = 2, 5, 7\) and \(10\) on the same axes. You may be able to accomplish this using a slider in some dynamic algebra/geometry applications. You should see that the graph of each of the functions contains the point \((0,1)\), has the negative \(x\)-axis as an asymptote and is increasing in quadrant I. The following questions will help you decide if the graphs of \(y=2^x, y=5^x, y=7^x,and y=10^x\), are so similar in shape that they are all actually transformations of each other.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2869,14 +2814,13 @@ Use technology to graph the function  \(y=b^x\) for \(b = 2, 5, 7\) and \(10\) o
 \item\hypertarget{li-119}{}Explain why there \emph{could} be a horizontal stretch or compression that can transform the graph of \(y=2^x\) into the graph of \(y=5^x\).%
 \item\hypertarget{li-120}{}The graph of \(y=5^x\) can be horizontally stretched by a factor of \(k\) so that the stretched graph is identical to the graph of \(y=2^x\). Use the graphs you made to estimate the size of the number \(k\), i.e. the size of the stretch factor.%
 \end{enumerate}
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Exercises 4.6.2 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-10}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-62}{}\hypertarget{p-258}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-62}{}
+\hypertarget{p-258}{}%
 As we illustrated in Examples 1 and 2, we can often apply laws of exponents to simplify graphing exponential functions. Describe two different ways to graph the following equations as transformations of an exponential function.  Which way seems easier to you?  Rewrite each equation to make your choice of transformation obvious, and sketch a graph.  Identify the horizontal asymptote and the points that correspond to \((0,1)\) and \((1,b)\).%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2885,8 +2829,9 @@ As we illustrated in Examples 1 and 2, we can often apply laws of exponents to s
 \item\hypertarget{li-123}{}\(y = (-4) \cdot 2^x\)%
 \item\hypertarget{li-124}{}\(y = 4^{-x-2}\)%
 \end{enumerate}
-\par\smallskip
-\item[2.]\hypertarget{exercise-63}{}\hypertarget{p-259}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-63}{}
+\hypertarget{p-259}{}%
 Consider the four expresssions \(3^{3x-2}, 3^{3(x-2/3)}, 27^{x-2/3}\), and \(\frac{1}{9} \cdot 27^x\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2894,8 +2839,9 @@ Consider the four expresssions \(3^{3x-2}, 3^{3(x-2/3)}, 27^{x-2/3}\), and \(\fr
 \item\hypertarget{li-126}{}Graph \(y=3^{3x-2}\) using one of the expressions that is equal to \(y=3^{3x-2}\). Label the coordinates of the points that correspond to \((0, 1)\) and \((1, b)\).%
 \item\hypertarget{li-127}{}Which expression did  you choose to graph?  Why?%
 \end{enumerate}
-\par\smallskip
-\item[3.]\hypertarget{exercise-64}{}\hypertarget{p-260}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-64}{}
+\hypertarget{p-260}{}%
 Graph each function that is a transformation of \(y=b^x\). Label asymptote(s) and points that correspond \((0, 1)\) and \((1, b)\).%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2910,8 +2856,9 @@ Graph each function that is a transformation of \(y=b^x\). Label asymptote(s) an
 \item\hypertarget{li-136}{}\(y=-3(2^{2x})+1\)%
 \item\hypertarget{li-137}{}\(y=|-5+3^{x+2}|\)%
 \end{enumerate}
-\par\smallskip
-\item[4.]\hypertarget{exercise-65}{}\hypertarget{p-261}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-65}{}
+\hypertarget{p-261}{}%
 A typical worker at a supermarket bakery can decorate \(f(t)\) cakes per hour after \(t\) days on the job, where:%
 %
 \begin{gather*}
@@ -2924,8 +2871,9 @@ f(t)=10 \cdot ( 1-e^{-\frac{1}{4}} )
 \item\hypertarget{li-140}{}After eight days, how many cakes can a worker decorate in an hour?%
 \item\hypertarget{li-141}{}Based on this graph, after a worker has decorated cakes for a very long time, how many cakes can he or she decorate in an hour?%
 \end{enumerate}
-\par\smallskip
-\item[5.]\hypertarget{exercise-66}{}\hypertarget{p-262}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-66}{}
+\hypertarget{p-262}{}%
 Rheumatoid arthritis patients are treated with large doses of aspirin.  Research has shown that the concentration of aspirin in the bloodstream increases for a short period of time after the drug is administered and then decreases exponentially.  For a typical patient, this relationship is given by \(a=14.91e^{-0.18t}\), where \(t\) represents the number of hours since peak concentration and \(a\) represents the concentration of aspirin measured in milligrams per cubic centimeter of blood.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2934,8 +2882,9 @@ Rheumatoid arthritis patients are treated with large doses of aspirin.  Research
 \item\hypertarget{li-144}{}Determine the amount of aspirin remaining four hours after peak concentration.%
 \item\hypertarget{li-145}{}Use a computer- or calculator-generated graph to determine the time at which the concentration is \(5\) mg per cc of blood%
 \end{enumerate}
-\par\smallskip
-\item[6.]\hypertarget{exercise-67}{}\hypertarget{p-263}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-67}{}
+\hypertarget{p-263}{}%
 In a classroom experiment students made fudge the old-fashioned way.  They cooked sugar, milk, and chocolate until it reached \(234^\circ\) Fahrenheit.  Then they removed the mixture from the heat, added butter and vanilla, and let the mixture cool to \(110^\circ\).  As they monitored the temperature, they kept records and used data analysis techniques to determine a mathematical model for the temperature of the fudge as a function of time.  Their model is \(F = 154e^{-0.00063t} + 77\), where \(F\) is the temperature of the fudge in degrees Fahrenheit and \(t\) represents the number of seconds elapsed since stirring in the butter.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2943,16 +2892,18 @@ In a classroom experiment students made fudge the old-fashioned way.  They cooke
 \item\hypertarget{li-147}{}Determine the temperature of the mixture after thirty minutes.%
 \item\hypertarget{li-148}{}Use your graph to determine how long it takes for the temperature to reach \(110^\circ\)%
 \end{enumerate}
-\par\smallskip
-\item[7.]\hypertarget{exercise-68}{}\hypertarget{p-264}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-68}{}
+\hypertarget{p-264}{}%
 McKenzie invests \(\$1,000\) in a local bank at an annual rate of \(5.14\%\) compounded quarterly.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-149}{}Use a graph to determine when their investment will be worth \(\$1,500\)%
 \item\hypertarget{li-150}{}Suppose instead that the \(5.14\%\) is compounded continuously. When will they have \(\$1,500\)?%
 \end{enumerate}
-\par\smallskip
-\item[8.]\hypertarget{exercise-69}{}\hypertarget{p-265}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-69}{}
+\hypertarget{p-265}{}%
 Newton's law of cooling states that the change in temperature of an object as it cools is proportional to the difference between the current temperature and the ambient temperature.  Suppose the initial temperature of a cup of hot coffee was \(92^\circ\)C and the ambient temperature was \(3^\circ\)C.  The temperature of this coffee could be modeled with the following iterative system:%
 %
 \begin{gather*}
@@ -2967,8 +2918,9 @@ In this situation, \(n\) represents the number of minutes that have elapsed%
 \item\hypertarget{li-153}{}Transform \(f\) so that it has a horizontal asymptote of \(y=3\) and a \(y\)-intercept of \(92\)%
 \item\hypertarget{li-154}{}Now transform \(f\) so that it decreases less quickly. This transformed function should produce a graph similar to the one you generated in part (a).%
 \end{enumerate}
-\par\smallskip
-\item[9.]\hypertarget{exercise-70}{}\hypertarget{p-267}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{exercise-70}{}
+\hypertarget{p-267}{}%
 Suppose, because of limitations in food and living space, a population of field mice experiences constrained growth. This means that the population cannot increase beyond a certain maximum number \(M\).  The change in population is directly proportional to the product of the current population and the difference between the maximum population \(M\) and the current population.  This can be expressed by the following recursive equation:%
 %
 \begin{gather*}
@@ -2983,8 +2935,9 @@ where \(P_n\) represents the population after \(n\) months, and \(k\) the consta
 \item\hypertarget{li-157}{}Now graph \(g(x) = \frac{1}{1+e^{-x}}\).  What is the range of this function?  What is the \(y\)-intercept?%
 \item\hypertarget{li-158}{}Apply transformations to \(f\) so that it has a \(y\)-intercept of \(100\) and grows less quickly.  The horizontal asymptote should be \(y = 1000\) .  This transformed function should produce a graph similar to the one you generated in part (a). This means that you have written an explicit function that models the logistic growth described at the beginning of the problem%
 \end{enumerate}
-\par\smallskip
-\item[10.]\hypertarget{exercise-71}{}\hypertarget{p-269}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{10}\hypertarget{exercise-71}{}
+\hypertarget{p-269}{}%
 Use the ideas of composition to sketch a graph of each function without using to technology%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -2997,8 +2950,9 @@ Use the ideas of composition to sketch a graph of each function without using to
 \item\hypertarget{li-165}{}\(f(x)=e^{-x^2}\)%
 \item\hypertarget{li-166}{}\(f(x)=\frac{1}{1+2e^{-x}}\)%
 \end{enumerate}
-\par\smallskip
-\item[11.]\hypertarget{exercise-72}{}\hypertarget{p-270}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{11}\hypertarget{exercise-72}{}
+\hypertarget{p-270}{}%
 The cane toad, a native of South America, was introduced to Australia in \(1935\) as a way to control the destructive sugar cane beetle.  It has no natural predators in Australia and it reproduces very rapidly.  In June \(1935\), \(102\) cane toads were brought to Australia.  Twenty-one months later, the population of cane toads had grown to about \(65,000\).%
 \par
 \hypertarget{p-271}{}%
@@ -3011,8 +2965,7 @@ Let \(t\) reprsent the number of years since June 1935, \(m\) reprsent the numbe
 \item\hypertarget{li-170}{}Use each of your three models to predict how many cane toads there would have been \(5\) years after the landing of those initial \(102\) toads, if the growth had continued un-checked.  Of course, you should get approximately the same answer from all the models.  If they are not exactly the same, explain why this is the case.%
 \item\hypertarget{li-171}{}Pretend you are an Australian reporter who got interested in the cane toad situation just a year after they landed, and, being a mathematician too, you investigated the situation by developing the models above.  Write a short "newspaper" article in which you use some of that information to tell your readers about this situation.  Use your \(5\)-year prediction as the clincher, by relating that number to some geographical or other fact about Australia, to make it "real".  For example, you could compare that number of cane toads there will be to the population of Australia that year, or find some other measure of "cane toad density".  Be creative!  Cite the reference from which you get your Australian information.%
 \end{enumerate}
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Chapter 5 Logarithmic Functions}
 \typeout{************************************************}
@@ -3113,13 +3066,10 @@ So \(\log_{10}(1000) = 3\), (since \(10^3 = 1000\)), \(\log_{10}(10) = 1\) (sinc
 For the mathematics enrollment data, instead of plotting points \((\text{year}, \text{enrollment})\), we will plot points \((\text{year}, \log ( \text{enrollment} ) )\). In particular, instead of \((2,010, 10,000)\), we will plot the point \((2,010, 4)\). We use the \(y\)-coordinate of \(4\) since \(\log_{10}(10,000) = 4\) . Values for other \(y\)-coordinates can be found using a calculator to evaluate logarithms; the values of these coordinates cannot be determined using familiar algebraic techniques and require the use of technology. For example, \(\log_{10}(250,000) = 5.39794\) because \(10^{5.39794} = 250,000\). Re-expressing the entire set of data results in the following table and graph.%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAtabular\else\newsavebox{\panelboxAtabular}\fi%
-\savebox{\panelboxAtabular}{%
-\raisebox{\depth}{\parbox{0.5\linewidth}{\centering\begin{tabular}{ll}
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+{\centering%
+\begin{tabular}{ll}
 \multicolumn{1}{cB}{Year}&\multicolumn{1}{c}{\(\log(\text{Enrollment})\)}\tabularnewline\hrulemedium
 \multicolumn{1}{lB}{\(2002\)}&\(6.4472\)\tabularnewline[0pt]
 \multicolumn{1}{lB}{\(2006\)}&\(5.3979\)\tabularnewline[0pt]
@@ -3127,14 +3077,10 @@ For the mathematics enrollment data, instead of plotting points \((\text{year}, 
 \multicolumn{1}{lB}{\(2012\)}&\(3.4771\)\tabularnewline[0pt]
 \multicolumn{1}{lB}{\(2016\)}&\(2.6990\)
 \end{tabular}
-}}}
-\ifdefined\phAtabular\else\newlength{\phAtabular}\fi%
-\setlength{\phAtabular}{\ht\panelboxAtabular+\dp\panelboxAtabular}
-\settototalheight{\phAtabular}{\usebox{\panelboxAtabular}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAtabular}}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\par}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
     xlabel = Year,
@@ -3156,22 +3102,9 @@ For the mathematics enrollment data, instead of plotting points \((\text{year}, 
   \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAtabular}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Enrollment in mathematics classes over time, log-scale\label{figure-20}}
 \end{figure}
 \hypertarget{p-281}{}%
@@ -3182,7 +3115,7 @@ The logarithm used in the math enrollment example is called a base \(10\) logari
 \par
 \hypertarget{p-283}{}%
 Logarithms with base \(10\) are referred to as common logarithms; the conventional notation omits the base, e.g. we write \(\log(100) = 2\) instead of \(\log_{10} (100) = 2\). Logarithms with base \(e\) are referred to as natural logarithms, and written with the special notation \(\ln\)  (read "el en"). (e.g. \(\log_e (2) = \ln(2) = 0.6931\)).  Most of our work with logarithms will be in one of these two bases.%
-\begin{example}[]\label{example-20}
+\begin{example}\label{example-20}
 \hypertarget{p-284}{}%
 Convert each logarithmic equation into an equivalent exponential equation, and each exponential equation into an equivalent logarithmic equation.%
 \leavevmode%
@@ -3193,7 +3126,7 @@ Convert each logarithmic equation into an equivalent exponential equation, and e
 \item\hypertarget{li-175}{}\(\log_a b = c\)%
 \end{enumerate}
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-20}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-20}{}\quad%
 \hypertarget{p-285}{}%
 We use the definition of logarithm to rewrite each of these equations%
 \leavevmode%
@@ -3224,11 +3157,11 @@ There are two other important formulas relating exponents and logarithms.%
 b ^ {\log_b r} = r \text{ and } \log_b b^r = r
 \end{gather*}
 Practice problems 1 and 2 at the end of the section will ask you to use the definition of a logarithm to explain why these formulas are true.%
-\begin{example}[]\label{example-21}
+\begin{example}\label{example-21}
 \hypertarget{p-289}{}%
 Show that \(\log_b \left( r \cdot s \right) = \log_b \left( r \right) + \log_b \left( s \right) \) is true for all positive values of \(r, s, \text{and } b\) (provided that \(b \neq 1\))%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-21}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-21}{}\quad%
 \hypertarget{p-290}{}%
 We will show that \(b^{\log_b\left( r \cdot s \right)}\) is equal to \(b^{ \log_b\left( r \right) + \log_b\left( s \right)}\); that is \(b\) raised to the left hand side is equal to \(b\) raised to the right hand side. This will allow us to conclude that the exponents on \(b\) are equal.%
 \par
@@ -3253,11 +3186,11 @@ We have shown that \(b^{\log_b \left( r \cdot s \right)} = r \cdot s\) and \(b^{
 \end{gather*}
 %
 \end{example}
-\begin{example}[]\label{example-22}
+\begin{example}\label{example-22}
 \hypertarget{p-292}{}%
 Re-write the exponential equation \(A = e^{kt}\) into an equivalent logarithmic equation. Then, solve for \(t\). Assume that \(A\) and \(k\) are both constants.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-22}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-22}{}\quad%
 \hypertarget{p-293}{}%
 Recall that by definition, \(b ^ c = a\) is equvialent to \(\log_b(a) = c\). So in this exponential equation, \(A = e^{kt}\) is equivalent to%
 \begin{gather*}
@@ -3269,11 +3202,11 @@ t = \frac{1}{k} \cdot \ln \left( A \right)
 \end{gather*}
 %
 \end{example}
-\begin{example}[]\label{example-23}
+\begin{example}\label{example-23}
 \hypertarget{p-294}{}%
 Rewrite the expression \(\log_4(x) + \log_4 \left( \frac{8}{x^2} \right)\) as a single logarithm%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-23}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-23}{}\quad%
 \hypertarget{p-295}{}%
 \(\log_4 x + \log_4 \left( \frac{8}{x^2} \right) = \log_4 \left( x \cdot \frac{8}{x^2} \right) = \log_4 \left( \frac{8}{x} \right)\)%
 \end{example}
@@ -3283,20 +3216,20 @@ It is worth noting here that these properties of logarithms make difficult produ
 \typeout{Exercises 5.1.1 Practice Problems}
 \typeout{************************************************}
 \subsection[{Practice Problems}]{Practice Problems}\label{exercises-11}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-73}{}\hypertarget{p-297}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-73}{}
+\hypertarget{p-297}{}%
 Use the definition of logarithm to explain why \(b^{\log_b r} = r\) is true.%
-\par\smallskip
-\item[2.]\hypertarget{exercise-74}{}\hypertarget{p-298}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-74}{}
+\hypertarget{p-298}{}%
 Use the definition of logarithm to explain why \(\log_b b^r = r\) is true.%
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Exercises 5.1.2 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-12}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-75}{}\hypertarget{p-299}{}%
+\begin{divisionexercise}{1}\hypertarget{exercise-75}{}
+\hypertarget{p-299}{}%
 Convert each equation to exponential form%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3305,8 +3238,9 @@ Convert each equation to exponential form%
 \item\hypertarget{li-182}{}\(\log 10,000 = 4\)%
 \item\hypertarget{li-183}{}\(\log_{1/2} 8 = -3\)%
 \end{enumerate}
-\par\smallskip
-\item[2.]\hypertarget{exercise-76}{}\hypertarget{p-300}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-76}{}
+\hypertarget{p-300}{}%
 Convert each equation to logarithmic form.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3315,8 +3249,9 @@ Convert each equation to logarithmic form.%
 \item\hypertarget{li-186}{}\(\sqrt{16} = 4\)%
 \item\hypertarget{li-187}{}\(\sqrt[3]{64} = 4\)%
 \end{enumerate}
-\par\smallskip
-\item[3.]\hypertarget{exercise-77}{}\hypertarget{p-301}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-77}{}
+\hypertarget{p-301}{}%
 Evaluate the following without a calculator.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3325,8 +3260,9 @@ Evaluate the following without a calculator.%
 \item\hypertarget{li-190}{}\(\log_2 \sqrt[5]{2^3}\)%
 \item\hypertarget{li-191}{}\(\log \left( 0.01 \right)\)%
 \end{enumerate}
-\par\smallskip
-\item[4.]\hypertarget{exercise-78}{}\hypertarget{p-302}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-78}{}
+\hypertarget{p-302}{}%
 Determine the two integrers between which each logarithm falls. For example, we can conclude that \(2 \lt \log_2 7 \lt 3\)%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3339,16 +3275,18 @@ Determine the two integrers between which each logarithm falls. For example, we 
 \item\hypertarget{li-198}{}\(\ln 27\)%
 \item\hypertarget{li-199}{}\(\ln \frac{1}{3}\)%
 \end{enumerate}
-\par\smallskip
-\item[5.]\hypertarget{exercise-79}{}\hypertarget{p-303}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-79}{}
+\hypertarget{p-303}{}%
 Prove the following laws of logarithms%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-200}{}\(\log_b \left( \frac{r}{s} \right) = \log_b(r) - \log_b(s), r, s, b > 0, b \neq 1\)%
 \item\hypertarget{li-201}{}\(\log_b \left( \frac{1}{a} \right) = -\log_b(a),  a \gt 0, b \neq 1\)%
 \end{enumerate}
-\par\smallskip
-\item[6.]\hypertarget{exercise-80}{}\hypertarget{p-304}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-80}{}
+\hypertarget{p-304}{}%
 Evaluate each of the following. .State any restrictions on values of the variables%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3357,8 +3295,9 @@ Evaluate each of the following. .State any restrictions on values of the variabl
 \item\hypertarget{li-204}{}\(\log_{64} 8\)%
 \item\hypertarget{li-205}{}\(\left( -3 \right)^{\log_{-3}5}\)%
 \end{enumerate}
-\par\smallskip
-\item[7.]\hypertarget{exercise-81}{}\hypertarget{p-305}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-81}{}
+\hypertarget{p-305}{}%
 Solve the following equations for \(x\). Use the definition of logarithm to rewrite each equation in a different form.  Give exact values (rather than decimal approximations) whenever possible%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3369,8 +3308,9 @@ Solve the following equations for \(x\). Use the definition of logarithm to rewr
 \item\hypertarget{li-210}{}\(\log_2 \left(x^2 + 5x + 10 \right) = 4\)%
 \item\hypertarget{li-211}{}\(\log_x 9 = 2\)%
 \end{enumerate}
-\par\smallskip
-\item[8.]\hypertarget{exercise-82}{}\hypertarget{p-306}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-82}{}
+\hypertarget{p-306}{}%
 Use the propoerites of logarithms and exponents to help you solve each of the following equations.%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
@@ -3389,8 +3329,7 @@ Use the propoerites of logarithms and exponents to help you solve each of the fo
 \item\hypertarget{li-224}{}\(\log_2 \frac{1}{8} + \log_2 x = \log_2 4\)%
 \item\hypertarget{li-225}{}\(\log_2 8 ^ {1/3} = x \cdot \log_2 8\)%
 \end{enumerate}
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 5.2 Scientific Scales}
 \typeout{************************************************}
@@ -3438,11 +3377,11 @@ The threshold of human hearing is a sound with intensity \(10^{-12} \text{ W} / 
 \end{table}
 \hypertarget{p-310}{}%
 A sound of \(10\) decibels has ten times the intensity of a \(0\) decibel sound; a sound of \(20\) decibels has one hundred times the intensity of a \(0\) dB sound, or ten times the intensity of a \(10\) dB sound. Similarly, a sound of \(30\) dB has one thousand times the intensity of a \(0\) dB sound or ten times the intensity of a \(20\) dB sound.  When the loudness level increases by an increment of \(10\) decibels, the actual sound intensity is multiplied by a factor of ten.  Therefore, the intensity of a \(60\) dB sound (ordinary conversation) is not double the intensity of a \(30\) dB sound (a whisper).  Rather, the sound intensity of conversation is three factors of ten, or \(1000\), times the intensity of a whisper, and the intensity of a whisper is \(1000\) times that of the least audible sound.  Equal differences in loudness level, measured in decibels, correspond to equal ratios of sound intensity.%
-\begin{example}[]\label{example-24}
+\begin{example}\label{example-24}
 \hypertarget{p-311}{}%
 Compare the decibel level of two sirens at a distance of \(30\) meters to the decibel level of a single siren at the same distance.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-24}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-24}{}\quad%
 \hypertarget{p-312}{}%
 The total intensity of two simultaneous sounds is the sum of the individual intensities of the two sounds.%
 \begin{align*}
@@ -3450,17 +3389,20 @@ The total intensity of two simultaneous sounds is the sum of the individual inte
 Note that the total decibel level is not the sum of the individual decibel levels.  When the intensity level doubles, the decibel level increases by \(10\cdot\log2 \approx 3 \text{dB}\)%
 \end{example}
 \typeout{************************************************}
-\typeout{Exercises 5.2.2 Exercises}
+\typeout{Exercises 5.2 Exercises}
 \typeout{************************************************}
-\subsection[{Exercises}]{Exercises}\label{exercises-13}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-83}{}\hypertarget{p-313}{}%
+\subsection*{Exercises}\hypertarget{exercises-13}{}
+\addcontentsline{toc}{subsection}{Exercises}
+\begin{divisionexercise}{1}\hypertarget{exercise-83}{}
+\hypertarget{p-313}{}%
 At a party with \(25\) people, everyone is talking at once.  Use \hyperref[decibel-table]{Table~1} to determine  the sound level in decibels.%
-\par\smallskip
-\item[2.]\hypertarget{exercise-84}{}\hypertarget{p-314}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-84}{}
+\hypertarget{p-314}{}%
 The sound intensity level in large cities has been increasing by about one decibel annually.  To what percent increase in intensity does one decibel correspond?  If this annual increase continues, in how many years would the sound intensity double?%
-\par\smallskip
-\item[3.]\hypertarget{exercise-85}{}\hypertarget{p-315}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-85}{}
+\hypertarget{p-315}{}%
 The Richter scale measures the magnitude of an earthquake in terms of the total energy released by the earthquake.  One form of Richter's equation is%
 \begin{gather*}
 M = \frac{2}{3} \cdot \log(E) - 2.9
@@ -3471,8 +3413,9 @@ where \(M\) is the magnitude and \(E\) is the energy in joules of the earthquake
 \item\hypertarget{li-227}{}A very powerful earthquake occurred in Colombia on January 31, 1906, and measured \(8.6\) on the Richter scale.  Approximately how many joules of energy were released?%
 \end{enumerate}
 %
-\par\smallskip
-\item[4.]\hypertarget{exercise-86}{}\hypertarget{p-316}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-86}{}
+\hypertarget{p-316}{}%
 According to seismologists, an earthquake which registers \(2\) on the Richter scale is hardly perceptible while an earthquake which measures \(5\) on this scale is capable of shattering windows and dishes and is generally classified as "minor."  The San Francisco earthquake in \(1989\) caused great damage and registered \(7.1\) on the Richter scale. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-228}{}Compare the energy release of the San Francisco earthquake to a level \(5\) minor earthquake.  That is, calculate the ratio of their released energies.%
@@ -3480,27 +3423,31 @@ According to seismologists, an earthquake which registers \(2\) on the Richter s
 \item\hypertarget{li-230}{}If an earthquake releases twice as much energy as the San Francisco earthquake, what would it measure on the Richter scale?%
 \end{enumerate}
 %
-\par\smallskip
-\item[5.]\hypertarget{exercise-87}{}\hypertarget{p-317}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-87}{}
+\hypertarget{p-317}{}%
 In the first edition of \emph{Contemporary Precalculus Through Applications}, the authors erroneously stated that "each number on the Richter scale represents an earthquake ten times as strong as one of the next lower number".  Megan Bisk, a student at Wachusett Regional High School in Holden, Massachusetts, corrected us and proved that a \(0.67\) increase on the Richter scale represents an earthquake \(10\) times as strong. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-231}{}Prove that Megan was correct.%
 \item\hypertarget{li-232}{}Show that the correct statement is: "each number on the Richter scale represents an earthquake approximately \(32\) times as strong as one of the next lower number".%
 \end{enumerate}
 %
-\par\smallskip
-\item[6.]\hypertarget{exercise-88}{}\hypertarget{p-318}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-88}{}
+\hypertarget{p-318}{}%
 An empty auditorium has a sound level of \(40\) dB (due to heating and air-conditioning and outside noise).  On Saturday, \(100\) students are taking the SAT.  While they are working on the test, the only sounds are labored breathing and pencils rapidly moving across the paper.  The noise level then rises to \(60\) dB (not counting the groans).  If each student contributes equally to the total noise, what would be the noise level if only \(25\) students were taking the test?%
-\par\smallskip
-\item[7.]\hypertarget{exercise-89}{}\hypertarget{p-319}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-89}{}
+\hypertarget{p-319}{}%
 Because of the dissolved carbon dioxide in the atmosphere, the pH of rain and snow is lower than that of distilled water.   The pH of distilled water is \(7\) while that of rain and snow is around \(5.6\). \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-233}{}Determine the concentration of hydrogen ions in distilled water and in rain and snow.%
 \item\hypertarget{li-234}{}How many times greater is one than the other?%
 \end{enumerate}
 %
-\par\smallskip
-\item[8.]\hypertarget{exercise-90}{}\hypertarget{p-320}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-90}{}
+\hypertarget{p-320}{}%
 The basic astronomical unit of brightness is \emph{magnitude}.  The perceived, or apparent, magnitudes of two stars (\(m_1\) and \(m_2\)) are related to their actual intensities (\(I_1\) and \(I_2\)) by the equation%
 \begin{gather*}
 m_1 - m_2 = 2.5 \cdot \log \left( \frac{I_2}{I_1} \right)
@@ -3537,8 +3484,7 @@ L = 17.1 + 5.1 \cdot \log (D)
 Find the lens diameter of a telescope with limiting magnitude of \(11.1\)%
 \end{enumerate}
 %
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 5.3 Graphing Logarithmic Functions}
 \typeout{************************************************}
@@ -3555,13 +3501,10 @@ f(x) = \log(x)
 this function pairs every positive \(x\)-value with the base \(10\) logarithm of that \(x\).%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAtabular\else\newsavebox{\panelboxAtabular}\fi%
-\savebox{\panelboxAtabular}{%
-\raisebox{\depth}{\parbox{0.5\linewidth}{\centering\begin{tabular}{ccc}\hrulethick
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+{\centering%
+\begin{tabular}{ccc}\hrulethick
 \multicolumn{1}{l}{\(x\)}&\(\log(x)\)&\(f(x)\)\tabularnewline\hrulemedium
 \multicolumn{1}{l}{\(0.001\)}&\(\log(0.001)\)&\(-3\)\tabularnewline[0pt]
 \multicolumn{1}{l}{\(0.01\)}&\(\log(0.01)\)&\(-2\)\tabularnewline[0pt]
@@ -3571,14 +3514,10 @@ this function pairs every positive \(x\)-value with the base \(10\) logarithm of
 \multicolumn{1}{l}{\(100\)}&\(\log(100)\)&\(2\)\tabularnewline[0pt]
 \multicolumn{1}{l}{\(1000\)}&\(\log(1000)\)&\(3\)\tabularnewline\hrulethick
 \end{tabular}
-}}}
-\ifdefined\phAtabular\else\newlength{\phAtabular}\fi%
-\setlength{\phAtabular}{\ht\panelboxAtabular+\dp\panelboxAtabular}
-\settototalheight{\phAtabular}{\usebox{\panelboxAtabular}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAtabular}}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\par}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
     xlabel = $x$,
@@ -3602,22 +3541,9 @@ this function pairs every positive \(x\)-value with the base \(10\) logarithm of
   \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAtabular}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Table of values and graph of \(f(x) = \log(x)\)\label{figure-21}}
 \end{figure}
 \hypertarget{p-324}{}%
@@ -3676,11 +3602,11 @@ In \hyperref[exponential-log-inverses]{Figure~3} we show the graphs of the expon
 \end{figure}
 \hypertarget{p-328}{}%
 The domain of our new logarithmic function is the same as the range of the exponential function, and the range of the logarithmic function is the domain of the exponential function. Thus, the logarithmic function has the positive real numbers as its domain and all real numbers as its range.%
-\begin{example}[]\label{example-25}
+\begin{example}[{.}]\label{example-25}
 \hypertarget{p-329}{}%
 Find the inverse of \(f(x) = 10^x + 3\). Specify the domain and range of \(f(x)\) and \(f^{-1}(x)\).%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-25}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-25}{}\quad%
 \hypertarget{p-330}{}%
 The function \(f(x)\) is one-to-one with domain all real numbers and range \(y > 3\). To find \(f^{-1}(x)\), we first must folve for \(x\) in the equation \(y = 10^x + 3\) as follows:%
 \begin{align*}
@@ -3754,13 +3680,9 @@ b ^ {\log_b x} = x, \text{ if } x \gt 0\\
 When we consider exponential functions with bases greater than one, we know that the exponential functions with larger bases grow more rapidly than those with smaller bases.  Since the graph of a logarithmic function is the reflection of an exponential function about the line \(y = x\) , we would expect log functions with larger bases to grow more slowly than those with smaller bases.  \hyperref[exp-log-base-3-10]{Figure~6} shows graphs of the functions \(y = 3^x\) with \(y = \log_3 x\) on the left and \(y = 10^x\) along with \(y = \log_{10} x \) on the right. For the logarithmic functions you can see that the larger base produces a curve that increases more slowly.%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
     xlabel={$x$},
@@ -3783,14 +3705,10 @@ When we consider exponential functions with bases greater than one, we know that
   \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.5\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
     xlabel={$x$},
@@ -3813,22 +3731,9 @@ When we consider exponential functions with bases greater than one, we know that
   \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Exponential and Logarithmic Functions with Base 3 and 10\label{exp-log-base-3-10}}
 \end{figure}
 \hypertarget{p-337}{}%
@@ -3890,11 +3795,11 @@ Each function is one-to-one%
 \end{namedlistcontent}
 \captionof{namedlistcap}{Characteristics of Logarithmic Functions\label{list-log-characteristics}}
 \end{namedlist}
-\begin{example}[]\label{example-26}
+\begin{example}\label{example-26}
 \hypertarget{p-348}{}%
 Graph \(f(x) = \ln (x) +1 \).%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-26}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-26}{}\quad%
 \hypertarget{p-349}{}%
 The graph is provided in \hyperref[natural-log-plus-one]{Figure~10}. It has exactly the same shape as the graph of \(y = \ln x\), but the graph has been shifted up one unit. The vertical asymptote remains the same. However, the special point \(\left( 1,0 \right)\) moves to \(\left( 1,1, \right)\) and the point \(\left( e, 1 \right)\) is shifted up to \(\left( e, 2 \right)\).%
 \par
@@ -3927,22 +3832,18 @@ Notice that the expression \(\ln (x) + 1\) can be rewritten as \(\ln (x) + \ln (
 \caption{Graph of \(f(x) = \ln (x) +1 = \ln \left( e \cdot x \right)\)\label{natural-log-plus-one}}
 \end{figure}
 \end{example}
-\begin{example}[]\label{example-27}
+\begin{example}\label{example-27}
 \hypertarget{p-351}{}%
 Graph \(f(x) = \log_2 \left( x^2 \right)\). This expression can be simplified using the laws of logarithms to give the expression \(g(x) = 2 \log_2 \left( x \right)\). Are the two functions \(f\) and \(g\) truly identical?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-27}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-27}{}\quad%
 \hypertarget{p-352}{}%
 Notice first that \(x^2\) is greater than zero for all \(x \neq 0\).  This means that the domain of \(f(x) = \log_2 \left( x^2 \right)\) will be all real numbers except zero.  Notice also that \(f(-x) = f(x)\), so the graph of this function is symmetric about the \(y\)-axis.  We might be tempted to simplify \(\log_2 \left( x^2 \right)\) and rewrite it as \(2 \log \left( x \right)\). However, when we do this, we change the domain and now can use only positive values of \(x\).  For positive values of \(x\) the graphs of \(f(x) = \log_2 \left( x^2 \right)\) and \(g(x) = 2 \log_2 \left( x \right)\) are identical, as shown in \hyperref[logs-not-equal]{Figure~12}. Both graphs contain the points \(\left( 1,1 \right)\) and \(\left( 2, 2, \right)\). The graph of \(f(x) = \log_2 \left( x^2 \right)\) also contains the points \(\left( -1, 0 \right)\) and \(\left( -2, 2 \right)\).  The functions \(f\) and \(g\) are not identical because they have different domains.%
 \begin{figure}
 \centering
-% group protects changes to lengths, releases boxes (?)
-{% begin: group for a single side-by-side
-% set panel max height to practical minimum, created in preamble
-\setlength{\panelmax}{0pt}
-\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
-\begin{lrbox}{\panelboxAimage}
-\resizebox{0.5\linewidth}{!}{{
+\begin{sidebyside}{2}{0}{0}{0}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
     xlabel={$x$},
@@ -3965,14 +3866,10 @@ Notice first that \(x^2\) is greater than zero for all \(x \neq 0\).  This means
   \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phAimage\else\newlength{\phAimage}\fi%
-\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
-\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
-\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
-\begin{lrbox}{\panelboxBimage}
-\resizebox{0.5\linewidth}{!}{{
+}
+\end{sbspanel}
+\begin{sbspanel}{0.5}
+\resizebox{\linewidth}{!}{{
 \begin{tikzpicture}
   \begin{axis}[
     xlabel={$x$},
@@ -3994,30 +3891,17 @@ Notice first that \(x^2\) is greater than zero for all \(x \neq 0\).  This means
   \end{axis}
 \end{tikzpicture}
 }
-}\end{lrbox}
-\ifdefined\phBimage\else\newlength{\phBimage}\fi%
-\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
-\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
-\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
-\leavevmode%
-% begin: side-by-side as tabular
-% \tabcolsep change local to group
-\setlength{\tabcolsep}{0\linewidth}
-% @{} suppress \tabcolsep at extremes, so margins behave as intended
-\par\medskip\noindent
-\begin{tabular}{@{}*{2}{c}@{}}
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
-\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
-% end: side-by-side as tabular
-}% end: group for a single side-by-side
+}
+\end{sbspanel}
+\end{sidebyside}
 \caption{Graphs of \(f(x) = \log_2 \left( x^2 \right)\) and \(g(x) = 2 \log_2 \left( x \right)\)\label{logs-not-equal}}
 \end{figure}
 \end{example}
-\begin{example}[]\label{example-28}
+\begin{example}\label{example-28}
 \hypertarget{p-353}{}%
 Sketch the graph of \(f(x) = \ln \left( x^2 - 3x - 4 \right)\).%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-28}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-28}{}\quad%
 \hypertarget{p-354}{}%
 We can approach this graph as the composition \(f(x) = g \left( h(x) \right)\) where \(h(x) = x^2 - 3x - 4\) and \(g(x) = \ln (x)\).  Domain plays an important role in this composition. The graph of \(h(x)\) is shown in \hyperref[log-composition-just-quad]{Figure~14} and can be used to analyze the domain of \(f(x)\) and the flow of the composition. Since \(\ln (x)\) is defined only for \(x \gt 0\), the domain of the composition is restricted to those values of \(x\) for which \(h(x) = x^2 -3x - 4\) is positive. That is, the domain is restricted to those values of \(x\) for which the graph of \(h(x) = x^2 -3x -4\) is above the \(x\)-axis. This happens when \(x \gt 4\) or \(x \lt -1\). In the log function \(y = \ln x\), as \(x\) gets close to zero, the \(y\)-values tend toward negative infinity, making the \(y\)-axis a vertical asymptote.  In this graph, the values of the inner function \(h(x)\) approach zero as \(x\) gets close to \(4\) and to \(-1\).  Therefore, the graph of \(f\) will have vertical asymptotes at \(x = 4\) and at \(x = -1\).%
 \begin{figure}
@@ -4080,11 +3964,12 @@ Since \(\ln (1) = 0\), the values of \(x\) for which \(x^2 -3x -4 = 1\) are zero
 \end{figure}
 \end{example}
 \typeout{************************************************}
-\typeout{Exercises 5.3.4 Exercises}
+\typeout{Exercises 5.3 Exercises}
 \typeout{************************************************}
-\subsection[{Exercises}]{Exercises}\label{exercises-14}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-91}{}\hypertarget{p-356}{}%
+\subsection*{Exercises}\hypertarget{exercises-14}{}
+\addcontentsline{toc}{subsection}{Exercises}
+\begin{divisionexercise}{1}\hypertarget{exercise-91}{}
+\hypertarget{p-356}{}%
 Find the inverse of the following functions and specify the domain of each. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-243}{}\(f(x) = e^{-5x}\)%
@@ -4093,8 +3978,9 @@ Find the inverse of the following functions and specify the domain of each. \lea
 \item\hypertarget{li-246}{}\(f(x) = \log_2 \left( x - 3 \right)\)%
 \end{enumerate}
 %
-\par\smallskip
-\item[2.]\hypertarget{exercise-92}{}\hypertarget{p-357}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-92}{}
+\hypertarget{p-357}{}%
 \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-247}{}What attributes of the logarithm function allows us to say that if \(\ln r = \ln s\) then \(r = s\) as long as \(r,s > 0\)?%
@@ -4102,8 +3988,9 @@ Find the inverse of the following functions and specify the domain of each. \lea
 \item\hypertarget{li-249}{}For the toolkit functions, is it true that if \(f(x) = f(s)\) then \(r = s\)?%
 \end{enumerate}
 %
-\par\smallskip
-\item[3.]\hypertarget{exercise-93}{}\hypertarget{p-358}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-93}{}
+\hypertarget{p-358}{}%
 Computer scientists compare the speeds of some algorithms by finding the time required to complete a task as a function of the number of input items. A typical algorithm may include sorting \(n\) items into ascending order, for example. Suppose there are three algorithms, A, B, and C for sorting items in a list. The amount of time each of the algorithms A, B, and C takes is a function \(T\) of the number of input items \(n\). Three functions for \(T_A, T_B,\) and \(T_C\) are shown below.%
 \begin{align*}
 T_A(n) \amp = 10,000 + 2\ln(n)\\
@@ -4117,8 +4004,9 @@ T_C(n) \amp = 0.001e^n
 \item\hypertarget{li-252}{}When these algorithms are used in industry they often have thousands of input items. Which algorithm would be best for industrial use?  Write a few sentences to justify your answer.%
 \end{enumerate}
 %
-\par\smallskip
-\item[4.]\hypertarget{exercise-94}{}\hypertarget{p-359}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-94}{}
+\hypertarget{p-359}{}%
 Use a computer or calculator to graph \(y = \log(x)\) and \(y = \ln(x)\) on the same axes. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-253}{}Write a paragraph in which you compare these graphs.  What special features do they share?  In what ways are they different?%
@@ -4133,8 +4021,9 @@ Use graphs as needed to complete the following: %
 %
 \end{enumerate}
 %
-\par\smallskip
-\item[5.]\hypertarget{exercise-95}{}\hypertarget{p-361}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-95}{}
+\hypertarget{p-361}{}%
 Use the entries in the table below to compare the rate of graph of \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\). \begin{figure}
 \centering
 \begin{tabular}{ccc}\hrulethick
@@ -4153,11 +4042,13 @@ Use the entries in the table below to compare the rate of graph of \(f(x) = \sqr
 \caption{Comparison of \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\)\label{figure-31}}
 \end{figure}
  The functions \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\) are the inverses of the functions \(h(x) = x^2\) and \(k(x) = e^x\), respectively. Graph both \(h(x)\) and \(k(x)\) on the same axes and compare the rate at which they are increasing when \(x \gt 0\). How can these graphs be used to support the conclusions you made when comparing the rate of growth of \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\)%
-\par\smallskip
-\item[6.]\hypertarget{exercise-96}{}\hypertarget{p-362}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-96}{}
+\hypertarget{p-362}{}%
 For what values of \(b\) is \(f(x) = \log_b \left( x \right )\) an increasing function? A decreasing function?%
-\par\smallskip
-\item[7.]\hypertarget{exercise-97}{}\hypertarget{p-363}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-97}{}
+\hypertarget{p-363}{}%
 Graph each function.  Label the points that correspond to \(\left( 1,0 \right)\) and \(\left( b,1 \right)\) and the asymptote that corresponds to \(x = 0\). Identify the domain and range of each. \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-259}{}\(y = 3 + \log \left( x \right)\)%
@@ -4172,8 +4063,9 @@ Graph each function.  Label the points that correspond to \(\left( 1,0 \right)\)
 \item\hypertarget{li-268}{}\(y = - \left( 3 \log \left( x \right) + 5 \right)\)%
 \end{enumerate}
 %
-\par\smallskip
-\item[8.]\hypertarget{exercise-98}{}\hypertarget{p-364}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-98}{}
+\hypertarget{p-364}{}%
 Consider the function \(f(x) = \log_2 \sqrt{ \frac{x}{8} }\). \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-269}{}Graph \(f\) by rewriting it as \(f(x) = \frac{1}{2} \log_2 \left( \frac{x}{8} \right)\).%
@@ -4185,8 +4077,9 @@ Use this form of the equation to graph the function.%
 \item\hypertarget{li-271}{}Which form seems easier for graphing by hand?%
 \end{enumerate}
 %
-\par\smallskip
-\item[9.]\hypertarget{exercise-99}{}\hypertarget{p-365}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{exercise-99}{}
+\hypertarget{p-365}{}%
 Use properties of logarithms or composition of functions to sketch a graph of each of the following. Identify the property you use or the two functions that compose to form \(f\). \leavevmode%
 \begin{enumerate}[label=(\alph*)]
 \item\hypertarget{li-272}{}\(f(x) = \log \left( \frac{1}{x} \right)\)%
@@ -4199,11 +4092,11 @@ Use properties of logarithms or composition of functions to sketch a graph of ea
 \item\hypertarget{li-279}{}\(f(x) = 10^{\log \left( -x^2 +2 \right)}\)%
 \end{enumerate}
 %
-\par\smallskip
-\item[10.]\hypertarget{exercise-100}{}\hypertarget{p-366}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{10}\hypertarget{exercise-100}{}
+\hypertarget{p-366}{}%
 Graph \(f(x) = \ln \left( x \right)\) and \(g(x) = \log_{10} \left( x \right)\) on the same axis and relate the two using transformations.%
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Section 5.4 Solving Exponential and Logarithmic Equations}
 \typeout{************************************************}
@@ -4221,7 +4114,7 @@ We can use thhe calculator to evaluate \(\log_e \left( 0.335 \right) = \ln \left
 t \amp \approx 6.1
 \end{align*}
 to determine that the aspirin level is \(5\) mg per cc of blood after approximately \(6.1\) hours.%
-\begin{example}[]\label{example-29}
+\begin{example}\label{example-29}
 \hypertarget{p-370}{}%
 Solve each equation for \(x\): \leavevmode%
 \begin{enumerate}
@@ -4231,7 +4124,7 @@ Solve each equation for \(x\): \leavevmode%
 \end{enumerate}
 %
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-29}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-29}{}\quad%
 \hypertarget{p-371}{}%
 \leavevmode%
 \begin{enumerate}
@@ -4243,11 +4136,11 @@ Solve each equation for \(x\): \leavevmode%
 \end{example}
 \hypertarget{p-372}{}%
 Solving equations that involve exponents or logarithms often requires techniques that involve composition as well as laws of exponents and logarithms.%
-\begin{example}[]\label{example-30}
+\begin{example}\label{example-30}
 \hypertarget{p-373}{}%
 The population of the world, as of November 1, 2016, was estimated by the U. S. Census Bureau to be approximately \(7.348\) billion and was growing at an annual rate of approximately \(1.13\%\). If this rate were to remain constant, how long would it take for the population of the world to reach \(10\) billion?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-30}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-30}{}\quad%
 \hypertarget{p-374}{}%
 If we assume that the rate of growth is a constant percent (of the current population) then the function that models this growth is \(P(t)=7.348 \left( 1.0113 \right)^t\), where \(t\) represents the number of years since November 1, 2016, and \(P(t)\) represents population in billions.  Since we need to determine the value of \(t\) for which \(P(t) = 10\), we need to solve the equation \(10 = 7.348 \left( 1.0113 \right)^t\). Applying the log of both sides of this equation yields the following:%
 \begin{align*}
@@ -4270,11 +4163,11 @@ t = \frac{\ln \left( \frac{10}{7.348} \right)}{\ln \left( 1.0113 \right)} \appro
 \end{gather*}
 %
 \end{example}
-\begin{example}[]\label{example-31}
+\begin{example}\label{example-31}
 \hypertarget{p-376}{}%
 If a group of people are all asked to memorize a list of nonsense words, the percent of those who remember all of the words after \(t\) hours can be approximated by the logarithmic function \(f(t) = 1 - k\ln \left( t + 1 \right)\), where \(k\) is a constant that depends on several factors, such as the length of the list of words.  If after \(5\) hours only \(20\%\) of the members of a group can remember all of the words, determine the value of \(k\). Using this value of \(k\), determine what percent remember all of the words after \(1\) hour. At what time will no one in the group be able to remember all of the words?%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-31}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-31}{}\quad%
 \hypertarget{p-377}{}%
 Note first that \(f(0) = 1\), which tells us that initially \(100\%\) of the people in the group know all the words. To determine the value of \(k\) we need to solve the equation \(0.20 = 1 - k \ln \left( t + 1 \right)\) for \(k\) when \(t = 5\).%
 \begin{align*}
@@ -4351,11 +4244,11 @@ Therefore,%
 g(x) = \log_2 \left( x \right) \approx 1.44 \ln \left( x \right)
 \end{gather*}
 %
-\begin{example}[]\label{example-32}
+\begin{example}\label{example-32}
 \hypertarget{p-381}{}%
 Evaluate \(\log_3 \left( 7 \right)\). Round your approximation to the thousandths place.%
 \par\smallskip%
-\noindent\textbf{Solution.}\hypertarget{solution-32}{}\quad%
+\noindent\textbf{Solution}.\hypertarget{solution-32}{}\quad%
 \hypertarget{p-382}{}%
 Certain calculators and computers can compute logarithms of any base. However, many applications or computers are not be able to directly evaluate \(\log_3 \left( 7 \right)\). We can use the techniques above to change the base and then evaluate using a base, such as \(e\) or \(10\), that the computer can calculate.%
 \par
@@ -4366,41 +4259,50 @@ Let \(y = \log_3 \left( 7 \right)\), and rewrite this equation in exponential fo
 Since we now have an exponential equation, we can apply either the common log or the natural log of both sides of the equation as shown below.%
 \end{example}
 \typeout{************************************************}
-\typeout{Exercises 5.4.2 Exercises}
+\typeout{Exercises 5.4 Exercises}
 \typeout{************************************************}
-\subsection[{Exercises}]{Exercises}\label{exercises-15}
-\begin{exerciselist}
-\item[1.]\hypertarget{exercise-101}{}\hypertarget{p-385}{}%
+\subsection*{Exercises}\hypertarget{exercises-15}{}
+\addcontentsline{toc}{subsection}{Exercises}
+\begin{divisionexercise}{1}\hypertarget{exercise-101}{}
+\hypertarget{p-385}{}%
 %
-\par\smallskip
-\item[2.]\hypertarget{exercise-102}{}\hypertarget{p-386}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{2}\hypertarget{exercise-102}{}
+\hypertarget{p-386}{}%
 %
-\par\smallskip
-\item[3.]\hypertarget{exercise-103}{}\hypertarget{p-387}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{3}\hypertarget{exercise-103}{}
+\hypertarget{p-387}{}%
 %
-\par\smallskip
-\item[4.]\hypertarget{exercise-104}{}\hypertarget{p-388}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{4}\hypertarget{exercise-104}{}
+\hypertarget{p-388}{}%
 %
-\par\smallskip
-\item[5.]\hypertarget{exercise-105}{}\hypertarget{p-389}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{5}\hypertarget{exercise-105}{}
+\hypertarget{p-389}{}%
 %
-\par\smallskip
-\item[6.]\hypertarget{exercise-106}{}\hypertarget{p-390}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{6}\hypertarget{exercise-106}{}
+\hypertarget{p-390}{}%
 %
-\par\smallskip
-\item[7.]\hypertarget{exercise-107}{}\hypertarget{p-391}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{7}\hypertarget{exercise-107}{}
+\hypertarget{p-391}{}%
 %
-\par\smallskip
-\item[8.]\hypertarget{exercise-108}{}\hypertarget{p-392}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{8}\hypertarget{exercise-108}{}
+\hypertarget{p-392}{}%
 %
-\par\smallskip
-\item[9.]\hypertarget{exercise-109}{}\hypertarget{p-393}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{9}\hypertarget{exercise-109}{}
+\hypertarget{p-393}{}%
 %
-\par\smallskip
-\item[10.]\hypertarget{exercise-110}{}\hypertarget{p-394}{}%
+\end{divisionexercise}%
+\begin{divisionexercise}{10}\hypertarget{exercise-110}{}
+\hypertarget{p-394}{}%
 %
-\par\smallskip
-\end{exerciselist}
+\end{divisionexercise}%
 \typeout{************************************************}
 \typeout{Chapter 6 Parametric Functions}
 \typeout{************************************************}
