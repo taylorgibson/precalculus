@@ -7,7 +7,7 @@
 <!-- Copyright (C) 2018  Mathematics Department, NCSSM  -->
 <!-- See the file COPYING for copying conditions.       -->
 <section xml:id="chapter05-section03" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Graphig Logarithmic Functions</title>
+  <title>Graphing Logarithmic Functions</title>
     <subsection>
       <title>Defining the Logarithm Function</title>
       <p>Since we can find the base <m>10</m> logarithm of any positive real number, we can use logarithms to define a function.  We define a logarithmic function as follows:
@@ -138,7 +138,7 @@
       </md>
     </p>
 
-    <p>In <xref ref="exponential-log-inverses" text="type-local" />we show the graphs of the exponential function <m>f(x) = e^x</m> and its inverse, <m>g(x) = \log_{e} \left( x \right) = \ln \left( x \right)</m>, which is obtained by reflecting the graph of <m>y = e^x</m> across the line <m>y = x</m>.
+    <p>In <xref ref="exponential-log-inverses" text="type-local" /> we show the graphs of the exponential function <m>f(x) = e^x</m> and its inverse, <m>g(x) = \log_{e} \left( x \right) = \ln \left( x \right)</m>, which is obtained by reflecting the graph of <m>y = e^x</m> across the line <m>y = x</m>.
     </p>
 
     <figure xml:id="exponential-log-inverses">
@@ -177,7 +177,7 @@
             <mrow>\log_{10} \left( y - 3 \right) \amp= x</mrow>
           </md>
 
-          Note that we had to subtract <m>3</m> from the right-hand size of the equation before using the definition of logarithm to isolate <m>x</m>. Now we can write <m>f^{-1}(x) = \log_{10} \left( x - 3 \right) = \log \left( x - 3 \right) </m>. The domain of <m>f^{-1}(x)</m> is the range of <m>f(x)</m>, or <m>x > 3</m>; the range of <m>f^{-1}(x)</m> is the domain of <m>f(x)</m>, or all real numbers. A graph of both functions is shown in <xref ref="exponential-log-inverses-example" text="type-local" />The graph of <m>y = \log \left( x - 3 \right)</m> is the reflection of the graph of <m>y = 10^x + 3</m> across the line <m>y = x</m>.
+          Note that we had to subtract <m>3</m> from the right-hand size of the equation before using the definition of logarithm to isolate <m>x</m>. Now we can write <m>f^{-1}(x) = \log_{10} \left( x - 3 \right) = \log \left( x - 3 \right) </m>. The domain of <m>f^{-1}(x)</m> is the range of <m>f(x)</m>, or <m>x > 3</m>; the range of <m>f^{-1}(x)</m> is the domain of <m>f(x)</m>, or all real numbers. A graph of both functions is shown in <xref ref="exponential-log-inverses-example" text="type-local" />. The graph of <m>y = \log \left( x - 3 \right)</m> is the reflection of the graph of <m>y = 10^x + 3</m> across the line <m>y = x</m>.
           </p>
 
           <figure xml:id="exponential-log-inverses-example">
@@ -209,13 +209,348 @@
     <subsection>
       <title>Compositions of Exponential and Logarithmic Functions</title>
       <p>
+        Since the exponential and logarithmic functions are inverses and both are one-to-one functions, we can simplify the compositions of these two functions.  If <m>f(x) = 10^x</m>, then <m>f^{-1} (x) = \log x </m>, and we expect that
+        <md>
+          <mrow>f \left( f^{-1} (x) \right) = x.</mrow>
+        </md>
+        We know, however, that some restrictions on <m>x</m> might apply.  For what <m>x</m>-values are these equations valid?  First consider <m>f \left( f^{-1} (x) \right) = 10^{\log x}</m>.
+      </p>
+      <p>
+        This is a function composition with domain restrictions on the inner function <m>f^{-1} (x) = \log \left( x \right)</m>. For <m>f^{-1} (x) = \log \left( x \right)</m> to be defined, we must have <m>x \gt 0</m>. So we can conclude that
+        <md>
+          <mrow>f \left( f^{-1} (x) \right) = 10^{\log x} = x \text{ if } x \gt 0</mrow>
+        </md>
+      </p>
+      <p>
+        You might want to illustrate this statement using some specific examples. For example, according to this statement <m>10^{\log 100} = 100</m> but <m>10^{\log(-2)} \neq -2</m>. In the first example, we know that <m>\log 100 = 2</m> using the definition of logarithms and the fact that <m>10^2 = 100</m>. So <m>10^{\log 100} = 10^2 = 2</m> as expected. In the second example, we need to find the value <m>a</m> for which <m>\log \left( -2 \right) = a</m>. Again using the definition of logarithm, we want <m>10^a = -2</m>. However, no power of <m>10</m> is negative. Therefore <m>\log \left( -2 \right)</m> does not exist and consequently <m>10^{\log (-2) } \neq -2</m>.
+      </p>
+      <p>
+        Now consider
+        <md>
+          <mrow>f^{-1} \left( f (x) \right) = \log \left( 10^x \right)</mrow>
+        </md>
+        There are no domain restrictions on the inner function <m>f(x) = 10^x </m> of this composition because <m>f(x) = 10^x</m> is defined for all real numbers. Furthermore, since values of <m>10^x</m> are always positive, we can take the common logarithm of any number of the form <m>10^x</m>. So we can conclude that
+        <md>
+          <mrow>f^{-1} \left( f (x) \right) = \log \left( 10^x \right) = x \text{ if } x \text{ is any real number.}</mrow>
+        </md>
+        According to this statement, <m>\log \left( 10^3 \right) = 3</m> and <m>\log \left( 10^{-2} \right) = -2</m>. We can verify these easily since <m>\log \left( 10^3 \right) = \log \left( 1000 \right)</m> and <m>\log \left( 10^{-2} \right) = \log \left( \frac{1}{100} \right) = -2</m>. Use your calculator to verify that <m>\ln \left( e^5 \right) = 5</m> and to graph the function <m>y = \log \left( 10^x \right)</m> and <m>y = \ln \left( e^x \right)</m>.
+      </p>
+      <p>
+        Now use your calculator to evaluate <m>\log \left( e^3 \right)</m>.  Are you surprised that the result is not <m>3</m>? The bases of the logarithmic function and the exponential function must be the same for their composition to be the identity function. In general:
+        <md>
+          <mrow>b ^ {\log_b x} = x, \text{ if } x \gt 0</mrow>
+          <mrow>\text{and}</mrow>
+          <mrow>\log_b \left( b^x \right) = x, \text{ if } x \text{ is any real number.}</mrow>
+        </md>
       </p>
     </subsection>
 
     <subsection>
       <title>Graphing Logarithm Functions</title>
       <p>
+        When we consider exponential functions with bases greater than one, we know that the exponential functions with larger bases grow more rapidly than those with smaller bases.  Since the graph of a logarithmic function is the reflection of an exponential function about the line <m>y = x</m> , we would expect log functions with larger bases to grow more slowly than those with smaller bases.  <xref ref="exp-log-base-3-10" text="type-local" /> shows graphs of the functions <m> y = 3^x</m> with <m>y = \log_3 x</m> on the left and <m>y = 10^x</m> along with <m>y = \log_{10} x </m> on the right. For the logarithmic functions you can see that the larger base produces a curve that increases more slowly.
       </p>
+      <figure xml:id="exp-log-base-3-10">
+        <caption>Exponential and Logarithmic Functions with Base 3 and 10</caption>
+        <sidebyside widths = "50% 50%">
+          <image>
+            <latex-image-code>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel={$x$},
+                  xlabel style={at=(current axis.right of origin), anchor=west},
+                  ylabel={$y$},
+                  ylabel style={at=(current axis.above origin), anchor=south},
+                  restrict y to domain=-2:4,
+                  clip = false,
+                  xmin = -2,
+                  xmax = 4,
+                  xtick = {-2, -1, ..., 4},
+                  ymin = -2,
+                  ymax = 4,
+                  ytick = {-2, -1, ..., 4},
+                  ]
+
+                  \addplot [thick, blue, <->, mark=none, domain=-2:4,samples=100] {3^x} node[right,pos=1] {$y = 3^x$};
+                  \addplot [thick, red, <->, mark=none, domain=0.11111:4,samples=300] {log10(x)/log10(3)} node[right,pos=1] {$y = \log_3 x$};;
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+          <image>
+            <latex-image-code>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel={$x$},
+                  xlabel style={at=(current axis.right of origin), anchor=west},
+                  ylabel={$y$},
+                  ylabel style={at=(current axis.above origin), anchor=south},
+                  restrict y to domain=-2:4,
+                  clip = false,
+                  xmin = -2,
+                  xmax = 4,
+                  xtick = {-2, -1, ..., 4},
+                  ymin = -2,
+                  ymax = 4,
+                  ytick = {-2, -1, ..., 4},
+                  ]
+
+                  \addplot [thick, blue, <->, mark=none, domain=-2:4,samples=100] {10^x} node[right,pos=1] {$y = 10^x$};
+                  \addplot [thick, red, <->, mark=none, domain=0.01:4,samples=300] {log10(x)} node[right,pos=1] {$y = \log_{10} x$};
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </sidebyside>
+      </figure>
+      <p>
+        Notice that the graph of <m>f(x) = \log_3 x</m> appears to be a vertical stretch of the graph of <m>f(x) = \log_{10} x </m> and the graph of <m>y = 3^x</m> appears to be a horizontal strech of <m>y = 10^x</m>. You will see more on this relationship in the exercises at the end of this section.
+      </p>
+      <p>
+        We know that the base for a logarithm must be positive, but so far we have looked only at graphs of logarithmic functions with bases greater than <m>1</m>. Now we will examine the graph of <m>y = \log_{\frac{1}{3}} x</m>. We know that the function <m>g(x) = \left( \frac{1}{3} \right) ^ x</m> is a decreasing exponential function. The graph of this function contains the points <m>\left(0, 1 \right)</m> and <m>\left( 1, \frac{1}{3} \right)</m> and the positive <m>x</m>-axis is a horizontal asymptote for the graph. The inverse of this function is <m>g^{-1} (x) = \log_{\frac{1}{3}} (x)</m> which therefore contains the points <m>g(x) = \left( \frac{1}{3} \right) ^ x</m> is a decreasing exponential function. The graph of this function contains the points <m>\left(1, 0 \right)</m> and <m>\left( \frac{1}{3}, 1 \right)</m> and has the positive <m>y</m>-axis as a vertical asymptote. The graphs of these functions are shown in <xref ref="graph-of-exp-log-base-3" text="type-local" />.
+      </p>
+      <figure xml:id="graph-of-exp-log-base-3">
+        <caption>Graphs of <m>g(x) = \left( \frac{1}{3} \right) ^ x</m> and <m>g^{-1} (x) = \log_{\frac{1}{3}} (x)</m></caption>
+        <image>
+          <latex-image-code>
+            <![CDATA[
+            \begin{tikzpicture}
+              \begin{axis}[
+                xlabel={$x$},
+                xlabel style={at=(current axis.right of origin), anchor=west},
+                ylabel={$y$},
+                ylabel style={at=(current axis.above origin), anchor=south},
+                restrict y to domain=-2:4,
+                clip = false,
+                xmin = -2,
+                xmax = 4,
+                xtick = {-2, -1, ..., 4},
+                ymin = -2,
+                ymax = 4,
+                ytick = {-2, -1, ..., 4},
+                ]
+
+                \addplot [thick, blue, <->, mark=none, domain=-2:4,samples=100] {(1/3)^x} node[above,pos=1] {$y = \frac{1}{3}^x$};
+                \addplot [thick, red, <->, mark=none, domain=0.0001:4,samples=300] {log10(x)/log10(1/3)} node[right,pos=1] {$y = \log_{\frac{1}{3}} (x)$};
+
+              \end{axis}
+            \end{tikzpicture}]]>
+          </latex-image-code>
+        </image>
+      </figure>
+      <p>
+        The logarithmic function <m>f(x) = \log_b x, b \gt 0, b \neq 1</m> should now be added to our toolkit of functions.
+      </p>
+      <p>
+        To graph an equation that is a transformation of a logarithmic function, we will apply the same techniques that we used most recently for exponential functions. The most useful characteristics for graphing transformations of a logarithmic function are the points <m>\left( 1,0 \right)</m> and <m>\left( b,1 \right)</m> and the vertical asymptote <m>x = 0</m>. The special characteristics of logarithm graphs are listed in <xref ref="list-log-characteristics" text="type-local" />.
+      </p>
+      <list xml:id="list-log-characteristics">
+        <caption>Characteristics of Logarithmic Functions</caption>
+        <introduction><p>Characteristics of Logarithmic Functions of the form <m>y = \log_b x, b \gt 0, b \neq 1</m></p></introduction>
+        <ol>
+            <li><p>The point <m>\left( 1,0 \right)</m> is on every graph.</p></li>
+            <li><p>The point <m>\left( b,1 \right)</m> is on every graph.</p></li>
+            <li><p>The <m>y</m>-axis <m>\left( x = 0 \right)</m> is an asymptote for each curve.</p></li>
+            <li><p>The domain of each function is the set of real numbers greater than 0.</p></li>
+            <li><p>The range of each function is the set of real numbers.</p></li>
+            <li><p>Each function is one-to-one</p></li>
+        </ol>
+      </list>
+      <example>
+        <statement><p>Graph <m>f(x) = \ln (x) +1 </m>.</p></statement>
+        <solution>
+          <statement>
+            <p>
+              The graph is provided in <xref ref="natural-log-plus-one" text="type-local" />. It has exactly the same shape as the graph of <m>y = \ln x</m>, but the graph has been shifted up one unit. The vertical asymptote remains the same. However, the special point <m>\left( 1,0 \right)</m> moves to <m>\left( 1,1, \right)</m> and the point <m>\left( e, 1 \right)</m> is shifted up to <m>\left( e, 2 \right)</m>.
+            </p>
+            <p>
+              Notice that the expression <m>\ln (x) + 1</m> can be rewritten as <m>\ln (x) + \ln (e)</m> and this can be further simplified to <m>\ln \left( e \cdot x \right)</m> using the laws of logarithms. The graph of <m>f(x) = \ln (x) + 1</m> is the same as the graph of <m>f(x) = \ln \left( e \cdot x \right)</m>.  More generally <m>\ln (x) + k</m> is equivalent to <m>\ln (x) + \ln \left( e^k \right)</m> which is equal to <m>\ln \left( e^k \cdot x \right)</m>. So a vertical shift of <m>k</m> units transforms the graph in exactly the same way as a horizontal compression (or stretch) using <m>e^k</m>.
+            </p>
+            <figure xml:id="natural-log-plus-one">
+              <caption>Graph of <m>f(x) = \ln (x) +1 = \ln \left( e \cdot x \right)</m></caption>
+              <image>
+                <latex-image-code>
+                  <![CDATA[
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      xlabel={$x$},
+                      xlabel style={at=(current axis.right of origin), anchor=west},
+                      ylabel={$y$},
+                      ylabel style={at=(current axis.above origin), anchor=south},
+                      restrict y to domain=-4:3,
+                      clip = false,
+                      xmin = -1,
+                      xmax = 6,
+                      xtick = {-1, 0, ..., 6},
+                      ymin = -4,
+                      ymax = 3,
+                      ytick = {-4, -3, ..., 3},
+                      ]
+
+                      \addplot [thick, blue, <->, mark=none, domain=0.0067379:6,samples=200] {ln(x) + 1} node[right,pos=1] {$ f(x) = \ln (x) + 1$};
+
+                    \end{axis}
+                  \end{tikzpicture}]]>
+                </latex-image-code>
+              </image>
+            </figure>
+          </statement>
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+          <p>
+            Graph <m>f(x) = \log_2 \left( x^2 \right)</m>. This expression can be simplified using the laws of logarithms to give the expression <m>g(x) = 2 \log_2 \left( x \right)</m>. Are the two functions <m>f</m> and <m>g</m> truly identical?
+          </p>
+        </statement>
+        <solution>
+          <statement>
+            <p>
+              Notice first that <m>x^2</m> is greater than zero for all <m>x \neq 0</m>.  This means that the domain of <m>f(x) = \log_2 \left( x^2 \right)</m> will be all real numbers except zero.  Notice also that <m>f(-x) = f(x)</m>, so the graph of this function is symmetric about the <m>y</m>-axis.  We might be tempted to simplify <m>\log_2 \left( x^2 \right)</m> and rewrite it as <m>2 \log \left( x \right)</m>. However, when we do this, we change the domain and now can use only positive values of <m>x</m>.  For positive values of <m>x</m> the graphs of <m>f(x) = \log_2 \left( x^2 \right)</m> and <m>g(x) = 2 \log_2 \left( x \right)</m> are identical, as shown in <xref ref="logs-not-equal" text="type-local" />. Both graphs contain the points <m>\left( 1,1 \right)</m> and <m> \left( 2, 2, \right)</m>. The graph of <m>f(x) = \log_2 \left( x^2 \right)</m> also contains the points <m>\left( -1, 0 \right)</m> and <m>\left( -2, 2 \right)</m>.  The functions <m>f</m> and <m>g</m> are not identical because they have different domains.
+            </p>
+            <figure xml:id="logs-not-equal">
+              <caption>Graphs of <m>f(x) = \log_2 \left( x^2 \right)</m> and <m>g(x) = 2 \log_2 \left( x \right)</m></caption>
+              <sidebyside>
+                <image>
+                  <latex-image-code>
+                    <![CDATA[
+                    \begin{tikzpicture}
+                      \begin{axis}[
+                        xlabel={$x$},
+                        xlabel style={at=(current axis.right of origin), anchor=west},
+                        ylabel={$y$},
+                        ylabel style={at=(current axis.above origin), anchor=south},
+                        restrict y to domain=-6:6,
+                        clip = false,
+                        xmin = -6,
+                        xmax = 6,
+                        xtick = {-6, -5, ..., 6},
+                        ymin = -6,
+                        ymax = 6,
+                        ytick = {-6, -5, ..., 6},
+                        ]
+
+                        \addplot [thick, blue, <->, mark=none, domain=0.0001:6,samples=200] {log10(x^2)/log10(2)} node[right,pos=1] {$ f(x) = \log_2 (x^2)$};
+                        \addplot [thick, blue, <->, mark=none, domain=-6:-0.0001,samples=200] {log10(x^2)/log10(2)};
+
+                      \end{axis}
+                    \end{tikzpicture}]]>
+                  </latex-image-code>
+                </image>
+
+                <image>
+                  <latex-image-code>
+                    <![CDATA[
+                    \begin{tikzpicture}
+                      \begin{axis}[
+                        xlabel={$x$},
+                        xlabel style={at=(current axis.right of origin), anchor=west},
+                        ylabel={$y$},
+                        ylabel style={at=(current axis.above origin), anchor=south},
+                        restrict y to domain=-6:6,
+                        clip = false,
+                        xmin = -6,
+                        xmax = 6,
+                        xtick = {-6, -5, ..., 6},
+                        ymin = -6,
+                        ymax = 6,
+                        ytick = {-6, -5, ..., 6},
+                        ]
+
+                        \addplot [thick, blue, <->, mark=none, domain=0.0001:6,samples=200] {2*log10(x)/log10(2)} node[right,pos=1] {$ g(x) = 2 \log_2 (x)$};
+
+                      \end{axis}
+                    \end{tikzpicture}]]>
+                  </latex-image-code>
+                </image>
+              </sidebyside>
+            </figure>
+          </statement>
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+          <p>
+            Sketch the graph of <m>f(x) = \ln \left( x^2 - 3x - 4 \right)</m>.
+          </p>
+        </statement>
+        <solution>
+          <statement>
+            <p>
+              We can approach this graph as the composition <m>f(x) = g \left( h(x) \right)</m> where <m>h(x) = x^2 - 3x - 4</m> and <m>g(x) = \ln (x)</m>.  Domain plays an important role in this composition. The graph of <m>h(x)</m> is shown in <xref ref="log-composition-just-quad" text="type-local" /> and can be used to analyze the domain of <m>f(x)</m> and the flow of the composition. Since <m>\ln (x)</m> is defined only for <m>x \gt 0</m>, the domain of the composition is restricted to those values of <m>x</m> for which <m>h(x) = x^2 -3x - 4</m> is positive. That is, the domain is restricted to those values of <m>x</m> for which the graph of <m>h(x) = x^2 -3x -4</m> is above the <m>x</m>-axis. This happens when <m>x \gt 4</m> or <m>x \lt -1</m>. In the log function <m>y = \ln x</m>, as <m>x</m> gets close to zero, the <m>y</m>-values tend toward negative infinity, making the <m>y</m>-axis a vertical asymptote.  In this graph, the values of the inner function <m>h(x)</m> approach zero as <m>x</m> gets close to <m>4</m> and to <m>-1</m>.  Therefore, the graph of <m>f</m> will have vertical asymptotes at <m>x = 4</m> and at <m>x = -1</m>.
+            </p>
+            <figure xml:id="log-composition-just-quad">
+              <caption>Graph of <m>h(x) = x^2 -3x - 4</m></caption>
+              <image>
+                <latex-image-code>
+                  <![CDATA[
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      xlabel={$x$},
+                      xlabel style={at=(current axis.right of origin), anchor=west},
+                      ylabel={$y$},
+                      ylabel style={at=(current axis.above origin), anchor=south},
+                      restrict y to domain=-10:25,
+                      clip = false,
+                      xmin = -5,
+                      xmax = 8,
+                      xtick = {-4, -3, ..., 7},
+                      ymin = -10,
+                      ymax = 25,
+                      ytick = {-10, 0, ..., 20},
+                      ]
+
+                      \addplot [thick, blue, <->, mark=none, domain=-5:8,samples=100] {x^2 - 3*x - 4} node[right,pos=1] {$ h(x) = x^2 -3x -4$};
+
+                    \end{axis}
+                  \end{tikzpicture}]]>
+                </latex-image-code>
+              </image>
+            </figure>
+            <p>
+              Since <m>\ln (1) = 0</m>, the values of <m>x</m> for which <m>x^2 -3x -4 = 1</m> are zeros of <m>f</m>. Thse are <m>x = \frac{3 \pm \sqrt{29} }{2}</m>, or <m>x \approx -1.2</m> and <m>x \approx 4.2</m>. Notice that the <m>y</m>-values of <m>f</m> are negative for those <m>x</m>-values where <m>0 \lt x^2 - 3x -4 \lt 1</m>. When <m>a \geq 1, \ln (a) \lt a</m>. Therefore, for <m>x</m>-values where <m>x^2 -3x - 4 \gt 1</m>, the graph of <m>f(x) = \ln \left(x^2 -3x -4 \right)</m> is below the graph of <m>h(x) = x^2 - 3x - 4</m>. Notice that the graph of <m>h(x) = x^2 - 3x - 4</m> is symmetric about <m>x = \frac{3}{2}</m>. This symmetry is also present in the graph of <m>f</m>. The graphs of <m>f</m> and <m>h</m> are shown in <xref ref="log-composition" text="type-local" />.
+            </p>
+            <figure xml:id="log-composition">
+              <caption>Graph of <m>f(x) = \ln \left( x^2 -3x - 4 \right)</m> and <m>h(x) = x^2 -3x - 4</m></caption>
+              <image>
+                <latex-image-code>
+                  <![CDATA[
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      xlabel={$x$},
+                      xlabel style={at=(current axis.right of origin), anchor=west},
+                      ylabel={$y$},
+                      ylabel style={at=(current axis.above origin), anchor=south},
+                      restrict y to domain=-10:10,
+                      clip = false,
+                      xmin = -5,
+                      xmax = 8,
+                      xtick = {-4, -3, ..., 7},
+                      ymin = -10,
+                      ymax = 10,
+                      ytick = {-10, -8, ..., 10},
+                      ]
+
+                      \addplot [thick, blue, <->, mark=none, domain=-5:8,samples=100] {x^2 - 3*x - 4} node[right,pos=1] {$ h(x) = x^2 -3x -4$};
+                      \addplot [thick, red, <->, mark=none, domain=-5:-1.0001,samples=100] {ln(x^2 - 3*x - 4)};
+                      \addplot [thick, red, <->, mark=none, domain=4.0001:8,samples=100] {ln(x^2 - 3*x - 4)} node[right,pos=1] {$ f(x) = \ln \left( x^2 -3x -4 \right) $};
+                      \addplot [thick, gray, dashed, mark=none] coordinates {(4,10) (4,-10)} node[right,pos=1] {$ x = 4 $};
+                      \addplot [thick, gray, dashed, mark=none] coordinates {(-1,10) (-1,-10)} node[left,pos=1] {$ x = -1 $};
+
+                    \end{axis}
+                  \end{tikzpicture}]]>
+                </latex-image-code>
+              </image>
+            </figure>
+          </statement>
+        </solution>
+      </example>
     </subsection>
 
     <exercises>
@@ -223,6 +558,13 @@
       <exercise>
         <statement>
           <p>
+            Find the inverse of the following functions and specify the domain of each.
+            <ol>
+              <li><m>f(x) = e^{-5x}</m></li>
+              <li><m>f(x) = 3^{x-1}</m></li>
+              <li><m>f(x) = \ln \left( 2x \right)</m></li>
+              <li><m>f(x) = \log_2 \left( x - 3 \right)</m></li>
+            </ol>
           </p>
         </statement>
       </exercise>
@@ -231,6 +573,11 @@
       <exercise>
         <statement>
           <p>
+            <ol>
+              <li>What attributes of the logarithm function allows us to say that if <m>\ln r = \ln s</m> then <m>r = s</m> as long as <m>r,s > 0</m>?</li>
+              <li>What attributes of the logarithm function allows us to say that if <m>r = s</m>, then <m>\ln r = \ln s</m> as long as <m>r,s > 0</m>?</li>
+              <li> For the toolkit functions, is it true that if <m>f(x) = f(s)</m> then <m>r = s</m>?</li>
+            </ol>
           </p>
         </statement>
       </exercise>
@@ -238,7 +585,17 @@
       <!-- Exercise 3 -->
       <exercise>
         <statement>
-          <p>
+          <p>Computer scientists compare the speeds of some algorithms by finding the time required to complete a task as a function of the number of input items. A typical algorithm may include sorting <m>n</m> items into ascending order, for example. Suppose there are three algorithms, A, B, and C for sorting items in a list. The amount of time each of the algorithms A, B, and C takes is a function <m>T</m> of the number of input items <m>n</m>. Three functions for <m>T_A, T_B,</m> and <m>T_C</m> are shown below.
+          <md>
+            <mrow>T_A(n) \amp = 10,000 + 2\ln(n)</mrow>
+            <mrow>T_B(n) \amp = 100 + 3n^2</mrow>
+            <mrow>T_C(n) \amp = 0.001e^n</mrow>
+          </md>
+          <ol>
+            <li>Rank the speed of the algorithms when sorting <m>n = 10</m> items.</li>
+            <li>Rank the speed of the algorithms when sorting <m>n = 10</m> items.</li>
+            <li>When these algorithms are used in industry they often have thousands of input items. Which algorithm would be best for industrial use?  Write a few sentences to justify your answer.</li>
+          </ol>
           </p>
         </statement>
       </exercise>
@@ -246,7 +603,18 @@
       <!-- Exercise 4 -->
       <exercise>
         <statement>
-          <p>
+          <p>Use a computer or calculator to graph <m>y = \log(x)</m> and <m>y = \ln(x)</m> on the same axes.
+          <ol>
+            <li>Write a paragraph in which you compare these graphs.  What special features do they share?  In what ways are they different?</li>
+            <li><p>Use graphs as needed to complete the following:
+              <ol>
+                <li>For what values of <m>x</m> are values of <m>\log(x)</m> negative? zero? positive?</li>
+                <li>For what values of <m>x</m> are values of <m>\ln(x)</m> negative? zero? positive?</li>
+                <li>For what values of <m>x</m> are values of <m>\log(x)</m> between zero and one? equal to one? greater than one?</li>
+                <li>For what values of <m>x</m> are values of <m>\ln(x)</m> between zero and one? equal to one? greater than one?</li>
+              </ol></p>
+            </li>
+          </ol>
           </p>
         </statement>
       </exercise>
@@ -254,7 +622,77 @@
       <!-- Exercise 5 -->
       <exercise>
         <statement>
-          <p>
+          <p>Use the entries in the table below to compare the rate of graph of <m>f(x) = \sqrt{x}</m> and <m>g(x) = \ln(x)</m>.
+          <figure>
+            <caption>Comparison of <m>f(x) = \sqrt{x}</m> and <m>g(x) = \ln(x)</m></caption>
+            <tabular top="major" halign="center">
+              <row bottom="medium">
+                <cell halign="left"><m>x</m></cell>
+                <cell><m>f(x) = \sqrt{x}</m></cell>
+                <cell><m>g(x) = \ln(x)</m></cell>
+              </row>
+              <row>
+                <cell halign="left"><m>0.1</m></cell>
+                <cell><m>0.316</m></cell>
+                <cell><m>-2.303</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>0.7</m></cell>
+                <cell><m>0.837</m></cell>
+                <cell><m>-0.357</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>1</m></cell>
+                <cell><m>1.000</m></cell>
+                <cell><m>0</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>1.5</m></cell>
+                <cell><m>1.225</m></cell>
+                <cell><m>0.405</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>5</m></cell>
+                <cell><m>2.236</m></cell>
+                <cell><m>1.609</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>10</m></cell>
+                <cell><m>3.162</m></cell>
+                <cell><m>2.303</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>25</m></cell>
+                <cell><m>5.000</m></cell>
+                <cell><m>3.219</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>100</m></cell>
+                <cell><m>10</m></cell>
+                <cell><m>4.605</m></cell>
+              </row>
+
+              <row>
+                <cell halign="left"><m>1,000</m></cell>
+                <cell><m>31.623</m></cell>
+                <cell><m>6.908</m></cell>
+              </row>
+
+              <row bottom="major">
+                <cell halign="left"><m>1,000,000</m></cell>
+                <cell><m>1000.000</m></cell>
+                <cell><m>13.816</m></cell>
+              </row>
+            </tabular>
+          </figure>
+          The functions <m>f(x) = \sqrt{x}</m> and <m>g(x) = \ln(x)</m> are the inverses of the functions <m>h(x) = x^2</m> and <m>k(x) = e^x</m>, respectively. Graph both <m>h(x)</m> and <m>k(x)</m> on the same axes and compare the rate at which they are increasing when <m>x \gt 0</m>. How can these graphs be used to support the conclusions you made when comparing the rate of growth of <m>f(x) = \sqrt{x}</m> and <m>g(x) = \ln(x)</m>
           </p>
         </statement>
       </exercise>
@@ -262,7 +700,7 @@
       <!-- Exercise 6 -->
       <exercise>
         <statement>
-          <p>
+          <p>For what values of <m>b</m> is <m>f(x) = \log_b \left( x \right )</m> an increasing function? A decreasing function?
           </p>
         </statement>
       </exercise>
@@ -270,7 +708,19 @@
       <!-- Exercise 7 -->
       <exercise>
         <statement>
-          <p>
+          <p>Graph each function.  Label the points that correspond to <m>\left( 1,0 \right)</m> and <m> \left( b,1 \right)</m> and the asymptote that corresponds to <m>x = 0</m>. Identify the domain and range of each.
+          <ol>
+            <li><m>y = 3 + \log \left( x \right)</m></li>
+            <li><m>y = \log_{1/2} \left( x \right)</m></li>
+            <li><m>y = 4 \log_3 \left( x \right)</m></li>
+            <li><m>y = \ln \left( x - 5 \right)</m></li>
+            <li><m>y = \ln \left( 5x \right)</m></li>
+            <li><m>y = \log \left( -x \right)</m></li>
+            <li><m>y = \left| \log_4 \left( x \right) \right|</m></li>
+            <li><m>y = \ln \left( 4x - 3 \right)</m></li>
+            <li><m>y = -3 \log\left( x \right) + 5</m></li>
+            <li><m>y = - \left( 3 \log \left( x \right) + 5 \right)</m></li>
+          </ol>
           </p>
         </statement>
       </exercise>
@@ -278,7 +728,16 @@
       <!-- Exercise 8 -->
       <exercise>
         <statement>
-          <p>
+          <p>Consider the function <m>f(x) = \log_2 \sqrt{ \frac{x}{8} }</m>.
+          <ol>
+            <li>Graph <m>f</m> by rewriting it as <m>f(x) = \frac{1}{2} \log_2 \left( \frac{x}{8} \right)</m>.</li>
+            <li>We can use another law of logarithms to write this function in the form:
+              <md>
+                <mrow>f(x) = \frac{1}{2} \left( \log_2 \left( x \right) - \log_2 \left( 8 \right) \right) = \frac{1}{2} \log_2 \left(x \right) - \frac{1}{2} \left( 3 \right) = \frac{1}{2} \log_2 \left( x \right) - \frac{3}{2}</mrow>
+              </md>
+            Use this form of the equation to graph the function.</li>
+            <li>Which form seems easier for graphing by hand?</li>
+          </ol>
           </p>
         </statement>
       </exercise>
@@ -286,7 +745,17 @@
       <!-- Exercise 9 -->
       <exercise>
         <statement>
-          <p>
+          <p>Use properties of logarithms or composition of functions to sketch a graph of each of the following. Identify the property you use or the two functions that compose to form <m>f</m>.
+          <ol>
+            <li><m>f(x) = \log \left( \frac{1}{x} \right)</m></li>
+            <li><m>f(x) = \ln \left( \sqrt[3]{x} \right)</m></li>
+            <li><m>f(x) = \frac{1}{\ln \left( x \right)}</m></li>
+            <li><m>f(x) = \log \left| x \right|</m></li>
+            <li><m>f(x) = \ln \left( x^2 - 5 \right)</m></li>
+            <li><m>f(x) = \ln \left( \sin x \right)</m></li>
+            <li><m>f(x) = \log \left( 10^{-x^2 + 2} \right)</m></li>
+            <li><m>f(x) = 10^{\log \left( -x^2 +2 \right)}</m></li>
+          </ol>
           </p>
         </statement>
       </exercise>
@@ -294,7 +763,7 @@
       <!-- Exercise 10 -->
       <exercise>
         <statement>
-          <p>
+          <p>Graph <m>f(x) = \ln \left( x \right)</m> and <m>g(x) = \log_{10} \left( x \right)</m> on the same axis and relate the two using transformations.
           </p>
         </statement>
       </exercise>

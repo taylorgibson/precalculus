@@ -1,6 +1,6 @@
 %**************************************%
 %*    Generated from PreTeXt source   *%
-%*    on 2018-06-20T16:22:40-04:00    *%
+%*    on 2018-07-24T15:11:20-04:00    *%
 %*                                    *%
 %*   http://mathbook.pugetsound.edu   *%
 %*                                    *%
@@ -84,7 +84,8 @@
 %% removing this command may make some cross-references ambiguous
 %% The precursor variable $numbering-maxlevel is checked for consistency in the common XSL file
 \setcounter{secnumdepth}{3}
-%% Environments with amsthm package
+%% mdframed environments use a tikz frame method
+\usepackage{tikz}%% Environments with amsthm package
 %% Theorem-like environments in "plain" style, with or without proof
 \usepackage{amsthm}
 \theoremstyle{plain}
@@ -105,6 +106,11 @@
 %% Numbering is in sync with theorems, etc
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Example}
+%% Package for breakable highlight boxes
+\usepackage[framemethod=tikz]{mdframed}
+%% named list environment and style
+\newenvironment{namedlistcontent}{\mdfsetup{leftmargin=3ex,rightmargin=3ex,linecolor=black,}%
+\begin{mdframed}}{\end{mdframed}}
 %% Numbering for inline exercises is in sync with theorems, normal text
 \theoremstyle{definition}
 \newtheorem{exercise}[theorem]{Exercise}
@@ -169,6 +175,16 @@
 %% http://tex.stackexchange.com/questions/16195
 \makeatletter
 \let\c@table\c@theorem
+\makeatother
+%% Create "named list" environment to hold lists with captions
+%% We do not use a floating environment, so list can page-break
+\newenvironment{namedlist}{\par\bigskip\noindent}{}
+%% New caption type for numbering, style, etc.
+\DeclareCaptionType[within=section]{namedlistcap}[List]
+\captionsetup[namedlistcap]{labelfont=bf,aboveskip=1.0ex,belowskip=\baselineskip}
+%% http://tex.stackexchange.com/questions/16195
+\makeatletter
+\let\c@namedlistcap\c@theorem
 \makeatother
 %% Footnote Numbering
 %% We reset the footnote counter, as given by numbering.footnotes.level
@@ -251,7 +267,7 @@
 \author{Mathematics Department\\
 North Carolina School of Science and Mathematics
 }
-\date{June 20, 2018}
+\date{July 24, 2018}
 \begin{document}
 \frontmatter
 %% begin: half-title
@@ -276,7 +292,7 @@ North Carolina School of Science and Mathematics
 {\Huge Contemporary Pre-Calculus Through Applications}\\[3\baselineskip]
 {\Large Mathematics Department}\\[0.5\baselineskip]
 {\Large North Carolina School of Science and Mathematics}\\[3\baselineskip]
-{\Large June 20, 2018}\\}
+{\Large July 24, 2018}\\}
 \clearpage
 %% end:   title page
 %% begin: copyright-page
@@ -3381,6 +3397,7 @@ Use the propoerites of logarithms and exponents to help you solve each of the fo
 \section[{Scientific Scales}]{Scientific Scales}\label{chapter05-section02}
 \hypertarget{p-307}{}%
 Scientists commonly use logarithms to create a simple scale for data; this is beneficial when some values in the data set are many times larger than other values in the data set. For example, the pH of a solution is determined by the concentration of hydrogen ions in the solution, measured in moles per liter. Solutions with a high concentration of hydrogen ions are acidic, while solutions with a low concentration are basic. The concentration of hydrogen ions in household ammonia is approximately \(0.0000000000005\) moles/liter, while the concentration of hydrogen ions in lemon juice is ten billion times larger at approximately \(0.005\) moles/liter.%
+\par
 \hypertarget{p-308}{}%
 To describe these vastly different values on the same scale, logarithms are used. The pH of a solution is defined to be%
 \begin{gather*}
@@ -3523,9 +3540,9 @@ Find the lens diameter of a telescope with limiting magnitude of \(11.1\)%
 \par\smallskip
 \end{exerciselist}
 \typeout{************************************************}
-\typeout{Section 5.3 Graphig Logarithmic Functions}
+\typeout{Section 5.3 Graphing Logarithmic Functions}
 \typeout{************************************************}
-\section[{Graphig Logarithmic Functions}]{Graphig Logarithmic Functions}\label{chapter05-section03}
+\section[{Graphing Logarithmic Functions}]{Graphing Logarithmic Functions}\label{chapter05-section03}
 \typeout{************************************************}
 \typeout{Subsection 5.3.1 Defining the Logarithm Function}
 \typeout{************************************************}
@@ -3640,7 +3657,7 @@ g \left( f(x) \right) = 10^{\log(x)} = x
 %
 \par
 \hypertarget{p-327}{}%
-In \hyperref[exponential-log-inverses]{Figure~3}we show the graphs of the exponential function \(f(x) = e^x\) and its inverse, \(g(x) = \log_{e} \left( x \right) = \ln \left( x \right)\), which is obtained by reflecting the graph of \(y = e^x\) across the line \(y = x\).%
+In \hyperref[exponential-log-inverses]{Figure~3} we show the graphs of the exponential function \(f(x) = e^x\) and its inverse, \(g(x) = \log_{e} \left( x \right) = \ln \left( x \right)\), which is obtained by reflecting the graph of \(y = e^x\) across the line \(y = x\).%
 \begin{figure}
 \centering
 {
@@ -3671,7 +3688,7 @@ y \amp= 10^x + 3\\
 y - 3 \amp= 10^x\\
 \log_{10} \left( y - 3 \right) \amp= x
 \end{align*}
-Note that we had to subtract \(3\) from the right-hand size of the equation before using the definition of logarithm to isolate \(x\). Now we can write \(f^{-1}(x) = \log_{10} \left( x - 3 \right) = \log \left( x - 3 \right) \). The domain of \(f^{-1}(x)\) is the range of \(f(x)\), or \(x > 3\); the range of \(f^{-1}(x)\) is the domain of \(f(x)\), or all real numbers. A graph of both functions is shown in \hyperref[exponential-log-inverses-example]{Figure~5}The graph of \(y = \log \left( x - 3 \right)\) is the reflection of the graph of \(y = 10^x + 3\) across the line \(y = x\).%
+Note that we had to subtract \(3\) from the right-hand size of the equation before using the definition of logarithm to isolate \(x\). Now we can write \(f^{-1}(x) = \log_{10} \left( x - 3 \right) = \log \left( x - 3 \right) \). The domain of \(f^{-1}(x)\) is the range of \(f(x)\), or \(x > 3\); the range of \(f^{-1}(x)\) is the domain of \(f(x)\), or all real numbers. A graph of both functions is shown in \hyperref[exponential-log-inverses-example]{Figure~5}. The graph of \(y = \log \left( x - 3 \right)\) is the reflection of the graph of \(y = 10^x + 3\) across the line \(y = x\).%
 \begin{figure}
 \centering
 {
@@ -3694,46 +3711,693 @@ Note that we had to subtract \(3\) from the right-hand size of the equation befo
 \typeout{************************************************}
 \subsection[{Compositions of Exponential and Logarithmic Functions}]{Compositions of Exponential and Logarithmic Functions}\label{subsection-3}
 \hypertarget{p-331}{}%
+Since the exponential and logarithmic functions are inverses and both are one-to-one functions, we can simplify the compositions of these two functions.  If \(f(x) = 10^x\), then \(f^{-1} (x) = \log x \), and we expect that%
+\begin{gather*}
+f \left( f^{-1} (x) \right) = x.
+\end{gather*}
+We know, however, that some restrictions on \(x\) might apply.  For what \(x\)-values are these equations valid?  First consider \(f \left( f^{-1} (x) \right) = 10^{\log x}\).%
+\par
+\hypertarget{p-332}{}%
+This is a function composition with domain restrictions on the inner function \(f^{-1} (x) = \log \left( x \right)\). For \(f^{-1} (x) = \log \left( x \right)\) to be defined, we must have \(x \gt 0\). So we can conclude that%
+\begin{gather*}
+f \left( f^{-1} (x) \right) = 10^{\log x} = x \text{ if } x \gt 0
+\end{gather*}
+%
+\par
+\hypertarget{p-333}{}%
+You might want to illustrate this statement using some specific examples. For example, according to this statement \(10^{\log 100} = 100\) but \(10^{\log(-2)} \neq -2\). In the first example, we know that \(\log 100 = 2\) using the definition of logarithms and the fact that \(10^2 = 100\). So \(10^{\log 100} = 10^2 = 2\) as expected. In the second example, we need to find the value \(a\) for which \(\log \left( -2 \right) = a\). Again using the definition of logarithm, we want \(10^a = -2\). However, no power of \(10\) is negative. Therefore \(\log \left( -2 \right)\) does not exist and consequently \(10^{\log (-2) } \neq -2\).%
+\par
+\hypertarget{p-334}{}%
+Now consider%
+\begin{gather*}
+f^{-1} \left( f (x) \right) = \log \left( 10^x \right)
+\end{gather*}
+There are no domain restrictions on the inner function \(f(x) = 10^x \) of this composition because \(f(x) = 10^x\) is defined for all real numbers. Furthermore, since values of \(10^x\) are always positive, we can take the common logarithm of any number of the form \(10^x\). So we can conclude that%
+\begin{gather*}
+f^{-1} \left( f (x) \right) = \log \left( 10^x \right) = x \text{ if } x \text{ is any real number.}
+\end{gather*}
+According to this statement, \(\log \left( 10^3 \right) = 3\) and \(\log \left( 10^{-2} \right) = -2\). We can verify these easily since \(\log \left( 10^3 \right) = \log \left( 1000 \right)\) and \(\log \left( 10^{-2} \right) = \log \left( \frac{1}{100} \right) = -2\). Use your calculator to verify that \(\ln \left( e^5 \right) = 5\) and to graph the function \(y = \log \left( 10^x \right)\) and \(y = \ln \left( e^x \right)\).%
+\par
+\hypertarget{p-335}{}%
+Now use your calculator to evaluate \(\log \left( e^3 \right)\).  Are you surprised that the result is not \(3\)? The bases of the logarithmic function and the exponential function must be the same for their composition to be the identity function. In general:%
+\begin{gather*}
+b ^ {\log_b x} = x, \text{ if } x \gt 0\\
+\text{and}\\
+\log_b \left( b^x \right) = x, \text{ if } x \text{ is any real number.}
+\end{gather*}
 %
 \typeout{************************************************}
 \typeout{Subsection 5.3.3 Graphing Logarithm Functions}
 \typeout{************************************************}
 \subsection[{Graphing Logarithm Functions}]{Graphing Logarithm Functions}\label{subsection-4}
-\hypertarget{p-332}{}%
-%
+\hypertarget{p-336}{}%
+When we consider exponential functions with bases greater than one, we know that the exponential functions with larger bases grow more rapidly than those with smaller bases.  Since the graph of a logarithmic function is the reflection of an exponential function about the line \(y = x\) , we would expect log functions with larger bases to grow more slowly than those with smaller bases.  \hyperref[exp-log-base-3-10]{Figure~6} shows graphs of the functions \(y = 3^x\) with \(y = \log_3 x\) on the left and \(y = 10^x\) along with \(y = \log_{10} x \) on the right. For the logarithmic functions you can see that the larger base produces a curve that increases more slowly.%
+\begin{figure}
+\centering
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
+\begin{lrbox}{\panelboxAimage}
+\resizebox{0.5\linewidth}{!}{{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-2:4,
+    clip = false,
+    xmin = -2,
+    xmax = 4,
+    xtick = {-2, -1, ..., 4},
+    ymin = -2,
+    ymax = 4,
+    ytick = {-2, -1, ..., 4},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-2:4,samples=100] {3^x} node[right,pos=1] {$y = 3^x$};
+    \addplot [thick, red, <->, mark=none, domain=0.11111:4,samples=300] {log10(x)/log10(3)} node[right,pos=1] {$y = \log_3 x$};;
+
+  \end{axis}
+\end{tikzpicture}
+}
+}\end{lrbox}
+\ifdefined\phAimage\else\newlength{\phAimage}\fi%
+\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
+\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
+\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
+\begin{lrbox}{\panelboxBimage}
+\resizebox{0.5\linewidth}{!}{{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-2:4,
+    clip = false,
+    xmin = -2,
+    xmax = 4,
+    xtick = {-2, -1, ..., 4},
+    ymin = -2,
+    ymax = 4,
+    ytick = {-2, -1, ..., 4},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-2:4,samples=100] {10^x} node[right,pos=1] {$y = 10^x$};
+    \addplot [thick, red, <->, mark=none, domain=0.01:4,samples=300] {log10(x)} node[right,pos=1] {$y = \log_{10} x$};
+
+  \end{axis}
+\end{tikzpicture}
+}
+}\end{lrbox}
+\ifdefined\phBimage\else\newlength{\phBimage}\fi%
+\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
+\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
+\leavevmode%
+% begin: side-by-side as tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0\linewidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\par\medskip\noindent
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
+% end: side-by-side as tabular
+}% end: group for a single side-by-side
+\caption{Exponential and Logarithmic Functions with Base 3 and 10\label{exp-log-base-3-10}}
+\end{figure}
+\hypertarget{p-337}{}%
+Notice that the graph of \(f(x) = \log_3 x\) appears to be a vertical stretch of the graph of \(f(x) = \log_{10} x \) and the graph of \(y = 3^x\) appears to be a horizontal strech of \(y = 10^x\). You will see more on this relationship in the exercises at the end of this section.%
+\par
+\hypertarget{p-338}{}%
+We know that the base for a logarithm must be positive, but so far we have looked only at graphs of logarithmic functions with bases greater than \(1\). Now we will examine the graph of \(y = \log_{\frac{1}{3}} x\). We know that the function \(g(x) = \left( \frac{1}{3} \right) ^ x\) is a decreasing exponential function. The graph of this function contains the points \(\left(0, 1 \right)\) and \(\left( 1, \frac{1}{3} \right)\) and the positive \(x\)-axis is a horizontal asymptote for the graph. The inverse of this function is \(g^{-1} (x) = \log_{\frac{1}{3}} (x)\) which therefore contains the points \(g(x) = \left( \frac{1}{3} \right) ^ x\) is a decreasing exponential function. The graph of this function contains the points \(\left(1, 0 \right)\) and \(\left( \frac{1}{3}, 1 \right)\) and has the positive \(y\)-axis as a vertical asymptote. The graphs of these functions are shown in \hyperref[graph-of-exp-log-base-3]{Figure~7}.%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-2:4,
+    clip = false,
+    xmin = -2,
+    xmax = 4,
+    xtick = {-2, -1, ..., 4},
+    ymin = -2,
+    ymax = 4,
+    ytick = {-2, -1, ..., 4},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-2:4,samples=100] {(1/3)^x} node[above,pos=1] {$y = \frac{1}{3}^x$};
+    \addplot [thick, red, <->, mark=none, domain=0.0001:4,samples=300] {log10(x)/log10(1/3)} node[right,pos=1] {$y = \log_{\frac{1}{3}} (x)$};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Graphs of \(g(x) = \left( \frac{1}{3} \right) ^ x\) and \(g^{-1} (x) = \log_{\frac{1}{3}} (x)\)\label{graph-of-exp-log-base-3}}
+\end{figure}
+\hypertarget{p-339}{}%
+The logarithmic function \(f(x) = \log_b x, b \gt 0, b \neq 1\) should now be added to our toolkit of functions.%
+\par
+\hypertarget{p-340}{}%
+To graph an equation that is a transformation of a logarithmic function, we will apply the same techniques that we used most recently for exponential functions. The most useful characteristics for graphing transformations of a logarithmic function are the points \(\left( 1,0 \right)\) and \(\left( b,1 \right)\) and the vertical asymptote \(x = 0\). The special characteristics of logarithm graphs are listed in \hyperref[list-log-characteristics]{List~8}.%
+\begin{namedlist}
+\begin{namedlistcontent}
+\hypertarget{p-341}{}%
+Characteristics of Logarithmic Functions of the form \(y = \log_b x, b \gt 0, b \neq 1\)%
+\leavevmode%
+\begin{enumerate}
+\item\hypertarget{li-237}{}\hypertarget{p-342}{}%
+The point \(\left( 1,0 \right)\) is on every graph.%
+\item\hypertarget{li-238}{}\hypertarget{p-343}{}%
+The point \(\left( b,1 \right)\) is on every graph.%
+\item\hypertarget{li-239}{}\hypertarget{p-344}{}%
+The \(y\)-axis \(\left( x = 0 \right)\) is an asymptote for each curve.%
+\item\hypertarget{li-240}{}\hypertarget{p-345}{}%
+The domain of each function is the set of real numbers greater than 0.%
+\item\hypertarget{li-241}{}\hypertarget{p-346}{}%
+The range of each function is the set of real numbers.%
+\item\hypertarget{li-242}{}\hypertarget{p-347}{}%
+Each function is one-to-one%
+\end{enumerate}
+\end{namedlistcontent}
+\captionof{namedlistcap}{Characteristics of Logarithmic Functions\label{list-log-characteristics}}
+\end{namedlist}
+\begin{example}[]\label{example-26}
+\hypertarget{p-348}{}%
+Graph \(f(x) = \ln (x) +1 \).%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-26}{}\quad%
+\hypertarget{p-349}{}%
+The graph is provided in \hyperref[natural-log-plus-one]{Figure~10}. It has exactly the same shape as the graph of \(y = \ln x\), but the graph has been shifted up one unit. The vertical asymptote remains the same. However, the special point \(\left( 1,0 \right)\) moves to \(\left( 1,1, \right)\) and the point \(\left( e, 1 \right)\) is shifted up to \(\left( e, 2 \right)\).%
+\par
+\hypertarget{p-350}{}%
+Notice that the expression \(\ln (x) + 1\) can be rewritten as \(\ln (x) + \ln (e)\) and this can be further simplified to \(\ln \left( e \cdot x \right)\) using the laws of logarithms. The graph of \(f(x) = \ln (x) + 1\) is the same as the graph of \(f(x) = \ln \left( e \cdot x \right)\).  More generally \(\ln (x) + k\) is equivalent to \(\ln (x) + \ln \left( e^k \right)\) which is equal to \(\ln \left( e^k \cdot x \right)\). So a vertical shift of \(k\) units transforms the graph in exactly the same way as a horizontal compression (or stretch) using \(e^k\).%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-4:3,
+    clip = false,
+    xmin = -1,
+    xmax = 6,
+    xtick = {-1, 0, ..., 6},
+    ymin = -4,
+    ymax = 3,
+    ytick = {-4, -3, ..., 3},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=0.0067379:6,samples=200] {ln(x) + 1} node[right,pos=1] {$ f(x) = \ln (x) + 1$};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Graph of \(f(x) = \ln (x) +1 = \ln \left( e \cdot x \right)\)\label{natural-log-plus-one}}
+\end{figure}
+\end{example}
+\begin{example}[]\label{example-27}
+\hypertarget{p-351}{}%
+Graph \(f(x) = \log_2 \left( x^2 \right)\). This expression can be simplified using the laws of logarithms to give the expression \(g(x) = 2 \log_2 \left( x \right)\). Are the two functions \(f\) and \(g\) truly identical?%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-27}{}\quad%
+\hypertarget{p-352}{}%
+Notice first that \(x^2\) is greater than zero for all \(x \neq 0\).  This means that the domain of \(f(x) = \log_2 \left( x^2 \right)\) will be all real numbers except zero.  Notice also that \(f(-x) = f(x)\), so the graph of this function is symmetric about the \(y\)-axis.  We might be tempted to simplify \(\log_2 \left( x^2 \right)\) and rewrite it as \(2 \log \left( x \right)\). However, when we do this, we change the domain and now can use only positive values of \(x\).  For positive values of \(x\) the graphs of \(f(x) = \log_2 \left( x^2 \right)\) and \(g(x) = 2 \log_2 \left( x \right)\) are identical, as shown in \hyperref[logs-not-equal]{Figure~12}. Both graphs contain the points \(\left( 1,1 \right)\) and \(\left( 2, 2, \right)\). The graph of \(f(x) = \log_2 \left( x^2 \right)\) also contains the points \(\left( -1, 0 \right)\) and \(\left( -2, 2 \right)\).  The functions \(f\) and \(g\) are not identical because they have different domains.%
+\begin{figure}
+\centering
+% group protects changes to lengths, releases boxes (?)
+{% begin: group for a single side-by-side
+% set panel max height to practical minimum, created in preamble
+\setlength{\panelmax}{0pt}
+\ifdefined\panelboxAimage\else\newsavebox{\panelboxAimage}\fi%
+\begin{lrbox}{\panelboxAimage}
+\resizebox{0.5\linewidth}{!}{{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-6:6,
+    clip = false,
+    xmin = -6,
+    xmax = 6,
+    xtick = {-6, -5, ..., 6},
+    ymin = -6,
+    ymax = 6,
+    ytick = {-6, -5, ..., 6},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=0.0001:6,samples=200] {log10(x^2)/log10(2)} node[right,pos=1] {$ f(x) = \log_2 (x^2)$};
+    \addplot [thick, blue, <->, mark=none, domain=-6:-0.0001,samples=200] {log10(x^2)/log10(2)};
+
+  \end{axis}
+\end{tikzpicture}
+}
+}\end{lrbox}
+\ifdefined\phAimage\else\newlength{\phAimage}\fi%
+\setlength{\phAimage}{\ht\panelboxAimage+\dp\panelboxAimage}
+\settototalheight{\phAimage}{\usebox{\panelboxAimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phAimage}}
+\ifdefined\panelboxBimage\else\newsavebox{\panelboxBimage}\fi%
+\begin{lrbox}{\panelboxBimage}
+\resizebox{0.5\linewidth}{!}{{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-6:6,
+    clip = false,
+    xmin = -6,
+    xmax = 6,
+    xtick = {-6, -5, ..., 6},
+    ymin = -6,
+    ymax = 6,
+    ytick = {-6, -5, ..., 6},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=0.0001:6,samples=200] {2*log10(x)/log10(2)} node[right,pos=1] {$ g(x) = 2 \log_2 (x)$};
+
+  \end{axis}
+\end{tikzpicture}
+}
+}\end{lrbox}
+\ifdefined\phBimage\else\newlength{\phBimage}\fi%
+\setlength{\phBimage}{\ht\panelboxBimage+\dp\panelboxBimage}
+\settototalheight{\phBimage}{\usebox{\panelboxBimage}}
+\setlength{\panelmax}{\maxof{\panelmax}{\phBimage}}
+\leavevmode%
+% begin: side-by-side as tabular
+% \tabcolsep change local to group
+\setlength{\tabcolsep}{0\linewidth}
+% @{} suppress \tabcolsep at extremes, so margins behave as intended
+\par\medskip\noindent
+\begin{tabular}{@{}*{2}{c}@{}}
+\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxAimage}\end{minipage}&
+\begin{minipage}[c][\panelmax][t]{0.5\linewidth}\usebox{\panelboxBimage}\end{minipage}\end{tabular}\\
+% end: side-by-side as tabular
+}% end: group for a single side-by-side
+\caption{Graphs of \(f(x) = \log_2 \left( x^2 \right)\) and \(g(x) = 2 \log_2 \left( x \right)\)\label{logs-not-equal}}
+\end{figure}
+\end{example}
+\begin{example}[]\label{example-28}
+\hypertarget{p-353}{}%
+Sketch the graph of \(f(x) = \ln \left( x^2 - 3x - 4 \right)\).%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-28}{}\quad%
+\hypertarget{p-354}{}%
+We can approach this graph as the composition \(f(x) = g \left( h(x) \right)\) where \(h(x) = x^2 - 3x - 4\) and \(g(x) = \ln (x)\).  Domain plays an important role in this composition. The graph of \(h(x)\) is shown in \hyperref[log-composition-just-quad]{Figure~14} and can be used to analyze the domain of \(f(x)\) and the flow of the composition. Since \(\ln (x)\) is defined only for \(x \gt 0\), the domain of the composition is restricted to those values of \(x\) for which \(h(x) = x^2 -3x - 4\) is positive. That is, the domain is restricted to those values of \(x\) for which the graph of \(h(x) = x^2 -3x -4\) is above the \(x\)-axis. This happens when \(x \gt 4\) or \(x \lt -1\). In the log function \(y = \ln x\), as \(x\) gets close to zero, the \(y\)-values tend toward negative infinity, making the \(y\)-axis a vertical asymptote.  In this graph, the values of the inner function \(h(x)\) approach zero as \(x\) gets close to \(4\) and to \(-1\).  Therefore, the graph of \(f\) will have vertical asymptotes at \(x = 4\) and at \(x = -1\).%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-10:25,
+    clip = false,
+    xmin = -5,
+    xmax = 8,
+    xtick = {-4, -3, ..., 7},
+    ymin = -10,
+    ymax = 25,
+    ytick = {-10, 0, ..., 20},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-5:8,samples=100] {x^2 - 3*x - 4} node[right,pos=1] {$ h(x) = x^2 -3x -4$};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Graph of \(h(x) = x^2 -3x - 4\)\label{log-composition-just-quad}}
+\end{figure}
+\hypertarget{p-355}{}%
+Since \(\ln (1) = 0\), the values of \(x\) for which \(x^2 -3x -4 = 1\) are zeros of \(f\). Thse are \(x = \frac{3 \pm \sqrt{29} }{2}\), or \(x \approx -1.2\) and \(x \approx 4.2\). Notice that the \(y\)-values of \(f\) are negative for those \(x\)-values where \(0 \lt x^2 - 3x -4 \lt 1\). When \(a \geq 1, \ln (a) \lt a\). Therefore, for \(x\)-values where \(x^2 -3x - 4 \gt 1\), the graph of \(f(x) = \ln \left(x^2 -3x -4 \right)\) is below the graph of \(h(x) = x^2 - 3x - 4\). Notice that the graph of \(h(x) = x^2 - 3x - 4\) is symmetric about \(x = \frac{3}{2}\). This symmetry is also present in the graph of \(f\). The graphs of \(f\) and \(h\) are shown in \hyperref[log-composition]{Figure~15}.%
+\begin{figure}
+\centering
+{
+\begin{tikzpicture}
+  \begin{axis}[
+    xlabel={$x$},
+    xlabel style={at=(current axis.right of origin), anchor=west},
+    ylabel={$y$},
+    ylabel style={at=(current axis.above origin), anchor=south},
+    restrict y to domain=-10:10,
+    clip = false,
+    xmin = -5,
+    xmax = 8,
+    xtick = {-4, -3, ..., 7},
+    ymin = -10,
+    ymax = 10,
+    ytick = {-10, -8, ..., 10},
+    ]
+
+    \addplot [thick, blue, <->, mark=none, domain=-5:8,samples=100] {x^2 - 3*x - 4} node[right,pos=1] {$ h(x) = x^2 -3x -4$};
+    \addplot [thick, red, <->, mark=none, domain=-5:-1.0001,samples=100] {ln(x^2 - 3*x - 4)};
+    \addplot [thick, red, <->, mark=none, domain=4.0001:8,samples=100] {ln(x^2 - 3*x - 4)} node[right,pos=1] {$ f(x) = \ln \left( x^2 -3x -4 \right) $};
+    \addplot [thick, gray, dashed, mark=none] coordinates {(4,10) (4,-10)} node[right,pos=1] {$ x = 4 $};
+    \addplot [thick, gray, dashed, mark=none] coordinates {(-1,10) (-1,-10)} node[left,pos=1] {$ x = -1 $};
+
+  \end{axis}
+\end{tikzpicture}
+}
+\caption{Graph of \(f(x) = \ln \left( x^2 -3x - 4 \right)\) and \(h(x) = x^2 -3x - 4\)\label{log-composition}}
+\end{figure}
+\end{example}
 \typeout{************************************************}
 \typeout{Exercises 5.3.4 Exercises}
 \typeout{************************************************}
 \subsection[{Exercises}]{Exercises}\label{exercises-14}
 \begin{exerciselist}
-\item[1.]\hypertarget{exercise-91}{}\hypertarget{p-333}{}%
+\item[1.]\hypertarget{exercise-91}{}\hypertarget{p-356}{}%
+Find the inverse of the following functions and specify the domain of each. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-243}{}\(f(x) = e^{-5x}\)%
+\item\hypertarget{li-244}{}\(f(x) = 3^{x-1}\)%
+\item\hypertarget{li-245}{}\(f(x) = \ln \left( 2x \right)\)%
+\item\hypertarget{li-246}{}\(f(x) = \log_2 \left( x - 3 \right)\)%
+\end{enumerate}
 %
 \par\smallskip
-\item[2.]\hypertarget{exercise-92}{}\hypertarget{p-334}{}%
+\item[2.]\hypertarget{exercise-92}{}\hypertarget{p-357}{}%
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-247}{}What attributes of the logarithm function allows us to say that if \(\ln r = \ln s\) then \(r = s\) as long as \(r,s > 0\)?%
+\item\hypertarget{li-248}{}What attributes of the logarithm function allows us to say that if \(r = s\), then \(\ln r = \ln s\) as long as \(r,s > 0\)?%
+\item\hypertarget{li-249}{}For the toolkit functions, is it true that if \(f(x) = f(s)\) then \(r = s\)?%
+\end{enumerate}
 %
 \par\smallskip
-\item[3.]\hypertarget{exercise-93}{}\hypertarget{p-335}{}%
+\item[3.]\hypertarget{exercise-93}{}\hypertarget{p-358}{}%
+Computer scientists compare the speeds of some algorithms by finding the time required to complete a task as a function of the number of input items. A typical algorithm may include sorting \(n\) items into ascending order, for example. Suppose there are three algorithms, A, B, and C for sorting items in a list. The amount of time each of the algorithms A, B, and C takes is a function \(T\) of the number of input items \(n\). Three functions for \(T_A, T_B,\) and \(T_C\) are shown below.%
+\begin{align*}
+T_A(n) \amp = 10,000 + 2\ln(n)\\
+T_B(n) \amp = 100 + 3n^2\\
+T_C(n) \amp = 0.001e^n
+\end{align*}
+\leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-250}{}Rank the speed of the algorithms when sorting \(n = 10\) items.%
+\item\hypertarget{li-251}{}Rank the speed of the algorithms when sorting \(n = 10\) items.%
+\item\hypertarget{li-252}{}When these algorithms are used in industry they often have thousands of input items. Which algorithm would be best for industrial use?  Write a few sentences to justify your answer.%
+\end{enumerate}
 %
 \par\smallskip
-\item[4.]\hypertarget{exercise-94}{}\hypertarget{p-336}{}%
+\item[4.]\hypertarget{exercise-94}{}\hypertarget{p-359}{}%
+Use a computer or calculator to graph \(y = \log(x)\) and \(y = \ln(x)\) on the same axes. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-253}{}Write a paragraph in which you compare these graphs.  What special features do they share?  In what ways are they different?%
+\item\hypertarget{li-254}{}\hypertarget{p-360}{}%
+Use graphs as needed to complete the following: %
+\begin{enumerate}[label=\roman*.]
+\item\hypertarget{li-255}{}For what values of \(x\) are values of \(\log(x)\) negative? zero? positive?%
+\item\hypertarget{li-256}{}For what values of \(x\) are values of \(\ln(x)\) negative? zero? positive?%
+\item\hypertarget{li-257}{}For what values of \(x\) are values of \(\log(x)\) between zero and one? equal to one? greater than one?%
+\item\hypertarget{li-258}{}For what values of \(x\) are values of \(\ln(x)\) between zero and one? equal to one? greater than one?%
+\end{enumerate}
+%
+\end{enumerate}
 %
 \par\smallskip
-\item[5.]\hypertarget{exercise-95}{}\hypertarget{p-337}{}%
+\item[5.]\hypertarget{exercise-95}{}\hypertarget{p-361}{}%
+Use the entries in the table below to compare the rate of graph of \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\). \begin{figure}
+\centering
+\begin{tabular}{ccc}\hrulethick
+\multicolumn{1}{l}{\(x\)}&\(f(x) = \sqrt{x}\)&\(g(x) = \ln(x)\)\tabularnewline\hrulemedium
+\multicolumn{1}{l}{\(0.1\)}&\(0.316\)&\(-2.303\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(0.7\)}&\(0.837\)&\(-0.357\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(1\)}&\(1.000\)&\(0\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(1.5\)}&\(1.225\)&\(0.405\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(5\)}&\(2.236\)&\(1.609\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(10\)}&\(3.162\)&\(2.303\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(25\)}&\(5.000\)&\(3.219\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(100\)}&\(10\)&\(4.605\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(1,000\)}&\(31.623\)&\(6.908\)\tabularnewline[0pt]
+\multicolumn{1}{l}{\(1,000,000\)}&\(1000.000\)&\(13.816\)\tabularnewline\hrulethick
+\end{tabular}
+\caption{Comparison of \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\)\label{figure-31}}
+\end{figure}
+ The functions \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\) are the inverses of the functions \(h(x) = x^2\) and \(k(x) = e^x\), respectively. Graph both \(h(x)\) and \(k(x)\) on the same axes and compare the rate at which they are increasing when \(x \gt 0\). How can these graphs be used to support the conclusions you made when comparing the rate of growth of \(f(x) = \sqrt{x}\) and \(g(x) = \ln(x)\)%
+\par\smallskip
+\item[6.]\hypertarget{exercise-96}{}\hypertarget{p-362}{}%
+For what values of \(b\) is \(f(x) = \log_b \left( x \right )\) an increasing function? A decreasing function?%
+\par\smallskip
+\item[7.]\hypertarget{exercise-97}{}\hypertarget{p-363}{}%
+Graph each function.  Label the points that correspond to \(\left( 1,0 \right)\) and \(\left( b,1 \right)\) and the asymptote that corresponds to \(x = 0\). Identify the domain and range of each. \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-259}{}\(y = 3 + \log \left( x \right)\)%
+\item\hypertarget{li-260}{}\(y = \log_{1/2} \left( x \right)\)%
+\item\hypertarget{li-261}{}\(y = 4 \log_3 \left( x \right)\)%
+\item\hypertarget{li-262}{}\(y = \ln \left( x - 5 \right)\)%
+\item\hypertarget{li-263}{}\(y = \ln \left( 5x \right)\)%
+\item\hypertarget{li-264}{}\(y = \log \left( -x \right)\)%
+\item\hypertarget{li-265}{}\(y = \left| \log_4 \left( x \right) \right|\)%
+\item\hypertarget{li-266}{}\(y = \ln \left( 4x - 3 \right)\)%
+\item\hypertarget{li-267}{}\(y = -3 \log\left( x \right) + 5\)%
+\item\hypertarget{li-268}{}\(y = - \left( 3 \log \left( x \right) + 5 \right)\)%
+\end{enumerate}
 %
 \par\smallskip
-\item[6.]\hypertarget{exercise-96}{}\hypertarget{p-338}{}%
+\item[8.]\hypertarget{exercise-98}{}\hypertarget{p-364}{}%
+Consider the function \(f(x) = \log_2 \sqrt{ \frac{x}{8} }\). \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-269}{}Graph \(f\) by rewriting it as \(f(x) = \frac{1}{2} \log_2 \left( \frac{x}{8} \right)\).%
+\item\hypertarget{li-270}{}We can use another law of logarithms to write this function in the form:%
+\begin{gather*}
+f(x) = \frac{1}{2} \left( \log_2 \left( x \right) - \log_2 \left( 8 \right) \right) = \frac{1}{2} \log_2 \left(x \right) - \frac{1}{2} \left( 3 \right) = \frac{1}{2} \log_2 \left( x \right) - \frac{3}{2}
+\end{gather*}
+Use this form of the equation to graph the function.%
+\item\hypertarget{li-271}{}Which form seems easier for graphing by hand?%
+\end{enumerate}
 %
 \par\smallskip
-\item[7.]\hypertarget{exercise-97}{}\hypertarget{p-339}{}%
+\item[9.]\hypertarget{exercise-99}{}\hypertarget{p-365}{}%
+Use properties of logarithms or composition of functions to sketch a graph of each of the following. Identify the property you use or the two functions that compose to form \(f\). \leavevmode%
+\begin{enumerate}[label=(\alph*)]
+\item\hypertarget{li-272}{}\(f(x) = \log \left( \frac{1}{x} \right)\)%
+\item\hypertarget{li-273}{}\(f(x) = \ln \left( \sqrt[3]{x} \right)\)%
+\item\hypertarget{li-274}{}\(f(x) = \frac{1}{\ln \left( x \right)}\)%
+\item\hypertarget{li-275}{}\(f(x) = \log \left| x \right|\)%
+\item\hypertarget{li-276}{}\(f(x) = \ln \left( x^2 - 5 \right)\)%
+\item\hypertarget{li-277}{}\(f(x) = \ln \left( \sin x \right)\)%
+\item\hypertarget{li-278}{}\(f(x) = \log \left( 10^{-x^2 + 2} \right)\)%
+\item\hypertarget{li-279}{}\(f(x) = 10^{\log \left( -x^2 +2 \right)}\)%
+\end{enumerate}
 %
 \par\smallskip
-\item[8.]\hypertarget{exercise-98}{}\hypertarget{p-340}{}%
+\item[10.]\hypertarget{exercise-100}{}\hypertarget{p-366}{}%
+Graph \(f(x) = \ln \left( x \right)\) and \(g(x) = \log_{10} \left( x \right)\) on the same axis and relate the two using transformations.%
+\par\smallskip
+\end{exerciselist}
+\typeout{************************************************}
+\typeout{Section 5.4 Solving Exponential and Logarithmic Equations}
+\typeout{************************************************}
+\section[{Solving Exponential and Logarithmic Equations}]{Solving Exponential and Logarithmic Equations}\label{chapter05-section04}
+\hypertarget{p-367}{}%
+In the preceding chapter, a problem about aspirin dosage provided the function \(a = 14.91e^{-0.18t}\) and asked you to use a graph to determine the time at which the aspirin concentration is \(5\) mg per cc of blood. What happens when we attempt to solve the equation \(5 = 14.91e^{-0.18t}\) algebraically? Dividing both sides by \(14.91\) gives approximately \(0.335 = e^{-0.18t}\). How do we isolate the variable \(t\)?  We can say that \(t\) is the number, which when multiplied by \(-0.18\) and used as the exponent of \(e\) produces \(0.335\).  Our goal is to write this statement using mathematical symbols.%
+\par
+\hypertarget{p-368}{}%
+To rewrite \(0.335 = e^{-0.18t}\) so that \(t\) is isolated, we can use logarithms. Due to their inverse relationship, logarithms allow us to rewrite an exponential equation so that the exponent is isolated, as defined earlier in this chapter. In the aspirin dosage problem we can rewrite \(0.335 = e^{-0.18t}\) as \(\log_e \left( 0.335 \right) = -0.18t\).%
+\par
+\hypertarget{p-369}{}%
+We can use thhe calculator to evaluate \(\log_e \left( 0.335 \right) = \ln \left( 0.335 \right) \approx -1.09\) and solve the resulting equation.%
+\begin{align*}
+-1.09 \amp \approx -0.18t\\
+t \amp \approx 6.1
+\end{align*}
+to determine that the aspirin level is \(5\) mg per cc of blood after approximately \(6.1\) hours.%
+\begin{example}[]\label{example-29}
+\hypertarget{p-370}{}%
+Solve each equation for \(x\): \leavevmode%
+\begin{enumerate}
+\item\hypertarget{li-280}{}\(\log_3 \left( 3 \right) = 5\)%
+\item\hypertarget{li-281}{}\(\log_x \left( 20 \right) = 3\)%
+\item\hypertarget{li-282}{}\(x = 7^{3\log_7 \left( 2 \right)}\)%
+\end{enumerate}
+%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-29}{}\quad%
+\hypertarget{p-371}{}%
+\leavevmode%
+\begin{enumerate}
+\item\hypertarget{li-283}{}\(\log_3 \left( x \right) = 5\) can be rewritten as \(3^5 = x\), so \(x = 243\).%
+\item\hypertarget{li-284}{}\(\log_x \left( 20 \right) = 3\) can be rewritten as \(x^3 = 20\), so \(x = \sqrt[3]{20} \approx 2.7144\)%
+\item\hypertarget{li-285}{}\(x = 7^{3\log_7 \left( 2 \right)}\) can be rewritten as \(x = 7 ^{\log_7 \left( 2^3 \right)} = 7 ^ {\log_7 \left( 8 \right)}\), so \(x = 8\)%
+\end{enumerate}
+%
+\end{example}
+\hypertarget{p-372}{}%
+Solving equations that involve exponents or logarithms often requires techniques that involve composition as well as laws of exponents and logarithms.%
+\begin{example}[]\label{example-30}
+\hypertarget{p-373}{}%
+The population of the world, as of November 1, 2016, was estimated by the U. S. Census Bureau to be approximately \(7.348\) billion and was growing at an annual rate of approximately \(1.13\%\). If this rate were to remain constant, how long would it take for the population of the world to reach \(10\) billion?%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-30}{}\quad%
+\hypertarget{p-374}{}%
+If we assume that the rate of growth is a constant percent (of the current population) then the function that models this growth is \(P(t)=7.348 \left( 1.0113 \right)^t\), where \(t\) represents the number of years since November 1, 2016, and \(P(t)\) represents population in billions.  Since we need to determine the value of \(t\) for which \(P(t) = 10\), we need to solve the equation \(10 = 7.348 \left( 1.0113 \right)^t\). Applying the log of both sides of this equation yields the following:%
+\begin{align*}
+\log \left( 10 \right) \amp = \log \left( 7.348 (1.0113)^t \right)\\
+\log \left( 10 \right) \amp = \log \left( 7.348 \right) + t \log \left( 1.0113 \right)
+\end{align*}
+Solving for \(t\) gives us \(t = \frac{\log \left( 10 \right) - \log \left( 7.358 \right)}{\log \left( 1.0113 \right)} \approx 27.4243\). Thus we can estimate that the population of the world will reach \(10\) billion in just a little less than \(27\) years and \(6\) months, sometime in April of 2044. Note that we could have first divided by \(7.348\), then taken the log of both sides of the equation \(\frac{10}{7.348} = \left( 1.0133 \right) ^t\), and solved for \(t\) to obtain the same solution.%
+\par
+\hypertarget{p-375}{}%
+In the solution above we applied the common logarithm. We can obtain the same answer by taking the natural logarithm of both sides as follows:%
+\begin{align*}
+10 \amp = 7.348 \left( 1.0113 \right) ^t\\
+\frac{10}{7.348} \amp = \left( 1.0113 \right) ^t\\
+\ln \left( \frac{10}{7.348} \right) \amp = \ln \left( 1.0113^t \right)\\
+\ln \left( \frac{10}{7.348} \right) \amp = t \ln \left( 1.0113 \right)
+\end{align*}
+Solving for \(t\) gives us:%
+\begin{gather*}
+t = \frac{\ln \left( \frac{10}{7.348} \right)}{\ln \left( 1.0113 \right)} \approx 27.4243
+\end{gather*}
+%
+\end{example}
+\begin{example}[]\label{example-31}
+\hypertarget{p-376}{}%
+If a group of people are all asked to memorize a list of nonsense words, the percent of those who remember all of the words after \(t\) hours can be approximated by the logarithmic function \(f(t) = 1 - k\ln \left( t + 1 \right)\), where \(k\) is a constant that depends on several factors, such as the length of the list of words.  If after \(5\) hours only \(20\%\) of the members of a group can remember all of the words, determine the value of \(k\). Using this value of \(k\), determine what percent remember all of the words after \(1\) hour. At what time will no one in the group be able to remember all of the words?%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-31}{}\quad%
+\hypertarget{p-377}{}%
+Note first that \(f(0) = 1\), which tells us that initially \(100\%\) of the people in the group know all the words. To determine the value of \(k\) we need to solve the equation \(0.20 = 1 - k \ln \left( t + 1 \right)\) for \(k\) when \(t = 5\).%
+\begin{align*}
+0.20 \amp = 1 - k \ln \left( 5 + 1 \right)\\
+-0.80 \amp = -k \ln \left( 6 \right)\\
+k \amp = \frac{0.80}{\ln(6)} \approx 0.446
+\end{align*}
+Using this value of \(k\) we know need to determine the value of \(f(1)\).%
+\begin{align*}
+f(1) \amp = 1 - 0.446 \ln \left( 1 + 1 \right)\\
+\amp = 1 - 0.446 \ln \left( 2 \right)\\
+\amp \approx 0.691
+\end{align*}
+Since \(f(1) \approx 0.691\), after one hour about \(69\%\) of the group still remembers all of the words. Finally, to determine how long it will take until no one in the group can remember all the words, we need to solve the following equation for \(t\):%
+\begin{align*}
+0 \amp = 1 - 0.446 \ln \left( t + 1 \right)\\
+-1 \amp = -0.446 \ln \left( t + 1 \right)\\
+\frac{1}{0.446} \amp = \ln \left( t + 1 \right)
+\end{align*}
+At this point in the solution, we can exponentiate both sides of the equation, so that:%
+\begin{align*}
+e^{ \frac{1}{0.446}} \amp = e^{\ln \left( t + 1 \right)}\\
+e^{ \frac{1}{0.446}} \amp = t + 1\\
+t \amp = e^{ \frac{1}{0.446}} - 1
+\end{align*}
+Evaluating \(t\), we find that \(t \approx 8.4\). Thus, after about \(8.4\) hours, no one in the group can remember all of the words. For values of \(t\) larger than \(8.4\), the function \(f\) would produce negative values for the percent, which would not make sense in this context.%
+\end{example}
+\typeout{************************************************}
+\typeout{Subsection 5.4.1 Change of Base}
+\typeout{************************************************}
+\subsection[{Change of Base}]{Change of Base}\label{subsection-5}
+\hypertarget{p-378}{}%
+Mara was writing a report on the life of Marie Curie.  She found that in 1921, President Warren G. Harding presented Marie Curie with \(1\) gram of radium on behalf of the women of the United States.  Although not essential to her report, two of Mara's references gave a function to describe the decay of radium. One text gave the function describing the amount of radium left after \(t\) years to be \(R_1(t) = 2^{-0.0006039t}\) and the other as \(R_2(t) = 1 \cdot e^{-0.0004186t}\).  Mara was curious about the two different functions given in her references. After thinking about the two functions for a while, Mara realized that they were the same function, only written in two different bases.%
+\par
+\hypertarget{p-379}{}%
+We know that \(3^4 = 9^2\) and that \(2^{-2} = \left( \frac{1}{16} \right)^{frac{1}{2}}\). Using a calculator, we can see that \(5^2 \approx e^3.22\) and that \(2^{-0.0006039} \approx e^{-0.0004186}\). How do we change from one exponential base to another? When is it useful to do so? These questions are very important when we write exponential functions as models of real-world phenomena. Equivalent functions may look different because they are written with a different base.%
+\par
+\hypertarget{p-380}{}%
+Let's investigate how we can express \(f(x) = 2^x\) as an exponential function with base \(e\). We need to express \(2\) as a power of \(e\), say \(e^k\). So we must solve the equation \(2 = e^k\) to find \(k\).  Both sides of this equation are positive, so we can use the technique of taking logarithms of both sides of the equation. Since the exponential component has a base of e, choosing a natural log will simplify the resulting work that follows:%
+\begin{align*}
+2 \amp = e^k\\
+\ln \left( 2 \right) \amp = \ln \left( e^k \right)\\
+\ln \left( 2 \right) \amp = k\\
+0.693 \amp \approx k
+\end{align*}
+So,%
+\begin{gather*}
+2 = e^k = e^{\ln(2)} \approx e^{0.693}
+\end{gather*}
+and we can write:%
+\begin{gather*}
+f(x) = 2^x \approx \left( e^{0.693} \right)^x = e^{0.693x}
+\end{gather*}
+This explains the difference in the two functions Mara found, Since%
+\begin{gather*}
+R_1(t) = 2^{-0.0006039t} = \left( e^{\left( ln(2) \right)} \right)^{\left( -0.0006039 \right) t} = e^{\left( -0.0006039 \right) \left( ln(2) \right) t } = e^{-0.0004186t}
+\end{gather*}
+Since exponential and logarithmic functions are inverses, you might suspect that we can also change the base of logarithmic functions.  Let's try to rewrite \(g(x) = \log_2 \left( x \right)\) with a natural logarithm. Let%
+\begin{gather*}
+g(x) = y = \log_2 \left( x \right)
+\end{gather*}
+and then rewrite this equation as%
+\begin{gather*}
+2^y = x
+\end{gather*}
+We now take the natural logarithm of both sides (which are positive):%
+\begin{align*}
+\ln \left( 2^y \right) \amp = \ln \left( x \right)\\
+y \ln \left( 2 \right) \amp = \ln \left( x \right)\\
+y \amp = \frac{\ln \left( x \right)}{\ln \left( 2 \right)} \approx 1.44 \ln \left( x \right)
+\end{align*}
+Therefore,%
+\begin{gather*}
+g(x) = \log_2 \left( x \right) \approx 1.44 \ln \left( x \right)
+\end{gather*}
+%
+\begin{example}[]\label{example-32}
+\hypertarget{p-381}{}%
+Evaluate \(\log_3 \left( 7 \right)\). Round your approximation to the thousandths place.%
+\par\smallskip%
+\noindent\textbf{Solution.}\hypertarget{solution-32}{}\quad%
+\hypertarget{p-382}{}%
+Certain calculators and computers can compute logarithms of any base. However, many applications or computers are not be able to directly evaluate \(\log_3 \left( 7 \right)\). We can use the techniques above to change the base and then evaluate using a base, such as \(e\) or \(10\), that the computer can calculate.%
+\par
+\hypertarget{p-383}{}%
+Let \(y = \log_3 \left( 7 \right)\), and rewrite this equation in exponential form, \(3^y = 7\).%
+\par
+\hypertarget{p-384}{}%
+Since we now have an exponential equation, we can apply either the common log or the natural log of both sides of the equation as shown below.%
+\end{example}
+\typeout{************************************************}
+\typeout{Exercises 5.4.2 Exercises}
+\typeout{************************************************}
+\subsection[{Exercises}]{Exercises}\label{exercises-15}
+\begin{exerciselist}
+\item[1.]\hypertarget{exercise-101}{}\hypertarget{p-385}{}%
 %
 \par\smallskip
-\item[9.]\hypertarget{exercise-99}{}\hypertarget{p-341}{}%
+\item[2.]\hypertarget{exercise-102}{}\hypertarget{p-386}{}%
 %
 \par\smallskip
-\item[10.]\hypertarget{exercise-100}{}\hypertarget{p-342}{}%
+\item[3.]\hypertarget{exercise-103}{}\hypertarget{p-387}{}%
+%
+\par\smallskip
+\item[4.]\hypertarget{exercise-104}{}\hypertarget{p-388}{}%
+%
+\par\smallskip
+\item[5.]\hypertarget{exercise-105}{}\hypertarget{p-389}{}%
+%
+\par\smallskip
+\item[6.]\hypertarget{exercise-106}{}\hypertarget{p-390}{}%
+%
+\par\smallskip
+\item[7.]\hypertarget{exercise-107}{}\hypertarget{p-391}{}%
+%
+\par\smallskip
+\item[8.]\hypertarget{exercise-108}{}\hypertarget{p-392}{}%
+%
+\par\smallskip
+\item[9.]\hypertarget{exercise-109}{}\hypertarget{p-393}{}%
+%
+\par\smallskip
+\item[10.]\hypertarget{exercise-110}{}\hypertarget{p-394}{}%
 %
 \par\smallskip
 \end{exerciselist}
@@ -3741,7 +4405,7 @@ Note that we had to subtract \(3\) from the right-hand size of the equation befo
 \typeout{Chapter 6 Parametric Functions}
 \typeout{************************************************}
 \chapter[{Parametric Functions}]{Parametric Functions}\label{chapter06}
-\hypertarget{p-343}{}%
+\hypertarget{p-395}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 6.1 }
@@ -3751,7 +4415,7 @@ Introduction to this chapter%
 \typeout{Chapter 7 Intro to Trigonometric Functions}
 \typeout{************************************************}
 \chapter[{Intro to Trigonometric Functions}]{Intro to Trigonometric Functions}\label{chapter07}
-\hypertarget{p-344}{}%
+\hypertarget{p-396}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 7.1 }
@@ -3761,7 +4425,7 @@ Introduction to this chapter%
 \typeout{Chapter 8 More Trigonometric Functions}
 \typeout{************************************************}
 \chapter[{More Trigonometric Functions}]{More Trigonometric Functions}\label{chapter08}
-\hypertarget{p-345}{}%
+\hypertarget{p-397}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 8.1 }
@@ -3771,7 +4435,7 @@ Introduction to this chapter%
 \typeout{Chapter 9 Combinations of Functions}
 \typeout{************************************************}
 \chapter[{Combinations of Functions}]{Combinations of Functions}\label{chapter09}
-\hypertarget{p-346}{}%
+\hypertarget{p-398}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 9.1 }
@@ -3781,7 +4445,7 @@ Introduction to this chapter%
 \typeout{Chapter 10 Matrices}
 \typeout{************************************************}
 \chapter[{Matrices}]{Matrices}\label{chapter10}
-\hypertarget{p-347}{}%
+\hypertarget{p-399}{}%
 Introduction to this chapter%
 \typeout{************************************************}
 \typeout{Section 10.1 }

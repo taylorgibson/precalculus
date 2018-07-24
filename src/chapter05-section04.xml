@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2018  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter05-section04" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Solving Exponential and Logarithmic Equations</title>
+    <introduction>
+      <p>In the preceding chapter, a problem about aspirin dosage provided the function <m>a = 14.91e^{-0.18t}</m> and asked you to use a graph to determine the time at which the aspirin concentration is <m>5</m> mg per cc of blood. What happens when we attempt to solve the equation <m>5 = 14.91e^{-0.18t}</m> algebraically? Dividing both sides by <m>14.91</m> gives approximately <m>0.335 = e^{-0.18t}</m>. How do we isolate the variable <m>t</m>?  We can say that <m>t</m> is the number, which when multiplied by <m>-0.18</m> and used as the exponent of <m>e</m> produces <m>0.335</m>.  Our goal is to write this statement using mathematical symbols.</p>
+
+      <p>
+        To rewrite <m>0.335 = e^{-0.18t}</m> so that <m>t</m> is isolated, we can use logarithms. Due to their inverse relationship, logarithms allow us to rewrite an exponential equation so that the exponent is isolated, as defined earlier in this chapter. In the aspirin dosage problem we can rewrite <m>0.335 = e^{-0.18t}</m> as <m>\log_e \left( 0.335 \right) = -0.18t</m>.
+      </p>
+      <p>
+        We can use thhe calculator to evaluate <m>\log_e \left( 0.335 \right) = \ln \left( 0.335 \right) \approx -1.09</m> and solve the resulting equation.
+        <md>
+          <mrow>-1.09 \amp \approx -0.18t</mrow>
+          <mrow>t \amp \approx 6.1</mrow>
+        </md>
+        to determine that the aspirin level is <m>5</m> mg per cc of blood after approximately <m>6.1</m> hours.
+      </p>
+      <example>
+        <statement>
+          <p>Solve each equation for <m>x</m>:
+            <ol>
+              <li><m>\log_3 \left( 3 \right) = 5</m></li>
+              <li><m>\log_x \left( 20 \right) = 3</m></li>
+              <li><m>x = 7^{3\log_7 \left( 2 \right)}</m></li>
+            </ol>
+          </p>
+        </statement>
+        <solution>
+          <p>
+            <ol>
+              <li><m>\log_3 \left( x \right) = 5</m> can be rewritten as <m>3^5 = x</m>, so <m>x = 243</m>.</li>
+              <li><m>\log_x \left( 20 \right) = 3</m> can be rewritten as <m>x^3 = 20</m>, so <m>x = \sqrt[3]{20} \approx 2.7144</m></li>
+              <li><m>x = 7^{3\log_7 \left( 2 \right)}</m> can be rewritten as <m>x = 7 ^{\log_7 \left( 2^3 \right)} = 7 ^ {\log_7 \left( 8 \right)}</m>, so <m>x = 8</m></li>
+            </ol>
+          </p>
+        </solution>
+      </example>
+      <p>Solving equations that involve exponents or logarithms often requires techniques that involve composition as well as laws of exponents and logarithms.</p>
+
+      <example>
+        <statement>
+          <p>
+            The population of the world, as of November 1, 2016, was estimated by the U. S. Census Bureau to be approximately <m>7.348</m> billion and was growing at an annual rate of approximately <m>1.13\%</m>. If this rate were to remain constant, how long would it take for the population of the world to reach <m>10</m> billion?
+          </p>
+        </statement>
+        <solution>
+          <p>If we assume that the rate of growth is a constant percent (of the current population) then the function that models this growth is <m>P(t)=7.348 \left( 1.0113 \right)^t</m>, where <m>t</m> represents the number of years since November 1, 2016, and <m>P(t)</m> represents population in billions.  Since we need to determine the value of <m>t</m> for which <m>P(t) = 10</m>, we need to solve the equation <m>10 = 7.348 \left( 1.0113 \right)^t</m>. Applying the log of both sides of this equation yields the following:
+          <md>
+            <mrow>\log \left( 10 \right) \amp = \log \left( 7.348 (1.0113)^t \right)</mrow>
+            <mrow>\log \left( 10 \right) \amp = \log \left( 7.348 \right) + t \log \left( 1.0113 \right)</mrow>
+          </md>
+          Solving for <m>t</m> gives us <m>t = \frac{\log \left( 10 \right) - \log \left( 7.358 \right)}{\log \left( 1.0113 \right)} \approx 27.4243</m>. Thus we can estimate that the population of the world will reach <m>10</m> billion in just a little less than <m>27</m> years and <m>6</m> months, sometime in April of 2044. Note that we could have first divided by <m>7.348</m>, then taken the log of both sides of the equation <m>\frac{10}{7.348} = \left( 1.0133 \right) ^t</m>, and solved for <m>t</m> to obtain the same solution.
+          </p>
+          <p>
+            In the solution above we applied the common logarithm. We can obtain the same answer by taking the natural logarithm of both sides as follows:
+            <md>
+              <mrow>10 \amp = 7.348 \left( 1.0113 \right) ^t</mrow>
+              <mrow>\frac{10}{7.348} \amp = \left( 1.0113 \right) ^t</mrow>
+              <mrow>\ln \left( \frac{10}{7.348} \right) \amp = \ln \left( 1.0113^t \right)</mrow>
+              <mrow>\ln \left( \frac{10}{7.348} \right) \amp = t \ln \left( 1.0113 \right)</mrow>
+            </md>
+            Solving for <m>t</m> gives us:
+            <md>
+              <mrow>t = \frac{\ln \left( \frac{10}{7.348} \right)}{\ln \left( 1.0113 \right)} \approx 27.4243</mrow>
+            </md>
+          </p>
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+          <p>
+            If a group of people are all asked to memorize a list of nonsense words, the percent of those who remember all of the words after <m>t</m> hours can be approximated by the logarithmic function <m>f(t) = 1 - k\ln \left( t + 1 \right)</m>, where <m>k</m> is a constant that depends on several factors, such as the length of the list of words.  If after <m>5</m> hours only <m>20\%</m> of the members of a group can remember all of the words, determine the value of <m>k</m>. Using this value of <m>k</m>, determine what percent remember all of the words after <m>1</m> hour. At what time will no one in the group be able to remember all of the words?
+          </p>
+        </statement>
+        <solution>
+          <p>
+            Note first that <m>f(0) = 1</m>, which tells us that initially <m>100\%</m> of the people in the group know all the words. To determine the value of <m>k</m> we need to solve the equation <m>0.20 = 1 - k \ln \left( t + 1 \right)</m> for <m>k</m> when <m>t = 5</m>.
+            <md>
+              <mrow>0.20 \amp = 1 - k \ln \left( 5 + 1 \right)</mrow>
+              <mrow>-0.80 \amp = -k \ln \left( 6 \right)</mrow>
+              <mrow>k \amp = \frac{0.80}{\ln(6)} \approx 0.446</mrow>
+            </md>
+            Using this value of <m>k</m> we know need to determine the value of <m>f(1)</m>.
+            <md>
+              <mrow>f(1) \amp = 1 - 0.446 \ln \left( 1 + 1 \right)</mrow>
+              <mrow> \amp = 1 - 0.446 \ln \left( 2 \right)</mrow>
+              <mrow> \amp \approx 0.691</mrow>
+            </md>
+            Since <m>f(1) \approx 0.691</m>, after one hour about <m>69\%</m> of the group still remembers all of the words. Finally, to determine how long it will take until no one in the group can remember all the words, we need to solve the following equation for <m>t</m>:
+            <md>
+              <mrow>0 \amp = 1 - 0.446 \ln \left( t + 1 \right)</mrow>
+              <mrow>-1 \amp = -0.446 \ln \left( t + 1 \right)</mrow>
+              <mrow>\frac{1}{0.446} \amp = \ln \left( t + 1 \right)</mrow>
+            </md>
+            At this point in the solution, we can exponentiate both sides of the equation, so that:
+            <md>
+              <mrow>e^{ \frac{1}{0.446}} \amp = e^{\ln \left( t + 1 \right)}</mrow>
+              <mrow>e^{ \frac{1}{0.446}} \amp = t + 1</mrow>
+              <mrow>t \amp = e^{ \frac{1}{0.446}} - 1</mrow>
+            </md>
+            Evaluating <m>t</m>, we find that <m>t \approx 8.4</m>. Thus, after about <m>8.4</m> hours, no one in the group can remember all of the words. For values of <m>t</m> larger than <m>8.4</m>, the function <m>f</m> would produce negative values for the percent, which would not make sense in this context.
+          </p>
+        </solution>
+      </example>
+    </introduction>
+    
+    <subsection>
+      <title>Change of Base</title>
+        <p>
+          Mara was writing a report on the life of Marie Curie.  She found that in 1921, President Warren G. Harding presented Marie Curie with <m>1</m> gram of radium on behalf of the women of the United States.  Although not essential to her report, two of Mara's references gave a function to describe the decay of radium. One text gave the function describing the amount of radium left after <m>t</m> years to be <m>R_1(t) = 2^{-0.0006039t}</m> and the other as <m>R_2(t) = 1 \cdot e^{-0.0004186t}</m>.  Mara was curious about the two different functions given in her references. After thinking about the two functions for a while, Mara realized that they were the same function, only written in two different bases.
+        </p>
+
+        <p>
+          We know that <m>3^4 = 9^2</m> and that <m>2^{-2} = \left( \frac{1}{16} \right)^{frac{1}{2}}</m>. Using a calculator, we can see that <m>5^2 \approx e^3.22</m> and that <m>2^{-0.0006039} \approx e^{-0.0004186}</m>. How do we change from one exponential base to another? When is it useful to do so? These questions are very important when we write exponential functions as models of real-world phenomena. Equivalent functions may look different because they are written with a different base.
+        </p>
+
+        <p>
+          Let's investigate how we can express <m>f(x) = 2^x</m> as an exponential function with base <m>e</m>. We need to express <m>2</m> as a power of <m>e</m>, say <m>e^k</m>. So we must solve the equation <m>2 = e^k</m> to find <m>k</m>.  Both sides of this equation are positive, so we can use the technique of taking logarithms of both sides of the equation. Since the exponential component has a base of e, choosing a natural log will simplify the resulting work that follows:
+
+          <md>
+            <mrow>2 \amp = e^k</mrow>
+            <mrow>\ln \left( 2 \right) \amp = \ln \left( e^k \right)</mrow>
+            <mrow>\ln \left( 2 \right) \amp = k</mrow>
+            <mrow>0.693 \amp \approx k</mrow>
+          </md>
+
+          So,
+          <md>
+            <mrow>2 = e^k = e^{\ln(2)} \approx e^{0.693}</mrow>
+          </md>
+
+          and we can write:
+          <md>
+            <mrow>f(x) = 2^x \approx \left( e^{0.693} \right)^x = e^{0.693x}</mrow>
+          </md>
+
+          This explains the difference in the two functions Mara found, Since
+          <md>
+            <mrow>R_1(t) = 2^{-0.0006039t} = \left( e^{\left( ln(2) \right)} \right)^{\left( -0.0006039 \right) t} = e^{\left( -0.0006039 \right) \left( ln(2) \right) t } = e^{-0.0004186t}</mrow>
+          </md>
+
+          Since exponential and logarithmic functions are inverses, you might suspect that we can also change the base of logarithmic functions.  Let's try to rewrite <m>g(x) = \log_2 \left( x \right)</m> with a natural logarithm. Let
+          <md>
+            <mrow>g(x) = y = \log_2 \left( x \right)</mrow>
+          </md>
+
+          and then rewrite this equation as
+          <md>
+            <mrow>2^y = x</mrow>
+          </md>
+
+          We now take the natural logarithm of both sides (which are positive):
+          <md>
+            <mrow>\ln \left( 2^y \right) \amp = \ln \left( x \right)</mrow>
+            <mrow>y \ln \left( 2 \right) \amp = \ln \left( x \right)</mrow>
+            <mrow>y \amp = \frac{\ln \left( x \right)}{\ln \left( 2 \right)} \approx 1.44 \ln \left( x \right)</mrow>
+          </md>
+
+          Therefore,
+          <md>
+            <mrow>g(x) = \log_2 \left( x \right) \approx 1.44 \ln \left( x \right)</mrow>
+          </md>
+
+        </p>
+
+        <example>
+          <statement>
+            <p>
+              Evaluate <m>\log_3 \left( 7 \right)</m>. Round your approximation to the thousandths place.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              Certain calculators and computers can compute logarithms of any base. However, many applications or computers are not be able to directly evaluate <m>\log_3 \left( 7 \right)</m>. We can use the techniques above to change the base and then evaluate using a base, such as <m>e</m> or <m>10</m>, that the computer can calculate.
+            </p>
+
+            <p>
+              Let <m>y = \log_3 \left( 7 \right)</m>, and rewrite this equation in exponential form, <m>3^y = 7</m>.
+            </p>
+
+            <p>
+              Since we now have an exponential equation, we can apply either the common log or the natural log of both sides of the equation as shown below.
+            </p>
+          </solution>
+        </example>
+    </subsection>
+
+
+
+    <exercises>
+      <!-- Exercise 1 -->
+      <exercise>
+        <statement>
+          <p>
+
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 2 -->
+      <exercise>
+        <statement>
+          <p>
+
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 3 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 4 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 5 -->
+      <exercise>
+        <statement>
+          <p></p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 6 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 7 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 8 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 9 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 10 -->
+      <exercise>
+        <statement>
+          <p>
+          </p>
+        </statement>
+      </exercise>
+
+    </exercises>
+</section>

@@ -10,15 +10,15 @@
   <title>Scientific Scales</title>
   <introduction>
     <p>Scientists commonly use logarithms to create a simple scale for data; this is beneficial when some values in the data set are many times larger than other values in the data set. For example, the pH of a solution is determined by the concentration of hydrogen ions in the solution, measured in moles per liter. Solutions with a high concentration of hydrogen ions are acidic, while solutions with a low concentration are basic. The concentration of hydrogen ions in household ammonia is approximately <m>0.0000000000005</m> moles/liter, while the concentration of hydrogen ions in lemon juice is ten billion times larger at approximately <m>0.005</m> moles/liter.</p>
+
+    <p>To describe these vastly different values on the same scale, logarithms are used. The pH of a solution is defined to be
+      <md>
+        <mrow>\text{pH} = -\log \left( H^{+} \right), \text{ where } H^{+} \text{ is the concentration of hydrogen ions.}</mrow>
+      </md>
+      So we say that household ammonia has a pH of <m>- \log(0.0000000000005) = 12.3</m>, while lemon juice has a pH of <m>- \log(0.005) = 2.3</m>. The pH of pure water is about <m>7</m>. Solutions with a pH less than <m>7</m> are acidic, while solutions with a pH greater than <m>7</m> are basic. By using logarithms, chemists take values that vary by huge amounts and place them on a simple scale that ranges from about <m>0</m> to <m>14</m>, which is much easier to understand.
+    </p>
+
   </introduction>
-
-  <p>To describe these vastly different values on the same scale, logarithms are used. The pH of a solution is defined to be
-    <md>
-      <mrow>\text{pH} = -\log \left( H^{+} \right), \text{ where } H^{+} \text{ is the concentration of hydrogen ions.}</mrow>
-    </md>
-    So we say that household ammonia has a pH of <m>- \log(0.0000000000005) = 12.3</m>, while lemon juice has a pH of <m>- \log(0.005) = 2.3</m>. The pH of pure water is about <m>7</m>. Solutions with a pH less than <m>7</m> are acidic, while solutions with a pH greater than <m>7</m> are basic. By using logarithms, chemists take values that vary by huge amounts and place them on a simple scale that ranges from about <m>0</m> to <m>14</m>, which is much easier to understand.
-  </p>
-
   <subsection>
     <title>The Decibel Scale for Sound</title>
     <p>The intensity of a sound is dependent on the actual energy carried in the sound wave and is measured in units of power per unit area, or <m>\frac{ \text{watts} }{ \text{meter} ^2}</m>.  The greater the intensity, the louder the perceived sound. The intensities of some common sounds are given in <xref ref="decibel-table" text="type-local" />.  Physicists define a loudness level (measured in decibels) that is related to the actual intensity, <m>I</m> (measured in Watts / meter<m>^2</m>), of the sound by the following equation:
