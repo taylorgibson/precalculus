@@ -1,0 +1,4 @@
+#How to prevent grid/plots from going through the ticks.
+ticklabel style={
+            fill=white
+        },

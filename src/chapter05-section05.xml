@@ -1,0 +1,1761 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter05-section05" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Data Analysis with Exponential and Power Functions</title>
+  <introduction>
+    <p>
+      In CHAPTER XX we discussed straightening data that could be modeled by a quadratic function by using the inverse, or square-root function. In this section we will extend the idea of re-expression to linearize other data sets. We will see that data that is best modeled by an exponential function can be straightened by using logarithms. This procedure is also based on the concept of inverse functions. We will also use logarithms to straighten data that is best modeled by a power function. This technique is not based on inverse functions, but rather on properties of logarithms.
+    </p>
+  </introduction>
+  <subsection>
+    <title>Fitting Exponential Models to Data</title>
+    <example xml:id="example-population-density">
+      <statement>
+        <p>
+          The data in <xref ref="population-density-usa" text="type-local" /> show how the population per square mile in the United States<fn>The World Almanac and Book of Facts, 1996, US Census 2010</fn> has changed over a period of years. On the scatter plot the horizontal axis denotes the number of years since <m>1790</m>. Find a function to model the population density over time.
+        </p>
+        <figure xml:id="population-density-usa">
+          <caption>Population per square mile in the U.S.</caption>
+          <sidebyside>
+            <tabular top="major" halign="center">
+              <row bottom="medium">
+                <cell>Year</cell>
+                <cell><line>Years since</line><line>1790</line></cell>
+                <cell><line>People per</line><line>sq. mile</line></cell>
+              </row>
+
+              <row>
+                <cell><m>1790</m></cell>
+                <cell><m>0</m></cell>
+                <cell><m>4.5</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1800</m></cell>
+                <cell><m>10</m></cell>
+                <cell><m>6.1</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1810</m></cell>
+                <cell><m>20</m></cell>
+                <cell><m>4.3</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1820</m></cell>
+                <cell><m>30</m></cell>
+                <cell><m>5.5</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1830</m></cell>
+                <cell><m>40</m></cell>
+                <cell><m>7.4</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1840</m></cell>
+                <cell><m>50</m></cell>
+                <cell><m>9.8</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1850</m></cell>
+                <cell><m>60</m></cell>
+                <cell><m>7.9</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1860</m></cell>
+                <cell><m>70</m></cell>
+                <cell><m>10.6</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1870</m></cell>
+                <cell><m>80</m></cell>
+                <cell><m>10.9</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1880</m></cell>
+                <cell><m>90</m></cell>
+                <cell><m>14.2</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1890</m></cell>
+                <cell><m>100</m></cell>
+                <cell><m>17.8</m></cell>
+              </row>
+
+              <row bottom="major">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+            </tabular>
+            <tabular top="major" halign="center">
+              <row bottom="medium">
+                <cell>Year</cell>
+                <cell><line>Years since</line><line>1790</line></cell>
+                <cell><line>People per</line><line>sq. mile</line></cell>
+              </row>
+
+              <row>
+                <cell><m>1900</m></cell>
+                <cell><m>110</m></cell>
+                <cell><m>21.5</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1910</m></cell>
+                <cell><m>120</m></cell>
+                <cell><m>26.0</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1920</m></cell>
+                <cell><m>130</m></cell>
+                <cell><m>29.9</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1930</m></cell>
+                <cell><m>140</m></cell>
+                <cell><m>34.7</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1940</m></cell>
+                <cell><m>150</m></cell>
+                <cell><m>37.2</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1950</m></cell>
+                <cell><m>160</m></cell>
+                <cell><m>42.6</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1960</m></cell>
+                <cell><m>170</m></cell>
+                <cell><m>50.6</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1970</m></cell>
+                <cell><m>180</m></cell>
+                <cell><m>57.5</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1980</m></cell>
+                <cell><m>190</m></cell>
+                <cell><m>64.0</m></cell>
+              </row>
+
+              <row>
+                <cell><m>1990</m></cell>
+                <cell><m>200</m></cell>
+                <cell><m>70.4</m></cell>
+              </row>
+
+              <row>
+                <cell><m>2000</m></cell>
+                <cell><m>210</m></cell>
+                <cell><m>79.7</m></cell>
+              </row>
+
+              <row bottom="major">
+                <cell><m>2010</m></cell>
+                <cell><m>220</m></cell>
+                <cell><m>87.4</m></cell>
+              </row>
+            </tabular>
+          </sidebyside>
+        </figure>
+        <figure>
+          <caption>Population per square mile in the U.S.</caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = {Years Since 1790},
+                  ylabel = {Population Density (People per $\text{mi}^2$)},
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0, xmax = 250,
+                  xtick = {0, 50, ..., 250},
+                  ymin = 0, ymax = 100,
+                  ytick = {0, 10, ..., 100},
+                  clip = false
+                  ]
+
+                  \addplot[only marks, color=magenta] coordinates {
+                  (0,  4.5)
+                  (10, 6.1)
+                  (20, 4.3)
+                  (30, 5.5)
+                  (40, 7.4)
+                  (50, 9.8)
+                  (60, 7.9)
+                  (70, 10.6)
+                  (80, 10.9)
+                  (90, 14.2)
+                  (100, 17.8)
+                  (110, 21.5)
+                  (120, 26.0)
+                  (130, 29.9)
+                  (140, 34.7)
+                  (150, 37.2)
+                  (160, 42.6)
+                  (170, 50.6)
+                  (180, 57.5)
+                  (190, 64.0)
+                  (200, 70.4)
+                  (210, 79.7)
+                  (220, 87.4)
+                  };
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+      </statement>
+      <solution>
+        <p>
+          It is clear that the scatter plot in not linear, but the curvature in the scatter plot is difficult to judge. Just how curved is the graph? What non-linear function fits the data? From our earlier work in this chapter we know that populations often grow exponentially. If this data can be modeled by an exponential function of the form <m>y = ae^{bx}</m>, then
+          <md>
+            <mrow>\ln \left( y \right) = \ln \left( ae^{bx} \right)</mrow>
+          </md>
+
+          We can rewrite this equation using the laws of logarithms, so that:
+          <md>
+            <mrow>\ln \left( y \right) \amp = \ln \left( a \right) + \ln \left( e^{bx} \right)</mrow>
+            <mrow>\ln \left( y \right) \amp = \ln \left( a \right) + bx</mrow>
+          </md>
+
+          Since <m>\ln \left( y \right) = \ln \left( a \right) + bx</m>, the ordered pairs <m>\left( x , \ln \left( y \right) \right)</m> will lie on a straight line. The converse is also true: if the ordered pairs <m>\left( x , \ln \left( y \right) \right)</m> are linear, then the ordered pairs <m>\left( x , y \right)</m> are exponential.</p>
+          <p>
+            Fitting a least squares line to the re-expressed data <m>\left( x , \ln \left( y \right) \right)</m> yields:
+            <md>
+              <mrow>\ln \left( y \right) = 0.0144x + 1.4112</mrow>
+            </md>
+
+            <xref ref="least-squares-exponential-population" text="type-local" /> shows the least squares line and the residiuals for the re-expressed data points <m>\left( x , \ln \left( y \right) \right)</m> for the data set describing population per square mile in the U.S.
+        </p>
+        <figure xml:id="least-squares-exponential-population">
+          <caption>Least squares line and residuals for re-expressed population data</caption>
+          <sidebyside widths="40% 40%">
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Years Since 1790},
+                    ylabel = {$\ln \left( \text{Density} \right)$},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 250,
+                    xtick = {0, 50, ..., 250},
+                    ymin = 0, ymax = 5,
+                    ytick = {0, 1, ..., 5},
+                    clip = false,
+                    restrict y to domain=0:5,
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (0,  ln{4.5} )
+                    (10, ln{6.1} )
+                    (20, ln{4.3} )
+                    (30, ln{5.5} )
+                    (40, ln{7.4} )
+                    (50, ln{9.8} )
+                    (60, ln{7.9} )
+                    (70, ln{10.6} )
+                    (80, ln{10.9} )
+                    (90, ln{14.2} )
+                    (100, ln{17.8} )
+                    (110, ln{21.5} )
+                    (120, ln{26.0} )
+                    (130, ln{29.9} )
+                    (140, ln{34.7} )
+                    (150, ln{37.2} )
+                    (160, ln{42.6} )
+                    (170, ln{50.6} )
+                    (180, ln{57.5} )
+                    (190, ln{64.0} )
+                    (200, ln{70.4} )
+                    (210, ln{79.7} )
+                    (220, ln{87.4} )
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=0:275,samples=200] {0.0144*x + 1.4112} node[left,pos=1] {$ \ln \left( y \right) = 0.0144x + 1.4112$};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Years Since 1790},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 0, xmax = 250,
+                    xtick = {0, 50, ..., 250},
+                    ymin = -0.3, ymax = 0.3,
+                    ytick = {-0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (0,  {ln{4.5} - (0.0144*0 + 1.4112) } )
+                    (10, {ln{6.1} - (0.0144*10 + 1.4112) } )
+                    (20, {ln{4.3} - (0.0144*20 + 1.4112) } )
+                    (30, {ln{5.5} - (0.0144*30 + 1.4112) } )
+                    (40, {ln{7.4} - (0.0144*40 + 1.4112) } )
+                    (50, {ln{9.8} - (0.0144*50 + 1.4112) } )
+                    (60, {ln{7.9} - (0.0144*60 + 1.4112) } )
+                    (70, {ln{10.6} - (0.0144*70 + 1.4112) } )
+                    (80, {ln{10.9} - (0.0144*80 + 1.4112) } )
+                    (90, {ln{14.2} - (0.0144*90 + 1.4112) } )
+                    (100, {ln{17.8} - (0.0144*100 + 1.4112) } )
+                    (110, {ln{21.5} - (0.0144*110 + 1.4112) } )
+                    (120, {ln{26.0} - (0.0144*120 + 1.4112) } )
+                    (130, {ln{29.9} - (0.0144*130 + 1.4112) } )
+                    (140, {ln{34.7} - (0.0144*140 + 1.4112) } )
+                    (150, {ln{37.2} - (0.0144*150 + 1.4112) } )
+                    (160, {ln{42.6} - (0.0144*160 + 1.4112) } )
+                    (170, {ln{50.6} - (0.0144*170 + 1.4112) } )
+                    (180, {ln{57.5} - (0.0144*180 + 1.4112) } )
+                    (190, {ln{64.0} - (0.0144*190 + 1.4112) } )
+                    (200, {ln{70.4} - (0.0144*200 + 1.4112) } )
+                    (210, {ln{79.7} - (0.0144*210 + 1.4112) } )
+                    (220, {ln{87.4} - (0.0144*220 + 1.4112) } )
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+        <p>
+          The re-expressed data looks more linear than the original data. We can see this in both the plot of the re-expressed data with the linear model and in the residual plot. The residuals do not appear to have any pattern.
+        </p>
+        <p>
+          Note that the constants have been rounded to four decimal places. To find a model for the original data <m>\left( x, y \right)</m>, we express the equation <m>\ln \left( y \right) = 0.0144x + 1.4112</m> in exponential form as follows:
+          <md>
+            <mrow>\ln \left( y \right) \amp = 0.0144x + 1.4112</mrow>
+            <mrow>y \amp = e^{0.0144x + 1.4112}</mrow>
+            <mrow>y \amp = e^{0.0144x} \cdot e^{1.4112}</mrow>
+            <mrow>y \amp = 4.10e^{0.0144x}</mrow>
+          </md>
+        </p>
+        <p>
+          This exponential function models the relationship between the number of years since 1790 and the population per square mile. We have re-expressed the years to begin at zero in the scatter plot and will use these re-expressed values in the data analysis that follows. In an exponential function, the independent variable, in this case the years, is in the exponent. Using large numbers, like 1790, in the exponent will cause unexpected errors unless we keep more decimal places for our constants. If our model is in the form <m>P(t) = P_0 e^{kt}</m> and <m>k</m> is rounded to too few decimal places, multiplying <m>k</m> by numbers close to 2000 would result in a very bad fit of function to data. In this example, we have kept more decimal places in our actual calculations than we show in the equations. Rounding, especially in the exponent, gives a fit with much larger residuals. <xref ref="reexpressed-exponential-population" text="type-local" /> shows this model graphed with the original data points.
+        </p>
+
+        <figure xml:id="reexpressed-exponential-population">
+          <caption>Least squares line and residuals for re-expressed population data</caption>
+          <sidebyside widths="40% 40%">
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Years Since 1790},
+                    ylabel = {Population Density (People per $\text{mi}^2$)},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 250,
+                    xtick = {0, 50, ..., 250},
+                    ymin = 0, ymax = 100,
+                    ytick = {0, 10, ..., 100},
+                    clip = false,
+                    restrict y to domain=0:100,
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (0,  4.5)
+                    (10, 6.1)
+                    (20, 4.3)
+                    (30, 5.5)
+                    (40, 7.4)
+                    (50, 9.8)
+                    (60, 7.9)
+                    (70, 10.6)
+                    (80, 10.9)
+                    (90, 14.2)
+                    (100, 17.8)
+                    (110, 21.5)
+                    (120, 26.0)
+                    (130, 29.9)
+                    (140, 34.7)
+                    (150, 37.2)
+                    (160, 42.6)
+                    (170, 50.6)
+                    (180, 57.5)
+                    (190, 64.0)
+                    (200, 70.4)
+                    (210, 79.7)
+                    (220, 87.4)
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=0:275,samples=200] { 4.10*e^(0.0144*x) } node[left,pos=1] {$ y = 4.10e^{0.0144x} $};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Years Since 1790},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 0, xmax = 250,
+                    xtick = {0, 50, ..., 250},
+                    ymin = -5, ymax = 5,
+                    ytick = {-5, -4, ..., 5},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (0,  {4.5 - 4.10*e^(0.0144*0) })
+                    (10, {6.1 - 4.10*e^(0.0144*10) })
+                    (20, {4.3 - 4.10*e^(0.0144*20) })
+                    (30, {5.5 - 4.10*e^(0.0144*30) })
+                    (40, {7.4 - 4.10*e^(0.0144*40) })
+                    (50, {9.8 - 4.10*e^(0.0144*50) })
+                    (60, {7.9 - 4.10*e^(0.0144*60) })
+                    (70, {10.6 - 4.10*e^(0.0144*70) })
+                    (80, {10.9 - 4.10*e^(0.0144*80) })
+                    (90, {14.2 - 4.10*e^(0.0144*90) })
+                    (100, {17.8 - 4.10*e^(0.0144*100) })
+                    (110, {21.5 - 4.10*e^(0.0144*110) })
+                    (120, {26.0 - 4.10*e^(0.0144*120) })
+                    (130, {29.9 - 4.10*e^(0.0144*130) })
+                    (140, {34.7 - 4.10*e^(0.0144*140) })
+                    (150, {37.2 - 4.10*e^(0.0144*150) })
+                    (160, {42.6 - 4.10*e^(0.0144*160) })
+                    (170, {50.6 - 4.10*e^(0.0144*170) })
+                    (180, {57.5 - 4.10*e^(0.0144*180) })
+                    (190, {64.0 - 4.10*e^(0.0144*190) })
+                    (200, {70.4 - 4.10*e^(0.0144*200) })
+                    (210, {79.7 - 4.10*e^(0.0144*210) })
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+        <p>
+          Study the residual plots in <xref ref="least-squares-exponential-population" text="type-local" /> and <xref ref="reexpressed-exponential-population" text="type-local" />. The random pattern of the residuals from the least squares line in <xref ref="least-squares-exponential-population" text="type-local" /> indicates that taking the logarithm of the <m>y</m>-values successfully straightened out the curvature in the original data. The size of these residuals is deceptive, however. They represent errors in the logarithm of <m>y</m>-values rather than errors in actual <m>y</m>-values. The same random pattern of residuals can be seen in <xref ref="reexpressed-exponential-population" text="type-local" />.  Positive residuals from the linear fit remain positive and negative residuals remain negative. However, these residuals represent the error in the actual <m>y</m>-values.
+        </p>
+        <p>
+          The technique of linearizing data by taking the logarithm of the <m>y</m>-values is frequently used. This method of re-expressing data is called <em>semi-log re-expression</em>, and a graph of ordered pairs <m>\left( x , \ln \left( y \right) \right)</m> is called a <em>semi-log plot</em>.  Semi-log re-expression will linearize any data set that can be modeled by an exponential function of the form <m>y = ae^{bx}</m>.
+        </p>
+      </solution>
+    </example>
+  </subsection>
+  <subsection>
+    <title>Fitting Power Functions to Data</title>
+    <p>
+      A problem with using inverses to re-express data is that we often don’t know what function relates the variables, so guessing its inverse is time consuming and difficult. While we might get lucky by using "educated guessing", in the long run this is an inefficient approach to finding a way to linearize ordered pairs of data.  In the following example, we will discuss the use of logarithmic functions to straighten data that can be modeled by a power function of the form <m>y = ax^b</m>. This process takes much of the guessing out of the re-expression process.
+    </p>
+    <example xml:id="example-tree-age-volume">
+      <statement>
+        <p>
+          The data in <xref ref="power-tree-data" text="type-local" /> represent the age in years and volume in <m>100</m>'s of board-feet of several hardwood trees of the same species (One board-foot is 1 foot square by 1 inch thick.). Determine a model that fits this data set. Use your model to predict the volume of a 150 year-old tree.
+        </p>
+
+        <figure xml:id="power-tree-data">
+          <caption>Tree volume data and scatter plot</caption>
+          <sidebyside>
+            <tabular top="major" halign="center">
+              <row bottom="medium">
+                <cell><line>Age</line><line>(years)</line></cell>
+                <cell><line>Volume</line><line>(100's of board-ft)</line></cell>
+              </row>
+
+              <row>
+                <cell><m>20</m></cell>
+                <cell><m>1</m></cell>
+              </row>
+
+              <row>
+                <cell><m>40</m></cell>
+                <cell><m>6</m></cell>
+              </row>
+
+              <row>
+                <cell><m>80</m></cell>
+                <cell><m>33</m></cell>
+              </row>
+
+              <row>
+                <cell><m>100</m></cell>
+                <cell><m>56</m></cell>
+              </row>
+
+              <row>
+                <cell><m>120</m></cell>
+                <cell><m>88</m></cell>
+              </row>
+
+              <row>
+                <cell><m>160</m></cell>
+                <cell><m>182</m></cell>
+              </row>
+
+              <row bottom="major">
+                <cell><m>200</m></cell>
+                <cell><m>320</m></cell>
+              </row>
+            </tabular>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Age (years)},
+                    ylabel = {Volume (100s of board-ft)},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 220,
+                    xtick = {0, 20, ..., 220},
+                    ymin = 0, ymax = 400,
+                    ytick = {0, 50, ..., 350},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (20, 1)
+                    (40, 6)
+                    (80, 33)
+                    (100, 56)
+                    (120, 88)
+                    (160, 182)
+                    (200, 320)
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+      </statement>
+      <solution>
+        <p>
+          The scatter plot of the data shown in <xref ref="power-tree-data" text="type-local" /> has the tree age plotted on the horizontal axis and the volume of wood on the vertical axis. Inspection of the scatter plot indicates that the relationship between these variables is not linear, but it is difficult to judge what kind of curvature is displayed. Since there is no underlying theory that would lead us to expect a particular relationship between age and volume, we have no real choice but to guess. We have seen previously that taking the square root of the <m>y</m>-values can straighten a curve if the functional relationship is quadratic, so we can try re-expressing the data and looking at a scatter plot of ordered pairs <m>\left( x , \sqrt{y} \right)</m>. <xref ref="reexpressed-tree-volume-quadratic" text="type-local" /> shows a least squares line fit to these re-expressed ordered pairs, as well as the corresponding residuals.
+        </p>
+
+        <figure xml:id="reexpressed-tree-volume-quadratic">
+          <caption>Least squares line and residuals for re-expressed tree volume data <m>\left( x , \sqrt{y} \right)</m></caption>
+          <sidebyside widths="40% 40%">
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Age (years)},
+                    ylabel = {$ \sqrt{ \text{Volume} } $},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 220,
+                    xtick = {0, 20, ..., 220},
+                    ymin = 0, ymax = 20,
+                    ytick = {0, 2, ..., 20},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (20, { sqrt(1) })
+                    (40, { sqrt(6) })
+                    (80, { sqrt(33) })
+                    (100, { sqrt(56) })
+                    (120, { sqrt(88) })
+                    (160, { sqrt(182) })
+                    (200, { sqrt(320) })
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=0:220,samples=200] { 0.0937*x - 1.4282 } node[left,pos=1] {$ \sqrt{y} = 0.0937x - 1.4282 $};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Age (years)},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 0, xmax = 220,
+                    xtick = {0, 20, ..., 220},
+                    ymin = -0.6, ymax = 0.6,
+                    ytick = {-0.6, -0.45, ..., 0.6},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (20, { sqrt(1) - (0.0937*20 - 1.4282) })
+                    (40, { sqrt(6) - (0.0937*40 - 1.4282) })
+                    (80, { sqrt(33) - (0.0937*80 - 1.4282) })
+                    (100, { sqrt(56) - (0.0937*100 - 1.4282) })
+                    (120, { sqrt(88) - (0.0937*120 - 1.4282) })
+                    (160, { sqrt(182) - (0.0937*160 - 1.4282) })
+                    (200, { sqrt(320) - (0.0937*200 - 1.4282) })
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+        <p>
+          The scatter plot looks reasonably linear, but there is a clear pattern in the residual plot. This pattern of positive residuals at each end and negative residuals in the middle indicates that the ordered pairs <m>\left( x, \sqrt{y} \right)</m> are not linear, but actually curve upward. Since the re-expressed ordered pairs are not linear, the original ordered pairs <m>\left( x, y \right)</m> do not fit a simple quadratic of the form <m>y = a\left( x - h \right)^2</m>. Our attempt to straighten the original scatter plot by taking the square root of the y-values has not brought down the <m>y</m>-values far enough. There is either a vertical shift that we have not accounted for, or the relationship is not quadratic. Since the re-expressed data is still concave up, we might suspect that the original pairs <m>\left( x, y \right)</m> should be modeled by a function that grows more quickly than a parabola.
+        </p>
+
+        <p>
+          Since the graph of the ordered pairs increases more quickly than the graph of a parabola, we might guess that the data is exponential. We perform a semi-log re-expression by taking the natural logarithm of the volume and plotting those values versus age, as shown <xref ref="reexpressed-tree-volume-exponential" text="type-local" />.
+        </p>
+
+        <figure xml:id="reexpressed-tree-volume-exponential">
+          <caption>Semi-log re-expression of tree volume data</caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = {Age (years)},
+                  ylabel = {$ \ln{ \text{Volume} } $},
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0, xmax = 220,
+                  xtick = {0, 20, ..., 220},
+                  ymin = 0, ymax = 6,
+                  ytick = {0, 1, ..., 6},
+                  clip = false
+                  ]
+
+                  \addplot[only marks, color=magenta] coordinates {
+                  (20, { ln(1) })
+                  (40, { ln(6) })
+                  (80, { ln(33) })
+                  (100, { ln(56) })
+                  (120, { ln(88) })
+                  (160, { ln(182) })
+                  (200, { ln(320) })
+                  };
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>
+          This scatter plot does not appear linear, so the data is not exponential of the form <m>y = ae^{bx}</m>. In fact, the concavity in <xref ref="reexpressed-tree-volume-exponential" text="type-local" /> is the opposite of the concavity for the original data. The logarithm pulls the <m>y</m>-values too far down, indicating that this re-expression is too strong. A possible model for the original data is somewhere between a quadratic and an exponential function.
+        </p>
+
+        <p>
+          Perhaps the relationship can be modeled by a power function with an equation of the form <m>y = ax^p</m>. If <m>p</m> is greater than <m>2</m>, the function increases more quickly than a quadratic. In addition, this power function contains the point <m>\left( 0, 0 \right)</m>. This is consistent with the tree data since a tree initially has zero age and zero volume. Guessing the power of the function and then using the inverse to straighten the data would be time consuming and tedious. A more efficient method using logarithms is described below.
+        </p>
+
+        <p>
+          Assuming the data has a relationship modeled by a function of the form <m>y = ax^p</m>, take the natural log of both sides of this power function:
+          <md>
+            <mrow>y \amp = ax^p</mrow>
+            <mrow>\ln \left( y \right) \amp = \ln \left( ax^p \right)</mrow>
+          </md>
+          We can rewrite this equation using the laws of logarithms, so that
+
+          <md>
+            <mrow>\ln \left( y \right) \amp = \ln \left( a \right) + \ln \left( x^p \right)</mrow>
+            <mrow>\ln \left( y \right) \amp = \ln \left( a \right) + p \ln \left( x \right)</mrow>
+          </md>
+
+          This is a linear equation in <m>\ln \left( x \right)</m> and <m>\ln \left( y \right)</m>. If we plot a graph with <m>\ln \left( x \right)</m> on the horizontal axis and <m>\ln \left( y \right)</m> on the vertical axis, then the ordered pairs <m>\left( \ln \left( x \right) , \ln \left( y \right) \right)</m> that satisfy the equation will lie on a line. The slope of this line is <m>p</m> and the intercept on the vertical axis is <m>\ln \left( a \right)</m>.
+        </p>
+
+        <p>
+          We will try this technique on the tree volume data.  We re-express the original ordered pairs <m>\left( x , y \right)</m> as the ordered pairs <m>\left( \ln \left( x \right) , \ln \left( y \right) \right)</m>. Fitting a least squares line to the re-expressed data <m>\left( \ln \left( x \right) , \ln \left( y \right) \right)</m> yields the equation:
+          <md>
+            <mrow>\ln \left( y \right) = 2.4926 \ln \left( x \right) - 7.4415</mrow>
+          </md>
+
+          <xref ref="reexpressed-tree-volume-power" text="type-local" /> shows the least squares line fit to the re-expressed data and a scatter plot of the residuals.
+        </p>
+
+        <figure xml:id="reexpressed-tree-volume-power">
+          <caption>Least squares line and residuals for re-expressed tree volume data <m>\left( \ln \left( x \right) , \ln \left( y \right) \right)</m></caption>
+          <sidebyside widths="40% 40%">
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {$ \ln \left( \text{Age} \right) $},
+                    ylabel = {$ \ln \left( \text{Volume} \right) $},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 2, xmax = 6,
+                    xtick = {2, 3, ..., 5},
+                    axis x discontinuity=crunch,
+                    ymin = 0, ymax = 6,
+                    ytick = {0, 1, ..., 5},
+                    clip = false,
+                    restrict y to domain=-0.2:6
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    ({ ln(20) } , { ln(1) })
+                    ({ ln(40) } , { ln(6) })
+                    ({ ln(80) } , { ln(33) })
+                    ({ ln(100) } , { ln(56) })
+                    ({ ln(120) } , { ln(88) })
+                    ({ ln(160) } , { ln(182) })
+                    ({ ln(200) } , { ln(320) })
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=0:6,samples=200] { 2.4926*x - 7.4415 } node[left,pos=1] {$ \ln{y} = 2.4926\ln \left( x \right) -7.4415 $};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {$ \ln \left( \text{Age} \right) $},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 2, xmax = 6,
+                    xtick = {2, 3, ..., 5},
+                    axis x discontinuity=crunch,
+                    ymin = -0.04, ymax = 0.04,
+                    ytick = {-0.03, -0.02, -0.01, 0, 0.01, 0.02, 0.03},
+                    yticklabel style={/pgf/number format/.cd,fixed,precision=2},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    ({ ln(20) } , { ln(1) - (2.4926*ln(20) - 7.4415) })
+                    ({ ln(40) } , { ln(6) - (2.4926*ln(40) - 7.4415) })
+                    ({ ln(80) } , { ln(33) - (2.4926*ln(80) - 7.4415) })
+                    ({ ln(100) } , { ln(56) - (2.4926*ln(100) - 7.4415) })
+                    ({ ln(120) } , { ln(88) - (2.4926*ln(120) - 7.4415) })
+                    ({ ln(160) } , { ln(182) - (2.4926*ln(160) - 7.4415) })
+                    ({ ln(200) } , { ln(320) - (2.4926*ln(200) - 7.4415) })
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+
+        <p>
+          The residuals indicate that the linear fit for <m>\left( \ln \left( x \right) , \ln \left( y \right) \right)</m> is good, so we conclude that the original ordered pairs <m>\left( x , y \right)</m> can be modeled by a power function. We can find the equation of the power function by solving for <m>y</m> in the least squares line determined earlier.
+
+          <md>
+            <mrow>\ln \left( y \right) \amp = 2.4926 \ln \left( x \right) - 7.4415</mrow>
+            <mrow>y \amp = e^{2.4926 \ln \left( x \right) - 7.4415}</mrow>
+            <mrow>y \amp = e^{2.4926 \ln \left( x \right)} \cdot e^{-7.4415}</mrow>
+            <mrow>y \amp = e^{-7.4415} \cdot e^{\ln \left( x^{2.4926} \right)}</mrow>
+            <mrow>y \amp = 0.0005864x^{2.4926}</mrow>
+          </md>
+
+          <xref ref="tree-volume-final" text="type-local" /> shows a graph of this power function superimposed on the original ordered pairs. The residuals indicate that this function does a good job of modeling the relationship betwee tree age and volume
+        </p>
+
+        <figure xml:id="tree-volume-final">
+          <caption>Power function model and residuals for tree volume data</caption>
+          <sidebyside>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Age (years)},
+                    ylabel = {Volume (100s of board-ft)},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 220,
+                    xtick = {0, 20, ..., 200},
+                    ymin = 0, ymax = 400,
+                    ytick = {0, 50, ..., 350},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (20, 1)
+                    (40, 6)
+                    (80, 33)
+                    (100, 56)
+                    (120, 88)
+                    (160, 182)
+                    (200, 320)
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=0:220,samples=200] { 0.0005864*x^(2.4926) } node[left,pos=1] {$ y = 0.0005864x^{2.4926} $};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {$ \ln \left( \text{Age} \right) $},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 0, xmax = 220,
+                    xtick = {0, 20, ..., 200},
+                    ymin = -2.1, ymax = 2.1,
+                    ytick = {-2, -1.5, -1, ..., 2},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (20, {1 - (0.0005864*20^(2.4926))} )
+                    (40, {6 - (0.0005864*40^(2.4926))} )
+                    (80, {33 - (0.0005864*80^(2.4926))} )
+                    (100, {56 - (0.0005864*100^(2.4926))} )
+                    (120, {88 - (0.0005864*120^(2.4926))} )
+                    (160, {182 - (0.0005864*160^(2.4926))} )
+                    (200, {320 - (0.0005864*200^(2.4926))} )
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+        <p>
+          To predict the volume of a 150-year-old tree, we substitute <m>150</m> into our model.
+          <md>
+            <mrow>y \amp = 0.0005864\left( 150 \right)^{2.4926}</mrow>
+            <mrow>y \amp \approx 155.711</mrow>
+          </md>
+
+          We get about 156, or approximately 15,600 board feet.
+
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The technique of linearizing data by taking the logarithm of both the <m>x</m>-values and the <m>y</m>-values is called <em>log-log re-expression</em>, and a graph of ordered pairs <m>\left( \ln \left( x \right) , \ln \left( y \right) \right)</m> is called a <em>log-log plot</em>. Log-log re-expression will linearize any data set that can be modeled by a power function of the form <m>y = ax^p</m>.
+    </p>
+
+    <p>
+      An important observation regarding semi-log re-expression and log-log re-expression should be emphasized here. The linear equation obtained for the least squares line will involve re-expressed variables. Thus, the residuals from a semi-log plot or a log-log plot indicate only how well the re-expression has linearized the data. For example, the residuals on the right in <xref ref="reexpressed-tree-volume-power" text="type-local" /> are very small.  However, they do not accurately represent the errors you may encounter when you use the model <m>y = 0.0005864x^{2.4926}</m> to make predictions about the original data. To determine the size of the errors to expect when using <m>y = 0.0005864x^{2.4926}</m>, you need to graph this function with the original ordered pairs, then analyze the residuals associated with the original ordered pairs as shown in <xref ref="tree-volume-final" text="type-local" />.
+    </p>
+
+    <p>
+      The preceding examples illustrate two techniques for straightening curved data: semi-log re-expression and log-log re-expression. These techniques have limitations. Re-expression to produce linearity is often an experimental process involving trial and error. Your knowledge of functions, inverses, special properties of functions, and some knowledge of the phenomena being modeled should guide you as you try different re-expressions and examine scatter plots.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          A thermometer is placed in a cup of hot water, and the cup is placed in the refrigerator.  The thermometer is examined periodically to determine the temperature of the water over time.  The temperature of the refrigerator is set at <m>47.5</m> <quantity><unit base="degreeFahrenheit"/></quantity>.  The data and a scatter plot are shown in <xref ref="cooling-data-pre-re-expression" text="type-local" />, with time measured in minutes since the thermometer was placed in the refrigerator and temperature in degrees Fahrenheit.  We would like to find a function that models the relationship between time and temperature and use it to estimate the temperature of the water at the beginning of the experiment.
+        </p>
+        <figure xml:id="cooling-data-pre-re-expression">
+          <caption>Data and scatter plot for temperature (in <quantity><unit base="degreeFahrenheit"/></quantity>) versus time (in minutes)</caption>
+          <sidebyside widths="30% 65%">
+            <tabular top="major" halign="center">
+              <row bottom="medium">
+                <cell><line>Time</line><line>(min)</line></cell>
+                <cell><line>Temp</line><line>( <quantity><unit base="degreeFahrenheit"/></quantity> )</line></cell>
+              </row>
+
+              <row>
+                <cell><m>10</m></cell>
+                <cell><m>114</m></cell>
+              </row>
+
+              <row>
+                <cell><m>16</m></cell>
+                <cell><m>109</m></cell>
+              </row>
+
+              <row>
+                <cell><m>20</m></cell>
+                <cell><m>106</m></cell>
+              </row>
+
+              <row>
+                <cell><m>33</m></cell>
+                <cell><m>97</m></cell>
+              </row>
+
+              <row>
+                <cell><m>50</m></cell>
+                <cell><m>89</m></cell>
+              </row>
+
+              <row>
+                <cell><m>65</m></cell>
+                <cell><m>82</m></cell>
+              </row>
+
+              <row>
+                <cell><m>85</m></cell>
+                <cell><m>74</m></cell>
+              </row>
+
+              <row>
+                <cell><m>128</m></cell>
+                <cell><m>64</m></cell>
+              </row>
+
+              <row>
+                <cell><m>144</m></cell>
+                <cell><m>62</m></cell>
+              </row>
+
+              <row>
+                <cell><m>178</m></cell>
+                <cell><m>58</m></cell>
+              </row>
+
+              <row>
+                <cell><m>208</m></cell>
+                <cell><m>54</m></cell>
+              </row>
+
+              <row>
+                <cell><m>244</m></cell>
+                <cell><m>52</m></cell>
+              </row>
+
+              <row>
+                <cell><m>299</m></cell>
+                <cell><m>50</m></cell>
+              </row>
+
+              <row bottom="major">
+                <cell><m>331</m></cell>
+                <cell><m>49</m></cell>
+              </row>
+            </tabular>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Time (minutes)},
+                    ylabel = {Temperature (degree F)},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 350,
+                    xtick = {0, 50, ..., 300},
+                    ymin = 0, ymax = 120,
+                    ytick = {0, 10, ..., 110},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (10, 114)
+                    (16, 109)
+                    (20, 106)
+                    (33, 97)
+                    (50, 89)
+                    (65, 82)
+                    (85, 74)
+                    (128, 64)
+                    (144, 62)
+                    (178, 58)
+                    (208, 54)
+                    (244, 52)
+                    (299, 50)
+                    (331, 49)
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+
+      </statement>
+      <solution>
+        <p>
+          Since the refrigerator temperature was <m>47.5</m> <quantity><unit base="degreeFahrenheit"/></quantity>, we expect the temperatures to level off at <m>47.5</m> <quantity><unit base="degreeFahrenheit"/></quantity>. Thus, the model for the <m>\left( \text{time}, \text{temperature} \right)</m> data should have a horizontal asymptote at <m>47.5</m>. The functions that we know that have horizontal asymptotes are either a reciprocal function or a decaying exponential function. A reciprocal function also has a vertical asymptote, which is not consistent with the cooling phenomenon. An exponential function has the characteristics we want for our model. To fit an exponential function to the data, we can try to linearize the data by using a semi-log re-expression. <xref ref="cooling-data-orig-semilog" text="type-local" /> contains a scatter plot of the ordered pairs <m>\left( \text{time}, \ln \left( \text{temperature} \right) \right)</m> with a least-squares line.
+        </p>
+        <figure xml:id="cooling-data-orig-semilog">
+          <caption>Scatter plot of semi-log re-expression of cooling data</caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = {Time (minutes)},
+                  ylabel = {$ \ln \left( \text{Temperature} \right) $},
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0, xmax = 350,
+                  xtick = {0, 50, ..., 300},
+                  ymin = 3.75, ymax = 5,
+                  ytick = {3.75, 4, ..., 4.75},
+                  clip = false,
+                  axis y discontinuity=crunch,
+                  yticklabel style={/pgf/number format/.cd,fixed,precision=2},
+                  ]
+
+                  \addplot[only marks, color=magenta] coordinates {
+                  (10, {ln(114)} )
+                  (16, {ln(109)} )
+                  (20, {ln(106)} )
+                  (33, {ln(97)} )
+                  (50, {ln(89)} )
+                  (65, {ln(82)} )
+                  (85, {ln(74)} )
+                  (128, {ln(64)} )
+                  (144, {ln(62)} )
+                  (178, {ln(58)} )
+                  (208, {ln(54)} )
+                  (244, {ln(52)} )
+                  (299, {ln(50)} )
+                  (331, {ln(49)} )
+                  };
+
+                  \addplot [thick, blue, <->, dashed, mark=none, domain=-5:330,samples=200] { -0.0027*x + 4.6323 } node[right] at (axis cs:175,4.25) {$ \ln \left( y \right) = -0.0027x + 4.6323 $};
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          The re-expressed data in <xref ref="cooling-data-orig-semilog" text="type-loca" /> have not been straightened by the semi-log re-expression. Recall that a semi-log re-expression only works if the data can be modeled by an equation of the form <m>T = ae^{bt}</m>, where <m>t</m> is time and <m>T</m> is temperature. Functions of the form <m>T = ae^{bt}</m> all have a horizontal asymptote at <m>T = 0</m>.  However, the temperatures that we are modeling in this example will not approach zero, but will level off at <m>T = 47.5</m>. If the cooling phenomenon can be modeled by an exponential function, its equation will need to account for a vertical shift of <m>47.5</m> units. The form of this equation is <m>T = ae^{bt} + 47.5</m>.
+        </p>
+        <p>
+          Using our knowledge of functions and transformations, we know that the ordered pairs <m>\left( t, T-47.5 \right)</m> are shifted down <m>47.5</m> units, and therefore will level off at <m>T = 0</m>. Thus, if the relationship between time and temperature can be modeled by a function of the form <m>T(t) = ae^{bt} + 47.5</m>, then a semi-log re-expression performed on the ordered pairs <m>\left( t, T-47.5 \right)</m> will linearize the cooling data.  The equation of the least squares line through the ordered pairs <m>\left( t, T-47.5 \right)</m> is
+          <md>
+            <mrow>\ln \left( T - 47.5 \right) = -0.0115t + 4.301</mrow>
+          </md>
+
+          <xref ref="cooling-data-shifted-semilog" text="type-local" /> shows the least squares line through the re-expressed data <m>\left( t, \ln \left( T-47.5 \right) \right)</m> and the corresponding residual plot. The least squares line appears to fit the re-expressed data well, and the residuals are random in sign.
+        </p>
+
+        <figure xml:id="cooling-data-shifted-semilog">
+          <caption>Least squares line and residuals for re-expressed cooling data</caption>
+          <sidebyside widths="40% 40%">
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Time (minutes)},
+                    ylabel = {$ \ln \left( \text{Temperature} - 47.5 \right) $},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 350,
+                    xtick = {0, 50, ..., 300},
+                    ymin = 0, ymax = 5,
+                    ytick = {0, 1, ..., 4},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (10, {ln(114 - 47.5 )} )
+                    (16, {ln(109 - 47.5 )} )
+                    (20, {ln(106 - 47.5 )} )
+                    (33, {ln(97 - 47.5 )} )
+                    (50, {ln(89 - 47.5 )} )
+                    (65, {ln(82 - 47.5 )} )
+                    (85, {ln(74 - 47.5 )} )
+                    (128, {ln(64 - 47.5 )} )
+                    (144, {ln(62 - 47.5 )} )
+                    (178, {ln(58 - 47.5 )} )
+                    (208, {ln(54 - 47.5 )} )
+                    (244, {ln(52 - 47.5 )} )
+                    (299, {ln(50 - 47.5 )} )
+                    (331, {ln(49 - 47.5 )} )
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=-5:350,samples=200] { -0.0115*x + 4.301 } node[right] at (axis cs:115,3.2) {$ \ln \left( T - 47.5 \right) = -0.0115x + 4.301 $};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Time (minutes)},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 0, xmax = 350,
+                    xtick = {0, 50, ..., 300},
+                    ymin = -0.125, ymax = 0.125,
+                    ytick = {-0.1, -0.05, 0, 0.05, 0.1},
+                    yticklabel style={/pgf/number format/.cd,fixed,precision=2},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (10, {ln(114 - 47.5 ) - (-0.0115*10 + 4.301) } )
+                    (16, {ln(109 - 47.5 ) - (-0.0115*16 + 4.301) } )
+                    (20, {ln(106 - 47.5 ) - (-0.0115*20 + 4.301) } )
+                    (33, {ln(97 - 47.5 ) - (-0.0115*33 + 4.301) } )
+                    (50, {ln(89 - 47.5 ) - (-0.0115*50 + 4.301) } )
+                    (65, {ln(82 - 47.5 ) - (-0.0115*65 + 4.301) } )
+                    (85, {ln(74 - 47.5 ) - (-0.0115*85 + 4.301) } )
+                    (128, {ln(64 - 47.5 ) - (-0.0115*128 + 4.301) } )
+                    (144, {ln(62 - 47.5 ) - (-0.0115*144 + 4.301) } )
+                    (178, {ln(58 - 47.5 ) - (-0.0115*178 + 4.301) } )
+                    (208, {ln(54 - 47.5 ) - (-0.0115*208 + 4.301) } )
+                    (244, {ln(52 - 47.5 ) - (-0.0115*244 + 4.301) } )
+                    (299, {ln(50 - 47.5 ) - (-0.0115*299 + 4.301) } )
+                    (331, {ln(49 - 47.5 ) - (-0.0115*331 + 4.301) } )
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+        <p>
+          Solving for <m>T</m> gives:
+          <md>
+            <mrow>\ln \left( T - 47.5 \right) \amp = -0.0115t + 4.301</mrow>
+            <mrow>T - 47.5 \amp = e^{-0.0115t + 4.301}</mrow>
+            <mrow>T - 47.5 \amp = e^{-0.0115t} \cdot e^{4.301}</mrow>
+            <mrow>T(t) \amp = 73.75e^{-0.0115t} + 47.5</mrow>
+          </md>
+        </p>
+        <p>
+          <xref ref="cooling-data-shifted-final" text="type-local" /> shows a graph of this exponential function superimposed on the original scatter plot.  A residual plot is also provided.  The residuals in <xref ref="cooling-data-shifted-final" text="type-local" /> are very small relative to the observed temperatures. As expected, there is no noticeable pattern, so we conclude that the model is a good one.
+        </p>
+
+        <figure xml:id="cooling-data-shifted-final">
+          <caption>Exponential model and residuals for cooling data </caption>
+          <sidebyside widths="40% 40%">
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Time (minutes)},
+                    ylabel = {Temperature (degree F)},
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0, xmax = 350,
+                    xtick = {0, 50, ..., 300},
+                    ymin = 0, ymax = 120,
+                    ytick = {0, 10, ..., 110},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (10, 114)
+                    (16, 109)
+                    (20, 106)
+                    (33, 97)
+                    (50, 89)
+                    (65, 82)
+                    (85, 74)
+                    (128, 64)
+                    (144, 62)
+                    (178, 58)
+                    (208, 54)
+                    (244, 52)
+                    (299, 50)
+                    (331, 49)
+                    };
+
+                    \addplot [thick, blue, <->, dashed, mark=none, domain=-5:350,samples=200] { 73.75 * e^(-0.0115*x) + 47.5 } node[right] at (axis cs:110,75) {$ T(t) = 73.75e^{-0.0115t} + 47.5 $};
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = {Time (minutes)},
+                    ylabel = {Residuals},
+                    ylabel near ticks,
+                    xmin = 0, xmax = 350,
+                    xtick = {0, 50, ..., 300},
+                    ymin = -1.25, ymax = 1.25,
+                    ytick = {-1, -0.5, 0, 0.5, 1},
+                    yticklabel style={/pgf/number format/.cd,fixed,precision=1},
+                    clip = false
+                    ]
+
+                    \addplot[only marks, color=magenta] coordinates {
+                    (10, {114 - (73.75 * e^(-0.0115*10) + 47.5) } )
+                    (16, {109 - (73.75 * e^(-0.0115*16) + 47.5) } )
+                    (20, {106 - (73.75 * e^(-0.0115*20) + 47.5) } )
+                    (33, {97 - (73.75 * e^(-0.0115*33) + 47.5) } )
+                    (50, {89 - (73.75 * e^(-0.0115*50) + 47.5) } )
+                    (65, {82 - (73.75 * e^(-0.0115*65) + 47.5) } )
+                    (85, {74 - (73.75 * e^(-0.0115*85) + 47.5) } )
+                    (128, {64 - (73.75 * e^(-0.0115*128) + 47.5) } )
+                    (144, {62 - (73.75 * e^(-0.0115*144) + 47.5) } )
+                    (178, {58 - (73.75 * e^(-0.0115*178) + 47.5) } )
+                    (208, {54 - (73.75 * e^(-0.0115*208) + 47.5) } )
+                    (244, {52 - (73.75 * e^(-0.0115*244) + 47.5) } )
+                    (299, {50 - (73.75 * e^(-0.0115*299) + 47.5) } )
+                    (331, {49 - (73.75 * e^(-0.0115*331) + 47.5) } )
+                    };
+
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </sidebyside>
+        </figure>
+        <p>
+          The temperature was first recorded <m>10</m> minutes after the water started to cool. Had we observed the temperature as soon as we put the hot water into the cup, our model <m>T(t) = 73.75e^{-0.0115t} + 47.5</m> suggests that the initial temperature was around <m>T(0) = 73.75e^{-0.0115(0)} + 47.5 \approx 121</m>. Of course, we wouldn't expect the temperature to be exactly <m>121</m> <quantity><unit base="degreeFahrenheit"/></quantity>, but we would expect it to be somewhere in the neighborhood of this temperature.
+        </p>
+      </solution>
+
+      <p>
+        In our discussion of mathematical models, we have explained that a good model is one that shares the essential features of the phenomenon it describes. We expect there to be some deviation between the model and the observed data points, and our decision concerning the adequacy of a model is a subjective one.  In this last example, the model <m>T(t) = 73.75e^{-0.0115t} + 47.5</m> seems to fit the general trend of the data, and we conclude that the decreasing exponential function is a satisfactory model for the cooling phenomenon.
+      </p>
+
+      <p>
+        Semi-log and log-log re-expression are tools for linearizing data sets that can be modeled by an exponential function or a power function. Each technique is based upon an assumption that the data is in "standard" position. For exponential functions this means that the horizontal asymptote is at the <m>x</m>-axis. For power functions this means the point <m>\left( 0,0 \right)</m> lies on the curve or the curve is asymptotic to the axes. Before performing a semi-log re-expression on exponential data, you may need to shift the data points vertically so that the <m>x</m>-axis is the asymptote. Data to be modeled by a power function may need to be shifted both horizontally and vertically before performing a log-log re-expression. When performing a semi-log re-expression to find an exponential model, we need to remove any point(s) with <m>y</m>-coordinate equal to zero.  When performing a log-log re-expression to find a power function model, we need to remove any point(s) in which either coordinate is zero.
+      </p>
+    </example>
+  </subsection>
+  <exercises>
+    <title>Class Practice</title>
+    <exercise>
+      <statement>
+        <p>
+          Calculators and computers with curve fitting software often have an exponential regression (or exponential least squares) option.
+          <ol>
+            <li>Use this feature of your calculator or computer software to find a model for the population data provided in <xref ref="example-population-density" text="type-local" />.</li>
+            <li>Graph this model with the data and examine the residual plot.</li>
+            <li>Compare this model to the one found in <xref ref="example-population-density" text="type-local" />.  Though the models may at first appear different, they may be algebraically equivalent. Some exponential regression programs use semi-log re-expression and linear least squares to produce the exponential model while others minimize the sum of least squares for an exponential model directly. These methods do not always produce the same result!</li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>Calculators and computers with curve fitting software often have a power regression (or power least squares) option.
+          <ol>
+            <li>Use this feature of your calculator or computer software to find a model for the population data provided in <xref ref="example-tree-age-volume" text="type-local" />.</li>
+            <li>Graph this model with the data and examine the residual plot.</li>
+            <li>Compare this model to the one found in <xref ref="example-tree-age-volume" text="type-local" />.  Though the models may at first appear different, they may be algebraically equivalent. Some power regression programs use log-log re-expression and linear least squares to produce the power model while others minimize the sum of least squares for a power model directly. These methods do not always produce the same result!</li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </exercises>
+
+  <exercises>
+    <!-- Exercise 1 -->
+    <exercise>
+      <statement>
+        <p>
+          Fit a quadratic model to the population per square mile data in <xref ref="example-population-density" text="type-local" /> by performing an appropriate re-expression. How does the fit of the quadratic model compare with the fit of the exponential model in the example?
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 2 -->
+    <exercise>
+      <statement>
+        <p>
+          Study the residual plot for the cooling model in <xref ref="cooling-data-shifted-final" text="type-local" />. Notice that the residuals associated with later observations are smaller in magnitude. How can you account for this?
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 3 -->
+    <exercise>
+      <statement>
+        <p>
+          In <xref ref="example-population-density" text="type-local" /> we modeled the US population data by performing a semi-log re-expression. Suppose, instead of using the natural logarithm, we had used common logs. How would the model we find for the data compare to the model we found using natural logs?
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 4 -->
+    <exercise>
+      <statement>
+        <p>
+          In a laboratory experiment, a tumor was induced in a plant, and the size of the tumor was recorded over time. The size of the tumor was measure in cubic centimeters (cc). Use re-expression and least squares analysis to find a model for this data. At what rate is the tumor growing?
+        </p>
+        <figure>
+          <caption>Data on tumor growth</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Days</cell>
+              <cell><m>14</m></cell>
+              <cell><m>19</m></cell>
+              <cell><m>23</m></cell>
+              <cell><m>26</m></cell>
+              <cell><m>28</m></cell>
+              <cell><m>30</m></cell>
+              <cell><m>33</m></cell>
+              <cell><m>35</m></cell>
+              <cell><m>37</m></cell>
+              <cell><m>41</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Size (cc)</cell>
+              <cell><m>1.85</m></cell>
+              <cell><m>4.25</m></cell>
+              <cell><m>7.5</m></cell>
+              <cell><m>11</m></cell>
+              <cell><m>14.5</m></cell>
+              <cell><m>18.95</m></cell>
+              <cell><m>28.65</m></cell>
+              <cell><m>38</m></cell>
+              <cell><m>49.75</m></cell>
+              <cell><m>84.5</m></cell>
+            </row>
+          </tabular>
+        </figure>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 5 -->
+    <exercise>
+      <statement>
+        <p>
+          The following data set was collected by a precalculus class using a CBL and calculator. A probe that measures light intensity was aimed at a light source in a dark room. The light intensity was measured at specific distances from the probe. The distance is measured in <quantity><unit prefix="centi" base="meter"/></quantity> and the light intensity is measured in <quantity><unit prefix="milli" base="watt"/><per prefix="centi" base="meter" exp="2"/></quantity>. Find a function that models the data.
+        </p>
+        <figure>
+          <caption>Data on light intensity</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Distance</cell>
+              <cell><m>120</m></cell>
+              <cell><m>130</m></cell>
+              <cell><m>140</m></cell>
+              <cell><m>150</m></cell>
+              <cell><m>160</m></cell>
+              <cell><m>170</m></cell>
+              <cell><m>180</m></cell>
+              <cell><m>190</m></cell>
+              <cell><m>200</m></cell>
+              <cell><m>210</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Intensity</cell>
+              <cell><m>0.709</m></cell>
+              <cell><m>0.610</m></cell>
+              <cell><m>0.542</m></cell>
+              <cell><m>0.464</m></cell>
+              <cell><m>0.403</m></cell>
+              <cell><m>0.361</m></cell>
+              <cell><m>0.322</m></cell>
+              <cell><m>0.289</m></cell>
+              <cell><m>0.257</m></cell>
+              <cell><m>0.237</m></cell>
+            </row>
+          </tabular>
+        </figure>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 6 -->
+    <exercise>
+      <statement>
+        <p>
+          A group of students collected data relating the length of the side of an equilateral triangle with the area of the triangle. The data set is collected by drawing triangles on graph paper. The students counted the squares on the graph paper to estimate the area. Find a function that models the data.
+        </p>
+        <figure>
+          <caption>Data on triangle side length and area</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Side</cell>
+              <cell><m>2</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>4</m></cell>
+              <cell><m>5</m></cell>
+              <cell><m>6</m></cell>
+              <cell><m>7</m></cell>
+              <cell><m>8</m></cell>
+              <cell><m>9</m></cell>
+              <cell><m>10</m></cell>
+              <cell><m>11</m></cell>
+              <cell><m>12</m></cell>
+              <cell><m>13</m></cell>
+              <cell><m>14</m></cell>
+              <cell><m>15</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Area</cell>
+              <cell><m>1.75</m></cell>
+              <cell><m>4</m></cell>
+              <cell><m>7</m></cell>
+              <cell><m>11</m></cell>
+              <cell><m>15.5</m></cell>
+              <cell><m>20.5</m></cell>
+              <cell><m>27</m></cell>
+              <cell><m>36</m></cell>
+              <cell><m>43</m></cell>
+              <cell><m>52</m></cell>
+              <cell><m>62</m></cell>
+              <cell><m>74</m></cell>
+              <cell><m>86</m></cell>
+              <cell><m>97</m></cell>
+            </row>
+          </tabular>
+        </figure>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 7 -->
+    <exercise>
+      <statement>
+        <p>
+          The Highway Department uses a formula to determine how fast a car in an accident was traveling based on the length of the skid. The following data set was collected under controlled conditions (surface and weather). Find a function that models the data.
+        </p>
+        <figure>
+          <caption>Data on length of skid marks at variousd speeds</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Speed (mph)</cell>
+              <cell><m>20</m></cell>
+              <cell><m>25</m></cell>
+              <cell><m>30</m></cell>
+              <cell><m>35</m></cell>
+              <cell><m>40</m></cell>
+              <cell><m>45</m></cell>
+              <cell><m>50</m></cell>
+              <cell><m>55</m></cell>
+              <cell><m>60</m></cell>
+              <cell><m>65</m></cell>
+              <cell><m>70</m></cell>
+              <cell><m>80</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Length (ft)</cell>
+              <cell><m>15</m></cell>
+              <cell><m>23</m></cell>
+              <cell><m>33</m></cell>
+              <cell><m>45</m></cell>
+              <cell><m>59</m></cell>
+              <cell><m>75</m></cell>
+              <cell><m>93</m></cell>
+              <cell><m>112</m></cell>
+              <cell><m>113</m></cell>
+              <cell><m>156</m></cell>
+              <cell><m>181</m></cell>
+              <cell><m>240</m></cell>
+            </row>
+          </tabular>
+        </figure>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 8 -->
+    <exercise>
+      <statement>
+        <p>
+          Researchers in anthropology are interested in the way urban growth affects lifestyle and stress levels. They measured the average walking speed, measured in <quantity><unit base="foot"/><per base="second"/></quantity>, of persons living in cities of various populations, measured in thousands of people<fn>Source: UMAP Unit 551, COMAP, Inc., 1983</fn>.
+        </p>
+        <figure>
+          <caption>Walking speed and population</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Population</cell>
+              <cell><m>341.9</m></cell>
+              <cell><m>5.5</m></cell>
+              <cell><m>0.4</m></cell>
+              <cell><m>78.2</m></cell>
+              <cell><m>867</m></cell>
+              <cell><m>14</m></cell>
+              <cell><m>23.7</m></cell>
+              <cell><m>70.7</m></cell>
+              <cell><m>304.5</m></cell>
+              <cell><m>138</m></cell>
+              <cell><m>2602</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Speed (<quantity><unit base="foot"/><per base="second"/></quantity>)</cell>
+              <cell><m>4.8</m></cell>
+              <cell><m>3.3</m></cell>
+              <cell><m>2.8</m></cell>
+              <cell><m>3.9</m></cell>
+              <cell><m>5.2</m></cell>
+              <cell><m>3.7</m></cell>
+              <cell><m>3.3</m></cell>
+              <cell><m>4.3</m></cell>
+              <cell><m>4.4</m></cell>
+              <cell><m>4.4</m></cell>
+              <cell><m>5.1</m></cell>
+            </row>
+          </tabular>
+        </figure>
+        <p>
+          <ol>
+            <li>Find an equation to model the relationship between walking speed and population.  (First re-express the data and find the equation of the least squares line.)</li>
+            <li>According to your model, in what size city would the walking speed be zero?</li>
+            <li>What does your model imply about walking speed as population increases?  Be specific.  Is there an upper bound to walking speed?</li>
+            <li>What does your model imply about the relationship between urban growth and stress?</li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 9 -->
+    <exercise>
+      <statement>
+        <p>
+          The biology student who found a model for predicting temperature by listening to crickets stirred much interest among her friends. One friend decided to repeat the experiment, but he gathered his data in a different way. He used a stopwatch to determine the time required to hear <m>50</m> chirps. The data collected show the number of seconds required to count <m>50</m> cricket chirps at various temperatures.
+        </p>
+        <figure>
+          <caption>Cricket chirps and temperature</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Seconds</cell>
+              <cell><m>94</m></cell>
+              <cell><m>59</m></cell>
+              <cell><m>42</m></cell>
+              <cell><m>36</m></cell>
+              <cell><m>32</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>26</m></cell>
+              <cell><m>24</m></cell>
+              <cell><m>21</m></cell>
+              <cell><m>20</m></cell>
+              <cell><m>17</m></cell>
+              <cell><m>1</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Temperature (<quantity><unit base="degreeFahrenheit"/></quantity>)</cell>
+              <cell><m>45</m></cell>
+              <cell><m>52</m></cell>
+              <cell><m>55</m></cell>
+              <cell><m>58</m></cell>
+              <cell><m>60</m></cell>
+              <cell><m>6</m></cell>
+              <cell><m>65</m></cell>
+              <cell><m>68</m></cell>
+              <cell><m>70</m></cell>
+              <cell><m>75</m></cell>
+              <cell><m>82</m></cell>
+              <cell><m>8</m></cell>
+            </row>
+          </tabular>
+        </figure>
+        <p>
+          <ol>
+            <li>Make a scatter plot of the data and re-express the data to produce linearity.</li>
+            <li>Fit a least squares line to the linearized data.  Write an equation that will allow you to predict the temperature based on a count of cricket chirps.</li>
+            <li>Suppose you hear a cricket chirping, and you need <m>25</m> seconds to count <m>50</m> chirps. Use your model to predict the temperature.</li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 10 -->
+    <exercise>
+      <statement>
+        <p>
+          Rheumatoid arthritis patients are treated with large quantities of aspirin. The concentration of aspirin in the bloodstream increases for a period of time after the drug is administered and then decreases in such a way that the amount of aspirin remaining is a function of the amount of time that has elapsed since peak concentration. Peak concentration for this patient is 15 mg. Use a model for the patient after taking a dose of aspirin to predict how much aspirin remains in the patient’s bloodstream ten hours after reaching peack concentration. Time is measured in hours and concentration in mg per 100 cc of blood.
+        </p>
+        <figure>
+          <caption>Data on aspirin concentration in an arthritis patient</caption>
+          <tabular halign="center">
+            <row bottom="medium">
+              <cell right="major">Hours Elapsed</cell>
+              <cell><m>0</m></cell>
+              <cell><m>1</m></cell>
+              <cell><m>2</m></cell>
+              <cell><m>3</m></cell>
+              <cell><m>4</m></cell>
+              <cell><m>5</m></cell>
+              <cell><m>6</m></cell>
+              <cell><m>7</m></cell>
+              <cell><m>8</m></cell>
+              <cell><m>9</m></cell>
+            </row>
+
+            <row>
+              <cell right="major">Concentration</cell>
+              <cell><m>15</m></cell>
+              <cell><m>12.5</m></cell>
+              <cell><m>10.5</m></cell>
+              <cell><m>8.7</m></cell>
+              <cell><m>7.3</m></cell>
+              <cell><m>6.1</m></cell>
+              <cell><m>5.1</m></cell>
+              <cell><m>4.3</m></cell>
+              <cell><m>3.6</m></cell>
+              <cell><m>3.0</m></cell>
+            </row>
+          </tabular>
+        </figure>
+
+      </statement>
+    </exercise>
+
+    <!-- Exercise 11 -->
+    <exercise>
+      <statement>
+        <p>
+          Consider the data set describing a planet's distance from the sun and the time it takes to complete an orbit. A planet's mean distance from the sun is measured in millions of miles. The number of years required for a planet to complete its revolution around the sun is called a sidereal year. Determine a model that fits this data set. (The relationship between distance from the sun and sidereal year is called Kepler's Third Law. It was discovered empirically by Johann Kepler in 1618. He experimented, without the aid of data analysis or computer technology, until he found a mathematical statement to describe this relationship.)
+        </p>
+        <figure>
+          <caption>Data on planet distance</caption>
+          <tabular top="major" halign="center">
+            <row bottom="medium">
+              <cell>Planet</cell>
+              <cell>Distance</cell>
+              <cell>Years</cell>
+            </row>
+
+            <row>
+              <cell>Mercury</cell>
+              <cell><m>36.0</m></cell>
+              <cell><m>0.241</m></cell>
+            </row>
+
+            <row>
+              <cell>Venus</cell>
+              <cell><m>67.0</m></cell>
+              <cell><m>0.615</m></cell>
+            </row>
+
+            <row>
+              <cell>Earth</cell>
+              <cell><m>93.0</m></cell>
+              <cell><m>1.000</m></cell>
+            </row>
+
+            <row>
+              <cell>Mars</cell>
+              <cell><m>141.5</m></cell>
+              <cell><m>1.880</m></cell>
+            </row>
+
+            <row>
+              <cell>Jupiter</cell>
+              <cell><m>483.0</m></cell>
+              <cell><m>11.900</m></cell>
+            </row>
+
+            <row>
+              <cell>Saturn</cell>
+              <cell><m>886.0</m></cell>
+              <cell><m>29.500</m></cell>
+            </row>
+
+            <row>
+              <cell>Uranus</cell>
+              <cell><m>1782.0</m></cell>
+              <cell><m>84.000</m></cell>
+            </row>
+
+            <row>
+              <cell>Neptune</cell>
+              <cell><m>2793.0</m></cell>
+              <cell><m>165.000</m></cell>
+            </row>
+
+            <row bottom="major">
+              <cell>Pluto</cell>
+              <cell><m>3670.0</m></cell>
+              <cell><m>248.000</m></cell>
+            </row>
+          </tabular>
+        </figure>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 12 -->
+    <exercise>
+      <statement>
+        <p>
+          You can use the graph of the function <m>y = \sqrt{x}</m> to estimate the area of the region that is under the graph, above the x-axis, and between the vertical lines <m>x=0</m> and <m>x=2</m>. This area appears to be a little less than two square units, since it contains one complete block and two partial blocks
+        </p>
+        <figure>
+          <caption>Graph of <m>y = \sqrt{x}</m></caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xmin = 0, xmax = 10,
+                  xtick = {0, 1, ..., 9},
+                  ymin = 0, ymax = 4.5,
+                  ytick = {0, 1, ..., 4},
+                  clip = false,
+                  grid = major,
+                  grid style={line width=.1pt, draw=gray!10},
+                  major grid style={line width=.2pt,draw=gray!50},
+                  height = 4.5cm,
+                  width = 9.5cm,
+                  ]
+
+                  \addplot [thick, blue, ->, mark=none, domain=0:10,samples=200] { sqrt(x) };
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          <ol>
+            <li>Repeat this process for the regions between <m>x = 0</m> and <m>x = t</m> for integer values of <m>t</m> from <m>1</m> to <m>10</m>. The data set you create should consist of ordered pairs of the form <m>\left( t, A \right)</m>, where <m>A</m> represents the area under the graph between <m>x=0</m> and <m>x=t</m> and above the <m>x</m>-axis.</li>
+            <li>Make a scatter plot of your ordered pairs. Use the scatter plot to make a guess about the relationship between <m>t</m> and <m>A</m>. Check your guess by re-expressing the data to make it linear. If you are not satisfied with your choice of re-expression, experiment with others until your data appears linear.</li>
+            <li>Find an equation of the least squares line through the linearized data. Solve your equation for the dependent variable <m>A</m>, and examine the model superimposed on the original data.</li>
+            <li>Techniques from calculus allow us to determine that the area under <m>y = \sqrt{x}</m>  between <m>x = 0</m> and <m>x = t</m> is given exactly by the equation <m>A = \left( \frac{2}{3} \right) t^{3/2}</m>. How close to this equation is your empirical model?</li>
+            <li>How well does the theoretical model stated in the previous part fit the data you gathered? Use a residual plot in your analysis.</li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </exercises>
+</section>

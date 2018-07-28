@@ -111,7 +111,7 @@
         </solution>
       </example>
     </introduction>
-    
+
     <subsection>
       <title>Change of Base</title>
         <p>
@@ -189,18 +189,151 @@
             <p>
               Since we now have an exponential equation, we can apply either the common log or the natural log of both sides of the equation as shown below.
             </p>
+
+            <sidebyside>
+              <p>
+                <md>
+                  <mrow>3^y \amp = 7</mrow>
+                  <mrow>\log \left( 3^y \right) \amp \log \left( 7 \right)</mrow>
+                  <mrow>y \log \left( 3 \right) \amp \log \left( 7 \right)</mrow>
+                  <mrow>y \amp = \frac{ \log \left( 7 \right) }{\log \left( 3 \right)}</mrow>
+                  <mrow>y \amp \approx 1.771</mrow>
+                </md>
+              </p>
+
+              <p>
+                <md>
+                  <mrow>3^y \amp = 7</mrow>
+                  <mrow>\ln \left( 3^y \right) \amp \ln \left( 7 \right)</mrow>
+                  <mrow>y \ln \left( 3 \right) \amp \ln \left( 7 \right)</mrow>
+                  <mrow>y \amp = \frac{ \ln \left( 7 \right) }{\ln \left( 3 \right)}</mrow>
+                  <mrow>y \amp \approx 1.771</mrow>
+                </md>
+              </p>
+            </sidebyside>
           </solution>
         </example>
+
+        <p>
+          The technique illustrated in the preceding example can be used to change the base of any logarithm. To find <m>\log_a \left( b \right)</m>, let <m>y = \log_a \left( b \right)</m>.
+        </p>
+        <p>
+          Then,
+          <md>
+            <mrow>a^y \amp = b</mrow>
+            <mrow>\log_c \left( a^y \right) \amp = \log_c \left( b \right)</mrow>
+            <mrow>y \log_c \left( a \right) \amp = \log_c \left( b \right)</mrow>
+            <mrow>y \amp = \frac{ \log_c \left( b \right)}{ \log_c \left( a \right)}</mrow>
+          </md>
+          So,
+          <md>
+            <mrow>log_a \left( b \right) = \frac{ \log_c \left( b \right) }{\log_c \left( a \right)}</mrow>
+          </md>
+        </p>
+
+        <example xml:id="japan-growth-rate">
+          <statement>
+            <p>
+              In recent years the population of Japan has been growing at an annual rate of about <m>0.3\%</m>. If we assume that this rate remains constant, how long will it take for the population to double?  How long will it take for the population to quadruple?
+            </p>
+          </statement>
+          <solution>
+            <p>
+              When we solved a problem similar to this one earlier in the chapter, we did not have an analytical way to determine the doubling time. Logarithms provide such a way. Since the population is assumed to grow at a constant annual growth rate, each year the population is <m>1.003</m> times the previous year's population. If the current population of Japan is some number <m>N</m>, then it will be <m>2N</m> when the population doubles. So, we need to solve the equation <m>2N = N \left( 1.003 \right)^t</m>, where <m>t</m> is the number of years necessary for doubling. This yields
+              <md>
+                <mrow>2N \amp = N \left( 1.003 \right)^t</mrow>
+                <mrow>2 \amp = \left( 1.003 \right)^t</mrow>
+                <mrow>\ln \left( 2 \right) \amp = \ln \left( 1.003 \right)^t</mrow>
+                <mrow>\ln \left( 2 \right) \amp = t \left( \ln \left( 1.003 \right) \right)</mrow>
+                <mrow>t \amp = \frac{2}{\ln \left( 1.003 \right)}</mrow>
+                <mrow>t \amp \approx 231.4</mrow>
+              </md>
+              From this solution, we see that the population in Japan will double in approximately <m>231.4</m> years, assuming a continuation of the current annual growth rate of <m>0.3\%</m>.  If this growth rate does not change, the population should quadruple in two doubling times, or approximately <m>462.8</m> years. This can be verified algebraically by solving the equation <m>4N = N \left( 1.003 \right)^t</m> for <m>t</m>.
+            </p>
+          </solution>
+        </example>
+
+        <example xml:id="arch-half-life">
+          <statement>
+            <p>
+              Suppose an archaeologist finds a piece of human bone fragment that contains <m>43\%</m> of the amount of radioactive carbon-14 <fn>Carbon-14 is useful in the dating of relatively old artifacts and fossils because its half-life is relatively long. However, if we wanted to measure the age of objects that were millions of years old, the carbon-14 dating process would be useless, because virtually all of the carbon-14 present in the organism at death would have decayed away.  Scientists use isotopes of uranium and thorium to date very old objects. Similarly, carbon-14 dating is not useful in dating material from the last few decades, since the abundance of carbon-14 in the material is virtually indistinguishable from the amount of carbon-14 in living matter.  Tritium, with a half-life of 12.1 years, is often used for dating more recent matter such as wines.</fn> normally found in the bone of a living person.  She knows that the half-life of carbon-14 is <m>5,730</m> years. How old is the bone?
+            </p>
+          </statement>
+          <solution>
+            <p>
+              First, since less than half the carbon-14 remains, we know that the bone is more than <m>5,730</m> years old. To find a more precise answer, we could first determine the general equation <m>P(t) = P_0 e^{kt}</m> and find the value of <m>k</m>. Since the half-life of carbon-14 is <m>5,730</m> years, we know that the initial value of <m>P_0</m> will have decayed to <m>0.5P_0</m> when <m>t = 5,730</m>. Therefore, we can write the equation <m>0.5P_0 = P_0 e^{5730k}</m>, and solve for <m>k</m> as follows:
+              <md>
+                <mrow>0.5P_0 \amp = P_0 e^{5730k}</mrow>
+                <mrow>0.5 \amp = e^{5730k}</mrow>
+                <mrow>\ln \left( 0.5 \right) \amp = 5730k</mrow>
+                <mrow> k \amp = \frac{ \ln \left( 0.5 \right) }{5730}</mrow>
+                <mrow> k \amp \approx -0.000121</mrow>
+              </md>
+              We can now write the equation <m>P(t) = P_0 e^{-0.000121t}</m>. We want to determine the value of <m>t</m> when <m>P(t) = 0.43P_0</m>, so we need to solve the following equation
+
+              <md>
+                <mrow>0.43P_0 \amp = P_0 e^{-0.000121t}</mrow>
+                <mrow>0.43 \amp = e^{-0.000121t}</mrow>
+                <mrow>\ln \left( 0.43 \right) \amp = -0.000121t</mrow>
+                <mrow>t \amp = \frac{\ln \left( 0.43 \right)}{-0.000121}</mrow>
+                <mrow>t \amp \approx 6975 \text{years}</mrow>
+              </md>
+
+              We conclude, therefore, that the bone is approximately <m>6,975</m> years old.
+            </p>
+          </solution>
+        </example>
+
     </subsection>
 
+    <exercises>
+      <title>Class Practice</title>
+      <exercise>
+        <statement>
+          <p>
+            Rework <xref ref="japan-growth-rate" text="type-local" /> by first writing a function for the population of Japan in the form <m>P(t) = ae^{kt}</m> and then solving for the doubling time.
+          </p>
+        </statement>
+      </exercise>
 
+      <exercise>
+        <statement>
+          <p>
+            Verify from your work in the preceding exercise that <m>\frac{\ln(2)}{k}</m> is a general expression for the doubling time when the population function is written in the form <m>P(t) = ae^{kt}</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            Let <m>g</m> represent the annual growth rate of a population expressed in decimal form.  Explain why the expression <m>\frac{ln(2)}{g}</m> provides a good approximation of doubling time whenever <m>g</m> is small (less than <m>20\%</m>).
+          </p>
+        </statement>
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>
+            Write a function for the population of Japan using base <m>2</m>. Explain why this base is useful in solving doubling-time problems.
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>
+            Solve <xref ref="arch-half-life" text="type-local" /> using base <m>\frac{1}{2}</m>. Explain why this is a simpler base for half-life problems
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
 
     <exercises>
       <!-- Exercise 1 -->
       <exercise>
         <statement>
           <p>
-
+            Rewrite <m>g(x) = \left( \frac{1}{2} \right)^x</m> as an exponential function with base 10.
           </p>
         </statement>
       </exercise>
@@ -209,7 +342,7 @@
       <exercise>
         <statement>
           <p>
-
+            Dot and Dan plan to invest <m>\$5,000</m> in an account that pays <m>9\%</m> annual interest compounded monthly. Write three closed form expressions for the future value of the account after <m>N</m> years. Use <m>\left( 1 + \frac{0.09}{12} \right)</m>, <m>2</m>, and <m>e</m> as bases.
           </p>
         </statement>
       </exercise>
@@ -218,6 +351,7 @@
       <exercise>
         <statement>
           <p>
+            A house purchased four years ago for <m>\$40,000</m> was sold for <m>\$60,000</m>. If the value of the house continues to increase exponentially at the same rate, how much will it be worth next year?
           </p>
         </statement>
       </exercise>
@@ -226,6 +360,7 @@
       <exercise>
         <statement>
           <p>
+            Find the continuously compounded interest rate that is equivalent to <m>10\%</m> compounded quarterly.
           </p>
         </statement>
       </exercise>
@@ -233,7 +368,12 @@
       <!-- Exercise 5 -->
       <exercise>
         <statement>
-          <p></p>
+          <p>
+            <ol>
+              <li>Show that <m>\frac{\ln \left( \frac{1}{2} \right)}{k}</m> is a general expression for half-life when the decay function is written as <m>P(t) = P_0 e^{kt}</m>.</li>
+              <li>Find an expression for half-life if the decay function is written as <m>P(t) = P_0 2^{kt}</m>.</li>
+            </ol>
+          </p>
         </statement>
       </exercise>
 
@@ -241,6 +381,7 @@
       <exercise>
         <statement>
           <p>
+            When a certain drug enters the blood stream, it is absorbed gradually by body tissue, and its concentration decreases exponentially with a half-life of <m>3</m> days. If the initial concentration of the drug in the blood stream is <m>A</m>, what will the concentration be <m>30</m> days later? Assume that no additional doses are taken.
           </p>
         </statement>
       </exercise>
@@ -249,6 +390,7 @@
       <exercise>
         <statement>
           <p>
+            Given a population of <m>10</m> million and an annual growth rate of <m>3\%</m>, how long will it take this population to double?  What is the size of the population in triple the doubling time?
           </p>
         </statement>
       </exercise>
@@ -257,6 +399,7 @@
       <exercise>
         <statement>
           <p>
+            A population of bacteria is growing exponentially. A researcher determines the population of the bacteria to be <m>2,000</m> at <m>2\:00</m> and to be <m>4,000</m> at <m>2\:10</m>. What is the doubling time of the population?  What is the estimated population at <m>2\:05</m>?
           </p>
         </statement>
       </exercise>
@@ -265,6 +408,7 @@
       <exercise>
         <statement>
           <p>
+            Carbon-11 decays into boron at the rate of roughly <m>3.5\%</m> per minute. What is the half-life of carbon-11?
           </p>
         </statement>
       </exercise>
@@ -272,7 +416,273 @@
       <!-- Exercise 10 -->
       <exercise>
         <statement>
+          <p>What exponential function of the form <m>y = ae^{bx}</m> goes through the following points?
+            <ol>
+              <li><m>\left( 0, 3 \right)</m> and <m>\left( 5, 80 \right)</m></li>
+              <li><m>\left( 3, 10 \right)</m> and <m>\left( 6, 50 \right)</m></li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 11 -->
+      <exercise>
+        <statement>
           <p>
+            A local bank advertises that if you deposit at least <m>\$5,000</m> in an investment account your money will double in <m>8</m> years. Assuming that interest is compounded monthly, find the interest rate on the account.
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 12 -->
+      <exercise>
+        <statement>
+          <p>
+            Cesium-137, one of the dangerous radionucleides produced in the fallout of the Chernobyl disaster, has a half-life of <m>30.3</m> years. How much time must pass before the radiation emitted by the radioactive cesium is reduced to <m>10\%</m> of the amount produced in the Chernobyl explosion?
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 13 -->
+      <exercise>
+        <statement>
+          <p>
+            When money is deposited in a savings account, the balance increases exponentially. The time required for the balance to double is constant, regardless of the amount deposited. Let <m>A</m> represent the amount deposited into the account, <m>N</m> represent the number of years the money is left in the account, <m>I</m> represent the annual interest rate as a decimal, and <m>k</m> represent the number of compounding periods per year.
+            <ol>
+              <li>To determine a general formula for doubling time, solve the equation <m>2A = A \left( 1 + \frac{I}{k} \right)^{kN}</m> for <m>N</m> in terms of <m>I</m> and <m>k</m>.</li>
+              <li>Use this formula to verify several doubling times in <xref ref="freq-of-compounding" text="type-local" /></li>
+              <li>
+                <p>
+                  Describe how doubling time changes as interest rate and frequency of compounding change.
+                  <figure xml:id="freq-of-compounding">
+                    <caption>Doubling Time in Years</caption>
+                    <tabular top="major" halign="center">
+                      <row bottom="medium">
+                        <cell>I</cell>
+                        <cell>Yearly (<m>k = 1</m>)</cell>
+                        <cell>Quarterly (<m>k = 4</m>)</cell>
+                        <cell>Daily (<m>k = 365</m>)</cell>
+                        <cell>Continuous (<m>k \rightarrow \infty</m>)</cell>
+                      </row>
+                      <row>
+                        <cell halign="left"><m>0.05</m></cell>
+                        <cell><m>14.21</m></cell>
+                        <cell><m>13.95</m></cell>
+                        <cell><m>13.86</m></cell>
+                        <cell><m>13.86</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.08</m></cell>
+                        <cell><m>9.01</m></cell>
+                        <cell><m>8.75</m></cell>
+                        <cell><m>8.67</m></cell>
+                        <cell><m>8.66</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.10</m></cell>
+                        <cell><m>7.27</m></cell>
+                        <cell><m>7.02</m></cell>
+                        <cell><m>6.93</m></cell>
+                        <cell><m>6.93</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.12</m></cell>
+                        <cell><m>6.12</m></cell>
+                        <cell><m>5.86</m></cell>
+                        <cell><m>5.78</m></cell>
+                        <cell><m>5.78</m></cell>
+                      </row>
+
+                      <row bottom="major">
+                        <cell halign="left"><m>0.15</m></cell>
+                        <cell><m>4.96</m></cell>
+                        <cell><m>4.71</m></cell>
+                        <cell><m>4.62</m></cell>
+                        <cell><m>4.62</m></cell>
+                      </row>
+                    </tabular>
+                  </figure>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 14 -->
+      <exercise>
+        <statement>
+          <p>
+            Bankers often approximate doubling time with the Rules of <m>69</m>, <m>70</m>, and <m>72</m>.  In the previous exercise you should have found that exact doubling time is given by:
+            <md>
+              <mrow>N = \frac{ \ln \left( 2 \right)}{ \ln \left( 1 + \frac{I}{k} \right)^k}</mrow>
+            </md>
+            where <m>I</m> is the stated annual percentage rate and <m>k</m> the number of compounding periods per year.
+          </p>
+          <p>
+            In the case of continuous compounding, where <m>k \rightarrow \infty</m> and <m>\left( 1 + \frac{I}{k} \right)^k \rightarrow e^t</m>,
+            <md>
+              <mrow>N = \frac{ \ln \left( 2 \right)}{\ln \left( e^t \right)} = \frac{ \ln \left( 2 \right)}{I} \approx \frac{0.6931472}{I} \approx \frac{69}{100I}</mrow>
+            </md>
+            Thus, bankers can approximate doubling time with <m>N \approx \frac{69}{100I}</m>, which is commonly referred to as the Rule of <m>69</m>.
+            <ol>
+              <li>Use the Rule of <m>69</m> to estimate the doubling time for money invested at a rate of <m>8\%</m> compounded continuously.</li>
+              <li>Verify several estimates for doubling time in <xref ref="freq-of-compounding" text="type-local" />.</li>
+              <li>
+                <p>
+                  Sometime the 69 in the numerator is replaced with 70 or 72. Compare the entries in <xref ref="freq-of-compounding" text="type-local" /> and <xref ref="rules-of-69-70-72" text="type-local" /> to determine which approximation is more appropriate for yearly compounding.  Which is more appropriate for quarterly compounding?  For daily compounding?
+
+                  <figure xml:id="rules-of-69-70-72">
+                    <caption>Doubling Time Approximations in Years</caption>
+                    <tabular top="major" halign="center">
+                      <row bottom="medium">
+                        <cell>I</cell>
+                        <cell><m>\frac{69}{100I}</m></cell>
+                        <cell><m>\frac{70}{100I}</m></cell>
+                        <cell><m>\frac{72}{100I}</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.05</m></cell>
+                        <cell><m>13.80</m></cell>
+                        <cell><m>14.00</m></cell>
+                        <cell><m>14.40</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.08</m></cell>
+                        <cell><m>8.63</m></cell>
+                        <cell><m>8.75</m></cell>
+                        <cell><m>9.00</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.10</m></cell>
+                        <cell><m>6.90</m></cell>
+                        <cell><m>7.00</m></cell>
+                        <cell><m>7.20</m></cell>
+                      </row>
+
+                      <row>
+                        <cell halign="left"><m>0.12</m></cell>
+                        <cell><m>5.75</m></cell>
+                        <cell><m>5.83</m></cell>
+                        <cell><m>6.00</m></cell>
+                      </row>
+
+                      <row bottom="major">
+                        <cell halign="left"><m>0.15</m></cell>
+                        <cell><m>4.60</m></cell>
+                        <cell><m>4.67</m></cell>
+                        <cell><m>4.80</m></cell>
+                      </row>
+                    </tabular>
+                  </figure>
+                </p>
+              </li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 15 -->
+      <exercise>
+        <statement>
+          <p>
+            Change <m>\log_b \left( a \right)</m> to an expression involving logarithms with base <m>c</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 16 -->
+      <exercise>
+        <statement>
+          <p>
+            Rewrite <m>\log \left( x \right)</m> using the natural logarithm.
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 17 -->
+      <exercise>
+        <statement>
+          <p>
+            Show that <m>\left( \log_a \left( b \right) \right) \left( \log_b \left( a \right) \right) = 1</m> for all <m>a \gt 0, b \gt 0</m>.
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 18 -->
+      <exercise>
+        <statement>
+          <p>
+            Solve the following equations for <m>x</m>. Give exact values whenever possible.
+            <ol>
+              <li><m>\log_x \left( 27 \right) = -3</m></li>
+              <li><m>\log_{64} \left( x \right) = \frac{2}{3}</m></li>
+              <li><m>x = 5^{2 \log_5 \left( 5 \right)}</m></li>
+              <li><m>\log_6 \left( x^2 \right) = -2</m></li>
+              <li><m>\log_2 \left( x^2 + 5x + 10 \right) = 4</m></li>
+              <li><m>\log_{\frac{1}{x}} \left( 9 \right) = 2</m></li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 19 -->
+      <exercise>
+        <statement>
+          <p>
+            Solve the following equations for <m>x</m>. Give exact values whenever possible.
+            <ol>
+              <li><m>5^x = 3</m></li>
+              <li><m>5^{x-1} = e^x</m></li>
+              <li><m>3^{x+1} = 9^x \cdot 27^{x+1}</m></li>
+              <li><m>\log_x \left( 12 \right) = 3</m></li>
+              <li><m>\ln \left( \ln \left( x + 6 \right) \right) = 0</m></li>
+              <li><m>10^{2x+1} = 4^{x-1}</m></li>
+              <li><m>e^{x^2} = 10</m></li>
+              <li><m>5^{3x-2} = 3^{x+1}</m></li>
+              <li><m>\log_2 \left( x + 4 \right) + \log_2 \left( x + 2 \right) = \log_2 \left( 3 \right)</m> (Be careful with the domain!)</li>
+              <li><m>\log \left( x^4 \right) = \left( \log \left( x \right) \right)^3</m></li>
+              <li><m>5^{x^2 - x} = 7</m></li>
+              <li><m>5^{2x} - 7 \left( 5^x \right) + 12 = 0</m></li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 20 -->
+      <exercise>
+        <statement>
+          <p>
+            Solve each equation for the indicated variable:
+            <ol>
+              <li>Solve for <m>t: e^{rt} = 2</m></li>
+              <li>Solve for <m>k: T = Ae^{-bk} + C</m></li>
+              <li>Solve for <m>t: S = A \ln \left( Bt + C \right)</m></li>
+              <li>Solve for <m>c: y = \frac{A}{1 + Be^{-Acx}}</m></li>
+              <li>Solve for <m>y: \ln \left( y - 10 \right) = \ln \left( a \right) + bx</m></li>
+              <li>Solve for <m>y: \ln \left( y \right) = \ln \left( a \right) + b \ln \left( x \right)</m></li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 21 -->
+      <exercise>
+        <statement>
+          <p>
+            Find the inverse of each of the following functions and identify the domain of each:
+            <ol>
+              <li><m>f(x) = 2^{x+1} - 3</m></li>
+              <li><m>f(x) = 3 \ln \left( 2x \right)</m></li>
+              <li><m>f(x) = e^{2x} + 1</m></li>
+              <li><m>f(x) = \frac{ \ln \left( x + 5 \right) }{2}</m></li>
+            </ol>
           </p>
         </statement>
       </exercise>

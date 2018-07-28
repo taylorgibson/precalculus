@@ -111,7 +111,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
 
   <xi:include href="./chapter01.xml" />
 
-  <xi:include href="./chapter02.xml" />
+  <!-- <xi:include href="./chapter02.xml" />
 
   <xi:include href="./chapter03.xml" />
 
@@ -128,7 +128,7 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
   <xi:include href="./chapter09.xml" />
 
   <xi:include href="./chapter10.xml" />
-
+-->
  </book>
 
 </mathbook>
