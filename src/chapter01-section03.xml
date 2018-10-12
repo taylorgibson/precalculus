@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter01-section03" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Average as a Mathematical Model</title>
+    <p>It is common for students to have studied simple methods of data analysis in earlier mathematics classes, including experience with mean, median, standard deviation, <q>lines of best fit</q> and correlation, among other topics. Many of the ideas in this chapter may be familiar to you. In this course, we will take some care to not just look at how computations are made, but to look behind the computation to the mathematical models underlying them, and to think carefully how they may be used and interpreted. \\</p>
+    <p>As a simple example to get started, consider the average, which is a computation you have done routinely since elementary school. In what way is the average a good representation of the data from which it is being computed? The average, or mean, of a set of numbers is often called a <q>measure of central tendency</q> and is commonly interpreted as a <q>typical value</q> in the set. Our question isn’t about how to compute this and other measures of central tendency, but in what way do they <q>measure</q> central tendency? In what way does each represent a typical value? What aspects of the data are being modeled by the mean, median, and mode? \\</p>
+      <example>
+        <title></title>
+          <p>Suppose your quiz grades (scored <m>0</m> to <m>12</m>) in Precalculus are <m>\left\{ 2, 3, 3, 6, 7, 7, 7 \right\}</m>. Your teacher needs to use a single number to convey information to your parents about your quiz performance. What number should she use? \\</p>
+          <p>You have probably learned several different numbers that could be used in this situation. Of course, the most common is the average or mean of the data. You might also have studied the median, the mode, and perhaps the midrange values. The mean of the data is <m>5</m>, the median is <m>6</m>, the midrange is <m>4.5</m>, and the mode is <m>7</m>. Each measure answers a different question about the data. We will look at these different measures and consider <q>what question about the data set <m>\left\{ 2, 3, 3, 6, 7, 7, 7 \right\}</m> does each measure answer? \\</q></p>
+          <p>\textbf{The Mode:} The mode is the value that is seen most often. If no value is seen more than others, then the set has no mode. If there are two values that appear more than others, we say the data is bi-model. In what way does the mode model the data? Suppose you were given another quiz and asked to guess what score you would likely get, what would you say? Surely not the average of <m>5</m>, since you have never yet made a <m>5</m> on any quiz. \\</p>
+          <p>The mode models the data in the following manner: Imagine we write down each data value on a slip of paper and put them in a bag. If you pull a slip of paper out of the bag at random, what number are you most likely to see? Since there are more <m>7</m>’s in the bag than any other number, it is the most likely observation. The mode answers the question, what is most likely, so it is, in a certain sense, a measure of typicality based on probability. The mode defines <q>typical</q> as most likely, but doesn’t pretend to be representative of the center of the data, so it is not truly a measure of central tendency since it considers only one (or two if the data is bi-modal) data values and ignores all the rest. \\</p>
+          <p>\textbf{The Midrange:} Another common measure of centrality or typicality is the midrange. The midrange is the value half-way between the smallest and largest value in the set. How does the midrange model the data? Consider, again, the numbers on slips of paper in a bag. If we choose a single number to represent all the numbers in the bag, then pull a number out of the bag, what is the largest error we can make? For example, if we choose the mean of <m>5</m> and we pull out the <m>2</m>, we are off by <m>3</m>. If we choose the mode <m>7</m>, our largest error would be <m>5</m>. If we choose the median <m>6</m>, our maximum error would be <m>4</m>. We would like to choose the number that minimizes the maximum possible error. Minimizing the maximum error is called the mini-max criterion. The midrange satisfies the mini-max criterion for your quiz scores. In this example, that is <m>\frac{7 + 2}{2} = 4.5</m>. No matter what you pull out of the bag, the error can be no more than <m>2.5</m>. Since the mini-max value in this context is the middle of the range, it is commonly called the midrange. \\</p>
+          <p>\textbf{Mean and Median:} The mean (average) and median also are solutions to some question about minimizing error. The basic idea is that we want to use a single number to represent a set of different numbers. We want the number to <q>represent</q> the set in some way, perhaps by estimating the center of the set or by representing a typical value. When your teacher says that your quiz average is <m>5</m>, she doesn’t mean that all your quiz scores have been a <m>5</m>, but you’re your scores are centered around <m>5</m>, or that <m>5</m> is a typical score for you on quizzes. \\</p>
+          <p>Mathematically, we think about it this way: We want to choose a value <m>v</m> to represent the set <m>\left\{ 2, 3, 3, 6, 7, 7, 7 \right\}</m>. So, instead of the set <m>\left\{ 2, 3, 3, 6, 7, 7, 7 \right\}</m>, we will use <m>\left\{ v, v, v, v, v, v, v \right\}</m>. Your teacher might inform your parents, <q>in general, Melinda tends to make a score of <m>v</m> on her quizzes</q>. How wrong can the teacher be if she says this? This depends on how we measure how wrong a choice is. Minimizing how wrong you would be to use <m>v</m> instead of the individual values is the basic principle upon which the mean and median are based. They model the total error by comparing the choice, <m>v</m>, to all the elements in the set and try to minimize that total error. \\</p>
+          <p>We can define the Total Error as the sum of all the errors when using v instead of the actual values, so <me>TE\left( v \right) = \left( {2 - v} \right) + \left( {3 - v} \right) + \left( {3 - v} \right) + \left( {6 - v} \right) + \left( {7 - v} \right) + \left( {7 - v} \right) + \left( {7 - v} \right)</me> <m>TE</m> can be simplified to <m>TE\left( v \right) = \left( {2 - v} \right) + 2 \cdot \left( {3 - v} \right) + \left( {6 - v} \right) + 3 \cdot \left( {7 - v} \right) = 35 - 7v</m>. So, one model for the total error is the equation <m>TE\left( v \right) = 35 - 7v</m>. If we choose <m>v = 3</m>, as our representative value, then <m>TE\left( 3 \right) = 14</m>. If we choose <m>v = 10</m>, then <m>TE\left( 10 \right) = 35</m>. Can we find a value of <m>v</m> that generates the smallest possible Total Error? There is a problem with this formulation of the model: there is no minimum value of <m>TE</m>! \\</p>
+          <figure xml:id="total-error-no-minimum">
+            <caption>Total Error: <m>TE = 35 - 7v</m></caption>
+              <image>
+                <latex-image>
+                  <![CDATA[
+                    \begin{tikzpicture}
+                      \begin{axis}[
+                        ylabel near ticks,
+                        xlabel near ticks,
+                        xmin = -5,
+                        xmax = 20,
+                        ymin = -100,
+                        ymax = 100,
+                        xtick={-5,0,...,15},
+                        ytick={-100,0,100},
+                        minor tick num=1,
+                        ]
+                        \addplot [thick, blue, <->, mark=none, domain=-5:16, samples=100] {35 - 7*x};
+                      \end{axis}
+                    \end{tikzpicture}]]>
+                </latex-image>
+              </image>
+           </figure>
+           <p>We see that the equation <m>TE = 35 - 7v</m> is a linear equation, and we can make the equation as small as we choose by choosing <m>v</m> to be large, since negative values are smaller than positive values. When thinking about errors being small, we usually mean being close to zero, not <m> - 100</m>. So, we need to alter our definition of total error to include <q>close to zero</q> as our measure (called a metric) of small. We want to exclude negative values from consideration. There are two simple ways to alter the definition to accomplish this: by using the absolute value or by squaring. We will consider three different models for the new Total Error function.</p>
+           <p><me>TE_1 = \left| {\left( {2 - v} \right) + \left( {3 - v} \right) + \left( {3 - v} \right) + \left( {6 - v} \right) + \left( {7 - v} \right) + \left( {7 - v} \right) + \left( {7 - v} \right)} \right| = \left| {35 - 7v} \right|</me></p>
+           <p>
+             <![CDATA[
+                \begin{center}
+                  $TE_1$ \text{ is read "the absolute value of the sum of the errors".}
+                \end{center}
+             ]]>
+           </p>
+           <p><me>TE_2 = \left| {2 - v} \right| + \left| {3 - v} \right| + \left| {3 - v} \right| + \left| {6 - v} \right| + \left| {7 - v} \right| + \left| {7 - v} \right| + \left| {7 - v} \right|</me></p>
+           <p>
+             <![CDATA[
+                \begin{center}
+                  $TE_2$ \text{ is read "the sum of the absolute value of errors".}
+                \end{center}
+             ]]>
+           </p>
+           <p><me>TE_3 = {\left( {2 - v} \right)^2} + {\left( {3 - v} \right)^2} + {\left( {3 - v} \right)^2} + {\left( {6 - v} \right)^2} + {\left( {7 - v} \right)^2} + {\left( {7 - v} \right)^2} + {\left( {7 - v} \right)^2} = 7{v^2} - 70v + 205</me></p>
+           <p>
+             <![CDATA[
+                \begin{center}
+                  $TE_3$ \text{ is read "the sum of the squares of the errors".}
+                \end{center}
+             ]]>
+           </p>
+           <p>The graphs of these functions give some insight into how each of these <q>measures of central tendency</q> estimate the center of the data by minimizing the total error. The minimum value is indicated.</p>
+           <figure xml:id="three-metrics-for-minimizing-error">
+             <caption>Three Metrics for Minimizing Error</caption>
+               <sidebyside widths = "33.3% 33.3% 33.3%">
+                 <image>
+                 <latex-image>
+                   <![CDATA[
+                     \begin{tikzpicture}
+                       \begin{axis}[
+                         xlabel = Absolute Value of Sums,
+                         ylabel near ticks,
+                         xlabel near ticks,
+                         xmin = 0,
+                         xmax = 11,
+                         ymin = 0,
+                         ymax = 45,
+                         xtick={0,1,...,11},
+                         ytick={15,25,...,45},
+                         minor tick num=1,
+                         ]
+                         \addplot [thick, red, mark=none, domain=0:11, samples=100] {abs(35 - 7*x)};
+                         \addplot [thick, mark=*, fill=red, only marks] coordinates {
+                             (5,0)
+                         };
+                         \addplot [thick, mark=*, fill=yellow, only marks] coordinates {
+                             (2,0) (3,0)
+                             (3,1) (6,0)
+                             (7,0) (7,1)
+                             (7,2)
+                         };
+                       \end{axis}
+                     \end{tikzpicture}]]>
+                 </latex-image>
+               </image>
+               <image>
+                 <latex-image>
+                   <![CDATA[
+                     \begin{tikzpicture}
+                       \begin{axis}[
+                         xlabel = Sum of Absolute Values,
+                         ylabel near ticks,
+                         xlabel near ticks,
+                         xmin = 0,
+                         xmax = 11,
+                         ymin = 0,
+                         ymax = 45,
+                         xtick={0,1,...,11},
+                         ytick={15,25,...,45},
+                         minor tick num=1,
+                         ]
+                         \addplot [thick, blue, mark=none, domain=-1:11, samples=100] {abs(2 - x) + 2*abs(3 - x) + abs(6 - x) + 3*abs(7 - x)};
+                         \addplot [thick, mark=*, fill=blue, only marks] coordinates {
+                             (6,13)
+                         };
+                         \addplot [thick, gray, mark=none, samples=200] coordinates {(6,0) (6,13)};
+                         \addplot [thick, mark=*, fill=yellow, only marks] coordinates {
+                             (2,0) (3,0)
+                             (3,1) (6,0)
+                             (7,0) (7,1)
+                             (7,2)
+                         };
+                       \end{axis}
+                     \end{tikzpicture}]]>
+                 </latex-image>
+               </image>
+               <image>
+                 <latex-image>
+                   <![CDATA[
+                     \begin{tikzpicture}
+                       \begin{axis}[
+                         xlabel = Sum of Squares,
+                         ylabel near ticks,
+                         xlabel near ticks,
+                         xmin = 0,
+                         xmax = 11,
+                         ymin = 0,
+                         ymax = 45,
+                         xtick={0,1,...,11},
+                         ytick={15,25,...,45},
+                         minor tick num=1,
+                         ]
+                         \addplot [thick, green, mark=none, domain=0:11, samples=100] {7*x^2 - 70*x + 205};
+                         \addplot [thick, mark=*, fill=green, only marks] coordinates {
+                             (5,30)
+                         };
+                         \addplot [thick, gray, mark=none, samples=200] coordinates {(5,0) (5,30)};
+                         \addplot [thick, mark=*, fill=yellow, only marks] coordinates {
+                             (2,0) (3,0)
+                             (3,1) (6,0)
+                             (7,0) (7,1)
+                             (7,2)
+                         };
+                       \end{axis}
+                     \end{tikzpicture}]]>
+                 </latex-image>
+               </image>
+              </sidebyside>
+            </figure>
+
+           <p>We see that the mean appears to minimize the absolute value of the sum of errors, the median minimizes the sum of the absolute values of the errors, and the mean also minimizes the sum of the squares of the errors. Is this coincidence or will this always be true? \\</p>
+           <p>\noindent\textbf{Derivations of Minimizing Properties of Median and Mean}</p>
+           <p>Consider the set of <m>n</m> numbers <m>\left\{ {x_1}, {x_2}, {x_3}, \cdots, {x_n} \right\}</m>. Assume for convenience, that <m>n</m> is odd, the number in the set are written in increasing order, and all <m>n</m> values are distinct. Let <m>v</m> be the value chosen to model this set of numbers. \\</p>
+
+           <p>\noindent \emph{Minimize the Absolute Value of the Sum of the Errors}</p>
+            <p>
+              <md>
+                <mrow>T{E_1} \amp = \left| {\left( {{x_1} - v} \right) + \left( {{x_2} - v} \right) + \left( {{x_3} - v} \right) +  \cdots  + \left( {{x_n} - v} \right)} \right|</mrow>
+                <mrow>\amp = \left| {\left( {{x_1} + {x_2} + {x_3} +  \cdots  + {x_n}} \right) - \left( {v + v + v +  \cdots  + v} \right)} \right|</mrow>
+                <mrow>\amp = \left| {\sum\limits_{i = 1}^n {{x_i} - nv} } \right|</mrow>
+              </md>
+            </p>
+           <p>We know that the smallest the absolute value can be is zero, so if <m>\left| {\sum\limits_{i = 1}^n {{x_i} - nv} } \right| = 0</m>, then <m>\sum\limits_{i = 1}^n {{x_i} = nv}</m>, so <m>v = \frac{{\sum\limits_{i = 1}^n {{x_i}} }}{n}</m>. We recognize this as the formula for the mean. The mean is the one number that will minimize the absolute value of the sum of the errors. We can also see that the reason the absolute value is minimized is that the sum of the deviations from the mean is zero. This is an important attribute of the mean. \\</p>
+
+           <p>\noindent \emph{Minimize the Sum of the Absolute Values of the Errors}</p>
+           <p><me>T{E_2} = \left| {{x_1} - v} \right| + \left| {{x_2} - v} \right| + \left| {{x_3} - v} \right| +  \cdots  + \left| {{x_n} - v} \right|</me></p>
+           <p>This function is more challenging to think about. Recall that the absolute value is defined as <m>\left | a \right | =
+
+                    \begin{cases}
+                        a, \amp  \ \text{if}  \ a \geq 0 \\
+                        -a, \amp  \ \text{if}  \ a \lt 0 \\
+                    \end{cases}
+              </m>
+
+           Using this definition, we see that<me>\left | {{x_1} - v} \right | =
+
+              \begin{cases}
+                  x_1 - v, \amp  \ \text{if}  \ x_1 - v \geq 0 \\
+                  v - x_1, \amp  \ \text{if}  \ x_1 - v \lt 0 \\
+              \end{cases}
+
+           </me>,
+           or equivalently, <me>\left | {{x_1} - v} \right | =
+
+              \begin{cases}
+                  x_1 - v, \amp  \ \text{if}  \ v \leq x_1 \\
+                  v - x_1, \amp  \ \text{if}  \ v \gt  x_1 \\
+              \end{cases}
+
+           </me>.
+           Similarly, for <me>\left | {{x_2} - v} \right | =
+
+              \begin{cases}
+                  x_2 - v, \amp  \ \text{if}  \ v \leq x_2 \\
+                  v - x_2, \amp  \ \text{if}  \ v \gt  x_2 \\
+              \end{cases}
+
+           </me>, and all the other absolute values are evaluated the same way. \\</p>
+           <p>So, as we observed in the graph above, we have a piece-wise defined function with <m>n + 1</m> pieces. For <m>v \lt x_1</m>, <m>T{E_2} = \left( {{x_1} - v} \right) + \left( {{x_2} - v} \right) + \left( {{x_3} - v} \right) +  \cdots  + \left( {{x_n} - v} \right)</m> since all expressions in the absolute values are positive. This gives, <m>T{E_2} = \left( {{x_1} + {x_2} + {x_3} \cdots  + {x_n}} \right) - nv</m>, which is a linear equation with a slope of <m> - n</m> and an intercept that is the sum of all the numbers in the set. For <m>x_1 \le v</m>, <m>T{E_2} = \left( {{x_1} - v} \right) + \left( {{x_2} - v} \right) + \left( {{x_3} - v} \right) +  \cdots  + \left( {{x_n} - v} \right)</m> since the first expression was negative before applying the absolute value. This gives \\ <m>T{E_2} = \left( { - {x_1} + {x_2} + {x_3} \cdots  + {x_n}} \right) - \left( {n - 2} \right)v</m> and an intercept that is smaller than the previous piece. For <m>x_2 \le v \lt x_3</m>, <m>T{E_2} = \left( {{x_1} - v} \right) + \left( {{x_2} - v} \right) + \left( {{x_3} - v} \right) +  \cdots  + \left( {{x_n} - v} \right)</m> since the first two expressions were negative before applying the absolute value. This gives \\
+           <m>T{E_2} = \left( { - {x_1} - {x_2} + {x_3} \cdots  + {x_n}} \right) - \left( {n - 4} \right)v</m>, which is a linear equation with a slope of <m> - \left ( n - 2 \right)</m> and an intercept that is smaller than the previous piece. We continue until the final two components are: \\</p>
+
+           <p>\noindent For <m>x_{n-1} \leq v \le x_{n}</m>,
+
+              <md>
+                <mrow>T{E_2} \amp = \left( {v - {x_1}} \right) + \left( {v - {x_2}} \right) + \left( {v - {x_3}} \right) +  \cdots  + \left( {v - {x_{n - 1}}} \right) + \left( {{x_n} - v} \right)</mrow>
+                <mrow>       \amp = \left( { - {x_1} - {x_2} - {x_3} \cdots  - {x_{n - 1}} + {x_n}} \right) + \left( {n - 2} \right)v</mrow>
+              </md>
+
+           \noindent and for <m>v \gt x_n</m>,
+
+              <md>
+                <mrow>T{E_2} \amp = \left( {v - {x_1}} \right) + \left( {v - {x_2}} \right) + \left( {v - {x_3}} \right) +  \cdots  + \left( {v - {x_{n - 1}}} \right) + \left( {{x_n} - v} \right)</mrow>
+                <mrow>       \amp = \left( { - {x_1} - {x_2} - {x_3} \cdots  - {x_{n - 1}} + {x_n}} \right) + nv</mrow>
+              </md>
+
+           <m>T{E_2}\left( v \right)</m> is a function of <m>v</m>, and as <m>v</m> increases the expressions inside the absolute values change sign. For each piece of the function, we see that each time <m>v</m> increases past one of the data values, the expression inside one of the absolute values changes sign, and, as a consequence, the slope increases by <m>2</m> and the intercept becomes smaller. Since the slope for a set of <m>n</m> numbers began with a value of <m> - n</m>, and ends with a slope of <m>n</m>, we see that the slope marches through values of <m> - n, - n + 2, - n + 4, \cdots ,n - 2,n</m>. For <m>v \lt x_1</m> and <m>v \gt x_n</m>, this function is the same as <m>TE_1</m>. But in between, the slopes of the line segments form a raggedy U-shape. For what value of <m>v</m> is this sum of absolute values the smallest? Notice that this happens when <m>v</m> is the median of the set of numbers. Can you explain why? \\
+           </p>
+           <p>We have seen that, if we define the size of the total error as the absolute value of the sum of the differences between our chosen value and the actual data points, then the mean is the best choice for a single number to represent the data set. If we think the sum of the absolute values of the errors is a better way to measure total error, then we should be using the median. What methods we use to model often depends upon how we measure the quality of the model. In this example, we used an odd number of values in the set. In the exercises, you will be asked to consider what happens when an even number are in the set. \\</p>
+           <p>\noindent \emph{Minimize the Sum of the Square of the Errors}</p>
+           <p>The sum of quadratic equations is another quadratic equation, so we expand each squared error term and combine like terms.
+
+              <md>
+                <mrow>T{E_3}\left( v \right) \amp = {\left( {{x_1} - v} \right)^2} + {\left( {{x_2} - v} \right)^2} + {\left( {{x_3} - v} \right)^2} +  \cdots  + {\left( {{x_n} - v} \right)^2}</mrow>
+                <mrow>                       \amp = \left( {x_1^2 - 2{x_1}v + {v^2}} \right) + \left( {x_2^2 - 2{x_2}v + {v^2}} \right) + \left( {x_3^2 - 2{x_3}v + {v^2}} \right) +  \cdots  + \left( {x_n^2 - 2{x_n}v + {v^2}} \right)</mrow>
+                <mrow>                       \amp = \left( {x_1^2 + x_2^2 + x_3^2 +  \cdots  + x_n^2} \right) - 2\left( {{x_1} + {x_2} + {x_3} +  \cdots  + {x_n}} \right) \cdot v + n{v^2}</mrow>
+              </md>
+
+           The minimum value of a quadratic is always at the vertex. Recall if <m>y = ax^2 +bx +c</m> , the vertex is located at <m>x = - \frac{b}{2a}</m>. In this quadratic function, we have <m>a = n</m>, \\ <m>b = - 2\left( {{x_1} + {x_2} + {x_3} +  \cdots  + {x_n}} \right)</m>, and <m>c = \left( {x_1^2 + x_2^2 + x_3^2 +  \cdots  + x_n^2} \right)</m>. So the vertex is \\
+           <m>v = - \frac{{2\left( {{x_1} + {x_1} + {x_3} +  \cdots  + {x_n}} \right)}}{{2n}} = \frac{{\sum\limits_{i = 1}^n {{x_i}} }}{n}</m>. This is again the mean. The mean, which is commonly denoted <m>\bar x</m> is the one number that will minimize the sum of the squares of the errors, that is, it is a \emph{least squares} measure of typicality or center. Least squares is a very common method for minimizing error. \\</p>
+           <p>\noindent \textbf{Why squares?}</p>
+           <p>When first exposed to the models behind these classic measures of central tendency, many students favor the ideas behind the median. The absolute values seems to make more sense than squaring does, since squaring exaggerates the size of the errors and absolute values only affect sign. But almost everyone (certainly every teacher) uses the mean when “averaging” grades. Why? What’s so special about the mean? The underlying idea behind all least squares methods in mathematics and statistics is simple: the Pythagorean Theorem. It is the way we measure distance. If you want to know how far apart the points <m>\left( {1,4} \right)</m> and <m>\left( {5, - 2} \right)</m> are, we use the distance formula. The distance, <m>D</m>, between the points in the plane <m>\left( {1,4} \right)</m> and <m>\left( {5, - 2} \right)</m> is <me>D = \sqrt {{{\left( {1 - 5} \right)}^2} + {{\left( {4 - \left( { - 2} \right)} \right)}^2}}  = \sqrt {16 + 36}  = \sqrt {52}</me>
+           or <m>D \approx 7.211</m> units. Notice we summed squares of differences in the calculation. \\</p>
+           <p>If we ask, <q>how far is the point <m>\left ( a, b \right)</m> from the point <m>\left (1 , 4 \right)</m>?</q>, the answer is given by the sum of squares expression <m>D = \sqrt {{{\left( {1 - a} \right)}^2} + {{\left( {4 - b} \right)}^2}}</m> If we want to determine the point closest to a line, that is, makes the perpendicular distance smallest, we will minimize this sum of squares.</p>
+           <figure xml:id="point-closest-to-1-4">
+             <caption>Point on <m>y = x</m> closest to <m>\left( 1, 4 \right)</m></caption>
+               <image>
+                 <latex-image>
+                   <![CDATA[
+                     \begin{tikzpicture}
+                       \begin{axis}[
+                         ylabel near ticks,
+                         xlabel near ticks,
+                         xmin = -1,
+                         xmax = 6,
+                         ymin = -1,
+                         ymax = 6,
+                         xtick={-1,0,...,6},
+                         ytick={-1,0,...,6},
+                         minor tick num=1,
+                         ]
+                         \addplot [thick, red, <->, mark=none, domain=-1:6, samples=100] {x};
+                         \addplot [thick, mark=*, fill=yellow, only marks] coordinates {(2.5,2.5)} node at (axis cs:3,2) {$\left (2.5, 2.5 \right)$};
+                         \addplot [thick, mark=*, fill=blue, only marks] coordinates {(1,4)} node at (axis cs:1,4.5) {$\left (1, 4 \right)$};
+                         \addplot [thick, gray, mark=none, samples=200] coordinates {(1,4) (2.5,2.5)};
+                       \end{axis}
+                     \end{tikzpicture}]]>
+                 </latex-image>
+               </image>
+            </figure>
+            <p>The question we are asking about the mean is equivalent to finding a closest point to a line. When we want to use a single number to represent a set of numbers, we can ask, <q>what point <m>\left( v, v \right)</m> (which has both coordinates the same) is closest to the point <m>\left( 1, 4 \right)</m>?</q> The answer is, <q>whatever value of <m>v</m> makes <m>D = \sqrt {{{\left( {1 - v} \right)}^2} + {{\left( {4 - v} \right)}^2}}</m> the smallest.</q> And we know the answer. The
+            smaller a number is, the smaller its square root is. So, we only need to minimize <m>{{\left( {1 - v} \right)}^2} + {{\left( {4 - v} \right)}^2}</m>. And we know that the mean of <m>1</m> and <m>4</m> gives the solution to this least squares question. So, the point in the plane with both coordinates the same (lies on the line <m>y = x</m>) closest to the point <m>\left( 1, 4 \right)</m> is <m>\left( 2.5, 2.5 \right)</m>. We require our point to line on <m>y = x</m> because we want
+            to use only one value, <m>v</m>, to represent the numbers <m>1</m> and <m>4</m>. Notice also, that the segment between <m>\left( 2.5, 2.5 \right)</m> and <m>\left( 1, 4 \right)</m> is perpendicular to the line <m>y = x</m>.
+            \\</p>
+
+            <p>The smaller the value of <m>{\left( {2 - v} \right)^2} + {\left( {3 - v} \right)^2} + {\left( {7 - v} \right)^2}</m>, the smaller the square root will be, so we don’t need to consider the square root in finding <m>v</m>. We showed above that the mean is the value of <m>v</m> we want. The average of <m>\left\{ {2,3,7} \right\}</m> is <m>4</m>. To see that this works for <me>D = \sqrt {{{\left( {2 - v} \right)}^2} + {{\left( {3 - v} \right)}^2} + {{\left( {7 - v} \right)}^2}}</me>,
+            we can graph the function or expand the quadratics <me>D = \sqrt {\left( {4 - 4v + {v^2}} \right) + \left( {9 - 6v + {v^2}} \right) + \left( {49 - 14v + {v^2}} \right)}  = \sqrt {62 - 24v + 3{v^2}}</me>.
+            The vertex of the parabola <m>D = 62 - 24v + 3{v^2}</m> is at <m>v = \frac{{24}}{6} = 4</m>, as expected. We can extend this computation into 3-space. What point in 3-space <m>\left( v, v, v \right)</m> is closest to  <m>\left( 2, 3, 7 \right)</m>? In this case, we generalize the distance formula so that <me>D = \sqrt {{{\left( {2 - v} \right)}^2} + {{\left( {3 - v} \right)}^2} + {{\left( {7 - v} \right)}^2}}</me>. The question we ask about what score should your teacher should use to represent your typical work on quizzes is actually a geometry question. Given the point in 7-space representing your seven quiz scores, <m>\left( {2, 3, 3, 6, 7, 7, 7} \right)</m>, what point using a single number, <m>\left( {v, v, v, v, v, v, v} \right)</m>, is closest to it? We can’t draw this, but the algebra and geometry of the Pythagorean Theorem is exactly the same as in the plane and in 3-space. The answer comes from the generalized distance formula, <me>D = \sqrt {{{\left( {2 - v} \right)}^2} + {{\left( {3 - v} \right)}^2} + {{\left( {3 - v} \right)}^2} + {{\left( {6 - v} \right)}^2} + {{\left( {7 - v} \right)}^2} + {{\left( {7 - v} \right)}^2} + {{\left( {7 - v} \right)}^2}}</me>. The smaller the sum of squares inside the square root, the smaller the distance, so we just need to minimize <m>{\left( {2 - v} \right)^2} + {\left( {3 - v} \right)^2} + {\left( {3 - v} \right)^2} + {\left( {6 - v} \right)^2} + {\left( {7 - v} \right)^2} + {\left( {7 - v} \right)^2} + {\left( {7 - v} \right)^2}</m>. And we know the mean is \emph{always} the number that minimizes these sums. \\
+            The model that statisticians use is a geometric one, and the metric that determines whether one value is a better representative of a data set than another number is the geometric distance between the set you are given and the simplified set you are using. When we minimize the sum of the squares of the errors we are finding the shortest distance. The least in least squares refers to distance and the squares is just an application of the distance formula and the Pythagorean Theorem.
+            </p>
+      </example>
+
+      <exercises>
+      <!-- Exercise 1 -->
+        <exercise>
+
+          <p>A large university offers a beginning statistics course in a variety of formats. Some students receive credit from individual projects, others take small seminar classes, <q>regular</q> classes, or large lectures given at night. Each of the 30 faculty in the department teaches one of these classes each year (they teach other classes as well, but we are focusing on this course). The data for the size of each class and the number of sections offered is given below:
+            <figure xml:id="class-size">
+              <caption>Results of the Survey</caption>
+              <tabular top="medium" halign="center">
+                <row bottom="medium">
+                  <cell halign="left">Class Size</cell>
+                  <cell halign="left">Number of Sections</cell>
+                </row>
+                <row>
+                  <cell halign="left"><m>1</m></cell>
+                  <cell halign="center"><m>5</m></cell>
+                </row>
+                <row>
+                  <cell halign="left"><m>15</m></cell>
+                  <cell halign="center"><m>8</m></cell>
+                </row>
+                <row>
+                  <cell halign="left"><m>25</m></cell>
+                  <cell halign="center"><m>10</m></cell>
+                </row>
+                <row>
+                  <cell halign="left"><m>50</m></cell>
+                  <cell halign="center"><m>5</m></cell>
+                </row>
+                <row>
+                  <cell halign="left"><m>150</m></cell>
+                  <cell halign="center"><m>2</m></cell>
+                </row>
+              </tabular>
+            </figure>
+
+          \noindent The primary role for statistical thinking is to turn data into useful information. \\
+
+            <ol>
+              <li>What is the average class size from the faculty’s perspective?</li>
+              <li>What is the average class size from the student’s perspective?</li>
+              <li>Which average class size do you think the university will advertise? \\</li>
+            </ol>
+          </p>
+
+        </exercise>
+
+    <!-- Exercise 2 -->
+        <exercise>
+          <p>Suppose your next quiz grade is a <m>4</m>, so your scores are now <m>\left\{ {2,3,3,4,6,7,7,7} \right\}</m>. Find the value v that minimizes the sum of the absolute values of the errors. What problem do you observe from the graph with finding a specific value to use? \\
+          </p>
+        </exercise>
+
+    <!-- Exercise 3 -->
+        <exercise>
+          <p>We have seen in our examples that the median, <m>m</m>, appears to minimize the sum of the absolute values of the errors when there are an odd number of values in the set. Show that both <m>m + \varepsilon</m> and <m>m - \varepsilon</m> give larger sums of absolute values than <m>m</m> in the sum <me>T{E_2} = \left| {{x_1} - m} \right| + \left| {{x_2} - m} \right| + \left| {{x_3} - m} \right| + \left| {{x_4} - m} \right| + \left| {{x_5} - m} \right|</me>.
+          Assume for simplicity that <m>{x_1} \lt {x_2} \lt {x_3} \lt {x_4} \lt {x_5}</m>. \\
+          </p>
+        </exercise>
+
+    <!-- Exercise 4 -->
+        <exercise>
+          <p>Compare the mean and medians for test grades of <m>\left\{ {85, 90, 92, 92,\text{ and } 95} \right\}</m> with those for <m>\left\{ {15, 90, 92, 92,\text{ and } 95} \right\}</m>.</p>
+
+            <ol>
+              <li>Describe the effect on the mean and the median of the outlier score of <m>15</m>. The mean is said to be \emph{sensitive} to outliers while the median is said to be \emph{resistant} to outliners.</li>
+              <li>Are the mode and midrange sensitive or resistant measures of typicality?</li>
+            </ol>
+
+        </exercise>
+
+      </exercises>
+
+</section>

@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter01-section06" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Principles of Linear Regression - The Least Squares Line</title>
+    <p>To develop the central ideas underlying the computation of the regression coefficients, we will use what mathematicians call a “toy problem”. That is, an example problem where the numbers have been worked out so the arithmetic is simple and the big ideas are easy to see. For our development, we will use the ordered pairs: </p>
+    <me>\left( {1,5} \right),\left( {2,10} \right),\left( {3,10} \right),\left( {3,12} \right),\left( {4,13} \right),\left( {5,16} \right)</me>
+
+    <p>From the scatterplot we see that the data can be reasonably described with a linear function. We should recognize that it is not possible for a function to pass through all of the points, since there are two different <m>y-</m>values associated with <m>x=3</m>. We want our equation to capture, in broad terms, the relationship between the independent and dependent variables. We would like our equation to answer the question, “for a given value of <m>x</m>, what is the average value of <m>y</m>?” The least squares regression line gives the answer to this question.</p>
+    <figure xml:id="toy-data-set-plot">
+      <caption>Toy Data Set</caption>
+        <image>
+          <latex-image>
+            <![CDATA[
+            \begin{tikzpicture}
+              \begin{axis}[
+                xlabel = $x$,
+                ylabel = $y$,
+                ylabel near ticks,
+                xlabel near ticks,
+                xmin = 0,
+                xmax = 7,
+                ymin = 0,
+                ymax = 18,
+                xtick = {0,1,...,7},
+                ytick = {2,4,...,18},
+                minor x tick num = 1,
+                minor y tick num = 1,
+                ]
+                \addplot [thick, blue, mark=*, only marks] coordinates {
+                (1,5) (2,10) (3,10) (3,12) (4,13) (5,16)
+                };
+              \end{axis}
+            \end{tikzpicture}]]>
+          </latex-image>
+        </image>
+      </figure>
+      <p>For the data given above, what line is calculated using the method of least squares and how are the slope and intercept computed? If you enter the data into your calculator or computer, you can quickly find that <m>y=2.5x+3.5</m> is the equation generated. What computations led to the slope of <m>2.5</m> and the intercept of <m>3.5</m>?</p>
+
+      <p>Since our method involves the least squares criterion, and the least squares estimate of the center of a set of data is the mean, it should be no surprise that the linear equation created by least squares regression passes through the point <m>\left( {\bar x,\bar y} \right)</m>. For our toy data set above, the average value
+      of <m>x</m> is <m>3</m> and the average value of <m>y</m> is <m>11</m>, so the point <m>\left(3, 11 \right)</m> will lie on our least squares line. This is the point whose coordinates are the average value of <m>x</m> and the average value of <m>y</m>. Since to write an equation of a line, all that is needed is a point and a slope, and the method of least square always give us a point (the average value of both variables) we only need to compute the appropriate slope.</p>
+
+      <sidebyside widths = "50% 50%">
+      <figure xml:id="avg-xy-ordered-pairs">
+        <caption>The average <m>x</m> and average <m>y</m> compared to the ordered pairs</caption>
+            <image>
+            <latex-image>
+              <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = $x$,
+                    ylabel = $y$,
+                    xlabel near ticks,
+                    ylabel near ticks,
+                    xmin = -1,
+                    xmax = 7,
+                    ymin = -2,
+                    ymax = 18,
+                    xtick = {-1,0,...,7},
+                    ytick = {-2,2,4,6,8,10,12,14,16,18},
+                    minor x tick num = 1,
+                    minor y tick num = 1,
+                    clip mode = individual,
+                    ]
+                    \addplot [thick, red, mark=*, only marks] coordinates {
+                    (1,5) (2,10) (3,10) (3,12) (4,13) (5,16)
+                    };
+                    \addplot [thick, blue, mark=*, only marks] coordinates {
+                    (1,0) (2,0) (3,0) (3,1) (4,0) (5,0)
+                    };
+                    \addplot [thick, green, mark=*, only marks] coordinates {
+                    (0,5) (0,10) (0,10) (0,12) (0,13) (0,16)
+                    };
+                    \addplot [thick, dashed, green, mark=none, samples=200] coordinates {(3,-2) (3,18)};
+                    \addplot [thick, dashed, green, mark=none, samples=200] coordinates {(-1,11) (7,11)};
+                    \addplot [thick, green, mark=*, fill=white, only marks] coordinates {(3,11)};
+                  \end{axis}
+                \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+        <figure>
+          <caption>The average <m>x</m> and average <m>y</m> compared to the ordered pairs</caption>
+          <image>
+          <latex-image>
+            <![CDATA[
+              \begin{tikzpicture}
+                  \begin{axis}[
+                  xlabel = $x$,
+                  ylabel = $y$,
+                  xlabel near ticks,
+                  ylabel near ticks,
+                  xmin = -1,
+                  xmax = 7,
+                  ymin = -2,
+                  ymax = 18,
+                  xtick = {-1,0,...,7},
+                  ytick = {-2,2,4,6,8,10,12,14,16,18},
+                  minor x tick num = 1,
+                  minor y tick num = 1,
+                  clip mode = individual,
+                  ]
+                  \addplot [thick, red, mark=*, only marks] coordinates {
+                  (1,5) (2,10) (3,10) (3,12) (4,13) (5,16)
+                  };
+                  \addplot [thick, blue, mark=*, only marks] coordinates {
+                  (1,0) (2,0) (3,0) (3,1) (4,0) (5,0)
+                  };
+                  \addplot [thick, green, mark=*, only marks] coordinates {
+                  (0,5) (0,10) (0,10) (0,12) (0,13) (0,16)
+                  };
+                  \addplot [thick, dashed, green, mark=none, samples=200] coordinates {(3,-2) (3,18)};
+                  \addplot [thick, dashed, green, mark=none, samples=200] coordinates {(-1,11) (7,11)};
+                  \addplot [thick, green, mark=*, fill=white, only marks] coordinates {(3,11)};
+                  \addplot [thick, dashed, mark=none, samples=200] coordinates {(-1,3) (6,17)};
+                  \addplot [thick, dashed, mark=none, samples=200] coordinates {(-1,0.5) (5.2,17)};
+                  \addplot [thick, dashed, mark=none, samples=200] coordinates {(-1,-2) (4.5,17)};
+                \end{axis}
+              \end{tikzpicture}]]>
+          </latex-image>
+        </image>
+        </figure>
+      </sidebyside>
+
+    <p>Our metric for measuring how well a line fits a set of ordered pairs based on the distance between the set of <m>y-</m>values in the actual data set, and the corresponding set of <m>y-</m>values on the line we create. Of all the lines passing through the point <m>\left( {\bar x,\bar y} \right)</m>, what slope minimizes the sum of the squares of these deviations? The mathematics that answers this question is a bit messy, but not very difficult.</p>
+
+    <p>We need to distinguish the observed data points from the points on our least squares regression line (our <em>fitted</em> values). The data we write as <m>\left( {x,y} \right)</m> and the points on the line as <m>\left( {x,\hat y} \right)</m>. Notice the <m>x-</m>coordinates are the same and only the <m>y-</m>coordinates differ.</p>
+
+    <p>Since <m>\left(3, 11 \right)</m> is a point on the line, the point-slope form of the equation is <m>\hat y - 11 = m\left( {x - 3} \right)</m>. We need to determine the best choice of <m>m</m>.</p>
+
+    <p>To simplify the algebra, we can make a substitution for <m>y-11</m> and <m>x-3</m>. Let <m>Y=y-11</m>, <m>X=x-3</m>, and <m>\hat Y = \hat y -11</m>. We now want to compute the value of <m>m</m> in the modified equation <m>\hat Y=mX</m>. Once we get a solution for <m>m</m> in terms of <m>X</m>, <m>Y</m>, <m>\hat Y</m>, we can easily rewrite it in terms of <m>X</m> and <m>\hat Y</m> using <m>\hat Y= \hat y-11</m> and <m>X=x-3</m>.</p>
+
+    <p>We want to compare the values of <m>Y</m> in the data to the values of <m>\hat Y</m> on our line, so we are interested in making the sum, <m>\sum\limits_{i = 1}^6 {{{\left( {{Y_i} - {{\hat Y}_i}} \right)}^2}}</m>, as small as possible. As before, we want to minimize the sum of the squares of these differences. We know that <m>\hat Y_i = mX</m>, so we can rewrite the sum of squares as <m>\sum\limits_{i = 1}^6 {{{\left( {{Y_i} - {{\hat Y}_i}} \right)}^2} = \sum\limits_{i = 1}^6 {{{\left( {{Y_i} - m{X_i}} \right)}^2}} }</m>.
+
+    <table xml:id="new-data-table">
+      <caption>New Data (difference from mean <m>x</m> and mean <m>y</m>.)</caption>
+        <tabular top="medium" halign="left">
+          <row bottom="medium">
+            <cell halign="center"><m>i</m></cell>
+            <cell halign="center"><m>x_i</m></cell>
+            <cell halign="center"><m>y_i</m></cell>
+            <cell halign="right"><m>X_i</m></cell>
+            <cell halign="right"><m>Y_i</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="center"><m>1</m></cell>
+            <cell halign="center"><m>1</m></cell>
+            <cell halign="center"><m>5</m></cell>
+            <cell halign="right"><m>-2</m></cell>
+            <cell halign="right"><m>-6</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="center"><m>2</m></cell>
+            <cell halign="center"><m>2</m></cell>
+            <cell halign="center"><m>10</m></cell>
+            <cell halign="right"><m>-1</m></cell>
+            <cell halign="right"><m>-1</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="center"><m>3</m></cell>
+            <cell halign="center"><m>3</m></cell>
+            <cell halign="center"><m>10</m></cell>
+            <cell halign="right"><m>0</m></cell>
+            <cell halign="right"><m>-1</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="center"><m>4</m></cell>
+            <cell halign="center"><m>3</m></cell>
+            <cell halign="center"><m>12</m></cell>
+            <cell halign="right"><m>0</m></cell>
+            <cell halign="right"><m>1</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="center"><m>5</m></cell>
+            <cell halign="center"><m>4</m></cell>
+            <cell halign="center"><m>13</m></cell>
+            <cell halign="right"><m>1</m></cell>
+            <cell halign="right"><m>2</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="center"><m>6</m></cell>
+            <cell halign="center"><m>5</m></cell>
+            <cell halign="center"><m>16</m></cell>
+            <cell halign="right"><m>2</m></cell>
+            <cell halign="right"><m>5</m></cell>
+          </row>
+        </tabular>
+    </table>
+    </p>
+    <p>Writing out each term with the values for <m>X</m> and <m>Y</m>, we have
+      <md>
+        <mrow>\amp {\sum\limits_{i = 1}^6 {{{\left( {{Y_i} - {{\hat Y}_i}} \right)}^2}} } = {\sum\limits_{i = 1}^6 {{{\left( {{Y_i} - m{X_i}} \right)}^2}} }</mrow>
+        <mrow>\amp = {\left( { - 6 - \left( { - 2m} \right)} \right)^2} + {\left( { - 1 - \left( { - 1m} \right)} \right)^2} + {\left( { - 1 - 0m} \right)^2} + {\left( {1 - 0m} \right)^2} + {\left( {2 - 1m} \right)^2} + {\left( {5 - 2m} \right)^2}</mrow>
+      </md>
+    </p>
+
+    <p>We can simplify this as
+      <md>
+        <mrow>S = {\left( { - 6 + 2m} \right)^2} + {\left( { - 1 + m} \right)^2} + {\left( { - 1} \right)^2} + {\left( 1 \right)^2} + {\left( {2 - m} \right)^2} + {\left( {5 - 2m} \right)^2}</mrow>
+      </md>
+    </p>
+
+    <p>Notice the sum of squares, <m>S</m>, is the sum of six quadratic functions in <m>m</m>, and the sum of quadratic functions is itself a quadratic function. We also know that a quadratic function has a smallest (or largest) value at its vertex.</p>
+
+    <p>If a quadratic function is written as <m>S\left( m \right) = a{m^2} + bm + c</m>, the vertex is located at <m>m = - \frac{b}{{2a}}</m>. So, all that we need to do is expand the quadratic functions, combine like terms, find <m>a</m> and <m>b</m> and compute the location of the vertex.</p>
+
+    <p>
+      <md>
+        <mrow>S = \left( {36 - 24m + 4{m^2}} \right) + \left( {1 - 2m + {m^2}} \right) + \left( 1 \right) + \left( 1 \right) + \left( {4 - 4m + {m^2}} \right) + \left( {25 - 20m + 4{m^2}} \right)</mrow>,
+      </md>
+      so in simplest form <m>S = 73 - 50m + 10{m^2}</m>. This is quadratic function which opens up, and so has aminimum value at the vertex.</p>
+
+    <p>As shown in the graph <xref ref="least-squares-quadratic" text="type-local" />, the value of <m>m</m> that minimizes the value of <m>S</m> is <m>m =  - \frac{{ - 50}}{{2\left( {10} \right)}}</m>. The slope of the least squares regression line is 2.5. This means that our modified regression equation is <m>\hat Y = 2.5X</m>. Rewriting in terms of <m>x</m> and <m>\hat y</m>, we have the
+       linear equation <m>\hat y -11 = 2.5\left(x - 3 \right)</m> or <m>\hat y =2.5x + 3.5</m>. This equation should match the equation from your calculator. We will not be spending time computing regression equations by hand; these calculations will always be done using technology. It is important to know that the criterion used for least squares regression is the geometry of distance using the Pythagorean Theorem and the location of the vertex of a parabola.
+    </p>
+
+    <figure xml:id="least-squares-quadratic">
+      <caption>Least Square Quadratic</caption>
+      <image>
+        <latex-image>
+          <![CDATA[
+          \begin{tikzpicture}
+            \begin{axis}[
+              xlabel = \empty,
+              ylabel = \empty,
+              ylabel near ticks,
+              xlabel near ticks,
+              xmin = 0,
+              xmax = 7,
+              ymin = 0,
+              ymax = 75,
+              xtick={1,2,...,7},
+              ytick={10,20,...,70},
+              minor tick num=1,
+              ]
+              \addplot [thick, red, mark=none, samples=100] coordinates {(2.5,0) (2.5,11)};
+              \addplot [thick, mark=*, only marks] coordinates {(2.5,11)} node at (axis cs:4,11) {\textcolor{black}{$\left (2.5, 11 \right)$}};
+              \addplot [thick, blue, mark=none, domain=0:5, samples=100] {10*x^2 - 50*x + 73};
+            \end{axis}
+          \end{tikzpicture}]]>
+
+          </latex-image>
+        </image>
+      </figure>
+
+    <p>The calculation above illustrated the method for a particular data set. In the appendix, interested students can find a generalization of this derivation for a set of arbitrary ordered pairs. Modern software uses matrix operations to efficiently compute the slope and intercept using these equations. In Chapter 8, you will see that the same matrices are used to compute the coefficients for fitting lines, quadratics, and many other functions.</p>
+    <exercises>
+      <!-- Exercise 1 -->
+      <exercise>
+        <statement>
+        <p>The table below presents the average temperature in March and the date in April in which the first cherry blossoms appear in Tokyo. Fit a regression line. Is there any evidence that the linear model is incorrect? If a linear model appears appropriate, interpret the slope and both intercepts from the model in this context.</p>
+
+        <table xml:id="cherry-bloom-data">
+          <caption>Temperature and cherry blooms in April</caption>
+          <tabular top="medium" halign="left">
+            <row bottom="medium">
+              <cell halign="left">Temperature <m>\left(C^\circ \right)</m></cell>
+              <cell halign="center">4.5</cell>
+              <cell halign="center">5.4</cell>
+              <cell halign="center">4.2</cell>
+              <cell halign="center">4.5</cell>
+              <cell halign="center">4.6</cell>
+              <cell halign="center">4.9</cell>
+              <cell halign="center">4.0</cell>
+              <cell halign="center">3.8</cell>
+              <cell halign="center">3.5</cell>
+              <cell halign="center">2.9</cell>
+            </row>
+            <row bottom="medium">
+              <cell halign="left">Days in April to first bloom</cell>
+              <cell halign="center">14</cell>
+              <cell halign="center">8</cell>
+              <cell halign="center">14</cell>
+              <cell halign="center">13</cell>
+              <cell halign="center">10</cell>
+              <cell halign="center">14</cell>
+              <cell halign="center">16</cell>
+              <cell halign="center">19</cell>
+              <cell halign="center">15</cell>
+              <cell halign="center">21</cell>
+            </row>
+        </tabular>
+      </table>
+      </statement>
+    </exercise>
+
+      <!-- Exercise 2 -->
+      <exercise>
+        <statement>
+          <p>The data in the table below describe the relationship between the depth of water in an urn and time as the urn is being emptied. Fit a regression line. Is there any evidence that the linear model is incorrect? If a linear model appears appropriate, interpret the slope and both intercepts from the model in this context.
+          </p>
+          <table xml:id="depth-of-water-in-urn-data">
+            <caption>Time and depth of lemonade in an urn</caption>
+            <tabular top="medium" halign="left">
+              <row bottom="medium">
+                <cell halign="left">Time (seconds)</cell>
+                <cell halign="center">0</cell>
+                <cell halign="center">30</cell>
+                <cell halign="center">60</cell>
+                <cell halign="center">100</cell>
+                <cell halign="center">140</cell>
+                <cell halign="center">180</cell>
+                <cell halign="center">210</cell>
+                <cell halign="center">265</cell>
+                <cell halign="center">330</cell>
+                <cell halign="center">390</cell>
+              </row>
+              <row bottom="medium">
+                <cell halign="left">Depth (meters)</cell>
+                <cell halign="center">12.5</cell>
+                <cell halign="center">11.25</cell>
+                <cell halign="center">10.5</cell>
+                <cell halign="center">9.25</cell>
+                <cell halign="center">8.0</cell>
+                <cell halign="center">7.0</cell>
+                <cell halign="center">6.0</cell>
+                <cell halign="center">4.75</cell>
+                <cell halign="center">3.5</cell>
+                <cell halign="center">2.5</cell>
+              </row>
+            </tabular>
+          </table>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 3 -->
+      <exercise>
+        <statement>
+          <p>The New York Times (date?) reported on a scientific study performed on mice. Thirty mice were randomly allocated into two groups of fifteen, called the control group and the treatment group. All thirty mice were then treated exactly the same way except that the fifteen mice in the treatment group were made to spend 15 minutes each day, five days a week, on a platform that vibrated at a very low frequency.</p>
+          <p>After 15 weeks, the body mass (given below as weight, in ounces) and fat volume (given below in cubic inches) were measured in all thirty mice. The two plots below show, separately for each group, a scatterplot of fat volume versus body mass for the mice in the group. Superimposed on each plot is the average fat volume for the mice in that group, and the least-squares regression line of fat volume versus body mass for the mice in that group.
+          <figure xml:id="mice-fat-diagram-image">
+            <caption>Mice diagram</caption>
+            <image source="./images/mice-fat-diagram-image.jpg" width="80%"></image>
+          </figure>
+              <ol>
+              <li>You should be able to tell from the graph (without doing any calculations) what the mean body mass is for the mice in each group. Estimate the mean body mass for the mice in each group.</li>
+              <li>Use the indicated regression line to estimate the average body mass for each group.</li>
+              <li>For each of the groups of mice, estimate the slope of the regression line and interpret its meaning clearly and carefully. (Include units and pay attention to the context of the study.)</li>
+            </ol>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 4 -->
+      <exercise>
+        <statement>
+          <p>Linear models were fit using the least squares criterion to the two data sets below. On the left, the weight of a <m>6-</m>year old child is a function of that child’s height as a <m>4-</m>year old. On the right, the weight of a 6-year old child is a function of that child’s height as a 4-year old. Does the least squares criterion capture the intrinsic relationshiop between the two variables? Can you predict using the equation? Explain.
+            <figure xml:id="height-by-age">
+              <caption></caption>
+              <sidebyside widths = "50% 50%">
+                  <image>
+                  <latex-image>
+                    <![CDATA[
+                      \begin{tikzpicture}
+                        \begin{axis}[
+                          xlabel = Height at Age 4,
+                          ylabel = Height at Age 6,
+                          xlabel near ticks,
+                          ylabel near ticks,
+                          xmin = 90,
+                          xmax = 120,
+                          ymin = 100,
+                          ymax = 135,
+                          xtick = {90,95,...,115},
+                          ytick = {100,105,...,135},
+                          minor x tick num = 1,
+                          minor y tick num = 1,
+                          clip mode = individual,
+                          ]
+                          \addplot [thick, blue, mark=*, only marks] coordinates {
+                          (95.1,108.0)  (97.4,110.2)  (98.0,111.5)  (98.0,112.7)  (99.7,112.9)
+                          (100.3,114.3) (100.7,112.5) (101.6,116.0) (101.6,119.0) (102.1,119.0)
+                          (102.4,118.0) (103.5,117.6) (103.6,119.0) (103.7,118.2) (103.9,119.4)
+                          (104.4,118.4) (105.4,119.2) (105.5,120.5) (105.9,123.5) (106.3,120.1)
+                          (109.8,124.4) (110.6,125.2) (90.1,103.1)  (115.1,131.3)
+                          };
+                          \addplot [thick, red, mark=none, samples=200] coordinates {(90,103) (115,131)};
+                        \end{axis}
+                      \end{tikzpicture}]]>
+                  </latex-image>
+                </image>
+                <image>
+                <latex-image>
+                  <![CDATA[
+                    \begin{tikzpicture}
+                      \begin{axis}[
+                        xlabel = Weight at Age 6,
+                        ylabel = Height at Age 4,
+                        xlabel near ticks,
+                        ylabel near ticks,
+                        xmin = 90,
+                        xmax = 120,
+                        ymin = 15,
+                        ymax = 40,
+                        xtick = {90,95,...,115},
+                        ytick = {15,20,...,40},
+                        minor x tick num = 1,
+                        minor y tick num = 1,
+                        clip mode = individual,
+                        ]
+                        \addplot [thick, blue, mark=*, only marks] coordinates {
+                        (95.20,16.43)   (97.37,17.59)   (97.81,20.22)   (99.55,22.11)   (101.76,38.03)
+                        (100.08,21.08)  (100.62,19.76)  (101.49,21.22)  (101.60,20.34)  (102.03,20.34)
+                        (102.46,18.14)  (103.65,19.60)  (103.98,21.06)  (103.44,22.52)  (102.69,23.26)
+                        (106.09,37.27)  (104.53,22.52)  (104.52,21.64)  (105.39,21.05)  (105.39,22.66)
+                        (106.37,23.53)  (109.62,25.70)  (111.03,25.11)  (90.00,15.15)   (115.05,29.47)
+                        };
+                        \addplot [thick, red, mark=none, samples=200] coordinates {(90,15) (115,30)};
+                      \end{axis}
+                    \end{tikzpicture}]]>
+                </latex-image>
+              </image>
+              </sidebyside>
+              </figure>
+          </p>
+        </statement>
+      </exercise>
+
+      <!-- Exercise 5 -->
+      <exercise>
+        <statement>
+          <p>The outcome of the 2000 US presidential race was determined in Florida amid much controversy. The main race was between George Bush and Al Gore, but two minor candidates, Pat Buchannan and Ralph Nader, played a significant role. President Bush won Florida (and thereby the presidency) by 543 votes. Generally, Nader consistently earned more votes than Buchannan in each county throughout the state. Palm Beach county Florida was the scene of much controversy due to its “butterfly ballot”.
+            <ol>
+              <li>It was surmised that voters (Palm Beach has a large older population) who thought they were voting for Gore, ended up voting for Buchannan by mistake. Does the plot below support this conjecture? Explain why or why not.</li>
+              <li>Explain how you could use the data to estimate the expected number of Buchanan votes given the number of Nader votes in Palm Beach.</li>
+            </ol>
+          </p>
+          <p>
+            <figure xml:id="voter-punch-card-image">
+              <caption>Voter Punch Card</caption>
+              <image source="./images/voter-punch-card-image.jpg" width="80%"></image>
+            </figure>
+          </p>
+          <p>
+          <figure xml:id="nader-plot">
+            <caption>Voter Punch Card Scatterplot</caption>
+            <image>
+              <latex-image>
+                <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = Nader,
+                    ylabel = Buchanan,
+                    ylabel near ticks,
+                    xlabel near ticks,
+                    xmin = 0,
+                    xmax = 10000,
+                    ymin = 0,
+                    ymax = 2250,
+                    xticklabel style = {/pgf/number format/fixed},
+                    xtick={2500,5000,7500,10000},
+                    scaled x ticks = false,
+                    ytick={750,1500,...,2250},
+                    minor tick num=1,
+                    ]
+                    \addplot [thick, blue, mark=*, only marks] coordinates {
+                    (2829.9,333.6)  (2951.5,450.4)  (3036.8,332.2)  (3089.6,483.0)  (3175.1,381.7)
+                    (3244.8,482.0)  (3331.5,548.6)  (3366.4,615.5)  (3434.4,480.7)  (3468.0,346.1)
+                    (3486.3,497.2)  (3606.2,395.6)  (3693.5,546.1)  (3778.7,394.4)  (3830.9,461.3)
+                    (3917.9,578.2)  (4056.8,711.6)  (4109.2,812.0)  (4332.8,743.4)  (4262.1,491.9)
+                    (4417.0,457.3)  (4658.9,522.9)  (4851.0,874.2)  (4953.4,722.4)  (5158.7,502.7)
+                    (5264.2,787.5)  (5434.9,551.2)  (5796.9,532.0)  (6057.1,765.4)  (6712.3,761.0)
+                    (7903.4,971.3)  (8214.0,1002.8) (9956.4,1142.2)
+                    };
+                  \end{axis}
+                \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </figure>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+
+<subsection>
+  <title>Investigation 2: The Big Bang and the Age of the Universed</title>
+  <p>In 1929, Edwin Hubble discovered the cosmos. His 1929 groundbreaking paper, A Relation Between Distance and Radial Velocity Among Extra-Galactic Nebulae, published in the <url href="http://antwrp.gsfc.nasa.gov/diamond_jubilee/1996/hub_1929.html">Proceedings of the National Academy of Science</url>
+  was the first step in what was ultimately to be known as the Big Bang Theory. In his paper, Hubble presented data for 24 nebulae illustrating the relationship between the recession velocity, in kilometers per second, and the distance from the earth, measured in megaparsecs (one megaparsec is about 30.9 million trillion kilometers). The recession velocity was measured very accurately by the red shift in the spectrum of light while the distance was measured somewhat inaccurately by comparing mean luminosities of the nebulae to luminosities of known star types. Hubble’s original big bang data are given in Table 1 and the scatterplot in Figure 1 illustrates the relationship.
+  </p>
+  <p>
+    <table xml:id="age-of-universe-data">
+      <caption>Recession Velocity and Distance for Hubble’s Original 24 Nebulae</caption>
+      <tabular top="medium" halign="left">
+        <row bottom="medium">
+          <cell halign="left">Velocity</cell>
+          <cell halign="left">Distance</cell>
+        </row>
+        <row>
+          <cell halign="right"><m>170</m></cell>
+          <cell halign="center"><m>0.032</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>290</m></cell>
+          <cell halign="center"><m>0.034</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>-130</m></cell>
+          <cell halign="center"><m>0.214</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>-70</m></cell>
+          <cell halign="center"><m>0.263</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>-185</m></cell>
+          <cell halign="center"><m>0.275</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>-220</m></cell>
+          <cell halign="center"><m>0.275</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>200</m></cell>
+          <cell halign="center"><m>0.450</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>290</m></cell>
+          <cell halign="center"><m>0.050</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>270</m></cell>
+          <cell halign="center"><m>0.050</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>200</m></cell>
+          <cell halign="center"><m>0.630</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>300</m></cell>
+          <cell halign="center"><m>0.800</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>-30</m></cell>
+          <cell halign="center"><m>0.900</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>650</m></cell>
+          <cell halign="center"><m>0.900</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>150</m></cell>
+          <cell halign="center"><m>0.900</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>500</m></cell>
+          <cell halign="center"><m>0.900</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>920</m></cell>
+          <cell halign="center"><m>1.000</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>450</m></cell>
+          <cell halign="center"><m>1.100</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>500</m></cell>
+          <cell halign="center"><m>1.100</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>500</m></cell>
+          <cell halign="center"><m>1.400</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>960</m></cell>
+          <cell halign="center"><m>1.700</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>500</m></cell>
+          <cell halign="center"><m>2.000</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>850</m></cell>
+          <cell halign="center"><m>2.000</m></cell>
+        </row>
+        <row>
+          <cell halign="right"><m>800</m></cell>
+          <cell halign="center"><m>2.000</m></cell>
+        </row>
+        <row bottom="medium">
+          <cell halign="right"><m>1090</m></cell>
+          <cell halign="center"><m>2.000</m></cell>
+        </row>
+      </tabular>
+    </table>
+  </p>
+</subsection>
+
+</section>

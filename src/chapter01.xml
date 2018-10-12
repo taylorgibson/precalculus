@@ -10,10 +10,26 @@
 <chapter xml:id="chapter01" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Data</title>
   <introduction>
-    <p>Introduction to this chapter</p>
+    <p>
+      Note to Students:
+    </p>
+    <p>
+      Contemporary Precalculus Through Applications will introduce you to many new mathematical ideas and methods and will give you opportuniities to use those ideas and methods in creative ways to describe everyday phenomena.  At times, you will consider mathematical ideas learned in previous courses from a deeper, more mathematical perspective.  Chapter 1 sets the stage for the approach that we will use throughout the year.  You will have the opportunity to engage in mathematical modeling activities that open the door to new mathematical concepts.   As you work through Chapter 1 with your classmates, don’t get lost in the details.  Details are important, and you will deal with them in later chapters, but for now, in this introductory chapter, we want you to look at the big picture.  We want you to get comfortable with working as a team, explaining your ideas to your peers, making your own decisions about how to proceed and determining for yourself whether your choices have been good one, interpreting your computational results within the context of the problem setting, and making sense out of the mathematics.  In mathematics, understanding why a method works is just as essential as knowing how to apply it.   And this understanding makes it easier to decide what approach might be most fruitful in different situations.
+    </p>
+    <p>
+      So, keep your focus on the big ideas and mathematical practices, and welcome to Precalculus at NCSSM.
+    </p>
   </introduction>
 
   <xi:include href="./chapter01-section01.xml" />
+  <xi:include href="./chapter01-section02.xml" />
+  <xi:include href="./chapter01-section03.xml" />
+  <xi:include href="./chapter01-section04.xml" />
+  <xi:include href="./chapter01-section05.xml" />
+  <xi:include href="./chapter01-section06.xml" />
+  <xi:include href="./chapter01-section07.xml" />
+  <xi:include href="./chapter01-section08.xml" />
+  <xi:include href="./chapter01-section09.xml" />
   <xi:include href="./chapter01-section10.xml" />
 
 </chapter>

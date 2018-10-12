@@ -261,7 +261,7 @@
   </p>
 
   <p>
-    For Galton’s Father-Son data, the equation of the line is <m>\text{Son} = 34.428x + 0.5095 \text{Father}</m>. For a father that is <m>67</m> inches tall, our prediction would be that his first-born son would be about <m>68.3</m> inches tall. The standard deviation of the residuals is <m>s = 2.434</m> inches, so we would find it unsurprising to find a son whose father is <m>67</m> inches tall to be somewhere between <m>63.4</m> and <m>73.2</m> inches tall. Just where in this interval the son falls is due, naturally, to the characteristics of the mother, the level of nutrition through childhood, and many other variables not taken into account in our model.
+    For Pearson's Father-Son data, the equation of the line is <m>\text{Son} = 34.428x + 0.5095 \text{Father}</m>. For a father that is <m>67</m> inches tall, our prediction would be that his first-born son would be about <m>68.3</m> inches tall. The standard deviation of the residuals is <m>s = 2.434</m> inches, so we would find it unsurprising to find a son whose father is <m>67</m> inches tall to be somewhere between <m>63.4</m> and <m>73.2</m> inches tall. Just where in this interval the son falls is due, naturally, to the characteristics of the mother, the level of nutrition through childhood, and many other variables not taken into account in our model.
   </p>
 
   <figure xml:id="father-son-with-errorbounds">
@@ -1368,9 +1368,9 @@
 
               };
 
-              \addplot [thick, blue, <->, solid, mark=none, domain=61:75,samples=200] {34.428*x + 0.5095};
-              \addplot [thick, gray, <->, dashed, mark=none, domain=61:75,samples=200] {34.428*x + 0.5095 - 2*2.434};
-              \addplot [thick, gray, <->, dashed, mark=none, domain=61:74,samples=200] {34.428*x + 0.5095 + 2*2.434};
+              \addplot [thick, blue, <->, solid, mark=none, domain=61:75,samples=200] {34.428 + 0.5095*x};
+              \addplot [thick, gray, <->, dashed, mark=none, domain=61:75,samples=200] {34.428 + 0.5095*x - 2*2.434};
+              \addplot [thick, gray, <->, dashed, mark=none, domain=61:74,samples=200] {34.428 + 0.5095*x + 2*2.434};
 
             \end{axis}
           \end{tikzpicture}]]>
@@ -1390,7 +1390,10 @@
               axis x discontinuity=crunch,
               ymin = -8, ymax = 8,
               ytick = {-8, -6, ..., 8},
-              clip = false
+              clip = false,
+              ticklabel style={
+                          fill=white
+                      },
               ]
 
               \addplot[only marks, color=magenta] coordinates {
@@ -2469,5 +2472,187 @@
       </image>
     </sidebyside>
   </figure>
+  <p>
+    As a final example, in <xref ref="artic-sea-ice" text="type-local" />, the standard error of the estimate is used to indicate with shading the region within which the majority of the observations fall. The estimated volume of Arctic Sea Ice for the years 1979 – 2016 are shown below <fn>Source: Polar Science Center, Applied Physics Laboratory, University of Washington</fn> with one and two standard deviations of the residuals highlighted. The values shown in the graph are the differences in the estimated volume and the average over the time interval and the one and two standard deviation lines are shaded. Notice that almost all of the data (except for a few large deviations) fall within the two standard deviation region.
+  </p>
 
+  <figure xml:id="artic-sea-ice">
+    <caption>Lines parallel to the regression line indicate Error Bound on the Observations </caption>
+    <image source="src/images/chapter01/artic-sea-ice-volume.png" />
+  </figure>
+
+  <exercises>
+    <!-- Exercise 1 -->
+    <exercise>
+      <statement>
+        <p>
+          As we will see in CHAPTER XX(5?), the error bands can be used with non-linear models as well.   Curves “parallel” to a function can be created by vertical shifts of the model up and down two standard deviations of the residuals. In the figure below, one and two standard deviations are shaded. Explain why the bands look wider in September than in June.
+        </p>
+        <figure>
+          <caption>Yearly fluctuations in Arctic Ice Volume with 1 and 2 standard deviation curves highlighted.</caption>
+          <image source="src/images/chapter01/daily-artic-sea-ice-volume.png" />
+        </figure>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 2 -->
+    <exercise>
+      <statement>
+        <p>
+          Calculate the error bounds for the Leaning Tower of Pisa data. Explain how you determined your error bounds.
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 3 -->
+    <exercise>
+      <statement>
+        <p>
+          A lumberjack has been studying the trees on the mountain beside his house. Last summer he measured the diameter of the trees at a height of <m>1.2</m> meters above the ground. He then used a tool to measure the height of the trees. The data he collected is given below:
+        </p>
+        <figure>
+          <caption>Tree Data</caption>
+          <stack>
+            <tabular halign="center">
+              <row bottom="medium">
+                <cell right="major">Diameter (cm)</cell>
+                <cell><m>16</m></cell>
+                <cell><m>18</m></cell>
+                <cell><m>19</m></cell>
+                <cell><m>20</m></cell>
+                <cell><m>21</m></cell>
+                <cell><m>21</m></cell>
+                <cell><m>23</m></cell>
+              </row>
+
+              <row>
+                <cell right="major">Height (m)</cell>
+                <cell><m>12.9</m></cell>
+                <cell><m>13.2</m></cell>
+                <cell><m>12.8</m></cell>
+                <cell><m>15.0</m></cell>
+                <cell><m>15.7</m></cell>
+                <cell><m>14.9</m></cell>
+                <cell><m>14.7</m></cell>
+              </row>
+            </tabular>
+            <tabular halign="center">
+              <row bottom="medium">
+                <cell right="major">Diameter (cm)</cell>
+                <cell><m>24</m></cell>
+                <cell><m>25</m></cell>
+                <cell><m>25</m></cell>
+                <cell><m>26</m></cell>
+                <cell><m>28</m></cell>
+                <cell><m>30</m></cell>
+                <cell><m>31</m></cell>
+              </row>
+
+              <row>
+                <cell right="major">Height (m)</cell>
+                <cell><m>17.3</m></cell>
+                <cell><m>19.2</m></cell>
+                <cell><m>15.2</m></cell>
+                <cell><m>18.6</m></cell>
+                <cell><m>17.9</m></cell>
+                <cell><m>16.4</m></cell>
+                <cell><m>19.5</m></cell>
+              </row>
+            </tabular>
+          </stack>
+        </figure>
+        <ol>
+          <li>Make a scatterplot of the data, then find an equation of a line to fit this data.</li>
+          <li>If a tree has a diameter of <m>36</m> centimeters, what height does your equation predict?  Find error bounds.  How close should you expect your prediction to be?</li>
+          <li>If you know the diameter of a tree, based on your model above, is it likely that your prediction of the height of the tree will be within <m>2</m> meters of the actual height?</li>
+          <li>Use the linear equation that models the relationship between the diameter of the tree at <m>1.2</m> meters and the height of the tree to determine the equation of the linear model if the circumference had been used rather than the diameter. Which do you think the lumberjack actually measured, the diameter or the circumference? Is one measurement better to use than the other?  Explain your reasoning.</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 4 -->
+    <exercise>
+      <statement>
+        <p>
+          Fit a line to the data you gathered in the experiments in SECTION XX. Describe the residual plot.  For those data sets that appear to be linear, find the error bounds. How confident are you in your model?
+        </p>
+      </statement>
+    </exercise>
+
+    <!-- Exercise 5 -->
+    <exercise>
+      <statement>
+        <p>
+          As we age, our vision deteriorates. A sample of <m>30</m> drivers had their vision tested to determine the distance they could identify a roadside sign. The equation of the regression line is <m>y = -2.953x + 573.438</m>.
+        </p>
+        <figure>
+          <caption>Age (yrs) vs Distance (ft) at which driver could identify road sign</caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = {Age of Driver (yrs)},
+                  ylabel = {Distance Driver Could Identify Sign (ft) },
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0, xmax = 90,
+                  xtick = {0, 10, ..., 80},
+                  ymin = 250, ymax = 650,
+                  ytick = {300, 350, ..., 600},
+                  axis y discontinuity=crunch,
+                  clip = false,
+                  restrict y to domain=0:700,
+                  ]
+
+                  \addplot[only marks, color=magenta] coordinates {
+                  (20, 588)
+                  (18, 508)
+                  (22, 557)
+                  (23, 508)
+                  (23, 458)
+                  (25, 488)
+                  (27, 557)
+                  (28, 508)
+                  (29, 458)
+                  (32, 411)
+                  (37, 419)
+                  (41, 459)
+                  (46, 448)
+                  (49, 381)
+                  (53, 459)
+                  (55, 420)
+                  (63, 349)
+                  (66, 300)
+                  (65, 420)
+                  (67, 412)
+                  (68, 302)
+                  (70, 390)
+                  (71, 321)
+                  (72, 369)
+                  (73, 281)
+                  (74, 420)
+                  (75, 460)
+                  (77, 361)
+                  (79, 312)
+                  (82, 361)
+
+                  };
+
+                  \addplot [thick, blue, <->, dashed, mark=none, domain=0:90,samples=200] {-2.953*x + 573.438} node[right] at (axis cs:35,500) {$ y = -2.953x + 573.438 $};
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+        <p>
+          <ol>
+            <li>In what interval would it be unsurprising for a <m>30</m> year-old driver to recognize the sign?</li>
+            <li>A <m>60</m> year-old driver claims to be able to recognize the sign at <m>500</m> feet. Is this claim credible? Explain why or why not.</li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </exercises>
 </section>

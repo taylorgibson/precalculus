@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter01-section04" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Using Scatterplots to Analyze Data</title>
+    <p>We will consider graphical models as a first step in analyzing data. These models provide information so we can answer questions like the following: \\
+
+      <ul>
+        <li>How are heating bill costs related to average temperature?</li>
+        <li>What is the relationship between a state’s average ACT score and the proportion of high school seniors taking the exam?</li>
+        <li>What might be the winning time marathon in the 2024 Olympics?</li>
+        <li>Is there a relationship between the amount of time a student spends studying for a test and the grade on the test? \\</li>
+      </ul>
+
+    Though the questions posed above are different in many respects, each requires the collection, organization, and interpretation of data. To answer each question, we need to analyze the relationship between several variables. We will limit our attention to paired measurements, that is, the analysis of \emph{two variables}. Sometimes one variable depends on the other. For example, we expect that blood pressure in adults of the same height in some way depends on their weight and that crop yield depends on amount of rainfall. Other times there is a relationship between the variables, but it is not one of cause and effect or dependence. For example, we could show that there is a relationship between points scored and personal fouls committed by college basketball players, but we would probably not consider one of these variables to be dependent on the other. Sometimes there is no relationship at all between the two variables. For example, we do not expect there to be a relationship between the distance a student lives from school and his or her height. \\
+    </p>
+
+    <p>To determine whether there is a relationship between two variables, we must analyze data consisting of ordered pairs. Sometimes these data are gathered from a well-designed, carefully controlled scientific experiment. Other times we want to analyze data that exist in the world around us. \\</p>
+
+    <example>
+      <title>Average ACT Scores</title>
+        <figure xml:id="avg-act-score">
+          <caption>Average ACT Composite Score vs <percent /> Taking Exam by State</caption>
+            <tabular top="medium" halign="left">
+              <row bottom="medium">
+                <cell halign="left">State</cell>
+                <cell halign="left"><percent /></cell>
+                <cell halign="left">Score</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">State</cell>
+                <cell halign="left"><percent /></cell>
+                <cell halign="left">Score</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Alabama</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">19.1</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Montana</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.3</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Alaska</cell>
+                <cell halign="left">53</cell>
+                <cell halign="left">20</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Nebraska</cell>
+                <cell halign="left">88</cell>
+                <cell halign="left">21.4</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Arizona</cell>
+                <cell halign="left">58</cell>
+                <cell halign="left">20.1</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Nevada</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">17.7</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Arkansas</cell>
+                <cell halign="left">96</cell>
+                <cell halign="left">20.2</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">New Hampshire</cell>
+                <cell halign="left">23</cell>
+                <cell halign="left">24.5</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">California</cell>
+                <cell halign="left">33</cell>
+                <cell halign="left">22.6</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">New Jersey</cell>
+                <cell halign="left">32</cell>
+                <cell halign="left">23.1</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Colorado</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.6</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">New Mexico</cell>
+                <cell halign="left">70</cell>
+                <cell halign="left">19.9</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Connecticut</cell>
+                <cell halign="left">34</cell>
+                <cell halign="left">24.5</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">New York</cell>
+                <cell halign="left">29</cell>
+                <cell halign="left">23.4</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Delaware</cell>
+                <cell halign="left">21</cell>
+                <cell halign="left">23.6</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">North Carolina</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">19.1</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">District of Columbia</cell>
+                <cell halign="left">44</cell>
+                <cell halign="left">22.2</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">North Dakota</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.3</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Florida</cell>
+                <cell halign="left">81</cell>
+                <cell halign="left">19.9</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Ohio</cell>
+                <cell halign="left">73</cell>
+                <cell halign="left">22.0</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Georgia</cell>
+                <cell halign="left">60</cell>
+                <cell halign="left">21.1</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Oklahoma</cell>
+                <cell halign="left">82</cell>
+                <cell halign="left">20.4</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Hawaii</cell>
+                <cell halign="left">94</cell>
+                <cell halign="left">18.7</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Oregon</cell>
+                <cell halign="left">39</cell>
+                <cell halign="left">21.7</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Idaho</cell>
+                <cell halign="left">39</cell>
+                <cell halign="left">22.7</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Pennsylvania</cell>
+                <cell halign="left">23</cell>
+                <cell halign="left">23.1</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Illinois</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.8</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Rhode Island</cell>
+                <cell halign="left">29</cell>
+                <cell halign="left">23.3</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Indiana</cell>
+                <cell halign="left">41</cell>
+                <cell halign="left">22.3</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">South Carolina</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">18.5</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Iowa</cell>
+                <cell halign="left">68</cell>
+                <cell halign="left">22.1</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">South Dakota</cell>
+                <cell halign="left">76</cell>
+                <cell halign="left">21.9</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Kansas</cell>
+                <cell halign="left">74</cell>
+                <cell halign="left">21.9</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Tennessee</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">19.9</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Kentucky</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Texas</cell>
+                <cell halign="left">46</cell>
+                <cell halign="left">20.6</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Louisiana</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">19.5</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Utah</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.2</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Maine</cell>
+                <cell halign="left">10</cell>
+                <cell halign="left">23.6</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Vermont</cell>
+                <cell halign="left">29</cell>
+                <cell halign="left">23.4</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Maryland</cell>
+                <cell halign="left">27</cell>
+                <cell halign="left">23.0</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Virgina</cell>
+                <cell halign="left">31</cell>
+                <cell halign="left">23.3</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Massachusetts</cell>
+                <cell halign="left">28</cell>
+                <cell halign="left">24.8</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Washington</cell>
+                <cell halign="left">25</cell>
+                <cell halign="left">23.1</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Michigan</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.3</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">West Virginia</cell>
+                <cell halign="left">67</cell>
+                <cell halign="left">20.7</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Minnesota</cell>
+                <cell halign="left">78</cell>
+                <cell halign="left">22.7</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Wisconsin</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.5</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Mississippi</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">18.4</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">Wyoming</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.2</cell>
+              </row>
+
+              <row bottom="medium">
+                <cell halign="left">Missouri</cell>
+                <cell halign="left">100</cell>
+                <cell halign="left">20.2</cell>
+                <cell halign="left"></cell>
+                <cell halign="left">National Average</cell>
+                <cell halign="left">64</cell>
+                <cell halign="left">20.8</cell>
+              </row>
+
+            </tabular>
+        </figure>
+
+      <p>The data in <xref ref="avg-act-score" text="type-local" />, provided by the ACT website, gives the average Composite ACT scores for high school students 2016 and the percentage of graduates taking the exam from each state. \\</p>
+      <p>Do you think there is a relationship between the average SAT score and the percentage of graduates taking the exam? Study this list of data to determine whether or not you think there is a relationship. \\</p>
+      <p>How do we get information from the list of numbers in <xref ref="avg-act-score" text="type-local" />? Did you actually read all of the data, or did you look for your state and then skip to this paragraph? Presented as just a table of numbers, the data are difficult to interpret. In analyzing data, we search for information hidden in the numbers. It should be obvious that we need to have some way of organizing and simplifying the data so that we can see its essential characteristics without getting lost in a jumble of numbers. Then we can decide for ourselves whether or not average ACT scores are related to the percentage of students taking the exam. \\</p>
+      <p>On the scatterplot shown in <xref ref="scatterplot-avg-act-score" text="type-local" />, average Composite ACT scores are plotted on the vertical axis and the percentages of graduates taking the exam from each state are plotted on the horizontal axis. For example, the ordered pair representing North Carolina, <m>\left( 100, 19.1 \right)</m>, implies that all graduates in 2016 living in North Carolina took the ACT and their average composite score was <m>19.1</m>, while the ordered pair for Massachusetts is <m>\left( 28, 24.8 \right)</m>, indicating that <m>28<percent /></m> of 2016 graduates took the ACT exam with an average composite score of <m>24.8</m>.</p>
+
+        <figure xml:id="scatterplot-avg-act-score">
+          <caption>Average ACT scores versus Percentage of graduates taking the ACT in 2016</caption>
+            <image>
+              <latex-image>
+                <![CDATA[
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      xlabel = Percentage of Students Taking Exam,
+                      ylabel = 2016 Average ACT Score,
+                      ylabel near ticks,
+                      xlabel near ticks,
+                      xmin = 0,
+                      xmax = 100,
+                      ymin = 15,
+                      ymax = 27,
+                      xtick={20,40,...,100},
+                      ytick={15,17,...,27},
+                      axis y discontinuity=crunch,
+                      minor x tick num=1,
+                      ]
+
+                      \addplot [thick, blue, mark=*, only marks] coordinates {
+                        (100,19.1)   (100,20.8)   (100, 20.3)   (29,23.3)
+                        (53,20)      (41,22.3)    (88,21.4)     (100,18.5)
+                        (58,20.1)    (68,22.1)    (100,17.7)    (76,21.9)
+                        (96,20.2)    (74,21.9)    (23,24.5)     (100,19.9)
+                        (33,22.6)    (100,20.0)   (32,23.1)     (46,20.6)
+                        (100,20.6)   (100,19.5)   (70,19.9)     (100,20.2)
+                        (34,24.5)    (10,23.6)    (29,23.4)     (29,23.4)
+                        (21,23.6)    (27,23.0)    (100,19.1)    (31,23.3)
+                        (44,22.2)    (28,24.8)    (100,20.3)    (25,23.1)
+                        (81,19.9)    (100,20.3)   (73,22.0)     (67,20.7)
+                        (60,21.1)    (78,22.7)    (82,20.4)     (100,20.5)
+                        (94,18.7)    (100,18.4)   (39,21.7)     (100,20.2)
+                        (39,22.7)    (100,20.2)   (23,23.1)     (64,20.8)
+                      };
+                    \end{axis}
+                  \end{tikzpicture}]]>
+              </latex-image>
+          </image>
+        </figure>
+    <p>Looking at the scatterplot in <xref ref="scatterplot-avg-act-score" text="type-local" /> should convince us that there is a relationship between these variables. The points tend to slope downward to the right, so we observe that the states with higher percentages of graduates taking the ACT have generally lower average ACT scores. When one variable decreases as the other increases, we say there is a negative association between the two variables. Notice also that the states with lower percentages of students taking the ACT have higher average composite scores. Can you give a plausible explanation for this? Which display do you find easier to interpret, the table or the graph? \\</p>
+    <p>A scatterplot is an effective tool for analyzing data. Special characteristics of data that may go unnoticed in a table are more obvious from a graph. If there is some relationship between the variables, a pattern or trend is usually apparent in the scatterplot. In this case, the scatterplot shows some spread in the data. Though the variables are related, we would have to consider the relationship somewhat loose, or weak, in the sense that knowing a value of one variable does not necessarily give us confidence in predicting a value for the other variable. \\</p>
+    <p>Notice that the data points appear to cluster with two groups with a gap between them. In about half of the states less than <m>45<percent /></m> of the high school graduates took the ACT in 2016 with an average around <m>23</m>. In the other half more than <m>60<percent /></m> took the ACT with an average around <m>21</m>.</p>
+
+    </example>
+
+    <example>
+      <title>The Leaning Tower of Pisa</title>
+        <statement>
+          <p>The Leaning Tower of Pisa is a famous tower in Pisa, Italy. The tower was built on soft ground, and over time, it began to lean as one end sank into the soil. The amount that the tower leans is measured by comparing a point on the tower to where it would be if the tower were straight (see Figure 4.). Some measurements of the amount of the lean are shown in the data and scatterplot in Figure 3.3. We want to determine the relationship between the year and the amount the tower leans. You should note something striking in the data. The tower was closed to the public in 1990 and reopened in 2001 after the ground on which the tower had be built was stabilized and the tower tilted back to a more perpendicular position. It is often the case that we see need to consider sections of the data separately, since they may represent two different phenomena. In this case, from 1975 to 1987, we have the tower leaning more each year, but after it was closed and the tower secured, the amount of lean has remained constant (and should remain constant for the next century). So, it is only when the tower was leaning and in danger of falling that we are concerned about. Since, in this interval, the amount the tower leans increases every year, \emph{lean}, measured in millimeters, is the dependent variable and the \emph{year} is the independent variable.
+          </p>
+
+          <title></title>
+            <figure xml:id="tower-of-pisa-data">
+              <caption>Data from G. Geri and B. Palla, <q>Considerazioni sulle piu recenti osservasoioni ottiche alla Torre Pendente di Pisa</q></caption>
+                <tabular top="medium" halign="left">
+
+                  <row bottom="medium">
+                    <cell halign="left">Year</cell>
+                    <cell halign="left">Lean (mm)</cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">Year</cell>
+                    <cell halign="left">Lean (mm)</cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1975</cell>
+                    <cell halign="left"><m>2964.2</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">1986</cell>
+                    <cell halign="left"><m>2974.2</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1976</cell>
+                    <cell halign="left"><m>2964.4</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">1987</cell>
+                    <cell halign="left"><m>2975.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1977</cell>
+                    <cell halign="left"><m>2965.6</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2001</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1978</cell>
+                    <cell halign="left"><m>2966.7</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2002</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1979</cell>
+                    <cell halign="left"><m>2967.3</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2003</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1980</cell>
+                    <cell halign="left"><m>2968.8</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2004</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1981</cell>
+                    <cell halign="left"><m>2969.6</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2005</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1982</cell>
+                    <cell halign="left"><m>2969.8</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2006</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1983</cell>
+                    <cell halign="left"><m>2971.3</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2007</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1984</cell>
+                    <cell halign="left"><m>2971.7</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2008</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="left">1985</cell>
+                    <cell halign="left"><m>2972.5</m></cell>
+                    <cell halign="left"></cell>
+                    <cell halign="left">2009</cell>
+                    <cell halign="left"><m>2144.7</m></cell>
+                  </row>
+
+                </tabular>
+            </figure>
+
+            <figure xml:id="tower-of-pisa-image">
+              <caption>The Leaning Tower of Pisa and the measurement of the amount of lean</caption>
+                <image source="src/images/chapter01/tower-of-pisa-image.jpg" width="80%"></image>
+            </figure>
+
+    <p>Looking at the scatterplot in Figure 4. should convince us that there is a tight or strong relationship between these variables. Notice that we are only interested in the interval before the tower was stabilized. The points tend to slope upward to the right, so we say in this case there is a positive association between the variables. That is, both variables increase together. There does not appear to be any obvious consistent curvature; rather, the points seem to be increasing fairly steadily, so we conclude that the shape is linear. \\</p>
+
+            <figure xml:id="scatterplot-tower-of-pisa">
+              <caption>Lean versus Year</caption>
+                <image>
+                  <latex-image>
+                    <![CDATA[
+                      \begin{tikzpicture}
+                        \begin{axis}[
+                          scale only axis,
+                          width=\textwidth-45pt,
+                          height=8.5cm,
+                          xlabel = Year,
+                          ylabel = Lean (mm),
+                          xlabel near ticks,
+                          ylabel near ticks,
+                          xmin = 1974,
+                          xmax = 1988,
+                          ymin = 2960,
+                          ymax = 2976,
+                          xticklabel style={/pgf/number format/1000 sep=},
+                          xtick={1975,1976,...,1988},
+                          ytick={2962,2963,...,2976},
+                          axis y discontinuity=crunch,
+                          minor x tick num=0,
+                          minor y tick num=1,
+                          ]
+
+                          \addplot [thick, blue, mark=*, only marks] coordinates {
+                            (1975,2964.2)   (1976,2964.4)   (1977,2965.6)   (1978,2966.7)
+                            (1979,2967.3)   (1980,2968.8)   (1981,2969.6)   (1982,2969.8)
+                            (1983,2971.3)   (1984,2971.7)   (1985,2972.5)   (1986,2974.2)
+                            (1987,2975.7)
+                          };
+                        \end{axis}
+                      \end{tikzpicture}]]>
+                  </latex-image>
+                </image>
+              </figure>
+
+    <p>Sometimes when we examine scatterplots we observe points that appear to stand out from the rest. These points may follow the general pattern of the data but are far removed from other points. Other times there are points that are inconsistent with the general trend. Such points may indicate errors in measurement or in plotting that need to be corrected, or they may indicate the presence of some factor that deserves special attention. Whatever the cause, we should look for, and attempt to explain, odd points, called \emph{outliers}, that do not appear to fit the general pattern of the scatterplot. \newpage</p>
+
+          </statement>
+
+    </example>
+
+    <exercises>
+    <!-- Exercise 1 -->
+      <exercise>
+        <p>Comment on the important characteristics of the scatterplots provided below. The legends describe the variables on each axis. Consider the shape (linear or curved), whether the data describes an increasing or decreasing (positive or negative) relationship, any gaps, clusters, or outliers apparent in the data. Write a sentence or two to explain the story the data telling about the relationship between the two variables.</p>
+      </exercise>
+
+    <sidebyside widths = "50% 50%">
+      <figure xml:id="exercises-scatterplot-1">
+        <caption>Plot 1</caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    xlabel = Average flight length (miles),
+                    ylabel = Average fuel use (gallons/hour),
+                    xlabel near ticks,
+                    ylabel near ticks,
+                    xmin = 0,
+                    xmax = 4000,
+                    ymin = 0,
+                    ymax = 4000,
+                    xticklabel style = {/pgf/number format/1000 sep=},
+                    xtick = {1000,2000,...,4000},
+                    ytick = {1000,2000,...,4000},
+                    minor x tick num = 1,
+                    minor y tick num = 1,
+                    ]
+
+                    \addplot [thick, blue, mark=*, only marks] coordinates {
+                      (386,639)   (386,804)   (453,849)   (612,731)   (699,877)
+                      (612,1130)  (692,1290)  (998,986)   (1240,1450) (1400,2210)
+                      (1540,1580) (1690,1500) (1740,1340) (1630,2220) (3140,3520)
+                    };
+                  \end{axis}
+                \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+
+        <figure xml:id="exercises-scatterplot-2">
+          <caption>Plot 2</caption>
+            <image>
+              <latex-image>
+                <![CDATA[
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      xlabel = Average temperature in March ($\text{C}^\circ$),
+                      ylabel = Day in April of first cherry blossoms,
+                      xlabel near ticks,
+                      ylabel near ticks,
+                      xmin = 0,
+                      xmax = 7,
+                      ymin = 0,
+                      ymax = 35,
+                      xtick = {1,2,...,7},
+                      ytick = {5,10,...,35},
+                      minor x tick num = 1,
+                      minor y tick num = 4,
+                      ]
+
+                      \addplot [thick, blue, mark=*, only marks] coordinates {
+                        (1.56,28) (2.65,19) (3.24,11) (3.7,17)  (3.84,14)
+                        (3.8,19)  (4.05,21) (4.09,17) (4.08,14) (4.05,13)
+                        (4.05,11) (4.25,14) (4.37,13) (4.53,10) (4.61,9)
+                        (4.71,14) (4.92,15) (4.95,9)  (5.01,7)  (5.13,11)
+                        (5.43,8)  (6.10,3)  (6.27,3)
+                      };
+                    \end{axis}
+                  \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </figure>
+      </sidebyside>
+
+        <figure xml:id="exercises-scatterplot-3">
+          <caption>Plot 3</caption>
+            <image>
+              <latex-image>
+                <![CDATA[
+                  \begin{tikzpicture}
+                    \begin{axis}[
+                      xlabel = Number of sqaures from GO,
+                      ylabel = Value of property,
+                      xlabel near ticks,
+                      ylabel near ticks,
+                      xmin = 0,
+                      xmax = 35,
+                      ymin = 0,
+                      ymax = 350,
+                      xtick = {5,10,...,35},
+                      ytick = {50,100,...,350},
+                      minor x tick num = 4,
+                      minor y tick num = 1,
+                      ]
+
+                      \addplot [thick, blue, mark=*, only marks] coordinates {
+                        (1,29)    (3,29)   (5,195)  (6,76)   (9,76)
+                        (9,98)    (11,124) (13,134) (14,123) (15,150)
+                        (16,192)  (17,172) (19,172) (20,194) (22,219)
+                        (24,218)  (25,242) (26,195) (27,265) (28,265)
+                        (30,136)  (30,289) (33,313)
+                      };
+                    \end{axis}
+                  \end{tikzpicture}]]>
+              </latex-image>
+            </image>
+          </figure>
+
+          <figure xml:id="exercises-scatterplot-4">
+            <caption>Plot 4</caption>
+              <image>
+                <latex-image>
+                  <![CDATA[
+                    \begin{tikzpicture}
+                      \begin{axis}[
+                        scale only axis,
+                        width = \textwidth-45pt,
+                        height = 8.5cm,
+                        xlabel = Year,
+                        ylabel = Number of named Atlantic/Carribean storms,
+                        xlabel near ticks,
+                        ylabel near ticks,
+                        xmin = 1965,
+                        xmax = 2020,
+                        ymin = 0,
+                        ymax = 35,
+                        xticklabel style = {/pgf/number format/1000 sep=},
+                        xtick = {1960,1965,...,2015},
+                        ytick = {5,10,...,35},
+                        minor x tick num = 4,
+                        minor y tick num = 4,
+                        ]
+
+                        \addplot [thick, blue, mark=*, only marks] coordinates {
+                          (1982,12) (1983,5)  (1984,2)  (1985,13) (1986,11) (1987,5)
+                          (1988,6)  (1989,12) (1990,11) (1991,14) (1992,7)  (1993,6)
+                          (1994,7)  (1996,19) (1995,6)  (1997,13) (1998,7)  (1999,14)
+                          (2000,12) (2001,15) (2002,15) (2004,11) (2004,16) (2006,30)
+                          (2006,15) (2008,9)  (2009,15) (2010,16) (2011,8)  (2012,19)
+                          (2013,20) (2014,20) (2015,14) (2016,7)  (2017,10) (1966,10)
+                          (1967,7)  (1968,7)  (1969,19) (1970,10) (1971,13) (1972,6)
+                          (1973,7)  (1974,10) (1975,8)  (1976,9)  (1977,5)  (1978,12)
+                          (1979,8)  (1980,10)
+                        };
+                      \end{axis}
+                    \end{tikzpicture}]]>
+                  </latex-image>
+              </image>
+            </figure>
+
+          <sidebyside widths = "50% 50%">
+            <figure xml:id="exercises-scatterplot-5">
+              <caption>Plot 5</caption>
+                <image>
+                  <latex-image>
+                    <![CDATA[
+                      \begin{tikzpicture}
+                        \begin{axis}[
+                          xlabel = Time object has been cooling (minutes),
+                          ylabel = Temperature ($\text{F}^\circ$),
+                          xlabel near ticks,
+                          ylabel near ticks,
+                          xmin = 0,
+                          xmax = 400,
+                          ymin = 0,
+                          ymax = 140,
+                          xtick = {100,200,...,400},
+                          ytick = {20,40,...,130},
+                          minor x tick num = 1,
+                          minor y tick num = 1,
+                          ]
+
+                          \addplot [thick, blue, mark=*, only marks] coordinates {
+                            (2.2,122.4)   (6.6,115.2)   (10.2,109.1)
+                            (37.2,85.9)   (51.9,76.2)   (65.2,66.7)
+                            (146.3,40.0)  (177.9,35.1)  (210.5,30.0)
+                            (332.3,22.4)  (390.3,19.2)  (245.3,25.3)
+                            (17.7,102.8)  (20.8,99.0)   (86.6,55.7)
+                            (300.2,22.9)  (128.4,42.6)
+                          };
+                        \end{axis}
+                      \end{tikzpicture}]]>
+                  </latex-image>
+                </image>
+              </figure>
+
+              <figure xml:id="exercises-scatterplot-6">
+                <caption>Plot 6</caption>
+                  <image>
+                    <latex-image>
+                      <![CDATA[
+                        \begin{tikzpicture}
+                          \begin{axis}[
+                            xlabel = Minutes played for the 1987-88 Chicago Bulls,
+                            ylabel = Points scored,
+                            xlabel near ticks,
+                            ylabel near ticks,
+                            xmin = 0,
+                            xmax = 3600,
+                            ymin = 0,
+                            ymax = 3500,
+                            xtick = {600,1200,...,3600},
+                            ytick = {500,1000,...,3000},
+                            minor x tick num = 1,
+                            minor y tick num = 1,
+                            ]
+
+                            \addplot [thick, blue, mark=*, only marks] coordinates {
+                              (564.58,199.32)   (1035.30,279.41)
+                              (1482.11,608.75)  (1644.63,712.88)
+                              (1790.08,670.72)  (1871.41,696.98)
+                              (2184.95,853.57)  (2318.67,854.33)
+                              (2800.53,1123.68) (3295.27,312.96)
+                              (3295.2,3147.4)
+                            };
+                          \end{axis}
+                        \end{tikzpicture}]]>
+                    </latex-image>
+                  </image>
+              </figure>
+            </sidebyside>
+
+              <figure xml:id="exercises-scatterplot-7">
+                <caption>Plot 7</caption>
+                  <image>
+                    <latex-image>
+                      <![CDATA[
+                        \begin{tikzpicture}
+                          \begin{axis}[
+                            scale only axis,
+                              width=\textwidth-45pt,
+                              height= 6.5cm,
+                              xlabel = Year,
+                              ylabel = September Artic Sea Ice (million $\text{km}^2$,
+                              xlabel near ticks,
+                              ylabel near ticks,
+                              xmin = 1980,
+                              xmax = 2020,
+                              ymin = 3,
+                              ymax = 8,
+                              xticklabel style = {/pgf/number format/1000 sep=},
+                              xtick = {1980,1985,...,2020},
+                              ytick = {3,4,...,8},
+                              minor x tick num = 4,
+                              minor y tick num = 0,
+                              axis y discontinuity = crunch,
+                              ]
+
+                              \addplot [thick, blue, mark=*, only marks] coordinates {
+                                (1978,7.21) (1979,7.83) (1980,7.23) (1981,7.47) (1982,7.52)
+                                (1983,7.12) (1984,6.92) (1985,7.52) (1986,7.45) (1987,7.49)
+                                (1988,6.96) (1990,6.22) (1991,6.53) (1992,7.55) (1993,6.49)
+                                (1994,7.17) (1995,6.08) (1996,7.86) (1997,6.75) (1998,6.52)
+                                (1999,6.26) (2000,6.34) (2002,6.76) (2003,5.93) (2004,6.15)
+                                (2005,6.04) (2006,5.57) (2007,5.92) (2007,5.04) (2008,4.26)
+                                (2009,4.83) (2010,5.37) (2011,4.94) (2012,4.63) (2013,3.62)
+                                (2014,4.60) (2015,5.37) (2016,5.28) (2017,4.62) (2018,4.79)
+                              };
+                            \end{axis}
+                          \end{tikzpicture}]]>
+                      </latex-image>
+                    </image>
+                </figure>
+
+                <figure xml:id="exercises-scatterplot-8">
+                  <caption>Plot 8</caption>
+                    <image>
+                      <latex-image>
+                        <![CDATA[
+                          \begin{tikzpicture}
+                            \begin{axis}[
+                              scale only axis,
+                              width=\textwidth-45pt,
+                              height= 6.5cm,
+                              xlabel = Year,
+                              ylabel = $text{CO}_2$ concentration in the atomsphere (parts per million),
+                              xlabel near ticks,
+                              ylabel near ticks,
+                              xmin = 2013,
+                              xmax = 2018,
+                              ymin = 390,
+                              ymax = 425,
+                              xticklabel style = {/pgf/number format/1000 sep=},
+                              xtick = {2013,2014,...,2018},
+                              ytick = {390,395,...,420},
+                              minor x tick num = 4,
+                              minor y tick num = 1,
+                              axis y discontinuity = crunch,
+                              ]
+
+                              \addplot [thick, blue, mark=*, only marks] coordinates {
+                                (2013.03,396.1) (2013.09,397.3) (2013.21,397.9) (2013.28,399.0)
+                                (2013.48,399.0) (2013.52,397.6) (2013.61,395.8) (2013.69,393.8)
+                                (2013.87,395.7) (2013.94,397.3) (2014.04,398.5) (2014.11,398.8)
+                                (2014.31,402.1) (2014.36,402.9) (2014.46,401.9) (2014.55,399.7)
+                                (2014.69,395.7) (2014.80,396.5) (2014.88,397.7) (2014.96,399.6)
+                                (2015.12,400.9) (2015.20,402.3) (2015.28,404.0) (2015.35,404.9)
+                                (2015.55,402.0) (2015.64,399.5) (2015.70,398.0) (2015.80,398.8)                                   (2015.96,402.5) (2016.01,403.2)   (2016.15,404.7)
+                                (2016.22,406.0) (2016.26,408.2) (2016.36,408.9) (2016.50,407.8)
+                                (2016.64,402.9) (2016.69,401.6) (2016.83,402.2) (2016.88,404.4)
+                                (2017.05,407.0) (2017.14,407.6) (2017.20,408.2) (2017.31,410.0)
+                                (2017.46,410.0) (2013.36,400.4) (2013.79,393.9) (2014.21,400.4)
+                                (2014.63,397.5) (2015.03,400.5) (2015.48,403.6) (2015.87,400.9)
+                                (2016.55,405.4) (2016.95,405.2) (2017.39,410.8)
+                              };
+                            \end{axis}
+                          \end{tikzpicture}]]>
+                      </latex-image>
+                    </image>
+                </figure>
+
+              <sidebyside widths = "50% 50%">
+                <figure xml:id="exercises-scatterplot-9">
+                  <caption>Plot 9</caption>
+                    <image>
+                      <latex-image>
+                        <![CDATA[
+                          \begin{tikzpicture}
+                            \begin{axis}[
+                              xlabel = Diameter (inches),
+                              ylabel = Weight Bells of St. Patrick’s Cathedral (pounds),
+                              xlabel near ticks,
+                              ylabel near ticks,
+                              xmin = 30,
+                              xmax = 70,
+                              ymin = 0,
+                              ymax = 6000,
+                              xtick = {30,35,...,70},
+                              ytick = {1000,2000,...,6000},
+                              minor x tick num = 1,
+                              minor y tick num = 4,
+                              axis x discontinuity = crunch,
+                              axis y discontinuity = crunch,
+                              ]
+
+                              \addplot [thick, blue, mark=*, only marks] coordinates {
+                                (29.5,1667.2) (31.5,1772.2) (34.1,1886.8) (34.9,1934.4)
+                                (36.6,1925.3) (38.1,2068.1) (42.1,2373.0) (47.1,2820.7)
+                                (49.4,3058.8) (55.0,3829.9) (61.9,5266.5)
+                              };
+                            \end{axis}
+                          \end{tikzpicture}]]>
+                      </latex-image>
+                    </image>
+                </figure>
+
+                <figure xml:id="exercises-scatterplot-10">
+                  <caption>Plot 10</caption>
+                    <image>
+                      <latex-image>
+                        <![CDATA[
+                          \begin{tikzpicture}
+                            \begin{axis}[
+                              xlabel = Outside temperature ($\text{C}^\circ$),
+                              ylabel = Gas consumption (1000 cubic feet),
+                              xlabel near ticks,
+                              ylabel near ticks,
+                              xmin = -1,
+                              xmax = 6,
+                              ymin = 3,
+                              ymax = 5,
+                              xtick = {-1,0,...,5},
+                              ytick = {3,4,...,5},
+                              minor x tick num = 0,
+                              minor y tick num = 1,
+                              axis y discontinuity=crunch,
+                              ]
+
+                              \addplot [thick, blue, mark=*, only marks] coordinates {
+                                (-0.70,4.95)  (-0.29,4.96)  (0.01,4.20)   (0.81,4.74)
+                                (1.01,4.87)   (1.41,4.09)   (1.51,4.30)   (1.65,4.30)
+                                (2.32,4.21)   (2.53,3.54)   (2.54,4.08)   (3.11,3.21)
+                                (3.93,3.98)   (4.02,3.77)   (4.01,3.55)   (4.20,3.54)                                  (4.32,3.53)   (4.63,3.77)   (4.72,3.53)   (4.91,3.42)
+                              };
+                            \end{axis}
+                          \end{tikzpicture}]]>
+                      </latex-image>
+                    </image>
+                </figure>
+            </sidebyside>
+
+                <figure xml:id="exercises-scatterplot-11">
+                  <caption>Plot 11</caption>
+                    <image>
+                      <latex-image>
+                        <![CDATA[
+                          \begin{tikzpicture}
+                            \begin{axis}[
+                              scale only axis,
+                              width = \textwidth-45pt,
+                              height = 8.5cm,
+                              xlabel = Year,
+                              ylabel = Average difference in ocean temperature,
+                              xlabel near ticks,
+                              ylabel near ticks,
+                              xmin = 1940,
+                              xmax = 2020,
+                              ymin = -0.5,
+                              ymax = 1,
+                              xticklabel style = {/pgf/number format/1000 sep=},
+                              xtick = {1940,1950,...,2020},
+                              ytick = {-1,-0.5,...,2},
+                              minor x tick num = 4,
+                              minor y tick num = 1,
+                              ]
+
+                              \addplot [thick, blue, mark=*, only marks] coordinates {
+                                (1950,-0.2993)  (1954,-0.2740)  (1960,-0.1270)  (1965,-0.2198)
+                                (1970,-0.0764)  (1975,-0.1620)  (1981,0.2070)   (1985,-0.0076)
+                                (1989,0.3971)   (1995,0.4153)   (2000,0.3332)   (2005,0.6449)
+                                (2010,0.6916)   (2016,0.8853)
+                              };
+                            \end{axis}
+                          \end{tikzpicture}]]>
+                      </latex-image>
+                    </image>
+              </figure>
+
+              <figure xml:id="exercises-scatterplot-12">
+                <caption>Plot 12</caption>
+                  <image>
+                    <latex-image>
+                      <![CDATA[
+                        \begin{tikzpicture}
+                          \begin{axis}[
+                            xlabel = Weight of dog (pounds),
+                            ylabel = Number of cups of Aplo dog food,
+                            xlabel near ticks,
+                            ylabel near ticks,
+                            xmin = 0,
+                            xmax = 200,
+                            ymin = 0,
+                            ymax = 10,
+                            xtick = {0,50,...,200},
+                            ytick = {1,2,...,10},
+                            minor x tick num = 1,
+                            minor y tick num = 0,
+                            ]
+
+                            \addplot [thick, blue, mark=*, only marks] coordinates {
+                              (7.2,1)   (19.3,2)  (36.2,3)  (57.4,4)
+                              (80.2,5)  (102.6,6) (131.3,7) (159.4,8)
+                              (191.3,9)
+                            };
+                          \end{axis}
+                        \end{tikzpicture}]]>
+                    </latex-image>
+                  </image>
+              </figure>
+
+    </exercises>
+
+</section>

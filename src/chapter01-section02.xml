@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+<section xml:id="chapter01-section02" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>A Whole Class Modeling Activity</title>
+    <introduction>
+      <p>
+        The process of developing a mathematical model is often challenging, and it is almost never a one-step process. In modeling it is important that you think about both the mathematics you know and the phenomenon you are trying to model. Moving back and forth between the two in a thoughtful, organized manner is essential. Precalculus is the study of the basic functions that we use to describe our world. Throughout the course, you will learn how to use your growing knowledge of functions to model real-world situations. In this section, we will work through a sample modeling problem to demonstrate some useful modeling techniques.. You are not expected to be able to do this problem by yourself at this point in the course. By the end of the course, however, you should be comfortable with the modeling process and confident in your ability to solve problems similar to this one.
+      </p>
+    </introduction>
+      <subsection>
+        <title>Problem Setting</title>
+        <p>The senior class at the local high school wants to raise money to support the athletic program by selling a ticket that will allow the holder to attend all athletic events at the school. The class officers are trying to decide what price to charge for the ticket. Some students might argue for setting the price low, believing that a low price would bring a large response. Others may want to have a higher price, so that even if not many tickets were sold, they would still make money. The students decide to ask the parents what they would be willing to pay for an all sports ticket. They assume the parents want the sale to be a success and will give them accurate information. A survey is sent to all 811 families with students in the school asking, “What is the most you would be willing to pay for an all sports ticket good for this school year?” The results are given in <xref ref="results-of-the-survey" text="type-local" />.</p>
+        <figure xml:id="results-of-the-survey">
+          <caption>Results of the Survey</caption>
+          <tabular top="medium" halign="center">
+            <row bottom="medium">
+              <cell halign="left">Maximum Price (<dollar />)</cell>
+              <cell halign="left">Number</cell>
+            </row>
+            <row>
+              <cell halign="left"><m>50.00</m></cell>
+              <cell halign="center"><m>145</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>75.00</m></cell>
+              <cell halign="center"><m>80</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>90.00</m></cell>
+              <cell halign="center"><m>45</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>95.00</m></cell>
+              <cell halign="center"><m>85</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>115.00</m></cell>
+              <cell halign="center"><m>120</m></cell>
+            <row>
+              <cell halign="left"><m>135.00</m></cell>
+              <cell halign="center"><m>80</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>150.00</m></cell>
+              <cell halign="center"><m>60</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell halign="left"><m>175.00</m></cell>
+              <cell halign="center"><m>150</m></cell>
+            </row>
+          </row>
+          </tabular>
+        </figure>
+
+        <p>Take a minute to think about this problem setting. What do you expect to be the relationship between the price the students set for the tickets and the response to the sale? How can the class officers use this information to determine the “best” price to charge for the ticket? Imagine that you are in charge of the sale and it is your responsibility to determine the price at which the tickets are to be sold. Where do you begin?</p>
+        <p>To determine the price that will bring in the most money to the class, you need to develop a mathematical model relating the amount charged for the ticket and the amount of money, or revenue, brought in by the sale. To develop this model, you must understand the information provided by the data collected. What information about the parents and their support for the sale is contained in the data? Does this data support the conjecture that the more the ticket costs, the fewer families would be interested?</p>
+        <p>Information presented in a list of numbers is often hidden and difficult to determine. One step in analyzing the relationship between two variables is to make a scatterplot. A scatterplot is simply a graph in a rectangular coordinate system of all ordered pairs of data. Scatterplots display data so we can see the general relationship between two variables. The relationship (or lack thereof) should be more obvious if we plot the data. When making a scatterplot, it really does not matter which variable is plotted on which axis. If we suspect that one variable depends on the other, however, we usually plot the dependent variable on the vertical axis and the independent variable on the horizontal axis. <xref ref="scatterplot-of-the-ticket-data" text="type-local" /> shows a scatterplot of the ordered pairs (price, number).</p>
+        <figure xml:id="scatterplot-of-the-ticket-data">
+          <caption>Scatterplot of the data in <xref ref="results-of-the-survey" text="type-local" /></caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = Price,
+                  ylabel = Number of Tickets,
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0,
+                  xmax = 180,
+                  ymin = 0,
+                  ymax = 160,
+                  xtick={20,40,...,180},
+                  ytick={20,40,...,160},
+                  minor tick num=1,
+                  ]
+
+                  \addplot [thick, blue, mark=*, only marks] coordinates {
+                      (50.00,145)   (75.00,80)
+                      (90.00,45)    (95.00,85)
+                      (115.00,120)  (135.00,80)
+                      (150.00,60)   (175.00,150)
+                  };
+
+                \end{axis}
+              \end{tikzpicture}]]>
+            </latex-image>
+          </image>
+        </figure>
+
+        <p>It is always a good idea to plot the data, although this particular plot does not seem to give us much useful information. There is no obvious pattern in the data. Perhaps we need to think harder about what the data are telling us.</p>
+        <p>Did all of the families respond to the survey question? If a family did not respond, what does this mean about their interest in the tickets? All models begin with some simplifying assumptions. One way to think about the families that didn’t respond is to assume that they are not interested in supporting the athletic program and will not buy a ticket at any price. There are other assumptions we could make about those families that didn’t respond to the survey, of course, and we will consider some of them in the homework exercises. For now, we will assume that only those families that responded will purchase a ticket. With this assumption, we can interpret the data.</p>
+        <p>According to the results of the survey, there are <m>150</m> families willing to pay as much as 175 for the tickets. If they will pay <dollar /><m>175</m>, they will certainly pay less for the tickets as well. In particular, they will buy the tickets if they are priced at <dollar /><m>150</m>. In addition to these <m>150</m> families, the <m>60</m> families who responded that <dollar /><m>150</m> is the most they would be willing to pay will also purchase tickets. Summing these numbers, we would expect <m>150 + 60 = 210</m> families to purchase tickets priced at <dollar /><m>150</m>.</p>
+        <p>Continuing to sum, we can create a table <xref ref="results-of-the-survey-summed" text="type-local" /> showing how many families we expect to purchase tickets at each price. If we knew how many families would buy a ticket at each price, we can use that information to predict the price that will bring in the most money.</p>
+
+        <figure xml:id="results-of-the-survey-summed">
+          <caption>Price and number of tickets expected to be sold</caption><tabular top="medium" halign="center">
+            <row bottom="medium">
+              <cell halign="left">Maximum Price (<dollar />)</cell>
+              <cell>Number</cell>
+            </row>
+            <row>
+              <cell halign="left"><m>50.00</m></cell>
+              <cell halign="center"><m>765</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>75.00</m></cell>
+              <cell halign="center"><m>620</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>90.00</m></cell>
+              <cell halign="center"><m>540</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>95.00</m></cell>
+              <cell halign="center"><m>495</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>115.00</m></cell>
+              <cell halign="center"><m>410</m></cell>
+            <row>
+              <cell halign="left"><m>135.00</m></cell>
+              <cell halign="center"><m>290</m></cell>
+            </row>
+            <row>
+              <cell halign="left"><m>150.00</m></cell>
+              <cell halign="center"><m>210</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell halign="left"><m>175.00</m></cell>
+              <cell halign="center"><m>150</m></cell>
+            </row>
+          </row>
+          </tabular>
+        </figure>
+
+        <figure xml:id="scatterplot-of-the-ticket-data-summed">
+          <caption>Scatterplot of the data in <xref ref="results-of-the-survey-summed" text="type-local" /></caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = Price,
+                  ylabel = Number of Tickets,
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0,
+                  xmax = 200,
+                  ymin = 0,
+                  ymax = 1000,
+                  xtick={20,40,...,200},
+                  ytick={100,200,...,1000},
+                  minor tick num=1,
+                  ]
+
+                  \addplot [thick, blue, mark=*, only marks] coordinates {
+                      (50.00,765)   (75.00,620)
+                      (90.00,540)    (95.00,495)
+                      (115.00,410)  (135.00,290)
+                      (150.00,210)   (175.00,150)
+                  };
+
+                \end{axis}
+              \end{tikzpicture}]]>
+
+            </latex-image>
+          </image>
+        </figure>
+        <p>The scatterplot of this data, given in <xref ref="scatterplot-of-the-ticket-data-summed" text="type-local" />, gives useful information about the relationship between the price charged for the ticket and the number of tickets the students can expect to sell. Notice that this graph supports the conjecture that higher prices result in lower sales. If we could find a mathematical equation relating price and number of tickets sold, we could approximate the number of tickets to be sold at prices that are not on the list.</p>
+        <p>The general pattern of the points in the graph in <xref ref="scatterplot-of-the-ticket-data-summed" text="type-local" /> is linear. If we place a pencil over the graph of the data, we see that the pencil does a good job of modeling the relationship between the two variables. </p>
+
+        <figure xml:id="pencil-model">
+          <caption>Pencil Model</caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = Price,
+                  ylabel = Number of Tickets,
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0,
+                  xmax = 200,
+                  ymin = 0,
+                  ymax = 1000,
+                  xtick={20,40,...,200},
+                  ytick={100,200,...,1000},
+                  minor tick num=1,
+                  ]
+
+                  \addplot [thick, blue, mark=*, only marks] coordinates {
+                      (50.00,765)   (75.00,620)
+                      (90.00,540)    (95.00,495)
+                      (115.00,410)  (135.00,290)
+                      (150.00,210)   (175.00,150)
+                  };
+                  \addplot [thick, red, mark=none, domain=0:200, samples=200] {-200/39*x + 1000};
+
+                \end{axis}
+              \end{tikzpicture}]]>
+
+            </latex-image>
+          </image>
+        </figure>
+        <p>What is the equation of the line represented by the pencil? There are a number of ways to find an equation of a line that does a good job of modeling the data set. We will look at two standard techniques later in this chapter. For now, a quick estimate will do. It appears from the graph that the price-intercept (where the ticket sales are zero) is approximately <dollar /><m>195</m> dollars. The ticketintercept (where the price is zero) is approximately <m>1000</m> tickets. This means that the two points <m>(195,0)</m> and <m>(0, 1000)</m> lie on our line. The equation of the line passing through these two points is <me>\text{Tickets} = - \frac{200}{39} \cdot \text{Price} + 1000</me>.</p>
+        <p>Using function notation, we say that the number of tickets sold, <m>T</m>, is a function of price, <m>P</m>, and write <me>T \left(P \right) = - \frac{200}{39} \cdot P + 1000</me>.</p>
+        <p>Using this function, we can predict how many tickets will be sold for different prices. For example, if we charge <dollar /><m>60</m> per ticket, we would expect to sell around <m>T\left(60 \right) \approx 692</m> tickets, while if we charge <dollar /><m>110</m>, we would expect to sell only around <m>T\left(100 \right) \approx 436</m>.</p>
+        <p>When working on multiple-step problems, it is easy to lose your focus and forget how the present process helps reach the final goal. It is important to stop periodically to compare where we are in the process of solving the problem with our original goal. The students want to find a relationship between the price they charge and the revenue from the sale of the tickets. They want this model so they can determine the price to charge to make the most money. The function <m>T \left( P \right) = - \frac{200}{39} + 1000</m> doesn’t tell us this directly. It only tells us how many tickets we can expect to sell for a specified price. It is important to note that this is not what we wanted to find, but it is what we could find from the data the students gathered. We can now use this function to answer the question we really want to know, that is, what price will bring in the most money?</p>
+        <p>We know that if we charge <dollar /><m>60</m>, we would expect to sell around <m>692</m> tickets and bring in around <dollar /><m>41,520</m>. If we sell the tickets at <dollar /><m>110</m> each, we will sell only around <m>436</m> of them, but <m>436</m> tickets sold for <dollar /><m>110</m> each brings in <dollar /><m>47,960</m>, so a price of <dollar /><m>110</m> is better than <dollar /><m>60</m>. The revenue expected from the sale of the tickets is the product of the number of tickets expected to be sold, given by <m>T \left(P \right)</m>, and the price, <m>P</m>. Written in function notation, we say that the revenue, <m>R</m>, generated from the sale of <m>T \left(P \right)</m> tickets is <me>R \left(P \right) = P \cdot P \left( T \right) = P \left( - \frac{200}{39}P + 1000 \right)</me>.</p>
+        <p>In this case, revenue is a quadratic function of price. A view of the revenue function is given by looking at its graph <xref ref="graph-of-revenue" text="type-local" />, which we recognize as a parabola.</p>
+
+        <figure xml:id="graph-of-revenue">
+          <caption>Graph of revenus function <m>R \left(P \right) = P \left( - \frac{200}{39}P + 1000 \right)</m></caption>
+          <image>
+            <latex-image>
+              <![CDATA[
+              \begin{tikzpicture}
+                \begin{axis}[
+                  xlabel = Price,
+                  ylabel = Revenue,
+                  ylabel near ticks,
+                  xlabel near ticks,
+                  xmin = 0,
+                  xmax = 200,
+                  ymin = 0,
+                  ymax = 50000,
+                  xtick={50,100,...,250},
+                  ytick={10000,30000,50000},
+                  minor tick num=1,
+                  ]
+
+                  \addplot [thick, blue, mark=none, domain=0:200, samples=200] {-200/39*x^2 + 1000*x};
+
+                \end{axis}
+              \end{tikzpicture}]]>
+
+              </latex-image>
+            </image>
+          </figure>
+
+          <p>To find the price that will generate the maximum revenue, we need to recall what we learned about quadratic functions in earlier courses. We know that a parabola has a vertex, which in this problem represents the maximum revenue for the students’ project. We could use our calculators to approximate the coordinates of the vertex, but it is quicker to recall that the vertex of a parabola is mid-way between the zeros. From our function, we know that <m>R \left(P \right) = 0</m> at <m>P = 0</m> and <m>P = 195</m>, so the vertex is located at <m>P = \frac{195 - 0}{2} = 97.5</m>. Thus, we should charge <dollar /><m>97.50</m> for the tickets. If we charge <dollar /><m>97.50</m>, we expect to sell around <m>500</m> tickets and to receive <dollar /><m>48,750</m> in revenue.</p>
+        </subsection>
+
+        <subsection>
+          <title>Reviewing the Process</title>
+          <p>Let’s step back and look at what we have done in this problem. We were faced with a question, “What price should the seniors charge to maximize the money brought in by the project?” We had some ideas about the relationship between the price and participation. We believed that the more they charged for a ticket, the fewer tickets they would sell but these ideas were not quantified. We needed to determine how much participation would drop with each dollar increase in price.</p>
+          <p>To quantify this relationship, we looked at the information from the parents’ survey. We realized that the data generated from the survey did not directly lead to the desired relationship. To find the number of tickets they could expect to sell at each price, we had to create a new data set by accumulating the survey data. After creating a data set that represented this relationship, we looked at the graph of the scatterplot and observed a linear pattern. We then used our knowledge of lines to fit a linear model to approximate the number of tickets to be sold for prices that were not on the survey.</p>
+          <p>Once we had a linear model for the expected level of participation, we used this to generate a quadratic function that modeled the expected revenue. Lastly, we used our knowledge of quadratic functions to find the optimum price and the maximum revenue.</p>
+          <p>Throughout the process, we had to stay focused on the question at hand. We made progress by calling upon mathematics at some points and our understanding of the problem setting at others. In this particular problem, the mathematics of finding the equation of a line and finding the vertex of a parabola should be familiar. However, the process of modeling and knowing when and how to use those mathematical techniques may be new. Don’t be concerned if you could not have done this problem on your own. Learning precalculus mathematics and how to use that mathematics in problem settings such as this one is what this course is all about.</p>
+        </subsection>
+
+        <exercises>
+          <!-- Exercise 1 -->
+          <exercise>
+            <statement>
+              <p>In the linear equation for the number of tickets sold, <m>T \left(P \right) = - \frac{200}{39}P + 1000</m>, interpret the meaning of the slope, the <m>P</m>-intercept, and the <m>T</m>-intercept in the context of the model.</p>
+            </statement>
+          </exercise>
+
+          <!-- Exercise 2 -->
+          <exercise>
+            <statement>
+              <p>What question would the students ask if they wanted to generate the values in <xref ref="results-of-the-survey-summed" text="type-local" /> directly from their questionnaire?</p>
+            </statement>
+          </exercise>
+
+          <!-- Exercise 3 -->
+          <exercise>
+            <statement>
+              <p>Suppose we thought that the responses received from the questionnaire represented a sample of the <m>811</m> families. Those who didn’t return their surveys are still interested, but they either forgot or didn’t have time to fill out the survey. In this case, we could assume that the number of families interested follows proportionally from the results of the survey. That is, since <m>80</m> of the <m>765</m> responses, or <m>10.46</m><percent />, reported that the most they would pay would be <dollar /><m>75</m>, then <m>10.46</m><percent /> of the total population of <m>811</m> families would be willing to pay at most <dollar /><m>75</m> for the tickets. Rework the problem based on this assumption and determine the “best” price.</p>
+            </statement>
+          </exercise>
+
+        </exercises>
+</section>
