@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section11" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>The Double Ferris Wheel Investigation</title>
+  <introduction>George W. G. Ferris, a U.S. engineer from Galesburg, Ill., designed and built the first “Ferris” wheel for the World's Columbian Exposition held in Chicago in 1892. This wheel was 250 ft in diameter and 260 ft from ground to top. The wheel carried 36 cars with a seating capacity of 40 passengers each; its total weight was 220 tons. It took 20 minutes for the wheel to make one revolution. Use your calculator to graph the path a rider follows when riding the first Ferris Wheel.</introduction>
+
+  <p>
+  <ol>
+    <li>Suppose the radius of the Ferris wheel is 25 feet with the center of the wheel located 30 feet off the ground.  The wheel rotates counterclockwise and completes one cycle every 60 seconds.  Assume the ride begins at the lowest point on the wheel.  Describe the vertical and horizontal position of a person riding the Ferris wheel over time using parametric equations.  Sketch a graph showing the position of the rider in the first two minutes of the ride. In parametric mode, plot the path of the rider on your graphing calculator.
+    <figure xml:id="ferris-wheel-image">
+     <caption>The Ferris Wheel</caption>
+     <image source="./images/ferris-wheel-image.jpg" width="50%"></image>
+    </figure>
+    </li>
+    <li>Modify the parametric equations to establish <m>(0,0)</m> of the coordinate system as the center of the Ferris wheel. In parametric mode, plot the path of the rider on your graphing calculator.</li>
+    <li>Change the parametric equations of question 2 so that the Ferris wheel rotates clockwise.</li>
+    <li>
+    <p>A double Ferris wheel is an exciting ride.  As shown in <xref ref="ferris-wheel-image" text="type-local" />, a 50-foot bar is attached to the support at the center of the bar, and the bar revolves once every 60 seconds.  Seats for riders are evenly spaced along two separate wheels, each revolving at the end of the long bar.  Each small wheel makes one complete revolution every 15 seconds and has a radius of 10 feet.  Assume both the bar and the wheels are rotating counterclockwise,  the rider begins at the lowest point, and the small wheel turns independently of the bar.</p>
+    <p>Write equations that describe the vertical and horizontal position of the rider over time.  Establish the point <m>(0,0)</m> of the coordinate system as the center of the bar.  In parametric mode, plot the path of the rider on your graphing calculator.  In function mode, plot the vertical position of the rider over time, and plot the horizontal position of the rider over time.</p>
+    <p>Predict the number of cycles in the ride every minute.  Does the graph verify this value?</p>
+    <figure xml:id="double-ferris-wheel-image">
+     <caption>The Double Ferris Wheel</caption>
+     <image source="./images/double-ferris-wheel-image.jpg" width="50%"></image>
+    </figure>
+    </li>
+    <li>
+    <p>When looking at a double Ferris wheel or creating an animation or a physical model, we discover the small wheels do not turn independently of the bar.  The small wheel turns some on its own; it also turns a small amount because the bar is turning too.  The original horizontal and vertical axis centered at the end of the bar turns when the bar moves.  Therefore, the angle the small wheel turns is the sum of the rotation of the small wheel and the rotation of the bar.
+    <figure xml:id="motion-double-ferris-wheel-image">
+     <caption>Motion of One Second</caption>
+     <image source="./images/motion-double-ferris-wheel-image.jpg" width="50%"></image>
+    </figure>
+    For example, <xref ref="motion-double-ferris-wheel-image" text="type-local" /> allows us to  follow the motion of the bar and the wheel of the double Ferris wheel for one second. The figure is not drawn to scale so the motions of the bar and wheel may be more easily seen. Assume the rider begins at point <m>S</m> in <xref ref="motion-double-ferris-wheel-image" text="type-local" />.  One second later the rider is at point <m>T</m> of <xref ref="motion-double-ferris-wheel-image" text="type-local" />.  In that second, the bar has completed one-sixtieth of a cycle or the bar has turned counterclockwise <m>\frac{1}{60}(2\pi)=\frac{2\pi}{60}</m> or <m>6^\circ</m>.  Also during that second, the small wheel has completed one-fifteenth of a cycle or has turned counterclockwise <m>\frac{1}{15}(2\pi)=\frac{2\pi}{15}</m> or <m>24^\circ</m>.  Therefore the small wheel has rotated through angle <m>B</m> and because the bar turns, also through angle <m>A</m>.  Therefore the rider on the small wheel has rotated <m>\frac{2\pi}{60}+\frac{2\pi}{15}</m>.
+    </p>
+
+	  <p>With this refinement of the model,  the equations for vertical and horizontal position are,
+    <me>x(t)=25\sin \left(\frac{2\pi t}{60} \right)+10\sin \left(\frac{2\pi t}{15}+\frac{2\pi t}{60} \right)</me>
+    <me>y(t)=-25\cos \left(\frac{2\pi t}{60} \right)-10\cos \left(\frac{2\pi t}{15}+\frac{2\pi t}{60} \right)</me>
+
+    Sketch a graph of the path of the rider with these modifications.  How many cycles does the rider pass through in one minute?
+    </p>
+    </li>
+    <li>A method to study the cycles of the rider is to determine the distance of the rider from the center of the bar over time <m>t</m>.  Since the rider’s position is described by the ordered pair <m>(x,y)</m>, the distance between the center <m>(0,0)</m> and <m>(x,y)</m> can be measured using the distance formula.  Write a function to describe the rider’s distance from the center as a function of time.  Graph the function to determine the number of cycles per minute.</li>
+    <li>What equations describe the vertical and horizontal position of the rider if the bar rotates clockwise every 60 seconds and the small wheel rotates counterclockwise every 15 seconds?  When graphed in parametric mode, what features of the graph change?  Does the ride seem more exciting if both wheels are turning counterclockwise or if the wheels are going in opposite directions?  Graph the function that describes the distance of the rider from the center of the Ferris wheel over time.  Determine the number of cycles per minute.</li>
+    <li>Experiment with changes in the time for the small wheel to complete one rotation.  How do these changes affect the path of the rider?  Which rides seem most exciting?</li>
+    <li>What is the highest point of the double Ferris wheel ride as described in question 5?  Can you find this value algebraically?  Support your answer.</li>
+  </ol>
+  </p>
+
+</section>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section04" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Using Symmetries of the Unit Circle</title>
+  <introduction></introduction>
+    <p>Earlier in this chapter, we defined the sine and cosine functions using a unit circle.  The unit circle has many symmetries which help us find values of the circular functions.  In this section we will explore those symmetries and relate them to the sine and cosine functions.</p>
+
+    <p>The circle <m>x^2 + y^2 = 1</m> is symmetric about the origin and all lines that pass through the origin, including the <m>x-</m> and <m>y-</m>axes.  Therefore, if the coordinates of one point on the circle are known, the coordinates of three other points can easily be determined. For example, the point <m>P</m> shown in <xref ref="unit-circle-image16" text="type-local" /> has coordinates <m>\left(a,b \right)</m>. Because of symmetry about the <m>y-</m>axis, the coordinates of point <m>Q</m> in the second quadrant are <m>\left(a-,b \right)</m>. Because of symmetry about the origin, the coordinates of point R in the third quadrant are <m>\left(-a,-b \right)</m>.  Because of symmetry about the <m>x-</m>axis, the coordinates of point <m>S</m> in the fourth quadrant are <m>\left(a,-b \right)</m>.</p>
+
+      <figure xml:id="unit-circle-image16">
+        <caption>Symmetry of the Unit Circle</caption>
+        <image source="./images/unit-circle-image16.jpg" width="50%"></image>
+      </figure>
+
+    <p>How does this symmetry relate to the circular functions? To explore this Question, suppose an arc of length <m>s</m> begins at <m>\left(1, 0\right)</m> and ends at point <m>P</m>.  What length arc would terminate at <m>Q</m>?  Since a person starting at <m>\left(1, 0\right)</m> can get to <m>Q</m> by walking <m>\pi</m> units in the counterclockwise direction followed by <m>s</m> units in the clockwise direction, an arc of length <m>\pi-s</m> will end at <m>Q</m>.  Similarly, an arc of length <m>\pi+s</m> will end at <m>R</m>.  Verify that an arc of length <m>2\pi-s</m> and an arc of length <m>-s</m> will both end at <m>S</m> see <xref ref="unit-circle-image16" text="type-local" />.</p>
+
+      <figure xml:id="unit-circle-image17">
+        <caption>Arc Lengths on the Unit Circle</caption>
+        <image source="./images/unit-circle-image17.jpg" width="50%"></image>
+      </figure>
+
+    <p>The information in <xref ref="unit-circle-image16" text="type-local" /> and <xref ref="unit-circle-image17" text="type-local" /> can be combined with the definitions of sine and cosine to yield some important relationships. Recall that <m>\sin \left(s \right)</m> is equal to the <m>y-</m>coordinate of <m>P</m> and <m>\cos \left(s \right)</m> is equal to the <m>x-</m>coordinate of <m>P</m>.  Since <m>P</m> and <m>Q</m> have the same <m>y-</m>coordinate, <m>\sin \left(s \right)</m> and <m>\sin \left(\pi - s \right)</m> are equal. Similarly, since <m>P</m> and <m>S</m> have the same <m>x-</m>coordinate, <m>\cos \left(s \right)</m>,  <m>\cos \left(2\pi - s \right)</m>, and <m>\cos \left(- s \right)</m> are equal. Since <m>P</m> and <m>R</m> have opposite <m>x-</m>coordinates and opposite <m>y-</m>coordinates,  <m>\sin \left(\pi + s \right)=-\sin \left(s \right)</m> and <m>\cos \left(\pi + s \right)=-\cos \left(s \right)</m>.  Each of these equations is an identity because each is true for all values of <m>s</m>.</p>
+
+    <example>
+      <statement>
+        <p>Suppose you know that <m>\sin s = \frac{5}{13}</m>.  Find the exact values of  <m>\sin \left(\pi - s \right)</m>, <m>\sin \left(\pi + s \right)</m>,  and <m>\cos \left(s \right)</m>.</p>
+        </statement>
+        <solution>
+          <p>Due to the symmetry of the circle, arcs of length <m>s</m> and <m>\pi - s</m> have endpoints with the same <m>y-</m>coordinates, and therefore have the same sine value. Thus, <m>\sin \left(\pi - s \right)=\frac{5}{13}</m>.  The endpoints of arcs of length <m>s</m> and <m>\pi + s</m> have opposite <m>y-</m>coordinates, and therefore have opposite values of sine.  Thus <m>\sin \left(\pi + s \right)=-\frac{5}{13}</m>. There are two possible locations of the endpoints for arcs of length <m>s</m>: <m>\pi - s</m> and <m>\pi + s</m>. Since the sine of <m>s</m> is a positive number, <m>s</m> must end in either the first or second quadrant.  If <m>s</m> ends in the first quadrant, then <m>\pi - s</m> ends in the second quadrant and <m>\pi + s</m> ends in the third quadrant which is shown in <xref ref="unit-circle-image18" text="type-local" />.  If <m>s</m> ends in the second quadrant, then <m>\pi - s</m> ends in the first quadrant, and <m>\pi + s</m> ends in the fourth quadrant (shown in <xref ref="unit-circle-image19" text="type-local" />.  Both of these possibilities are consistent with the fact that <m>\sin \left(\pi - s \right)</m> is positive and <m>\sin \left(\pi + s \right)</m> is negative.
+          </p>
+
+            <figure xml:id="unit-circle-image18">
+              <caption>Arcs of Length <m>s</m>, <m>\pi - s</m> and <m>\pi + s</m>, in which <m>0 \lt s \lt \frac{\pi}{2}</m></caption>
+              <image source="./images/unit-circle-image18.jpg" width="50%"></image>
+            </figure>
+
+            <figure xml:id="unit-circle-image19">
+              <caption>Arcs of Length <m>s</m>, <m>\pi - s</m> and <m>\pi + s</m>, in which <m>\frac{\pi}{2} \lt s \lt \pi</m></caption>
+              <image source="./images/unit-circle-image19.jpg" width="50%"></image>
+            </figure>
+
+          <p>To find the values of <m>\cos \left(s \right)</m> we will use the fact that <m>\sin \left(s \right)</m> and <m>\cos \left(s \right)</m>  are the <m>y-</m> and <m>x-</m>coordinates of a point on the unit circle, respectively, and <m>\cos^2 \left(s \right)=1-\sin^2 \left(s \right)</m>.  Since <m>\sin \left(s \right)=\frac{5}{13}</m>, we know that <m>\cos^2 \left(s \right)=1-\left(\frac{5}{13} \right)^2</m>, and therefore <me>\cos \left(s \right) =  \pm \sqrt {1 - \frac{25}{169}}  =  \pm \sqrt {\frac{144}{169}}  =  \pm \frac{12}{13}</me></p>
+
+          <p>In order to determine whether the cosine of <m>s</m> is positive or negative, we need to know whether <m>s</m> ends in the first or the second quadrant.  Note that <m>\pm \frac{12}{13}</m> are exact values for <m>\cos \left(s \right)</m> and not decimal approximations.  If decimal approximations are used, <m>\sin \left(s \right) \approx 0.3846</m> and <m>\cos \left(s \right) = \sqrt{1-\left(0.3846 \right)^2} \approx \pm 0.9231</m>, which is not exactly equal to <m>\pm \frac{12}{13}</m>.  Also, <m>\left(0.3846 \right)^2+\left(0.9231 \right)^2</m> does not equal exactly 1. In many cases, decimal approximations are satisfactory; however, there are situations in which exact values are important.</p>
+        </solution>
+    </example>
+
+    <example>
+      <statement>
+        <p>Suppose an arc of length <m>L</m> terminates in the second quadrant, and <m>\sin L = 0.62</m> (see <xref ref="unit-circle-image20" text="type-local" />).  Find <m>\sin \left(\pi - L \right)</m>, <m>\cos L</m>, and <m>\tan \left(- L \right)</m>.</p>
+
+          <figure xml:id="unit-circle-image20">
+            <caption>Arcs of Length <m>s</m>, <m>\pi - s</m> and <m>\pi + s</m>, in which <m>\frac{\pi}{2} \lt s \lt \pi</m></caption>
+            <image source="./images/unit-circle-image20.jpg" width="50%"></image>
+          </figure>
+
+      </statement>
+      <solution>
+        <p>As before, we use the symmetry of the circle to recognize that <m>L</m> and <m>\pi - L</m> have the same sine.  Thus <me>>\sin \left(\pi - L \right)=0.62</me> Since <m>\sin^2 \left(L \right)+\cos^2 \left(L \right)=1</m>, we know that <m>\cos \left(L \right)= \pm \sqrt{1 - \sin^2 \left(L \right)}</m>. Now, <m>L</m> terminates in the second quadrant, so its cosine must be negative.  Thus, we have <me>\cos \left(L \right) = - \sqrt{1 - \left(0.62 \right)^2} \approx -0.7846</me> Since the tangent function is defined as <m>\frac{\sin \left(L \right)}{\cos \left(L \right)}</m>, we know that <m>\tan \left(-L \right)=\frac{\sin \left(-L \right)}{\cos \left(-L \right)}</m>. Recall that sine is an odd function, so <m>\sin \left(-L \right)=-\sin \left(L \right)</m>,  and cosine is an even function, so <m>\cos \left(-L \right)=\cos \left(L \right)</m>.  This means that tangent is also and odd function, since <m>\tan \left(-L \right)=\frac{\sin \left(-L \right)}{\cos \left(-L \right)}=-\frac{\sin L}{\cos L}=-\tan \left(L \right)</m>. <me>\tan \left(-L \right)=\frac{-\sin \left(L \right)}{\cos L} \approx \frac{-0.62}{-0.7846} \approx 0.7902</me></p>
+      </solution>
+    </example>
+
+    <example>
+      <statement>
+        <p>Evaluate <m>\sin \left(\frac{\pi}{4} \right)</m> and <m>\cos \left(\frac{\pi}{4} \right)</m>.</p>
+      </statement>
+      <solution>
+        <p>Let point <m>P</m> with coordinates <m>\left(a,b \right)</m> be the endpoint of the arc that begins at <m>\left(1,0 \right)</m> and has length <m>\left(\frac{\pi}{4} \right)</m>.  Note that <m>a=\cos \left(\frac{\pi}{4} \right)</m> and <m>b=\sin \left(\frac{\pi}{4} \right)</m>.  <xref ref="unit-circle-image21" text="type-local" /> shows that <m>P</m> lies on the line <m>y=x</m>, which implies that <m>a=b</m>.</p>
+
+          <figure xml:id="unit-circle-image21">
+            <caption>Arc of Length <m>\frac{\pi}{4}</m> on the Unit Circle</caption>
+            <image source="./images/unit-circle-image21.jpg" width="50%"></image>
+          </figure>
+
+        <p>Since <m>P</m> is on the unit circle, its coordinates must satisfy the equation of the circle, which is <m>x^2+y^2=1</m>.  Therefore, <me>a^2+b^2=1</me> Substituting <m>c=s</m> gives
+          <md>
+            <mrow>a^2+a^2=1</mrow>
+            <mrow>2a^2=1</mrow>
+            <mrow>a^2=\frac{1}{2}</mrow>
+          </md>
+        Since we know that point <m>P</m> is in the first quadrant, <m>a</m> is positive. <me>a=\sqrt{\frac{1}{2}}=\frac{\sqrt 2}{2}</me> We chose the positive square root for the value of <m>c</m> because <m>P</m> is in the first quadrant. Since <m>c=s</m>, we know that both <m>c</m> and <m>s</m> have the value <m>\frac{\sqrt 2}{2}</m>.  This means that <m>\sin \left(\frac{\pi}{4} \right) = \frac{\sqrt 2}{2}</m> and <m>\cos \left(\frac{\pi}{4} \right) = \frac{\sqrt 2}{2}</m>. Using these values of  <m>\sin \left(\frac{\pi}{4} \right)</m> and <m>\cos \left(\frac{\pi}{4} \right)</m>, you can evaluate sine and cosine of <m>\pm \frac{3\pi}{4}</m>, <m>\pm \frac{5\pi}{4}</m>, <m>\pm \frac{7\pi}{4}</m>, and so on, just by using the unit circle’s symmetries.</p>
+      </solution>
+    </example>
+
+    <exercises>
+      <title>Exercises</title>
+
+      <!-- Practice Problem #1 -->
+      <exercise>
+        <statement>
+          <p>Use the symmetry of the unit circle to explain the fact that cosine is an even function.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #2 -->
+      <exercise>
+        <statement>
+          <p>Use the symmetry of the unit circle to explain the fact that sine is an odd function.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #3 -->
+      <exercise>
+        <statement>
+          <p>Evaluate <m>\sin \left(\frac{\pi}{6} \right)</m> and <m>\cos \left(\frac{\pi}{6} \right)</m> using geometric arguments like those used in Example 6. You should get exact values, not decimal approximations. Compare your exact values with the decimal approximations you can obtain with your calculator.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #4 -->
+      <exercise>
+        <statement>
+          <p>Label a unit circle with the endpoints of the arcs which begin at <m>\left(1,0 \right)</m> and have length <m>\frac{\pi}{6}</m>, <m>\frac{\pi}{4}</m>, <m>\frac{\pi}{3}</m>, <m>\frac{\pi}{2}</m>, <m>\frac{2\pi}{3}</m>, <m>\frac{3\pi}{4}</m>, <m>\frac{5\pi}{6}</m>, <m>\pi</m>, <m>\frac{7\pi}{6}</m>, <m>\frac{5\pi}{4}</m>, <m>\frac{4\pi}{3}</m>, <m>\frac{3\pi}{2}</m>, <m>\frac{5\pi}{3}</m>, <m>\frac{7\pi}{4}</m>, <m>\frac{11\pi}{6}</m>.  Use exact values you know and symmetries of the unit circle to label the coordinates of each endpoint.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #5 -->
+      <exercise>
+        <statement>
+          <p>Use the symmetry of the circle and your knowledge of the exact values determined in Example 5, Example 6, and Exercise 3 to evaluate the following without using your calculator.</p>
+            <md>
+                <mrow>\text{a. } \amp \sin \left(-\frac{5\pi}{4} \right)  \amp \text{b. } \amp \sin \left(\frac{71\pi}{6} \right)  \amp \text{c. } \amp \sin \left(\frac{5\pi}{3} \right)</mrow>
+                <mrow>\text{d. } \amp \sin \left(\frac{23\pi}{3} \right)  \amp \text{e. } \amp \cos \left(\frac{33\pi}{4} \right)  \amp \text{f. } \amp \sin \left(-\frac{21\pi}{2} \right)</mrow>
+              </md>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #6 -->
+      <exercise>
+        <statement>
+          <p>If <m>\cos t = -\frac{1}{4}</m> and <m>t</m> ends in the second quadrant, find the exact value of <m>\sin t</m> without finding <m>t</m>.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #7 -->
+      <exercise>
+        <statement>
+          <p>If <m>\sin \theta = -\frac{9}{25}</m> and <m>\theta</m> ends in the fourth quadrant, find the exact value of each of the following. (\textbf{Hint: }Finding <m>\theta</m> first will not give an exact value.)</p>
+            <ol label="a.">
+              <li><m>\sin \left(-\theta \right)</m></li>
+              <li><m>\cos \left(\theta \right)</m></li>
+            </ol>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #8 -->
+      <exercise>
+        <statement>
+          <p>In the following problems, use symmetry to find all other possible values for <m>t</m>.</p>
+            <ol label="a.">
+              <li>Suppose <m>\sin t = 0.14</m> and one value of <m>t</m> is approximately 3.00, accurate to two decimal places.</li>
+              <li>Suppose <m>\cos s = 0.85</m> and one value of <m>s</m> is approximately 0.5548, accurate to two decimal places.</li>
+              <li>Suppose <m>\sin x = 0.3</m> and <m>x</m> ends in the second quadrant. Find the value of <m>x</m> accurate to four decimal places.</li>
+              <li>Suppose <m>\cos t = -0.548</m> and <m>t</m> ends in the third quadrant. Find the value of <m>t</m> accurate to four decimal places.</li>
+            </ol>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #9 -->
+      <exercise>
+        <statement>
+          <p>If an arc of length <m>t</m> ends in the first quadrant and <m>\cos t = \frac{2}{3}</m>, find the exact value of <m>\sin t</m> (without finding <m>t</m>).</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #10 -->
+      <exercise>
+        <statement>
+          <p>If an arc of length <m>t</m> ends in the first quadrant and <m>\cos t = \frac{2}{3}</m> find the value <m>t</m>.  Then, using the value of <m>t</m> and a calculator, find the approximate value of <m>\sin t</m>.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #11 -->
+      <exercise>
+        <statement>
+          <p>Compare the exact value of <m>\sin t</m> from question 1 to the decimal approximation you obtained in question 2.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #12 -->
+      <exercise>
+        <statement>
+          <p>Suppose that an arc of length a ends at a point in the first quadrant whose <m>x-</m>coordinate is 0.44.  Find <m>\sin a</m>, <m>\cos \left(a+ \pi \right)</m> and <m>\sin \left(2\pi - a \right)</m> without first finding the value of <m>a</m>.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #13 -->
+      <exercise>
+        <statement>
+          <p>Suppose we know that <m>\cos t = z</m> and that <m>t</m> ends in the fourth quadrant.  Express each of the following in terms of <m>z</m>.</p>
+            <md>
+              <mrow>\text{a. } \amp \sin t                      \amp \text{b. } \amp \cos \left(-t \right)                \amp \text{c. } \amp \cos \left(\frac{\pi}{2} - t \right)</mrow>
+              <mrow>\text{d. } \amp \cos \left(\pi - t \right)  \amp \text{e. } \amp \sin \left(\frac{\pi}{2} + t \right) \amp \text{f. } \amp \sin \left(t + 2\pi \right)</mrow>
+            </md>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #14 -->
+      <exercise>
+        <statement>
+          <p>Suppose we know that <m>\sin \left(s \right) = q</m> and that <m>s</m> ends in the fourth quadrant. Express each of the following in terms of <m>q</m>.</p>
+
+            <md>
+              <mrow>\text{a. } \amp \cos s                      \amp \text{b. } \amp \sin \left(-s \right)                \amp \text{c. } \amp \cos \left(\frac{\pi}{2} - s \right)</mrow>
+              <mrow>\text{d. } \amp \cos \left(\pi - s \right)  \amp \text{e. } \amp \sin \left(\frac{\pi}{2} + s \right) \amp \text{f. } \amp \sin \left(s + 2\pi \right)</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+    </exercises>
+</section>

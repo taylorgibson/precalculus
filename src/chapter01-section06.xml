@@ -336,7 +336,7 @@
           <p>After 15 weeks, the body mass (given below as weight, in ounces) and fat volume (given below in cubic inches) were measured in all thirty mice. The two plots below show, separately for each group, a scatterplot of fat volume versus body mass for the mice in the group. Superimposed on each plot is the average fat volume for the mice in that group, and the least-squares regression line of fat volume versus body mass for the mice in that group.
           <figure xml:id="mice-fat-diagram-image">
             <caption>Mice diagram</caption>
-            <image source="./images/mice-fat-diagram-image.jpg" width="80%"></image>
+            <image source="./src/images/chapter01/chapter01-section-06-mousefat.png" width="80%"></image>
           </figure>
               <ol>
               <li>You should be able to tell from the graph (without doing any calculations) what the mean body mass is for the mice in each group. Estimate the mean body mass for the mice in each group.</li>
@@ -434,7 +434,7 @@
           <p>
             <figure xml:id="voter-punch-card-image">
               <caption>Voter Punch Card</caption>
-              <image source="./images/voter-punch-card-image.jpg" width="80%"></image>
+              <image source="./src/images/chapter01/chapter01-section-06-punchcard.png" width="80%"></image>
             </figure>
           </p>
           <p>

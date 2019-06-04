@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section07" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Solving Trigonometric Equations</title>
+  <introduction></introduction>
+   <p>Applications of trigonometry frequently involve modeling a situation with a trigonometric function.  After the model is determined, questions about the situation can be answered by solving an equation based on the model.  The examples in this section will illustrate several techniques for solving trigonometric equations.</p>
+
+   <subsection>
+    <introduction></introduction>
+     <title>Class Practice</title>
+      <ol>
+       <li>Suppose <m>\theta</m> is a number whose cosine is 0.3.  Illustrate what this means using a triangle.</li>
+       <li>Suppose <m>\theta</m> is a number whose cosine is 0.3.  Illustrate what this means using a unit circle.</li>
+       <li>Suppose <m>\theta</m> is a number whose cosine is 0.3.  Illustrate what this means using the graph of the cosine function.</li>
+       <li>Discuss the relationship between the three different representations of a number whose cosine is 0.3.</li>
+      </ol>
+  </subsection>
+
+  <example>
+   <statement>
+    <p>Solve <m>\cos x=0.3</m>.</p>
+   </statement>
+
+   <solution>
+    <p>The solutions of this equation are numbers whose cosine is 0.3. If you think of this problem in terms of the unit circle, solutions are arc lengths that terminate at points whose <m>x-</m>coordinate is 0.3. You can also think of this problem in terms of the cosine curve, where solutions are the <m>x-</m>coordinates of points of intersection of <m>y=\cos x</m> and <m>y=-0.3</m> <xref ref="cosine-image" text="type-local" />.  Either way you visualize this problem, it should be clear that there are infinitely many numbers whose cosine is 0.3. If <m>x=a</m>is one solution, then by the symmetry of the circle or symmetry of the graph <m>f\left(x \right)=\cos x</m>, <m>x=-a</m> is  another solution.</p>
+
+    <figure xml:id="cosine-image">
+     <caption>Solutions of <m>\cos x=0.3</m></caption>
+     <image source="./images/cosine-image.jpg" width="50%"></image>
+    </figure>
+
+    <p>One solution of <m>\cos x=0.3</m> can be found using your calculator in radian mode: evaluating <m>\cos^{-1} 0.3</m> gives approximately <m>1.2661</m>. Using the symmetry of either the graph of the cosine function or the unit circle, <m>-1.2661</m> is another number whose cosine is 0.3. Because of the periodicity of the cosine function, adding multiples of <m>2\pi</m> to <m>\pm 1.2661</m> will yield more solutions. The complete set of solutions is <m>x=\pm 1.2661+2k\pi</m>, where <m>k</m> is any integer.  One of these solutions, <m>x=1.2661</m>, is also the radian measure of an angle in a right triangle. This is the angle for which the ratio <m>\frac{\text{length of adjecent leg}}{\text{length of hypotenuse}}</m> is equal to 0.3.</p>
+
+    <p>Once we know that <m>\cos^{-1} 0.3=1.2661</m> from the calculator, there is another method to find the second value that produces a cosine value of 0.3. Studying the graph of <m>y=\cos x</m> or the unit circle we see there are two values in the interval <m>\left[0,2\pi \right]</m> that produce a cosine value of 0.3. There is one value at <m>x=1.2661</m> and another at <m>x=2\pi-1.2661=5.0171</m>. The value at <m>x=2\pi-1.2661</m> produces the same set of numbers as <m>-1.2661</m> when multiples of <m>2\pi</m> are added to <m>-1.2661</m>.  That is, if we let <m>k=1</m> in <m>-1.2661+2k\pi</m> we obtain <m>5.0171</m>.</p>
+
+    <p>Suppose the equation in Example 1 is modified to be <m>\cos \left(\frac{5x-1}{3} \right)=0.3</m>. The technique for solving this equation is similar to the technique used for <m>\cos x=0.3</m>. However, in the new equation the argument of cosine is <m>\frac{5x-1}{3}</m> instead of <m>x</m>. Therefore, instead of having solutions <m>x=\pm 1.2661+2k\pi</m>, the new equation has solutions <m>\frac{5x-1}{3}=\pm 1.2661+2k\pi</m>, where <m>k</m> is any integer. The equation <m>\frac{5x-1}{3}=\pm 1.2661+2k\pi</m> must be solved for <m>x</m>.</p>
+
+    <md>
+     <mrow>5x-1 \amp =3\left(\pm 1.2661+2k\pi \right)</mrow>
+     <mrow>5x \amp =1+3\left(\pm 1.2661+2k\pi \right)</mrow>
+     <mrow>x \amp =\frac{1+3\left(\pm 1.2661+2k\pi \right)}{5}</mrow>
+     <mrow>x \amp =\frac{1 \pm 3.7983+6k\pi}{5}</mrow>
+    </md>
+
+    <me>x=0.9597+\frac{6k\pi}{5} \text{ or } x=-0.5597+\frac{6k\pi}{5}.</me>
+
+    <p>Notice that the modified equation, <m>\cos \left(\frac{5x-1}{3} \right)=0.3</m>, has a period of <m>\frac{6\pi}{5}</m> which corresponds to the <m>\frac{6\pi}{5}</m> added to each of the solutions to the equation.</p>
+  </solution>
+ </example>
+
+ <subsection>
+  <introduction></introduction>
+   <title>Class Practice</title>
+    <p>Use the results of Example 1 to help you solve <m>\cos \left(\frac{1}{2}x-6 \right)=0.3</m>. How are the solutions of the equations similar to each other? How are they different?</p>
+ </subsection>
+
+ <example>
+  <statement>
+   <p>Find all solutions of <m>\sin \left(2x \right)=-0.5</m> between 0 and <m>2\pi</m>.</p>
+  </statement>
+
+  <solution>
+   <p>Solutions of <m>\sin \left(2x \right)=-0.5</m> correspond to points where <m>y=\sin \left(2x \right)</m> intersects <m>y=-0.5</m>. The graph in <xref ref="sine-image" text="type-local" /> shows that there are two intersections in each cycle of the sine curve. The period of <m>y=\sin \left(2x \right)</m> is <m>\pi</m>, so one cycle is completed every <m>\pi</m> units. This means there are four solutions to the equation between 0 and <m>2\pi</m>. </p>
+
+   <figure xml:id="sine-image">
+    <caption>Graph of <m>y=\sin \left(2x \right)</m> and <m>y=-0.5</m></caption>
+    <image source="./images/sine-image.jpg" width="50%"></image>
+   </figure>
+
+   <p>With your calculator in radian mode, you should find that <m>-0.5236</m> is a number whose sine is <m>-0.5</m>.  By the symmetry of the unit circle, <m>\pi -\left(-0.5236 \right)</m> is another number whose sine is <m>-0.5</m>. Therefore, where <m>k</m> is an integer,
+    <md>
+     <mrow>2x \amp =-0.5236+2k\pi \text{ or } 3.6652+2k\pi</mrow>
+     <mrow>x \amp =-0.2618+2k\pi \text{ or } 1.8326+2k\pi</mrow>
+    </md>
+   </p>
+
+   <p>Since we want only solutions between 0 and <m>2\pi</m>, the solutions can be obtained by substituting integer values of <m>k</m> that produce <m>x-</m>values between 0 and <m>2\pi</m>. The <m>x-</m>values 1.8326, 2.8798, 4.9742, and 6.0214 are all solutions of <m>\sin \left(2x \right)=-0.5</m> between 0 and <m>2\pi</m>. Verify that all four of these numbers do indeed satisfy the original equation.</p>
+
+   <p>As an alternative method of obtaining a solution, you may recognize that <m>-0.5</m> is one of the special values of the sine function that can be determined without a calculator: <m>\sin \left(\frac{7\pi}{6} \right)=-\frac{1}{2}</m>. This means that <m>\frac{7\pi}{6}</m> is one possible value for <m>2x</m>. By the symmetry of the unit circle another value for <m>2x</m> is <m>\frac{11\pi}{6}</m>.  Thus, <m>2x=\frac{7\pi}{6}</m> or <m>\frac{11\pi}{6}</m>, so <m>x=\frac{7\pi}{12}</m> or <m>\frac{11\pi}{12}</m>. Other solutions can be obtained  by adding or subtracting <m>\pi</m> (the period of  <m>\sin \left(2z \right)</m>) to these two solutions, resulting in <m>\frac{7\pi}{12}</m>, <m>\frac{11\pi}{12}</m>, <m>\frac{19\pi}{12}</m>, and <m>\frac{23\pi}{12}</m>. This technique leads to exact solutions to the equation <m>\sin \left(2x \right)=-0.5</m>. Notice that exact solutions are possible only because <m>-0.5</m> is a special value of the sine function.</p>
+  </solution>
+ </example>
+
+ <example>
+  <statement>
+   <p>Solve <m>\sin x >0.8</m>.</p>
+  </statement>
+
+  <solution>
+   <p>Solutions of this inequality are numbers whose sine is greater than 0.8.  Solutions correspond to <m>x-</m>values on the sine curve whose <m>y-</m>coordinate is greater than 0.8 <xref ref="sine-image1" text="type-local" />.  Because the sine curve oscillates, it is useful to find where <m>\sin x</m> is equal to 0.8 and then study the graph to see where <m>\sin x</m> is greater than 0.8.  Using a calculator in radian mode to solve <m>\sin x=0.8</m> gives <m>x=\sin^{-1} \left(0.8 \right)=0.9273</m>. By symmetry another solution is <m>x=\pi -0.9273=2.2143</m>. Therefore, the solution set of <m>\sin x=0.8</m> is <m>x=0.9273+2k\pi</m> where <m>k</m> is any integer. These values are marked on the graphs in <xref ref="cosine-image" text="type-local" />.  Note that <m>\sin x > 0.8</m> for <m>x-</m>values between 0.9273 and 2.2143. Because of periodicity, intervals containing solutions of the inequality are repeated every <m>2\pi</m> units. Therefore, the complete solution set of <m>\sin x > 0.8</m> is <m>0.9273+2k\pi \lt x \lt 2.2143+2k\pi</m> where <m>k</m> is any integer.</p>
+
+   <figure xml:id="sine-image1">
+    <caption>Solutions of <m>\sin x > 0.8</m></caption>
+    <image source="./images/sine-image1.jpg" width="50%"></image>
+   </figure>
+
+  </solution>
+ </example>
+
+ <example xml:id="example-4">
+  <statement>
+  <p>The graph in <xref ref="hourhand-image" text="type-local" /> shows how the distance between the ceiling and the tip of the hour hand on a clock changes over time. At what times is this distance less than 30 cm?</p>
+
+  <figure xml:id="hourhand-image">
+   <caption>Distance from Ceiling versus Time since 6 o’clock</caption>
+   <image source="./images/hourhand-image.jpg" width="50%"></image>
+  </figure>
+
+  </statement>
+
+  <solution>
+   <p>We first need to write an equation for the graph in <xref ref="hourhand-image" text="type-local" />.  We investigated this question in section 1 of this chapter.  The period is 12, the amplitude is 15, and the graph starts at a maximum and has been shifted up 38 units.  Let <m>t</m> represent the hours since 6 o’clock.   An equation for the graph is <me>d=15\cos \left(\frac{\pi t}{6} \right)+38.</me> To determine when the distance is less than 30 cm we need to solve the inequality <me>15\cos \left(\frac{\pi t}{6} \right)+38 \lt 30</me>.</p>
+
+   <p>Because the graph oscillates, it is useful to first find where <m>15\cos \left(\frac{\pi t}{6} \right)+38</m> is equal to 30.  Subtracting 38 from both sides and then dividing by 15 yields <men xml:id="cosine-equation"> \cos \left(\frac{\pi t}{6} \right)=-\frac{8}{15}.</men></p>
+
+   <p>Solutions of the equation <xref ref="cosine-equation" text="type-local" /> are given by <me>\frac{\pi t}{6}=\cos^{-1}\left(-\frac{8}{15} \right)=2.1333 \text{ or } \frac{\pi t}{6}=2\pi -\cos^{-1}\left(-\frac{8}{15} \right)=4.1499.</me> Since <m>\cos \left(\frac{\pi t}{6} \right)=-\frac{8}{15}</m> has infinitely many solutions, we must write <me>\frac{\pi t}{6}=2.1333+2k\pi \text{ or } \frac{\pi t}{6}=4.1499+2k\pi.</me> Solving for <m>t</m> gives <m>t=4.0744+12k</m> or <m>t=7.9256+12k</m>.</p>
+
+   <p>These are <m>t-</m>values at which the distance is equal to 30 cm.  The graph in <xref ref="cosine-image1" text="type-local" /> shows that the distance is less than 30 cm when t is between 4.0744 and 7.9256.  Since <m>t</m> represents the number of hours that have elapsed since 6 o’clock, <m>t=4.0744</m> corresponds to about 10:04 and <m>t=7.9256</m> corresponds to about 1:56. This means that the distance between the ceiling and the tip of the hour hand is less than 30 cm between the times of about 10:04 and 1:56.</p>
+
+   <figure xml:id="cosine-image1">
+    <caption>Solutions of <m>15\cos \left(\frac{\pi t}{6} \right)+38 \lt 30</m></caption>
+    <image source="./images/cosine-image1.jpg" width="50%"></image>
+   </figure>
+
+  </solution>
+
+ </example>
+
+ <p>We can solve equations of the form  using methods described in examples 1, 2, and 4.  We can combine this new knowledge with algebra and previously learned techniques to solve a variety of other equations forms.  Some examples of these equations are:
+ <me>\left( \sin x-1\right)\left(\cos x+\frac{1}{2} \right)=0</me>
+ <me>\cos^2 x-4\cos x=0</me>
+ <me>10^{\sin x}=5</me>
+ <me>\frac{\cos \left(4x \right)}{\sin \left(3x \right)} \gt 0</me>
+ Using knowledge of solving quadratic equations leads us to be able to find the values of <m>x</m> that solve <m>\tan^2 x+\tan x-1=0</m>. The quadratic equation is not easily factorable; but with the substitution of <m>a=\tan x</m>, the equation can be written as <me>a^2+a-1=0.</me> Using the quadratic formula we find <m>a=\frac{-1 \pm \sqrt 5}{2}</m>. Therefore, <m>\tan x = \frac{-1 + \sqrt 5}{2}</m> or <m>\tan x = \frac{-1 - \sqrt 5}{2}</m> which will lead to an infinite number of solutions for <m>x</m>.</p>
+
+ <p>However, there are some equations that cannot be solved using these techniques; for example, the equation <m>x=\cos x</m>. For an equation of this type, we must rely on graphs to find points for which <m>x=\cos x</m>.</p>
+
+ <subsection>
+  <introduction></introduction>
+   <title>Class Practice</title>
+    <p>Find the values of <m>x</m> that solve the following equations:
+     <ol>
+      <li><m>10^{\sin x}=5</m></li>
+      <li><m>\frac{\cos \left(4x \right)}{\sin \left(3x \right)} \gt 0</m></li>
+      <li><m>x=\cos x</m></li>
+     </ol>
+    </p>
+</subsection>
+
+<exercises>
+  <title>Exercises</title>
+
+   <!-- Practice Problem #1 -->
+   <exercise>
+    <statement>
+     <p>Suppose that the  solution set of an equation includes the numbers <m>x=1.6+3k\pi</m>. List six values that are decimal approximations of  <m>x-</m>values that are in the solution  set.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #2 -->
+   <exercise>
+    <statement>
+     <p>Suppose an inequality has solutions <m>-0.2+k\pi \le x \le 0.3+k\pi</m>. Sketch a number line and shade solutions of the inequality (between 0 and 10) on the number line.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #3 -->
+   <exercise>
+    <statement>
+     <p>Find all the solutions (accurate to four decimal places) of each equation or inequality  Use your calculator and your knowledge of symmetry and periodicity.
+     <md>
+      <mrow>\text{a. } \amp \cos x=0.75                 \amp \text{b. } \amp \sin \left(x-1 \right)=0.4              \amp \text{c. } \amp \cos \left(\frac{1}{2x} \right)+1=3.4</mrow>
+      <mrow>\text{d. } \amp 3\sin \left(2x \right)=0.6  \amp \text{e. } \amp \cos \left(2x-\frac{\pi}{3} \right)=0.8 \amp \text{f. } \amp \sin \left(x-\frac{\pi}{4} \right) \lt 0.4</mrow>
+      <mrow>\text{d. } \amp \tan \left(x+2 \right) \gt 0.6</mrow>
+     </md>
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #4 -->
+   <exercise>
+    <statement>
+     <p>At what times is the distance between the ceiling and the tip of the hour hand of the clock in <xref ref="example-4" text="type-local" /> greater than 40 cm?</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #5 -->
+   <exercise>
+    <statement>
+     <p>When an object is suspended from a spring, the equation <m>x=0.1\cos \left(4\pi t\right)</m> describes the displacement (in meters) of the object from its equilibrium position at time <m>t</m> seconds. The positive direction is downward.
+      <ol label="a.">
+       <li>What is the maximum vertical distance through which the object moves?</li>
+       <li>What is the minimum time that it takes the object to move through the distance described in part a?</li>
+       <li>When is the second time (after it is released at <m>t=0</m>) that the object is at its equilibrium position?</li>
+       <li>When does the object  reach its equilibrium position for the third time (after release)?</li>
+       <li>Draw a graph of the object’s displacement from its equilibrium position as a function of time. Does your graph accurately reflect each of the answers to the previous questions?</li>
+      </ol>
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #6 -->
+   <exercise>
+    <statement>
+     <p>A Ferris wheel has a radius of 33.2 feet and makes a complete revolution every 80 seconds. The bottom of the wheel is 4 feet above ground.  Margo is riding the Ferris wheel and starts her stopwatch when she is at the highest point.  During the first 2 minutes of her ride, what time(s) will be displayed on her stopwatch when she is 35 feet high?</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #7 -->
+   <exercise>
+    <statement>
+     <p>The distance y inches between a yo-yo and a person’s hand at time <m>t</m> seconds is given by the equation <m>y=-15\cos \left(\frac{2\pi t}{2.8} \right)+15</m>. Steven needs to take a picture when the yo-yo is 7 inches from the hand and moving away from the hand. At what times can he take the picture?</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #8 -->
+   <exercise>
+    <statement>
+     <p>A population of lynx oscillates in a four year cycle.  Kate is a biologist who keeps records of the lynx population in a small area.  She has counted lynx on January 1 of each year.  Her first count in 1994 was 40; in 1995, 60; in 1996, back to 40; and in 1997, 20. The population is back to 40 in 1998. Assuming the population continues as a sinusoidal function, during which months of the next four years should Kate expect to find fewer than 35 lynx?</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #9 -->
+   <exercise>
+    <statement>
+     <p>Find all solutions of each equation or inequality. Find exact solutions whenever possible. Find approximate solutions accurate to four decimal places.
+      <md>
+       <mrow>\text{a. } \amp 4\sin^2 x=1                                    \amp \text{b. } \amp 2\cos^2 x+\cos x=1</mrow>
+       <mrow>\text{c. } \amp 3\sin^2 \left(2x \right)=\sin \left(2x \right) \amp \text{d. } \amp 2\tan^2 x+7\tan x+4=0</mrow>
+       <mrow>\text{e. } \amp 4\cos^2 x=\cos x=0                             \amp \text{f. } \amp \cos x=x^2-1</mrow>
+       <mrow>\text{g. } \amp \cos x \lt \sin x                              \amp \text{h. } \amp 2^{\sin x}=1</mrow>
+       <mrow>\text{i. } \amp \frac{\sin \left(2x \right)}{x}=1              \amp \text{j. } \amp \tan x=\sin x</mrow>
+      </md>
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #10 -->
+   <exercise>
+    <statement>
+     <p>A sunspot is a dark area on the surface of the sun that is about <m>4000^\circ</m> cooler than the surrounding surface.  Over the years astronomers have counted the number of sunspots that occur within a given year. The graph of this data can be modeled by the function <m>\text{spots}=50\cos \left(\frac{2\pi \cdot \text{years}}{11} \right)+60</m>, where years is the number of years since 1750. Find two years after 2000 in which the number of  sunspots will exceed 40.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #11 -->
+   <exercise>
+    <statement>
+     <p>In a tidal river the time between high tide and low tide is approximately 6.2 hours. The average depth of the water in a port on the river is 4 meters; at high tide the depth is 5 meters.
+      <ol label="a.">
+       <li>Sketch a graph of the depth of the water in the port over time if the relationship between time and depth is sinusoidal and there is a high tide at 12:00 noon. Write an equation for your curve. Let <m>t</m> represent the number of hours after 12:00 noon.</li>
+       <li>If a boat requires a depth of 4 meters of water to sail, how many minutes before noon can it enter the port and by what time must it leave to avoid being stranded?</li>
+       <li>If a boat requires 3.5 meters of water in order to sail, at what time, before noon, can it enter the port and by what time must it leave to avoid being stranded?</li>
+       <li>A boat that requires a depth of 4 meters of water is at a dock in the port. As some of the cargo is unloaded, the depth of water required to sail decreases.  Suppose at noon the crew begins to unload cargo. The unloading of the cargo decreases the draft of the boat at a rate of 0.1 meters/hour. At what time must the ship stop unloading and leave the port to ensure it sails before 6 PM?</li>
+      </ol>
+     </p>
+    </statement>
+   </exercise>
+
+ </exercises>
+</section>

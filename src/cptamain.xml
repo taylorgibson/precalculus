@@ -109,11 +109,11 @@ along with MathBook XML.  If not, see <http://www.gnu.org/licenses/>.
           </frontmatter>
          <!-- /frontmatter.xml -->
 
-  <xi:include href="./chapter01.xml" />
+  <!-- <xi:include href="./chapter01.xml" /> -->
 
-  <!-- <xi:include href="./chapter02.xml" />
+  <xi:include href="./chapter02.xml" />
 
-  <xi:include href="./chapter03.xml" />
+  <!-- <xi:include href="./chapter03.xml" />
 
   <xi:include href="./chapter04.xml" />
 

@@ -13,7 +13,7 @@
     <p>Introduction to this chapter</p>
   </introduction>
 
-  <section xml:id="chapter02-section01">
+  <xi:include href="./chapter02-section01.xml" />
+  <xi:include href="./chapter02-section02.xml" />
 
-  </section>
 </chapter>

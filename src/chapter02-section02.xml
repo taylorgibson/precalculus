@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter02-section02" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>A Toolkit of Functions</title>
+  <subsection>
+    <title>Graphing Functions-Developing a Toolkit</title>
+    <p>
+      One of the goals of this course is to develop your ability to picture relationships between variables.  This ability includes graphing functions.  To be proficient, you must be able to recognize what functions are best left to a computer or calculator to graph and which are more efficiently tackled with paper and pencil.  In this chapter we will develop knowledge and techniques to facilitate paper-and-pencil graphing.
+    </p>
+    <p>
+      Most of the graphs you make by hand do not require pinpoint accuracy.  Rather, your graphs should display basic characteristics of the function and of the relationship between the variables.  To begin, we will discuss a collection of nine functions that make up our <em>toolkit</em>. These functions are important for their intrinsic mathematical content and as a set of tools for mathematicians, scientists, economists, and anyone else who creates mathematical models to solve problems.  This toolkit is not sufficient to tackle every problem, but it gives us some common ground that we will use as we expand our knowledge of functions.  A thorough understanding of these toolkit functions is essential and will make the future study of functions and mathematical modeling more meaningful. As you read about each of the nine toolkit functions you should plot a few points to help you understand the graph.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Constant Function</title>
+    <p>
+      One of the simplest functions is one in which all first coordinates are paired with the same second coordinate; such a function is called a constant function.  For instance, <m>f(x) = 4</m> consists of ordered pairs all with second coordinate <m>4</m>.  The graph is the horizontal line <m>y = 4</m> (see <xref ref="chapter02-section02-constant-and-linear" text="type/local" /> ).
+    </p>
+    <figure xml:id="chapter02-section02-constant-and-linear">
+      <caption>Constant and Linear Functions</caption>
+      <sidebyside>
+        <image source="./src/images/chapter02/chapter02section02-constant-a.png" />
+        <image source="./src/images/chapter02/chapter02section02-constant-b.png" />
+      </sidebyside>
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>Linear Function</title>
+    <p>
+      The simplest linear function is <m>f(x) = x</m>.  It is often called the identity function because the first and second coordinates in each ordered pair are identical.  The graph of this function is the diagonal line shown in <xref ref="chapter02-section02-constant-and-linear" text="type/local" />.  Notice that this graph is everywhere increasing and continuous.  The general linear function is <m>f(x) = mx+ b</m>; its graph is a variation of the line <m>y = x</m> that has slope <m>m</m> and <m>y</m>-intercept <m>b</m>.  You should be familiar with these variations from study in previous mathematics courses and from your work in Chapter 1.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Quadratic Function</title>
+    <p>
+      The toolkit <em>quadratic function</em> is <m>f(x) = x^2</m>.  You can understand the shape of the graph of <m>f(x) = x^2</m> by thinking about the ordered pairs <m>\left( x , x^2 \right)</m> that belong to the function.  Whenever <m>x</m> is greater than <m>1</m>, <m>x^2 \gt x</m> so the graph is above the line <m>y = x</m>.  When <m>x</m> is between <m>0</m> and <m>1</m>, <m>x^2 \lt x</m> and the graph is below that of <m>y = x</m>.  The graph of <m>f(x) = x^2</m>, shown in <xref ref="chapter02-section02-quadratic" text="type/local" /> , is called a <em>parabola</em>.  Notice that it is decreasing for negative <m>x</m>-values and increasing for positive <m>x</m>-values.  The graph has a turning point at <m>\left( 0, 0 \right)</m>, which is called the <em>vertex</em> of the parabola.  The curvature of this graph is concave up.
+    </p>
+    <figure xml:id="chapter02-section02-quadratic">
+      <caption>Quadratic Functions</caption>
+      <image source="./src/images/chapter02/chapter02section02-quadratic.png" />
+    </figure>
+
+  </subsection>
+
+  <subsection>
+    <title>Cubic Function</title>
+    <p>
+      The graph of the toolkit <em>cubic</em> function  <m>f(x) =x^3</m> is shown in <xref ref="chapter02-section02-cubic" text="type/local" />.  This graph is increasing for all <m>x</m>-values, and it is steeper than the graph of <m>f(x) = x^2</m> for <m>x \gt 1</m>. Notice that the graph lies entirely in the first and third quadrants; in the ordered pairs <m>\left( x, x^3 \right)</m>, either both coordinates are positive or both are negative.
+    </p>
+
+    <figure xml:id="chapter02-section02-cubic">
+      <caption>Cubic Function</caption>
+      <image width="50%" source="./src/images/chapter02/chapter02section02-cubic.png" />
+    </figure>
+
+  </subsection>
+
+
+  <subsection>
+    <title>Square Root Function</title>
+    <p>
+      The <em>square root function</em> is defined by the equation <m>f(x) = \sqrt{x}</m>.  Since the symbol <m>\sqrt{x}</m> represents only the <em>principal</em> (positive) <em>square root</em> of <m>x</m>, each <m>x</m>-value is paired with a unique <m>y</m>-value.  (Think about what your calculator does when you compute the square root of <m>9</m>; the calculator gives a display of <m>3</m>, not <m>\pm 3</m>).  The graph of <m>f(x) = \sqrt{x}</m> is shown in <xref ref="chapter02-section02-root-exp" text="type/local" />.  Notice that it is increasing for all <m>x</m>-values, but the rate of increase is very slow.  The curvature of this graph is concave down.
+    </p>
+
+    <p>
+      We can compare the steepness of <m>f(x) = \sqrt{x}</m> with that of linear, quadratic, and cubic functions by determining for each function the <m>x</m>-value that is paired with a <m>y</m>-value of <m>64</m>. For <m>f(x) = x^3</m>, the ordered pair is <m>\left( 4, 64 \right)</m>.    For <m>f(x) = x^2</m>, the ordered pair is <m>\left( 8, 64 \right)</m>. For <m>f(x) = x</m>, the ordered pair is <m>\left( 64, 64 \right)</m>.  For <m>f(x) = \sqrt{x}</m>, the ordered pair is <m>\left( 4096, 64 \right)</m>. Notice that the cubic function attains the value of <m>64</m> when <m>x = 4</m>, whereas the square root function doesn't attain this value until <m>x = 4096</m>.
+    </p>
+
+    <p>
+      It is also interesting to study the steepness of <m>f(x) = \sqrt{x}</m> in another way.  When <m>x \gt 1</m>, <m>\sqrt{x} \lt x</m>, so the graph is below the line <m>y = x</m>. In effect, taking the square root pulls <m>y</m>-values down if <m>x \gt 1</m>. On the other hand, when <m>0 \lt x \lt 1</m>, <m>sqrt{x} \gt x</m> and the graph is above the line <m>y = x</m>.  For these <m>x</m>-values, taking the square root increases the <m>y</m>-values.
+    </p>
+
+    <figure xml:id="chapter02-section02-root-exp">
+      <caption>Square Root and Exponential Functions</caption>
+      <image source="./src/images/chapter02/chapter02section02-root-exp.png" />
+    </figure>
+
+  </subsection>
+
+  <subsection>
+    <title>Exponential Function</title>
+    <p>
+      The toolkit <em>exponential function</em> is <m>f(x) = 2^x</m>.  The graph, shown in <xref ref="chapter02-section02-root-exp" text="type/local" />, is increasing and concave up for all <m>x</m>-values.  As the <m>x</m>-values get more and more negative, <m>y</m>-values get smaller and approach zero, so the graph gets closer and closer to the negative <m>x</m>-axis.  We say that the graph is asymptotic to the <m>x</m>-axis.  In general, any function of the form <m>f(x) = a \cdot b^x</m>, where <m>a</m> is any nonzero constant, <m>b \gt 0</m>, and <m>b \neq 1</m>, is called an <em>exponential function</em>.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Reciprocal Function</title>
+    <p>
+      The graph of the <em>reciprocal function</em> <m>f(x) = \frac{1}{x}</m> is shown in <xref ref="chapter02-section02-root-exp" text="type/local" />.  Notice that the graph is discontinuous at <m>x = 0</m>. The function <m>f</m> produces an output by taking the reciprocal of its input.  Since taking the reciprocal does not cause a sign change, the graph lies entirely in the first and third quadrants.  In the first quadrant where <m>x</m>-values are positive, the reciprocals of small numbers are big numbers and the reciprocals of big numbers are small numbers. As <m>x</m>-values get larger, <m>y</m>-values get smaller and approach zero, so the graph gets closer and closer to the <m>x</m>-axis which is an asymptote for the function.  Because, <m>x</m>-values close to zero are paired with large <m>y</m>-values, the graph also has the <m>y</m>-axis as an asymptote.  Similar analysis for negative values of <m>x</m> explains the behavior of the graph in the third quadrant.
+    </p>
+
+    <figure xml:id="chapter02-section02-recip-abs">
+      <caption>Reciprocal and Absolute Value Functions</caption>
+      <image source="./src/images/chapter02/chapter02section02-reciprocal.png" />
+    </figure>
+
+  </subsection>
+
+  <subsection>
+    <title>Absolute Value Function</title>
+    <p>
+      The graph on the right in <xref ref="chapter02-section02-root-exp" text="type/local" /> resembling the shape of the letter "V" is the toolkit absolute value function, <m>f(x) = \lvert x \rvert</m>.  Recall that the symbol <m>\lvert x \rvert</m> is defined as follows:
+    </p>
+
+    <md>
+      <mrow>\lvert x \rvert = x \text{ if } x \geq 0</mrow>
+      <mrow>\text{and}</mrow>
+      <mrow>\lvert x \rvert = -x \text{ if } x \lt 0</mrow>
+    </md>
+
+    <p>
+      For positive <m>x</m>-values and zero, <m>\lvert x \rvert</m> is equal to <m>x</m>. For negative <m>x</m>-values, <m>\lvert x \rvert</m> is equal to the opposite of <m>x</m>.  The absolute value function is actually an example of a piecewise-defined function.  This means that the function is defined differently for different <m>x</m>-values.  The function <m>f(x) = \lvert x \rvert</m> is the same as the piecewise-defined function:
+    </p>
+
+    <md>
+      <mrow>f(x) =
+        \begin{cases}
+            x, \amp  \ \text{if}  \ x \geq 0 \\
+            -x, \amp  \ \text{if}  \ x \lt 0 \\
+        \end{cases}
+      </mrow>
+    </md>
+
+    <p>
+      Notice that <m>f</m> pairs positive <m>x</m>-values with themselves and pairs negative <m>x</m>-values with their opposites. For positive <m>x</m>-values the graph of <m>f</m> is identical to the line <m>y = x</m>; for negative <m>x</m>-values the graph is identical to the line <m>y = -x</m>.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Sketch a graph of the following piecewise-defined function.
+        </p>
+
+        <md>
+          <mrow>
+            f(x) =
+              \begin{cases}
+                  x^2, \amp  \ \text{if}  \ x \leq -1 \\
+                  \frac{1}{x}, \amp  \ \text{if}  \ -1 \lt x \lt 0 \\
+                  2^x, \amp  \ \text{if}  \ x \geq 0 \\
+              \end{cases}
+          </mrow>
+        </md>
+      </statement>
+      <solution>
+        <p>
+          The graph is shown in <xref ref="chapter02-section02-piecewise-soln" text="type/local" />.  For <m>x</m>-values less than or equal to <m>-1</m>, the function is defined by the equation <m>y = x^2</m>, and the graph consists of a section of the toolkit parabola.  For <m>x</m>-values between <m>-1</m> and <m>0</m>, the function is defined by the equation <m>y = \frac{1}{x}</m>, and the graph consists of a section of the toolkit reciprocal function.  Note the open circle at <m>\left( -1, -1 \right)</m>; this indicates that the point is not on the graph of the function. For <m>x</m>-values greater than or equal to <m>0</m>, the function is defined by the equation <m>y = 2^x</m>.
+        </p>
+
+        <figure xml:id="chapter02-section02-piecewise-soln">
+          <caption>Graph of Piecewise-Defined Function</caption>
+          <image width="50%" source="./src/images/chapter02/chapter02-section02-piecewise-soln.png" />
+        </figure>
+
+      </solution>
+    </example>
+
+  </subsection>
+
+  <subsection>
+    <title>Other Useful Functions</title>
+    <p>
+      There are a few more types of functions that, while not generally thought of as <em>toolkit functions</em>, are useful functions to know and understand.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Power Functions</title>
+    <p>
+      Functions of the form <m>f(x) = a \cdot x^n</m> where <m>a \neq 0</m> and <m>n</m> is a real number are called <em>power functions</em>. The behavior of power functions varies widely depending on the value of <m>n</m>.  If <m>n \lt 0</m>, then <m>f(x) = a \cdot x^n</m> can be thought of as <m>f(x) = \frac{a}{x^{\lvert n \rvert}}</m>.  In this case, <m>f</m> has a vertical asymptote at <m>x = 0</m> and a horizontal asymptote at <m>y = 0</m>. An example of this is shown at the left in <xref ref="chapter02-section02-power" text="type/local" />.  If <m>n \gt 0</m>, then <m>f(x) = a \cdot x^n</m> has no asymptotes, and <m>\lvert y \rvert</m> increases without bound as <m>\lvert x \rvert</m> increases (see the second and third graphs in <xref ref="chapter02-section02-power" text="type/local" />).  Notice also that when <m>n \gt 0</m>, all power functions contain the point <m>\left( 0, 0 \right)</m>, and <m>f(x) = a \cdot x^n</m> contains the point <m>\left( 1, a \right)</m> for all values of <m>n</m>.
+    </p>
+
+    <figure xml:id="chapter02-section02-power">
+      <caption>Graphs of power functions</caption>
+      <image source="./src/images/chapter02/chapter02section02-power.png" />
+    </figure>
+
+  </subsection>
+
+  <subsection>
+    <title>Triangle Wave Function</title>
+    <p>
+      The triangle wave function defined by the equation <m>f(x) = tri(x)</m> is graphed in <xref ref="chapter02-section02-twave" text="type/local" />. The graph of the triangle wave function oscillates in a regular pattern between a maximum  <m>y</m>-value of <m>1</m> and a minimum <m>y</m>-value of <m>-1</m>.
+    </p>
+
+    <figure xml:id="chapter02-section02-twave">
+      <caption>Graphs of power functions</caption>
+      <image source="./src/images/chapter02/chapter02section02-twave.png" />
+    </figure>
+
+    <p>
+      The function has a value of <m>0</m> at <m>x = 0</m>.  It increases to its maximum of <m>1</m> at <m>x = 1</m>, returns to <m>0</m> at <m>x = 2</m>, decreases to its minimum of <m>-1</m> at <m>x = 3</m>, and returns to <m>0</m> at <m>x = 4</m>.  Then it repeats the process indefinitely.  If you look at the section of the triangle wave function between <m>-4</m> and <m>0</m>, or between <m>4</m> and <m>8</m>, you notice that it has the same shape as the section between <m>0</m> and <m>4</m>.  Thus the triangle wave function is periodic.  Since the portion being repeated is <m>4</m> units long, the period is said to be <m>4</m>.  That is, the triangle wave function completes one cycle every <m>4</m> units.  For those of you who have studied trigonometry, the triangle wave function may remind you of the sine function.  This is a similar periodic function that we will study and add to our toolkit of functions later in the course.
+    </p>
+
+  </subsection>
+
+  <subsection>
+    <title>Greatest Integer Function</title>
+    <p>
+      The symbol <m>\left\lfloor x \right\rfloor</m> denotes the greatest integer that is less than or equal to <m>x</m>.  For example,  <m>\left\lfloor 11.02 \right\rfloor = 11, \left\lfloor 4.9 \right\rfloor = 4, \left\lfloor 2 \right\rfloor = 2</m>,  and <m>\left\lfloor -2.4 \right\rfloor = -3</m>.  The function <m>f(x) = \left\lfloor x \right\rfloor</m> is called the <em>greatest integer</em> or <em>floor function</em>. For any <m>x</m>-value between <m>0</m> and <m>1</m>, <m>f(x) = 0</m>, so over this part of the domain <m>f</m> behaves like a constant function. Similarly, for any <m>x</m>-value between <m>1</m> and <m>2</m>,  <m>f(x) = 1</m>. Thus, the graph of <m>f</m> consists of a collection of horizontal line segments, or <em>steps</em>. The graph is shown in <xref ref="chapter02-section02-floor" text="type/local" />.  Note that it is discontinuous at every integer value of <m>x</m>.  Identify the domain and the range of the function <m>f(x) = \left\lfloor x \right\rfloor</m>.
+    </p>
+
+    <figure xml:id="chapter02-section02-floor">
+      <caption>Graphs of Greatest Integer function</caption>
+      <image source="./src/images/chapter02/chapter02section02-floor.png" />
+    </figure>
+
+  </subsection>
+
+  <exercises>
+
+    <exercise>
+      <statement>
+        <p>
+          Sketch graphs of <m>y = x^4, y=x^5, y=x^6</m> and <m>y=x^7</m>. Make a generalization about the graph of <m>y=x^n</m> for <m>n</m> an even positive integer and for <m>n</m> an odd positive integer.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Identify the domain and the range of each toolkit function.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Which toolkit functions are examples of power functions?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>p(x) = \sqrt{x}, q(x) = \frac{1}{x}</m>,and <m>r(x) = x^3</m>. Express each of the following as a transformation of <m>p, q</m>, or <m>r</m>. For instance, <m>y = \sqrt{ \left( x+1 \right) + 2 }</m> can be expressed as <m>y = p\left( x + 1 \right) + 2</m>.
+          <ol>
+            <li><m>y = 1 + \frac{1}{x}</m></li>
+            <li><m>y = 8x^3</m></li>
+            <li><m>y = \frac{1}{2x - 2}</m></li>
+            <li><m>y = \sqrt{6 - x}</m></li>
+            <li><m>y = 3 - \sqrt{x}</m></li>
+            <li><m>y = \left( 2x \right)^3</m></li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Use technology to graph <m>y=x, y=x^2</m>, and <m>y=x^3</m>. Set a viewing window of <m>0 \leq x \leq 1</m> and <m>0 \leq y \leq 1</m>.  Write one or two sentences to compare the three graphs.  How would the graph of <m>y=x^4</m> look compared to the graphs of these other functions in this window?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Use a calculator to graph <m>y=x</m>,and <m>y=\sqrt{x}</m>. Set a viewing window of <m>0 \leq x \leq 1</m> and <m>0 \leq y \leq </m>1.  Write one or two sentences to compare the graphs.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          The graphs of several toolkit functions exhibit symmetry. The ability to identify symmetries will help you as you learn to graph other functions that do not belong to the toolkit.
+          <ol>
+            <li>
+              <p>
+                Notice when looking at the function <m>f(x) = x^2</m>, the expression for <m>f(-x)</m> is identical to that for <m>f(x)</m>.
+
+                <md>
+                  <mrow>f(-x) = \left( -x \right)^2 = x^2 = f(x)</mrow>
+                </md>
+
+                Since <m>f(-x) = f(x)</m>, for every point <m>\left( x, y \right)</m> on the graph of <m>f</m> there is also a point <m>\left(-x, y \right)</m>. The fact that these points have the same <m>y</m>-coordinate paired with opposite <m>x</m>-coordinates means that the graph is <em>symmetric about the <m>y</m>-axis</em>. A function that has this type of symmetry is called an <em>even function</em>.  Which other toolkit functions are even functions?
+              </p>
+            </li>
+            <li>
+              <p>
+                Now look at the toolkit function <m>m(x) = x^3</m>. Note that <m>m(-x)</m> is not equal to <m>m(x)</m>. But notice that <m>m(-x)</m> is equal to the opposite of <m>m(x)</m>.
+
+                <md>
+                  <mrow>m(-x) = \left( -x \right)^3 = -x^3 = -m(x)</mrow>
+                </md>
+
+                Since <m>m(-x) = -m(x)</m>, for every point <m>\left( x, y \right)</m> on the graph of <m>m</m>, the point <m>\left( -x, -y \right)</m> is also on the graph. The graph of <m>m</m> is <em>symmetric about the point</em> <m>\left( 0, 0 \right)</m>. A function with this type of symmetry is called an <em>odd function</em>.  Which other toolkit functions are odd functions?
+
+              </p>
+            </li>
+          </ol>
+        </p>
+
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Why are the terms "even" and "odd" reasonable choices to describe functions whose graphs display certain symmetries? <em>Hint: Think about power functions.</em>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Can the graph of a function be both even and odd?  Explain.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Must a function be either even or odd?  Are there toolkit functions that are neither?  Do they exhibit other types of symmetry?  Explain your answers and give examples to support your conclusions.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Discuss the symmetry of the graph of <m>f(x) = 1 + \frac{1}{x-1}</m>
+        </p>
+
+        <figure xml:id="chapter02-section02-exercise11-figure">
+          <caption>Graph of <m>f(x) = 1 + \frac{1}{x-1}</m></caption>
+          <image width ="50%" source="./src/images/chapter02/chapter02section02-exercise11.png" />
+        </figure>
+
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="chapter02-section02-exercise12-figure" text="type/local" /> shows the graph of a function <m>y = h(x)</m> for <m>0 \leq x \leq 3</m>.
+
+          <ol>
+            <li>Sketch the graph of <m>h</m> from <m>-3</m> to <m>3</m> if <m>h</m> is an even function.</li>
+            <li>Sketch the graph of <m>h</m> from <m>-3</m> to <m>3</m> if <m>h</m> is an odd function.</li>
+          </ol>
+
+        </p>
+
+        <figure xml:id="chapter02-section02-exercise12-figure">
+          <caption>Graph of <m>f(x) = 1 + \frac{1}{x-1}</m></caption>
+          <image width ="50%" source="./src/images/chapter02/chapter02section02-exercise11.png" />
+        </figure>
+
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Use technology to graph the functions <m>f(x) = x^2</m> and <m>g(x) = 2^x</m>. Write several sentences comparing the growth of the functions for <m>x \gt 0</m>. How many times do these graphs intersect?  Find the coordinates of all points of intersection
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          In defining the exponential function <m>f(x) = a \cdot b^x</m>, we stated that the base <m>b</m> must be greater than zero.
+
+          <ol>
+            <li>What problems are associated with negative values of <m>b</m>?  To help answer this question, consider <m>m(x) = \left( -2 \right)^x</m> and make a table of values for <m>x = -3, -2, -1, -0.5, 0, 0.5, 1, 1.5, 2</m>, and <m>3</m>. What happens if you try to sketch a graph of <m>y = m(x)</m>?</li>
+            <li>Consider the function <m>n(x) = 0^x</m>. Why does n(0) present a dilemma?</li>
+          </ol>
+
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Sketch a graph of each piecewise-defined function.
+          <ol>
+            <li>
+              <m>
+                f(x) =
+                \begin{cases}
+                    x, \amp  \ \text{if}  \ x \geq -2 \\
+                    \lvert x \rvert, \amp  \ \text{if}  \ x \lt -2 \\
+                \end{cases}
+              </m>
+            </li>
+
+            <li>
+              <m>
+                f(x) =
+                \begin{cases}
+                    x^3, \amp  \ \text{if}  \ x \lt 0 \\
+                    2^x, \amp  \ \text{if}  \ x \geq 0 \\
+                \end{cases}
+              </m>
+            </li>
+
+            <li>
+              <m>
+                f(x) =
+                \begin{cases}
+                    x + 2, \amp  \ \text{if}  \ x \leq 0 \\
+                    2, \amp  \ \text{if}  \ 0 \lt x \lt 4 \\
+                    \sqrt{x}, \amp  \ \text{if}  \ x \gt 4 \\
+                \end{cases}
+              </m>
+            </li>
+
+            <li>
+              <m>
+                f(x) =
+                \begin{cases}
+                    1, \amp  \ \text{if}  \ \lvert x \rvert \lt 1 \\
+                    x^2, \amp  \ \text{if}  \ \lvert x \rvert \geq 1 \\
+                \end{cases}
+              </m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>f(x)</m> is a linear function and you know that <m>f(0) = 4</m> and that <m>{f(x) - f(x-2) = -3}</m> for all values of <m>x</m>.  Write an expression for <m>f(x)</m>.
+        </p>
+      </statement>
+    </exercise>
+
+  </exercises>
+
+</section>

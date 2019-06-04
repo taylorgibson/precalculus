@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section14" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Investigating Hanging Pictures</title>
+  <introduction></introduction>
+  <p>Henry wants to hang a heavy picture on one wall in his living room.  Since the picture is quite heavy, he has only two options for hanging the picture.  He can either hang the picture from the molding along the ceiling or at a reinforced area on  the wall.  If he uses the molding along the ceiling, he will need to use a long wire to attach the picture.  If he uses the reinforced area on the wall, he can use a much shorter wire and hide the wire behind the picture.   Both positions will support the picture.  Henry wants to know whether having the long or short wire will make it easier to insure that the picture is at the proper height and hangs straight on the wall.
+
+    <figure xml:id="pictures-on-the-wall-image">
+     <caption>Two options for hanging a picture</caption>
+     <image source="./images/pictures-on-the-wall-image.jpg" width="50%"></image>
+    </figure>
+
+  As shown in <xref ref="pictures-on-the-wall-image" text="type-local" />, the picture is 50 cm wide and 40 cm tall.  On each side of the back of the frame a small hook is attached to the frame in order to attach the wire that will be used to hang the picture.  Each hook is placed 14 centimeters from the top edge of the frame and is very close to the outer edge of the frame.   When answering the following questions, give solutions to the nearest hundredth of a centimeter.
+  </p>
+
+  <p>
+  <ol>
+    <li>For each option for hanging the picture, how long a piece of wire should be used to have the picture hang 100 centimeters from the ceiling?    Assume that the midpoint of the wire is at the bracket.</li>
+    <li>Suppose the length of wire is not measured correctly.  How will an error of 2 cm affect the height of the picture using each method.  Is the height affected more by the wire being 2cm too long or 2 cm too short?</li>
+    <li>Write a function that will describe the relationship between the error in the length of the wire of x centimeters and the resulting error in the height of the picture for both methods of hanging the picture. Graph the functions or make tables of values for the functions.</li>
+    <li>Determine which method is more sensitive to errors in height as a result of incorrectly measuring the length of the wire.</li>
+    <li>Suppose Henry hangs the picture so that the bracket is not placed exactly at the midpoint of the wire.  For which of the two options for hanging the picture will this have the greatest effect on the position of the picture?</li>
+    <li>Write summary statements to compare the two methods Henry used to hang the picture.</li>
+  </ol>
+  </p>
+
+</section>

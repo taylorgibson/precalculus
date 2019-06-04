@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section05" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Sine and Cosine as Functions</title>
+  <introduction></introduction>
+  <p>We have so far looked at sine and cosine as ratios of side lengths of right triangles and as coordinates of points on the unit circle. In this section, we will define them as functions.</p>
+
+  <p>As we discussed earlier in this chapter, if we begin at the point <m>\left(1, 0 \right)</m> on the unit circle and travel in a counterclockwise direction a distance <m>s</m>, we will end up at a terminal point <m>\left(x,y \right)</m> on the unit circle. So <m>w\left(s \right)=\left(x,y \right)</m>. We also recall that the equation of the unit circle is <m>x^2+y^2=1</m>.  With this, we define the <m>x-</m>coordinate of that terminal point to be the cosine of <m>s</m> or <me>x=\cos \left(s \right)</me> Similarly, we define the <m>y-</m>coordinate of that terminal point to be the sine of <m>s</m> or <me>y=\sin \left(s \right)</me></p>
+
+  <p>As an example, since the distance around the entire unit circle is the circumference, <m>2\pi</m>, if we walk a distance <m>\frac{\pi}{2}</m> around the circle in a counterclockwise direction, we end up at the point <m>\left(0,1 \right)</m>. We then say that <m>\cos \left(\frac{\pi}{2} \right)=0</m> and <m>\sin \left(\frac{\pi}{2} \right)=1</m>. If we walk around the unit circle in a clockwise direction a distance of <m>\frac{3\pi}{4}</m>, we end up at the point <m>\left(-\frac{\sqrt 2}{2},-\frac{\sqrt 2}{2} \right)</m>, so we say <m>\cos \left(-\frac{3\pi}{4} \right) = -\frac{\sqrt 2}{2}</m> and <m>\sin \left(-\frac{3\pi}{4} \right) = -\frac{\sqrt 2}{2}</m>.</p>
+
+  <p>The graph of <m>y = \cos \left(x \right)</m> relates the <m>x-</m>coordinates on the unit circle to the distances traveled around the circumference of the circle. Similarly, the graph of <m>y = \sin \left(x \right)</m> relates the <m>y-</m>coordinates on the unit circle to the distances traveled around the circumference of the circle. So, when we are thinking about sine related to the unit circle and we write <m>\sin \left(A \right)=B</m>, we think of <m>A</m> as an arc length around the circle starting at <m>\left(1,0 \right)</m> and <m>B</m> as the <m>y-</m>coordinate of the point at which the arc terminates.</p>
+
+  <p>\textbf{Note: }The notation for the sine function can be confusing at first. Recall that in the unit circle we used <m>s</m> for distance or arc length and <m>\left(x,y \right)</m> for the ordered pair.  So, we could write <m>x = \sin \left(s \right)</m>. However, our standard way of writing functions is to have <m>y</m> as a function of <m>x</m>. So <m>y = \sin \left(x \right)</m> uses the arc lengths for the independent variable <m>x</m>, and the <m>x-</m>coordinates for the dependent variable <m>y</m>.</p>
+
+  <subsection>
+    <introduction></introduction>
+    <title>The Graphs of <m>y=\sin \left(x \right)</m> and <m>y=\cos \left(x \right)</m></title>
+      <p>Using our basic 30-60-90 and 45-45-90 triangles and the new relationship between the angles in radian measure and coordinates of points on the unit circle that we found earlier, we can sketch a rough graph of the sine and cosine functions.</p>
+
+      <p>Recall the following:</p>
+        <md>
+          <mrow>\amp \sin \left(30^\circ \right) \amp = \frac{1}{2} = 0.5                 \amp \cos \left(30^\circ \right) \amp = \frac{\sqrt 3}{2} \approx 0.866</mrow>
+          <mrow>\amp \sin \left(45^\circ \right) \amp = \frac{\sqrt 2}{2} \approx 0.707   \amp \cos \left(45^\circ \right) \amp = \frac{\sqrt 2}{2} \approx 0.707</mrow>
+          <mrow>\amp \sin \left(60^\circ \right) \amp = \frac{\sqrt 3}{2} \approx 0.866   \amp \cos \left(60^\circ \right) \amp = \frac{1}{2} = 0.5</mrow>
+        </md>
+
+        <figure>
+          <caption></caption>
+          <tabular top="medium" halign="left">
+
+            <row bottom="medium">
+              <cell halign="center"><m>\theta ^\circ</m></cell>
+              <cell halign="center"><m>s</m> (radians)</cell>
+              <cell halign="center"><m>\cos \left(s \right)</m></cell>
+              <cell halign="center"><m>\sin \left(s \right)</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">0</cell>
+              <cell halign="center">0</cell>
+              <cell halign="center">1</cell>
+              <cell halign="center">0</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">30</cell>
+              <cell halign="center"><m>\frac{\pi}{6}</m></cell>
+              <cell halign="center">0.866</cell>
+              <cell halign="center">0.5</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">45</cell>
+              <cell halign="center"><m>\frac{\pi}{4}</m></cell>
+              <cell halign="center">0.707</cell>
+              <cell halign="center">0.707</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">60</cell>
+              <cell halign="center"><m>\frac{\pi}{3}</m></cell>
+              <cell halign="center">0.5</cell>
+              <cell halign="center">0.866</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">90</cell>
+              <cell halign="center"><m>\frac{\pi}{2}</m></cell>
+              <cell halign="center">0</cell>
+              <cell halign="center">1</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">120</cell>
+              <cell halign="center"><m>\frac{2\pi}{3}</m></cell>
+              <cell halign="center"><m>-0.5</m></cell>
+              <cell halign="center">0.866</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">135</cell>
+              <cell halign="center"><m>\frac{3\pi}{4}</m></cell>
+              <cell halign="center"><m>-0.707</m></cell>
+              <cell halign="center">0.707</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">150</cell>
+              <cell halign="center"><m>\frac{5\pi}{6}</m></cell>
+              <cell halign="center"><m>-0.866</m></cell>
+              <cell halign="center">0.5</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">180</cell>
+              <cell halign="center"><m>\pi</m></cell>
+              <cell halign="center"><m>-1</m></cell>
+              <cell halign="center">0</cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">210</cell>
+              <cell halign="center"><m>\frac{7\pi}{6}</m></cell>
+              <cell halign="center"><m>-0.866</m></cell>
+              <cell halign="center"><m>-0.5</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">225</cell>
+              <cell halign="center"><m>\frac{5\pi}{4}</m></cell>
+              <cell halign="center"><m>-0.707</m></cell>
+              <cell halign="center"><m>-0.707</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">240</cell>
+              <cell halign="center"><m>\frac{4\pi}{3}</m></cell>
+              <cell halign="center"><m>-0.5</m></cell>
+              <cell halign="center"><m>-0.866</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">270</cell>
+              <cell halign="center"><m>\frac{3\pi}{2}</m></cell>
+              <cell halign="center">0</cell>
+              <cell halign="center"><m>-1</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">300</cell>
+              <cell halign="center"><m>\frac{5\pi}{3}</m></cell>
+              <cell halign="center">0.5</cell>
+              <cell halign="center"><m>-0.866</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">315</cell>
+              <cell halign="center"><m>\frac{7\pi}{4}</m></cell>
+              <cell halign="center">0.707</cell>
+              <cell halign="center"><m>-0.707</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">330</cell>
+              <cell halign="center"><m>\frac{11\pi}{6}</m></cell>
+              <cell halign="center">0.866</cell>
+              <cell halign="center"><m>-0.5</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">360</cell>
+              <cell halign="center"><m>2\pi</m></cell>
+              <cell halign="center">1</cell>
+              <cell halign="center">0</cell>
+            </row>
+
+          </tabular>
+        </figure>
+
+      <p>If we plot the points whose coordinates are <m>\left(s,\cos \left(s \right) \right)</m> and <m>\left(s,\sin \left(s \right) \right)</m>, we begin to see the graphs of the cosine and sine functions.   Note that in these graphs we use the traditional notation for functions and call the independent variable <m>x</m> and the dependent variable <m>y</m>.</p>
+
+        <figure xml:id="sin-cos-graph-image">
+          <caption></caption>
+          <image source="./images/sin-cos-graph-image.jpg" width="50%"></image>
+        </figure>
+
+      <p>The plots in <xref ref="sin-cos-graph-image" text="type-local" /> show the points in the table superimposed on the graph of <m>y = \cos \left(x \right)</m> and <m>y = \sin \left(x \right)</m> .  The periodic behavior of the graphs is noticeable from both the table of values and the plots. We also note that the sine function and cosine functions are horizontal shifts of each other.</p>
+
+      <p>When we think about sine as a function and write  <m>\sin \left(A \right) = B</m>, we think of <m>A</m> as the <m>x-</m>coordinate of a point on the curve (the horizontal distance from the origin) and <m>B</m> as the corresponding <m>y-</m>coordinate of the point on the curve (the distance above the <m>x-</m>axis).</p>
+
+  </subsection>
+
+  <subsection>
+    <introduction></introduction>
+    <title>Representations of Sine and Cosine</title>
+
+      <p>We now have three different ways to think about sine and cosine. These three interpretations allow us to use trigonometry to model situations in which</p>
+
+        <ul>
+          <li>triangles constitute an essential part of the geometry of the situation to be modeled,</li>
+          <li>the phenomenon involves movement in circles or ellipses, or other regular patterns,</li>
+          <li>the behavior to be modeled is periodic, or</li>
+          <li>various combinations of these components.</li>
+        </ul>
+
+      <p>We can think about <m>y = \sin \left(x \right)</m> in terms of:</p>
+
+        <ol label = "a.">
+          <li>right triangles, so that <m>x</m> is the size of an acute angle in degrees, and <m>y</m> is the ratio of the side opposite angle <m>x</m> and the hypotenuse of the right triangle.</li>
+          <li>the unit circle, so that <m>x</m> is the length of an arc on the unit circle, and <m>y</m> is the <m>y-</m>coordinate of the point on the unit circle <m>x</m> units away from <m>\left(1,0 \right)</m>.</li>
+          <li>a continuous periodic function with an infinite domain and a range of <m>\left[-1,1 \right]</m>, so that <m>x</m> is the position on the horizontal axis, and <m>y</m> is the height of the function above or below the axis.  That is, we treat it like an all the other functions we now know.</li>
+        </ol>
+
+      <p>Similarly, we can think about <m>y = \cos \left(x \right)</m> in terms of:</p>
+
+        <ol label = "a.">
+          <li>right triangles, so that <m>x</m> is the size of an acute angle in degrees, and <m>y</m> is the ratio of the side adjacent to angle <m>x</m> and the hypotenuse of the right triangle.</li>
+          <li>the unit circle, so that <m>x</m> is the length of an arc on the unit circle, and <m>y</m> is the <m>x-</m>coordinate of the point on the unit circle <m>x</m> units away from <m>\left(1,0 \right)</m>.</li>
+          <li>a continuous periodic function with an infinite domain and a range of <m>\left[-1,1 \right]</m>, so that <m>x</m> is the position on the horizontal axis, and <m>y</m> is the height of the function above or below the axis.</li>
+        </ol>
+
+      <p>We recall that one important goal for this chapter is to be able to move smoothly and confidently between these three interpretations of the trigonometric functions.</p>
+
+  </subsection>
+
+</section>

@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section07" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Curves of Trigonometry</title>
+    <introduction></introduction>
+
+      <p>As we have seen, when a point moves in a clockwise direction from <m>\left(1,0 \right)</m> around the unit circle, the <m>y-</m>coordinate moves continuously from 0 to 1 and back to 0, then to <m>-1</m> and back to 0 again to start the process all over.  In a similar manner, the <m>x-</m>coordinate begins at 1, moves smoothly to 0, to <m>-1</m>, to 0 again, and back to 1 to repeat the process.  These repetitive motions repeat every <m>2\pi</m> units and produce continuous curves that oscillate periodically between maximum and minimum values.  Such curves are called <em>sinusoids</em>.  Both the sine function and the cosine function are sinusoids.</p>
+
+      <p>The graph of the cosine function, <m>y = \cos \left(x \right)</m>, is shown in <xref ref="sin-cos-graph-image1" text="type-local" />. The graph is periodic with period <m>2\pi</m>, and it oscillates between a maximum of 1 and a minimum of <m>-1</m>. The amplitude of a periodic graph is defined as half of the length of the range of values obtained in the graph and can be calculated as follows: <me>\text{amplitude } = \frac{\text{maximum value}-\text{minimume value}}{2}</me> Thus, the amplitude of <m>y = \cos \left(x \right)</m> is <m>\frac{1 - \left(-1 \right)}{2}=1</m>.   The period and amplitude of the sine function, <m>y = \sin \left(x \right)</m>, are the same as those of the cosine function.</p>
+
+      <p>The graph of <m>y = \sin \left(x \right)</m> can be obtained by shifting the graph of <m>y = \cos \left(x \right)</m> to the right <m>\frac{\pi}{2}</m> units; this results in the shifted graph passing through the origin and having a maximum at <m>x = \frac{\pi}{2}</m>.  Similarly, we see that the graph of <m>y = \cos \left(x \right)</m> can be obtained by shifting the graph of <m>y = \sin \left(x \right)</m> to the left <m>\frac{\pi}{2}</m>.  This gives us two important representations that allow us to change from sine to cosine or from cosine to sine easily. We can express this co-function relationship algebraically:  <m>\cos \left(x \right) = \sin \left(x + \frac{\pi}{2} \right)</m> and <m>\sin \left(x \right) = \cos \left(x - \frac{\pi}{2} \right)</m>.</p>
+
+        <figure xml:id="sin-cos-graph-image1">
+          <caption>Graphs of <m>y = \sin \left(x \right)</m> and <m>y = \cos \left(x \right)</m></caption>
+          <image source="./images/sin-cos-graph-image1.jpg" width="50%"></image>
+        </figure>
+
+      <p>Note that the graph of <m>y = \cos \left(x \right)</m> is symmetric about the <m>y-</m>axis and therefore is an even function. This tells us that <m>\cos \left(x \right) = \cos \left(-x \right)</m> for any <m>x</m>.</p>
+
+      <p>For the graph of <m>y = \sin \left(x \right)</m>, if we reflect the graph only for <m>x \lt 0</m> about the <m>y-</m>axis, we create a graph that is symmetric about the <m>x-</m>axis.  Another way to view this is that the sine function is symmetric about the origin, making it an odd function.  This means that <m>\sin \left(-x \right) = -\sin \left(x \right)</m> for any <m>x</m>.</p>
+
+      <p>In <xref ref="sin-cos-graph-image1" text="type-local" />, the <m>x-</m>intercepts of <m>y = \cos \left(x \right)</m> occur at <m>-\frac{\pi}{2}</m>, <m>\frac{\pi}{2}</m>, and <m>\frac{3\pi}{2}</m>, or, in general, at odd multiples of <m>\frac{\pi}{2}</m>.  These x-coordinates can be written as <m>\frac{\pi}{2} + k\pi</m> or <m>\frac{\left(2k + 1 \right)\pi}{2}</m>, in which <m>k</m> is any integer.  The maximum values of the function occur at even multiples of <m>\pi</m>, and the minimum values occur at odd multiples of <m>\pi</m>.</p>
+
+      <p>Since the sine and cosine functions are important families of functions in mathematics, we include them in our “toolkit” of functions.</p>
+
+      <example>
+        <statement>
+
+          <p>Use the periodicity of the sine and cosine functions to evaluate <m>\cos \left(7\pi \right)</m> and <m>\sin \left(\frac{17\pi}{2} \right)</m>.</p>
+
+        </statement>
+        <solution>
+          <p>The fact that the period of the cosine function is <m>2\pi</m> means that <m>\cos \left(b + 2\pi \right) =  \cos \left(b \right)</m> for any real number <m>b</m>.  In other words, the <m>y-</m>coordinate on the graph of <m>f\left(x \right) = \cos \left(x \right)</m> at <m>x = b + 2\pi</m> is the same as the <m>y-</m>coordinate at <m>x = b</m>.  This is illustrated in <xref ref="sin-cos-graph-image2" text="type-local" />.</p>
+
+            <figure xml:id="sin-cos-graph-image2">
+              <caption><m>\cos \left(a + 2\pi \right) = \cos \left(b \right)</m></caption>
+              <image source="./images/sin-cos-graph-image2.jpg" width="50%"></image>
+            </figure>
+
+          <p>The key to evaluating <m>\cos \left(7\pi \right)</m> is recognizing that the behavior of the graph of <m>f\left(x \right) = \cos \left(x \right)</m> on the interval <m>0 \le x \le 2\pi</m> is repeated on the intervals <m>2\pi \le x \le 4\pi</m>, <m>4\pi \le x \le 6\pi</m>, and so forth.  Between <m>x = 0</m> and <m>x = 6\pi</m> the cosine graph completes three cycles, and <m>x = 7\pi</m> falls within the fourth cycle of the graph (see <xref ref="sin-cos-graph-image3" text="type-local" />).</p>
+
+            <figure xml:id="sin-cos-graph-image3">
+              <caption><m>f\left(x \right) = \cos \left(x \right)</m> on the interval <m>6\pi \le x \le 8\pi</m></caption>
+              <image source="./images/sin-cos-graph-image3.jpg" width="50%"></image>
+            </figure>
+
+          <p>The behavior of <m>f\left(x \right) = \cos \left(x \right)</m> from <m>6\pi</m> to <m>8\pi</m> is the same as the behavior from 0 to <m>2\pi</m>, so: <m>\cos \left(7\pi \right) = \cos \left(6\pi + \pi \right) = \cos \left(\pi \right) = -1</m>.</p>
+
+          <p>Since the period of the sine function is also <m>2\pi</m>, <m>\sin \left(b + 2\pi \right) = \sin \left(b \right)</m> is true for all real numbers <m>b</m>.  It is also true that the behavior of the graph of <m>f\left(x \right) = \sin \left(x \right)</m> on the interval <m>0 \le x \le 2\pi</m> is repeated on the intervals <m>2\pi \le x \le 4\pi</m>, <m>4\pi \le x \le 6\pi</m>, and so on.  Between <m>x = 0</m> and <m>x = 8\pi</m>, the sine graph completes four cycles, and <m>x = \frac{17\pi}{2}</m> falls within the fifth cycle of the graph (see <xref ref="sin-cos-graph-image4" text="type-local" />).</p>
+
+            <figure xml:id="sin-cos-graph-image4">
+              <caption><m>f\left(x \right) = \sin \left(x \right)</m> on the interval <m>8\pi \le x \le 10\pi</m></caption>
+              <image source="./images/sin-cos-graph-image4.jpg" width="50%"></image>
+            </figure>
+
+          <p>Since the behavior of <m>f\left(x \right) = \sin \left(x \right)</m> from <m>8\pi</m> to <m>10\pi</m> is the same as the behavior from 0 to <m>2\pi</m>, we know that <m>\sin \left(\frac{17\pi}{2} \right) = \sin \left(8\pi + \frac{\pi}{2} \right) = \sin \left(\frac{\pi}{2} \right) = 1</m></p>
+
+        </solution>
+    </example>
+
+    <example>
+      <statement>
+
+        <p>Find all solutions of the inequality <m>\cos \left(x \right) \lt 0</m>.</p>
+
+      </statement>
+      <solution>
+
+        <p>The graph of the function <m>y = \cos \left(x \right)</m> in <xref ref="sin-cos-graph-image5" text="type-local" /> shows intervals where the cosine function has negative values; these intervals occur between the zeros of the function.  The zeros of <m>y = \cos \left(x \right)</m> occur at <m>x = \frac{\pi}{2} + k\pi</m>, in which <m>k</m> is any integer.  One interval where the values of <m>\cos \left(x \right)</m> are negative is <m>\left(\frac{\pi}{2}, \frac{3\pi}{2} \right)</m>.</p>
+
+          <figure xml:id="sin-cos-graph-image5">
+            <caption><m>f\left(x \right) = \cos \left(x \right)</m> on the interval <m>-2\pi \le x \le 2\pi</m></caption>
+            <image source="./images/sin-cos-graph-image5.jpg" width="50%"></image>
+          </figure>
+
+          <p>Since the cosine function has a period of <m>2\pi</m>, values of <m>\cos \left(x \right)</m> will be negative for any <m>x</m> that satisfies  <m>\frac{\pi}{2} + 2k\pi \lt x \lt \frac{3\pi}{2} + 2k\pi</m>, in which <m>k</m> is an integer.  Substituting an integer value for <m>k</m> into the inequality <m>\frac{\pi}{2} + 2k\pi \lt x \lt \frac{3\pi}{2} + 2k\pi</m> produces a particular interval where <m>\cos \left(x \right) \lt 0</m>.  For example, if <m>k = 0</m>, the interval is <m>\frac{\pi}{2} \lt x \lt \frac{3\pi}{2}</m>.  If <m>k = 1</m>, the interval is  <m>\frac{5\pi}{2} \lt x \lt \frac{7\pi}{2}</m>.  If <m>k = -1</m>, the interval is <m>-\frac{3\pi}{2} \lt x \lt -\frac{\pi}{2}</m>.  Use a graph to verify that these intervals correspond to regions where <m>\cos \left(x \right)</m> has negative values.</p>
+
+      </solution>
+    </example>
+
+    <subsection>
+      <introduction></introduction>
+        <title>The Graph of the Tangent Function</title>
+
+            <p>Recall from our work earlier in this chapter that <m>\tan \left(\theta \right) = \frac{\sin \left(\theta \right)}{\cos \left(\theta \right)}</m>. We can use this identity, <m>\tan \left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m>, to graph <m>y = \tan \left(x \right)</m>. Many important mathematical ideas are based on the quotient of  <m>\sin x</m> and <m>\cos x</m>.  We will use a table of values so that we can investigate the graph of the tangent function <m>h\left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m> on the interval <m>0 \le x \le 2\pi</m>. The table in <xref ref="tan-graph-table" text="type-local" /> shows values of <m>\sin \left(x \right)</m>, <m>\cos \left(x \right)</m>, and <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> from <m>x = 0</m> to <m>x = \frac{\pi}{2}</m>.</p>
+
+              <figure>
+                <caption>Values of <m>\cos \left(x \right)</m>, <m>\cos \left(x \right)</m> and <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> from <m>x = 0</m> to <m>x = \frac{\pi}{2}</m></caption>
+                  <sidebyside widths = "50% 50%">
+                    <tabular top="medium" xml:id="tan-graph-table">
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>x</m></cell>
+                        <cell halign="center"><m>\sin x</m></cell>
+                        <cell halign="center"><m>\cos x</m></cell>
+                        <cell halign="center"><m>\frac{\sin x}{\cos x}</m></cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center">0</cell>
+                        <cell halign="center">0.00000</cell>
+                        <cell halign="center">1.00000</cell>
+                        <cell halign="center">0.00000</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{\pi}{12}</m></cell>
+                        <cell halign="center">0.25882</cell>
+                        <cell halign="center">0.96593</cell>
+                        <cell halign="center">0.26795</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{\pi}{6}</m></cell>
+                        <cell halign="center">0.50000</cell>
+                        <cell halign="center">0.86603</cell>
+                        <cell halign="center">0.57735</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{\pi}{4}</m></cell>
+                        <cell halign="center">0.70711</cell>
+                        <cell halign="center">0.70711</cell>
+                        <cell halign="center">1.00000</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{\pi}{3}</m></cell>
+                        <cell halign="center">0.86603</cell>
+                        <cell halign="center">0.50000</cell>
+                        <cell halign="center">1.73205</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{5\pi}{12}</m></cell>
+                        <cell halign="center">0.96593</cell>
+                        <cell halign="center">0.25882</cell>
+                        <cell halign="center">3.73205</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{\pi}{2}</m></cell>
+                        <cell halign="center">1.00000</cell>
+                        <cell halign="center">0.00000</cell>
+                        <cell halign="center">undefined</cell>
+                      </row>
+
+                    </tabular>
+
+                    <image source="./images/tan-graph-image.jpg" width="50%"></image>
+
+                  </sidebyside>
+                </figure>
+
+              <p>Since values of <m>\sin x</m> and <m>\cos x</m> are both non-negative between <m>x = 0</m> to <m>x = \frac{\pi}{2}</m>, the ratio  <m>\frac{\sin x}{\cos x}</m> is also non-negative for all <m>x-</m>values in this interval.  The table shows that the values of <m>\sin x</m> increase from 0 to 1 and that the values of <m>\cos x</m> decrease from 1 to 0.  The table also shows that the ratio <m>\frac{\sin x}{\cos x}</m> is zero when <m>x = 0</m>, and the ratio increases as <m>x</m> increases.  When <m>x = \frac{\pi}{2}</m>, the function will be undefined, since <m>\cos \left(\frac{\pi}{2} \right) = 0</m>, and division by zero is undefined.  However, as <m>x-</m> approaches <m>\frac{\pi}{2}</m> from the left, the values of <m>h\left(x \right)</m> approach infinity.  For example, <m>\frac{\sin \left(\frac{11\pi}{24} \right)}{\cos \left(\frac{11\pi}{24} \right)} \approx 7.59575</m> and <m>\frac{\sin \left(\frac{23\pi}{48} \right)}{\cos \left(\frac{23\pi}{48} \right)} \approx 15.25705</m>.  This occurs because values of <m>\sin x</m> in the numerator approach 1 while values of <m>\cos x</m> in the denominator approach 0.  A denominator that is approaching zero with a numerator approaching one causes the ratio <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> to increase without bound.</p>
+
+              <p>To further investigate the tangent function <m>h\left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m>  on the interval <m>0 \le x \le 2\pi</m>, let us study the table of values for <m>\sin x</m>, <m>\cos x</m>, and  <m>\frac{\sin x}{\cos x}</m> from <m>x = \frac{\pi}{2}</m>  to <m>x = \pi</m> in <xref ref="tan-graph-table1" text="type-local" />.</p>
+
+              <figure>
+                <caption>Values of <m>\cos \left(x \right)</m>, <m>\cos \left(x \right)</m> and <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> from <m>x = 0</m> to <m>x = \pi</m></caption>
+                  <sidebyside widths = "50% 50%">
+                    <tabular top="medium" xml:id="tan-graph-table1">
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>x</m></cell>
+                        <cell halign="center"><m>\sin x</m></cell>
+                        <cell halign="center"><m>\cos x</m></cell>
+                        <cell halign="center"><m>\frac{\sin x}{\cos x}</m></cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{\pi}{2}</m></cell>
+                        <cell halign="center">1.00000</cell>
+                        <cell halign="center">0.00000</cell>
+                        <cell halign="center">undefined</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{7\pi}{12}</m></cell>
+                        <cell halign="center">0.96593</cell>
+                        <cell halign="center">-0.25882</cell>
+                        <cell halign="center">-3.73205</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{2\pi}{3}</m></cell>
+                        <cell halign="center">0.86603</cell>
+                        <cell halign="center">-0.50000</cell>
+                        <cell halign="center">-1.73205</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{3\pi}{4}</m></cell>
+                        <cell halign="center">0.70711</cell>
+                        <cell halign="center">-0.70711</cell>
+                        <cell halign="center">-1.00000</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{5\pi}{6}</m></cell>
+                        <cell halign="center">0.50000</cell>
+                        <cell halign="center">-0.86603</cell>
+                        <cell halign="center">-0.57735</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\frac{11\pi}{12}</m></cell>
+                        <cell halign="center">0.25882</cell>
+                        <cell halign="center">-0.96593</cell>
+                        <cell halign="center">-0.26795</cell>
+                      </row>
+
+                      <row bottom="medium">
+                        <cell halign="center"><m>\pi</m></cell>
+                        <cell halign="center">0.00000</cell>
+                        <cell halign="center">-1.00000</cell>
+                        <cell halign="center">0.00000</cell>
+                      </row>
+
+                    </tabular>
+
+                    <image source="./images/tan-graph-image1.jpg" width="50%"></image>
+
+                  </sidebyside>
+              </figure>
+
+              <p>On the interval from <m>x = \frac{\pi}{2}</m> to <m>x = \pi</m>, values of <m>\sin x</m> are non-negative, and values of <m>\cos x</m> are non-positive, so the ratio <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> is non-positive on this interval.  The table shows that the values of <m>\sin x</m> decrease from 1 to 0, and the values of <m>\cos x</m> decrease from 0 to <m>-1</m>.  The table also shows that the ratio <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> is negative when <m>x</m> is near <m>\frac{\pi}{2}</m>, and the ratio increases towards zero as <m>x</m> increases.</p>
+
+              <p>So, what have we discovered about <m>\tan \left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m>?
+
+                <ul>
+                  <li>The sign (positive or negative) of  <m>h\left(x \right) = \tan \left(x \right)</m> is determined by the signs of <m>\sin x</m> and <m>\cos x</m>.</li>
+                  <li>Any <m>x-</m>value that makes <m>\sin x</m> equal zero also makes the value of <m>h\left(x \right)</m> equal zero.</li>
+                  <li>Any <m>x-</m>value that makes <m>\cos x</m> equal zero is not in the domain of <m>h\left(x \right)</m> because division by zero is undefined.</li>
+                  <li>Evaluating <m>h\left(x \right)</m> at <m>x-</m> values near the zeros of <m>\cos x</m> indicates that <m>h\left(x \right)</m> has vertical asymptotes at these <m>x-</m>values.</li>
+                </ul>
+
+              </p>
+
+              <p>The graph of <m>h\left(x \right) = \tan \left(x \right)</m> on the interval <m>0 \le x \le \pi</m> is shown in <xref ref="tan-graph-image2" text="type-local" />.</p>
+
+                <figure xml:id="tan-graph-image2">
+                  <caption>Graph of <m>\tan \left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m> on the interval <m>-\pi \le x \le \pi</m></caption>
+                  <image source="./images/tan-graph-image2.jpg" width="50%"></image>
+                </figure>
+
+                <figure>
+                  <caption>Values of <m>\cos \left(x \right)</m>, <m>\cos \left(x \right)</m> and <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> from <m>x = \pi</m> to <m>x = \frac{3\pi}{2}</m></caption>
+                    <sidebyside widths = "50% 50%">
+                      <tabular top="medium" xml:id="tan-graph-table1">
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>x</m></cell>
+                          <cell halign="center"><m>\sin x</m></cell>
+                          <cell halign="center"><m>\cos x</m></cell>
+                          <cell halign="center"><m>\frac{\sin x}{\cos x}</m></cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\pi</m></cell>
+                          <cell halign="center">0.00000</cell>
+                          <cell halign="center">-1.00000</cell>
+                          <cell halign="center">0.00000</cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\frac{13\pi}{12}</m></cell>
+                          <cell halign="center">-0.25882</cell>
+                          <cell halign="center">-0.96593</cell>
+                          <cell halign="center">-0.26795</cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\frac{7\pi}{6}</m></cell>
+                          <cell halign="center">-0.50000</cell>
+                          <cell halign="center">-0.86603</cell>
+                          <cell halign="center">0.57735</cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\frac{5\pi}{4}</m></cell>
+                          <cell halign="center">-0.70711</cell>
+                          <cell halign="center">-0.70711</cell>
+                          <cell halign="center">-1.00000</cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\frac{4\pi}{3}</m></cell>
+                          <cell halign="center">-0.86603</cell>
+                          <cell halign="center">-0.50000</cell>
+                          <cell halign="center">1.73205</cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\frac{17\pi}{12}</m></cell>
+                          <cell halign="center">-0.96593</cell>
+                          <cell halign="center">-0.25882</cell>
+                          <cell halign="center">3.73205</cell>
+                        </row>
+
+                        <row bottom="medium">
+                          <cell halign="center"><m>\frac{3\pi}{ 2}</m></cell>
+                          <cell halign="center">-1.00000</cell>
+                          <cell halign="center">0.00000</cell>
+                          <cell halign="center">undefined</cell>
+                        </row>
+
+                      </tabular>
+
+                      <image source="./images/tan-graph-image3.jpg" width="50%"></image>
+
+                    </sidebyside>
+              </figure>
+
+              <p><xref ref="tan-graph-image2" text="type-local" /> shows values of <m>\sin x</m>, <m>\cos x</m>, and <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> from <m>x = \pi</m> to <m>x = \frac{3\pi}{2}</m>.  On this interval, values of <m>\sin x</m> are non-positive, values of <m>\cos x</m> are non-positive, and values of <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> are non-negative or undefined.  In comparing the values of <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> on the interval <m>\pi \le x \le \frac{3\pi}{2}</m> with the values of <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> on the interval <m>0 \le x \le \frac{\pi}{2}</m>, we find that, although the values of <m>\sin x</m> and <m>\cos x</m> differ on these two intervals, the values of their ratio are identical.  We can make a table of values of <m>\sin x</m>, <m>\cos x</m>, and <m>\frac{\sin \left(x \right)}{\cos \left(x \right)}</m> from <m>x = \frac{3\pi}{2}</m> to <m>x = 2\pi</m> to confirm that the behavior of <m>h\left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m> on <m>\frac{3\pi}{2} \le x \le 2\pi</m> is identical to the behavior of <m>h\left(x \right)</m> on <m>\frac{\pi}{2} \le x \le \pi</m>.</p>
+
+              <p>The repetition of values of <m>h\left(x \right) = \tan \left(x \right) = \frac{\sin \left(x \right)}{\cos \left(x \right)}</m> indicates that the tangent function is periodic. The period of <m>h\left(x \right) = \tan \left(x \right)</m> is <m>\pi</m> because <m>h\left(\pi + x \right) = h\left(x \right)</m> for all values of <m>x</m>.  The fact that <m>h\left(x \right) = \tan \left(x \right)</m> has the period of <m>\pi</m> can be investigated using the graph shown in <xref ref="sin-cos-graph-image7" text="type-local" />. Values of <m>\sin x</m> for <m>0 \le x \le \pi</m> are the opposite of values of <m>\sin x</m> for <m>0 \le x \le \pi</m>.  Similarly, values of <m>\cos x</m> for <m>0 \le x \le \pi</m> are the opposite of values of <m>\cos x</m> for <m>\pi \le x \le 2\pi</m>. Therefore, the values of <m>\frac{\sin \left(x \right)}{\cos \left(x \right)} = \tan \left(x \right)</m> for <m>0 \le x \le \pi</m> repeat for <m>\pi \le x \le 2\pi</m>, since both parts of the ratio are opposites.</p>
+
+                <figure xml:id="sin-cos-graph-image7">
+                  <caption>Graph of <m>y = \sin x</m> and <m>y = \sin x</m> for <m>-\frac{\pi}{2} \le x \le 2\pi</m></caption>
+                  <image source="./images/sin-cos-graph-image7.jpg" width="50%"></image>
+                </figure>
+
+              <p>Based on information about zeros, asymptotes, and periodicity, the graph of <m>h\left(x \right) = \tan \left(x \right)</m> on the interval <m>0 \le x \le 2\pi</m>is shown in <xref ref="sin-cos-graph-image7" text="type-local" />.</p>
+
+                <figure xml:id="tan-graph-image4">
+                  <caption>Graph of <m>h\left(x \right) = \tan \left(x \right)</m> on <m>0 \le x \le 2\pi</m></caption>
+                  <image source="./images/tan-graph-image4.jpg" width="50%"></image>
+                </figure>
+
+              <p>We can use knowledge of symmetries and periodicity to graph <m>y = \tan x</m> on a larger domain than is shown in <xref ref="tan-graph-image4" text="type-local" />.  We first determine the symmetry of <m>\tan x</m>by simplifying <m>\tan \left(-x \right)</m>. Recall that a function <m>f\left(x \right)</m> is odd if <m>f\left(-x \right) = f\left(x \right)</m> for all <m>x-</m>values. Similarly, a function <m>f\left(x \right)</m> is even if <m>f\left(-x \right) = f\left(x \right)</m> for all <m>x-</m>values.</p>
+
+              <p>For tangent we have,
+
+                <md>
+                  <mrow>\tan \left(-x \right) \amp = \frac{\sin \left(-x \right)}{\cos \left(-x \right)}</mrow>
+                  <mrow>                      \amp = \frac{-\sin x}{\cos x}</mrow>
+                  <mrow>                      \amp = -\tan \left(-x \right)</mrow>
+                </md>
+
+              This means that <m>\tan x</m> is an odd function, and its graph is symmetric about the origin.  A more complete graph of the tangent function is shown in <xref ref="tan-graph-image5" text="type-local" />. The graph shows that the period of the tangent function is <m>\pi</m>.  The concept of amplitude does not apply to the tangent function since values of <m>\tan x</m> get infinitely large and infinitely small. \\ \\
+              We see that the domain of the tangent function excludes the odd multiples of <m>\frac{\pi}{2}</m>;  this can be written as <m>x \ne \frac{2k + 1}{2} \pi</m>, in which <m>k</m> is any integer.  The range is all real numbers. As before, since the tangent function serves as an important function in mathematics, we add it to our toolkit and become familiar with the basic shape, intercepts, and asymptotes of its graph.</p>
+
+                <figure xml:id="tan-graph-image5">
+                  <caption>Graph of <m>y = \tan x</m></caption>
+                  <image source="./images/tan-graph-image5.jpg" width="50%"></image>
+                </figure>
+
+    </subsection>
+
+    <exercises>
+      <title>Exercises</title>
+
+      <!-- Practice Problem #1 -->
+      <exercise>
+        <statement>
+          <p>Use the fact that both the sine and cosine functions have period <m>2\pi</m> to evaluate the following. Do not use your calculator.</p>
+
+            <md>
+              <mrow>\text{a. } \amp \cos \left(-7\pi \right)            \amp \text{b. } \amp \sin \left(-\frac{9\pi}{2} \right) \amp \text{c. } \amp \cos \left(-\frac{\pi}{2} \right)</mrow>
+              <mrow>\text{d. } \amp \sin \left(\frac{29\pi}{2} \right)  \amp \text{e. } \amp \sin \left(-4\pi \right)           \amp \text{f. } \amp \cos \left(\frac{101\pi}{2} \right)</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #2 -->
+      <exercise>
+        <statement>
+          <p>Estimate the value of each of the following and then use your calculator in radian mode to find the decimal value.</p>
+
+            <md>
+              <mrow>\text{a. } \amp \sin 1  \amp \text{b. } \amp \sin \left(0.5 \right) \amp \text{c. } \amp \cos \left(-5 \right)</mrow>
+              <mrow>\text{d. } \amp \cos 5  \amp \text{e. } \amp \tan 1                 \amp \text{f. } \amp \tan \left(-0.25 \right)</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #3 -->
+      <exercise>
+        <statement>
+          <p>Use the fact that the tangent is the ratio of sine to cosine to evaluate the following. Do not use your calculator.</p>
+
+            <md>
+              <mrow>\text{a. } \amp \tan  \left(\frac{\pi}{6} \right)           \amp \text{b. } \amp \tan \left(\frac{2\pi}{3} \right) \amp \text{c. } \amp \tan \left(7\pi \right)</mrow>
+              <mrow>\text{d. } \amp \frac{1}{\tan \left(\frac{\pi}{4} \right)}  \amp \text{e. } \amp \tan \left(-4\pi \right)          \amp \text{f. } \amp \tan \left(\frac{101\pi}{2} \right)</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #4 -->
+      <exercise>
+        <statement>
+          <p>Find all solutions for each equation in the interval <m>\left[0, 2\pi \right]</m>. Give exact solutions (in terms of <m>\pi</m>).</p>
+
+            <md>
+              <mrow>\text{a. } \amp \sin x = 1      \amp \text{b. } \amp \sin x \gt 0             \amp \text{c. } \amp \tan x = 1</mrow>
+              <mrow>\text{d. } \amp \cos x = - 1    \amp \text{e. } \amp \sin x = \frac{1}{2}     \amp \text{f. } \amp \sin x = \cos x</mrow>
+              <mrow>\text{g. } \amp \sin x = \tan x \amp \text{h. } \amp \sin^2 x + \cos^2 x = 1  \amp \text{i. } \amp \cos x = \pi</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #5 -->
+      <exercise>
+        <statement>
+          <p>Sketch a graph to represent each situation described below.</p>
+
+            <ol label="a.">
+              <li>Imagine a diving board just after someone has dived off.  Assume there is no friction or air resistance so that the diving board does not slow down over time.  Sketch a graph of the motion of the diving board if the diving board vibrates 10 inches from equilibrium each second.</li>
+              <li>Estimate and then graph the number of hours of daylight per day in your hometown over a two year time span.</li>
+              <li>A pendulum that consists of a small weight suspended by a length of string hangs vertically when it is at rest.  If the pendulum's bob is displaced by a small amount from its equilibrium position and then released, the bob will swing back and forth in an arc which subtends an angle twice as large as the initial angle of displacement.  That is, the pendulum sweeps out equal angles on each side of equilibrium as seen in <xref ref="pendulum-image" text="type-local" />. Suppose that the total angle through which the pendulum moves is 10 degrees and that it takes 1 second to complete one swing from left to right and back again.  Make a graph showing the pendulum's angular displacement from equilibrium over time. Assume there is no friction or air resistance.
+
+                <figure xml:id="pendulum-image">
+                  <caption>A Pendulum swinging</caption>
+                  <image source="./images/pendulum-image.jpg" width="50%"></image>
+                </figure>
+
+              </li>
+              <li>Sketch graphs of<m>y = \sin x</m> and <m>y = x</m> on the interval <m>-frac{\pi}{2} \le x \le frac{\pi}{2}</m>.  Use a calculator (in radian mode) to investigate the relationship between values of <m>\sin x</m> and <m>x</m> for <m>x-</m>values close to zero.  Write a few sentences about this relationship.</li>
+            </ol>
+
+        </statement>
+      </exercise>
+
+    </exercises>
+
+</section>

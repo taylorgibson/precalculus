@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section09" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Graphing Transformations of Trigonometric Functions</title>
+    <introduction></introduction>
+
+      <p>Many phenomena we observe are periodic and can be modeled by either the sine or the cosine function.  However, most periodic phenomena do not have period <m>2\pi</m>and do not oscillate between 1 and <m>-1</m>.  Therefore, when we use trigonometric functions as models for these phenomena, we will need to incorporate horizontal and vertical stretches, compressions, and shifts into our functions as we have done with other toolkit functions.  In this section, we will use transformations of the sine and cosine functions to model situations in context.</p>
+
+        <figure xml:id="spring-image">
+          <caption>Motion of a Weight on a Spring</caption>
+          <image source="./images/spring-image.jpg" width="50%"></image>
+        </figure>
+
+      <example>
+        <statement>
+
+          <p>A weight is suspended from the ceiling on a spring. When the weight is pulled down, a small distance from its equilibrium position and then released, it oscillates about its original equilibrium position.  Assume that there is no friction or air resistance, so that the weight continues to oscillate indefinitely. The weight is pulled down to 1.3 cm below its equilibrium position and then released at time <m>t = 0</m>.  After one second the weight will be 1.3 cm above its equilibrium position, and when <m>t = 2</m>,  it will have completed one oscillation and will again be 1.3 cm below equilibrium (see <xref ref="spring-image" text="type-local" />).  Sketch a graph to illustrate the motion of the weight over time.  Write an equation for your graph.</p>
+
+          <p>In most real-world contexts, the period of periodic behavior isn’t likely to be <m>2\pi</m>.  Altering the period of the sine and cosine functions from <m>2\pi</m> to an appropriate value in our model is a common procedure.   We know from our earlier study of transformations that the period of <m>\sin \left(Bx \right)</m> is <m>\frac{2\pi}{B}</m>, since this represents a horizontal compression by a factor of <m>B</m>.  To create a periodic function with a given period <m>P</m>, we need <m>\frac{2\pi}{B} = P</m>, so the equation <m>B = \frac{2\pi}{P}</m> allows us to easily create the appropriate periodic behavior.  For example, in this problem, we have a periodic process that repeats every 2 seconds, so our sine or cosine function should have an argument of <m>\left(\pi t \right)</m>.  If the process had repeated every 1.7 seconds instead, we would use <m>B = \frac{2\pi}{1.7}</m>, so our argument would be <m>\left(\frac{2\pi}{1.7}t \right)</m> or <m>\left(3.696t \right)</m>.</p>
+
+        </statement>
+        <solution>
+
+          <p>The problem asks for a graph of the motion of the weight over time, which is a graph of displacement versus time.  Displacement is the difference between the current position and the equilibrium position.  We will say that displacement is positive if the spring is above equilibrium and negative if the spring is below equilibrium.  Displacement is zero at equilibrium.  <xref ref="spring-table" text="type-local" /> lists some ordered pairs (time, displacement) and illustrates the graph of spring displacement versus time.</p>
+
+            <figure xml:id="spring-table">
+              <caption></caption>
+                <tabular top="medium" halign="left">
+
+                  <row bottom="medium">
+                    <cell halign="center">Time</cell>
+                    <cell halign="center">0</cell>
+                    <cell halign="center">0.5</cell>
+                    <cell halign="center">1</cell>
+                    <cell halign="center">1.5</cell>
+                    <cell halign="center">2</cell>
+                  </row>
+
+                  <row bottom="medium">
+                    <cell halign="center">Displacement</cell>
+                    <cell halign="center"><m>-1.3</m></cell>
+                    <cell halign="center">0</cell>
+                    <cell halign="center">1.3</cell>
+                    <cell halign="center">0</cell>
+                    <cell halign="center"><m>-1.3</m></cell>
+                  </row>
+
+                </tabular>
+            </figure>
+
+            <figure xml:id="spring-image1">
+              <caption>Graph of Spring Displacement versus Time</caption>
+              <image source="./images/spring-image1.jpg" width="50%"></image>
+            </figure>
+
+          <p>Note that the graph in <xref ref="spring-image1" text="type-local" /> has amplitude 1.3, period 2, and a minimum value when <m>t = 0</m>.  The function <m>d\left(t \right) = 1.3\cos \left(t \right)</m> has a graph with the correct amplitude and includes the point <m>\left(0, 1.3 \right)</m>.  The period can be changed from <m>2\pi</m> to 2 by compressing the graph horizontally.  Thus, <m>d\left(t \right) = 1.3\cos \left(\pi t \right)</m> has the correct amplitude and period.  However, its graph has a maximum value when <m>t = 0</m>. We can achieve a minimum value when <m>t = 0</m> by reflecting the graph over the <m>t-</m>axis. Thus, <me>d\left(t \right) = -1.3\cos \left(\pi t \right)</me> is an equation for the graph in <xref ref="spring-image1" text="type-local" />.  Other equations will also produce the desired graph.  Writing other equations for this graph is part of the exercise set at the end of this section.</p>
+
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+
+          <p>Sketch a graph of <m>g\left(x \right) = \csc \left(\frac{x}{3} \right)</m>.</p>
+
+        </statement>
+        <solution>
+
+          <p>From our earlier work with transformations of functions, this is the graph of the cosecant function stretched horizontally by a factor of 3.</p>
+
+          <p>Since the period of the cosecant function is <m>2\pi</m> (same as that for sine), the period of <m>g\left(x \right) = \csc \left(\frac{x}{3} \right)</m> will be three times as long, or <m>6\pi</m>.  The cosecant graph has vertical asymptotes where the sine is zero, that is, at integer multiples of <m>\pi</m> (or <m>k\pi</m>, in which <m>k</m> is any integer). So on the graph of <m>g\left(x \right) = \csc \left(\frac{x}{3} \right)</m>, the vertical asymptotes will be <m>x = 3k\pi</m>. Similarly, the turning points on the graph of the cosecant function are <m>\pi</m> units apart at <m>x = \frac{2k+1}{2} \pi</m>, and on <m>g\left(x \right) = \csc \left(\frac{x}{3} \right)</m>  they will be <m>3\pi</m> units apart.  Therefore, the turning points will occur at <m>x = \frac{3\left(2k+1 \right)}{2} \pi</m>.  The graph of <m>g</m> is shown in <xref ref="csc-graph-image1" text="type-local" />.</p>
+
+            <figure xml:id="csc-graph-image1">
+              <caption>Graph of <m>g\left(x \right) = \csc \left(\frac{x}{3} \right)</m></caption>
+              <image source="./images/csc-graph-image1.jpg" width="50%"></image>
+            </figure>
+
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+
+          <p>Sketch a graph of the function <m>g\left(x \right) = 4\cos \left(x - \frac{\pi}{2} \right) - 1</m>.</p>
+
+        </statement>
+        <solution>
+
+          <p>We recognize that, in <m>g\left(x \right)</m>, the cosine function has undergone three transformations.  The coefficient 4 indicates a vertical stretch; therefore, the amplitude of this transformed function will be 4.  The argument <m>\left(x - \frac{\pi}{2} \right)</m> indicates a horizontal shift of <m>\frac{\pi}{2}</m> units to the right.  A horizontal shift of a trigonometric curve is called a phase shift.  The addition of <m>-1</m> indicates a vertical shift down one unit creating new maximum and minimum values.  To sketch the graph, it may be helpful to draw an intermediate graph of <m>y = \cos 4\left(x \right)</m> that shows the change of shape and then draw a final graph that shows the change in position.  The final graph is shown in <xref ref="cos-graph-image1" text="type-local" />.</p>
+
+            <figure xml:id="cos-graph-image1">
+              <caption>Graph of <m>g\left(x \right) = 4\cos \left(x - \frac{\pi}{2} \right) - 1</m></caption>
+              <image source="./images/cos-graph-image1.jpg" width="50%"></image>
+            </figure>
+
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+
+          <p>Graph <m>h\left(x \right) = \sin \left(2x - \frac{\pi}{4} \right)</m>. Indicate the transformations of the graph of <m>f\left(x \right) = \sin \left(x \right)</m> involved, along with the amplitude and period.</p>
+
+        </statement>
+        <solution>
+
+          <p>The graph will exhibit two transformations of the graph of <m>f\left(x \right) = \sin \left(x \right)</m>, a horizontal compression and a horizontal shift.  We know from earlier work that the combination of two horizontal transformations affects graphs in a slightly surprising way.  Rewrite the equation for h as <m>h\left(x \right) = \sin \left(2 \left(x - \frac{\pi}{8} \right) \right)</m> to see that the graph of h can be obtained from the graph of <m>f\left(x \right) = \sin \left(x \right)</m> first through a horizontal compression by a factor of 2 and then a shift of <m>\frac{\pi}{8}</m> units to the right.</p>
+
+          <p><xref ref="sin-graph-image1" text="type-local" /> shows the graph of <m>y = \sin \left(2x \right)</m> and the graph of <m>y = \sin \left(2x \right)</m> shifted  <m>\frac{\pi}{8}</m>  units to the right. This shifted graph is the graph of  <m>h\left(x \right) = \sin \left(2x - \frac{\pi}{4} \right)</m>.</p>
+
+            <figure xml:id="sin-graph-image1">
+              <caption>Graphs of <m>y = \sin \left(2x \right)</m> and <m>h\left(x \right) = \sin \left(2x - \frac{\pi}{4} \right)</m></caption>
+              <image source="./images/sin-graph-image1.jpg" width="50%"></image>
+            </figure>
+
+          <p>Another way to develop the graph of <m>h\left(x \right)</m> is to study one cycle of <m>f\left(x \right) = \sin \left(x \right)</m>.  Since  incorporates no shifts or stretches,  completes one cycle on the interval <m>0 \le x \le 2\pi</m>.  In the function <m>h\left(x \right)</m> , the argument of sine is <m>\left(2x - \frac{\pi}{4} \right)</m>.   Since <m>f\left(x \right) = \sin \left(x \right)</m> completes one cycle when its argument, <m>x</m>, varies from 0 to <m>2\pi</m>, <m>h\left(x \right) = \sin \left(2x - \frac{\pi}{4} \right)</m> completes one cycle when its argument <m>2x - \frac{\pi}{4}</m>, varies from 0 to <m>2\pi</m>.  Thus, <m>h</m> completes one cycle when <m>0 \le 0 2x - \frac{\pi}{4} \le 2\pi</m>.  Solve this inequality for <m>x</m> as follows:
+
+            <me>0 \le 2x - \frac{\pi}{4} \le 2\pi</me>
+            <me>\frac{\pi}{4} \le 2x \le \frac{9\pi}{4}</me>
+            <me>\frac{\pi}{8} \le 2x \le \frac{9\pi}{8}</me>
+
+          Therefore, <m>h\left(x \right) = \sin \left(2x - \frac{\pi}{4} \right)</m> completes one cycle in the interval <m>\frac{\pi}{8} \le 2x \le \frac{9\pi}{8}</m>.  This interval is consistent with the graph shown in <xref ref="sin-graph-image1" text="type-local" />.  The shape of the graph on the interval <m>\frac{\pi}{8} \le 2x \le \frac{9\pi}{8}</m> is repeated every <m>\pi</m> units since<m>h\left(x \right) = \sin \left(2x - \frac{\pi}{4} \right)</m> has a period of <m>\pi</m>.</p>
+
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+
+          <p>Graphically solve <m>\sin x =-0.2</m> accurate to four decimal places.</p>
+
+        </statement>
+        <solution>
+
+          <p>Use a calculator to graph <m>y = \sin x</m> and <m>y = -0.2</m> on the same axes (see <xref ref="sin-graph-image2" text="type-local" />).  Use a trace or intersect feature to find the <m>x-</m>coordinates of the points of intersection of the two curves.  These <m>x-</m>values are solutions to the equation <m>\sin x =-0.2</m>. Notice that there are many points of intersection.  One point of intersection occurs at approximately <m>x \approx -0.2014</m>; it is the first point of intersection to the left of the origin.</p>
+
+          <p>Once this <m>x-</m>value is determined, other points of intersection can be found using the periodicity of the graph of <m>y = \sin x</m>.  Since the sine curve has a period of <m>2\pi</m>, every multiple of <m>2\pi</m> added to <m>-0.2014</m> will produce an <m>x-</m>value whose sine is <m>-0.2</m>.  Hence, numbers of the form <m>-0.2014 + 2k\pi</m>, where <m>k</m> is an integer, are solutions of <m>\sin x \approx -0.2</m>. However, this set of numbers represents only half of the solutions (shown below).</p>
+
+            <figure xml:id="sin-graph-image2">
+              <caption>Graphs of <m>y = \sin \left(x \right)</m> and <m>y = -0.2</m></caption>
+              <image source="./images/sin-graph-image2.jpg" width="50%"></image>
+            </figure>
+
+          <p>Since the sine curve has symmetry about the vertical line <m>x = \frac{\pi}{2}</m>, there is another solution to <m>\sin x = -0.2</m> just to the right of <m>x = 2\pi</m>.  This solution is the same distance to the right of <m>\pi</m> as <m>-0.2014</m> is to the left of 0 and is <m>\pi + 0.2014 \approx 3.3430</m>. Therefore, another solution is approximately <m>x \approx 3.3430</m>.  As before, since the sine function has a period of <m>2\pi</m>, any number of the form <m>x \approx 3.3430 + 2k\pi</m>, in which <m>k</m> is any integer, is also a solution of <m>\sin x = -0.2</m>.  Therefore, the complete solution can be written as <m>x \approx -0.2014 + 2k\pi</m> or  <m>x \approx 3.3430 + 2k\pi</m> in which <m>k</m> is an integer.</p>
+
+        </solution>
+      </example>
+
+      <example>
+        <statement>
+
+          <p>On a unit circle, an arc ends at a point whose <m>x-</m>coordinate is 0.45.  Find the length of the arc.</p>
+
+        </statement>
+        <solution>
+
+          <p>There are many different arcs that will terminate at a point whose <m>x-</m>coordinate is 0.45.  If we use <m>s</m> to represent the length of the arc, then we need to find the values of s that satisfy <m>\cos \left(s \right) = 0.45</m>.  One way to solve this equation is to use a graphing calculator or software (in radian mode) to find the points of intersection of the graphs of <m>y = \cos \left(x \right)</m>  and <m>y = 0.45</m>.  Another way to solve the equation involves using the notation <m>s = \cos^{-1} \left(0.45 \right)</m>.  As we saw in Section 7.1, this notation means that s is an arc length whose cosine is 0.45; <m>s</m> is often called the inverse cosine or arccosine of 0.45.   Thus, the notation <m>s = \cos^{-1} \left(0.45 \right)</m>, which is read “the inverse cosine of 0.45”, represents a number whose cosine is 0.45.  Using a calculator (in radian mode), we find that <m>\cos^{-1} \left(0.45 \right) = 1.104031</m>.  Thus, an arc about 1.104 units long will terminate at a point whose <m>x-</m>coordinate is 0.45.  This corresponds to an angle of  <m>\theta = 180 \left(\frac{1.104031}{\pi} \right) = 63.26^\circ</m>.  Remember that arcs of length 1.104 units and <m>1.104 + 2\pi</m> units and  <m>1.104 + 4\pi</m> units will all end at the same point.  In fact, all numbers of the form <m>1.104 + 2k\pi</m>,  where <m>k</m> is an integer, are solutions accurate to three decimal places for <m>\cos \left(s \right) = 0.45</m>. We will explore this generalization in more detail later in this chapter.</p>
+
+        </solution>
+      </example>
+
+    <exercises>
+      <title>Exercises</title>
+
+      <!-- Practice Problem #1 -->
+      <exercise>
+        <statement>
+          <p>A weight suspended from a spring oscillates so that the displacement <m>d</m> is related to the elapsed time <m>t</m> by the equation <m>d = -1.3\cos \left(\pi t \right)</m>. Find all <m>t-</m>values at which the displacement is equal to 1.3.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #2 -->
+      <exercise>
+        <statement>
+          <p>Write an equation for the graph in Example 1 that involves a horizontal translation of a cosine function.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #3 -->
+      <exercise>
+        <statement>
+          <p>Write an equation for the graph in Example 1 that involves a horizontal translation of a sine function.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #4 -->
+      <exercise>
+        <statement>
+          <p>Sketch at least two complete cycles of the graph of each function.  Label the scale on both axes.  For each function write a statement to describe the transformation(s) of a basic toolkit function.</p>
+
+            <md>
+              <mrow>\text{a. } \amp y= 2\cos x                                  \amp \text{b. } \amp y = \sin \left(-2x \right)</mrow>
+              <mrow>\text{c. } \amp y = \sin \left(x - \frac{\pi}{2} \right)    \amp \text{d. } \amp y = 1 - \cos \left(\frac{x}{2} \right)</mrow>
+              <mrow>\text{e. } \amp y = \sec \left(\frac{x}{3} \right)          \amp \text{f. } \amp y = \sin \left(3\pi x \right) - 2</mrow>
+              <mrow>\text{g. } \amp y = \tan \left(\pi x \right)                \amp \text{h. } \amp y = \cos \left(\pi - x \right)</mrow>
+              <mrow>\text{i. } \amp y = \sec \left(2x \right) + 1               \amp \text{j. } \amp y = \csc \left(-\frac{s}{3} \right)</mrow>
+              <mrow>\text{k. } \amp y = 3\sin \left(2x - \frac{\pi}{2} \right)  \amp \text{l. } \amp y = \tan \left(\frac{1}{2}x + \frac{\pi}{4}\right)</mrow>
+              <mrow>\text{m. } \amp y = \cos \left(2x + \pi \right)             \amp \text{n. } \amp y = \sin \left(\frac{1}{2} + \pi \right)</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #5 -->
+      <exercise>
+        <statement>
+          <p>Sketch at least two cycles of <m>\left(x,y \right)</m>.  Label the scale on both axes and be sure to include arrows to indicate the direction of the path.</p>
+
+            <ol label="a.">
+              <li><m>x\left(t \right) = 3t + 2 \\ y\left(t \right) = 2\sin t</m></li>
+              <li><m>x\left(t \right) = \frac{1}{2}t - 1 \\ y\left(t \right) = 3\cos t</m></li>
+            </ol>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #6 -->
+      <exercise>
+        <statement>
+          <p>Solve each equation accurate to four decimal places by using graphs of trigonometric functions. Find all solutions.</p>
+
+            <md>
+              <mrow>\text{a. } \amp \cos x = 0.4    \amp \text{b. } \amp \tan x = 10</mrow>
+              <mrow>\text{c. } \amp \sin x = -0.5   \amp \text{d. } \amp \cos x = 3</mrow>
+            </md>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #7 -->
+      <exercise>
+        <statement>
+          <p>Write an equation of a sine function with the following characteristics.</p>
+
+            <ol label="a.">
+              <li>period <m>2\pi</m>, amplitude 4, horizontal shift 0</li>
+              <li>period <m>\frac{\pi}{3}</m>, amplitude 0.1, horizontal shift <m>\frac{\pi}{4}</m> right</li>
+              <li>period  <m>\pi</m>, amplitude  , horizontal shift 1 left</li>
+              <li>period 2, amplitude 1, horizontal shift <m>\pi</m> right</li>
+              <li>period 0.25, amplitude 2, horizontal shift 2 left</li>
+              <li>period 0.0001, amplitude <m>\frac{1}{2}</m> , horizontal shift 0 </li>
+            </ol>
+
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #8 -->
+      <exercise>
+        <statement>
+          <p>There is a Ferris wheel at the fair.  The wheel has a radius of 33.2 feet and makes three complete revolutions every minute.  For clearance, the bottom of the Ferris wheel is 4 feet above ground.  Sketch a graph and write a function that models how a particular passenger's  height above ground varies over time as he or she rides the Ferris wheel.  Assume that the passenger is at the bottom of the Ferris wheel when <m>t = 0</m>.</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #9 -->
+      <exercise>
+        <statement>
+          <p>The rotation of the Ferris wheel in Exercise 8 can be described in two ways.  The fact that the wheel takes one-third of a minute to complete a cycle tells you that the period of the motion is one-third minute per cycle.  The fact that the wheel completes three revolutions in a minute tells you that the <em>frequency</em> of the motion is three cycles per minute.  Thus, the same motion can be described either by specifying that the period is one-third or by specifying that the frequency is three. Identify the frequency of each of the sine waves in Exercise 7.</p>
+        </statement>
+      </exercise>
+
+    <!-- Practice Problem #10 -->
+    <exercise>
+      <statement>
+        <p>In Los Angeles on the first day of summer (June 21, which has the maximum amount of daylight) there are 14 hours 26 minutes of daylight, and on the first day of winter (December 21, which has the minimum amount of daylight) there are 9 hours 54 minutes of daylight.  On average, there are 12 hours 10 minutes of daylight; this average amount occurs on March 20 and September 22.</p>
+
+          <ol label="a.">
+            <li>Sketch a graph that displays this information.</li>
+            <li>Write an equation that expresses <m>d</m>, the number of minutes of daylight per day, as a function of <m>t</m>, the number of days after June 21.</li>
+          </ol>
+
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #11 -->
+    <exercise>
+      <statement>
+        <p>A weight is suspended from a spring which hangs vertically from the ceiling of a room.  At time <m>t = 0</m> the weight is pulled down so that its distance from the ceiling is 24.4 cm. When released it oscillates about its previous equilibrium position.  At time <m>t = \frac{1}{2}</m> second it reaches its minimum distance from the ceiling, which is 21.8 cm.  Assume there is no friction or air resistance.  Identify the period and the frequency of the weight’s motion.  Write an equation that expresses the weight's distance from the ceiling as a function of time.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #12 -->
+    <exercise>
+      <statement>
+        <p>A diving board vibrates 8.4 centimeters above and 8.4 centimeters below its usual resting place – and does that forever since this diving board is in space with no friction and no air resistance.  It takes a half a second to complete one full cycle.  Write a function to model the movement of the diving board over time. </p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #13 -->
+    <exercise>
+      <statement>
+        <p>The water on a piling of a pier is, at its highest, 2 feet below the top of the piling and, at its lowest, 5 feet below the top.  It takes 7 seconds to go from highest to lowest.  Write a function to model the height of the water over time.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #14 -->
+    <exercise>
+      <statement>
+        <p>As your niece plays with the yo-yo you gave for her birthday, it is 2” off the ground at its lowest and 25” off the ground at its highest.  It takes 1.2 seconds to complete one full cycle.  Write a function to model the height of the yo-yo above ground over time.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #15 -->
+    <exercise>
+      <statement>
+        <p>The pendulum on a modern-art clock is made of glass which is clear, except for the end-piece which is a river rock.  There is a light above the pendulum so that the rock casts a shadow on the floor as it moves back and forth.  The path of the shadow is 19 inches wide.  The pendulum swings from left to right in one second.  Write an equation to model the path of the shadow over time.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #16 -->
+    <exercise>
+      <statement>
+        <p>Write an equation for each of these graphs:</p>
+
+          <figure xml:id="sin-cos-graph-image6">
+            <caption></caption>
+            <image source="./images/sin-cos-graph-image6.jpg" width="50%"></image>
+          </figure>
+
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #17 -->
+    <exercise>
+      <statement>
+        <p>Use your calculator to graph each function with a viewing window that shows <m>-2\pi \le x \le 2\pi</m> and  <m>-2 \le y \le 2</m>.  For each function, determine how many cycles you expect to see on the interval <m>-2\pi \le x \le 2\pi</m>. Compare this to the number of cycles you actually see on your calculator screen. Discuss why your calculator seems to make graphing errors.</p>
+
+          <ol label="a.">
+            <li><m>f_1\left(x \right) = \sin x</m></li>
+            <li><m>f_2\left(x \right) = \sin \left(10x \right)</m></li>
+            <li><m>f_3\left(x \right) = \sin \left(100x \right)</m></li>
+            <li><m>f_4\left(x \right) = \sin \left(300x \right)</m></li>
+            <li><m>f_5\left(x \right) = \cos \left(48x \right)</m></li>
+          </ol>
+
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #18 -->
+    <exercise>
+      <statement>
+        <p>A precalculus class went on a field trip to the park.  One student started swinging on the swing.  Once the student was able to maintain a periodic motion and consistent maximum height, the other class members took some measurements:</p>
+
+          <ul>
+            <li>The height of the swing above ground at equilibrium is 0.33 meters.</li>
+            <li>The height of the swing above ground at its highest point is 1.7 meters.</li>
+            <li>The horizontal distance from the equilibrium point to the highest position of the swing is 2.26 meters.</li>
+            <li>The length of time for five complete swing cycles is 17.1 seconds. (A swing cycle is completed when the swinger returns to the same position and is heading in the same direction.)</li>
+          </ul>
+
+        <p>Write parametric equations that describe the horizontal and vertical positions of the swinger as a function of time. Graph the equations.</p>
+      </statement>
+    </exercise>
+
+  </exercises>
+
+</section>

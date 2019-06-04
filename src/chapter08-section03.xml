@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section09" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Using Trigonometric Identities</title>
+  <introduction></introduction>
+   <p>In pre-calculator days identities were very useful for finding particular values of trigonometric functions. For instance, you can find an exact value for <m>\sin\left(\frac{\pi}{12}\right)</m> by writing it as <m>\sin\left(\frac{\pi}{3}-\frac{\pi}{4}\right)</m> and then using the identity for <m>\sin\left(a-b\right)</m>. With access to a calculator the importance of identities has changed.  Even if you have access to technology to evaluate <m>\sin\left(\frac{\pi}{12}\right)</m>, it is important that you be sufficiently familiar with identities to recognize situations in which they may be useful. The following identities are ones that should be familiar. Several are generalizations of results found in the previous investigation.  Several of these identities will be verified in the exercises of this section.
+   <me>\sin^2\left(\theta\right)+\cos^2\left(\theta\right)=1</me>
+   <me>\sin\left(-\theta\right)=-\sin\left(\right)</me>
+   <me>\cos\left(-\theta\right)=\cos\left(\theta\right)</me>
+   <me>\sin\left(\frac{\pi}{2}-\theta\right)=\cos\left(\theta\right)</me>
+   <me>\sin\left(a+b \right)=\sin a \cos b +\cos a \sin b</me>
+   <me>\cos\left(a+b \right)=\cos a \cos b -\sin a \sin b</me>
+   <me>\sin\left(2\theta \right)=2\sin \theta \cos \theta</me>
+   <me>\cos\left(2\theta \right)=\cos^2 \left(\theta \right)-\sin^2 \left(\theta \right)</me>
+
+   There are many other identities that may prove useful in some situations.  A large number of these other identities can easily be derived from familiar identities.  For example, dividing both sides of <m>\sin^2\left(\theta\right)+\cos^2\left(\theta\right)=1</m> by <m>\cos^2\left(\theta \right)</m> yields the new identity
+
+   <md>
+    <mrow>\frac{\sin^2\left(\theta\right)}{\cos^2\left(\theta\right)}+1 \amp =\frac{1}{\cos^2\left(\theta\right)}</mrow>
+    <mrow>\tan^2\left(\theta\right)+1                                   \amp =\sec^2\left(\theta\right)</mrow>
+   </md>
+
+   It is probably more efficient to derive this new identity when and if you need it, rather than to memorize it.
+
+   </p>
+
+  <example xml:id="example-1">
+   <statement><p>Show that <m>\sin\left(2\theta \right)=2\sin \theta \cos \theta</m>is an identity.</p></statement>
+
+   <solution>
+    <p>The expression <m>\sin\left(2\theta \right)</m> asks us to find the sine of double an arc length or to find <m>\sin\left(\theta +\theta \right)</m>. This expression follows from the identity for the sine of the sum of two numbers:
+    <me>\sin\left(a+b \right)=\sin a \cos b + \cos a \sin b</me>
+    Substituting <m>\theta</m> for the value of <m>a</m> and for the value of <m>b</m> in the above identity yields
+    <me>\sin\left(\theta +\theta \right)=\sin \theta \cos \theta +\cos \theta \sin \theta</me>
+    which becomes
+    <me>\sin\left(2\theta \right)=2\sin \theta \cos \theta.</me>
+    There are many situations in which you will use trigonometric identities. The following examples illustrate some of these situations.
+    </p>
+   </solution>
+  </example>
+
+  <example>
+   <statement><p>Find the exact value of <m>\sin\left(2\theta \right)</m> if <m>\sin \theta =\frac{1}{3}</m>.</p></statement>
+
+   <solution>
+    <p>In <xref ref="example-1" text="type-local" />, we showed that <m>\sin\left(2\theta \right)=2\sin \theta \cos \theta</m>. Since we know <m>\sin \theta =\frac{1}{3}</m>, we need to find <m>\cos \theta </m>. The identity <m>\sin^2\left(\theta\right)+\cos^2\left(\theta\right)=1</m> allows us to find <m>\cos \theta </m>.  The value of <m>\cos \theta </m> will be either positive or negative, depending on whether the endpoint of the arc <m>\theta</m> is in quadrant 1 or quadrant 2 of the unit circle.
+
+    <md>
+     <mrow>\cos \theta \amp =\pm \sqrt{1-\sin^2\left(\theta \right)}</mrow>
+     <mrow>\cos \theta \amp =\pm \sqrt{1-\frac{1}{9}}=\pm \frac{2\sqrt{2}}{3}</mrow>
+    </md>
+    Therefore,<me>\sin\left(2\theta \right)=2\sin \theta \cos \theta =2 \cdot \frac{1}{3} \cdot \left(\pm \frac{2\sqrt{2}}{3} \right)=\pm \frac{4\sqrt{2}}{9}.</me>
+    </p>
+   </solution>
+  </example>
+
+  <example>
+   <statement><p>Solve <m>3\sin\left(2x \right)+\sin\left(-2x \right)+1=0.7</m>.</p></statement>
+
+   <solution>
+    <p>The idenity <m>\sin\left(-\theta \right)=-\sin\left(\theta \right)</m> allow us to replace <m>\sin\left(-2x \right)</m> with <m>-\sin\left(2x \right)</m>. Thus,
+    <me>3\sin\left(2x \right)+\sin\left(-2x \right)+1=0.7</me> becomes
+    <me>3\sin\left(2x \right)-\sin\left(2x \right)+1=0.7.</me>
+
+    We now can solve <m>\sin\left(2x \right)</m> as follows
+
+    <md>
+     <mrow>3\sin\left(2x \right)-\sin\left(2x \right)+1 \amp =0.7</mrow>
+     <mrow>2\sin\left(2x \right)+1                      \amp =0.7</mrow>
+     <mrow>2\sin\left(2x \right)                        \amp =-0.3</mrow>
+     <mrow>\sin\left(2x \right)                         \amp =-0.15</mrow>
+    </md>
+
+    Since <m>\sin^{-1}\left(-0.15 \right)=-0.1506</m> and <m>\pi-\left(-0.1506 \right)=3.2922</m>, we know that <m>2x=-0.1506+2k\pi</m> or <m>2x=3.2922+2k\pi</m>. Therefore, the solutions of the equation are <m>x=-0.0753+k\pi</m> or <m>x=1.6461+k\pi</m>.
+
+    <md>
+     <mrow>2\cos x+1-\cos^2\left(x \right) \amp =0</mrow>
+     <mrow>\cos^2\left(x \right)-2\cos x-1 \amp =0</mrow>
+    </md>
+
+    Now we have a quadratic equation in <m>\cos x</m>. Using the quadratic formula yields
+    <me>\cos x=1 \pm \sqrt{2}.</me>
+    The number <m>1+\sqrt{2}</m> is greater than 1.  Since <m>\cos x</m> is never greater than 1 we must reject this value.  Therefore <m>\cos x=1-sqrt{2}</m>, and
+    <me>x=\cos^{-1}\left(1-\sqrt{2} \right)=1.9979.</me>
+
+    Thus <m>x=1.9979.</m> is a number whose cosine is <m>1-\sqrt{2}</m>.  By the symmetry of the unit circle, <m>x=1.9979</m> is another number whose cosine is <m>1-\sqrt{2}</m>. The complete solution set of the equation is <m>x=1.9979+2k\pi</m> or <m>x=-1.9979+2k\pi</m>, <m>k</m> is any integer.
+    </p>
+
+   </solution>
+  </example>
+
+  <example>
+   <statement><p>Find all solutions of <m>2\cos x+\sin^2\left(x \right)=0</m>.</p></statement>
+
+   <solution>
+    <p>We will first rewrite this equation in terms of a single trigonometric function. The identity <m>\sin^2\left(\theta\right)+\cos^2\left(\theta\right)=1</m> can be written as <m>\sin^2\left(\theta\right)=1-\cos^2\left(\theta\right)</m>, so we can replace <m>\sin^2\left(\theta\right)</m> with <m>1-\cos^2\left(\theta\right)</m> to obtain
+    </p>
+   </solution>
+  </example>
+
+  <example>
+   <statement><p>Solve <m>5\cos^3\left(t \right)-\cos t \cos\left(2t \right)+4\cos^2 t=0</m>.</p></statement>
+
+   <solution>
+    <p>This equation involves only the cosine function, but the arguments of the cosines are not all the same. Every term contains <m>\cos t</m>, which is a common factor. The equation can be rewritten as
+    <me>\cos t\left(5\cos^2\left(t \right)-\cos\left(2t \right)+4\cos t \right)=0.</me>
+
+    We cannot simply divide both sides of the equation by <m>\cos t</m> because that will cause the loss of one of the roots of the equation since values of <m>t</m> that make <m>\cos t=0</m> will solve the equation.
+    </p>
+    <p>The identity <m>\cos\left(2t \right)=\cos^2\left(t\right)-\sin^2\left(t \right)</m> can be used to change all arguments to <m>t</m>. Since  <m>\sin^2\left(\theta\right)=1-\cos^2\left(\theta\right)</m>, we can substitute <m>2\cos^2\left(\theta\right)-1</m> for <m>\cos \left(2t \right)</m> in our equation, which becomes
+
+    <md>
+     <mrow>\cos t\left[5\cos^2\left(t \right)-\left(2\cos^2 \left(t \right)-1 \right)+4\cos t \right] \amp =0</mrow>
+     <mrow>\cos t\left[3\cos^2 \left(t \right)+4\cos r \right]                                        \amp =0</mrow>
+    </md>
+
+    We now have a quadratic-type equation in  that can be factored to yield
+    <me>\cos t\left(3\cos t+1\right)\left(\cos t+1 \right)=0.</me>
+    Either <m>\cos t=0</m>, <m>3\cos t+1=0</m>, or <m>\cos t+1=0</m>. The solutions of <m>\cos t=0</m> are ones we should know; <m>t=\frac{\pi}{2}+k\pi</m>.  The solutions of <m>3\cos t+1=0</m> can be determined by evaluating <m>\cos^{-1}\left(-\frac{1}{3} \right)</m>. These solutions are <m>t=1.9106+2k\pi</m> or <m>t=-1.9106+2k\pi</m>.  The solutions of  <m>\cos t+1=0</m> are <m>t=\pi +2k\pi</m>. The complete solution set of the equation is <m>t=1.9106+2k\pi</m> or <m>t=-1.9106+2k\pi</m> or  <m>t=\pi +2k\pi</m> or <m>t=\frac{\pi}{2} +k\pi</m> where <m>k</m> is any integer.
+    </p>
+   </solution>
+  </example>
+
+<exercises>
+  <title>Exercises</title>
+
+   <!-- Practice Problem #1 -->
+   <exercise>
+    <statement>
+     <p>Suppose you know that <m>\sin \theta =-\frac{1}{4}</m> and <m>\frac{3\pi}{2} \le \theta \le 2\pi</m>.  Use identities to find the exact value of the following.</p>
+     <ol label="a.">
+      <li><m>\sin \left(\theta -\frac{\pi}{4} \right)</m></li>
+      <li><m>\cos \left(2\theta \right)</m></li>
+      <li><m>\sin \left(2\theta \right)</m></li>
+      <li><m>\sin \left(\frac{\pi}{4}+\theta \right)</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #2 -->
+   <exercise>
+    <statement>
+     <p>Find all solutions of each equation in the interval <m>\left[0,2\pi \right]</m>. Find exact values where possible.</p>
+     <ol label="a.">
+      <li><m>\cos x=\cos \left(2x \right)</m></li>
+      <li><m>\sin \left(2x \right)-\sin \left(4x \right)=0</m></li>
+      <li><m>\sec^2\left(x \right)-\tan x=1</m></li>
+      <li><m>\left(\sin x+\cos x \right)^2=1</m></li>
+      <li><m>\sin \left(4x \right)\cos x -\sin x \cos\left(4x \right)=0</m></li>
+      <li><m>\cos x\sin x =0.84</m></li>
+      <li><m>\sin \left(x+0.3\right)+\sin \left(x-0.3\right)=2\cos \left(0.3\right)</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #3 -->
+   <exercise>
+    <statement>
+     <p>Solve each equation. Find all real solutions.</p>
+     <ol label="a.">
+      <li><m>2\cos x-\sin^2 \left(x \right)=2</m></li>
+      <li><m>5\sec^2\left(x \right)+2\tan x-8=0</m></li>
+      <li><m>\sin^2 \left(x \right)-\cos^2 \left(x \right)=-\frac{1}{8}</m></li>
+      <li><m>\sin \left(5x \right)\cos\left(2x \right)+\cos \left(5x \right)\sin\left(2x \right)=0.72</m></li>
+      <li><m>\sin x+\cos \left(2x \right)=1</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #4 -->
+   <exercise>
+    <statement>
+     <p>Decide if each equation is an identity.  If a particular equation is not an identity, find its solutions.</p>
+     <ol label="a.">
+      <li><m>4\sin^2\left(x \right)\cos x-\sin \left(2x \right)=0</m></li>
+      <li><m>\cos \left(2x \right)-\cos^2\left(x \right)+\sin^2\left(x \right)=0</m></li>
+      <li><m>\cos \left(3x \right)=4\cos^3\left(x \right)-3\cos x</m></li>
+      <li><m>\cos \left(2x \right)-2\cos x=0</m></li>
+      <li><m>\cos^4\left(x \right)-\sin^4\left(x \right)=\cos^2\left(x \right)-\sin^2\left(x \right)</m></li>
+      <li><m>\cos \left(x+y \right)+\cos \left(x-y \right)=2\cos x \cos y</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #5 -->
+   <exercise>
+    <statement>
+     <p>Suppose you know that <m>\cos A=\frac{1}{3}</m> and <m>0 \le A \le \frac{\pi}{2}</m>. Use identities to find the exact value of the following:</p>
+     <ol label="a.">
+      <li><m>\sin\left(\frac{A}{2} \right)</m></li>
+      <li><m>\cos\left(\frac{A}{2} \right)</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #6 -->
+   <exercise>
+    <statement>
+     <p>Assume that the birth rate for an animal species is given by <m>B=\cos^2\left(t \right)+2\cos t</m> and the death rate is <m>D=\cos^2\left(2t \right)</m>, where <m>t</m> is the time in months.  Find the smallest positive value of <m>t</m> for which the birth and death rates are equal.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #7 -->
+   <exercise>
+    <statement>
+     <p>The graphs of <m>y=\sin \left(\frac{3\pi}{2}-x \right)</m> and <m>y=-\cos x</m> are identical. Therefore, <m>y=\sin \left(\frac{3\pi}{2}-x \right)=-\cos x</m> must be an identity. Verify this identity using the unit circle and/or other known identities.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #8 -->
+   <exercise>
+    <statement>
+     <p>Write a paragraph that includes three justifications that <m>\sin^2\left(\theta \right)+\cos^2\left(\theta \right)=1</m> is an identity. Your arguments should be based on graphs, a unit circle, and a right triangle.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #9 -->
+   <exercise>
+    <statement>
+     <p>Follow these steps to prove the identity for <m>\cos \left(a-b \right)</m>.
+
+     <figure xml:id="cosine-image2">
+      <caption>Unit Circles for Derivation of identity <m>\cos \left(a-b \right)</m></caption>
+      <image source="./images/cosine-image2.jpg" width="50%"></image>
+     </figure>
+
+     The first unit circle in <xref ref="cosine-image2" text="type-local" /> shows an arc of length <m>a</m> beginning at <m>\left(1,0 \right)</m> and ending at <m>P</m>.  An arc of length <m>b</m> also begins at <m>\left(1,0 \right)</m>; it ends at point <m>Q</m> (assume <m>0 \lt b \lt a \lt 2\pi</m>).  The coordinates of <m>P</m> are thus <m>\left(\cos a, \sin a \right)</m> and the coordinates of <m>Q</m> are <m>\left(\cos b, \sin b \right)</m>. The arc from <m>Q</m> to <m>P</m> has length  <m>a-b</m>. The second circle in <xref ref="cosine-image2" text="type-local" /> shows an arc of length <m>a-b</m> beginning at <m>\left(1,0 \right)</m> and ending at <m>R</m>.  The coordinates of <m>R</m> are thus <m>\left(\cos \left(a-b \right), \sin \left(a-b \right) \right)</m>.  Note that chord <m>QP</m> in one circle has the same length as chord <m>AR</m> in the other.
+
+     <ol label="a.">
+      <li>Use the distance formula to express the length of chords <m>QP</m> and <m>AR</m> in terms of <m>a</m> and <m>b</m>.</li>
+      <li>Set the two expressions equal to each other and simplify to find the identity for <m>\cos \left(a-b \right)</m>.</li>
+     </ol>
+
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #10 -->
+   <exercise>
+    <statement>
+     <p>Use the identity <m>\cos \left(a-b \right)=\cos a \cos b+\sin a \sin b</m> to derive each of the following identities.
+     <ol label="a.">
+      <li><m>\cos \left(a+b \right)=\cos a \cos b-\sin a \sin b</m> Hint: <m>a+b=a-\left(-b \right)</m></li>
+      <li><m>\cos \left(2a \right)=\cos^2\left(a \right)-\sin^2\left(a \right)</m> Hint: <m>2a=a+a</m></li>
+      <li><m>\sin \left(a-b \right)=\sin a \cos b -\cos a \sin b</m> Hint: <m>\sin \left(x \right)=\cos \left(x-\frac{\pi}{2} \right)</m> so <m>\sin \left(a-b \right)=\cos \left(\left(a-b \right)-\frac{\pi}{2} \right)=\cos \left(a-\left(b+\frac{\pi}{2} \right) \right)</m></li>
+      <li><m>sin \left(a+b \right)=\sin a \cos b +\cos a \sin b</m></li>
+     </ol>
+     </p>
+
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #11 -->
+   <exercise>
+    <statement>
+     <p>Use the results of the previous exercise to show that <m>\cos \left(2a \right)=1-2\sin^2 \left(a \right)</m> and that <m>\cos \left(2a \right)=2\cos^2 \left(a \right)-1</m>.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #12 -->
+   <exercise>
+    <statement>
+     <p>In the investigation in the previous section, the following identities were shown to be true in a right triangle where <m>0^\circ \lt \theta \lt 90^\circ</m>,
+
+     <md>
+      <mrow>\cos \left(90^\circ -\theta \right) \amp =\sin \theta</mrow>
+      <mrow>\sin \left(90^\circ -\theta \right) \amp =\cos \theta</mrow>
+     </md>
+
+     Show that these identities are true for all values of <m>\theta</m>.
+     </p>
+    </statement>
+   </exercise>
+
+ </exercises>
+</section>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section01" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Introduction to Trigonometry</title>
+    <introduction></introduction>
+    <p>Trigonometric functions are essential in modeling many aspects of our natural and man-made worlds.  Developed initially by the Greeks to describe relationships in triangles, trigonometry has been extended to describe all kinds of periodic behavior, from the pulsing of the heart to the seasonal variation in the snow caps on Mars; from the hours of daylight throughout a calendar year to the movements of a bungee jumper at the end of her jump; from the motion of the tides to the recession and growth of the ice packs in the Artic; and from the paths of satellites orbiting the earth to erratic movements of the path of a rider on the Mad Tea Party ride at Disneyland. The natural world and man-made world are filled with cyclic behaviors that can be modeled well with trigonometry. In this chapter, we will develop three different ways to think about trigonometry: as ratios of the lengths of sides of a right triangle, as coordinates of terminal points of an object moving around a circle of radius 1, and as period functions.  We must be able to move smoothly from one interpretation to another. One approach is often more convenient, and sometimes we will find it advantageous to change interpretations as we move through a problem.</p>
+
+    <figure xml:id="intro-to-trig">
+      <caption></caption>
+      <image source="./images/intro-to-trig.jpg" width="50%"></image>
+    </figure>
+
+    <p>The goal of this chapter is to build fluency in using each of the three representations. We will study them one at a time, but as we leave one representation to pick up the next, we will keep this goal in mind.</p>
+
+    <subsection>
+      <introduction></introduction>
+      <title>Quick Review of Triangle Trigonometry</title>
+      <p>Trigonometry is one of the oldest subjects in mathematics, its origin stemming from the ancients’ curiosity about astronomy and the motions of the moon and visible planets. In Geometry and Algebra courses, we are introduced to the tangent, the sine, and the cosine of an angle in a right triangle as the ratios of pairs of sides of that triangle. This section will serve as a quick review of these ideas.</p>
+
+        <figure xml:id="rt-trianlge-trig1-image">
+          <caption></caption>
+          <image source="./images/rt-triangle-trig1-image.jpg" width="50%"></image>
+        </figure>
+
+      <p>Consider <xref ref="rt-trianlge-trig1-image" text="type-local" />, which contains three similar triangles. So, for the given acute angle <m>\theta</m>, the ratios of two corresponding sides of the right triangles containing <m>\theta</m> will be the same. This gives that <m>\frac{a}{A}=\frac{b}{B}=\frac{c}{C}</m>, and the value of this ratio depends only on the angle <m>\theta</m>.
+      This equality of ratios also makes sense from a coordinate geometry point of view. If we consider the hypotenuse to be a line segment through the origin, then the angle <m>\theta</m> determines the slope and the ratios <m>\frac{a}{A}</m>, <m>\frac{b}{B}</m> and <m>\frac{c}{C}</m> are all the slope of that line, <m>\frac{\Delta y}{\Delta x}</m>, as shown in <xref ref="rt-triangle-trig2-image" text="type-local" />.</p>
+
+        <figure xml:id="rt-triangle-trig2-image">
+          <caption></caption>
+          <image source="./images/rt-triangle-trig2-image.jpg" width="50%"></image>
+        </figure>
+
+      <p>A quick review of geometry will remind us that for the right triangle <m>ABC</m>, with the right angle at <m>C</m> and side lengths <m>a</m> and <m>b</m>, the following equations are defined. It is common to use Greek letters to represent the angles in a triangle. In this example, <m>\alpha</m>,and <m>\beta</m> are the angles associated with <m>A</m> and <m>B</m>, respectively.</p>
+
+        <figure xml:id="rt-triangle-trig3-image">
+          <caption></caption>
+          <image source="./images/rt-triangle-trig3-image.jpg" width="50%"></image>
+        </figure>
+
+        <me>\tan \left( \alpha  \right) = \frac{a}{b} \text{ and } \tan \left( \beta  \right) = \frac{b}{a}</me>
+        <me>\sin \left( \alpha  \right) = \frac{a}{c} \text{ and } \sin \left( \beta  \right) = \frac{b}{c}</me>
+        <me>\cos \left( \alpha  \right) = \frac{b}{c} \text{ and } \cos \left( \beta  \right) = \frac{a}{c}</me>
+
+      <p>The tangent of an angle, denoted <m>\tan</m>, is the ratio of the length of the side opposite the angle to the length of the side adjacent to the angle. If we use \emph{Opposite} to represent the length of the side opposite the angle of interest <m>\left( \theta \right)</m>, \emph{Adjacent} to represent the length of the side adjacent to the angle of interest <m>\left( \theta \right)</m>,  and \emph{Hypotenuse} to represent the length of the hypotenuse of the triangle, then we can say in a compact form <m>\tan \left( \theta \right) = \frac{\text{\emph{Opposite}}}{\text{\emph{Adjacent}}}</m>. \\ \\
+
+      The sine of an angle, denoted <m>\sin</m>, is the ratio of the length of the side opposite the angle to the length of the hypotenuse of the right triangle, so, using the abbreviated notation above, <m>\sin \left( \theta \right) = \frac{\text{\emph{Opposite}}}{\text{\emph{Hypotenuse}}}</m>. \\ \\
+
+      The cosine of an angle, denoted <m>\cos</m>, is the ratio of the length of the side adjacent to the angle to the length of the hypotenuse of the right triangle, so, again using the abbreviated notation above, <m>\cos \left( \theta \right) = \frac{\text{\emph{Adjacent}}}{\text{\emph{Hypotenuse}}}</m>. \\ \\
+
+      It is particularly important to note that the tangent of an angle is the ratio of sine to cosine, as we can see using the abbreviated notation for the lengths of the sides of the triangle:
+
+      <me>\frac{{\sin \left( \theta  \right)}}{{\cos \left( \theta  \right)}} = \frac{{\frac{{\text{\emph{Opposite}}}}{{\text{\emph{Hypotenuse}}}}}}{{\frac{{\text{\emph{Adjacent}}}}{{\text{\emph{Hypotenuse}}}}}} = \frac{{\text{\emph{Opposite}}}}{{\text{\emph{Adjacent}}}} = \tan \left( \theta  \right)</me>
+
+      In the discussions that follow, we will often abbreviate the lengths of the sides of a right triangle using \emph{Adj}, \emph{Opp}, and \emph{Hyp}.</p>
+
+
+        <figure xml:id="rt-triangle-trig4-image">
+          <caption></caption>
+          <image source="./images/rt-triangle-trig4-image.jpg" width="25%"></image>
+        </figure>
+
+      <p>In Geometry, the 30-60-90 triangle and the 45-45-90 triangle were of special interest. To determine the ratios of sides for the 30-60-90 triangle, we begin with an equilateral triangle with sides of length <m>L</m>. Recall that in an equilateral triangle, we can drop an angle bisector to bisect the base. This creates two congruent right triangles each with two sides known: the hypotenuse of <m>L</m> and a side of  <m>\frac{L}{2}</m>.  The Pythagorean Theorem tells us the other side must be <m>\frac{\sqrt 3}{2}L</m>. We notice that the ratios of the side lengths are then independent of <m>L</m>. So, we know the following:</p>
+
+      <figure>
+      <caption></caption>
+        <tabular>
+          <row>
+            <cell halign="left"><m>\sin \left( {30^\circ } \right) = \frac{{\frac{L}{2}}}{L} = \frac{1}{2}</m></cell>
+            <cell halign="left"><m>\cos \left( {30^\circ } \right) = \frac{\sqrt 3}{2}</m></cell>
+            <cell halign="left"><m>\tan \left( {30^\circ } \right) = \frac{1}{\sqrt 3}</m></cell>
+          </row>
+          <row>
+            <cell halign="left"><m>\sin \left( {60^\circ } \right) = \frac{{\frac{{\sqrt 3 }}{2}L}}{L} = \frac{\sqrt 3}{2}</m></cell>
+            <cell halign="left"><m>\cos \left( {60^\circ } \right) = \frac{1}{2}</m></cell>
+            <cell halign="left"><m>\tan \left( {60^\circ } \right) = \sqrt 3</m></cell>
+          </row>
+        </tabular>
+      </figure>
+
+    <p>We note that the sine of <m>30^\circ</m> is the same as the cosine of <m>60^\circ</m>.  Angles whose sum is <m>90^\circ</m> degrees, such as <m>30^\circ</m> and <m>60^\circ</m>, are called complementary angles. The “co” in cosine refers to this complementary angle relationship.</p>
+    <p>The trigonometric ratios for the 45-45-90 triangle can be found in a similar fashion.  Begin with an isosceles right triangle with side lengths <m>L</m>.  Again, by the Pythagorean Theorem, the hypotenuse has a length of <m>\sqrt {{L^2} + {L^2}}  = L\sqrt 2</m>. So,</p>
+
+      <figure>
+        <caption></caption>
+        <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell halign="left"><m>\sin \left( {45^ \circ} \right) = \frac{L}{L\sqrt 2} = \frac{1}{\sqrt 2}</m></cell>
+          <cell halign="left"><m>\cos \left( {45^ \circ} \right) = \frac{1}{\sqrt 2}</m></cell>
+          <cell halign="left"><m>\tan \left( {45^ \circ} \right) = \frac{L}{L}=1</m></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        </tabular>
+      </figure>
+      <figure xml:id="rt-triangle-trig5-image">
+        <caption></caption>
+        <image source="./images/rt-triangle-trig5-image.jpg" width="50%"></image>
+      </figure>
+
+    <p>Recall from Algebra that <m>\frac{1}{\sqrt 2}=\frac{\sqrt 2}{2}</m>, so,  the pattern illustrated in the table may be helpful in remembering the values <m>\sin \theta</m> for these special angles.</p>
+
+      <figure>
+        <caption></caption>
+        <tabular top="medium" halign="left">
+          <row bottom="medium">
+            <cell halign="left"><m>\theta</m></cell>
+            <cell halign="left"><m>0^ \circ</m></cell>
+            <cell halign="left"><m>30^ \circ</m></cell>
+            <cell halign="left"><m>45^ \circ</m></cell>
+            <cell halign="left"><m>60^ \circ</m></cell>
+            <cell halign="left"><m>90^ \circ</m></cell>
+          </row>
+          <row bottom="medium">
+            <cell halign="left"><m>\sin \theta</m></cell>
+            <cell halign="left"><m>\frac{\sqrt 0}{2}</m></cell>
+            <cell halign="left"><m>\frac{\sqrt 1}{2}</m></cell>
+            <cell halign="left"><m>\frac{\sqrt 2}{2}</m></cell>
+            <cell halign="left"><m>\frac{\sqrt 3}{2}</m></cell>
+            <cell halign="left"><m>\frac{\sqrt 4}{2}</m></cell>
+          </row>
+        </tabular>
+      </figure>
+
+      <p>Note that the sine, cosine, and tangent are limited to the acute angles in a right triangle. In the next section, we generalize and extend these definitions to all angles.</p>
+  </subsection>
+
+  <example>
+    <statement>
+      <p>A plane takes off from the airport in Chicago and flies on a heading of 35 degrees (<m>35^ \circ</m> clockwise from north). If the pilot maintains the same course, how far north of the airport is the plane after flying 100 miles?</p>
+
+      <figure xml:id="airplane-trig-example">
+        <caption></caption>
+        <image source="./images/airplane-trig-example.jpg" width="50%"></image>
+      </figure>
+
+      <solution>
+        <statement>
+          <p>The situation is illustrated by <xref ref="airplane-trig-example" text="type-local" />. By definition, when a plane is flying on a heading of <m>35^ \circ</m>, the angle between due north (the positive <m>y-</m>axis) and the plane's path is <m>35^ \circ</m>. So, we know that the ratio of the distances is <m>\frac{y}{100}</m> and <m>\cos \left(35^ \circ \right)=\frac{y}{100}</m>. Using a calculator, we find that <m>\cos \left(35^ \circ \right) \approx 0.81915</m>, so we expect the plane to be about 81.9 miles north of the airport. We could also have used the sine of <m>55^ \circ</m>, since  <m>\frac{y}{100}=\sin \left(55^ \circ \right)</m>.</p>
+        </statement>
+      </solution>
+
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>In the right triangle <m>ABC</m>, <m>a=3</m>, <m>\angle A=42^ \circ</m>, and <m>c</m> is the length of the hypotenuse. Find the measure of <m>\angle B</m>, the angle opposite side <m>b</m>, and the length of the other two sides.  (It is a convention to label the length of a side with the lowercase letter that is used to label the opposite angle).</p>
+
+      <figure xml:id="rt-triangle-trig6-image">
+        <caption></caption>
+        <image source="./images/rt-triangle-trig6-image.jpg" width="50%"></image>
+      </figure>
+
+      <solution>
+        <statement>
+          <p>Once we draw a diagram to illustrate this situation, we can quickly find the measure of <m>\angle B</m>. Since the sum of the measures of the angles of a triangle is always <m>180^ \circ</m>, the measure of <m>\angle B</m> is <m>180^ \circ \left(42^ \circ+90^ \circ \right)</m>, which is <m>48^ \circ</m>'. The side whose length is known is opposite <m>\angle A</m>. This suggests that we use the sine to determine the length <m>c</m>. Since <m>\sin \left(\theta \right)=\frac{\emph{Opp}}{\emph{Hyp}}</m>, we know that <m>\sin \left(42^ \circ \right)= \frac{3}{c}</m>, so <m>c=\frac{3}{\sin \left(42^ \circ \right)} \approx \frac{3}{0.6691} \approx 4.483</m>. To find the length <m>b</m>, we can use the tangent, since <m>\tan \left(\theta \right)=\frac{\emph{Opp}}{\emph{Adj}}</m>. This gives <m>\tan \left(42^ \circ \right)=\frac{3}{b}</m> and <m>b=\frac{3}{\tan \left(42^ \circ \right)} \approx \frac{3}{0.9004} \approx 3.332</m>. Once we found <m>c=4.483</m>, we could have used the Pythagorean theorem to find <m>3^2+b^2=4.483^2</m>. So <m>b=\sqrt{4.483^2-9} \approx 3.331</m>. Notice that the two solutions differ due to round-off error. To the nearest <m>0.01</m>, both approaches give <m>b=3.33</m>.  We could also have found b first and used the Pythagorean Theorem to find <m>c</m>.</p>
+        </statement>
+      </solution>
+
+    </statement>
+  </example>
+
+  <p>When we are thinking about sine related to triangles, and we write <m>\sin \left(A \right)=B</m>, we think of <m>A</m> as an acute angle in a   right triangle and <m>B</m> as the ratio of the length of the side opposite angle <m>A</m> to the length of the hypotenuse. In the example above, we were given the length of a side and the measure of the angle opposite that side. Suppose we are given the length of two sides of a right triangle; can we determine the measure of the two acute angles?</p>
+
+  <p>To find the angle associated with a ratio of the lengths of two sides, we need to use the inverse key on our calculator (later we will learn about the inverse functions, but for now we are simply computing angles from ratios).</p>
+  \textbf{The Meanings of <m>\sin^{-1} x</m>, <m>\cos^{-1} x</m>, and <m>\tan^{-1} x</m>}
+  <p>As noted earlier, when we write <m>\sin \left(A \right)=B</m>, we think of <m>A</m> as an acute angle in a right triangle and B as a ratio of the lengths of two sides. We are familiar with the <m>f^{-1} \left(x \right)</m> notation for inverse functions, and we use the same notation for sine, cosine, and tangent inverses. If we write <m>\sin^{-1} \left(B \right)=A</m>, we read this equation literally as “the acute angle whose ratio of side lengths is <m>B</m>, is <m>A</m>”.  A more easily understood statement may be, “<m>A</m> is the acute angle whose ratio of side lengths is <m>B</m>”. Whenever <m>\sin \left(A \right)=B</m> we know also that <m>\sin^{-1} \left(B \right)=A</m>.</p>
+  <p>In the equation <m>x=\cos^{-1} \left(\frac{1}{2} \right)</m>, <m>x</m> represents the acute angle in a right triangle that has <m>\frac{1}{2}</m> as the ratio of the lengths of the side adjacent to the angle and the hypotenuse, respectively. A similar interpretation is given to <m>x=\tan^{-1} \left(\frac{1}{2} \right)</m>. We can use these inverse values to find angle measures from ratios of side lengths, as shown in Example 3.</p>
+
+  <example>
+    <statement>
+      <p>In the right triangle <m>ABC</m>, <m>a=3</m>, <m>b=4</m>, and <m>c</m> is the length of the hypotenuse. Find the measure of <m>\angle A</m>.</p>
+      <figure xml:id="rt-triangle-trig7-image">
+        <caption></caption>
+        <image source="./images/rt-triangle-trig7-image.jpg" width="50%"></image>
+      </figure>
+
+      <solution>
+        <statement>
+          <p>Again, we can first draw a diagram to illustrate this situation. Once we see the figure, there are several different approaches we can use to find the measure of <m>\angle A</m>. The sides whose lengths are known are opposite and adjacent to <m>\angle A</m>. This suggests that we use the tangent to determine the measure of <m>\angle A</m>. Since <m>\tan \left(A \right)=\frac{\emph{Opp}}{\emph{Adj}}</m>, we know that <m>\tan \left(A \right)=\frac{3}{4}</m>. This gives <m>\tan^-1 \left(\frac{3}{4} \right)=A</m>. Using a calculator, we find that <m>\tan^-1 \left(0.75 \right) \approx 36.87^ \circ</m>.</p>
+        </statement>
+      </solution>
+
+    </statement>
+  </example>
+
+  <exercises>
+    <title>Exercises</title>
+
+    <!-- Practice Problem #1 -->
+    <exercise>
+      <statement>
+        <p>In right triangle <m>ABC</m>, <m>a=35</m>,<m>c=62</m>, and <m>\angle C=90^ \circ</m>. Find the length of side <m>b</m> and the measures of <m>\angle A</m> and <m>\angle B</m>.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #2 -->
+    <exercise>
+      <statement>
+        <p>In right triangle <m>PQR</m>, <m>\angle R=90^ \circ</m>,<m>\angle P=34^ \circ</m> and <m>p=15</m>. Find the lengths of sides <m>q</m> and <m>r</m> the measure of <m>\angle Q</m>.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #3 -->
+    <exercise>
+      <statement>
+        <p>A ladder 4.2 meters long is leaning against a vertical building and the bottom of the ladder is 1.5 meters from the base of the building.  How high is the top of the ladder?  What angle does the top of the ladder make with the wall?.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #4 -->
+    <exercise>
+      <statement>
+        <p>An observer on the ground finds that the angle between the horizontal and the line of sight to a balloon is <m>51^ \circ</m>.  The point directly under the balloon is 235 feet horizontally from the observer.  How high is the balloon?</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #5 -->
+    <exercise>
+      <statement>
+        <p>A <m>27^ \circ</m> angle is positioned in the coordinate system so that its vertex is at the origin, one of its sides lies along the positive <m>x-</m>axis, and the other side is in the first quadrant.  The angle intersects the circle <m>x^2+y^2=20</m> at the point <m>\left(a, b \right)</m>.  Find <m>a</m> and <m>b</m>.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #6 -->
+    <exercise>
+      <statement>
+        <p>Suppose <m>\angle T</m>, which has its vertex at the origin and one leg along the positive <m>x-</m>axis, intersects the circle <m>x^2+y^2=12</m> at the point <m>\left(2,\frac{2}{\sqrt 2} \right)</m>.  Find the measure of <m>\angle T</m>.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #7 -->
+    <exercise>
+      <statement>
+        <p>When looking at a full moon one night, you note that the full moon subtends an angle of <m>29^ \circ</m>.  If the moon is approximately 238,900 miles away, make an estimate of the diameter of the moon. (Figure not to scale)</p>
+
+        <figure xml:id="moon-image">
+          <caption></caption>
+          <image source="./images/moon-image.jpg" width="50%"></image>
+        </figure>
+
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #8 -->
+    <exercise>
+      <statement>
+        <p>A building has a flagpole on its roof.  From a distance 200 feet away from the base of the building, the angle of elevation to the bottom of the pole is 68 degrees and to the top of the pole is 70 degrees.  How tall is the building? How tall is the flagpole?</p>
+
+        <figure xml:id="flagpole-image">
+          <caption></caption>
+          <image source="./images/flagpole-image.jpg" width="50%"></image>
+        </figure>
+
+      </statement>
+    </exercise>
+  </exercises>
+</section>

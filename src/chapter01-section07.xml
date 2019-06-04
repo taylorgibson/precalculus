@@ -8,5 +8,206 @@
 <!-- See the file COPYING for copying conditions.       -->
 <section xml:id="chapter01-section07" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>How Good Is Our Fit?</title>
+  <p>
+    When we fit a line or curve to a data set, we should examine that curve in relation to the scatterplot to determine how well it models the relationship between the variables. Few, perhaps none, of the points on the scatterplot will fall on the curve. We are interested in the question “How well does the curve capture the behavior of the data?”  Since we often fit curves to estimate y-values from x-values, we usually study the vertical distance between each observed point and the associated y-value on the fitted curve (recall the notation for this is <m>\hat{y}</m>. This difference in <m>y</m>-values, <m>y - \hat{y}</m> obtained by subtracting the computed <m>\hat{y}</m>-value on the regression line from the actual <m>y</m>-value of the data point.  This difference is called a deviation, or a residual. Every ordered pair in the data set has a residual value associated with it.  The residuals are a set of data that describes the difference between the actual data values and the values predicted from the linear model.  It is the sum of the squares of the residuals that we minimize when we do least-squares regression.
+  </p>
 
+  <p>
+    The graph in Figure XX shows the least-squares line we previously computed in the Cherry Blossom example.
+  </p>
+
+  <figure xml:id="chapter01-section07-cherryblossom">
+    <caption>Average Temperature in March and Day in April of First Cherry Blossom</caption>
+    <image source="./src/images/chapter01/chapter01-section07-cherryblossom.png" />
+  </figure>
+
+  <p>
+    Recall that the horizontal axis gives the average temperature in Tokyo for the month of March and the vertical axis gives the number of days in April (or date in April) when the cherry blossoms appear.  The linear model is:
+  </p>
+
+  <md>
+    <mrow>\hat{y} = -4.6x + 33.7</mrow>
+    <mrow>\text{or}</mrow>
+    <mrow>\hat{Day in April} = -4.6 \left( \text{Average Temperature} \right) + 33.7</mrow>
+  </md>
+
+  <p>
+    The vertical distances marked show the residuals or vertical deviations of the data points from the fitted line.  Positive residuals are associated with data points above the line, and negative residuals are associated with data points below the line.
+  </p>
+
+  <figure>
+    <caption>Least-squares line with residuals indicated</caption>
+    <image source="./src/images/chapter01/chapter01-section07-cherryblossom-graph.png" />
+  </figure>
+
+  <p>
+    We denote observed data points as <m>\left( x_i, y_i \right)</m>, for <m>i=1</m> to <m>10</m>. This means that the point <m>\left( 4.0, 14 \right)</m> is <m>\left( x_1, y_1 \right)</m>, <m>\left( 5.8, 8 \right)</m> is <m>\left( x_2, y_2 \right)</m>,  <m>\left( 4.2, 14 \right)</m> is <m>\left( x_3, y_3 \right)</m>, and so forth. This subscript notation is very convenient. Suppose the linear equation fit to the data is denoted <m>\hat{y} = L(x)</m>, so the points on the line corresponding to data values of the independent variable are <m>\left( x_i, L(x_i) \right)</m>. The residual associated with each point is <m>y_i - L(x_i)</m>.  Note that the order of the data is by year and not by temperature.
+  </p>
+
+  <figure xml:id="chapter01-section09-residual table">
+    <caption>Data with values from least-squares line and residuals</caption>
+    <tabular top="medium" halign="center">
+      <row bottom="medium">
+        <cell halign="left">Average Temp</cell>
+        <cell halign="left">Day in April</cell>
+        <cell halign="left">Fitted Value</cell>
+        <cell halign="left">Residual Value</cell>
+      </row>
+      <row>
+        <cell halign="center"><m>x_i</m></cell>
+        <cell halign="center"><m>y_i</m></cell>
+        <cell halign="center"><m>L(x_i)</m></cell>
+        <cell halign="center"><m>y_i - L(x_i)</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>4.0</m></cell>
+        <cell halign="center"><m>14</m></cell>
+        <cell halign="center"><m>15.23</m></cell>
+        <cell halign="center"><m>-1.23</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>5.4</m></cell>
+        <cell halign="center"><m>8</m></cell>
+        <cell halign="center"><m>8.77</m></cell>
+        <cell halign="center"><m>-0.77</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>4.2</m></cell>
+        <cell halign="center"><m>14</m></cell>
+        <cell halign="center"><m>14.31</m></cell>
+        <cell halign="center"><m>-0.31</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>4.5</m></cell>
+        <cell halign="center"><m>13</m></cell>
+        <cell halign="center"><m>12.92</m></cell>
+        <cell halign="center"><m>0.08</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>4.6</m></cell>
+        <cell halign="center"><m>10</m></cell>
+        <cell halign="center"><m>12.46</m></cell>
+        <cell halign="center"><m>-2.46</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>4.9</m></cell>
+        <cell halign="center"><m>14</m></cell>
+        <cell halign="center"><m>11.08</m></cell>
+        <cell halign="center"><m>2.92</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>4.0</m></cell>
+        <cell halign="center"><m>16</m></cell>
+        <cell halign="center"><m>15.23</m></cell>
+        <cell halign="center"><m>0.77</m></cell>
+      </row>
+      <row bgcolor="grey">
+        <cell halign="center"><m>3.8</m></cell>
+        <cell halign="center"><m>19</m></cell>
+        <cell halign="center"><m>16.15</m></cell>
+        <cell halign="center"><m>2.85</m></cell>
+      </row>
+      <row>
+        <cell halign="center"><m>3.5</m></cell>
+        <cell halign="center"><m>15</m></cell>
+        <cell halign="center"><m>17.54</m></cell>
+        <cell halign="center"><m>-2.54</m></cell>
+      </row>
+      <row bottom="medium">
+        <cell halign="center"><m>2.9</m></cell>
+        <cell halign="center"><m>21</m></cell>
+        <cell halign="center"><m>20.31</m></cell>
+        <cell halign="center"><m>0.69</m></cell>
+      </row>
+    </row>
+    </tabular>
+  </figure>
+
+  <p>It is easier to analyze the residuals when they are paired with their corresponding <m>x</m>-values and studied as a new data set <m>\left( x_i , r_i \right)</m>, where <m>r_i = y_i - L(x_i)</m>. A scatterplot of this data set, called a residual plot, allows us to check the size and pattern of the residuals.  If our model provides a good fit for the original data, the residual plot should show points scattered randomly within a horizontal band about the horizontal axis.  In <xref ref='chapter01-section07-cherryblossom-residual-plot' text="type-local" /> we have graphed the ordered pairs <m>\left( x_i , r_i \right)</m>, created from the Cherry Blossom example.  This plot shows that the residuals are reasonably small in magnitude and do not follow a trend or pattern; therefore, our linear model is a good one.  The residual of <m>2.85</m> for the point <m>\left( 3.8, 19 \right)</m> is highlighted in the table and graphs.</p>
+
+  <figure xml:id='chapter01-section07-cherryblossom-residual-plot'>
+    <caption>Residual Plot for Cherry Blossom Data</caption>
+    <image source="./src/images/chapter01/cherry-blossom-residual-plot.png" />
+  </figure>
+
+  <p>
+    Examination of the residual plot allows us to get a better sense of how well our linear model fits the data and sometimes alerts us to characteristics of the data that we may not have previously noticed.  We first need to examine the residuals to see whether they follow any curved pattern as the <m>x</m>-values vary.  Are residuals in the middle all positive or all negative and at the ends all opposite in sign?  If we observe a curved pattern in the residuals, there could be some curvature in the data and so a line may not be a good model.  In our example, there are both positive and negative residuals scattered throughout the graph, so we have no problem of this type.  We will see some examples of residual curvature in the exercises.
+  </p>
+
+  <p>
+    We also look at the size of the residuals. Residuals that are randomly scattered provide evidence of an appropriate model.  Obviously, small residuals are preferred to large residuals, but the size of the residuals has more to do with the variability of the data than the quality of the model.  One or two relatively large residuals may draw our attention to outliers that were not previously detected. We should attempt to determine why these points do not fit the general pattern of the data.  If they result from errors in measurement, the data points should be corrected or excluded from the analysis. If, on the other hand, all points are correct, a relatively large residual may provide interesting and useful information. If the nonconformity can be explained, we often gain additional information about the data we are trying to model.  In our example, it is clear that our line is closer to some of the points than to others, but there are no suspicious residuals.   The residuals appear to be scattered randomly about the line, which supports our use of a linear model to describe the relationship between temperature in March and the date of the arrival of the blossoms in April.
+  </p>
+
+  <p>
+    After doing a least squares fit, we will always examine the residuals to determine how good our fit is. We can fit a line to any data set; the technique will work regardless of whether or not using it is appropriate. That is why it is very important to look at the scatterplot of data to decide whether a linear model is reasonable. If we fit a straight line to data when the true relationship is not linear, the residual plot will usually show a pattern as you will see in Exercise 1.  Because the scale on a residual plot is usually much smaller than on the original scatterplot, curvature is more easily noticed on the residual plot. Using both the scatterplot and the residual plot in the curve-fitting process will help ensure a good fit.
+  </p>
+
+  <exercises>
+    <!-- Exercise #1 -->
+    <exercise>
+      <statement>
+        <p>
+          Make a rough sketch the residual plots for the following graphs.  In each case answer the question, "How good is the fit?"”" Your answer should include comments on the absence or presence of a pattern in the residuals and on their relative size.
+        </p>
+
+      <sidebyside>
+          <image source="./src/images/chapter01/chapter01-section07-ex1a.png" />
+          <image source="./src/images/chapter01/chapter01-section07-ex1b.png" />
+      </sidebyside>
+
+      <sidebyside>
+          <image source="./src/images/chapter01/chapter01-section07-ex1c.png" />
+          <image source="./src/images/chapter01/chapter01-section07-ex1d.png" />
+      </sidebyside>
+
+      <sidebyside>
+          <image source="./src/images/chapter01/chapter01-section07-ex1e.png" />
+          <image source="./src/images/chapter01/chapter01-section07-ex1f.png" />
+      </sidebyside>
+
+      </statement>
+    </exercise>
+
+    <!-- Exercise #2 -->
+    <exercise>
+      <statement>
+        <p>
+          The data in the table below represents the temperature of a cup of water as it cools and the associated time.
+        </p>
+
+        <figure>
+          <caption>Cooling Data</caption>
+          <image source="./src/images/chapter01/chapter01-section07-ex2-table.png" />
+        </figure>
+
+        <ol>
+          <li>Use your calculator or computer to find the equation of the least-squares line for the data.</li>
+          <li>Use a calculator or computer to make a residual plot.</li>
+          <li>Examine the residual plot and answer the following question.  Do you notice a pattern in the residuals?  If so, what does the pattern tell you about the model?  Is there a better model?  Why or why not? If so, what would its graph look like?</li>
+        </ol>
+
+      </statement>
+    </exercise>
+
+    <!-- Exercise #3 -->
+    <exercise>
+      <statement>
+        <p>
+          These data represent the heights from which a hard rubber ball was dropped (<m>x</m> in inches) and the height of its first bounce (<m>y</m> in inches).   The ball was dropped three times from each of five heights, so three of the data sets are real and one is made up.  Can you determine which "data" set is suspicious?
+        </p>
+
+        <figure>
+          <caption>Ball Drop Data</caption>
+          <image source="./src/images/chapter01/chapter01-section07-ex3-table.png" />
+        </figure>
+
+        <ol>
+          <li>Find the equation of the least-squares line for each individual trial.</li>
+          <li>Use a calculator or computer to make a residual plot for each fit.</li>
+          <li>Examine each residual plot.  Is any trial suspicious?</li>
+        </ol>
+      </statement>
+    </exercise>
+
+  </exercises>
 </section>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section06" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Investigating a Predator-Prey Relationship</title>
+  <introduction></introduction>
+  <p>Suppose an isolated island is inhabited by only hawks and doves.  The hawks are the predators, and the doves are the prey.  Based on observations made over several years, scientists know that the sizes of the hawk and dove populations are interdependent and both populations exhibit cyclic periods of growth and decline.  Based on simplifying assumptions, the hawk and dove populations can be modeled by the following functions, in which t represents the number of years since observations began. <me>\text{hawk population }=-10\cos \left(\frac{nt}{2} \right)+20</me> <me>\text{dove population }=100\sin \left(\frac{nt}{2} \right)+150</me></p>
+    <ol label="1.">
+      <li>Graph the hawk and dove populations over time.  Since the independent variable is time, you should use radians and have your calculator in radian mode.  Describe the behavior of the populations.  Be specific. Include information about maximum and minimum populations and about the period of each function.</li>
+      <li>According to the models, how does the dove population behave when the hawk population reaches a maximum? How does the dove population behave when the hawk population reaches a minimum?  Is this reasonable behavior based on your intuition about a predator-prey relationship?</li>
+      <li>According to the models, how does the hawk population behave when the dove population reaches a maximum? How does the hawk population behave when the dove population reaches a minimum?  Is this reasonable behavior based on your intuition about a predator-prey relationship?</li>
+      <li>With paper and pencil, make a graph of ordered pairs of the form (hawk population, dove population) by plotting the values of each population at time <m>t</m>.  For instance, at <m>t=0</m>, the hawk population is 10 and the dove population is 150.  Therefore, the graph includes the point <m>\left(10,150 \right)</m>. At <m>t=0.5</m>, the hawk population is 12.9 and the dove population is 220.7.  Therefore, the graph of doves versus hawks includes the point <m>\left(12.9,220.7 \right)</m>. Notice that values of <m>t</m> are invisible on your graph, but they determine the location of each point. Mark on your graph several values of <m>t</m> so that you can see how populations change as <m>t-</m>values change.  The graph of doves versus hawks is called a <em>phase portrait</em>.</li>
+      <li>Draw arrows on the phase portrait to show the direction that corresponds to increasing <m>t-</m>values.  Consider the information represented by the phase portrait and the information given by your graphs from question 1.  What is different about the information presented by the two types of graphs?  What is the same?  Use the phase portrait to consider the relationships between the hawk and dove populations.  How does the dove population behave when the hawk population is at a maximum?  How does the dove population behave when the hawk population is increasing?</li>
+      <li>Using a calculator in parametric mode, we can easily make and modify a phase portrait. Enter the equations for the hawk and dove populations as <me>x\left(t \right)=-10\cos \left(\frac{nt}{2} \right)+20</me> <me>y\left(t \right)=100\sin \left(\frac{nt}{2} \right)+150</me> Find a viewing window that will allow you to see the entire phase portrait.  What is the smallest set of <m>t-</m>values you should use if you want to see one complete cycle of the phase portrait?  Where is the center of the phase portrait?  In what way do the values of <m>x</m> and <m>y</m> at the center of the phase portrait relate to the <m>x</m> and <m>y</m> values from the graphs of question 1?</li>
+      <li>Create a different predator-prey situation by modifying the constants in the equations that model the population sizes, so that the phase portrait is circular rather than elliptical.</li>
+      <li>Now modify the equations you created in question 7. Change the equations so that <m>t-</m>values from 0 to <m>2\pi</m> define one complete cycle of the phase portrait.</li>
+      <li>Now modify the equations you created in question 8 so that the phase portrait is centered at the origin rather than at <m>\left(20, 150 \right)</m>. Note that this modification, even though it makes sense mathematically, results in parametric equations that are no longer realistic population models, since they result in negative population sizes.</li>
+      <li>Next, create a different phase portrait by modifying the parametric equations you created in question 9, so that the phase portrait is a circle of radius 1 centered at the origin and so that t-values from 0 to <m>2\pi</m> define one complete cycle of the phase portrait.</li>
+      <li>If necessary, make a final modification to your parametric equations from question 10, so that the phase portrait goes through the point <m>\left(1,0 \right)</m> when <m>t=0</m> and through the point <m>\left(0,1 \right)</m> when <m>t=\frac{\pi}{2}</m>.</li>
+    </ol>
+</section>

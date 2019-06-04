@@ -8,12 +8,17 @@
 <!-- See the file COPYING for copying conditions.       -->
 
 <chapter xml:id="chapter07" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Intro to Trigonometric Functions</title>
-  <introduction>
-    <p>Introduction to this chapter</p>
-  </introduction>
-
-  <section xml:id="chapter07-section01">
-
-  </section>
+  <title>Introduction to Trigonometry</title>
+    <introduction>
+    <p>Trigonometric functions are essential in modeling many aspects of our natural and man-made worlds.  Developed initially by the Greeks to describe relationships in triangles, trigonometry has been extended to describe all kinds of periodic behavior, from the pulsing of the heart to the seasonal variation in the snow caps on Mars; from the hours of daylight throughout a calendar year to the movements of a bungee jumper at the end of her jump; from the motion of the tides to the recession and growth of the ice packs in the Artic; and from the paths of satellites orbiting the earth to erratic movements of the path of a rider on the Mad Tea Party ride at Disneyland. The natural world and man-made world are filled with cyclic behaviors that can be modeled well with trigonometry.</p>
+    </introduction>
+      <xi:include href="./chapter07-section01.xml" />
+      <xi:include href="./chapter07-section02.xml" />
+      <xi:include href="./chapter07-section03.xml" />
+      <xi:include href="./chapter07-section04.xml" />
+      <xi:include href="./chapter07-section05.xml" />
+      <xi:include href="./chapter07-section06.xml" />
+      <xi:include href="./chapter07-section07.xml" />
+      <xi:include href="./chapter07-section08.xml" />
+      <xi:include href="./chapter07-section09.xml" />
 </chapter>

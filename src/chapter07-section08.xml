@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section08" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Secant, Cosecant, and Cotangent Functions</title>
+    <introduction></introduction>
+
+      <p>In addition to tangent, there are three other combinations of the sine and cosine functions which occur frequently and are given special names.  These new trigonometric functions are defined as follows: <me>\text{secant}\left(x \right) = \sec x = \frac{1}{\cos x}</me> <me>\text{cosecant}\left(x \right) = \csc x = \frac{1}{\sin x}</me> <me>\text{cotangent}\left(x \right) = \cot x = \frac{\cos x}{\sin x} = \frac{1}{\tan x}</me> The functions secant, cosecant, and cotangent are all compositions of cosine, sine, and tangent with the reciprocal function.  We became familiar with these kinds of compositions through graphing earlier in this book. Combining what we know about sine, cosine, tangent, and the reciprocal function, we can quickly sketch graphs of the secant, cosecant, and tangent functions.</p>
+
+      <p>Recall that the cosine function has the following properties:</p>
+
+        <ul>
+          <li>a domain of all real numbers</li>
+          <li>a range of <m>\left[-1,1 \right]</m></li>
+          <li>zeros at odd multiples of <m>\frac{\pi}{2}</m></li>
+          <li>a period of <m>2\pi</m>.</li>
+        </ul>
+
+      <p>The reciprocal function has the following properties:</p>
+
+        <ul>
+          <li>vertical asymptotes at <m>x = 0</m></li>
+          <li>fixed points when <m>y = \pm 1</m></li>
+          <li>makes values less than one larger than one</li>
+          <li>makes values larger than one less than one</li>
+          <li>maintains sign (positive numbers have positive reciprocals and negative numbers have negative reciprocals).</li>
+        </ul>
+
+      <p>So, the graph of <m>y = \sec x = \frac{1}{\cos x}</m>has a periodic graph that is the reciprocal of the cosine function. The secant function has the following properties:</p>
+
+        <ul>
+          <li>vertical asymptotes where <m>\cos x = 0</m>, that is, at all odd multiples of <m>\frac{\pi}{2}</m></li>
+          <li>the function value is 1 when <m>\cos x = 1</m> and -1 when <m>\cos x = -1</m></li>
+          <li>has a range of <m>y \ge 1</m> or <m>y \le -1</m> (has no values in the interval <m>\left(-1,1 \right)</m>)</li>
+          <li>is positive whenever cosine is positive and negative whenever cosine is negative</li>
+          <li>is an even function since cosine is an even function.</li>
+        </ul>
+
+      <p>The graphs of cosine and secant are plotted together in <xref ref="sec-graph-image" text="type-local" />, with the asymptotes indicated by dotted vertical lines.</p>
+
+        <figure xml:id="sec-graph-image">
+          <caption></caption>
+          <image source="./images/sec-graph-image.jpg" width="50%"></image>
+        </figure>
+
+      <p>The cosecant and cotangent functions, denoted <m>\csc</m> and <m>\cot</m>, respectively, can be graphed in two ways: by repeating the analysis above with the reciprocal of the sine function and tangent function, or by considering co-function relationships.  Recall that, as we discussed earlier in the chapter, sine and cosine are related through complementary angles: <me>\sin \left(\theta \right) = \cos \left(90^\circ - \theta \right) \text{ and } \cos \left(\theta \right) = \sin \left(90^\circ - \theta \right).</me></p>
+
+      <p>Since <m>90^\circ = \frac{\pi}{2}</m> radians, we also have <m>\sin \left(x \right) = \cos \left(\frac{\pi}{2} - x \right)</m> where <m>x</m> is now measured in radian.   We also have seen that the cosine is an even function, so <m>\cos \left(A \right) = \cos \left(-A \right)</m>.  So, <m>\cos \left(\frac{\pi}{2} - x \right) = \cos \left(x - \frac{\pi}{2} \right)</m>.  Since <m>\sin \left(x \right) = \cos \left(x - \frac{\pi}{2} \right)</m>, we see that the graph of the sine function is a shift to the right by <m>\frac{\pi}{2}</m> of the graph of the cosine function (see <xref ref="sec-graph-image" text="type-local" />).</p>
+
+      <p>Since the cosecant is the co-function of secant, we also have the identity <m>\csc \left(x \right) = \sec \left(\frac{\pi}{2} - x \right)</m>.  Furthermore, since secant is also an even function, by the same reasoning above, we have <m>\csc \left(x \right) = \sec \left(x - \frac{\pi}{2} \right)</m>.  The graph of the cosecant function is the graph of the secant function shifted to the right by <m>\frac{\pi}{2}</m>. The cosecant function has asymptotes where the secant function has values of 1 and <m>-1</m>, and it has values of 1 and <m>-1</m> where the secant function has asymptotes.</p>
+
+        <figure xml:id="csc-graph-image">
+          <caption></caption>
+          <image source="./images/csc-graph-image.jpg" width="50%"></image>
+        </figure>
+
+      <p>The cotangent function can be constructed in the same way, since <m>\cot \left(x \right) = \tan \left(\frac{\pi}{2} - x \right)</m>. We can also graph the cotangent function as the reciprocal of the tangent function.  Either way, we find the graph of tangent and cotangent complement each other.</p>
+
+        <figure xml:id="cot-graph-image">
+          <caption></caption>
+          <image source="./images/cot-graph-image.jpg" width="50%"></image>
+        </figure>
+
+        <exercises>
+          <title>Exercises</title>
+
+          <!-- Practice Problem #1 -->
+          <exercise>
+            <statement>
+              <p>The graph of <m>y = \sec x</m> is related both the the graph of <m>y = \cos x</m> and to the graph of <m>y = \csc x</m>. Write a short paragraph to describe the connections among the three graphs.</p>
+            </statement>
+          </exercise>
+
+          <!-- Practice Problem #2 -->
+          <exercise>
+            <statement>
+              <p>The graph of <m>y = \sin x</m> is related both the the graph of <m>y = \cos x</m> and to the graph of <m>y = \csc x</m>.   Write a short paragraph to describe the connections among the three graphs.</p>
+            </statement>
+          </exercise>
+
+          <!-- Practice Problem #3 -->
+          <exercise>
+            <statement>
+              <p>Discuss the similarities and differences of the functions <m>f\left(x \right) = \cot x</m> and <m>g\left(x \right) = \frac{1}{\tan x}</m>.  Are their <m>y-</m>values equal for all <m>x-</m>values?  Are their domains the same?</p>
+            </statement>
+          </exercise>
+
+          <!-- Practice Problem #4 -->
+          <exercise>
+            <statement>
+              <p>Identify the domain and range of each of the six trigonometric functions: sine, cosine, tangent, cotangent, secant, and cosecant.</p>
+            </statement>
+          </exercise>
+
+          <!-- Practice Problem #5 -->
+          <exercise>
+            <statement>
+              <p>Tell whether each of the six trigonometric functions is even, odd, or neither. Justify your conclusions algebraically.</p>
+            </statement>
+          </exercise>
+
+          <!-- Practice Problem #6 -->
+          <exercise>
+            <statement>
+              <p>Your calculator doesn’t have buttons for cotangent, secant, and cosecant, so we must use the reciprocal relationships with tangent, cosine, and sine to compute their values.  Use your calculator to find the following values.</p>
+                <md>
+                  <mrow>\text{a. } \amp \cot \left(3 \right)     \amp \text{b. } \amp \sec \left(3 \right)    \amp \text{c. } \amp \csc \left(3 \right)</mrow>
+                  <mrow>\text{d. } \amp \cot \left(-1.2 \right)  \amp \text{e. } \amp \sec \left(-1.2 \right) \amp \text{f. } \amp \csc \left(-1.2 \right)</mrow>
+                </md>
+            </statement>
+          </exercise>
+
+          <!-- Practice Problem #7 -->
+          <exercise>
+            <statement>
+              <p>In addition to the ratios
+                <me>\tan \left(\alpha \right) = \frac{\text{opposite}}{\text{adjacent}},</me>
+                <me>\sin \left(\alpha \right) = \frac{\text{opposite}}{\text{hypotenuse}},</me>
+                <me>\cos \left(\alpha \right) = \frac{\text{adjacent}}{\text{hypotenuse}},</me>
+              we now have
+                <me>\cot \left(\alpha \right) = \frac{\text{adjacent}}{\text{opposite}},</me>
+                <me>\csc \left(\alpha \right) = \frac{\text{hypotenuse}}{\text{opposite}}, \text{ and }</me>
+                <me>\sec \left(\alpha \right) = \frac{\text{hypotenuse}}{\text{adjacent}},</me>
+              In the diagram below, find particular segments whose lengths are:
+              </p>
+
+                <figure xml:id="unit-circle-image22">
+                  <caption></caption>
+                  <image source="./images/unit-circle-image22.jpg" width="50%"></image>
+                </figure>
+
+              <ol label="a.">
+                <li><m>\sin \left(\alpha \right)</m></li>
+                <li><m>\cos \left(\alpha \right)</m></li>
+                <li><m>\tan \left(\alpha \right)</m></li>
+                <li><m>\sec \left(\alpha \right)</m></li>
+                <li><m>\csc \left(\alpha \right)</m></li>
+                <li><m>\cot \left(\alpha \right)</m></li>
+              </ol>
+
+            </statement>
+          </exercise>
+
+      </exercises>
+
+</section>

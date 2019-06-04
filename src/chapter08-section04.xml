@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section10" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Inverse Trigonometric Functions</title>
+  <introduction></introduction>
+   <p>We have already used the <m>\sin^{-1}</m> key on a calculator to solve equations like <m>\sin x=0.8</m>. When we evaluate <m>\sin^{-1} \left(0.8 \right)</m>  in radian mode, the display is 0.927295218.  This tells us that <m>\sin \left(0.927295218 \right)=0.8</m>.  Another way to think about <m>\sin^{-1}</m> is as a function: <m>g\left(x \right)=\sin^{-1} \left(x \right)</m>.  The fact that we evaluate <m>\sin^{-1} \left(0.8 \right)</m> and get 0.927295218 means that the function <m>g\left(x \right)=\sin^{-1} \left(x \right)</m> pairs an <m>x-</m>value of 0.8 with a <m>y-</m>value of 0.927295218.  Since the function <m>f\left(x \right)=\sin x</m> pairs an <m>x-</m>value of 0.927295218 with a <m>y-</m>value of 0.8, the functions <m>f</m>  and <m>g</m> have an important characteristic of inverse functions.</p>
+
+   <p>Since <m>f\left(x \right)=\sin x</m> is not a one-to-one function, many different <m>x-</m>values are paired with the same <m>y-</m>value.  One consequence of many <m>x-</m>values being paired with the same <m>-</m>value is that equations like <m>\sin x=0.8</m> have infinitely many solutions. Another consequence is that the ordered pairs <m>\left(\sin x, x \right)</m> do not produce a function. If you reflect the graph of <m>f\left(x \right)=\sin x</m> about the line <m>y=x</m> you will see a graph that is not a function <xref ref="inversesine-image" text="type-local" />.
+
+   <figure xml:id="inversesine-image">
+    <caption>Graph of <m>y=\sin x</m> and its Inverse</caption>
+    <image source="./images/inversesine-image.jpg" width="50%"></image>
+   </figure>
+
+   </p>
+
+   <p>Recall  that if <m>f</m> is a function whose inverse is not a function, we can restrict the domain of <m>f</m> to an interval of <m>x-</m>values on which <m>f</m> is one-to-one. For the function <m>f\left(x \right)=\sin x</m>, there are many different ways to choose this domain restriction. The interval <m>\frac{\pi}{2} \le x \le \frac{3\pi}{2}</m> would be satisfactory; so would the union <m>-\pi \le x \le -\frac{\pi}{2}</m> with <m>\frac{\pi}{2} \le x \le \pi</m>. Both of these choices include the entire range of <m>f</m> without repeating range values.
+
+   <figure xml:id="inversesine-image1">
+    <caption>Graphs of <m>y=\sin x</m> with Restricted Domain and <m>y=\sin^{-1} x</m></caption>
+    <image source="./images/inversesine-image1.jpg" width="50%"></image>
+   </figure>
+
+   </p>
+
+   <p>However, mathematicians have agreed to restrict the domain of <m>f\left(x \right)=\sin x</m> to the interval <m>-\frac{\pi}{2} \le x \le \frac{\pi}{2}</m>. This interval has the advantages that it is continuous and it contains 0.  <xref ref="inversesine-image1" text="type-local" />. shows <m>f\left(x \right)=\sin x</m> with this restricted domain. The domain shown for <m>f</m> is  <m>-\frac{\pi}{2} \le x \le \frac{\pi}{2}</m>, and the range is <m>-1 \le t \le 1</m>. The figure also shows the graph of <m>f^{-1}\left(x \right)=\sin^{-1} \left(x \right)</m>.</p>
+
+   <p>The fact that the range of <m>f^{-1}</m> is the interval <m>-\frac{\pi}{2} \le x \le \frac{\pi}{2}</m> means that values of <m>\sin^{-1} x</m> lie between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m> for all <m>x-</m>values. You can use your calculator to confirm that the inverse sine of any number is always between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m> if you are working in radian mode. For example, when your calculator reports the value of <m>\sin^{-1} \left(0.8 \right)</m> to be 0.9272952, you can conclude that 0.9272952 is the unique number between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m> whose sine is 0.8.</p>
+
+   <p>It is important to understand the difference between the solutions of equations <m>\sin x=0.8</m> and <m>x=\sin^{-1} \left(0.8 \right)</m>.  The equation <m>\sin x=0.8</m> has infinitely many solutions and <m>\sin^{-1} \left(0.8 \right)</m>represents only one of the solutions.  The symbol <m>x=\sin^{-1} \left(0.8 \right)</m> represents the single solution of <m>\sin x=0.8</m> that is between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m>, inclusive.</p>
+
+   <p>Like the sine function, the cosine function is not one-to-one. It is necessary to restrict the domain so that the inverse of the cosine function will be a function.  As with the sine function, there are many possible choices for this domain restriction. However, the standard restriction is the interval <m>0 \le x \le \pi</m>. <xref ref="inversecosine-image" text="type-local" /> shows the graphs of <m>g\left(x \right)=\cos x</m> with restricted domain and <m>g^{-1}\left(x \right)=\cos^{-1} x</m>. Note that <m>g^{-1}\left(x \right)=\cos^{-1} x</m> has domain <m>-1 \le x \le 1</m>; this is also the range of <m>g\left(x \right)</m>.  The range of <m>g^{-1}\left(x \right)=\cos^{-1} x</m> is <m>0 \le x \le \pi</m>; this is the same as the domain of <m>g\left(x \right)</m>.
+
+   <figure xml:id="inversecosine-image">
+    <caption>Graphs of <m>y=\cos x</m> with Restricted Domain and <m>y=\cos^{-1} x</m></caption>
+    <image source="./images/inversecosine-image.jpg" width="50%"></image>
+   </figure>
+
+   </p>
+
+   <subsection>
+    <introduction></introduction>
+     <title>Class Practice</title>
+      <p>
+       <ol>
+        <li>Explain the difference between the solutions to the equation <m>\cos x=0.3</m> and the equation <m>x=\cos^{-1} 0.3</m>.</li>
+        <li xml:id="class-practice-2">Find the value of <m>\tan^{-1} \left(-12 \right)</m>, <m>\tan^{-1} \left(-3.4 \right)</m>, <m>\tan^{-1} \left(-1.81 \right)</m>, <m>\tan^{-1} \left(0.058 \right)</m>, <m>\tan^{-1} \left(1.65 \right)</m>, <m>\tan^{-1} \left(2.54 \right)</m>, and <m>\tan^{-1} \left(23.7 \right)</m>. Use the numerical results and the graph of the tangent function to help you guess the range of the inverse tangent function. Make a sketch of <m>f\left(x \right)=\tan^{-1} \left(x \right)</m>.</li>
+       </ol>
+     </p>
+   </subsection>
+
+   <p>Like the sine and the cosine functions, the tangent function is not one-to-one. The inverse of the tangent function will be a function only if we restrict its domain. There are many ways to restrict the domain of the tangent function to make it one-to-one. The results of the <xref ref="class-practice-2" text="type-local">Class Practice</xref> show that all the values of inverse tangent produced by a calculator are between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m> (between about <m>-1.6</m> and 1.6).  This indicates that the range of the inverse tangent function is <m>-\frac{\pi}{2} \lt x \lt \frac{\pi}{2}</m>.  Therefore, we can conclude that the standard domain chosen to make tangent a one-to-one function is  <m>-\frac{\pi}{2} \lt x \lt \frac{\pi}{2}</m>.</p>
+
+   <p><xref ref="inversetan-image" text="type-local" /> shows the graphs of <m>h\left(x \right)=\tan x</m> and <m>h^{-1}\left(x \right)=\tan^{-1} x</m>.  The restricted domain of tangent and the range of inverse tangent is the interval <m>\left(-\frac{\pi}{2}, \frac{\pi}{2} \right)</m>. The range of the tangent function and the domain of inverse tangent function are both the set of all real numbers.  Note that the graph of <m>h^{-1}\left(x \right)=\tan^{-1} x</m> has horizontal asymptotes at <m>y=-\frac{\pi}{2}</m> and at <m>y=\frac{\pi}{2}</m>.
+
+    <figure xml:id="inversetan-image">
+     <caption>Graphs of <m>y=\tan x</m> with Restricted Domain and <m>y=\tan^{-1} x</m></caption>
+     <image source="./images/inversetan-image.jpg" width="50%"></image>
+    </figure>
+
+   </p>
+
+  <example>
+   <statement><p>Evaluate <m>\tan^{-1} \left(-1 \right)</m> and <m>\cos^{-1} \left(-0.5 \right)</m>. Explain what these values mean.</p></statement>
+
+   <solution>
+    <p>Because the range of the inverse tangent function includes numbers from <m>-\frac{\pi}{2}</m> to <m>\frac{\pi}{2}</m>, <m>\tan^{-1} \left(-1 \right)</m> represents the number in this interval whose tangent is <m>-1</m>.  In radian mode your calculator reports that <m>\tan^{-1} \left(-1 \right)=-0.785</m>.  The number  <m>-0.785</m> answers the question “What number between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m> has a tangent of  ?”</p>
+    <p>Since the range of the inverse cosine function includes numbers from 0 to <m>\pi</m>,  <m>\cos^{-1} \left(-0.5 \right)</m> represents a number between 0 and <m>\pi</m> whose cosine is <m>-0.5</m>.  In radian mode your calculator reports that  <m>\cos^{-1} \left(-0.5 \right)=2.094</m>. The number 2.094 answers the question “What number between 0 and <m>\pi</m> has a cosine of <m>-0.5</m> ?”</p>
+    <p>You may recognize that <m>\tan^{-1} \left(-1 \right)</m> and <m>\cos^{-1} \left(-0.5 \right)</m> involve special values of the trigonometric functions and can be evaluated without a calculator. For <m>\tan^{-1} \left(-1 \right)</m> we seek a number between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m> whose tangent is <m>-1</m>. The number that meets these criteria is <m>-\frac{\pi}{4}</m>.  While it is true that <m>\tan \frac{3\pi}{4}=-1</m> and <m>\tan \frac{7\pi}{4}=-1</m>, neither   <m>\frac{3\pi}{4}</m> nor <m>\frac{7\pi}{4}</m> is in the range of the inverse tangent function.  For <m>\cos^{-1} \left(-0.5 \right)</m> we seek a number between 0 and <m>\pi</m> whose cosine is <m>-0.5</m>.  The number that meets these criteria is <m>-\frac{2\pi}{3}</m>.  Again, even though it is true that <m>\cos \frac{4\pi}{3}=-0.5</m>, <m>\frac{4\pi}{3}</m> is not in the range of the inverse cosine function, so <m>\cos^{-1} \left(-0.5 \right) \ne \frac{4\pi}{3}</m>.</p>
+    <p>Most calculators do not have keys for the remaining three trigonometric functions:  secant, cosecant, and cotangent.  Nor do they have keys for the inverses of these three functions.  Therefore, we cannot directly determine values of the inverse secant, inverse cosecant, and inverse cotangent functions on the calculator.  Since cotangent is the reciprocal of tangent, you may suspect that <m>\cot^{-1}</m> is the reciprocal of <m>\tan^{-1}</m>.  This is generally not the case: <me>\cot^{-1} x \ne \frac{1}{\tan^{-1} x}.</me> The symbol <m>\cot^{-1}</m> represents a number whose cotangent is <m>x</m>, and <m>\tan^{-1}</m> represents a number whose tangent is <m>x</m>.  These numbers are not reciprocals of each other.</p>
+    <p>	For example, <m>x=\cot^{-1} \left(2 \right)</m> asks for the number whose cotangent is 2.  That is, <m>\cot \left(x \right)=2</m>.  Another way of saying this is the number whose tangent is <m>\frac{1}{2}</m>, since the tangent function and cotangent function are reciprocals. Therefore, <m>\cot \left(x \right)=2</m> can be rewritten as <m>\tan \left(x \right)=\frac{1}{2}</m> or <m>\tan^{-1} \left(\frac{1}{2} \right)=x</m>. Therefore, <me>\cot^{-1} \left(2 \right)=\tan^{-1} \left(\frac{1}{2} \right).</me> Similar arguments will show the following identities are true for <m>b \le -1</m> or <m>b \ge 1</m>: <me>\csc^{-1} \left(b \right)=\sin^{-1} \left(\frac{1}{b} \right)</me> and <me>\sec^{-1} \left(b \right)=\cos^{-1} \left(\frac{1}{b} \right).</me></p>
+   </solution>
+  </example>
+
+  <example>
+   <statement><p> Solve <m>\cot x=3</m>.</p></statement>
+
+   <solution>
+    <p>Rewrite the equation as follows:
+    <md>
+     <mrow>\cot x \amp =3</mrow>
+     <mrow>\tan x \amp =\frac{1}{3}</mrow>
+     <mrow>x      \amp =\tan^{-1} \left(\frac{1}{3} \right)</mrow>
+    </md>
+    Using a calculator in radian mode to evaluate <m>\tan^{-1} \left(\frac{1}{3} \right)</m> gives the display 0.3218.  Verify that this is a number whose cotangent is 3.  Since the cotangent function has period <m>\pi</m>, the set of all solutions of the equation <m>\cot x=3</m> is given by <m>x=0.3218+k\pi</m>.
+    </p>
+   </solution>
+  </example>
+
+<exercises>
+  <title>Exercises</title>
+
+   <!-- Practice Problem #1 -->
+   <exercise>
+    <statement>
+     <p>Evaluate the following with a calculator.  Write a sentence to explain what the value of each expression means.</p>
+     <ol label="a.">
+      <li><m>\sin^{-1} 0.95</m></li>
+      <li><m>\cos^{-1} \left(-0.67 \right)</m></li>
+      <li><m>\tan^{-1} 100</m></li>
+      <li><m>\sin^{-1} 1.95</m></li>
+      <li><m>\sec^{-1} 10</m></li>
+      <li><m>\csc^{-1} \left(-4.9 \right)</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #2 -->
+   <exercise>
+    <statement>
+     <p>Use your calculator to evaluate the following.</p>
+     <ol label="a.">
+      <li><m>\sin \left(\sin^{-1} 0.9 \right)</m></li>
+      <li><m>\sin^{-1}\left(\sin 2 \right)</m></li>
+      <li><m>\cos \left(\cos^{-1} \left(-0.39 \right) \right)</m></li>
+      <li><m>\cos^{-1} \left(\cos 1 \right)</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #3 -->
+   <exercise>
+    <statement>
+     <p>The symbol <m>\cos^{-1} \left(\frac{1}{2} \right)</m> represents a number between 0 and <m>\pi</m> whose cosine is <m>\frac{1}{2}</m>.</p>
+     <ol label="a.">
+      <li>Use a right triangle to illustrate/explain the meaning of <m>\cos^{-1} \left(\frac{1}{2} \right)</m>.</li>
+      <li>Use the unit circle to illustrate/explain the meaning of <m>\cos^{-1} \left(\frac{1}{2} \right)</m>.</li>
+      <li>Use the graph of the cosine function to illustrate/explain the meaning of <m>\cos^{-1} \left(\frac{1}{2} \right)</m>.</li>
+     </ol>
+    </statement>
+  </exercise>
+
+  <!-- Practice Problem #4 -->
+  <exercise>
+   <statement>
+    <p>You and a classmate are doing homework together. Your classmate writes the following steps to solve <m>\cos x=0.83</m>.
+
+    <md>
+     <mrow>\cos x \amp =0.83</mrow>
+     <mrow>x      \amp=\left(0.83 \right)</mrow>
+     <mrow>x      \amp=0.5917</mrow>
+    </md>
+
+    Write several sentences to explain what is right and what is wrong with your classmate’s work. Explain how to get the correct and complete solution set.
+
+    </p>
+   </statement>
+  </exercise>
+
+  <!-- Practice Problem #5 -->
+  <exercise>
+   <statement>
+    <p></p>
+    <ol label="a.">
+     <li>Sketch a graph of the function <m>y=\csc^{-1} x</m>. Choose the domain and range so that the inverse is a function.</li>
+     <li>Compare the domain and range of <m>y=\csc^{-1} x</m> and the domain and range of <m>y=\sin^{-1} x</m>. How does this information restrict the use of the identity <m>\csc^{-1} \left(b \right)=\sin^{-1} \left(\frac{1}{b} \right)?</m></li>
+    </ol>
+   </statement>
+ </exercise>
+
+ <!-- Practice Problem #6 -->
+ <exercise>
+  <statement>
+   <p></p>
+   <ol label="a.">
+    <li>Sketch a graph of the function <m>y=\sec^{-1} x</m>. Choose the domain and range so that the inverse is a function.</li>
+    <li>Compare the domain and range of <m>y=\sec^{-1} x</m> and the domain and range of <m>y=\cos^{-1} x</m>. How does this information restrict the use of the identity <m>\sec^{-1} \left(b \right)=\cos^{-1} \left(\frac{1}{b} \right)?</m></li>
+   </ol>
+  </statement>
+ </exercise>
+
+ <!-- Practice Problem #7 -->
+ <exercise>
+  <statement>
+   <p>Sketch a graph of each function.</p>
+   <ol label="a.">
+    <li><m>y=\sin^{-1} \left(2x \right)</m></li>
+    <li><m>y=2\tan^{-1} x</m></li>
+    <li><m>y=1+\cos^{-1} x</m></li>
+    <li><m>y=\sin^{-1} \left(x+1 \right)</m></li>
+   </ol>
+  </statement>
+ </exercise>
+
+ <!-- Practice Problem #8 -->
+ <exercise>
+  <statement>
+   <p>Sketch a graph of each function.</p>
+   <ol label="a.">
+    <li><m>f\left(x \right)=\sin^{-1} \left(2x \right)</m></li>
+    <li><m>g\left(x \right)=\cos^{-1} \left(x-\pi \right)</m></li>
+    <li><m>h\left(x \right)=2\tan^{-1} x</m></li>
+    <li><m>f\left(x \right)=a\sin^{-1} \left(bx+c \right)</m></li>
+   </ol>
+  </statement>
+ </exercise>
+
+ <!-- Practice Problem #9 -->
+ <exercise>
+  <statement>
+   <p>Use your calculator to graph <m>y=\cos^{-1} +\sin^{-1} x</m>.  Find its domain. Explain how you could have anticipated  the results of the graph.</p>
+  </statement>
+ </exercise>
+
+ <!-- Practice Problem #10 -->
+ <exercise>
+  <statement>
+   <p>Tell whether the following statement is true.  Support your answer.<me>\sin^{-1} x=\frac{1}{\sin x}</me></p>
+  </statement>
+ </exercise>
+
+ <!-- Practice Problem #11 -->
+ <exercise>
+  <statement>
+   <p>Sketch a graph of <m>y=\cot x</m>.  The period and the position of the vertical asymptotes suggest restricting the domain to <m>0 \lt x \lt \pi</m> to make the function one-to-one.  This is the domain restriction that is commonly used.  With this domain restriction, the range of the inverse cotangent function will be  <m>0 \lt y \lt \pi</m>.  Sketch a graph of <m>y=\cot^{-1} x</m>that is consistent with this domain restriction on <m>y=\cot x</m>.</p>
+  </statement>
+ </exercise>
+
+ <!-- Practice Problem #12 -->
+ <exercise>
+  <statement>
+   <p>When the inverse tangent key on a calculator is used to find values of the inverse cotangent function, the values of inverse cotangent will be in the same range as those of the inverse tangent, that is, from <m>-\frac{\pi}{2}</m> to <m>\frac{\pi}{2}</m>. Therefore, the graph of <m>y=\cot^{-1} x</m> would be as shown in <xref ref="cotan-image" text="type-local" /> if it were based on values obtained from a calculator.
+
+   <figure xml:id="cotan-image">
+    <caption>Graph of <m>y=\cot^{-1} x</m> Based on Calculator Values of <m>y=\tan^{-1} \left(\frac{1}{x} \right)</m></caption>
+    <image source="./images/cotan-image.jpg" width="50%"></image>
+   </figure>
+
+   </p>
+   <ol label="a.">
+    <li>Compare the graph <m>y=\cot^{-1} x</m> in <xref ref="cotan-image" text="type-local" /> with the one you drew for the previous exercise. What disadvantages does the graph in <xref ref="cotan-image" text="type-local" /> have?</li>
+    <li>Note that whenever x is negative your calculator will give a negative value  for  <m>y=\tan^{-1} \left(\frac{1}{x} \right)</m>, but we would like the range of <m>\cot^{-1}</m> to include only numbers from 0 to <m>\pi</m>.  How can we modify the calculator procedure for evaluating <m>\cot^{-1}</m> when <m>x</m> is negative to achieve this range?</li>
+   </ol>
+  </statement>
+ </exercise>
+
+ </exercises>
+</section>

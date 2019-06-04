@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section14" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Solving Triangles with Trigonometry</title>
+  <introduction></introduction>
+  <p>If <m>\theta</m> is an acute angle in a right triangle, the sine, cosine and tangent of  are given by the following ratios:
+
+  <md>
+    <mrow>\sin \theta \amp = \frac{\text{length of side opposite }\theta}{\text{length of hypotenuse}}</mrow>
+    <mrow>\cos \theta \amp = \frac{\text{length of side adjecent }\theta}{\text{length of hypotenuse}}</mrow>
+    <mrow>\tan \theta \amp = \frac{\text{length of side opposite }\theta}{\text{length of side adjacent }\theta}</mrow>
+  </md>
+
+  These ratios enable us to determine the measures of all parts of a right triangle if we know the measure of at least three parts including the right angle.  Recall from your study of geometry that at least one of the known parts must be the measure of a side, since three angles do not determine a unique triangle. The process of determining the measures of all unknown angles and sides is called solving a triangle.
+  </p>
+
+  <example xml:id="example4">
+   <statement><p>During an air show, a stunt pilot flies over a crowd of spectators at an altitude of 2500 feet.  One minute later the angle of elevation of the plane is <m>15^\circ</m>.  The angle of elevation is formed by two rays originating at an observer's eye.  One ray extends horizontally and the other is the line of sight from the observer to an elevated object. Assuming the pilot maintains an altitude of 2500 feet and a constant speed, how fast is the plane flying?  Ignore the height of the observer for this problem.</p></statement>
+   <solution>
+    <p><xref ref="angle-of-elevation" text="type-local" /> shows a sketch of the given information.  The angle of elevation is <m>\angle CAD</m>  and <m>BC</m> represents the distance traveled by the plane during the minute it was observed.
+
+    <figure xml:id="angle-of-elevation">
+     <caption>Diagram for <xref ref="example4" text="type-local" /></caption>
+     <image source="./images/angle-of-elevation.jpg" width="50%"></image>
+    </figure>
+
+    If we find the distance the plane travels in one minute, we can convert feet per minute to miles per hour to obtain the speed of the plane.  Since <m>\angle BAC</m>  and <m>\angle CAD</m>  are complementary angles, we know that  <m>\angle BAC=90^\circ - 15^\circ =75^\circ</m>.  Using right triangle <m>ABC</m> and the tangent ratio, we can now solve for side <m>BC</m> as follows:
+
+    <md>
+     <mrow>\tan \angle BAC   \amp = \frac{BC}{AB}</mrow>
+     <mrow>\tan 75^\circ BAC \amp = \frac{BC}{2500 \text{ ft.}}</mrow>
+     <mrow>BC                \amp = (2500 \text{ ft.})\tan 75^\circ=9330 \text{ ft.}</mrow>
+    </md>
+
+    The plane travels about 9330 feet in one minute.  We can convert to miles per hour as follows:
+    <me>\frac{9330 \text{ ft.}}{1 \text{ min}}=\frac{9330 \text{ ft.}}{1 \text{ min}} \cdot \frac{60 \text{ min}}{1 \text{ hr}}=\frac{1 \text{ mile}}{5280 \text{ ft.}}=106 \text{ mph}.</me>
+    </p>
+   </solution>
+  </example>
+
+  <example xml:id="example5">
+   <statement><p>During the same airshow as described in <xref ref="angle-of-elevation" text="type-local" /> another plane, flying at a constant speed, passes over the crowd at an altitude of 2500 feet.  When it is directly above the crowd it begins ascending.  One minute later the angle of elevation to the plane is <m>40^\circ</m>, and the plane's altitude is 7200 feet.  Find the speed of the plane during its ascent.</p></statement>
+   <solution>
+    <p>The given information is illustrated in <xref ref="angle-of-elevation" text="type-local" />.
+
+    <figure xml:id="angle-of-elevation1">
+     <caption>Diagram for <xref ref="example5" text="type-local" /></caption>
+     <image source="./images/angle-of-elevation1.jpg" width="50%"></image>
+    </figure>
+
+    The plane ascends along side <m>AB</m> of <m>\bigtriangleup ABC</m>, so this is the side whose measure we need.  Since <m>\angle BCD</m> and  <m>\angle ACB</m> are complementary, we know that <m>\angle ACB=50^\circ</m>.  We need at least three parts of a triangle to solve it, but we have only one angle and one side of <m>\bigtriangleup ABC</m>.  Using right  <m>\bigtriangleup BCD</m>, we can solve <m>\sin 40^\circ = \frac{7200}{BC}</m> to determine that <m>BC=11,201</m> feet.  Now we know two sides and an included  angle of <m>\bigtriangleup ABC</m>.  We cannot use right triangle ratios to solve for side <m>AB</m>, however, since <m>\bigtriangleup ABC</m> is not a right triangle.
+    </p>
+
+    <p>We will complete the solution of this problem after we develop methods for solving triangles that are not right triangles.  These are called oblique triangles.</p>
+
+    <p>We will develop the Law of Cosines to solve some oblique triangles, such as  <m>\bigtriangleup ABC</m> in <xref ref="law-of-cosines" text="type-local" />. We will follow the convention that the side opposite <m>\angle A</m>  has length <m>a</m>, the side opposite <m>\angle A</m> has length <m>b</m>, and so forth.
+
+    <figure xml:id="law-of-cosines">
+     <caption>Oblique Triangle <m>ABC</m></caption>
+     <image source="./images/law-of-cosines.jpg" width="50%"></image>
+    </figure>
+
+    Assume that the lengths <m>b</m> and <m>c</m> and the measure of angle <m>A</m> are known. To find the length <m>a</m>, we draw the altitude <m>DB</m> with length <m>h</m> from <m>\angle B</m>.  This will divide side <m>AC</m> into two segments whose lengths are <m>x</m> and <m>(b-x)</m>.
+    </p>
+
+    <p>In right triangle <m>BCD</m> the Pythagorean Theorem gives
+      <mdn><mrow xml:id="eq1">\left(b-x \right)^2+h^2=a^2</mrow></mdn>.
+
+    In right triangle <m>ABD</m> we have
+      <mdn><mrow xml:id="eq2">x^2+h^2=c^2</mrow></mdn>.
+
+    We can rewrite equation <xref ref="eq2" text="type-local" /> as <m>h^2=c^2-x^2</m> and substitute for <m>h^2</m> in equation <xref ref="eq1" text="type-local" /> to obtain
+      <mdn><mrow xml:id="eq3">\left(b-x \right)^2+c^2-x^2=a^2</mrow></mdn>.
+
+    Squaring <m>(b-x)</m> on the left side of <xref ref="eq3" text="type-local" /> gives
+      <md><mrow>b^2-2bx+x^2+c^2-x^2=a^2</mrow></md>,
+
+    which can be written as
+	    <mdn><mrow xml:id="eq4">a^2=b^2+c^2-2bx</mrow></mdn>.
+
+    We would like to express <m>x</m> in terms of sides or angles in <m>\bigtriangleup ABC</m>.  In right triangle <m>ABD</m>, <m>\cos A = \frac{x}{c}</m> so <m>x=c \cos A</m>. Substituting  in equation <xref ref="eq4" text="type-local" /> yields
+	    <mdn><mrow xml:id="eq5">a^2=b^2+c^2-2bc\cos A</mrow></mdn>.
+
+    The relationship expressed in equation <xref ref="eq5" text="type-local" /> is the Law of Cosines.  Three versions of this law are stated below:
+
+    <md>
+     <mrow>a^2=b^2+c^2-2bc\cos A</mrow>
+     <mrow>b^2=a^2+c^2-2ac\cos B</mrow>
+     <mrow>c^2=b^2+a^2-2ab\cos C</mrow>
+    </md>
+    </p>
+
+    <p>The Law of Cosines contains four variables.  Three represent lengths of sides and one represents an angle measure.  There are several different  circumstances under which this law allows us to find unknown sides or angles in a triangle.</p>
+    <p>If we know the lengths of three sides, we can find the measure of any angle.  For instance, if we know <m>a</m>, <m>b</m>, and <m>c</m>, we can use <m>a^2=b^2+c^2-2bc\cos A</m> to find angle <m>A</m> ,  <m>b^2=a^2+c^2-2ac\cos B</m> to find angle <m>B</m>, and so forth.</p>
+    <p>If we know the lengths of two sides and the measure of the included angle, we can find the measure of the third side.  For instance, if we know <m>b</m>, <m>c</m>, and <m>A</m>, we can use <m>a^2=b^2+c^2-2bc\cos A</m> to find <m>a</m>.</p>
+    <p>If we know the lengths of two sides and the measure of the non-included angle, we can find the measure of the third side. For instance, if we know <m>a</m>, <m>b</m>,  and <m>B</m>, we can use <m>b^2=a^2+c^2-2ac\cos B</m> to find <m>c</m>. Once the known values for <m>a</m>, <m>b</m>, and <m>B</m> are substituted in  <m>b^2=a^2+c^2-2ac\cos B</m>, the resulting equation is a quadratic in <m>c</m>, which can have 0, 1, or 2 real solutions.  We will explore this situation in <xref ref="example6" text="type-local" />.  Now we have the tools to answer the question posed in <xref ref="example5" text="type-local" />.</p>
+   </solution>
+  </example>
+
+  <example xml:id="example6">
+   <statement><p>Complete the work begun in <xref ref="example5" text="type-local" /> to determine the distance traveled during the first minute of the plane's ascent.  After finding the distance traveled in one minute, convert the speed from feet per minute to miles per hour.</p></statement>
+   <solution><p>The diagram of the triangle we must solve is shown in <xref ref="law-of-cosines1" text="type-local" />.
+
+   <figure xml:id="law-of-cosines1">
+    <caption>Diagram for <xref ref="example6" text="type-local" /></caption>
+    <image source="./images/law-of-cosines1.jpg" width="50%"></image>
+   </figure>
+
+   Using the Law of Cosines we solve for side <m>AB</m>.
+
+   <md>
+    <mrow>c^2  \amp =a^2+b^2-2ab\cos C</mrow>
+    <mrow>AB^2 \amp =11,201^2+2500^2-2(11,201)(2500)\cos 50^\circ</mrow>
+    <mrow>cAB  \amp =9783 \text{ ft.}</mrow>
+   </md>
+
+   The plane travels about 9783 feet during the first minute of its ascent.  We can convert to miles per hour as follows:
+   <me>\frac{9783 \text{ ft.}}{1 \text{ min}}=\frac{9783 \text{ ft.}}{1 \text{ min}} \cdot \frac{60 \text{ min}}{1 \text{ hr}}=\frac{1 \text{ mile}}{5280 \text{ ft.}}=111 \text{ mph}.</me>
+   The speed of the plane during its ascent is about 111 miles per hour.
+   </p>
+
+   <p>The Law of Cosines is useful for solving many oblique triangles, but it does not help in all situations.  Suppose, for example, that you know two angles and one side of an oblique triangle.  You simply do not know the appropriate information to use the Law of Cosines.  In this situation the Law of Sines can  be used to solve the triangle.</p>
+
+   <p><xref ref="law-of-cosines2" text="type-local" /> shows an oblique triangle <m>ABC</m> in which an altitude of length <m>h</m> has been drawn from <m>\angle B</m> to side <m>AC</m>.  In triangle <m>ABD</m>, <m>\sin A=\frac{h}{c}</m>, and in triangle <m>BCD</m>,  <m>\sin C=\frac{h}{a}</m>.  Rewriting these ratios as <m>c\sin A=h</m> and  <m>a\sin A=h</m>, we see that  <m>c\sin A=a\sin C</m>, or <m>\frac{\sin A}{a}=\frac{\sin C}{c}</m>.
+
+   <figure xml:id="law-of-cosines2">
+    <caption>Oblique triangle <m>ABC</m></caption>
+    <image source="./images/law-of-cosines2.jpg" width="50%"></image>
+   </figure>
+
+   Similarly, if an altitude is drawn from <m>C</m>, it can be shown that <m>\frac{\sin B}{b}=\frac{\sin A}{a}</m>.  Combining these results produces the Law of Sines:
+
+   <me>\frac{\sin A}{a}=\frac{\sin B}{b}=\frac{\sin C}{c}</me>.
+
+   There are a variety of circumstances in which the Law of Sines allows us to find unknown sides or angles in a triangle, as illustrated in the following examples.
+   </p>
+   </solution>
+  </example>
+
+  <example xml:id="example7">
+   <statement><p>Margaret and John want to sail their boat from a marina to an island 15 miles east of the marina.  Along the path there are several small islands that they must avoid.  When charting the course, they decide to sail first on a heading of <m>70^\circ</m> and then turn and sail on a <m>120^\circ</m> heading. What is the total distance they will travel before reaching their destination?</p></statement>
+
+   <figure xml:id="boat-diagram-image">
+    <caption>Diagram for <xref ref="example7" text="type-local" /></caption>
+    <image source="./images/boat-diagram-image.jpg" width="50%"></image>
+   </figure>
+
+   <solution><p><xref ref="boat-diagram-image" text="type-local" /> shows the islands and the course that Margaret and John follow.  When we say they sail on a heading of <m>70^\circ</m> we mean the angle between their path and due north is  <m>70^\circ</m>.  Since <m>\angle APC = 70^\circ</m>and is complementary to  <m>\angle CPD</m>, we know that  <m>\angle CPD=20^\circ</m>.  The measure of <m>\angle PCD</m> is <m>130^\circ</m>, because it is the sum of <m>70^\circ</m>, obtained from an angle that forms an alternate interior pair with  <m>\angle APC</m>, and <m>60^\circ</m>, obtained as the supplement of the  <m>120^\circ</m> angle that gives the second heading.   We know that the sum of the angles of the triangle must be <m>180^\circ</m>, so we can use the fact that  <m>\angle D=30^\circ</m> in our calculations.  We want to find the lengths of sides <m>PC</m> and <m>CD</m> in <m>\bigtriangleup PCD</m>.
+   </p>
+
+   <p>We know the length of only one side, so we need to use the Law of Sines rather than the Law of Cosines to find the length of side <m>CD</m>.
+
+   <md>
+    <mrow>\frac{\sin 20^\circ}{CD} \amp =\frac{\sin 130^\circ}{15}</mrow>
+    <mrow>CD                       \amp =\frac{15}{\sin 130^\circ}\cdot \sin 20^\circ</mrow>
+    <mrow>                         \amp =6.7\text{ miles}</mrow>
+   </md>
+
+   Similarly, we can find the length of side <m>PC</m>.
+
+   <md>
+    <mrow>\frac{\sin 30^\circ}{PC} \amp =\frac{\sin 130^\circ}{15}</mrow>
+    <mrow>PC                       \amp =\frac{15}{\sin 130^\circ}\cdot \sin 30^\circ</mrow>
+    <mrow>                         \amp =9.8\text{ miles}</mrow>
+   </md>
+
+   Adding the lengths of  sides <m>PC</m> and <m>CD</m>, we conclude that they traveled approximately 16.5 miles to reach their destination.
+   </p>
+   </solution>
+  </example>
+
+  <example xml:id="example8">
+   <statement><p>A triangular piece of land in a park is to be made into a flower bed.  Stakes have previously been driven into the ground at the vertices of the triangle, which we will call <m>B</m>, <m>E</m>, and <m>D</m>, but the gardener can locate only the two stakes at <m>B</m> and <m>E</m>.  The length of <m>BE</m> is 6.2 meters, and the gardener recalls that the angle at <m>B</m> is <m>60^\circ</m> and that the side opposite the <m>60^\circ</m> angle was to be 5.5 meters in length.  Based on this information, where should the gardener search for the missing stake?
+
+   <figure xml:id="law-of-cosines3">
+    <caption>Diagram for <xref ref="example8" text="type-local" /></caption>
+    <image source="./images/law-of-cosines3.jpg" width="50%"></image>
+   </figure>
+
+   </p></statement>
+
+   <solution><p>Notice there are two possible placements for point <m>D</m> as shown in <xref ref="boat-diagram-image" text="type-local" />.  Both <m>\bigtriangleup BED_1</m>  and  <m>\bigtriangleup BED_2</m> fulfill the requirements of the flower bed. The lengths and angle measures that are given in the problem allow us to use either the Law of Sines or the Law of Cosines to solve the triangle. When we use the Law of Cosines to locate <m>D</m> with the variable e representing side <m>BD</m>, we have <me>5.5^2=6.2^2+e^2-2(6.2)e\cos 60^\circ.</me> This is a quadratic equation in <m>e</m>, which can be solved using the quadratic formula.
+
+   <md>
+    <mrow>0 \amp = e^2-2(6.2)(\cos 60^\circ)e+\left(6.2^2-5.5^2 \right)</mrow>
+    <mrow>0 \amp = e^2-(6.2)e+8.19</mrow>
+    <mrow>e \amp = \frac{6.2 \pm \sqrt{6.2^2-4(8.19)}}{2}</mrow>
+    <mrow>e \amp = 4.292 \text{ or }1.908</mrow>
+   </md>
+
+   The fact that the quadratic <m>0=e^2-6.2e+819</m> has two real solutions implies that there are two possible lengths for <m>e</m>. This means that the information given in the problem does not determine a unique triangle. That is, there are two triangles that satisfy all of the conditions stated in the problem.  This situation can occur when you know two sides and a non-included angle of a triangle.</p>
+
+  <p>We can also use the Law of Sines to locate <m>D</m>, since we know the measure of <m>\angle B</m> and the length of the opposite side.  Based on the Law of Sines, we have
+
+  <md>
+   <mrow>\frac{\sin D}{6.2}=\frac{\sin 60^\circ}{5.5}</mrow>
+   <mrow>\sin D=6.2\left(\frac{\sin 60^\circ}{5.5} \right)</mrow>
+   <mrow>\sin D =0.9762</mrow>
+  </md>
+
+  There are two angles between <m>0^\circ</m> and <m>180^\circ</m> with sine equal 0.9762.  One is approximately <m>77.5^\circ</m>, and the other is approximately <m>180^\circ-77.5^\circ=102.5^\circ</m>. This means that the information given in the problem does not determine a unique triangle, and there are two triangles that satisfy all of the conditions stated in the problem.  <xref ref="law-of-cosines4" text="type-local" /> shows these two triangles; <m>\bigtriangleup BED_1</m> has <m>\angle D_1=102.5^\circ</m>  and <m>\bigtriangleup BED_2</m> has <m>\angle D_2=77.5^\circ</m>. We can finish solving each of these two triangles to find the possible locations of the third stake.
+
+  <figure xml:id="law-of-cosines4">
+   <caption>Diagram for <xref ref="example8" text="type-local" /></caption>
+   <image source="./images/law-of-cosines4.jpg" width="75%"></image>
+  </figure>
+
+  In <m>\bigtriangleup BED_1</m>, <m>\angle E=180^\circ-\left(60^\circ+102.5^\circ \right)=17.5^\circ</m> and <m>\frac{BD_1}{\sin 17.5^\circ}=\frac{5.5}{\sin 60^\circ}</m>, so <m>BD_1=1.910</m> meters. In <m>\bigtriangleup BED_2</m>, <m>\angle E=180^\circ-\left(60^\circ+77.5^\circ \right)=42.5^\circ</m> and <m>\frac{BD_2}{\sin 42.5^\circ}=\frac{5.5}{\sin 60^\circ}</m>, so <m>BD_2=4.291</m> meters.
+  </p>
+
+  <p>Notice that these answers vary slightly from the values we obtained using the Law of Cosines.  This is a result of round-off error associated with approximating the angle at <m>D</m>.</p>
+
+  <p>In <xref ref="example8" text="type-local" /> we solved a triangle for which we were given two sides and a non-included angle.  The given information did not describe a unique triangle, but rather corresponded to two distinct triangles.  This situation  is often referred to as the ambiguous case.  This ambiguity can occur when two sides and a non-included angle are known (SSA).   If you are given sides with lengths a and b and acute angle <m>A</m>, there are four distinct possibilities for the relationship between <m>a</m>, <m>b</m>, and <m>\angle A</m>.  The first three listed are illustrated in Figure 5.9.
+
+  <figure xml:id="law-of-cosines5">
+   <caption>SSA triangles</caption>
+   <image source="./images/law-of-cosines5.jpg" width="50%"></image>
+  </figure>
+
+  <ol label=" ">
+   <li><em>Case 1: </em> If side <m>a</m> is equal to or longer than side <m>b</m>, then only one triangle exists.  To swing <m>a</m> back to the left would not produce a triangle. So if  <m>a \gt b</m>, there is exactly one triangle.</li>
+   <li><em>Case 2: </em> If <m>a</m> is exactly long enough to touch the opposite side, a right triangle is formed.  In this case  <m>\sin A=\frac{a}{b}</m>, or <m>a=b\sin A</m>.</li>
+   <li><em>Case 3: </em> Suppose  <m>b\sin A \lt a \lt b</m>.  There are two ways for <m>a</m> to form a triangle. <xref ref="law-of-cosines6" text="type-local" /> shows the two triangles that contain sides of lengths <m>a</m> and <m>b</m> and acute angle <m>A</m>: triangle <m>ABC</m> and triangle <m>AB'C</m>.</li>
+  </ol>
+
+  </p>
+
+  <p>
+
+  <figure xml:id="law-of-cosines6">
+   <caption>Ambiguous Case Triangle:<m>b\sin A \lt a \lt b</m></caption>
+   <image source="./images/law-of-cosines6.jpg" width="50%"></image>
+  </figure>
+
+  In <xref ref="example8" text="type-local" /> we knew the measures of two sides and a non-included angle.  Since <m>6.2 \sin 60^\circ \lt 5.5 \lt 6.2</m> we could have anticipated that there were two  possible triangles. When you are given two sides and a non-included angle and asked to solve a triangle, your first task is to determine the number of triangles that can be formed.  In <xref ref="example8" text="type-local" /> the algebra that resulted from the use of the Law of Cosines alerts you to the two possible solutions.  The algebra resulting from the use of the Law of Sines does not.  In this case, you must remember to consider two angles.
+  </p>
+
+  <p>Notice that when the non-included angle <m>A</m> is <m>90^\circ</m> or greater, there will be at most one triangle formed.  Side <m>a</m> must be longer than side <m>b</m> since the longest side must be opposite the largest angle.</p>
+  </solution>
+  </example>
+
+  <example xml:id="example9">
+   <statement><p>Given <xref ref="example8" text="type-local" /> with <m>AC=503</m> cm, <m>DC=101</m> cm, <m>AC \bot CD</m>, <m>\angle BAD = 20^\circ</m> and <m>\angle BCA = 47^\circ</m>, find the length of side <m>BC</m>.
+
+   <figure xml:id="law-of-sines">
+    <caption>Diagram for <xref ref="example9" text="type-local" /></caption>
+    <image source="./images/law-of-sines.jpg" width="50%"></image>
+   </figure>
+
+   </p></statement>
+   <solution><p>To use the Law of Sines to find the length of side <m>BC</m>, we first need the measure of <m>\angle DAC</m> in right triangle <m>ACD</m>.  Since the length of <m>AC</m> and <m>DC</m> are known, we can use the tangent relationship.
+
+    <md>
+     <mrow>\tan \left( \angle DAC \right) \amp =\frac{101}{503}</mrow>
+     <mrow>\angle DAC                     \amp =11.35^\circ</mrow>
+    </md>
+
+   The measure of <m>\angle BAC =20^\circ + \text{ measure of } \angle DAC</m>.  Therefore, the measure of <m>\angle BAC =31.35^\circ</m>, and the measure of <m>\angle ABC =101.65^\circ</m>.  Using triangle <m>ABC</m> and the Law of Sines,
+
+    <md>
+     <mrow>\frac{BC}{\sin 31.35^\circ} \amp =\frac{503 \text{ cm}}{\sin 101.65^\circ}</mrow>
+     <mrow>BC                          \amp =267.2 \text{ cm.}</mrow>
+    </md>
+
+   In the solution above, the angles were measured to the nearest hundredth of a degree.  If the angles had been rounded to the nearest degree, the Law of Sines would produce a different result:
+
+    <md>
+     <mrow>\frac{BC}{\sin 31^\circ} \amp =\frac{503 \text{ cm}}{\sin 102^\circ}</mrow>
+     <mrow>BC                       \amp =264.9 \text{ cm.}</mrow>
+    </md>
+
+   As you would expect, the angle measures used in first solution produce a more accurate answer for the length of <m>BC</m>.  In solving problems, it is best to hold more digits in the intermediate steps and to round in the final answer.</p>
+
+   <p>When using technology, a good strategy is to solve the equation(s) using algebra without making any numerical substitutions.  Using this method in Example 6 leads to the following steps:
+
+    <md>
+     <mrow>\tan \left(\angle DAC \right) \amp =\frac{101}{503}</mrow>
+     <mrow>\angle DAC                    \amp =\tan^{-1} \left(\frac{101}{503} \right)</mrow>
+    </md>
+
+   Substituting in the Law of Sines,
+
+   <mdn>
+    <mrow xml:id="eq6">\frac{BC}{\sin 20^\circ+\tan^{-1} \left(\frac{101}{503} \right)} \amp =\frac{503}{\sin \left(180^\circ-47^\circ-20^\circ \right)-\tan^{-1} \left(\frac{101}{503} \right)}</mrow>
+    <mrow xml:id="eq7">BC \amp =267.2 \text{ cm}</mrow>
+   </mdn>
+
+   Equation <xref ref="eq6" text="type-local" /> is exactly true with no estimations of any values. When the value of <m>BC</m> is calculated, rounding can be done knowing the value is based on the accuracy in the original measurements.
+   </p>
+
+   </solution>
+  </example>
+
+
+  <exercises>
+   <title>Exercises</title>
+
+    <!-- Practice Problem #1 -->
+    <exercise>
+     <statement>
+      <p>Solve the following triangles for the unknown parts.</p>
+      <ol label="a.">
+       <li><m>c=8</m>, <m>B=50^\circ</m>, <m>a=10</m></li>
+       <li><m>a=6</m>, <m>b=12</m>, <m>A=30^\circ</m></li>
+       <li><m>B=30^\circ</m>, <m>c=12</m>, <m>b=7</m></li>
+       <li><m>a=3</m>, <m>b=5</m>, <m>c=7</m></li>
+      </ol>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #2 -->
+    <exercise>
+     <statement>
+      <p>A ladder 28 feet long leans against the side of a building.  If the angle between the ladder and the building is <m>20^\circ</m>, how far does the top of the ladder move down the building if the distance between the building and the ladder increases by 2 feet?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #3 -->
+    <exercise>
+     <statement>
+      <p>The Great Pyramid of Cheops in Egypt has a square base with a side of length 230 meters.  The face of the pyramid makes an angle of <m>51.83^\circ</m> with the horizontal base.  How tall is the pyramid?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #4 -->
+    <exercise>
+     <statement>
+      <p>A statue that is 70 meters tall stands on top of hill.  From a point at ground level, the angle of elevation to the base of the statue is <m>20.75^\circ</m>, and the angle of elevation to the top of the statue is <m>28.30^\circ</m>.  What is the height of the hill?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #5 -->
+    <exercise>
+     <statement>
+      <p>An art gallery has a painting of a tomato soup can.  The painting has a height of 18 feet.  If you stand 6 feet from the wall where the painting is hung, you must look up at an <m>18^\circ</m> angle to focus on the artist’s name, which is located along the bottom edge of the painting.  What is the distance between your eye and the top edge of the painting?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #6 -->
+    <exercise>
+     <statement>
+      <p>Two hikers come to a fork in a road.   One walks down one straight branch at 3 mph and the other walks down the other straight branch at 3.5 mph.  If the angle between the branches is <m>30^\circ</m>, find the distance between the two hikers after one hour.</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #7 -->
+    <exercise>
+     <statement>
+      <p>A carpenter wants to build a ramp 30 feet long which rises to a height of 6 feet above level ground.  What angle should the ramp make with the horizontal?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #8 -->
+    <exercise>
+     <statement>
+      <p>A triangular plot of land has sides of length 400 feet, 350 feet, and 100 feet.  Find the smallest angle between the sides of the plot.</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #9 -->
+    <exercise>
+     <statement>
+      <p>From the top of a mountain 3000 feet above sea level you can see two ships traveling along  the same line towards you.  The angles of depression to the two ships are <m>18^\circ</m> and <m>13^\circ</m>, respectively.  Find the distance between the ships, to the nearest 10 feet.</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #10 -->
+    <exercise>
+     <statement>
+      <p>A jogger running at a constant speed of one mile every ten minutes runs on a heading of <m>150^\circ</m> for 30 minutes and then on a heading of <m>40^\circ</m> for the next 15 minutes.  Find the distance between the jogger and her starting point, to the nearest tenth of a mile.</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #11 -->
+    <exercise>
+     <statement>
+      <p>Suppose you want to install a vertical TV tower on the side of a hill which makes a  <m>25^\circ</m> angle with the horizon.  The tower is 75 m high and guy wires are to be attached <m>\frac{2}{3}</m> of the way up the tower.  If the guy wires are anchored 30 m up the hill and 35 m down the hill from the tower, find the length of the guy wires (see <xref ref="tv-tower" text="type-local" />).
+
+      <figure xml:id="tv-tower">
+       <caption>TV tower with guy wires</caption>
+       <image source="./images/tv-tower.jpg" width="50%"></image>
+      </figure>
+
+      </p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #12 -->
+    <exercise>
+     <statement>
+      <p>A balloon is sighted from two points on level ground.  From point <m>A</m> the angle of elevation is <m>18^\circ</m>.  From point <m>B</m> the angle of elevation is <m>12^\circ</m>. </p>
+      <ol label="a.">
+       <li>If points <m>A</m> and <m>B</m> are 8.4 miles apart and on the same side of the balloon, what is the height of the balloon?</li>
+       <li>If points <m>A</m> and <m>B</m> are 8.4 miles apart and the balloon is between them, what is the height of the balloon?</li>
+      </ol>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #13 -->
+    <exercise>
+     <statement>
+      <p>Engineers want to measure the distance from <m>P</m> to <m>Q</m>, but the span from <m>P</m> to <m>Q</m> is across the tip of a lake.  So they select a point <m>R</m> on land and find that the distance from <m>R</m> to <m>Q</m> is 100 feet and from <m>R</m> to <m>P</m> is 120 feet.  Angle <m>QPR</m> measures <m>47^\circ</m>.  How far is it from <m>P</m> to <m>Q</m>?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #14 -->
+    <exercise>
+     <statement>
+      <p>A golfer takes two putts to get the golf ball into the hole.  The first putt rolls the ball 10.2 ft in the northwest direction, and the second putt sends the ball due north 3.7 ft into the hole.  How far, and in what direction, should the golfer have aimed the first putt to get the ball into the hole with one stroke? (Assume that the green is level.)</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #15 -->
+    <exercise>
+     <statement>
+      <p>Suppose an airplane is traveling toward an observer at 200 mph (293 ft/sec) at an altitude of 3000 feet.  Eventually, the plane will pass directly over an observer  on the ground.</p>
+      <ol label="a.">
+       <li>If sound traveled infinitely fast, then the sound that the plane made when its angle of elevation was <m>20^\circ</m>  would be heard immediately.  However, since sound travels at 1100 feet/sec, if the observer looks in the direction of <m>20^\circ</m> upon hearing the sound, the plane will no longer be there. At what angle should the observer look to see the plane?</li>
+       <li>Suppose the observer views the plane at an angle of  <m>25^\circ</m> above the horizon and simultaneously hears the sound of its engines.  At what angle was the plane above the horizon when it made the sound the observer hears? </li>
+      </ol>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #16 -->
+    <exercise>
+     <statement>
+      <p>The pilot of a plane heading directly north finds it necessary to detour around a group of thunderstorms.  To get around the storms, the pilot follows a heading of <m>339^\circ</m> for some distance and then changes heading to <m>35^\circ</m>.  She heads north again when this path intersects her original flight path heading directly north.  The distance between the exit point and the point of re-entry on the original path is 70 kilometers.  How many extra miles did the pilot fly to avoid the thunderstorms?</p>
+     </statement>
+    </exercise>
+
+    <!-- Practice Problem #17 -->
+    <exercise>
+     <statement>
+      <p>Lines of latitude run east to west around the earth.  The equator is the  <m>0^\circ</m> line of latitude.  Longitudinal lines run from north to south around the earth through the North and South Poles (see <xref ref="lat-long-image" text="type-local" />).  Assume that the earth is a sphere with radius 3960 miles.
+
+      <figure xml:id="lat-long-image">
+       <caption>Latitude and Longitude</caption>
+       <image source="./images/lat-long-image.jpg" width="25%"></image>
+      </figure>
+
+      </p>
+      <ol label="a.">
+       <li>What is the length, in miles, of one degree of longitude at the equator?</li>
+       <li>What is the length, in miles, of one degree of longitude at <m>36^\circ</m>N?</li>
+       <li>What is the length, in miles, of one degree of longitude at <m>40^\circ</m>S?</li>
+       <li>At what latitude does one degree of longitude encompass 30 miles?</li>
+      </ol>
+     </statement>
+    </exercise>
+
+  </exercises>
+</section>

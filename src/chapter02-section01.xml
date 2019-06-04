@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter02-section01" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Using and Understanding Functions</title>
+  <p>
+    Suppose that a pharmaceutical researcher has developed a new pain-relieving drug.  He wants to determine the relationship between the level of drug in a person’s body and the time since the drug was taken.  Determining this relationship will help the researcher provide accurate information regarding dosage and frequency of medication for individuals taking the drug.
+  </p>
+
+  <p>
+    This example, and others in the preceding chapter, illustrate the need to know about relationships to make accurate predictions. We are all familiar with scientific formulas that express the relationship between variables; often these formulas are used to make predictions.  But it is not only scientists who use knowledge about relationships this way.  For each of us to make reasonable decisions, we must know certain relationships and use them to make informed choices.  For instance, we know that stopping distance is a function of our driving speed, and we use this information to decide on a safe following distance as we drive.
+  </p>
+
+  <p>
+    In relationships like those described above we usually assume that one of the quantities determines the value of the other.  When this is true, the quantity that depends on the other is called the dependent variable; the other quantity is called the independent variable. For example, a safe following distance depends on driving speed, so driving speed is the independent variable and following distance is the dependent variable.  In the relationship between drug level and time since the drug was taken, the drug level depends on time since the drug was administered, so amount of drug is the dependent variable and the independent variable is time since the drug was taken.
+  </p>
+
+  <p>
+    There are several ways to display or describe the relationship between two variables.  One way is to list in a table all the ordered pairs of values that occur, but it is sometimes difficult to see the characteristics of the relationship in this form.  Another way is to give a formula or equation which relates the two variables.  For some relationships formulas are already known that express how the variables are related.  For other relationships, data can be gathered and a mathematical model can be determined using techniques of data analysis.  A third way to show the relationship between two variables is to draw a graph in a rectangular coordinate system.  Such a graph can reveal many of the properties of the relationship and help us to better understand it.
+  </p>
+
+  <p>
+    Much of this course will involve creating and studying graphs of the relationship between two variables. You will learn to extract information from graphs that have been drawn for you, and to make graphs to display information.
+  </p>
+
+  <example xml:id='chapter02-section01-example01'>
+    <statement>
+      <p>
+        Chuck wants to print posters to advertise his band's upcoming concert.  Printing Company A charges <m>\$ 250</m> to create a template, plus <m>\$ 0.30</m> per poster if Chuck orders fewer than <m>1,000</m> of them, or <m>\$0.20</m> per poster if he orders <m>1,000</m> or more posters.
+      </p>
+      <p>
+        Let <m>A</m> be a cost function, so that <m>A(N)</m> is the total amount that printing Company A charges to print <m>N</m> posters.  The description of Company A’s price structure can be represented with the piecewise function shown below.
+      </p>
+      <md>
+        <mrow>
+          A(n) =
+
+                  \begin{cases}
+                      250 + 0.30N, \amp  \ \text{if}  \ N \lt 1,000 \\
+                      250 + 0.20N, \amp  \ \text{if}  \ N \geq 1,000 \\
+                  \end{cases}
+        </mrow>
+      </md>
+
+      <figure>
+        <caption>Graph of <m>A(N)</m></caption>
+        <image source="./src/images/chapter02/chapter02section01-example01-graph.png" />
+      </figure>
+
+      <p>
+        Printing Company B will only accept orders for <m>500</m> or more posters.  Printing Company B charges nothing for a template and <m>\$0.35</m> per poster.
+      </p>
+
+      <p>
+        Use the information given about the two printing companies to answer the following questions.
+      </p>
+
+      <ol label="a)">
+        <li>Suppose that Chuck can spend at most <m>\$300</m> on posters. How many posters can he afford to have printed if he uses Company A? What if he can spend at most <m>\$600</m>?</li>
+        <li>If Chuck buys <m>800</m> posters from Company A, he will pay <m>A(800) = 250 + 0.30 \cdot 800 = 490</m>. Show that he could choose to purchase more than <m>1,000</m> for the same cost.</li>
+        <li>Let <m>B(N)</m> represent the amount of money, in dollars, that Printing Company B charges to print <m>N</m> posters.  Use the information you have about <m>A(N)</m> and <m>B(N)</m> to explain why Company B will be more economical if Chuck wants to print a relative small number of posters, say <m>550</m>.</li>
+        <li>Write an expression for <m>B(N)</m>, and use it to confirm that <m>B(550)</m> \lt A(550)</li>
+      </ol>
+    </statement>
+    <solution>
+      <ol label="a)">
+        <li>
+          <p>
+            If Chuck can spend at most <m>\$300</m>, the number, <m>N</m>, of posters he can have printed must satisfy <m>A(N) \leq 300</m>. Solving the inequality <m>250 + 0.3N \lt 300</m> yields <m>N \lt 166.67</m>.  Since <m>N</m> must be an integer, Chuck can print up to <m>166</m> posters.
+          </p>
+          <figure>
+            <caption>Graph of <m>A(N)</m></caption>
+            <image source="./src/images/chapter02/chapter02section01-example01-solutiona-graph.png" />
+          </figure>
+          <figure>
+            <caption>Graph of <m>A(N)</m></caption>
+            <image source="./src/images/chapter02/chapter02section01-example01-solutiona-graph2.png" />
+          </figure>
+          <p>
+            If Chuck can spend at most <m>\$600</m>, he can print <m>N</m> posters provided the number <m>N</m> satisfies <m>250 + 0.3N \lt 600</m>. Solving this inequality shows that yields <m>N \lt 1166.67</m>.  Since <m>N</m> must be an integer, Chuck can print up to <m>1,166</m> posters. The graphs on the right illustrate that when <m>N \leq 166</m>, <m>A(N) \leq 300</m> and when <m>N \lt 1166</m>, <m>A(N) \leq 600</m>
+          </p>
+          <figure>
+            <caption>Graph of <m>A(N)</m></caption>
+            <image source="./src/images/chapter02/chapter02section01-example01-solutionb-graph.png" />
+          </figure>
+        </li>
+        <li>
+          <p>
+            Chuck can spend <m>\$490</m> to purchase <m>800</m> posters. He can also purchase <m>N</m> posters for <m>\$490</m> if <m>N</m> satisfies the equation <m>250 + 0.20N = 490</m>. Solving for <m>N</m> yields <m>N = 1,200</m>. So, Chuck can purchase either <m>800</m> or <m>1,200</m> posters for a cost of <m>\$490</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Company A charges for a template, and since this cost is shared among all the posters printed, the average cost per poster is more than <m>\$0.30</m>. Since company B does not charge for a template and the cost per poster is the only cost, the cost for a small number of posters will less for Company B than for Company A.
+          </p>
+        </li>
+        <li>
+          <p>
+            Company B changes <m>\$0.35</m> for each poster, so <m>B(N) = 0.35N</m>
+            <md>
+              <mrow>A(550) \amp = 250 + 0.30 \cdot 550 = 415</mrow>
+              <mrow>B(550) \amp = 0.35 \cdot 550 = 192.5</mrow>
+            </md>
+            As predicted, <m>B(550) \lt A(550)</m>
+          </p>
+        </li>
+      </ol>
+    </solution>
+  </example>
+  <p>
+    The graph on the left shows <m>A(N)</m> and <m>B(N)</m>. The graph of <m>B(N)</m> is continuous because it does not have any breaks. The graph of <m>A(N)</m> is <em>discontinuous</em>; there is a <em>discontinuity</em> at <m>N = 1,000</m>.
+  </p>
+  <figure>
+    <caption>Graph of <m>A(N)</m></caption>
+    <image source="./src/images/chapter02/chapter02section01-example01-after-graph.png" />
+  </figure>
+  <p>
+    In any situation in which values of one variable are paired with values of another variable, the ordered pairs constitute a <em>relation</em>.  All the relationships between variables that we have considered so far are examples of relations.
+  </p>
+  <p>
+    Now consider the relation that consists of ordered pairs (distance you fly, price you pay for an airline ticket). You might expect that the cost of an airplane ticket would depend on the distance you fly.  However, it is entirely possible that two tickets for flights of 400 miles might have very different prices.  The price of a ticket is not uniquely determined by the length of the flight. Other factors such as the size of the airports, the day of the week, and the date of the ticket purchase all influence the ticket price.
+  </p>
+  <p>
+    The relation between distance and price differs from other relations we have considered.   The difference lies in our ability to use values of the independent variable to predict values of the dependent variable.  Given a value for the independent variable (distance), we cannot confidently determine the value of the dependent variable (price).  In many relations, knowing the value of the independent variable guarantees that we can find a unique value for the dependent variable.  Whenever this is true, the relation is called a function.  In the airplane ticket relation, we are not guaranteed a unique value of the dependent variable; this relation is not a function.
+  </p>
+  <p>
+    A <em>function</em> is often defined as a set of ordered pairs for which each first coordinate has one and only one second coordinate.  It is also useful to think of a function as a process which maps, or sends, each permissible first coordinate to a unique second coordinate.  Thinking about a function as a mapping emphasizes the process of pairing values.  In this course, it is important to think about functions as being dynamic, as doing something to an x-value to get a y-value.
+  </p>
+  <p>
+    A variety of notations are used to define functions.  Functions are usually named with a letter, and <m>f</m> is a common choice.  The familiar notation <m>y = f(x)</m>, which is read "y equals f of x", shows that <m>f</m> does something to an <m>x</m>-value to produce a <m>y</m>-value.  We could also write <m>f: x \rightarrow y</m> to show that the function <m>f</m> sends a value of <m>x</m> to a particular <m>y</m>. For example, the notations
+    <md>
+      <mrow>f: x \rightarrow x^2 + 1</mrow>
+      <mrow>f(x) = x^2 + 1</mrow>
+      <mrow>y = x^2 + 1</mrow>
+    </md>
+    all indicate that a given value of <m>x</m> is paired with a <m>y</m>-value that is obtained by squaring the <m>x</m>-value and then adding <m>1</m>.
+  </p>
+  <p>
+    The function <m>f</m> makes ordered pairs of the form <m>\left(x, x^2+1 \right)</m>. The input is <m>x</m> and the output is <m>x^2 + 1</m>.  In this notation, <m>x</m> is often called the argument of the function -- it is the variable that the function acts on to produce the second coordinate of each ordered pair.  The output of the function is sometimes referred to as the value of the function.
+  </p>
+  <p>
+    A specialized vocabulary has been developed to help us provide accurate and succinct information about functions. The following examples illustrate some of these mathematical terms and definitions.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        After breakfast, a cup of hot chocolate is left sitting on the kitchen table.  When you come home from school, you contemplate drinking the hot chocolate and wonder how its temperature has changed throughout the day.  <xref ref='chapter02-section01-example02-graph' text="type-local" /> shows a graph that represents the relationship between the temperature of the hot chocolate and the length of time it has been sitting out.
+      </p>
+      <figure xml:id="chapter02-section01-example02-graph">
+        <caption>Temperature of Hot Chocolate versus Elapsed Time</caption>
+        <image source="./src/images/chapter02/chapter02section01-example02-graph.png" />
+      </figure>
+      <p>
+        Since the temperature depends on the time, the temperature of the hot chocolate is the dependent variable and the amount of time that has passed since the hot chocolate was left on the table is the independent variable.  You can think about a function that has ordered pairs (elapsed time, temperature). The numbers that represent elapsed time make up the <em>domain</em> of the function -- they are the first coordinates in the ordered pairs of the function.  In this case you have a limited domain.  Domain values extend from time 0, which represents the time the hot chocolate was put on the table, until you arrived home from school.  If, for example, you were gone eight hours, the domain would be <m>0 \leq x \leq 8</m>.  The numbers that represent the temperatures during this time make up the <em>range</em> of the function -- they are the second coordinates in the ordered pairs of the function.
+      </p>
+      <p>
+        Judging from the scale on the axes in <xref ref='chapter02-section01-example02-graph' text="type-local" />, we could estimate that the range in this example is <m>75 \leq y \leq 190</m>. This graph doesn’t have an <m>x</m>-intercept since there is no time at which the temperature is zero.  It does, however, have a <m>y</m>-intercept.  The <m>y</m>-intercept represents the temperature when the <m>x</m>-value equals zero.  In this situation, the y-intercept represents the initial temperature of the drink.  If you examine the graph from left to right beginning at the <m>y</m>-intercept, you will notice that <m>y</m>-values continue to decrease as <m>x</m>-values increase indicating that the temperature continues to fall.   Thus, the function that models the relationship between temperature and time is said to be <em>decreasing</em>.  As the values of the independent variable, time, get larger and larger, the values of the dependent variable, temperature, get smaller and smaller.  Another important feature of the graph that shows the temperature decreasing is the upward curvature.  In mathematics, this curvature is called <em>concave up</em>.
+      </p>
+      <p>
+        In contrast, the graph below shows the temperature of a drink that starts out cold and warms up to room temperature as time passes. The function that models the relationship between temperature and time is <em>increasing</em> and its curvature is described as <em>concave down</em>.
+      </p>
+      <figure xml:id="chapter02-section01-example02-graph2">
+        <caption>Function that is increasing and concave down</caption>
+        <image source="./src/images/chapter02/chapter02section01-example02-graph2.png" />
+      </figure>
+    </statement>
+  </example>
+  <example>
+    <statement>
+      <figure xml:id="chapter02-section01-example03-image">
+        <caption></caption>
+        <image source="./src/images/chapter02/chapter02section01-example03-image.jpg" />
+      </figure>
+      <p>
+        At low tide, water marks on the supports of a pier reveal the different water levels that have occurred since the preceding low tide. The high-water mark is <m>2.2</m> meters above the low water mark. The elapsed time between consecutive high-water marks is about <m>12.5</m> hours.
+      </p>
+      <figure xml:id="chapter02-section01-example03-graph">
+        <caption>Water level on pier posts</caption>
+        <image source="./src/images/chapter02/chapter02section01-example03-graph.png" />
+      </figure>
+      <p>
+        A function that models this situation consists of ordered pairs (elapsed time, water height).  The domain is all real numbers greater than or equal to zero, written <m>x \geq 0</m>.  Since the height of the water is measured relative to the height at low tide, the range is all real numbers in the interval <m>0 \leq y \leq 2.2</m>. The graph contains the point <m>\left( 0, 0 \right)</m> because the tide was low and the water height was zero when <m>x = 0</m>. Thus the <m>x</m>-intercepts of the graph represent times associated with low tide. These <m>x</m>-values that produce a <m>y</m>-value of zero are called <em>zeros</em> of the function. The peaks on the graph occur at times associate with high tide. The peaks occur at times that are separated by <m>12.5</m> hours. The points associated with both low tide and high tide can be described as turning points.  At a turning point, a function changes from increasing to decreasing or vice versa.  The function graphed in <xref ref="chapter02-section01-example03-graph" text="type-local" /> has infinitely many turning points.  This function also changes curvature many times.  At times midway between a low tide and the next high tide, the graph changes from concave up to concave down. At times midway between a high tide and the next low tide, the curvature changes from concave down to concave up.
+      </p>
+    </statement>
+  </example>
+
+  <exercises>
+
+    <exercise>
+      <statement>
+        <p>
+          Refer to <xref ref="chapter02-section01-example01" text="type-local" />. Chuck would be unwise to purchase <m>N=800</m> posters from Company A, because for the same cost, <m>\$490</m>, he could purchase more than <m>1,000</m> posters form Company A. Find all the other prices for which this situation occurs.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          The examples you have seen in this section include a function that is decreasing and concave up, as well as a function that is increasing and concave down.
+          <ol type="a">
+            <li>
+              Sketch the graph of a function that is decreasing and concave down. Describe a situation that would be represented by your graph.
+            </li>
+            <li>
+              Sketch the graph of a function that is increasing and concave up. Describe a situation that would be represented by your graph.
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          For each relationship described below, identify the two quantities that vary and decide which should be represented by an independent variable and which by a dependent variable. Sketch a reasonable graph to show the relationship between the two variables.  You should only be concerned with the basic shape of the graph, not with particular points.  Write a sentence or two to justify the shape and behavior of your graph.
+          <ol label="a)">
+            <li>
+              The amount of money earned for a part-time job and the number of hours worked.
+            </li>
+            <li>
+              The number of people absent from school each day of the school year.
+            </li>
+            <li>
+              The temperature of an ice-cold drink left in a warm room for a period of time.
+            </li>
+            <li>
+              The amount of daylight each day of the year.
+            </li>
+            <li>
+              The water level on the supports of a pier at an ocean beach on a calm day.
+            </li>
+            <li>
+              The population of the U.S. according to each census since 1790.
+            </li>
+            <li>
+              The height of a baseball after being hit into the air.
+            </li>
+            <li>
+              The distance between the ceiling and the tip of the minute hand of a clock hung on the wall.
+            </li>
+            <li>
+              The height of an individual as he or she ages.
+            </li>
+            <li>
+              The size of a person's vocabulary from birth onwards.
+            </li>
+            <li>
+              The number of bacteria in a culture over a period of time.
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Sketch a graph of the relationship presented in each table.  Identify dependent and independent variables.  State any conclusions you can make about the relationship based on the shape of your graph.
+          <ol label="a)">
+            <li></li>
+            <li></li>
+          </ol>
+        </p>
+
+        <figure xml:id="chapter02-section01-postage-table">
+          <caption>Third Class Postage Rates</caption>
+          <tabular top="medium" halign="center">
+            <row bottom="medium">
+              <cell halign="left">Weight</cell>
+              <cell halign="left">Rate</cell>
+            </row>
+            <row>
+              <cell halign="left">not more than 1 oz</cell>
+              <cell halign="center"><m>0.32</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 1 and not more than 2 ozs</cell>
+              <cell halign="center"><m>0.55</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 2 and not more than 3 ozs</cell>
+              <cell halign="center"><m>0.78</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 3 and not more than 4 ozs</cell>
+              <cell halign="center"><m>1.01</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 4 and not more than 5 ozs</cell>
+              <cell halign="center"><m>1.24</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 5 and not more than 6 ozs</cell>
+              <cell halign="center"><m>1.47</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 6 and not more than 7 ozs</cell>
+              <cell halign="center"><m>1.70</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 7 and not more than 8 ozs</cell>
+              <cell halign="center"><m>1.93</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 8 and not more than 9 ozs</cell>
+              <cell halign="center"><m>2.16</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 9 and not more than 10 ozs</cell>
+              <cell halign="center"><m>2.39</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 10 and not more than 11 ozs</cell>
+              <cell halign="center"><m>2.62</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">greater than 11 and not more than 13 ozs</cell>
+              <cell halign="center"><m>2.90</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="center">greater than 13 and not more than 16oz</cell>
+              <cell halign="center"><m>2.95</m></cell>
+            </row>
+          </tabular>
+        </figure>
+
+        <figure xml:id="chapter02-section01-income-table">
+          <caption>Income Tax Table</caption>
+          <tabular top="medium" halign="center">
+            <row bottom="medium">
+              <cell halign="left">Taxable Income</cell>
+              <cell halign="left">Income Tax</cell>
+            </row>
+
+            <row>
+              <cell halign="left">over <m>\$0</m> but not over <m>\$23,350</m></cell>
+              <cell halign="center"><m>15 \%</m>of income</cell>
+            </row>
+
+            <row>
+              <cell halign="left">over <m>\$23,350</m> but not over <m>\$56,550</m></cell>
+              <cell halign="center"><m>\$3,502.50 + 28 \%</m> of income over <m>\$23,350</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">over <m>\$56,550</m> but not over <m>\$117,950</m></cell>
+              <cell halign="center"><m>\$12,798.50 + 31 \%</m> of income over <m>\$56,550</m></cell>
+            </row>
+
+            <row>
+              <cell halign="left">over <m>\$117,950</m> but not over <m>\$256,50</m></cell>
+              <cell halign="center"><m>\$31,832.50 + 36 \%</m> of income over <m>\$117,950</m></cell>
+            </row>
+
+            <row bottom="medium">
+              <cell halign="left">over <m>\$256,500</m></cell>
+              <cell halign="center"><m>\$81,710.50 + 39.6\%</m> of income over <m>\$256,500</m></cell>
+            </row>
+          </tabular>
+        </figure>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>f(x) = 3x - 1</m>.
+          <ol>
+            <li>
+              Find <m>f(4)</m>.
+            </li>
+            <li>
+              Find <m>x</m> such that <m>f(x) = 4</m>.
+            </li>
+            <li>
+              Write an expression for <m>f(2x), 2f(x), f\left(x+2\right),</m> and <m>f(x) + 2</m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>g(x) = x^2 - x</m>.
+          <ol>
+            <li>
+              Write an expression for <m>g(a)</m>.
+            </li>
+            <li>
+              Find <m>x</m> such that <m>g(x) = 6</m>.
+            </li>
+            <li>
+              Find <m>x</m> such that <m>g(x) = -6</m>
+            </li>
+            <li>
+              Write an expression for <m>g\left( \frac{1}{x} \right), \frac{1}{g(x)}, g(x-1)</m> and <m>g(x) - 1</m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Suppose that <m>f(x) = 4x - x^2</m> and <m>g(x) = \sqrt{3x} - 5</m>. Simplify each given expression.
+          <ol>
+            <li>
+              <m>f(-x)</m>
+            </li>
+            <li>
+              <m>g(2x) + 1</m>
+            </li>
+            <li>
+              <m>g\left(x^2\right) + 4</m>
+            </li>
+            <li>
+              <m>3f(x) - g(x) + 2</m>
+            </li>
+            <li>
+              <m>g(x-2)</m>
+            </li>
+            <li>
+              <m>f(x+1)</m>
+            </li>
+            <li>
+              <m>\frac{f(x+h)-f(x)}{h}</m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          If <m>f(x) = x^2 + x</m>, write and simplify an expression for each of the following:
+          <ol>
+            <li>
+              <m>f(x+1)</m>
+            </li>
+            <li>
+              <m>2f(x)-3</m>
+            </li>
+            <li>
+              <m>f\left(\frac{x}{2}\right)</m>
+            </li>
+            <li>
+              <m>f\left(\frac{1}{x}\right)</m>
+            </li>
+            <li>
+              <m>f\left(\lvert| x \rvert \right)</m>
+            </li>
+            <li>
+              <m>f(x+h)</m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>f(x) = x^2</m> and let <m>g(x) = \frac{1}{x}</m>. Express each of the following functions as a transformation of <m>f</m> or <m>g</m>. For instance, the function <m>y = \left( x-1 \right)^2</m> can be expressed as <m>y = f(x+1)</m>.
+          <ol>
+            <li>
+              <m>y = (x-4)^2</m>
+            </li>
+            <li>
+              <m>y = \frac{3}{x}</m>
+            </li>
+            <li>
+              <m>y = x^2 + 5</m>
+            </li>
+            <li>
+              <m>y = \frac{1}{x-1}</m>
+            </li>
+            <li>
+              <m>y = 2 + 7x^2</m>
+            </li>
+            <li>
+              <m>y = \frac{1}{5x}</m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="chapter02-section01-exercise10">
+      <statement>
+        <p>
+          The function <m>y = f(x)</m> is graphed below:
+          <figure xml:id="chapter02-section01-exercise10-graph">
+            <caption>Graph of <m>y = f(x)</m></caption>
+            <image source="./src/images/chapter02/chapter02section01-exercise10-graph.png" />
+          </figure>
+          <ol>
+            <li>
+              What is the domain of <m>f</m>?
+            </li>
+            <li>
+              What is the range of <m>f</m>?
+            </li>
+            <li>
+              At what <m>x</m>-value is <m>f</m> an increasing function? A decreasing function?
+            </li>
+            <li>
+              At what <m>x</m>-values is <m>f</m> concave up? Concave down?
+            </li>
+          </ol>
+        </p>
+
+      </statement>
+    </exercise>
+
+
+  </exercises>
+
+
+</section>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section03" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Sine and Cosine on the Unit Circle</title>
+  <introduction></introduction>
+    <p>In this section, we will further explore the connection between the unit circle and sine and cosine. We have defined traveling counterclockwise on the unit circle to be the positive direction and clockwise to be the negative direction.  Assume that all arcs begin from <m>\left(1,0 \right)</m> unless specified otherwise.</p>
+
+      <figure>
+        <caption></caption>
+        <tabular top="medium" halign="left">
+
+          <row bottom="medium">
+            <cell halign="left">Arc Length (radians)</cell>
+            <cell halign="center">0</cell>
+            <cell halign="center"><m>\frac{\pi}{2}</m></cell>
+            <cell halign="center"><m>\pi</m></cell>
+            <cell halign="center"><m>\frac{3\pi}{2}</m></cell>
+            <cell halign="center"><m>2\pi</m></cell>
+            <cell halign="center"><m>-\frac{\pi}{2}</m></cell>
+            <cell halign="center"><m>4\pi</m></cell>
+          </row>
+
+          <row bottom="medium">
+            <cell halign="left">Coordinates at the Endpoint of Arc</cell>
+            <cell halign="center"><m>\left(1,0 \right)</m></cell>
+            <cell halign="center"><m>\left(0,1 \right)</m></cell>
+            <cell halign="center"><m>\left(-1,0 \right)</m></cell>
+            <cell halign="center"><m>\left(0,-1 \right)</m></cell>
+            <cell halign="center"><m>\left(1,0 \right)</m></cell>
+            <cell halign="center"><m>\left(0,-1 \right)</m></cell>
+            <cell halign="center"><m>\left(1,0 \right)</m></cell>
+          </row>
+
+        </tabular>
+      </figure>
+
+      <figure xml:id="unit-circle-image14">
+        <caption></caption>
+        <image source="./images/unit-circle-image14.jpg" width="50%"></image>
+      </figure>
+
+
+    <p><xref ref="unit-circle-image14" text="type-local" /> lists various lengths for arcs, together with the coordinates of the arc’s endpoint.</p>
+
+      <figure xml:id="cos-graph-image">
+        <caption>Ordered Pairs (Length of Arc, <m>x-</m>coordinate of Endpoint)</caption>
+        <image source="./images/cos-graph-image.jpg" width="50%"></image>
+      </figure>
+
+    <p>Since we are walking around the unit circle, the units for all arc lengths are radians. In studying the entries of this table, we look at ordered pairs of the form (length of arc, <m>x-</m>coordinate at endpoint of arc).  For instance, a length of 0 is paired with an <m>x-</m>coordinate of 1; a length of <m>\pi</m> is paired with an <m>x-</m>coordinate of <m>-1</m>; and a length of <m>\frac{3\pi}{2}</m> is paired with an <m>x-</m>coordinate of 0. These ordered pairs are graphed in <xref ref="cos-graph-image" text="type-local" />, and we recognize the shape of the cosine curve. The <m>x-</m>coordinate of the endpoint of the arc varies from 1 to <m>-1</m> as the length of the arc changes; this is why the range of the cosine function contains all real numbers from <m>-1</m> to 1.  Whether the arc length is <m>s</m> units or <m>s+2\pi</m> units, the arc ends at the same point. This is why the range of the cosine function repeats every <m>2\pi</m> units, and the cosine function has period <m>2\pi</m>.</p>
+
+      <figure xml:id="sin-graph-image">
+        <caption>Ordered Pairs (Length of Arc, <m>y-</m>coordinate of Endpoint)</caption>
+        <image source="./images/sin-graph-image.jpg" width="50%"></image>
+      </figure>
+
+    <p>Now let us look at ordered pairs of the form (length of arc, <m>y-</m>coordinate at endpoint of arc).  These ordered pairs include <m>\left(0,0 \right)</m>, <m>\left(\frac{\pi}{2},1 \right)</m>,<m>\left(-\frac{\pi}{2},-1 \right)</m>, and so forth, and are graphed in <xref ref="sin-graph-image" text="type-local" />. We will come to recognize this as the shape of the sine curve.</p>
+
+    <p>We have defined the sine and cosine in terms of the ordered pairs a distance s from <m>\left(1,0 \right)</m> along the path defined by the unit circle,
+      <md>
+        <mrow>\cos\left(s \right)=  \amp \text{ the } x-\text{coordinate of the point}</mrow>
+        <mrow>\sin\left(s \right)=  \amp \text{ the } y-\text{coordinate of the point}</mrow>
+      </md>
+    Picturing the unit circle in our mind’s eye, remembering that the multiples of <m>\pi</m> and <m>\frac{\pi}{2}</m> designate the zeros and the maximum and minimum values for sine and cosine will make it easier to sketch the graphs of these important functions.
+    </p>
+
+    <subsection>
+      <introduction></introduction>
+      <title>A Pythagorean Identity</title>
+
+        <p>The sine and cosine functions are often called circular functions because their definitions are based on a unit circle. Since the coordinates of all points on the unit circle satisfy the equation <m>x^2+y^2=1</m>, it follows that <m>\left(\cos \left(s \right) \right)^2 + \left(\sin \left(s \right) \right)^2=1</m>. We usually write <m>\left(\cos \left(s \right) \right)^2</m> as <m>\cos^2 s</m>, so this equation can be written as <me>\cos^2 \left(s \right) + \sin^2 \left(s \right)=1.</me> This equation is an identity since it is true for all values of the variable <m>s</m>.  Even further, it is known as one of the “Pythagorean Identities” due to its relationship to a right triangle embedded in the unit circle (as discussed earlier in this chapter).  The fact that <m>\cos^2 \left(s \right)+\sin^2 \left(s \right)=1</m> is an identity means that in any equation or expression, <m>\cos^2 x+\sin^2 x</m> can be replaced by 1 regardless of value we choose for <m>x</m>. For example, <m>\cos^2 \left(0.436 \right)+ \sin^2 \left(0.436 \right)= 1</m> and <m>\cos^2 \left(-5.278 \right)+ \sin^2 \left(-5.278 \right)=1</m>.
+        </p>
+
+        <p>We can also replace <m>\cos^2 x + \sin^2 x</m> with 1 in any equation. For example, if we want to solve <m>\sin^2 x + \sin x \cos x + \cos^2 x=0</m>, we could simplify this to <m>\sin x \cos x=-1</m>.  Of course, it doesn’t matter what variable is used, so  <m>\cos^2 t</m> can be replaced by <m>1-\sin^2 t</m>, and <m>\sin^2 \theta</m> can be replaced by <m>1-\cos^2 \theta</m> whenever it is advantageous to do so.</p>
+    </subsection>
+
+    <example>
+      <statement>
+        <p>An ant starts at <m>\left(1,0 \right)</m> and walks in a counterclockwise direction 4 units along the circumference of a unit circle. In what quadrant does the ant stop? What are the coordinates of the point where the ant stops?</p>
+      </statement>
+        <solution>
+          <p>To determine the quadrant in which the ant stops, we need to compare the distance it walks (4 units) to other arc lengths. The ant walked more than half-way around the circle, since <m>4 \gt \pi</m>, but it did not walk around the entire circle since <m>4 \lt 2\pi</m>.  It would have walked three-quarters of the way around the circle if the length of its trip had been <m>\frac{3\pi}{2}</m>.  Since <m>4 \lt \frac{3\pi}{2}</m>, the ant walked less than three-quarters of the way around the circle. Therefore, it ended its trip in the third quadrant.</p>
+
+            <figure xml:id="unit-circle-image15">
+              <caption>Arc Length of 4 Units</caption>
+              <image source="./images/unit-circle-image15.jpg" width="50%"></image>
+            </figure>
+
+          <p>The coordinates of the point where the ant stops are exactly <m>\left(\cos 4, \sin 4 \right)</m>.  We can approximate <m>\cos 4</m> and <m>\sin 4</m> using a calculator.  We find that the ant stops at the point whose coordinates are approximately <m>\left(-0.6536,-0.7568 \right)</m>. (Verify that <m>\left(-0.6536 \right)^2 + \left(-0.7568 \right)^2</m> is approximately 1.)</p>
+        </solution>
+    </example>
+
+    <exercises>
+      <title>Exercises</title>
+
+      <!-- Practice Problem #1 -->
+      <exercise>
+        <statement>
+          <p>Sketch a unit circle to help you evaluate each of the following. Verify your answers using your calculator. Angle measures are assumed to be in radians unless the degree symbol is present.</p>
+            <md>
+                <mrow>\text{a. } \amp \sin \left(-\frac{3\pi}{2} \right)  \amp \text{b. } \amp \cos \left(-\frac{3\pi}{2} \right)  \amp \text{c. } \amp \csc \left(33\pi \right)</mrow>
+                <mrow>\text{d. } \amp \sin \left(-49\pi \right)           \amp \text{e. } \amp \sin \left(7\pi \right)             \amp \text{f. } \amp \cos \left(7\pi \right)</mrow>
+            </md>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #2 -->
+      <exercise>
+        <statement>
+          <p>Determine whether each of the following is approximately equal to 1, approximately equal to 0, or approximately equal to <m>-1</m>. Use your calculator to check your answers.</p>
+            <md>
+                <mrow>\text{a. } \amp \sin 3  \amp \text{b. } \amp \sin \left(-1.6 \right)  \amp \text{c. } \amp \cos 0.04</mrow>
+                <mrow>\text{d. } \amp \cos 6  \amp \text{e. } \amp \cos 1.6                 \amp \text{f. } \amp \sin \left(-0.02 \right)</mrow>
+            </md>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #3 -->
+      <exercise>
+        <statement>
+          <p>An ant starts at <m>\left(1,0 \right)</m> and walks in a counterclockwise direction 5 units along the circumference of a unit circle.  What are the coordinates of the point where the ant stops?  In which quadrant does the ant stop?</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #4 -->
+      <exercise>
+        <statement>
+          <p>Suppose an ant starts at <m>\left(1,0 \right)</m> and walks in a clockwise direction 2 units along the circumference of a unit circle.  What are the coordinates of the point where the ant stops?  In which quadrant does the ant stop?</p>
+        </statement>
+      </exercise>
+
+      <!-- Practice Problem #5 -->
+      <exercise>
+        <statement>
+          <p>The Unit Circle Race is to be run on a circular track of radius 1 mile.  The race will begin and end at the usual starting place on the unit circle, the point <m>\left(1,0 \right)</m> and will be run in the counterclockwise direction.</p>
+            <ol label="a.">
+              <li>Clark has traveled 1.2 miles.  Sketch a unit circle and label his location on the circle.  What are his <m>x-</m> and <m>y-</m> coordinates?</li>
+              <li>Josie has the same <m>y-</m>coordinate as Clark, but she is in a different location.  Label her location on the circle.  What is her <m>x-</m>coordinate?</li>
+              <li>If a runner could run around the track an unlimited number of times, what are all the possible distances she or he could run and end up where Josie is?</li>
+              <li>Crystal runs <m>d</m> miles and is still in the first quadrant.  Her <m>x-</m>coordinate is 0.2 miles.  Label her location on the circle.  Find her <m>y-</m>coordinate without finding <m>d</m>.</li>
+              <li>Crystal decides to take a shortcut. She runs from her current location (in question 5d) directly to a point on the track that is a distance of <m>d + \frac{3\pi}{2}</m> miles from the start of the race. Label her new location on the circle.  Use symmetry to find her new <m>x-</m> and <m>y-</m>coordinates.</li>
+              <li>Michael is a judge for the race. He is standing at the point <m>\left(0,1 \right)</m> on the circle’s circumference.  He walks 0.4 miles in a clockwise direction along the track back toward the race’s starting place.  How far is he from the starting place?</li>
+              <li>Maggie walked 0.4 miles from the starting place in a counterclockwise direction.  How are her <m>x-</m> and <m>y-</m>coordinates related to Michael’s <m>x-</m> and <m>y-</m>coordinates?</li>
+            </ol>
+        </statement>
+      </exercise>
+
+    </exercises>
+
+</section>

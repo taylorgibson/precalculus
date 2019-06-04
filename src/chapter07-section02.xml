@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="chapter07-section02" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Triangles and the Unit Circle</title>
+  <introduction></introduction>
+    <p>Our definitions of sine, cosine, and tangent as ratios of lengths of the sides of a right triangle limit the domains to angles between 0 and 90 degrees.  We can extend our definitions to include all angles (positive, negative, and 0) by relating the triangles to points on the unit circle.  Recall that the unit circle is the circle with a radius of 1 centered at the origin,
+    so its equation is <m>x^2+y^2=1</m>. We can specify the right triangle of interest and all triangles similar to it using an angle of rotation from the horizontal axis and the corresponding point on the circle. As we saw earlier in this chapter, <m>\sin \left(30^ \circ \right)=\frac{1}{2}</m> and <m>\cos \left(30^ \circ \right)=\frac{\sqrt 3}{2}</m>.  We can relate the 30-60-90 triangle to the unit circle by drawing the right triangle with the 30-degree angle created at the origin.</p>
+
+      <figure xml:id="unit-circle-image1">
+        <caption></caption>
+        <image source="./images/unit-circle-image1.jpg" width="50%"></image>
+      </figure>
+
+    <p>The specific right triangle we want to consider has the angle between the positive <m>x-</m>axis and its hypotenuse of 30 degrees, as shown in <xref ref="unit-circle-image1" text="type-local" />.</p>
+
+    <p>Since the radius of the circle is 1, the length of the hypotenuse of the triangle is also 1. The ratio of the length of the side opposite the <m>30^ \circ</m>angle, and the hypotenuse is just the <m>y-</m>coordinate of the point of intersection of the hypotenuse with the circle. If, instead, we were interested in the 60 degree angle, we would construct the triangle as shown in <xref ref="unit-circle-image2" text="type-local" />. Again, the sine and cosine of the <m>60^ \circ</m> angle show up as the <m>y-</m> and <m>x-</m>coordinates, respectively, of the point of intersection of the hypotenuse with the circle.</p>
+
+      <figure xml:id="unit-circle-image2">
+        <caption></caption>
+        <image source="./images/unit-circle-image2.jpg" width="50%"></image>
+      </figure>
+
+    <p>In a similar manner, the <m>45-45-90</m> triangle with a hypotenuse of length 1 would be defined by the angle at the origin of 45 degrees and the point on the circle <m>\left(\frac{\sqrt 2}{2},\frac{\sqrt 2}{2}\right)</m>. We see that in each case, for the sine of a given angle <m>\theta</m> is the <m>y-</m>coordinate of the point of intersection of the hypotenuse of the triangle and the unit circle, and the cosine of <m>\theta</m> is the <m>x-</m>coordinate.</p>
+
+      <figure xml:id="unit-circle-image3">
+        <caption></caption>
+        <image source="./images/unit-circle-image3.jpg" width="50%"></image>
+      </figure>
+
+    <p>Using a calculator, we find that <m>\sin \left(22^\circ \right) \approx 0.3746</m> and <m>\cos \left(22^\circ \right) \approx 0.9272</m> correct to four decimal places.  Notice that <m>\left(0.3746 \right)^2 +\left(0.9272 \right)^2 \approx 1</m> to four decimal places.  This triangle can be defined in the unit circle by the coordinates <m>\left(0.3746, 0.9272\right)</m>, as shown in <xref ref="unit-circle-image4" text="type-local" />.</p>
+
+      <figure xml:id="unit-circle-image4">
+        <caption></caption>
+        <image source="./images/unit-circle-image4.jpg" width="50%"></image>
+      </figure>
+
+    <p>Recall that the tangent of an angle in a right triangle is the ratio of the length of the side opposite the angle to the length of the side adjacent the angle. Tangent is the name given to lines that intersect a circle in exactly one point. The connection between the unit circle and the triangles we have drawn will answer that question.</p>
+
+      <figure xml:id="unit-circle-image5">
+        <caption></caption>
+        <image source="./images/unit-circle-image5.jpg" width="50%"></image>
+      </figure>
+
+    <p>Consider a segment <m>AB</m> tangent to the unit circle at the point <m>\left(1, 0 \right)</m> on the <m>x-</m>axis in <xref ref="unit-circle-image5" text="type-local" />. We know that <m>\tan \left(\theta \right)=\frac{y}{x}</m>. But we also see that <m>\tan \left(\theta \right)=\frac{AB}{OA}</m>, since  <m>\bigtriangleup OAB</m> and <m>\bigtriangleup OXY</m> are similar. Since we are dealing with a unit circle, <m>OA=1</m>, so the length of the segment <m>AB</m> that is tangent to the circle is, in fact, <m>\tan \left(\theta \right)</m>.</p>
+
+    <subsection>
+      <introduction></introduction>
+      <title>Angles Outside of the Domain of 0 to 90 Degrees</title>
+
+          <figure xml:id="unit-circle-image6">
+            <caption></caption>
+            <image source="./images/unit-circle-image6.jpg" width="50%"></image>
+          </figure>
+
+        <p>As noted earlier, we can extend our definitions for sine, cosine, and tangent to angles outside the domain of 0 to 90 degrees. Using the connection between a point on the unit circle and the right triangle whose hypotenuse makes an angle <m>\theta</m> with the positive <m>x-</m>axis, we will consider the right triangle in the second quadrant shown in <xref ref="unit-circle-image6" text="type-local" />.</p>
+        <p>Since the angle of the hypotenuse with the positive <m>x-</m>axis is 120 degrees, the interior angle of the triangle at the origin is 60 degrees, so the coordinates at <m>B</m> are <m>\left(\frac{-1}{2},\frac{\sqrt 3}{2} \right)</m>. We can now extend our definition of sine and cosine to include angles larger than 90 degrees.  We can say that <m>\cos \left(120^\circ \right)=-\frac{1}{2}</m>, <m>\sin \left(120^\circ \right)=-\frac{\sqrt 3}{2}</m>, and <m>\tan \left(120^\circ \right)=-\sqrt 3</m>.</p>
+
+        <p>In a similar manner, we can consider angles in the third and fourth quadrants and the right triangles associated with them.</p>
+
+          <figure xml:id="unit-circle-image7">
+            <caption></caption>
+            <image source="./images/unit-circle-image7.jpg" width="50%"></image>
+          </figure>
+
+        <p>So, <m>\cos \left(240^\circ \right)=-\frac{1}{2}</m> and <m>\sin \left(300^\circ \right)=-\frac{\sqrt 3}{2}</m>.</p>
+        <p>What is the sine of <m>25^\circ</m>?  According to a calculator, <m>\sin \left(25^\circ \right) \approx -0.2588</m>. What diagram corresponds to this statement? Since a positive value of <m>\theta</m> corresponds to a counterclockwise rotation of the hypotenuse from the positive horizontal axis by an angle of <m>\theta</m>, a negative value of <m>\theta</m> represents a clockwise rotation by <m>\theta</m>.  So, a clockwise rotation of <m>25^\circ</m> puts us at the same location as a counterclockwise rotation of 335 degrees, so we should expect to see that <m>\sin \left(25^\circ \right)=\sin \left(335^\circ \right)</m>.</p>
+
+          <figure xml:id="unit-circle-image8">
+            <caption></caption>
+            <image source="./images/unit-circle-image8.jpg" width="50%"></image>
+          </figure>
+
+        <p>More formally, we can define a function <m>w</m>, called <em>the wrapping function</em>, that takes angles of rotation for the hypotenuse of the right triangle and matches them with corresponding points on the unit circle. So, <m>w\left(\theta \right)=\left(x,y \right)</m>. From our earlier work we know that <m>w\left(60^\circ \right)=\left(\frac{-1}{2},\frac{\sqrt 3}{2} \right)</m>, <m>w\left(-60^\circ \right)=\left(\frac{-1}{2},-\frac{\sqrt 3}{2} \right)</m>, and <m>w\left(135^\circ \right)=\left(\frac{\sqrt 2}{2},\frac{\sqrt 2}{2} \right)</m>.</p>
+    </subsection>
+
+  <example>
+    <statement>
+      <p>The function <m>w\left(\theta \right)</m> returns an ordered pair for each value of <m>\theta</m>.  What ordered pair is associated with <m>w\left(225^\circ \right)</m>?  What ordered pair is associated with <m>w\left(-55.3^\circ \right)</m>?</p>
+    </statement>
+  </example>
+  <solution>
+    <ol label="a.">
+      <li>We know that the triangle associated with and angle of <m>225^\circ</m> is in the 3rd quadrant, and makes an angle of <m>45^\circ</m> with the <m>x-</m>axis.   The <m>x-</m>coordinate is <m>\cos \left(225^\circ \right) \approx -0.7071</m> which is the opposite of <m>\cos \left(45^\circ \right)</m>, the <m>y-</m>coordinate is <m>\sin \left(225^\circ \right) \approx -0.7071</m> which is the opposite of <m>\sin \left(45^\circ \right)</m>.</li>
+        <figure xml:id="unit-circle-image9">
+          <caption></caption>
+          <image source="./images/unit-circle-image9.jpg" width="50%"></image>
+        </figure>
+      <li>We know that the triangle associated with and angle of <m>-55.3^\circ</m> is in the 4th quadrant, and makes an angle of <m>55.3^\circ</m> with the <m>x-</m>axis. The <m>x-</m>coordinate is <m>\cos \left(-55.3^\circ \right) \approx 0.5693</m> and the <m>y-</m>coordinate is <m>\sin \left(-55.3^\circ \right) \approx -0.8221</m> which is the opposite of <m>\sin \left(55.3^\circ \right)</m>.</li>
+        <figure xml:id="unit-circle-image10">
+          <caption></caption>
+          <image source="./images/unit-circle-image10.jpg" width="50%"></image>
+        </figure>
+    </ol>
+  </solution>
+
+  <subsection>
+    <introduction></introduction>
+    <title>From Angles to Distances on the Unit Circle</title>
+
+    <p>There are many situations that are well-modeled using trigonometry associated with trigonometric functions that are not related to angles, such as the stretching of a bungee cord, the vibrations of a violin string, and the movement of tides. Embedding a right triangle in a unit circle gives us a nice reference for understanding the relationship between the interior angle in the triangle and the ordered pair <m>\left(x,y \right)</m> on the circle. There is another powerful representation that uses the distance traveled around the circle from the point <m>\left(1,0 \right)</m> as the independent variable.</p>
+
+    <p>As we noted when looking at parametric equations, in which time is the independent variable, we often use the letter <m>t</m> to represent the independent variable. When distance is the independent variable, the common notation is to represent distance or arc length with the letter <m>s</m>. The distance we are interested in is the length of the arc of the circle spanned by the angle.  Recall that, in a circle of radius <m>r</m>, the arc length spanned by an angle of <m>\theta ^\circ</m> is <m>s=2\pi r \left(\frac{\theta}{360^\circ} \right)</m>.</p>
+
+    <p>The equation <m>w\left(s \right)=\left(x,y \right)</m> defines our wrapping function as a function that maps the distance traveled around the unit circle from <m>\left(1, 0 \right)</m> (the arc length) to the points on the unit circle.  The convention is that positive values of <m>s</m> correspond to moving in a counterclockwise direction and negative values of <m>s</m> correspond to moving in a clockwise direction. We know that the distance completely around the unit circle is <m>2\pi</m> units, so it is common to write <m>s</m> in terms of <m>\pi</m>.  For example, <m>w\left(\pi \right)=\left(-1,0 \right)</m>, <m>w\left(\frac{\pi}{2} \right)=\left(0,1 \right)</m>, and <m>w\left(-\frac{\pi}{2} \right)=\left(0,-1 \right)</m>. The units of distance depend on the units in which the unit circle is measured. By using distance rather than angle as the independent variable, we will be able to free the trigonometric functions from their triangle and apply them to circular motion and a variety of periodic phenomena.</p>
+  </subsection>
+
+  <subsection>
+    <introduction>The idea of using distance traveled around the unit circle gives rise to the radian.  Radians are a dimensionless unit of measure that describe an angle in terms of a distance traveled around the circumference of a circle or the length of a circular arc.</introduction>
+    <title>Radian Measure</title>
+    <p>\textbf{Definition: }The <em>radian measure of an angle</em>, <m>r</m>, is the distance around the unit circle of the arc spanned by the angle, with the unit of distance being the radius of the circle. The name “radian” comes from using the radius of the circle as the unit of measurement.  Since the unit circle has a radius of one, the radian measure and the distance around the circle are the same.</p>
+
+      <figure xml:id="unit-circle-image11">
+        <caption></caption>
+        <image source="./images/unit-circle-image11.jpg" width="50%"></image>
+      </figure>
+
+    <p>The convention is, as before, positive radians represent counterclockwise motion and negative radians represent clockwise rotations.  The circumference of the unit circle is <m>2\pi</m>.  So, the radian measure of an angle of 360 degrees (all the way around the circle) is <m>2\pi</m>.   The radian measure of an angle of 90 degrees is <m>\frac{\pi}{2}</m>, since this is the distance along one-fourth the circumference of a unit circle.</p>
+
+    <p>We can move between radian and degree measure by recognizing that <m>2\pi</m> radians is equivalent to 360 degrees, so <m>\theta</m> degrees is <m>\frac{\theta}{360} \cdot \left(2\pi \right)</m> radians.  The equation <me>\frac{\theta}{180}=\frac{r}{\pi}</me> allows us to change from one unit of measure to the other.</p>
+
+    <p>Note that when the angle is measured in degrees, the arc length formula is <m>s=2\pi r\left(\frac{\theta}{360} \right)</m>, but when the angle is measured in radians, the arc length formula is quite simple: <m>s=r\theta</m>. To see this we substitute <m>\theta=180\left(\frac{r}{\pi} \right)</m> into <m>s=2\pi r \left(\frac{\theta}{360} \right)</m>.   Also, when we use the unit circle, <m>r=1</m>, so we see that <m>s=\theta</m>.  That is, the measure of the angle and the length of the arc are the same.</p>
+  </subsection>
+
+  <example>
+    <statement>
+      <p>If we consider a circle of radius three centimeters, then distance traveled around the circle is not the same as the radian measure, but is proportional to it. For example, in a circle of radius three, the length of the arc on the circle spanned by an angle of <m>30^\circ</m> can be found using ideas we developed earlier.  First, we note that <m>\frac{30}{180}=\frac{r}{\pi}</m> simplifies to <m>r=\frac{\pi}{6}</m>. So the radian measure is <m>\frac{\pi}{6}</m> which corresponds to an arc length of <m>\frac{\pi}{6}</m> on the unit circle.  Since the circle in question has a radius three time that of the unit circle, the arc length is <m>3 \cdot \frac{\pi}{6}=\frac{\pi}{2} \approx 1.571</m>centimeters.</p>
+
+        <figure xml:id="unit-circle-image12">
+          <caption></caption>
+          <image source="./images/unit-circle-image12.jpg" width="50%"></image>
+        </figure>
+
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>Convert <m>\frac{5\pi}{8}</m> radians to degrees and 250 degrees to radians.</p>
+    </statement>
+      <solution>
+        <p>To convert radians to degrees we write the equation <m>\frac{\theta}{180}=\frac{r}{\pi}</m> as <m>\theta=180\left(\frac{r}{\pi} \right)</m>. For <m>\frac{5\pi}{8}</m> radians, we have <m>\theta=180\left(\frac{5\pi}{8\pi} \right)=180\left(\frac{5}{8} \right)=112.5^\circ</m>. For degrees to radians we use <m>r=\frac{\left(\theta \cdot \pi \right)}{180}</m>. So, <m>250^\circ</m> can be converted using <m>r=\frac{\left(250 \cdot \pi \right)}{180}=\frac{25 \pi}{18}</m>. This can be approximated as 4.363 radians.</p>
+      </solution>
+  </example>
+
+  <example>
+    <statement>
+      <p>Use your calculator to determine the value of <m>w\left(-67.8^\circ \right)</m>.Draw the associated right triangle on the unit circle.</p>
+    </statement>
+      <solution>
+        <p>To find the value of the wrapping function, we need to remember that the ordered pair are defined by <m>w\left(\theta \right)= \left(\sin \theta, \cos \theta \right)</m>.  Since, to four decimals <m>\sin \left(-67.8 \right) \approx -0.9259</m> and <m>\cos \left(-67.8 \right) \approx 0.3778</m>, we have <m>w\left(-67.8 \right) \approx \left(0.3778,-0.9259 \right)</m>.
+
+          <figure xml:id="unit-circle-image13">
+            <caption></caption>
+            <image source="./images/unit-circle-image13.jpg" width="50%"></image>
+          </figure>
+
+        Note that <m>-67.8^\circ</m> creates the same triangle as <m>292.2^\circ</m>, and so the sines and cosines are the same for both angles.
+        </p>
+      </solution>
+  </example>
+
+  <exercises>
+    <title>Exercises</title>
+
+    <!-- Practice Problem #1 -->
+    <exercise>
+      <statement>
+        <p>Express each angle measure in degrees.</p>
+          <md>
+              <mrow>\text{a. } \amp \frac{2\pi}{3} \text{ radians}   \amp \text{b. } \amp \frac{9\pi}{2} \text{ radians} \amp \text{c. } \amp 3\pi \text{ radians}</mrow>
+              <mrow>\text{d. } \amp \frac{5\pi}{12} \text{ radians}  \amp \text{e. } \amp 2 \text{ radians}              \amp \text{f. } \amp 0.5 \text{ radians}</mrow>
+          </md>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #2 -->
+    <exercise>
+      <statement>
+        <p>Express each angle measure in radians.</p>
+          <md>
+              <mrow>\text{a. } \amp 270^\circ   \amp \text{b. } \amp 135^\circ  \amp \text{c. } \amp 240^\circ</mrow>
+              <mrow>\text{d. } \amp 0^\circ     \amp \text{e. } \amp -270^\circ \amp \text{f. } \amp 72^\circ</mrow>
+              <mrow>\text{g. } \amp 5700^\circ  \amp \text{h. } \amp -27^\circ  \amp \text{f. } \amp 1^\circ</mrow>
+          </md>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #3 -->
+    <exercise>
+      <statement>
+        <p>Use your calculator to determine the value of the wrapping function at the locations below. Draw the associated right triangle on the unit circle.</p>
+          <md>
+              <mrow>\text{a. } \amp w\left(32^\circ \right)   \amp \text{b. } \amp w\left(122^\circ \right) \amp \text{c. } \amp w\left(-32^\circ \right)</mrow>
+              <mrow>\text{d. } \amp w\left(212^\circ \right)  \amp \text{e. } \amp w\left(432^\circ \right) \amp \text{f. } \amp w\left(-432^\circ \right)</mrow>
+          </md>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #4 -->
+    <exercise>
+      <statement>
+        <p>Draw four concentric circles with centers <m>\left(0,0 \right)</m> and radii of lengths 1, 2, 3, and 6 units, respectively.  On the circle of radius 1, start at <m>\left(1,0 \right)</m> and draw an arc of length <m>\frac{\pi}{3}</m>.  On the circle of radius 2, start at <m>\left(2,0 \right)</m> and draw an arc of length <m>\frac{2\pi}{3}</m>.  On the circle of radius 3, start at <m>\left(3,0 \right)</m> and draw an arc of length <m>\pi</m>.  On the circle of radius 6, start at <m>\left(6,0 \right)</m> and draw an arch of length <m>2\pi</m>. For each circle, compute the value of the ratio <m>\frac{\text{arc length}}{\text{radius}}</m> and explain what this ratio represents.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #5 -->
+    <exercise>
+      <statement>
+        <p>In a circle of radius 3.2 cm, what arc length is subtended by an angle that measures 1.4 radians?</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #6 -->
+    <exercise>
+      <statement>
+        <p>Find the measure of the angle that subtends an arc of length 8 cm in a circle of radius 5 cm.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #7 -->
+    <exercise>
+      <statement>
+        <p>A circle of radius 2 is centered at the origin of the coordinate plane. Suppose a person starts at point <m>\left(2,0 \right)</m> and walks counterclockwise along the circumference of the circle.  Define the function <m>f\left(t \right)=</m> the <m>x-</m>coordinate of the location after walking <m>t</m> units.</p>
+          <ol label="a.">
+            <li>Evaluate <m>f\left(0 \right)</m>, <m>f\left(\pi \right)</m>, and <m>f\left(2\pi \right)</m>.</li>
+            <li>Identify the domain and range of <m>f</m>.</li>
+            <li>Explain why <m>f</m> is a periodic function and identify the period.</li>
+            <li>Graph <m>f</m>.</li>
+            <li>Write an equation for <m>f</m>.</li>
+          </ol>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #8 -->
+    <exercise>
+      <statement>
+        <p>Using the information in the preceding exercise, define the function <m>g\left(t \right)=</m> the <m>y-</m>coordinate of the location after walking <m>t</m> units.</p>
+      </statement>
+    </exercise>
+
+    <!-- Practice Problem #9 -->
+    <exercise>
+      <statement>
+        <p>Generalize the results of the two preceding exercises for a circle of radius <m>r</m>.  Write one or two sentences to explain why the value of <m>r</m> appears where it does in the equations for <m>f</m> and <m>g</m>.</p>
+      </statement>
+    </exercise>
+
+  </exercises>
+
+</section>

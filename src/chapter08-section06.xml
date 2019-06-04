@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section12" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Composition with Inverse Trigonometric Functions</title>
+  <introduction></introduction>
+  <p>In the exercise set of Section 3 we investigated some examples that involved composition of inverse trigonometric functions.  For instance, we found that
+  <me>\sin\left(\sin^{-1} 0.9 \right)=0.9</me>
+  and that
+  <me>\sin^{-1}\left(\sin 2 \right)=1.1416</me>
+
+  These examples show that if <m>f(x)=\sin x</m> and <m>g(x)=\sin^{-1} x</m>, then for some values of <m>x</m> it is true that their composition produces the original <m>x-</m>value.  However, for other <m>x-</m>values their composition does not produce the original <m>x-</m>value.
+  </p>
+  <example>
+   <statement><p>Let <m>f(x)=\sin x</m> and let <m>g(x)=\sin^{-1} x</m>.  For what values of x is it true that <m>f(g(x))=\sin \left(\sin^{-1} x \right)=x</m>?  For what values of <m>x</m> is it true that <m>g(f(x))=\sin^{-1} \left(\sin x \right)=x</m>?  Explain the results.
+   </p></statement>
+
+   <solution>
+    <p>The graphs in <xref ref="inverse-sine-image" text="type-local" /> show <m>y=\sin \left(\sin^{-1} x \right)</m> on the left and <m>y=\sin^{-1}\left(\sin x \right)</m> on the right.  The graph of <m>f(g(x))=\sin \left(\sin^{-1} x \right)</m> is identical to the graph of <m>y=x</m> on the interval <m>[-1,1]</m>. The graph of <m>g(f(x))=\sin^{-1} \left(\sin x \right)</m> is identical  to the graph of <m>y=x</m> on the interval <m>\left[-\frac{\pi}{2}, \frac{\pi}{2} \right]</m>.  Therefore,   <m>\sin \left(\sin^{-} x \right)=x</m> for all <m>x</m> between <m>-1</m> and 1 and <m>\sin^{-1} \left(\sin x \right)=x</m> for all <m>x</m> between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m>.</p>
+
+    <figure xml:id="inverse-sine-image">
+     <caption>Graphs of <m>y=\sin \left(\sin^{-1} x \right)</m> and <m>y=\sin^{-1}\left(\sin x \right)</m></caption>
+     <image source="./images/inverse-sine-image.jpg" width="50%"></image>
+    </figure>
+
+    <p>To explain why <m>\sin \left(\sin^{-1} x \right)=x</m> only on the interval <m>[-1,1]]</m> we must consider the domain of the composition <m>f(g(x))=\sin \left(\sin^{-1} x \right)</m>.  The domain of <m>f \circ g</m> is the subset of the domain of <m>g(x)=\sin^{-1} x</m> for which the values <m>g(x)</m> are in the domain of <m>f(x)=\sin x</m>.  The domain of <m>g</m> is <m>-1 \le x \le 1</m>.  The values <m>g(x)</m> are always between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m>; since the domain of <m>f</m> is all real numbers, all values of <m>g</m> are in the domain of <m>f</m>.  Therefore, the domain of <m>f \circ g</m> is equal to the entire domain of <m>g</m>, which is <m>-1 \le x \le 1</m>.  Therefore, <m>\sin \left(\sin^{-1} x \right)=x</m> for all values of <m>x</m> in the domain of the composition, that is, for all <m>x</m> between <m>-1</m> and 1, inclusive.</p>
+
+    <p>To explain why <m>\sin^{-1} \left(\sin x \right)=x</m> only on the interval <m>\left[-\frac{\pi}{2}, \frac{\pi}{2} \right]</m> we must consider the range of <m>g(f(x))=\sin^{-1} \left(\sin x \right)</m>.  The values of <m>g(f(x))</m> are in the range of <m>g(x)=\sin^{-1} x</m>, which is between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m>.  If <m>\sin^{-1}\left(\sin x\right)=x</m> is equal to <m>x</m>, the value of <m>x</m> must also be in the interval from <m>-\frac{\pi}{2}</m> to <m>\frac{\pi}{2}</m>, inclusive.  Therefore, <m>\sin^{-1}\left(\sin x\right)=x</m> for all <m>x</m> between <m>-\frac{\pi}{2}</m> and <m>\frac{\pi}{2}</m>.</p>
+
+    <p>Note that <m>\sin\left(\sin^{-1} x\right)=x</m> is equal to <m>x</m> on its entire domain, which is  <m>-1 \le x \le 1</m>.  In contrast, <m>\sin^{-1} \left(\sin x \right)</m>is equal to <m>x</m> only when <m>-\frac{\pi}{2} \le x \le \frac{\pi}{2}</m>, even though its domain is all real numbers.</p>
+   </solution>
+  </example>
+
+  <subsection>
+  <introduction></introduction>
+   <title>Class Practice</title>
+    <p>
+    <ol>
+      <li>Determine the values of <m>a</m> for which <m>\cos\left(\cos^{-1} a \right)=a</m>. Explain your results.</li>
+      <li>Determine the values of <m>a</m> for which <m>\cos^{-1} \left(\cos a \right)=a</m>. Explain your results.</li>
+      <li>Determine the values of <m>a</m> for which <m>\tan\left(\tan^{-1} a \right)=a</m>. Explain your results.</li>
+      <li>Determine the values of <m>a</m> for which <m>\tan^{-1} \left(\tan a \right)=a</m>. Explain your results.</li>
+      <li>Comment on the statement “The composition of a function and its inverse yields the identity function.”.  Is this statement always true?  Under what conditions, if any, might it be false?  Is there a clarification or restriction that can be added to the statement so that it is always true?</li>
+    </ol>
+    </p>
+
+    <p>As you know, functions that are not inverses can also be composed.  For these kinds of compositions, we need to recall that inverse trigonometric functions produce numbers that are arc lengths or angle measures.  Therefore, it will sometimes be convenient to use our understanding of right triangle trigonometry to evaluate these compositions.</p>
+  </subsection>
+
+  <example xml:id="example2">
+   <statement><p>Find the exact value of <m>\sin \left(\cos^{-1} \left(\frac{3}{8} \right) \right)</m></p></statement>
+
+   <solution>
+    <p>We want to find the sine of a number whose cosine is <m>\frac{3}{8}</m>.  If we use our calculator to approximate <m>\cos^{-1}\left(\frac{3}{8} \right)</m> and then take the sine of that value, our result will be an approximation rather than exact answer.  Therefore, we will use our knowledge of right triangle trigonometry to evaluate this expression</p>
+    <p>If we let <m>\theta</m> represent <m>\cos^{-1} \left(\frac{3}{8} \right)</m>, then <m>\theta</m> is the number between 0 and <m>\pi</m> whose cosine is <m>\frac{3}{8}</m>. The value we want to find can be written as <m>\sin \theta</m>. The triangle shown in <xref ref="cosine-image3" text="type-local" /> will help us find the sine of <m>\theta</m> without first finding <m>\theta</m>.  Since the cosine of <m>\theta</m> is defined as the ratio of the length of the adjacent side to the length of the hypotenuse, the length of the side adjacent to <m>\theta</m>  and the length of the hypotenuse are in the ratio <m>3:8</m>.
+
+    <figure xml:id="cosine-image3">
+     <caption><m>\theta=\cos^{-1}\left(\frac{3}{8} \right)</m>in a right triangle</caption>
+     <image source="./images/cosine-image3.jpg" width="50%"></image>
+    </figure>
+
+    Using the Pythagorean Theorem, the side opposite <m>\theta</m> has length <m>\sqrt{8^2-3^2}=\sqrt 55</m>. This means that the sine of <m>\theta</m>, defined as the ratio of the length of the opposite side to the length of the hypotenuse, is equal to <m>\frac{\sqrt 55}{8}</m>. Since <m>\theta</m> is between 0 and <m>\pi</m> and has a positive cosine, we know that <m>\theta</m> is in the first quadrant and therefore has a positive sine.
+    </p>
+    <p>The value of <m>\sin \left(\cos^{-1}\left(\frac{3}{8} \right) \right)</m> can also be determined using the identity <m>\sin^2 \theta+\cos^2 \theta=1</m>, which can  be written <m>\sin \theta=\pm \sqrt{1-\cos^2 \theta}</m>.  Since <m>\cos \theta =\frac{3}{8}</m>,
+
+    <md>
+      <mrow>\sin \theta \amp = \pm \sqrt{1-\left(\frac{3}{8}\right)^2}</mrow>
+      <mrow>            \amp = \pm \sqrt{\frac{64}{64}-\frac{9}{64}}</mrow>
+      <mrow>            \amp = \pm \frac{\sqrt 55}{8}</mrow>
+    </md>
+
+    Since <m>\theta</m> must be in the first quadrant, the sine of <m>\theta</m> is positive.  Thus, <m>\sin \theta = \frac{\sqrt 55}{8}</m> and <m>\sin \left(\cos^{-1} \left(\frac{3}{8} \right) \right)=\frac{\sqrt 55}{8}</m>.</p>
+    <p>If in <xref ref="example2" text="type-local" /> we had been asked to find <m>\sin \left(\cos^{-1} \left(\frac{3}{8} \right) \right)</m>, we would have again found <m>\sin \theta = \pm \frac{\sqrt 55}{8}</m>. Since <m>\cos \theta = -\frac{3}{8}</m> and the range of the inverse cosine function is <m>[0, \pi]</m>, we know <m>\theta</m> is in the second quadrant. In te second quadrant <m>\sin \theta</m> is positive, and we again choose <m>\frac{\sqrt 55}{8}</m> for the answer.</p>
+   </solution>
+  </example>
+
+  <example xml:id="example3">
+   <statement><p>Express <m>\tan \left(\cos^{-1} \left(x+1 \right) \right)</m> in terms of <m>x</m> without trigonometric functions.</p></statement>
+   <solution><p>The expression <m>\tan \left(\cos^{-1} \left(x+1 \right) \right)</m> represents the tangent of an angle <m>\theta</m>  whose cosine is <m>x+1</m> . The technique of <xref ref="example2" text="type-local" /> can be used here with slight adaptation.  Let <m>\theta=\cos^{-1}\left(x+1 \right)</m>.  We do not know whether  <m>x+1</m> is positive or negative, so we must consider two possible positions for angle <m>\theta</m>; the angle can be in either the first or second quadrant, since the range of inverse cosine is  <m>[0, \pi]</m>.  Draw <m>\theta</m> in the unit circle with its vertex at the origin, and draw a right triangle with one side on the  <m>x-</m>axis. (see <xref ref="tan-cosine-image" text="type-local" />).</p>
+
+   <figure xml:id="tan-cosine-image">
+    <caption><m>\tan \left(\cos^{-1} \left(x+1 \right) \right)</m></caption>
+    <image source="./images/tan-cosine-image.jpg" width="50%"></image>
+   </figure>
+
+   <p>Since <m>\cos \theta = x+1</m> and the question asks for <m>\tan \theta</m>, first find <m>\sin \theta</m>.  Since <m>0 \le \theta \le \pi</m>,  <m>\sin \theta</m> will be non-negative.  Using either the Pythagorean Theorem or the identity <m>\sin^2 \theta + \cos^2 \theta = 1</m> , the value of <m>\sin \theta</m> is  <m>\sqrt{1^2-\left(x+1 \right)^2}</m>, which can be written as <m>\sqrt{-x^2-2x}</m>.  The tangent of <m>\theta</m> is the ratio of <m>\sin \theta</m> to  <m>\cos \theta</m>, so <me>\tan \left(\cos^{-1} \left(x+1 \right) \right)=\frac{\sqrt{-x^2-2x}}{x+1}.</me> Note that the tangent will be positive if <m>x+1</m>  is positive (<m>\theta</m>  in the first quadrant) and will be negative if <m>x+1</m>  is negative  (<m>\theta</m> in the second quadrant).</p>
+   </solution>
+  </example>
+
+  <subsection>
+  <introduction></introduction>
+   <title>Class Practice</title>
+    <p>These questions refer to <xref ref="example3" text="type-local" />.</p>
+    <ol>
+      <li>Substitute <m>x=-\frac{1}{2}</m> in <m>\tan \left(\cos^{-1} \left(x+1 \right) \right)</m>  and in  <m>\frac{\sqrt{-x^2-2x}}{x+1}</m>. Compare the results.</li>
+      <li>Substitute <m>x=\frac{1}{2}</m> in <m>\tan \left(\cos^{-1} \left(x+1 \right) \right)</m>  and in  <m>\frac{\sqrt{-x^2-2x}}{x+1}</m>. Compare the results.</li>
+    </ol>
+  </subsection>
+
+  <example>
+   <statement><p>Solve <m>\sin^{-1} \left(2x \right)=\cos^{-1}x</m>.</p></statement>
+   <solution><p>The expression <m>\sin^{-1} \left(2x \right)</m> represents an angle whose sine is <m>2x</m>.  Similarly, the expression <m>\cos^{-1} x</m> represents an angle whose cosine is <m>x</m>.  The equation <m>\sin^{-1} \left(2x \right)=\cos^{-1}x</m> means that these two angles are equal. Therefore, there is  an angle <m>\theta</m>  whose sine is <m>2x</m> and whose cosine is <m>x</m>. The angle <m>\theta</m> must be in the interval <m>\left[0,\frac{\pi}{2} \right]</m> because it is in the range of the inverse sine function, which is  <m>\left[-\frac{\pi}{2},\frac{\pi}{2} \right]</m>, and also in the range of the inverse cosine function, which is <m>\left[0,\pi \right]</m>.  Since  <m>\sin \theta =2x</m>, <m>\cos \theta =x</m>, and  <m>\sin^2 \theta+\cos^2 \theta=1</m>, we know that <m>\left(2x \right)^2+x^2=1</m>.</p>
+
+   <p>We now need to solve for <m>x</m>.
+
+   <md>
+     <mrow>4x^2+x^2 \amp = 1</mrow>
+     <mrow>5x^2     \amp = 1</mrow>
+     <mrow>x^2      \amp = 1</mrow>
+     <mrow>x        \amp = \pm \sqrt {\frac{1}{5}}</mrow>
+   </md>
+
+   We know that the angle <m>\theta</m> must be in the first quadrant; this means that its sine is positive, so only <m>x=\sqrt {\frac{1}{5}}</m> is a solution of the original equation.
+   </p>
+
+   <p>An alternate way to solve  <m>\sin^{-1} \left(2x \right)=\cos^{-1}x</m> is by “undoing” one of the inverse trigonometric functions to isolate one of the variables.  This “undoing” can be accomplished by composing a function with its inverse.  We choose to take the sine of both sides of the equation.  This “undoes” the inverse sine function as follows:
+
+   <md>
+     <mrow>\sin \left(\sin^{-1} \left(2x \right) \right) \amp = \sin\left(\cos^-{1} x \right)</mrow>
+     <mrow>2x                                            \amp = \sin\left(\cos^-{1} x \right)</mrow>
+   </md>
+
+   Note the the expression <m>\sin\left(\cos^-{1} x \right)</m>  is undefined for some values of <m>x</m>, such as, <m>x \gt \frac{1}{2}</m> or <m>x \lt -\frac{1}{2}</m>.  However, if we assume that <m>x</m> is a number for which <m>\sin^{-1} \left(2x \right)</m> is defined, then we can be sure that <m>\sin \left(\sin^{-1} \left(2x \right) \right)=2x</m>.
+   </p>
+
+   <p>We can use the technique of <xref ref="example3" text="type-local" /> to find the sine of an angle <m>\theta</m> whose cosine is <m>x</m>.
+
+   <figure xml:id="inverse-cosine-image1">
+    <caption>Right triangle illustrating <m>\theta=\cos^{-1}x</m></caption>
+    <image source="./images/inverse-cosine-image1.jpg" width="50%"></image>
+   </figure>
+
+   Since the range of <m>\cos^{-1}x</m> is <m>\left[0, \pi \right]</m>, the sine of <m>\cos^{-1}x</m> is positive. Using the triangle shown in <xref ref="inverse-cosine-image1" text="type-local" />, we see that <m>\sin \left(\cos^-{1} x \right)=\sqrt{1-x^2}</m>.</p>
+
+   <p>Taking the sine of both sides of <m>\sin^{-1} \left(2x \right)=\cos^{-1}x</m> has resulted in <m>2x=\sqrt{1-x^2}</m>.  We now need to solve <m>2x=\sqrt{1-x^2}</m> for <m>x</m> as follows:
+
+   <md>
+     <mrow>2x    \amp = \sqrt{1-x^2}</mrow>
+     <mrow>4x^2  \amp = 1-x^2</mrow>
+     <mrow>5x^2  \amp = 1</mrow>
+     <mrow>x     \amp = \pm \sqrt {\frac{1}{5}}</mrow>
+   </md>
+
+   The two possible values for <m>x</m> are <m>\frac{1}{5}</m> and <m>-\frac{1}{5}</m>. Checking these <m>x-</m>values in the original equation shows that only <m>x=\frac{1}{5}</m>  is a solution.  The value <m>x=-\frac{1}{5}</m>  is an extraneous solution that was introduced when we squared both sides of our equation.  The negative value for <m>x</m> does not work because the inverse sine of a negative number is between <m>-\frac{\pi}{2}</m> and 0, whereas the inverse cosine of a negative number is between <m>\frac{\pi}{2}</m> and  <m>\pi</m>.
+   </p>
+
+   </solution>
+ </example>
+
+ <exercises>
+  <title>Exercises</title>
+
+   <!-- Practice Problem #1 -->
+   <exercise>
+    <statement>
+     <p>Find the exact value of each of the following.</p>
+     <ol label="a.">
+      <li><m>\sin \left(\cos^{-1} \left(\frac{1}{4} \right) \right)</m></li>
+      <li><m>\tan \left(\cos^{-1} \left(-\frac{1}{2} \right) \right)</m></li>
+      <li><m>\cos \left(\sin^{-1} \left(-\frac{7}{9} \right) \right)</m></li>
+     </ol>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #2 -->
+   <exercise>
+    <statement>
+     <p>Find the domain and range of  the function <m>f(x)=\sin \left(\cos^{-1} x \right)</m>.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #3 -->
+   <exercise>
+    <statement>
+     <p>Sketch and label a unit circle to illustrate the fact that  <m>\sin^{-1} \left(\cos 2.3 \right)=-0.7292</m>.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #4 -->
+   <exercise>
+    <statement>
+     <p>A picture of height 3 feet is placed on a wall with the bottom of the picture 4 feet above the eye level of an observer.  Write a function that expresses the angle <m>\theta</m> subtended at the observer's eye in terms of the distance <m>x</m> between the observer and the wall <xref ref="exercise4-image" text="type-local" />. Find the distance x that maximizes  the subtended angle.  This distance will provide the best viewing angle for the observer.
+
+     <figure xml:id="exercise4-image">
+      <caption>Angle subtended by a picture</caption>
+      <image source="./images/exercise4-image.jpg" width="50%"></image>
+     </figure>
+
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #5 -->
+   <exercise>
+    <statement>
+     <p>Sketch a graph of each function, giving special attention to the domain and range.
+     <ol label="a.">
+      <li><m>y=\cos \left(\cos^{-1} x \right)</m></li>
+      <li><m>y=\cos^{-1} \left(\cos x \right)</m></li>
+      <li><m>y=\tan \left(\tan^{-1} x \right)</m></li>
+      <li><m>y=\tan^{-1} \left(\tan x \right)</m></li>
+     </ol>
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #6 -->
+   <exercise>
+    <statement>
+     <p>For some values of <m>x</m>, <m>\sin^{-1} \left(\sin x \right) \ne x</m>.  For these <m>x-</m>values, what is the value of <m>\sin^{-1} \left(\sin x \right)</m>?  Explain why your answer is reasonable.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #7 -->
+   <exercise>
+    <statement>
+     <p>For some values of <m>x</m>, <m>\cos^{-1} \left(\cos x \right) \ne x</m>.  For these <m>x-</m>values, what is the value of <m>\cos^{-1} \left(\cos x \right)</m>?  Explain why your answer is reasonable.</p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #8 -->
+   <exercise>
+    <statement>
+     <p>Rewrite each of the following expressions without trigonometric functions.  State any necessary restrictions on the value of the variable.
+     <ol label="a.">
+      <li><m>\sin \left(\cos^{-1} x \right)</m></li>
+      <li><m>\cos \left(\tan^{-1} x \right)</m></li>
+      <li><m>\sin \left(\cos^{-1} + \sin^{-1} \right)</m></li>
+      <li><m>\tan \left(\cos^{-1} \left(-\frac{1}{x-1} \right) \right)</m></li>
+     </ol>
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #9 -->
+   <exercise>
+    <statement>
+     <p>A solar receptor is placed at ground level between two buildings whose heights are 115 meters and 70 meters, respectively <xref ref="exercise10-image" text="type-local" />.  The buildings are 100 meters apart.  The angle <m>\theta</m>  is the angle swept out by the sun at the receptor between the time it appears over the top of the taller building and the time it disappears behind the smaller building.  For the greatest efficiency, the receptor should be located where it receives the most sunlight, in other words, where <m>\theta</m> is a maximum. Write a function that expresses the angle <m>\theta</m>  in terms of the distance <m>x</m> between the receptor and the taller building.   Then determine the most effective location for the receptor.
+
+     <figure xml:id="exercise10-image">
+      <caption>Location of a solar receptor</caption>
+      <image source="./images/exercise10-image.jpg" width="50%"></image>
+     </figure>
+
+     </p>
+    </statement>
+   </exercise>
+
+   <!-- Practice Problem #10 -->
+   <exercise>
+    <statement>
+     <p>ASolve each equation.
+
+     <ol label="a.">
+      <li><m>\cos^{-1} \left(2x \right)=\sin^{-1} x</m></li>
+      <li><m>\cos^{-1} \left(3x-1 \right)=\sin^{-1} x</m></li>
+      <li><m>\sin^{-1} \left(2x \right)= \pi + \cos^{-1} x</m></li>
+     </ol>
+
+     </p>
+    </statement>
+   </exercise>
+
+ </exercises>
+</section>

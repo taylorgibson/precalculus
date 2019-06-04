@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This file is part of the book                      -->
+<!--                                                    -->
+<!--   Contemporary Pre-Calculus Through Applications   -->
+<!--                                                    -->
+<!-- Copyright (C) 2017  Mathematics Department, NCSSM  -->
+<!-- See the file COPYING for copying conditions.       -->
+
+<section xml:id="old-chapter05-section08" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <title>Investigating Trigonometric Identities</title>
+  <introduction></introduction>
+
+  <p>Suppose we were asked to solve the equation <m>\sin\left(x\right)+\sin\left(-x\right)=0</m>.  We could accomplish this by using technology to graph and find the zeros of the function <m>f\left(x\right)=\sin\left(x\right)+\sin\left(-x\right)=0</m>. If we proceed with this approach, we will find that the graph of <m>f\left(x\right)=\sin\left(x\right)+\sin\left(-x\right)=0</m> is identical to the graph of <m>g\left(x\right)=0</m> over the entire domain of <m>f</m>. This implies that <m>f\left(x\right)=0</m> for all <m>x-</m>values. Therefore, the equation <m>\sin\left(x\right)+\sin\left(-x\right)=0</m> is true for all values of <m>x</m>. Recall that an equation that is true for all values of the variable is called an identity. The terms in the identity <m>\sin\left(x\right)+\sin\left(-x\right)=0</m> can easily be rewritten to produce <m>\sin\left(-x\right)=-\sin\left(x\right)</m>.  This identity should be a familiar one. It is the algebraic statement that <m>h\left(x\right)=\sin\left(x\right)</m> is an odd function.</p>
+
+  <p>In this investigation you will use graphs, the unit circle, right triangles, and algebra to show that various equations are identities.</p>
+
+  <ol>
+   <li>Graph each function whose equation is given. Based on what you know about transformations and trigonometry, write a second equation whose graph would be identical to the one you have graphed. For example, if the given function were <m>f\left(x\right)=\sin\left(-x\right)=0</m>, then the equation <m>g\left(x\right)=-\sin\left(x\right)</m> produces an identical graph. Therefore, you know that <m>\sin\left(x\right)=-\sin\left(x\right)</m> is an identity. If you find several answers, record them all.</li>
+   <ol label="a.">
+    <li><m>h\left(x\right)=\sin\left(x\right)\cos\left(2x\right)+\cos\left(x\right)\sin\left(2x\right)</m></li>
+    <li><m>m\left(x\right)=\sin\left(\pi x\right)\cos\left(\frac{\pi}{2}x\right)+\cos\left(\pi x\right)\sin\left(\frac{\pi}{2}x\right)</m></li>
+    <li><m>p\left(x\right)=\cos\left(x\right)\cos\left(\frac{1}{2}x\right)-\sin\left(x\right)\sin\left(\frac{1}{2}x\right)</m></li>
+    <li><m>r\left(x\right)=\cos\left(\pi x\right)\cos\left(\frac{\pi}{2}x\right)-\sin\left(\pi x\right)\sin\left(\frac{\pi}{2}x\right)</m></li>
+    <li><m>g\left(x\right)=\cos^2\left(x\right)-\sin^2\left(x\right)</m></li>
+    <li><m>f\left(x\right)=2\sin\left(x\right)\cos\left(x\right)</m></li>
+    <li><m>k\left(x\right)=1-2\sin^2\left(x\right)</m></li>
+    <li><m>t\left(x\right)=\sin^2\left(x\right)</m></li>
+   </ol>
+   <li>
+    <p>The coordinates of points labeled on the unit circle in Figure 5.1 suggest several identities. For example, point <m>P</m> has coordinates <m>\left(a,b \right)</m> and point <m>Q</m> has coordinates <m>\left(b,a \right)</m> because it is the mirror image of <m>P</m> over the line <m>y=x</m>.</p>
+
+     <figure xml:id="unit-circle-image">
+      <caption>Points on Unit Circle</caption>
+      <image source="./images/unit-circle-image.jpg" width="50%"></image>
+     </figure>
+
+    <p>Point <m>P</m> is the endpoint of an arc of length <m>\theta</m> that begins at <m>\left(1,0 \right)</m>, and point <m>Q</m> is the endpoint of an arc of length <m>\frac{\pi}{2}-\theta</m>. The <m>x-</m>coordinate of <m>P</m> is the same as the <m>y-</m>coordinate of <m>Q</m>. This yields the identity <m>\cos\left(\theta\right)=\sin\left(\frac{\pi}{2}-\theta \right)</m>.</p>
+
+   <p>Determine the coordinates of points <m>R</m>, <m>S</m>, <m>T</m>, <m>U</m>, <m>V</m>, and <m>W</m> in terms of <m>a</m> and <m>b</m>.  Then write at least two other identities suggested by the coordinates you have labeled. Your identities should involve the sine, the cosine, or the tangent functions.</p>
+  </li>
+  <li>
+   <p>Refer to the diagram of a right triangle in <xref ref="rt-triangle-image" text="type-local" />.  Use right triangle ratios to show that each of the following three equations is an identity, where <m>0^\circ \le \theta \le 90^\circ</m>.</p>
+
+    <figure xml:id="rt-triangle-image">
+     <caption>Right Triangle</caption>
+     <image source="./images/rt-triangle-image.jpg" width="50%"></image>
+    </figure>
+
+    <ol label="a.">
+     <li><m>\cos\left(90^\circ -\theta \right)=\sin\left(\theta \right)</m></li>
+     <li><m>\sin\left(90^\circ -\theta \right)=\cos\left(\theta \right)</m></li>
+     <li><m>\sin^2\left(\theta \right)+\cos^2n\left(\theta \right)=1</m></li>
+    </ol>
+
+  </li>
+  <li>
+   <p>It is often possible to write new identities based on your existing knowledge of identities.  Use algebra and known identities to establish each new identity.</p>
+
+    <ol label="a.">
+     <li>Divide bothe sides of <m>\sin^2\left(\theta \right)+\cos^2n\left(\theta \right)=1</m> by <m>\cos^2\left(\theta \right)</m> to write a new identity involving <m>\sec^2\left(\theta \right)</m>.</li>
+     <li>Divide bothe sides of <m>\sin^2\left(\theta \right)+\cos^2n\left(\theta \right)=1</m> by <m>\sin^2\left(\theta \right)</m> to write a new identity involving <m>\csc^2\left(\theta \right)</m>.</li>
+    </ol>
+
+  </li>
+  </ol>
+</section>
